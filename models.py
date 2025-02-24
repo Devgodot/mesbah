@@ -1,6 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from confige import db
-from sqlalchemy import String, Column, Integer, Text, JSON
+from sqlalchemy import String, Column, Integer, Text, JSON, URL
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, EqualTo, Length
@@ -59,6 +59,7 @@ class Group(db.Model):
     diamonds = Column(db.Integer(), nullable=False, default=0)
     tag = Column(db.Integer(), nullable=False, default=0)
     gender = Column(db.Integer(), nullable=False, default=0)
+    icon = Column(URL, nullable=False)
     users = Column(JSON, nullable=False)  # Assuming users are stored as a list of strings (usernames or IDs)
     def __repr__(self):
         return f"<Group {self.name}>"
