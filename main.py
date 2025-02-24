@@ -275,7 +275,7 @@ def upload_file():
     # Save the image
     file_path = os.path.join(path, secure_filename(name))
     try:
-        image.save(file_path, format='PNG')
+        image.save(file_path, format='webp')
     except IOError as e:
         current_app.logger.error(f"Failed to write image data to file: {e}")
         return jsonify({"error": "Failed to save image"}), 500
