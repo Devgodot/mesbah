@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://sprite/pngimg.com - question_mark_PNG126.png" id="1_tvsa7"]
+
+[node name="TextureButton" type="TextureButton"]
+offset_right = 18.0
+offset_bottom = 18.0
+texture_normal = ExtResource("1_tvsa7")
+texture_pressed = ExtResource("1_tvsa7")
+texture_hover = ExtResource("1_tvsa7")
+texture_focused = ExtResource("1_tvsa7")
+ignore_texture_size = true
+stretch_mode = 5
