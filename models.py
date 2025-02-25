@@ -84,11 +84,7 @@ class Group(db.Model):
         if user not in users:
             users.append(user)
         return users
-    def remove_user(self, user):
-        if user in self.users:
-            self.users.get("users").remove(user)
-            db.session.commit()
-        return self.users
+   
     
     @classmethod
     def get_group_by_name(cls, name):
