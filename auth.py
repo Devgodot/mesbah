@@ -312,13 +312,8 @@ def left_group():
     for user in group.users.get("users", []):
         if user != current_user.username:
             users.append(user)
-    if len(users) > 0:
-        leader = group.users.get("leader", "") if group.users.get("leader", "") != current_user.username else users[0]
-    else:
-        db.session.delete(group)
-        db.session.commit()
-        return jsonify({"message":"گروه حذف شد"})
-    for user in current_user.get("users_sended_message", []):
+    
+    for user in current_user.data.get("users_sended_message", []):
         messages = User.get_user_by_username(username=user).data.get("message", [])
         for message in messages:
             if message.get("data", {"user":""}).get("user") == current_user.username:
@@ -335,7 +330,13 @@ def left_group():
             user.update(data={"users_request":request_message})
             messages.remove(message)
     current_user.update(data={"group_name":"", "message":messages})
-    
+    db.session.commit()
+    if len(users) > 0:
+        leader = group.users.get("leader", "") if group.users.get("leader", "") != current_user.username else users[0]
+    else:
+        db.session.delete(group)
+        db.session.commit()
+        return jsonify({"message":"گروه حذف شد"})
     group.users = {"users":users, "leader":leader}
     db.session.commit()
     return jsonify({"message":"successe"})
