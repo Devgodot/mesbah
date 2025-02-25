@@ -53,7 +53,6 @@ def get_me():
 @user_bp.get("/all")
 @jwt_required()
 def get_all_users():
-    
     filter_data = []
     if request.args.get("filter"):
         filter_data = request.args.get("filter").split("AND")
@@ -92,7 +91,6 @@ def get_all_users():
             d = {}
             for key in filter_data:
                 k = key
-                
                 if user.data.get(k) is not None:
                     print(k)
                     if key == f"score_{gender}_{tag}":
@@ -146,7 +144,7 @@ def event():
         return jsonify({"message":"successe"})
     return jsonify({"message":"GROUP name exist"})
 
-@user_bp.post("/request")
+@user_bp.get("/request")
 @jwt_required()
 def user_request():
     data = request.args  # Corrected here

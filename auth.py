@@ -197,9 +197,14 @@ def remove_message():
         sended_message = user.data.get("users_sended_message", [])
         if current_user.username in sended_message:
             sended_message.remove(current_user.username)
-        user.update(data= {"users_sended_message":sended_message})
+        request_message = user.data.get("users_request", [])
+        for u in request_message:
+            if current_user.username == u[0]:
+                request_message.remove(u)
+        user.update(data= {"users_sended_message":sended_message, "users_request":request_message})
     db.session.commit()
     return jsonify({"message":"successe"})
+
 @auth_bp.get("/join_group")
 @jwt_required()
 def join_group():
@@ -213,11 +218,17 @@ def join_group():
     group = Group.get_group_by_name(group_name)
     if group is not None:
         users = group.add_user(user=current_user.username)
-        print(users)
         group.users = {"users":users, "leader":users[0]}
-    print(group.users)
     db.session.commit()
-    current_user.update(data={"message":messages, "group_name":group_name})
+    request_message = current_user.data.get("users_request", [])
+    for u in request_message:
+        user = User.get_user_by_username(u[0])
+        user_message = user.data.get("message", [])
+        for m in user_message:
+            if m.get("id", "") == u[1]:
+                user_message.remove(m)
+        user.update(data={"message":user_message})
+    current_user.update(data={"message":messages, "group_name":group_name, "users_request":[]})
     for u in remove_event:
         user = User.get_user_by_username(u)
         if user is not None:
@@ -225,6 +236,48 @@ def join_group():
             if current_user.username in sended_message:
                 sended_message.remove(current_user.username)
             user.update(data= {"users_sended_message":sended_message})
+    db.session.commit()
+    return jsonify({"message":"successe"})
+
+
+@auth_bp.get("/accept_group")
+@jwt_required()
+def accept_group():
+    user_name = request.args.get("user", "")
+    user = User.get_user_by_username(username=user_name)
+    messages = current_user.data.get("message", [])
+    user_join_messages = user.data.get("message", [])
+    remove_event = []
+    for message in messages:
+        if message.get("data", {"user":""}).get("user") == user_name:
+            messages.remove(message)
+    current_user.update(data={"message":messages})
+    for message in user_join_messages:
+        if message.get("type", "") == "join":
+            remove_event.append(message.get("data", {"user":""}).get("user"))
+            user_join_messages.remove(message)
+    group_name = current_user.data.get("group_name", "")
+    group = Group.get_group_by_name(group_name)
+    if group is not None:
+        users = group.add_user(user=user.username)
+        group.users = {"users":users, "leader":users[0]}
+    db.session.commit()
+    request_message = user.data.get("users_request", [])
+    for u in request_message:
+        user2 = User.get_user_by_username(u[0])
+        user_message = user2.data.get("message", [])
+        for m in user_message:
+            if m.get("id", "") == u[1]:
+                user_message.remove(m)
+        user2.update(data={"message":user_message})
     
+    user.update(data={"message":user_join_messages, "group_name":group_name, "users_request":[]})
+    for u in remove_event:
+        user2 = User.get_user_by_username(u)
+        if user2 is not None:
+            sended_message = user2.data.get("users_sended_message", [])
+            if user.username in sended_message:
+                sended_message.remove(user.username)
+            user2.update(data= {"users_sended_message":sended_message})
     db.session.commit()
     return jsonify({"message":"successe"})
