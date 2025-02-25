@@ -315,7 +315,7 @@ def left_group():
     if len(users) > 0:
         leader = group.users.get("leader", "") if group.users.get("leader", "") != current_user.username else users[0]
     else:
-        db.session.remove(group)
+        db.session.delete(group)
         db.session.commit()
         return jsonify({"message":"گروه حذف شد"})
     current_user.update(data={"group_name":""})
