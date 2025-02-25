@@ -60,43 +60,6 @@ def verify_user():
     
 
 
-@auth_bp.get("/random_levels")
-@jwt_required()
-def get_random_levels():
-    if "GodotEngine" in request.headers.get("User-Agent"):
-        season = UserInterface.query.first().data.get("season", "1")
-        part = request.args.get("part", 0)
-        num_levels = UserInterface.query.first().data.get("laps_allowed"+str(season))[int(part)]
-        # Query all levels from the database
-        all_levels = Levels.query.filter_by(part=str(part), type="لیگ").all()
-        # Get the list of level IDs already in league_levels
-        existing_level_ids = current_user.data.get(f"league_levels_{part}_{season}", [[], 0])[0]
-        level_ids = [int(level.get("id", 0)) for level in existing_level_ids]
-        # Filter out levels that are already in the league_levels list
-        available_levels = [level for level in all_levels if level.id not in level_ids]
-        random_levels = [Levels.query.filter_by(id=id).first() for id in level_ids]
-        # If the number of selected levels is less than num_levels, add additional levels
-        while len(random_levels) < num_levels:
-            if len(available_levels) == 0:
-                break
-            random_levels.append(random.choice(available_levels))
-        while len(random_levels) > num_levels:
-            random_levels.pop()
-        random_levels = list(set(random_levels))
-        level_data = []
-        for x, level in enumerate(random_levels):
-            level_info = {
-                "id": level.id,
-                "state": current_user.data.get(f"league_levels_{part}_{season}", [[], 0])[0][x].get("state", 0) if len(current_user.data.get(f"league_levels_{part}_{season}", [[], 0])[0]) > x else 0,
-                "score": current_user.data.get(f"league_levels_{part}_{season}", [[], 0])[0][x].get("score", 0) if len(current_user.data.get(f"league_levels_{part}_{season}", [[], 0])[0]) > x else 0
-            }
-            level_data.append(level_info)
-        total_score = sum(json.loads(hashing(HashingMode.DECODE, level.data.get("data"))).get("score", 0) for level in random_levels)
-
-        current_user.data = current_user.update(data={f"league_levels_{part}_{season}":[level_data, total_score]}, overwrite=False)
-        db.session.commit()
-        return jsonify({"level_data": level_data, "total_score": total_score})
-    return "شما اجازه دسترسی ندارید", 400
 @auth_bp.post("/register")
 def register_user():
     data = request.get_json()
@@ -130,7 +93,7 @@ def register_user():
             phone :str= data.get("phone")
             if not phone.startswith("09") or len(phone) != 11:
                 return jsonify({"error":"فرمت شماره نامعتبر است"})
-            new_user = User(id =username, username=username, phone=data.get("phone"), data=data.get("data", {}), password="1234")
+            new_user = User(id =username, username=username, phone=data.get("phone"), data=data.get("data", {"phone":phone}), password="1234")
             new_user.save()
             access_token = create_access_token(identity=new_user.username, expires_delta=False)
             refresh_token = create_refresh_token(identity=new_user.username)

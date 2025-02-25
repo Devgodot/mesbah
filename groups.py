@@ -12,19 +12,20 @@ def get_names():
     tag = current_user.data.get("tag", 0)
     gender = current_user.data.get("gender", 0)
     groups = Group.query.all()
-    data = [[group.name, len(group.users.get("users", []), group.tag, group.gender, group.icon)] for group in groups]
+    data = [[group.name, len(group.users.get("users", []), group.tag, group.gender, group.icon, group.users.get("leader", ""))] for group in groups]
     return jsonify({"data":data})
 
 @group_bp.post("/create")
 @jwt_required()
 def create():
+    
     data = request.get_json()
     groups = Group.query.all()
     group_names = [group.name for group in groups]
     _name = data.get("group_name")
     if _name and not _name in group_names:
         users = {"users":[current_user.username], "leader":current_user.username}
-        new_group = Group(name=_name, gender=current_user.data.get("gender", 0), tag=current_user.data.get("tag", 0), score=0, diamonds=0 , users=users)
+        new_group = Group(name=_name, gender=current_user.data.get("gender", 0), tag=current_user.data.get("tag", 0), score=0, diamonds=0 , users=users, icon=data.get("icon", ""))
         new_group.save()
        
         users_sended_message = current_user.data.get("users_sended_message", [])

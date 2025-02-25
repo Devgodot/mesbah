@@ -175,6 +175,7 @@ def get_random_level():
 @app.route('/levels/<_id>', methods=['GET'])
 @jwt_required()
 def get_level_by_id(_id:int):
+    
     level_content = Levels.query.filter_by(id=_id).first()
     part = request.args.get("part",0)
     not_play_level = False
