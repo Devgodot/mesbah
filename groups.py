@@ -12,7 +12,7 @@ def get_names():
     tag = current_user.data.get("tag", 0)
     gender = current_user.data.get("gender", 0)
     groups = Group.query.all()
-    data = [[group.name, len(group.users.get("users", []), group.tag, group.gender, group.icon, group.users.get("leader", ""))] for group in groups]
+    data = [[group.name, len(group.users.get("users", [])), group.tag, group.gender, group.icon, group.users.get("leader", "")] for group in groups]
     return jsonify({"data":data})
 
 @group_bp.post("/create")
