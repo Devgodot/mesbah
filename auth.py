@@ -303,3 +303,22 @@ def accept_group():
             user2.update(data= {"users_sended_message":sended_message})
     db.session.commit()
     return jsonify({"message":"successe"})
+
+@auth_bp.get("/left_group")
+@jwt_required()
+def left_group():
+    group = Group.get_group_by_name(current_user.data.get("group_name", ""))
+    users = []
+    for user in group.users.get("users", []):
+        if user != current_user.username:
+            users.append(user)
+    if len(users) > 0:
+        leader = group.users.get("leader", "") if group.users.get("leader", "") != current_user.username else users[0]
+    else:
+        db.session.remove(group)
+        db.session.commit()
+        return jsonify({"message":"گروه حذف شد"})
+    current_user.update(data={"group_name":""})
+    group.users = {"users":users, "leader":leader}
+    db.session.commit()
+    return jsonify({"message":"successe"})
