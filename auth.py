@@ -318,7 +318,24 @@ def left_group():
         db.session.delete(group)
         db.session.commit()
         return jsonify({"message":"گروه حذف شد"})
-    current_user.update(data={"group_name":""})
+    for user in current_user.get("users_sended_message", []):
+        messages = User.get_user_by_username(username=user).data.get("message", [])
+        for message in messages:
+            if message.get("data", {"user":""}).get("user") == current_user.username:
+                messages.remove(message)
+        User.get_user_by_username(username=user).update(data={"message":messages})
+    messages = current_user.data.get("message", [])
+    for message in messages:
+        if message.get("type", "") == "request":
+            user = User.get_user_by_username(username=message.get("data", {"user":""}).get("user"))
+            request_message = user.data.get("users_request", [])
+            for r in request_message:
+                if r[0] == current_user.username:
+                    request_message.remove(r)
+            user.update(data={"users_request":request_message})
+            messages.remove(message)
+    current_user.update(data={"group_name":"", "message":messages})
+    
     group.users = {"users":users, "leader":leader}
     db.session.commit()
     return jsonify({"message":"successe"})
