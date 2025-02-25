@@ -1,4 +1,5 @@
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import jsonify
 from confige import db
 from sqlalchemy import String, Column, Integer, Text, JSON, URL
 from flask_wtf import FlaskForm
@@ -75,7 +76,9 @@ class Group(db.Model):
         other_groups = Group.query.filter(Group.id != self.id).all()
         for group in other_groups:
             if user in group.users.get("users"):
-                return {"error": "User is already in another group"}
+                return jsonify({"error": "کاربر به گروه دیگری پیوسته است."})
+        if len(self.users.get("users", [])) > 4:
+            jsonify({"error": "تعداد اعضای گروه بیش از حد مجاز است."})
         users = [user for user in self.users.get("users")]
         # Add the user to the current group if not found in any other group
         if user not in users:
