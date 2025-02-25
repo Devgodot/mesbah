@@ -66,5 +66,16 @@ def create():
 def get_group():
     group = Group.get_group_by_name(request.args.get("name", ""))
     if group is not None:
-        return jsonify({"users":group.users.get("users", []), "leader":group.users.get("leader", ""), "users_info":[{"name": User.get_user_by_username(username=user).data.get("first_name", "") + " " + User.get_user_by_username(username=user).data.get("last_name") + " "+ User.get_user_by_username(username=user).data.get("father_name")}  for user in group.users.get("users")]})
+        return jsonify({"users":group.users.get("users", []), "leader":group.users.get("leader", ""), "users_info":[{"name": User.get_user_by_username(username=user).data.get("first_name", "") + " " + User.get_user_by_username(username=user).data.get("last_name") + " "+ User.get_user_by_username(username=user).data.get("father_name")}  for user in group.users.get("users")], "icon":group.icon})
+    return jsonify({"message":"group not exist"}), 400
+
+@group_bp.post("/icon")
+@jwt_required()
+def change_icon():
+    data = request.get_json()
+    group = Group.get_group_by_name(name=data.get("name", ""))
+    if group is not None:
+        group.icon = data.get("icon", "")
+        db.session.commit()
+        return jsonify({"message":"icon updated!"}), 200
     return jsonify({"message":"group not exist"}), 400

@@ -127,11 +127,13 @@ def get_all_users():
 def event():
     data = request.get_json()
     _name = data.get("group_name")
-    group = Group.query.filter_by(name=_name).first()
+    group = Group.get_group_by_name(name=_name)
+    print(group)
     if group is not None:
         user = User.get_user_by_username(data.get("user", ""))
         users_sended_message = current_user.data.get("users_sended_message", [])
         if user is not None:
+            print(user)
             message = user.data.get("message", [])
             gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
             jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
