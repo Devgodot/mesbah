@@ -221,6 +221,17 @@ def join_group():
         group.users = {"users":users, "leader":users[0]}
     db.session.commit()
     request_message = current_user.data.get("users_request", [])
+    if len(group.users.get("users", [])) >= 5:
+        current_sended_message = group.users.get("leader").data.get("users_sended_message", [])
+        for u in current_sended_message:
+            user3 = User.get_user_by_username(username=u)
+            user_m = user3.data.get("message", [])
+            for message in user_m:
+                if message.get("data", {"user":""}).get("user") == group.users.get("leader").username:
+                    user_m.remove(message)
+            user3.update(data={"message":user_m})
+        group.users.get("leader").update(data= {"users_sended_message":[]})
+        
     for u in request_message:
         user = User.get_user_by_username(u[0])
         user_message = user.data.get("message", [])
@@ -262,6 +273,17 @@ def accept_group():
         users = group.add_user(user=user.username)
         group.users = {"users":users, "leader":users[0]}
     db.session.commit()
+    if len(group.users.get("users", [])) >= 5:
+        current_sended_message = current_user.data.get("users_sended_message", [])
+        for u in current_sended_message:
+            user3 = User.get_user_by_username(username=u)
+            user_m = user3.data.get("message", [])
+            for message in user_m:
+                if message.get("data", {"user":""}).get("user") == current_user.username:
+                    user_m.remove(message)
+            user3.update(data={"message":user_m})
+        current_user.update(data= {"users_sended_message":[]})
+    
     request_message = user.data.get("users_request", [])
     for u in request_message:
         user2 = User.get_user_by_username(u[0])
