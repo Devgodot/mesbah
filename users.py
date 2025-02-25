@@ -148,7 +148,7 @@ def event():
 
 @user_bp.post("/request")
 @jwt_required()
-def request():
+def user_request():
     data = request.args  # Corrected here
     _name = data.get("group_name")
     group = Group.query.filter_by(name=_name).first()
