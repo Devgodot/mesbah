@@ -277,6 +277,10 @@ def upload_file():
         for filename in os.listdir(path):
             if filename.startswith(group_name):
                 os.remove(os.path.join(path, filename))
+    if name.startswith(current_user.username):
+        for filename in os.listdir(path):
+            if filename.startswith(current_user.username):
+                os.remove(os.path.join(path, filename))
     # Save the image
     file_path = os.path.join(path, (name))
     try:
