@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, current_app
 from flask_caching import Cache
 from confige import db, app
 from flask_jwt_extended import (
@@ -10,7 +10,7 @@ from flask_jwt_extended import (
     get_jwt_identity,
 )
 from random import randint
-import random
+import random, os, shutil
 from models import User, TokenBlocklist, UserInterface, Levels, Group, JSON
 import json
 cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache'})
@@ -333,7 +333,19 @@ def left_group():
     db.session.commit()
     if len(users) > 0:
         leader = group.users.get("leader", "") if group.users.get("leader", "") != current_user.username else users[0]
+        if group.users.get("leader", "") == current_user.username:
+            if group.icon != "":
+                path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "users")
+                for file in os.listdir(path=os.path.join(path , str(current_user.phone))):
+                    if file.startswith(group.name):
+                        phone = User.get_user_by_username(username=user[0]).phone
+                        group.icon = f"http://messbah403.ir/static/files/users/{phone}/{file}"
+                        shutil.move(os.path.join(path, str(current_user.phone), file), os.join(path, phone, file))
     else:
+        path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "users")
+        for file in os.listdir(path=os.path.join(path , str(current_user.phone))):
+            if file.startswith(group.name):
+                os.remove(os.path.join(path , str(current_user.phone), file))
         db.session.delete(group)
         db.session.commit()
         return jsonify({"message":"گروه حذف شد"})
