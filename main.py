@@ -249,6 +249,7 @@ def update_level():
 def upload_file():
     name = request.get_json().get("name", "")
     file_data = request.get_json().get("data", "")
+    group_name = current_user.data.get("group_name", "")
     
     # Ensure file_data is a list
     if not isinstance(json.loads(file_data), list):
@@ -272,7 +273,10 @@ def upload_file():
     path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "users", str(current_user.phone))
     if not os.path.exists(path):
         os.makedirs(path)
-    
+    if group_name != "" and name.startswith(group_name):
+        for filename in os.listdir(path):
+            if filename.startswith(group_name):
+                os.remove(os.path.join(path, filename))
     # Save the image
     file_path = os.path.join(path, (name))
     try:
