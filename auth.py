@@ -340,7 +340,7 @@ def left_group():
                 for file in os.listdir(path=os.path.join(path , str(current_user.phone))):
                     if file.startswith(group.name):
                         group.icon = f"http://messbah403.ir/static/files/users/{phone}/{file}"
-                        shutil.move(os.path.join(path, str(current_user.phone), file), os.join(path, phone, file))
+                        shutil.move(os.path.join(path, str(current_user.phone), file), os.path.join(path, phone, file))
     else:
         path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "users")
         for file in os.listdir(path=os.path.join(path , str(current_user.phone))):
