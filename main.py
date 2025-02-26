@@ -274,14 +274,14 @@ def upload_file():
         os.makedirs(path)
     
     # Save the image
-    file_path = os.path.join(path, secure_filename(name))
+    file_path = os.path.join(path, (name))
     try:
         image.save(file_path, format='webp')
     except IOError as e:
         current_app.logger.error(f"Failed to write image data to file: {e}")
         return jsonify({"error": "Failed to save image"}), 500
     
-    return jsonify({"message": f"{secure_filename(name)} uploaded!"}), 200
+    return jsonify({"message": f"{(name)} uploaded!"}), 200
 
     
 @app.route("/")
