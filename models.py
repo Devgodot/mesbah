@@ -60,7 +60,7 @@ class Group(db.Model):
     diamonds = Column(db.Integer(), nullable=False, default=0)
     tag = Column(db.Integer(), nullable=False, default=0)
     gender = Column(db.Integer(), nullable=False, default=0)
-    icon = Column(String(100), nullable=False)
+    icon = Column(String(400), nullable=False)
     users = Column(JSON, nullable=False)  # Assuming users are stored as a list of strings (usernames or IDs)
     def __repr__(self):
         return f"<Group {self.name}>"
