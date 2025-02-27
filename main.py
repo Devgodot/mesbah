@@ -93,7 +93,7 @@ def get_files():
                 if per_page == None:
                     per_page = len(f)
                     if per_page == 0:
-                        return {"message":"فایلی در مسیر وارد شده وجود ندارد"}, 400
+                        return jsonify({"files": []})
                 f2 = []
                 f3 = []
                 for x, file in enumerate(f):
