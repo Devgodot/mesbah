@@ -103,7 +103,9 @@ def get_files():
                 return jsonify({"files": f2, "number_of_page":ceil(len(f) / per_page), "files_name":f3})
             
             else:
-                return {"message":"مسیر وارد شده وجود ندارد"}, 400
+               
+                os.makedirs(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config["UPLOAD_FOLDER"], path))
+                return jsonify({"files": []})
         else:
             files = os.listdir(os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config["UPLOAD_FOLDER"]))
             f2 = []
