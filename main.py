@@ -294,15 +294,12 @@ def upload_file():
     return jsonify({"message": f"{(name)} uploaded!"}), 200
 
 @app.route('/gallery/upload', methods=['POST'])
-@jwt_required()
 def upload_gallery():
     name = request.get_json().get("name", "")
     file_data = request.get_json().get("data", "")
-    
     # Ensure file_data is a list
     if not isinstance(json.loads(file_data), list):
         return jsonify({"error": "Invalid data format"}), 400
-    
     # Convert the list to bytes
     try:
         byte_data = bytes(json.loads(file_data))
@@ -329,6 +326,18 @@ def upload_gallery():
         current_app.logger.error(f"Failed to write image data to file: {e}")
         return jsonify({"error": "Failed to save image"}), 500
     return jsonify({"message": f"{(name)} uploaded!"}), 200
+@app.route('/gallery/remove', methods=['GET'])
+def remove_gallery():
+    name = request.args.get("name", "")
+   
+    # Define the path to save the image
+    path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "app", request.args().get("path", ""))
+   
+    # Save the image
+    file_path = os.path.join(path, name)
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    return jsonify({"message": f"{(name)} removed!"}), 200
 
 @app.route("/")
 def home():
