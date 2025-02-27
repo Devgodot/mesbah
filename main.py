@@ -329,11 +329,8 @@ def upload_gallery():
 @app.route('/gallery/remove', methods=['GET'])
 def remove_gallery():
     name = request.args.get("name", "")
-   
-    # Define the path to save the image
-    path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "app", request.args().get("path", ""))
-   
-    # Save the image
+    p = request.args.get("path", "")
+    path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "app", p)
     file_path = os.path.join(path, name)
     if os.path.exists(file_path):
         os.remove(file_path)
