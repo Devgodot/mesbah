@@ -56,8 +56,8 @@ class User(db.Model):
 class Group(db.Model):
     id = Column(Integer, primary_key=True)
     name = Column(db.String(20), nullable=False)
-    score = Column(db.Integer(), nullable=False, default=0)
-    diamonds = Column(db.Integer(), nullable=False, default=0)
+    score = Column(db.JSON(), nullable=False, default=0)
+    diamonds = Column(db.JSON(), nullable=False, default=0)
     tag = Column(db.Integer(), nullable=False, default=0)
     gender = Column(db.Integer(), nullable=False, default=0)
     icon = Column(String(400), nullable=False)

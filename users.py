@@ -133,12 +133,11 @@ def event():
         user = User.get_user_by_username(data.get("user", ""))
         users_sended_message = current_user.data.get("users_sended_message", [])
         if user is not None:
-            print(user)
             message = user.data.get("message", [])
             gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
             jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
             messager_neme = [" آقای", " خانم"][current_user.data.get("gender", 0)] + " " + current_user.data.get("first_name", "") + " " + current_user.data.get("last_name", "")
-            message.append({"text":f"{messager_neme} شما را به عضویت در گروه {_name} دعوت کرده است. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست", "data":{"group_name": _name, "time":str(jalali_date), "user":current_user.username}, "time":time.time(), "id":str(uuid.uuid4()), "sender":"کاربر", "type":"join"})
+            message.append({"text":f"{messager_neme} شما را به عضویت در گروه {_name} دعوت کرده است. آیا این دعوت را می پذیرید؟ ", "data":{"group_name": _name, "time":str(jalali_date), "user":current_user.username}, "time":time.time(), "id":str(uuid.uuid4()), "sender":"کاربر", "type":"join"})
             user.data = user.update(data={"message":message})
             users_sended_message.append(user.username)
         current_user.update(data={"users_sended_message":users_sended_message})
@@ -168,3 +167,38 @@ def user_request():
         db.session.commit()
         return jsonify({"message":"successe"})
     return jsonify({"message":"GROUP name exist"})
+
+@user_bp.get("/get")
+@jwt_required()
+def get_user():
+    username = request.args.get("username", "")
+    user = User.get_user_by_username(username=username)
+    if current_user.data.get("editor", False):
+        if user is not None:
+            data = user.data
+            gender = data.get("gender", 0)
+            tag = data.get("tag", 0)
+            return jsonify({"name":data.get("first_name", "") + " " + data.get("last_name", ""), "father_name":data.get("father_name", ""), "phone":user.phone, "scores":[data.get(f"score_{gender}_{tag}_{x}", 0) for x in range(3)], "diamonds":[data.get(f"diamonds{x}", 0) for x in range(3)], "icon":data.get("icon", ""), "gender":data.get("gender", 0), "tag":data.get("tag", 0)})
+        else:
+            return jsonify({"message":"کاربر وجود ندارد"})
+    else:
+        return jsonify({"message":"شما ویرایشگر نیستید"})
+@user_bp.post("/update")
+@jwt_required()
+def update_user():
+    username = request.get_json().get("username", "")
+    user = User.get_user_by_username(username=username)
+    if current_user.data.get("editor", False):
+        if user is not None:
+            user.update(data=request.get_json().get("data", {}))
+            db.session.commit()
+            return jsonify({"message":"کاربر با موفقیت بروزرسانی شد."})
+        else:
+            return jsonify({"message":"کاربر وجود ندارد"})
+    else:
+        return jsonify({"message":"شما ویرایشگر نیستید"})
+
+@user_bp.get("/length")
+@jwt_required()
+def lenght():
+    return jsonify({"length":len(User.query.all())})
