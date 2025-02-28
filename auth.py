@@ -92,8 +92,17 @@ def register_user():
         else:
             phone :str= data.get("phone")
             if not phone.startswith("09") or len(phone) != 11:
+                
                 return jsonify({"error":"فرمت شماره نامعتبر است"})
-            new_user = User(id =username, username=username, phone=data.get("phone"), data=data.get("data", {"phone":phone}), password="1234")
+            editors = {}
+            for e in UserInterface.query.first().data.keys():
+                if "editor" in e:
+                    editors[e] = UserInterface.query.first().data.get(e, [])
+            editor = []
+            for index, key in enumerate(editors.keys()):
+                if editors[key].get(username) is not None:
+                    editor.append(index)
+            new_user = User(id =username, username=username, phone=data.get("phone"), data=data.get("data", {"phone":phone, "editor":len(editor > 0), "part_edit":editor}), password="1234")
             new_user.save()
             access_token = create_access_token(identity=new_user.username, expires_delta=False)
             refresh_token = create_refresh_token(identity=new_user.username)
@@ -218,8 +227,13 @@ def join_group():
     group = Group.get_group_by_name(group_name)
     if group is not None:
         users = group.add_user(user=current_user.username)
-        group.users = {"users":users, "leader":users[0]}
-    db.session.commit()
+        if isinstance(users, list) and len(users) != 0:
+            leader = users[0]
+            group.users = {"users":users, "leader":leader}
+            db.session.commit()
+        else:
+            db.session.commit()
+            return users
     request_message = current_user.data.get("users_request", [])
     if len(group.users.get("users", [])) >= 5:
         current_sended_message = group.users.get("leader").data.get("users_sended_message", [])
@@ -248,7 +262,7 @@ def join_group():
                 sended_message.remove(current_user.username)
             user.update(data= {"users_sended_message":sended_message})
     db.session.commit()
-    return jsonify({"message":"successe"})
+    return jsonify({"message":"موفقیت آمیز بود."})
 
 
 @auth_bp.get("/accept_group")
@@ -271,7 +285,13 @@ def accept_group():
     group = Group.get_group_by_name(group_name)
     if group is not None:
         users = group.add_user(user=user.username)
-        group.users = {"users":users, "leader":users[0]}
+        if isinstance(users, list) and len(users) != 0:
+            leader = users[0]
+            group.users = {"users":users, "leader":leader}
+            db.session.commit()
+        else:
+            db.session.commit()
+            return users
     db.session.commit()
     if len(group.users.get("users", [])) >= 5:
         current_sended_message = current_user.data.get("users_sended_message", [])
@@ -329,7 +349,7 @@ def left_group():
                     request_message.remove(r)
             user.update(data={"users_request":request_message})
             messages.remove(message)
-    current_user.update(data={"group_name":"", "message":messages})
+    current_user.update(data={"group_name":"", "message":messages, "users_sended_message": []})
     db.session.commit()
     if len(users) > 0:
         leader = group.users.get("leader", "") if group.users.get("leader", "") != current_user.username else users[0]

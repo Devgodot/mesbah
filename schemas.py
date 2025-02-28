@@ -6,6 +6,13 @@ class UserSchema(Schema):
     username = fields.String()
     phone = fields.String()
     data = fields.Dict()
+class GroupSchema(Schema):
+    id = fields.Integer()
+    position = fields.Integer()
+    name = fields.String()
+    icon = fields.String()
+    score = fields.Integer()
+    diamonds = fields.Integer()
 class BookSchema(Schema):
     id = fields.String()
     link = fields.String()
