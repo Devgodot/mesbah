@@ -111,9 +111,9 @@ def register_user():
                     editors[e] = UserInterface.query.first().data.get(e, [])
             editor = []
             for index, key in enumerate(editors.keys()):
-                if editors[key].get(username) is not None:
+                if username in editors[key]:
                     editor.append(index)
-            new_user = User(id =username, username=username, phone=data.get("phone"), data=data.get("data", {"phone":phone, "editor":len(editor > 0), "part_edit":editor}), password="1234")
+            new_user = User(id =username, username=username, phone=data.get("phone"), data=data.get("data", {"phone":phone, "editor":len(editor) > 0, "part_edit":editor}), password="1234")
             new_user.save()
             access_token = create_access_token(identity=new_user.username, expires_delta=False)
             refresh_token = create_refresh_token(identity=new_user.username)
@@ -130,10 +130,20 @@ def register_user():
 @jwt_required()
 def whoami():
     if "GodotEngine" in request.headers.get("User-Agent"):
+        editors = {}
+        for e in UserInterface.query.first().data.keys():
+            if "editor" in e:
+                editors[e] = UserInterface.query.first().data.get(e, [])
+        editor = []
+        for index, key in enumerate(editors.keys()):
+            if current_user.username in editors[key]:
+                editor.append(index)
+        current_user.update(data={"editor":len(editor) > 0, "part_edit":editor})
+        db.session.commit()
         data = {}
         for d in current_user.data.keys():
             data[d] = current_user.data.get(d)
-                
+        
         return jsonify(
             {
                 "message": "message",
