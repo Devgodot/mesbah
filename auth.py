@@ -32,7 +32,7 @@ def post_request(url, payload={}):
     return response.json()
 
 def send_sms(phone, game, code):
-    url = 'http://87.248.137.76/api/v1/rest/sms/send'
+    url = 'https://rest.payamak-panel.com/api/SmartSMS/Send'
    
     params = {
     'username': "09999876739",
