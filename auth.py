@@ -13,7 +13,7 @@ from random import randint
 import random, os, shutil
 from models import User, TokenBlocklist, UserInterface, Levels, Group, JSON
 import json
-from zeep import Client
+
 
 cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache'})
 auth_bp = Blueprint("auth", __name__)
