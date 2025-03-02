@@ -13,14 +13,15 @@ from random import randint
 import random, os, shutil
 from models import User, TokenBlocklist, UserInterface, Levels, Group, JSON
 import json
+from zeep import Client
+
 cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache'})
 auth_bp = Blueprint("auth", __name__)
 import requests, time
 
 def post_request(url, payload={}):
     headers = {
-    'content-type': 'application/x-www-form-urlencoded',
-    "token":"864bf5c0cb9db820b960961f9bc6f617b39d6151"
+    'content-type': 'application/x-www-form-urlencoded'
     }
 
     requests.packages.urllib3.disable_warnings()
@@ -28,17 +29,23 @@ def post_request(url, payload={}):
     session2.verify = False
 
     response = session2.post(url, data=payload, headers=headers)
+    return response.json()
 
-    return (response.text)
-@auth_bp.post("/check_user")
-def check_user():
-    data = request.get_json()
-    id = data.get("id", "")
-    user = User.get_user_by_username(id)
-    if user != None:
-        return jsonify({"phone":user.phone})
-    else:
-        return jsonify({"message":"user not exist"})
+def send_sms(phone, game, code):
+    url = 'http://87.248.137.76/api/v1/rest/sms/send'
+   
+    params = {
+    'username': "09999876739",
+    'password': "0O3LH",
+    'to': phone,
+    'text': f"با سلام\nبه برنامه {game} خوش آمدید\n کد تائید شما جهت ورود در برنامه :\n{code}",
+    'from': "", 
+    'fromSupportOne': "", 
+    'fromSupportTwo': ""
+    }
+    response = post_request(url=url, payload=params)
+    return response
+
 @auth_bp.post("/verify")
 def verify_user():
     data = request.get_json()
@@ -48,12 +55,18 @@ def verify_user():
     phone :str= data.get("phone")
     if not phone.startswith("09") or len(phone) != 11:
         return jsonify({"error":"فرمت شماره نامعتبر است"}), 400
-    data = {
-    'recipients': [phone],
-    'message': f"با سلام\nبه برنامه {game} خوش آمدید\n کد تائید شما جهت ورود در برنامه :\n{code}",
-    'from': ""
-    }
-    return jsonify({"message":"در انتظار تائید", "response":post_request(url="http://87.248.137.76/api/v1/rest/sms/send", payload=data)})
+    response = send_sms(phone, game, code)
+    return jsonify({"message":"در انتظار تائید", "response":response})
+
+@auth_bp.post("/check_user")
+def check_user():
+    data = request.get_json()
+    id = data.get("id", "")
+    user = User.get_user_by_username(id)
+    if user != None:
+        return jsonify({"phone":user.phone})
+    else:
+        return jsonify({"message":"user not exist"})
     
 
 

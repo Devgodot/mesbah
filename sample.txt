@@ -1,0 +1,32 @@
+def post_request(url, payload={}):
+    headers = {
+    'content-type': 'application/x-www-form-urlencoded',
+    'token':'864bf5c0cb9db820b960961f9bc6f617b39d6151'
+    }
+
+    requests.packages.urllib3.disable_warnings()
+    session2 = requests.Session()
+    session2.verify = False
+
+    response = session2.post(url, data=payload, headers=headers)
+
+    return (json.loads(response.text))
+@auth_bp.post("/verify")
+def verify_user():
+    data = request.get_json()
+    code = str(randint(0, 9)) + str(randint(0, 9)) + str(randint(0, 9)) + str(randint(0, 9)) 
+    cache.set('code', code, timeout=300)
+    game = data.get("game", "")
+    phone :str= data.get("phone")
+    if not phone.startswith("09") or len(phone) != 11:
+        return jsonify({"error":"فرمت شماره نامعتبر است"}), 400
+    data = {
+    "username":"Mhh83",
+    "password":"5100276150",
+    "from":"30005112",
+    'recipients': [phone],
+    'message': f"با سلام\nبه برنامه {game} خوش آمدید\n کد تائید شما جهت ورود در برنامه :\n{code}",
+    'type': "0"
+    }
+    return jsonify({"message":"در انتظار تائید", "response":post_request(url="http://87.248.137.76/api/v1/rest/sms/send", payload=data)})
+    
