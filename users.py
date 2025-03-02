@@ -206,5 +206,8 @@ def lenght():
 @user_bp.get("/icon")
 @jwt_required()
 def icon():
-    return jsonify({"icon":User.get_user_by_username(username=request.args.get("username", ""))})
+    user = User.get_user_by_username(username=request.args.get("username", ""))
+    if user is not None:
+        return jsonify({"icon":user.data.get("icon", "")})
+    return jsonify({"message":"کاربر وجود ندارد"})
 
