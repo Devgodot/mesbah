@@ -124,7 +124,7 @@ def register_user():
                         "tokens": {"access": access_token, "refresh": refresh_token, "id":new_user.id},
                     }), 200)
     else:
-        return jsonify({"error":"کد صحیح نمی باشد"}, 400)
+        return jsonify({"error":"کد صحیح نمی باشد", "cache":cache.get("code")}, 400)
 
 @auth_bp.get("/whoami")
 @jwt_required()
