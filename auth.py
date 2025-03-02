@@ -19,7 +19,8 @@ import requests, time
 
 def post_request(url, payload={}):
     headers = {
-    'content-type': 'application/x-www-form-urlencoded'
+    'content-type': 'application/x-www-form-urlencoded',
+    "token":"864bf5c0cb9db820b960961f9bc6f617b39d6151"
     }
 
     requests.packages.urllib3.disable_warnings()
@@ -48,15 +49,11 @@ def verify_user():
     if not phone.startswith("09") or len(phone) != 11:
         return jsonify({"error":"فرمت شماره نامعتبر است"}), 400
     data = {
-    'username': "09999876739",
-    'password': "0O3LH",
-    'to': phone,
-    'text': f"با سلام\nبه برنامه {game} خوش آمدید\n کد تائید شما جهت ورود در بازی :\n{code}",
-    'from': "", 
-    'fromSupportOne': "", 
-    'fromSupportTwo': ""
+    'recipients': [phone],
+    'message': f"با سلام\nبه برنامه {game} خوش آمدید\n کد تائید شما جهت ورود در برنامه :\n{code}",
+    'from': ""
     }
-    return jsonify({"message":"در انتظار تائید", "response":post_request(url="https://rest.payamak-panel.com/api/SmartSMS/Send", payload=data)})
+    return jsonify({"message":"در انتظار تائید", "response":post_request(url="http://87.248.137.76/api/v1/rest/sms/send", payload=data)})
     
 
 
