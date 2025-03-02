@@ -7,8 +7,16 @@ from wtforms import FileField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, EqualTo, Length
 from sqlalchemy.ext.mutable import MutableDict
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
+class VerificationCode(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    phone = db.Column(db.String(11), nullable=False)
+    code = db.Column(db.String(4), nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def is_valid(self):
+        return datetime.utcnow() - self.created_at < timedelta(minutes=5)
 class UploadForm(FlaskForm):
     file = FileField("Files", [InputRequired()] )
     submit = SubmitField("Upload")

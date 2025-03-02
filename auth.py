@@ -11,14 +11,27 @@ from flask_jwt_extended import (
 )
 from random import randint
 import random, os, shutil
-from models import User, TokenBlocklist, UserInterface, Levels, Group, JSON
+from models import User, TokenBlocklist, UserInterface, Levels, Group, VerificationCode
 import json
 
 
 cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache'})
 auth_bp = Blueprint("auth", __name__)
 import requests, time
+from apscheduler.schedulers.background import BackgroundScheduler
 
+def start_scheduler():
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(func=delete_expired_verification_codes, trigger="interval", minutes=5)
+    scheduler.start()
+
+start_scheduler()
+def delete_expired_verification_codes():
+    expiration_time = datetime.utcnow() - timedelta(minutes=5)
+    expired_codes = VerificationCode.query.filter(VerificationCode.created_at < expiration_time).all()
+    for code in expired_codes:
+        db.session.delete(code)
+    db.session.commit()
 def post_request(url, payload={}):
     headers = {
     'content-type': 'application/x-www-form-urlencoded'
@@ -49,14 +62,18 @@ def send_sms(phone, game, code):
 @auth_bp.post("/verify")
 def verify_user():
     data = request.get_json()
-    code = str(randint(0, 9)) + str(randint(0, 9)) + str(randint(0, 9)) + str(randint(0, 9)) 
-    cache.set('code', code, timeout=300)
+    code = str(randint(0, 9)) + str(randint(0, 9)) + str(randint(0, 9)) + str(randint(0, 9))
     game = data.get("game", "")
-    phone :str= data.get("phone")
+    phone: str = data.get("phone")
     if not phone.startswith("09") or len(phone) != 11:
-        return jsonify({"error":"فرمت شماره نامعتبر است"}), 400
+        return jsonify({"error": "فرمت شماره نامعتبر است"}), 400
     response = send_sms(phone, game, code)
-    return jsonify({"message":"در انتظار تائید", "response":response})
+    
+    verification_code = VerificationCode(phone=phone, code=code)
+    db.session.add(verification_code)
+    db.session.commit()
+    return jsonify({"message": "در انتظار تائید", "response": response})
+
 
 @auth_bp.post("/check_user")
 def check_user():
@@ -73,9 +90,10 @@ def check_user():
 @auth_bp.post("/register")
 def register_user():
     data = request.get_json()
-    while cache.get("code") == None:
-        print(cache.get("code"))
-    if data.get("code") == cache.get("code"):
+    phone = data.get("phone")
+    code = data.get("code")
+    verification_code = VerificationCode.query.filter_by(phone=phone, code=code).first()
+    if verification_code and verification_code.is_valid():
         username = data.get("id", "")
         resulte = 0
         for x, g in enumerate(username):
@@ -89,7 +107,7 @@ def register_user():
             if 11 - (resulte % 11) == int(username[9]):
                 correct_username = True
         if len(username) != 10 or correct_username == False:
-            return jsonify({"message":"username incorrect"})
+            return jsonify({"message": "username incorrect"})
         user_p = User.get_user_by_username(username=username)
         if user_p is not None:
             user = User.get_user_by_username(username=username)
@@ -99,13 +117,12 @@ def register_user():
                 jsonify(
                     {
                         "message": "Logged In ",
-                        "tokens": {"access": access_token, "refresh": refresh_token, "id":user.id},
+                        "tokens": {"access": access_token, "refresh": refresh_token, "id": user.id},
                     }), 200)
         else:
-            phone :str= data.get("phone")
+            phone: str = data.get("phone")
             if not phone.startswith("09") or len(phone) != 11:
-                
-                return jsonify({"error":"فرمت شماره نامعتبر است"})
+                return jsonify({"error": "فرمت شماره نامعتبر است"})
             editors = {}
             for e in UserInterface.query.first().data.keys():
                 if "editor" in e:
@@ -114,7 +131,7 @@ def register_user():
             for index, key in enumerate(editors.keys()):
                 if username in editors[key]:
                     editor.append(index)
-            new_user = User(id =username, username=username, phone=data.get("phone"), data=data.get("data", {"phone":phone, "editor":len(editor) > 0, "part_edit":editor}), password="1234")
+            new_user = User(id=username, username=username, phone=data.get("phone"), data=data.get("data", {"phone": phone, "editor": len(editor) > 0, "part_edit": editor}), password="1234")
             new_user.save()
             access_token = create_access_token(identity=new_user.username, expires_delta=False)
             refresh_token = create_refresh_token(identity=new_user.username)
@@ -122,10 +139,10 @@ def register_user():
                 jsonify(
                     {
                         "message": "sign In ",
-                        "tokens": {"access": access_token, "refresh": refresh_token, "id":new_user.id},
+                        "tokens": {"access": access_token, "refresh": refresh_token, "id": new_user.id},
                     }), 200)
     else:
-        return jsonify({"error":"کد صحیح نمی باشد", "cache":cache.get("code")}, 400)
+        return jsonify({"error": "کد صحیح نمی باشد"}, 400)
 
 @auth_bp.get("/whoami")
 @jwt_required()
