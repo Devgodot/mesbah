@@ -73,6 +73,7 @@ def check_user():
 @auth_bp.post("/register")
 def register_user():
     data = request.get_json()
+    print(cache.get("code"))
     if data.get("code") == cache.get("code"):
         username = data.get("id", "")
         resulte = 0
