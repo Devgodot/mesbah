@@ -202,3 +202,9 @@ def update_user():
 @jwt_required()
 def lenght():
     return jsonify({"length":len(User.query.all())})
+
+@user_bp.get("/icon")
+@jwt_required()
+def icon():
+    return jsonify({"icon":User.get_user_by_username(username=request.args.get("username", ""))})
+
