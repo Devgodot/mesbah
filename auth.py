@@ -68,7 +68,10 @@ def verify_user():
     if not phone.startswith("09") or len(phone) != 11:
         return jsonify({"error": "فرمت شماره نامعتبر است"}), 400
     response = send_sms(phone, game, code)
-    
+    verify = VerificationCode.query.filter_by(phone=phone).all()
+    for v in verify:
+        db.session.delete(v)
+    db.session.commit()
     verification_code = VerificationCode(phone=phone, code=code)
     db.session.add(verification_code)
     db.session.commit()
