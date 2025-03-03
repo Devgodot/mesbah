@@ -97,6 +97,7 @@ def register_user():
     code = data.get("code")
     verification_code = VerificationCode.query.filter_by(phone=phone, code=code).first()
     if verification_code and verification_code.is_valid():
+        db.session.delete(verification_code)
         username = data.get("id", "")
         resulte = 0
         for x, g in enumerate(username):
@@ -151,6 +152,7 @@ def register_user():
 @jwt_required()
 def whoami():
     if "GodotEngine" in request.headers.get("User-Agent"):
+        
         editors = {}
         for e in UserInterface.query.first().data.keys():
             if "editor" in e:
