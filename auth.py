@@ -83,7 +83,7 @@ def register_user():
     phone = data.get("phone")
     code = data.get("code")
     verification_code = VerificationCode.query.filter_by(phone=phone, code=code).first()
-    if verification_code and verification_code.is_valid():
+    if verification_code:
         db.session.delete(verification_code)
         username = data.get("id", "")
         resulte = 0
