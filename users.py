@@ -211,3 +211,59 @@ def icon():
         return jsonify({"icon":user.data.get("icon", "")})
     return jsonify({"message":"کاربر وجود ندارد"})
 
+@user_bp.post("/server_message")
+def server_message():
+    users = request.get_json().get("users")
+    filter_m = request.get_json().get("filter")
+    _id = str(uuid.uuid4())
+    if users == "all":
+        if filter_m is None:
+            for user in User.query.all():
+                message = user.data.get("message", [])
+                gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
+                jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
+              
+                message.append({"text":request.get_json().get("text", ""), "data":{"time":str(jalali_date)}, "id":_id, "sender":"پشتیبانی", "type":"guid"})
+                user.data = user.update(data={"message":message})
+                db.session.commit()
+        else:
+            all_users = User.query.all()
+            filter_users = []
+            for user in all_users:
+                all_true = True
+                for f in filter_m.keys():
+                    if user.data.get(f) != filter_m.get(f):
+                        all_true = False
+                if all_true:
+                    filter_users.append(user)
+            for user in filter_users:
+                message = user.data.get("message", [])
+                gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
+                jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
+               
+                message.append({"text":request.get_json().get("text", ""), "data":{"time":str(jalali_date)}, "id":_id, "sender":"پشتیبانی", "type":"guid"})
+                user.data = user.update(data={"message":message})
+                db.session.commit()
+    if users is list:
+        for user in User.query.all():
+            message = user.data.get("message", [])
+            gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
+            jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
+            
+            message.append({"text":request.get_json().get("text", ""), "data":{"time":str(jalali_date)}, "id":_id, "sender":"پشتیبانی", "type":"guid"})
+            user.data = user.update(data={"message":message})
+            db.session.commit()
+    return "پیام با موفقیت ارسال شد"
+
+@user_bp.post("/delete_message")
+def delete_message():
+    for user in User.query.all():
+        message = user.data.get("message", [])
+        for m in message:
+            if m.get("id", "") == request.get_json().get("id"):
+                message.remove(m)
+        user.data = user.update(data={"message":message})
+        db.session.commit()
+        
+    return "پیام با موفقیت حذف شد"
+
