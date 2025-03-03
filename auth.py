@@ -82,10 +82,10 @@ def register_user():
     data = request.get_json()
     phone = data.get("phone")
     code = data.get("code")
-    print(code)
     verification_code = VerificationCode.query.filter_by(phone=phone, code=code).first()
-    if verification_code:
+    if verification_code and verification_code.is_valid():
         db.session.delete(verification_code)
+        db.session.commit()
         username = data.get("id", "")
         resulte = 0
         for x, g in enumerate(username):
@@ -172,6 +172,17 @@ def get_data():
     if "GodotEngine" in request.headers.get("User-Agent"):
         name = request.args.get("name", "").split("AND")
         if name != [""]:
+            if "message" in name:
+                message:list = current_user.data.get("message", [])
+                seen_message:list = current_user.data.get("seen_message", [])
+                for m in message:
+                    if m.get("id", "") not in seen_message:
+                        seen_message.append(m.get("id", ""))
+                for m in seen_message:
+                    if not any(m == _id.get("id", "") for _id in message):
+                        seen_message.remove(m)
+                current_user.update(data={"seen_message":seen_message})
+                db.session.commit()
             return jsonify({"nums":[current_user.data.get(name2, None) for name2 in name]})
         else:
             return "نام متغییر وارد نشده", 400
@@ -404,3 +415,11 @@ def left_group():
     group.users = {"users":users, "leader":leader}
     db.session.commit()
     return jsonify({"message":"successe"})
+@auth_bp.get("/unseen_message")
+@jwt_required()
+def unseen_message():
+    message = []
+    for m in current_user.data.get("message", []):
+        if m.get("id", "") not in current_user.data.get("seen_message", []):
+            message.append(m)
+    return jsonify({"num":len(message)})
