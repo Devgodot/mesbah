@@ -82,6 +82,7 @@ def register_user():
     data = request.get_json()
     phone = data.get("phone")
     code = data.get("code")
+    print(code)
     verification_code = VerificationCode.query.filter_by(phone=phone, code=code).first()
     if verification_code:
         db.session.delete(verification_code)
