@@ -18,19 +18,6 @@ from datetime import datetime, timedelta
 cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache'})
 auth_bp = Blueprint("auth", __name__)
 import requests, time
-from apscheduler.schedulers.background import BackgroundScheduler
-def delete_expired_verification_codes():
-    expiration_time = datetime.utcnow() - timedelta(minutes=5)
-    expired_codes = VerificationCode.query.filter(VerificationCode.created_at < expiration_time).all()
-    for code in expired_codes:
-        db.session.delete(code)
-    db.session.commit()
-def start_scheduler():
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(func=delete_expired_verification_codes, trigger="interval", minutes=5)
-    scheduler.start()
-
-start_scheduler()
 
 def post_request(url, payload={}):
     headers = {
