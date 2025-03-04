@@ -1,6 +1,6 @@
 body {
     font-family: 'Noto Kufi Arabic', sans-serif;
-    background: url('/static/files/images/background.jpg') no-repeat center center fixed;
+    background: url('/static/files/images/Background.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #333;
 }
