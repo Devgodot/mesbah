@@ -21,14 +21,10 @@ import requests, time
 
 def post_request(url, payload={}):
     headers = {
-    'content-type': 'application/x-www-form-urlencoded'
+    'content-type': 'application/json'
     }
 
-    requests.packages.urllib3.disable_warnings()
-    session2 = requests.Session()
-    session2.verify = False
-
-    response = session2.post(url, data=payload, headers=headers)
+    response = requests.post(url, json=payload, headers=headers)
     return response.json()
 
 def send_sms(phone, game, code):
@@ -52,10 +48,11 @@ def verify_user():
         return jsonify({"error": "فرمت شماره نامعتبر است"}), 400
     response = send_sms(phone, game, code)
     verify = VerificationCode.query.filter_by(phone=phone).all()
+    
     for v in verify:
         db.session.delete(v)
     db.session.commit()
-    verification_code = VerificationCode(phone=phone, code=response.get("code"))
+    verification_code = VerificationCode(phone=phone, code=response.get("code", "0"))
     db.session.add(verification_code)
     db.session.commit()
     return jsonify({"message": "در انتظار تائید", "response": response})
