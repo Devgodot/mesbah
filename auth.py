@@ -32,16 +32,12 @@ def post_request(url, payload={}):
     return response.json()
 
 def send_sms(phone, game, code):
-    url = 'https://rest.payamak-panel.com/api/SmartSMS/Send'
+    url = 'https://console.melipayamak.com/api/send/otp/4e52dc71f69c416dad6f2c7d22628b3d'
    
     params = {
-    'username': "09999876739",
-    'password': "0O3LH",
+
     'to': phone,
-    'text': f"با سلام\nبه برنامه {game} خوش آمدید\n کد تائید شما جهت ورود در برنامه :\n{code}",
-    'from': "", 
-    'fromSupportOne': "", 
-    'fromSupportTwo': ""
+    
     }
     response = post_request(url=url, payload=params)
     return response
@@ -59,7 +55,7 @@ def verify_user():
     for v in verify:
         db.session.delete(v)
     db.session.commit()
-    verification_code = VerificationCode(phone=phone, code=code)
+    verification_code = VerificationCode(phone=phone, code=response.get("code"))
     db.session.add(verification_code)
     db.session.commit()
     return jsonify({"message": "در انتظار تائید", "response": response})
