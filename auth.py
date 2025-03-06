@@ -80,18 +80,7 @@ def register_user():
         db.session.delete(verification_code)
         db.session.commit()
         username = data.get("id", "")
-        resulte = 0
-        for x, g in enumerate(username):
-            if x < 9:
-                resulte += int(g) * (len(username) - x)
-        correct_username = False
-        if resulte % 11 <= 2:
-            if (resulte % 11) == int(username[9]):
-                correct_username = True
-        if resulte % 11 > 2:
-            if 11 - (resulte % 11) == int(username[9]):
-                correct_username = True
-        if len(username) != 10 or correct_username == False:
+        if len(username) != 10:
             return jsonify({"message": "username incorrect"})
         user_p = User.get_user_by_username(username=username)
         if user_p is not None:
@@ -185,14 +174,32 @@ def get_data():
 def save_data():
     if "GodotEngine" in request.headers.get("User-Agent"):
         data = request.get_json()
-        change_data = data
-        if change_data.get("name", None):
-            _name = change_data.get("name", "").split(" ")
+        change_data :dict= data
+        for c in change_data.keys():
+            if c not in ["first_name", "last_name", "father_name", "birthday", "icon"]:
+                change_data.remove(c)
+        if change_data.get("first_name", None):
+            _name = change_data.get("first_name", "").split(" ")
             name = ""
             for t in _name:
                 if t not in [" ", ""]:
                     name += t
-            change_data["name"] = name
+            change_data["first_name"] = name
+        if change_data.get("last_name", None):
+            _name = change_data.get("last_name", "").split(" ")
+            name = ""
+            for t in _name:
+                if t not in [" ", ""]:
+                    name += t
+            change_data["last_name"] = name
+        if change_data.get("father_name", None):
+            _name = change_data.get("father_name", "").split(" ")
+            name = ""
+            for t in _name:
+                if t not in [" ", ""]:
+                    name += t
+            change_data["father_name"] = name
+        
         current_user.data = current_user.update(change_data, False)
         db.session.commit()
         

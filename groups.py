@@ -6,8 +6,31 @@ from sqlalchemy import desc, text
 import time, uuid
 from confige import db
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
-
 group_bp = Blueprint("groups", __name__)
+from enum import Enum
+class HashingMode(Enum):
+    ENCODE = 0
+    DECODE = 1
+words ={ "%": "%00%", "٠": "%zs%", "١": "%p3%", "٢": "%q6%", "٣": "%rz%", "٤": "%pi%", "٥": "%c5%", "٦": "%h5%", "٧": "%xa%", "٨": "%w1%", "٩": "%59%", "*": "%dh%", "$": "%n8%", "^": "%44%", "&": "%ga%", "۱": "%ry%", "۰": "%47%", "۲": "%j8%", "۳": "%4a%", "۴": "%w0%", "۵": "%df%", "۶": "%k5%", "۷": "%cq%", "۸": "%9v%", "۹": "%hu%", "ً": "%97%", "ٌ": "%vr%", "ٍ": "%q9%", "َ": "%8c%", "ُ": "%79%", "ِ": "%24%", "ـ": "%2c%", "؛": "%2v%", "«": "%1p%", "»": "%lz%", "ك": "%yz%", " ": "%08%", "‌": "%e7%", "!": "%6k%", "\"": "%wb%", "\'": "%ka%", "(": "%h7%", ")": "%gh%", "+": "%5g%", ",": "%4u%", "-": "%vb%", ".": "%z6%", "/": "%q7%", "0": "%qz%", "1": "%r6%", "2": "%2b%", "3": "%fj%", "4": "%0g%", "5": "%n3%", "6": "%cr%", "7": "%iz%", "8": "%ki%", "9": "%g5%", ":": "%uu%", ";": "%kq%", "<": "%96%", "=": "%26%", ">": "%sj%", "?": "%3y%", "@": "%19%", "[": "%5b%", "]": "%mf%", "_": "%9a%", "a": "%nx%", "b": "%zu%", "c": "%ir%", "d": "%zh%", "e": "%wi%", "f": "%h8%", "g": "%ue%", "h": "%50%", "i": "%xi%", "j": "%36%", "k": "%jj%", "l": "%wm%", "m": "%5x%", "n": "%7z%", "o": "%k1%", "p": "%c1%", "q": "%8u%", "r": "%n6%", "s": "%x3%", "t": "%91%", "u": "%6v%", "v": "%vs%", "w": "%d0%", "x": "%22%", "y": "%rd%", "z": "%b7%", "{": "%3r%", "}": "%v4%", "،": "%eh%", "؟": "%yv%", "ء": "%j5%", "أ": "%5h%", "ؤ": "%xe%", "إ": "%pj%", "ئ": "%3l%", "ا": "%2l%", "آ": "%dl%", "ب": "%r4%", "ة": "%1s%", "ت": "%c4%", "ث": "%wj%", "ج": "%ar%", "ح": "%x9%", "خ": "%2g%", "د": "%yg%", "ذ": "%7i%", "ر": "%ff%", "ز": "%1l%", "س": "%gy%", "ش": "%gr%", "ص": "%ph%", "ض": "%ap%", "ط": "%kb%", "ظ": "%wn%", "ع": "%mj%", "غ": "%bl%", "ف": "%v3%", "ق": "%04%", "ل": "%8i%", "م": "%9d%", "ن": "%wd%", "ه": "%4e%", "و": "%de%", "ي": "%sh%", "پ": "%x7%", "چ": "%ym%", "ژ": "%66%", "ک": "%8q%", "گ": "%7d%", "ی": "%xl%", "A": "%1h%", "B": "%6s%", "C": "%dv%", "D": "%q1%", "E": "%9k%", "F": "%aq%", "G": "%lm%", "H": "%eb%", "I": "%td%", "J": "%c3%", "K": "%wc%", "L": "%y8%", "M": "%t0%", "N": "%1a%", "O": "%gb%", "P": "%dj%", "Q": "%o9%", "R": "%si%", "S": "%ve%", "T": "%i4%", "U": "%ge%", "V": "%j3%", "W": "%2u%", "X": "%ll%", "Y": "%ob%", "Z": "%5e%" }
+
+def find_key_by_value(dictionary, target_value):
+    for key, value in dictionary.items():
+        if value == target_value:
+            return key
+    return None
+def hashing(mode:HashingMode, text=""):
+    if mode == HashingMode.ENCODE:
+        hash_text = ""
+        for graph in text:
+            hash_text += words.get(graph, "")
+        return hash_text
+    if mode == HashingMode.DECODE:
+        new_text = ''
+        graphs = text.split("%")
+        for graph in graphs:
+            if graph != "" and graph != "%":
+                new_text += find_key_by_value(words, "%"+str(graph)+"%")
+        return new_text
 
 @group_bp.get("/me")
 @jwt_required()
@@ -31,7 +54,6 @@ def get_me_groups():
             current_position = index + 1
         group.position = current_position
         previous_score = current_score
-    
     for group in groups:
         if group.name == my_group:
             return jsonify({"pos": group.position, "nums": [sum(group.diamonds.values()), sum(group.score.values())], "icon": group.icon, "name": group.name})
@@ -66,6 +88,7 @@ def get_all_groups():
         group.position = current_position
         group.score = sum(group.score.values())
         group.diamonds = sum(group.diamonds.values())
+        group.icon = hashing(mode=HashingMode.ENCODE, text=group.icon)
         previous_score = current_score
 
     result = GroupSchema().dump(g, many=True)
@@ -74,10 +97,13 @@ def get_all_groups():
 @group_bp.get("/names")
 @jwt_required()
 def get_names():
-    tag = current_user.data.get("tag", 0)
-    gender = current_user.data.get("gender", 0)
     groups = Group.query.all()
-    data = [[group.name, len(group.users.get("users", [])), group.tag, group.gender, group.icon, group.users.get("leader", "")] for group in groups]
+    data = []
+    for group in groups:
+        leader = hashing(mode=HashingMode.ENCODE,text=group.users.get("leader", ""))
+        print(group.icon)
+        icon =  hashing(mode=HashingMode.ENCODE, text=group.icon)
+        data.append([group.name, len(group.users.get("users", [])), group.tag, group.gender, icon, leader])
     return jsonify({"data": data})
 
 @group_bp.post("/create")
@@ -132,7 +158,7 @@ def create():
 def get_group():
     group = Group.get_group_by_name(request.args.get("name", ""))
     if group is not None:
-        return jsonify({"users": group.users.get("users", []), "leader": group.users.get("leader", ""), "users_info": [{"name": User.get_user_by_username(username=user).data.get("first_name", "") + " " + User.get_user_by_username(username=user).data.get("last_name") + " " + User.get_user_by_username(username=user).data.get("father_name")} for user in group.users.get("users")], "icon": group.icon, "diamonds":group.diamonds, "scores":group.score})
+        return jsonify({"users": [hashing(text=user, mode=HashingMode.ENCODE) for user in group.users.get("users", [])] , "leader": hashing(mode=HashingMode.ENCODE, text=group.users.get("leader", "")), "users_info": [{"name": User.get_user_by_username(username=user).data.get("first_name", "") + " " + User.get_user_by_username(username=user).data.get("last_name") + " " + User.get_user_by_username(username=user).data.get("father_name")} for user in group.users.get("users")], "icon": hashing(mode=HashingMode.ENCODE ,text=group.icon), "diamonds":group.diamonds, "scores":group.score})
     return jsonify({"message": "group not exist"}), 200
 
 @group_bp.post("/icon")
