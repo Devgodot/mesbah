@@ -137,7 +137,7 @@ def create():
             user = User.get_user_by_username(u)
             if user is not None:
                 message = user.data.get("message", [])
-                gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
+                gregorian_date = datetime.now()  # تاریخ میلادی فعلی
                 jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
                 messager_neme = [" آقای", " خانم"][current_user.data.get("gender", 0)] + " " + current_user.data.get("first_name", "") + " " + current_user.data.get("last_name", "")
                 message.append({"text":f"{messager_neme} شما را به عضویت در گروه {_name} دعوت کرده است. آیا این دعوت را می پذیرید؟ ", "data":{"group_name": _name, "time":str(jalali_date), "user":current_user.username}, "time":time.time(), "id":str(uuid.uuid4()), "sender":"کاربر", "type":"join"})
