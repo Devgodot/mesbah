@@ -133,7 +133,7 @@ def create():
                     user_message.remove(m)
             user2.update(data={"message": user_message})
         for u in data.get("event_user", []):
-            user = User.get_user_by_username(u.get("username", ""))
+            user = User.get_user_by_username(u)
             if user is not None:
                 message = user.data.get("message", [])
                 gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
