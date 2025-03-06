@@ -269,7 +269,9 @@ def server_message():
                 message.append({"text":request.get_json().get("text", ""), "data":{"time":str(jalali_date)}, "id":_id, "sender":"پشتیبانی", "type":"guid"})
                 user.data = user.update(data={"message":message})
                 db.session.commit()
-    if users is list:
+    
+    else:
+        
         for user in User.query.all():
             message = user.data.get("message", [])
             gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
