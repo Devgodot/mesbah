@@ -176,8 +176,8 @@ def save_data():
         data = request.get_json()
         change_data :dict= data
         for c in change_data.keys():
-            if c not in ["first_name", "last_name", "father_name", "birthday", "icon"]:
-                change_data.remove(c)
+            if c not in ["first_name", "last_name", "father_name", "birthday", "icon", "tag", "gender"]:
+                change_data.pop(c)
         if change_data.get("first_name", None):
             _name = change_data.get("first_name", "").split(" ")
             name = ""
