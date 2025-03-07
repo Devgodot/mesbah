@@ -116,10 +116,12 @@ def get_all_users():
             d = {}
             for key in filter_data:
                 k = key
+                print(key)
                 if user.data.get(k) is not None:
                     if key == "icon":
                         d["icon"] = hashing(mode=HashingMode.ENCODE, text=user.data.get("icon", ""))
-                    elif key == "score":
+                    elif key == f"score_{gender}_{tag}":
+                        print(key)
                         d["score"] = user.data.get(f"score_{gender}_{tag}")
                     else:
                         d[key] = user.data.get(k)
@@ -127,6 +129,10 @@ def get_all_users():
             user.id = hashing(mode=HashingMode.ENCODE, text=user.id)
             user.phone = hashing(mode=HashingMode.ENCODE, text=user.phone)
             user.username = hashing(mode=HashingMode.ENCODE, text=user.username)
+    for k in sort:
+        if k == f"score_{gender}_{tag}":
+            sort.remove(k)
+            sort.append(f"score")
     previous_score = None
     current_position = 0
     for index, user in enumerate(u2):
