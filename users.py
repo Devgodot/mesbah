@@ -119,7 +119,8 @@ def get_all_users():
                 if user.data.get(k) is not None:
                     if key == "icon":
                         d["icon"] = hashing(mode=HashingMode.ENCODE, text=user.data.get("icon", ""))
-                    
+                    elif key == "score":
+                        d["score"] = user.data.get(f"score_{gender}_{tag}")
                     else:
                         d[key] = user.data.get(k)
             user.data = d
