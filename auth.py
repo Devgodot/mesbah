@@ -178,27 +178,7 @@ def save_data():
         for c in change_data.keys():
             if c not in ["first_name", "last_name", "father_name", "birthday", "icon", "tag", "gender"]:
                 change_data.pop(c)
-        if change_data.get("first_name", None):
-            _name = change_data.get("first_name", "").split(" ")
-            name = ""
-            for t in _name:
-                if t not in [" ", ""]:
-                    name += t
-            change_data["first_name"] = name
-        if change_data.get("last_name", None):
-            _name = change_data.get("last_name", "").split(" ")
-            name = ""
-            for t in _name:
-                if t not in [" ", ""]:
-                    name += t
-            change_data["last_name"] = name
-        if change_data.get("father_name", None):
-            _name = change_data.get("father_name", "").split(" ")
-            name = ""
-            for t in _name:
-                if t not in [" ", ""]:
-                    name += t
-            change_data["father_name"] = name
+        
         
         current_user.data = current_user.update(change_data, False)
         db.session.commit()
