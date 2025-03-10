@@ -9,6 +9,23 @@ from sqlalchemy.ext.mutable import MutableDict
 
 from datetime import datetime, timedelta
 
+class Messages(db.Model):
+    __tablename__ = "Messages"  # اصلاح نام جدول
+    id = db.Column(db.Integer, primary_key=True)
+    conversationId = db.Column(db.String(12), nullable=False)
+    receiverId = db.Column(db.JSON, nullable=False)
+    messages = db.Column(db.JSON, nullable=False)
+    createdAt = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "conversationId": self.conversationId,
+            "receiverId": self.receiverId,
+            "messages": self.messages,
+            "createdAt": self.createdAt.isoformat()
+        }
+
 class VerificationCode(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     phone = db.Column(db.String(11), nullable=False)
