@@ -1,11 +1,11 @@
 from flask import request, Blueprint, jsonify
 from flask_jwt_extended import jwt_required, get_jwt, current_user
-from models import User, UserInterface, Group
+from models import User, UserInterface, Group, Messages
 from schemas import UserSchema
 from sqlalchemy import desc, text
 from confige import db
 import time, uuid
-import datetime
+import datetime, json
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
 
 user_bp = Blueprint("users", __name__)
@@ -321,4 +321,54 @@ def check():
             return jsonify({"message":"خودتان هستید"})
     else:
         return jsonify({"message":"وجود ندارد"})
+
+@user_bp.get("/supporters")
+@jwt_required()
+def support():
+    gender = current_user.data.get("gender", 0)
+    tag = current_user.data.get("tag", 0)
+    part = request.args.get("part", 0)
+    s = UserInterface.query.first()
+    supporters = s.data.get("supporters")
+    return jsonify({"supporters":[hashing(text=supporter, mode=HashingMode.ENCODE) for supporter in supporters.get(["male", "female"][int(gender)])[int(tag)][int(part)]]})
+@user_bp.get("/support_message")
+@jwt_required()
+def support_message():
+    
+    user_name = current_user.username
+    part = request.args.get("part", 0)
+    message = Messages.query.filter_by(conversationId=user_name+"_"+str(part)).first()
+    if message is not None:
+        return jsonify({"messages":message.messages})
+    return jsonify({"messages":[]})
+
+@user_bp.get("/users_message")
+@jwt_required()
+def users_message():
+    user_name = current_user.username
+    messages = Messages.query.all()
+    users = []
+    
+    for m in messages:
+        new_message = 0
+        if user_name in m.receiverId:
+            for message in m.messages:
+                if message.get("id") not in current_user.data.get("seen_message", []):
+                    new_message += 1
+            user = User.get_user_by_username(username=m.conversationId.split("_")[0])
+            users.append({"name":user.data.get("first_name", "") + " " + user.data.get("last_name"), "username":user.username, "phone":user.phone, "conversationId":m.conversationId, "new":new_message, "icon":user.data.get("icon", "")})
+    return jsonify({"users":users})
+
+@user_bp.get("/user_message")
+@jwt_required()
+def user_message():
+    message = Messages.query.filter_by(conversationId=request.args.get("id", "")).first()
+    seen_message = current_user.data.get("seen_message", [])
+    for m in message.messages:
+        if m.get("id", "") not in seen_message:
+            seen_message.append(m.get("id"))
+            
+    current_user.update(data={"seen_message": seen_message})
+    db.session.commit()
+    return jsonify({"messages": message.to_dict()})
 
