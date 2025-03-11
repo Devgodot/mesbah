@@ -355,9 +355,10 @@ def users_message():
                 if message.get("id") not in current_user.data.get("seen_message", []):
                     new_message += 1
             user = User.get_user_by_username(username=m.conversationId.split("_")[0])
-            last_message_time = m.messages[-1].get("time") if m.messages else None
+            last_message_time = m.messages[-1].get("timestamp") if m.messages else None
             if last_message_time:
-                last_message_time = datetime.datetime.strptime(last_message_time, "%Y-%m-%dT%H:%M:%S.%fZ")
+                last_message_time = datetime.datetime.strptime(last_message_time, "%Y/%m/%d %H:%M:%S")
+            print(last_message_time)
             users.append({
                 "name": user.data.get("first_name", "") + " " + user.data.get("last_name", ""),
                 "username": user.username,
