@@ -16,6 +16,7 @@ class Messages(db.Model):
     receiverId = db.Column(db.JSON, nullable=False)
     messages = db.Column(db.JSON, nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.utcnow)
+    updatedAt = db.Column(db.DateTime, default=datetime.utcnow)
 
     def to_dict(self):
         return {
