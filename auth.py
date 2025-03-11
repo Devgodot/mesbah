@@ -11,7 +11,7 @@ from flask_jwt_extended import (
 )
 from random import randint
 import random, os, shutil
-from models import User, TokenBlocklist, UserInterface, Levels, Group, VerificationCode
+from models import User, TokenBlocklist, UserInterface, Levels, Group, VerificationCode, Messages
 import json
 from datetime import datetime, timedelta
 
@@ -69,7 +69,6 @@ def check_user():
         return jsonify({"message":"user not exist"})
     
 
-
 @auth_bp.post("/register")
 def register_user():
     data = request.get_json()
@@ -105,7 +104,14 @@ def register_user():
             for index, key in enumerate(editors.keys()):
                 if username in editors[key]:
                     editor.append(index)
-            new_user = User(id=username, username=username, phone=data.get("phone"), data=data.get("data", {"phone": phone, "editor": len(editor) > 0, "part_edit": editor}), password="1234")
+            support = False
+            for g in UserInterface.query.first().data.get("supporters").values():
+                for r in g:
+                    for p in r:
+                        for u in p:
+                            if u == current_user.username:
+                                support = True
+            new_user = User(id=username, username=username, phone=data.get("phone"), data=data.get("data", {"support":support,"phone": phone, "editor": len(editor) > 0, "part_edit": editor}), password="1234")
             new_user.save()
             access_token = create_access_token(identity=new_user.username, expires_delta=False)
             refresh_token = create_refresh_token(identity=new_user.username)
@@ -131,7 +137,14 @@ def whoami():
         for index, key in enumerate(editors.keys()):
             if current_user.username in editors[key]:
                 editor.append(index)
-        current_user.update(data={"editor":len(editor) > 0, "part_edit":editor})
+        support = False
+        for g in UserInterface.query.first().data.get("supporters").values():
+            for r in g:
+                for p in r:
+                    for u in p:
+                        if u == current_user.username:
+                            support = True
+        current_user.update(data={"editor":len(editor) > 0, "part_edit":editor, "support":support})
         db.session.commit()
         data = {}
         for d in current_user.data.keys():
@@ -408,7 +421,16 @@ def left_group():
 @jwt_required()
 def unseen_message():
     message = []
-    for m in current_user.data.get("message", []):
-        if m.get("id", "") not in current_user.data.get("seen_message", []):
-            message.append(m)
+    part = request.args.get("p", 0)
+    if part == 0:
+        for m in current_user.data.get("message", []):
+            if m.get("id", "") not in current_user.data.get("seen_message", []):
+                message.append(m)
+    else:
+        for x in range(3):
+            messages = Messages.query.filter_by(conversationId=current_user.username+"_"+str(x)).first()
+            if messages is not None:
+                for m in messages.messages:
+                    if m.get("id", "") not in current_user.data.get("seen_message", []):
+                        message.append(m)
     return jsonify({"num":len(message)})
