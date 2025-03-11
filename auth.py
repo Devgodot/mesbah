@@ -144,6 +144,14 @@ def whoami():
                     for u in p:
                         if u == current_user.username:
                             support = True
+        if not support:
+            for x in range(3):
+                messages = Messages.query.filter_by(conversationId=current_user.username+"_"+str(x)).first()
+                supporters = UserInterface.query.first().data.get("supporters").values()[current_user.data.get("gender")][current_user.data.get("tag")][x]
+                if messages is None:
+                    message = Messages(conversationId=current_user.username+"_"+str(x), messages=[], receiverId=supporters)
+                    db.session.add(message)
+                    db.session.commit()
         current_user.update(data={"editor":len(editor) > 0, "part_edit":editor, "support":support})
         db.session.commit()
         data = {}
