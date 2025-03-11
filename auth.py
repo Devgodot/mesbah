@@ -286,8 +286,17 @@ def join_group():
             user.update(data= {"users_sended_message":sended_message})
     db.session.commit()
     return jsonify({"message":"موفقیت آمیز بود."})
-
-
+@auth_bp.get("/seen_message")
+@jwt_required()
+def seen():
+    _id = request.args.get("id", "")
+    seen_message = []
+    for m in current_user.data.get("seen_message", []):
+        seen_message.append(m)
+    seen_message.append(_id)
+    current_user.update(data={"seen_message":seen_message})
+    db.session.commit()
+    return jsonify({"message":'موفقیت آمیز بود'})
 @auth_bp.get("/accept_group")
 @jwt_required()
 def accept_group():

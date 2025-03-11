@@ -348,16 +348,34 @@ def users_message():
     user_name = current_user.username
     messages = Messages.query.all()
     users = []
-    
     for m in messages:
         new_message = 0
-        if user_name in m.receiverId:
+        if user_name in m.receiverId and len(m.messages) > 0:
             for message in m.messages:
                 if message.get("id") not in current_user.data.get("seen_message", []):
                     new_message += 1
             user = User.get_user_by_username(username=m.conversationId.split("_")[0])
-            users.append({"name":user.data.get("first_name", "") + " " + user.data.get("last_name"), "username":user.username, "phone":user.phone, "conversationId":m.conversationId, "new":new_message, "icon":user.data.get("icon", "")})
-    return jsonify({"users":users})
+            last_message_time = m.messages[-1].get("time") if m.messages else None
+            if last_message_time:
+                last_message_time = datetime.datetime.strptime(last_message_time, "%Y-%m-%dT%H:%M:%S.%fZ")
+            users.append({
+                "name": user.data.get("first_name", "") + " " + user.data.get("last_name", ""),
+                "username": user.username,
+                "phone": user.phone,
+                "conversationId": m.conversationId,
+                "new": new_message,
+                "icon": user.data.get("icon", ""),
+                "last_message_time": last_message_time
+            })
+    # Sort users by the last message time in descending order
+    users.sort(key=lambda x: x["last_message_time"], reverse=True)
+    
+    # Convert last_message_time back to string
+    for user in users:
+        if user["last_message_time"]:
+            user["last_message_time"] = user["last_message_time"].isoformat()
+    
+    return jsonify({"users": users})
 
 @user_bp.get("/user_message")
 @jwt_required()
@@ -367,7 +385,6 @@ def user_message():
     for m in message.messages:
         if m.get("id", "") not in seen_message:
             seen_message.append(m.get("id"))
-            
     current_user.update(data={"seen_message": seen_message})
     db.session.commit()
     return jsonify({"messages": message.to_dict()})
