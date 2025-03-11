@@ -32,8 +32,11 @@ def run_migrations_online() -> None:
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
         prefix="sqlalchemy.",
-        poolclass=pool.NullPool,
+        poolclass=pool.QueuePool,  # Use QueuePool for connection pooling
+        pool_size=5,  # Set the pool size
+        max_overflow=10,  # Set the maximum overflow size
     )
+
 
     with connectable.connect() as connection:
         context.configure(
