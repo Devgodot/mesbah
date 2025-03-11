@@ -5,7 +5,7 @@ from alembic import context
 
 import sys
 sys.path.append('.')
-sys.setrecursionlimit(1500)
+sys.setrecursionlimit(3000)  # Increase the recursion limit
 from confige import db
 from models import User, Messages, VerificationCode, Group
 
