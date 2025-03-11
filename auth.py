@@ -160,9 +160,7 @@ def get_data():
                 for m in message:
                     if m.get("id", "") not in seen_message:
                         seen_message.append(m.get("id", ""))
-                for m in seen_message:
-                    if not any(m == _id.get("id", "") for _id in message):
-                        seen_message.remove(m)
+                
                 current_user.update(data={"seen_message":seen_message})
                 db.session.commit()
             return jsonify({"nums":[current_user.data.get(name2, None) for name2 in name]})
