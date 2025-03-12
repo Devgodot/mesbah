@@ -226,9 +226,9 @@ def update_user():
             db.session.commit()
             return jsonify({"message":"کاربر با موفقیت بروزرسانی شد."})
         else:
-            return jsonify({"message":"کاربر وجود ندارد"})
+            return jsonify({"error":"کاربر وجود ندارد"})
     else:
-        return jsonify({"message":"شما ویرایشگر نیستید"})
+        return jsonify({"error":"شما ویرایشگر نیستید"})
 
 @user_bp.get("/length")
 @jwt_required()

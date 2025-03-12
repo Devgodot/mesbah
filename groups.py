@@ -160,7 +160,7 @@ def get_group():
     group = Group.get_group_by_name(request.args.get("name", ""))
     if group is not None:
         return jsonify({"users": [hashing(text=user, mode=HashingMode.ENCODE) for user in group.users.get("users", [])] , "leader": hashing(mode=HashingMode.ENCODE, text=group.users.get("leader", "")), "users_info": [{"name": User.get_user_by_username(username=user).data.get("first_name", "") + " " + User.get_user_by_username(username=user).data.get("last_name") + " " + User.get_user_by_username(username=user).data.get("father_name")} for user in group.users.get("users")], "icon": hashing(mode=HashingMode.ENCODE ,text=group.icon), "diamonds":group.diamonds, "scores":group.score})
-    return jsonify({"message": "group not exist"}), 200
+    return jsonify({"message": "گروه وجود ندارد"}), 400
 
 @group_bp.post("/icon")
 @jwt_required()
@@ -185,9 +185,9 @@ def update_group():
             db.session.commit()
             return jsonify({"message":"گروه با موفقیت بروزرسانی شد."})
         else:
-            return jsonify({"message":"گروه وجود ندارد"})
+            return jsonify({"error":"گروه وجود ندارد"}), 400
     else:
-        return jsonify({"message":"شما ویرایشگر نیستید"})
+        return jsonify({"error":"شما ویرایشگر نیستید"}), 400
 
 @group_bp.get("/length")
 @jwt_required()
