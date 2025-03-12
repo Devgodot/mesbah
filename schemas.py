@@ -13,6 +13,7 @@ class GroupSchema(Schema):
     icon = fields.String()
     score = fields.Integer()
     diamonds = fields.Integer()
+    users = fields.Dict()
 class BookSchema(Schema):
     id = fields.String()
     link = fields.String()
