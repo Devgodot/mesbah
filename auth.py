@@ -375,7 +375,7 @@ def accept_group():
                 sended_message.remove(user.username)
             user2.update(data= {"users_sended_message":sended_message})
     db.session.commit()
-    return jsonify({"message":"successe"})
+    return jsonify({"message":"کاربر به گروه اضافه شد"})
 
 @auth_bp.get("/left_group")
 @jwt_required()
