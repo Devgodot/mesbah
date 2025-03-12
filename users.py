@@ -89,6 +89,8 @@ def get_all_users():
     users = User.query.all()
     if per_page is None:
         per_page = len(users)
+    else:
+        per_page = int(float(per_page))
     for k in sort:
         if k == "score":
             sort.remove(k)
@@ -116,12 +118,10 @@ def get_all_users():
             d = {}
             for key in filter_data:
                 k = key
-                print(key)
                 if user.data.get(k) is not None:
                     if key == "icon":
                         d["icon"] = hashing(mode=HashingMode.ENCODE, text=user.data.get("icon", ""))
                     elif key == f"score_{gender}_{tag}":
-                        print(key)
                         d["score"] = user.data.get(f"score_{gender}_{tag}")
                     else:
                         d[key] = user.data.get(k)

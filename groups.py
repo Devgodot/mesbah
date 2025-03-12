@@ -71,7 +71,8 @@ def get_all_groups():
     groups = Group.query.filter_by(tag=tag, gender=gender).all()
     if per_page is None:
         per_page = len(groups)
-    
+    else:
+        per_page = int(float(per_page))
     # رتبه‌بندی گروه‌ها بر اساس مجموع مقادیر دیکشنری diamonds و سپس امتیاز
     groups.sort(key=lambda group: (sum(group.diamonds.values()), sum(group.score.values())), reverse=True)
     
@@ -79,7 +80,6 @@ def get_all_groups():
     for x, group in enumerate(groups):
         if x >= (page - 1) * per_page and x < page * per_page:
             g.append(group)
-    
     previous_score = None
     current_position = 0
     for index, group in enumerate(g):
@@ -91,10 +91,8 @@ def get_all_groups():
         group.diamonds = sum(group.diamonds.values())
         group.icon = hashing(mode=HashingMode.ENCODE, text=group.icon)
         previous_score = current_score
-
     result = GroupSchema().dump(g, many=True)
     return jsonify({"result": result})
-
 @group_bp.get("/names")
 @jwt_required()
 def get_names():
