@@ -109,7 +109,7 @@ def register_user():
                 for r in g:
                     for p in r:
                         for u in p:
-                            if u == current_user.username:
+                            if u == username:
                                 support = True
             new_user = User(id=username, username=username, phone=data.get("phone"), data=data.get("data", {"support":support,"phone": phone, "editor": len(editor) > 0, "part_edit": editor}), password="1234")
             new_user.save()
