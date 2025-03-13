@@ -147,7 +147,7 @@ def whoami():
         if not support:
             for x in range(3):
                 messages = Messages.query.filter_by(conversationId=current_user.username+"_"+str(x)).first()
-                supporters = UserInterface.query.first().data.get("supporters").get(["male", "female"][current_user.data.get("gender")])[current_user.data.get("tag")][x]
+                supporters = UserInterface.query.first().data.get("supporters").get(["male", "female"][current_user.data.get("gender", 0)])[current_user.data.get("tag", 0)][x]
                 if messages is None:
                     message = Messages(conversationId=current_user.username+"_"+str(x), messages=[], receiverId=supporters)
                     db.session.add(message)
@@ -157,7 +157,6 @@ def whoami():
         data = {}
         for d in current_user.data.keys():
             data[d] = current_user.data.get(d)
-        
         return jsonify(
             {
                 "message": "message",
