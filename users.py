@@ -247,45 +247,62 @@ def server_message():
     users = request.get_json().get("users")
     filter_m = request.get_json().get("filter")
     _id = str(uuid.uuid4())
-    if users == "all":
-        if filter_m is None:
-            for user in User.query.all():
-                message = user.data.get("message", [])
-                gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
-                jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
-              
-                message.append({"text":request.get_json().get("text", ""), "data":{"time":str(jalali_date)}, "id":_id, "sender":"پشتیبانی", "type":"guid"})
-                user.data = user.update(data={"message":message})
-                db.session.commit()
-        else:
-            all_users = User.query.all()
-            filter_users = []
-            for user in all_users:
-                all_true = True
-                for f in filter_m.keys():
-                    if user.data.get(f) != filter_m.get(f):
-                        all_true = False
-                if all_true:
-                    filter_users.append(user)
-            for user in filter_users:
-                message = user.data.get("message", [])
-                gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
-                jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
-               
-                message.append({"text":request.get_json().get("text", ""), "data":{"time":str(jalali_date)}, "id":_id, "sender":"پشتیبانی", "type":"guid"})
-                user.data = user.update(data={"message":message})
-                db.session.commit()
-    
-    else:
+    text = request.get_json().get("text", "")
+    sound = request.get_json().get("sound")
+    image = request.get_json().get("image")
+    gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
+    jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
+    message_data = {"text": text, "data": {"time": str(jalali_date)}, "id": _id, "sender": "پشتیبانی", "type": "guid"}
+    if sound:
+        message_data["sound"] = sound
+    if image:
+        message_data["image"] = image
+    # Check the type of 'users' variable
+    if isinstance(users, str):
+        if users == "all":
+            if filter_m is None:
+                for user in User.query.all():
+                    message = user.data.get("message", [])
+                    message.append(message_data)
+                    user.data = user.update(data={"message":message})
+                    db.session.commit()
+            else:
+                all_users = User.query.all()
+                filter_users = []
+                for user in all_users:
+                    all_true = True
+                    for f in filter_m.keys():
+                        if user.data.get(f) != filter_m.get(f):
+                            all_true = False
+                    if all_true:
+                        filter_users.append(user)
+                for user in filter_users:
+                    message = user.data.get("message", [])
+                    message.append(message_data)
+                    user.data = user.update(data={"message":message})
+                    db.session.commit()
         
-        for user in User.query.all():
-            message = user.data.get("message", [])
-            gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
-            jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
-            
-            message.append({"text":request.get_json().get("text", ""), "data":{"time":str(jalali_date)}, "id":_id, "sender":"پشتیبانی", "type":"guid"})
-            user.data = user.update(data={"message":message})
-            db.session.commit()
+        else:
+            # Assuming 'users' is a string but not equal to "all"
+            # Handle this case accordingly, e.g., raise an error or return a message
+            return jsonify({"error": "Invalid value for 'users' parameter."}), 400
+    
+    elif isinstance(users, list):
+        # Assuming 'users' is a list of usernames
+        for username in users:
+            user = User.get_user_by_username(username)
+            if user:
+                message = user.data.get("message", [])
+                message.append(message_data)
+                user.data = user.update(data={"message": message})
+                db.session.commit()
+            else:
+                # Handle the case where the user is not found
+                print(f"User with username '{username}' not found.")
+                
+    else:
+        return jsonify({"error": "The 'users' parameter must be a string ('all') or a list of usernames."}), 400
+    
     return "پیام با موفقیت ارسال شد"
 
 @user_bp.post("/delete_message")
