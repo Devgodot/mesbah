@@ -11,7 +11,7 @@ from flask_jwt_extended import (
 )
 from random import randint
 import random, os, shutil
-from models import User, TokenBlocklist, UserInterface, Levels, Group, VerificationCode, Messages
+from models import User, TokenBlocklist, UserInterface, Levels, Group, VerificationCode, Messages, UserSeenMessages
 import json
 from datetime import datetime, timedelta
 
@@ -308,15 +308,15 @@ def join_group():
 @jwt_required()
 def seen():
     _id = request.get_json().get("id", [])
-    seen_message = []
-    for m in current_user.data.get("seen_message", []):
-        seen_message.append(m)
     for i in _id:
-        if seen_message.count(i) == 0:
-            seen_message.append(i)
-    current_user.update(data={"seen_message":seen_message})
+        # Check if the message is already marked as seen by the user
+        existing_record = UserSeenMessages.query.filter_by(user_id=current_user.id, message_id=i).first()
+        if not existing_record:
+            # If not seen, create a new record
+            seen_message = UserSeenMessages(user_id=current_user.id, message_id=i)
+            db.session.add(seen_message)
     db.session.commit()
-    return jsonify({"message":'موفقیت آمیز بود'})
+    return jsonify({"message": 'موفقیت آمیز بود'})
 @auth_bp.get("/accept_group")
 @jwt_required()
 def accept_group():
@@ -430,14 +430,18 @@ def unseen_message():
     message = []
     part = request.args.get("p", 0)
     if part == 0:
+        # Fetch all message IDs for the current user
+        seen_message_ids = [msg.message_id for msg in UserSeenMessages.query.filter_by(user_id=current_user.id).all()]
         for m in current_user.data.get("message", []):
-            if m.get("id", "") not in current_user.data.get("seen_message", []):
+            if m.get("id", "") not in seen_message_ids:
                 message.append(m)
     else:
+        # Fetch all message IDs for the current user
+        seen_message_ids = [msg.message_id for msg in UserSeenMessages.query.filter_by(user_id=current_user.id).all()]
         for x in range(3):
             messages = Messages.query.filter_by(conversationId=current_user.username+"_"+str(x)).first()
             if messages is not None:
                 for m in messages.messages:
-                    if m.get("id", "") not in current_user.data.get("seen_message", []):
+                    if m.get("id", "") not in seen_message_ids:
                         message.append(m)
     return jsonify({"num":len(message)})

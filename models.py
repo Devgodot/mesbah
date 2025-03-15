@@ -164,3 +164,12 @@ class Book(db.Model):
     name = Column("name", String(50), nullable=False)
     writer = Column("writer", String(40), nullable=False)
     description = Column("description", Text())
+
+class UserSeenMessages(db.Model):
+    __tablename__ = 'user_seen_messages'
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), primary_key=True)
+    message_id = db.Column(db.String(255), primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f"<UserSeenMessages(user_id='{self.user_id}', message_id='{self.message_id}')>"
