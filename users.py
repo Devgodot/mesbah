@@ -1,6 +1,6 @@
 from flask import request, Blueprint, jsonify
 from flask_jwt_extended import jwt_required, get_jwt, current_user
-from models import User, UserInterface, Group, Messages, UserSeenMessages, UserMessages
+from models import User, UserInterface, Group, Messages, UserSeenMessages
 from schemas import UserSchema
 from sqlalchemy import desc, text
 from confige import db
@@ -426,5 +426,6 @@ def user_message():
             # If not seen, create a new record
             seen_message = UserSeenMessages(user_id=current_user.id, message_id=i)
             db.session.add(seen_message)
+    db.session.commit()
     return jsonify({"receiverId": message.receiverId, "add":add, "delete":remove})
 

@@ -168,19 +168,10 @@ class Book(db.Model):
 class UserSeenMessages(db.Model):
     __tablename__ = 'user_seen_messages'
     id = Column(Integer, primary_key=True)
-    user_id = db.Column(db.String(10), db.ForeignKey('users.id'))
+    user_id = db.Column(db.String(10))
     message_id = db.Column(db.String(255))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return f"<UserSeenMessages(user_id='{self.user_id}', message_id='{self.message_id}')>"
     
-class UserMessages(db.Model):
-    __tablename__ = 'user_messages'
-    id = Column(Integer, primary_key=True)
-    user_id = db.Column(db.String(10), db.ForeignKey('users.id'))
-    conversationId = db.Column(db.String(12))
-    messages = db.Column(JSON(), default=[])
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-    def __repr__(self):
-        return f"<UserMessages(user_id='{self.user_id}', conversationId='{self.conversationId}')>"
