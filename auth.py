@@ -315,9 +315,11 @@ def join_group():
 @jwt_required()
 def seen():
     _id = request.get_json().get("id", [])
+    message_ids = [m.get("id") for message in Messages.query.filter(Messages.conversationId.contains(current_user.id)).all() for m in message.messages]
+   
     for m in UserSeenMessages.query.all():
-        m2 = Messages.messages.contains([{"id": m.message_id}])
-        print(m2)
+        if m.message_id not in message_ids:
+            db.session.delete(m)
     for i in _id:
         # Check if the message is already marked as seen by the user
        
