@@ -167,6 +167,7 @@ class Book(db.Model):
 
 class UserSeenMessages(db.Model):
     __tablename__ = 'user_seen_messages'
+    conversationId = db.Column(db.String(12), nullable=False)
     id = Column(Integer, primary_key=True)
     user_id = db.Column(db.String(10))
     message_id = db.Column(db.String(255))
