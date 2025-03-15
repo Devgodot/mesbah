@@ -185,7 +185,7 @@ def get_data():
                 for m in message:
                     if m.get("id", "") not in seen_message_ids:
                         seen_message_ids.append(m.get("id", ""))
-                        seen_message = UserSeenMessages(user_id=current_user.id, message_id=m.get("id", ""))
+                        seen_message = UserSeenMessages(user_id=current_user.id, message_id=m.get("id", ""), conversationId=current_user.id)
                         db.session.add(seen_message)
                 db.session.commit()
             return jsonify(
@@ -315,18 +315,17 @@ def join_group():
 @jwt_required()
 def seen():
     _id = request.get_json().get("id", [])
-    message_ids = [m.get("id") for message in Messages.query.filter(Messages.conversationId.contains(current_user.id)).all() for m in message.messages]
+    message_ids = [m.get("id") for message in Messages.query.filter_by(conversationId=request.get_json().get("conversationId", "")).all() for m in message.messages]
    
-    for m in UserSeenMessages.query.all():
+    for m in UserSeenMessages.query.filter_by(conversationId=request.get_json().get("conversationId", "")).all():
         if m.message_id not in message_ids:
             db.session.delete(m)
     for i in _id:
         # Check if the message is already marked as seen by the user
-       
         existing_record = UserSeenMessages.query.filter_by(user_id=current_user.id, message_id=i).first()
-        if not existing_record:
+        if not existing_record and request.get_json().get("conversationId", "") != "":
             # If not seen, create a new record
-            seen_message = UserSeenMessages(user_id=current_user.id, message_id=i)
+            seen_message = UserSeenMessages(user_id=current_user.id, message_id=i, conversationId=request.get_json().get("conversationId", ""))
             db.session.add(seen_message)
     db.session.commit()
     return jsonify({"message": 'موفقیت آمیز بود'})

@@ -424,7 +424,7 @@ def user_message():
         existing_record = UserSeenMessages.query.filter_by(user_id=current_user.id, message_id=i).first()
         if not existing_record:
             # If not seen, create a new record
-            seen_message = UserSeenMessages(user_id=current_user.id, message_id=i)
+            seen_message = UserSeenMessages(user_id=current_user.id, message_id=i, conversationId=request.args.get("id", ""))
             db.session.add(seen_message)
     db.session.commit()
     return jsonify({"receiverId": message.receiverId, "add":add, "delete":remove})
