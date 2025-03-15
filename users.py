@@ -1,6 +1,6 @@
 from flask import request, Blueprint, jsonify
 from flask_jwt_extended import jwt_required, get_jwt, current_user
-from models import User, UserInterface, Group, Messages
+from models import User, UserInterface, Group, Messages, UserSeenMessages
 from schemas import UserSchema
 from sqlalchemy import desc, text
 from confige import db
@@ -395,15 +395,26 @@ def users_message():
     
     return jsonify({"users": users})
 
-@user_bp.get("/user_message")
+@user_bp.post("/user_message")
 @jwt_required()
 def user_message():
     message = Messages.query.filter_by(conversationId=request.args.get("id", "")).first()
-    seen_message = current_user.data.get("seen_message", [])
+    last_messages = request.get_json().get("messages")
+    add = []
+    remove = []
     for m in message.messages:
-        if m.get("id", "") not in seen_message:
-            seen_message.append(m.get("id"))
-    current_user.update(data={"seen_message": seen_message})
-    db.session.commit()
-    return jsonify({"messages": message.to_dict()})
+        if m not in last_messages:
+            add.append(m)
+    for m in last_messages:
+        if m not in message.messages:
+            remove.append(m)
+    _id = [m.id for m in message.messages]
+    for i in _id:
+        # Check if the message is already marked as seen by the user
+        existing_record = UserSeenMessages.query.filter_by(user_id=current_user.id, message_id=i).first()
+        if not existing_record:
+            # If not seen, create a new record
+            seen_message = UserSeenMessages(user_id=current_user.id, message_id=i)
+            db.session.add(seen_message)
+    return jsonify({"receiverId": message.receiverId, "add":add, "delete":remove})
 
