@@ -417,7 +417,7 @@ def user_message():
             add.append(m)
     for m in last_messages:
         if m not in message.messages:
-            remove.append(m)
+            remove.append(m.get("id", ""))
     _id = [m.get("id", "") for m in message.messages]
     for i in _id:
         # Check if the message is already marked as seen by the user
