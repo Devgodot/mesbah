@@ -1,11 +1,12 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import jsonify
 from confige import db
-from sqlalchemy import String, Column, Integer, Text, JSON, URL
+from sqlalchemy import String, Column, Integer, Text, JSON, URL, DateTime, ForeignKey
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, EqualTo, Length
 from sqlalchemy.ext.mutable import MutableDict
+from sqlalchemy.orm import relationship
 
 from datetime import datetime, timedelta
 
@@ -175,4 +176,36 @@ class UserSeenMessages(db.Model):
 
     def __repr__(self):
         return f"<UserSeenMessages(user_id='{self.user_id}', message_id='{self.message_id}')>"
-    
+
+class UserEditLog(db.Model):
+    __tablename__ = 'user_edit_log'
+    id = Column(Integer, primary_key=True)
+    editor_id = Column(String(10), ForeignKey('users.id'))  # ID of the editor
+    target_user_id = Column(String(10), ForeignKey('users.id'))  # ID of the user being edited
+    timestamp = Column(DateTime, default=datetime.utcnow)
+    field_name = Column(String(50))  # Name of the field that was changed
+    old_value = Column(Text)  # Previous value
+    new_value = Column(Text)  # New value
+
+    editor = relationship("User", foreign_keys=[editor_id])
+    target_user = relationship("User", foreign_keys=[target_user_id])
+
+    def __repr__(self):
+        return f"<UserEditLog(editor_id='{self.editor_id}', target_user_id='{self.target_user_id}', field_name='{self.field_name}')>"
+
+class GroupEditLog(db.Model):
+    __tablename__ = 'group_edit_log'
+    id = Column(Integer, primary_key=True)
+    editor_id = Column(String(10), ForeignKey('users.id'))  # ID of the editor
+    group_name = Column(String(20), ForeignKey('group.name'))  # ID of the group being edited
+    timestamp = Column(DateTime, default=datetime.utcnow)
+    field_name = Column(String(50))  # Name of the field that was changed
+    old_value = Column(Text)  # Previous value
+    new_value = Column(Text)  # New value
+
+    editor = relationship("User", foreign_keys=[editor_id])
+    group = relationship("Group", foreign_keys=[group_name])
+
+    def __repr__(self):
+        return f"<GroupEditLog(editor_id='{self.editor_id}', group_name='{self.group_name}', field_name='{self.field_name}')>"
+
