@@ -1,6 +1,6 @@
 from flask import request, Blueprint, jsonify
 from flask_jwt_extended import jwt_required, get_jwt, current_user
-from models import User, UserInterface, Group, Messages, UserSeenMessages
+from models import User, UserInterface, Group, Messages, UserSeenMessages, UserMessages
 from schemas import UserSchema
 from sqlalchemy import desc, text
 from confige import db
@@ -395,20 +395,32 @@ def users_message():
     
     return jsonify({"users": users})
 
-@user_bp.post("/user_message")
+@user_bp.get("/user_message")
 @jwt_required()
 def user_message():
     message = Messages.query.filter_by(conversationId=request.args.get("id", "")).first()
-    last_messages = request.get_json().get("messages")
+    last_messages = UserMessages.query.filter_by(user_id=current_user.username, conversationId=request.args.get("id", "")).first()
+    if last_messages is not None:
+        new_message :list= last_messages.messages
+    else:
+        last_messages = UserMessages(user_id=current_user.id, conversationId=request.args.get("id", ""), messages=[])
+        db.session.add(last_messages)
+        new_message = []
     add = []
     remove = []
     for m in message.messages:
-        if m not in last_messages:
+        if m not in new_message:
             add.append(m)
-    for m in last_messages:
+    for m in new_message:
         if m not in message.messages:
             remove.append(m)
-    _id = [m.id for m in message.messages]
+    for m in add:
+        new_message.append(m)
+    for m in remove:
+        new_message.remove(m)
+    last_messages.messages = new_message
+    db.session.commit()
+    _id = [m.get("id", "") for m in message.messages]
     for i in _id:
         # Check if the message is already marked as seen by the user
         existing_record = UserSeenMessages.query.filter_by(user_id=current_user.id, message_id=i).first()
