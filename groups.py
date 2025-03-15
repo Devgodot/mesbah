@@ -100,7 +100,6 @@ def get_names():
     data = []
     for group in groups:
         leader = hashing(mode=HashingMode.ENCODE,text=group.users.get("leader", ""))
-        print(group.icon)
         icon =  hashing(mode=HashingMode.ENCODE, text=group.icon)
         data.append([group.name, len(group.users.get("users", [])), group.tag, group.gender, icon, leader])
     return jsonify({"data": data})
