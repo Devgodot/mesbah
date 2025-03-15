@@ -399,7 +399,7 @@ def users_message():
     remove = []
     for user in users:
         if user not in last_users:
-            add.append(m)
+            add.append(user)
     for user in last_users:
         if user not in users:
             remove.append(user)

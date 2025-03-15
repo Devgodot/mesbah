@@ -167,8 +167,9 @@ class Book(db.Model):
 
 class UserSeenMessages(db.Model):
     __tablename__ = 'user_seen_messages'
-    user_id = db.Column(db.String(10), db.ForeignKey('users.id'), primary_key=True)
-    message_id = db.Column(db.String(255), primary_key=True)
+    id = Column(Integer, primary_key=True)
+    user_id = db.Column(db.String(10), db.ForeignKey('users.id'))
+    message_id = db.Column(db.String(255))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
