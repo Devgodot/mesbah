@@ -371,7 +371,8 @@ def users_message():
         new_message = 0
         if user_name in m.receiverId and len(m.messages) > 0:
             for message in m.messages:
-                if message.get("id") not in current_user.data.get("seen_message", []):
+                existing_record = UserSeenMessages.query.filter_by(user_id=current_user.id, message_id=message.get("id")).first()
+                if not existing_record:
                     new_message += 1
             user = User.get_user_by_username(username=m.conversationId.split("_")[0])
             last_message_time = m.messages[-1].get("timestamp") if m.messages else None
