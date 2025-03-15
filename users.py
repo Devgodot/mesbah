@@ -1,6 +1,6 @@
 from flask import request, Blueprint, jsonify
 from flask_jwt_extended import jwt_required, get_jwt, current_user
-from models import User, UserInterface, Group, Messages, UserSeenMessages
+from models import User, UserInterface, Group, Messages, UserSeenMessages, UserEditLog  # Import UserEditLog
 from schemas import UserSchema
 from sqlalchemy import desc, text
 from confige import db
@@ -23,18 +23,18 @@ def find_key_by_value(dictionary, target_value):
             return key
     return None
 def hashing(mode:HashingMode, text=""):
-	if mode == HashingMode.ENCODE:
-		hash_text = ""
-		for graph in text:
-			hash_text += words.get(graph)
-		return hash_text
-	if mode == HashingMode.DECODE:
-		new_text = ''
-		graphs = text.split("%")
-		for graph in graphs:
-			if graph != "" and graph != "%":
-				new_text += find_key_by_value(words, "%"+str(graph)+"%")
-		return new_text
+    if mode == HashingMode.ENCODE:
+        hash_text = ""
+        for graph in text:
+            hash_text += words.get(graph)
+        return hash_text
+    if mode == HashingMode.DECODE:
+        new_text = ''
+        graphs = text.split("%")
+        for graph in graphs:
+            if graph != "" and graph != "%":
+                new_text += find_key_by_value(words, "%"+str(graph)+"%")
+        return new_text
 
 @user_bp.get("/me")
 @jwt_required()
@@ -223,7 +223,29 @@ def update_user():
     user = User.get_user_by_username(username=username)
     if current_user.data.get("editor", False):
         if user is not None:
+            # Get the data before the update
+            old_data = user.data.copy()
+            # Update the user data
             user.update(data=request.get_json().get("data", {}))
+            # Get the data after the update
+            new_data = user.data.copy()
+
+            # Log the changes
+            for field, new_value in new_data.items():
+                if field in old_data:
+                    old_value = old_data[field]
+                else:
+                    old_value = None
+                if old_value != new_value:
+                    log = UserEditLog(
+                        editor_id=current_user.id,
+                        target_user_id=user.id,
+                        field_name=field,
+                        old_value=str(old_value),
+                        new_value=str(new_value)
+                    )
+                    db.session.add(log)
+
             db.session.commit()
             return jsonify({"message":"کاربر با موفقیت بروزرسانی شد."})
         else:

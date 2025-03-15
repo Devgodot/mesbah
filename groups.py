@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt, current_user
-from models import User, UserInterface, Group
+from models import User, UserInterface, Group, GroupEditLog
 from schemas import UserSchema, GroupSchema
 from sqlalchemy import desc, text
 import time, uuid
@@ -177,8 +177,35 @@ def update_group():
     group = Group.get_group_by_name(name=name)
     if current_user.data.get("editor", False):
         if group is not None:
+            # Get the data before the update
+            old_diamonds = group.diamonds.copy()
+            old_score = group.score.copy()
+
+            # Update the group data
             group.diamonds = request.get_json().get("diamonds", {})
             group.score = request.get_json().get("scores", {})
+
+            # Log the changes
+            if old_diamonds != group.diamonds:
+                log = GroupEditLog(
+                    editor_id=current_user.id,
+                    group_name=group.name,
+                    field_name="diamonds",
+                    old_value=str(old_diamonds),
+                    new_value=str(group.diamonds)
+                )
+                db.session.add(log)
+
+            if old_score != group.score:
+                log = GroupEditLog(
+                    editor_id=current_user.id,
+                    group_name=group.name,
+                    field_name="score",
+                    old_value=str(old_score),
+                    new_value=str(group.score)
+                )
+                db.session.add(log)
+
             db.session.commit()
             return jsonify({"message":"گروه با موفقیت بروزرسانی شد."})
         else:
