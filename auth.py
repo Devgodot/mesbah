@@ -175,15 +175,22 @@ def get_data():
         name = request.args.get("name", "").split("AND")
         if name != [""]:
             if "message" in name:
-                message:list = current_user.data.get("message", [])
-                seen_message:list = current_user.data.get("seen_message", [])
+                message: list = current_user.data.get("message", [])
+                seen_message_ids = [
+                    msg.message_id
+                    for msg in UserSeenMessages.query.filter_by(
+                        user_id=current_user.id
+                    ).all()
+                ]
                 for m in message:
-                    if m.get("id", "") not in seen_message:
-                        seen_message.append(m.get("id", ""))
-                
-                current_user.update(data={"seen_message":seen_message})
+                    if m.get("id", "") not in seen_message_ids:
+                        seen_message_ids.append(m.get("id", ""))
+                        seen_message = UserSeenMessages(user_id=current_user.id, message_id=m.get("id", ""))
+                        db.session.add(seen_message)
                 db.session.commit()
-            return jsonify({"nums":[current_user.data.get(name2, None) for name2 in name]})
+            return jsonify(
+                {"nums": [current_user.data.get(name2, None) for name2 in name]}
+            )
         else:
             return "نام متغییر وارد نشده", 400
     return "شما اجازه دسترسی ندارید", 400
