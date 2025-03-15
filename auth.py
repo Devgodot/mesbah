@@ -315,8 +315,12 @@ def join_group():
 @jwt_required()
 def seen():
     _id = request.get_json().get("id", [])
+    for m in UserSeenMessages.query.all():
+        m2 = Messages.messages.contains([{"id": m.message_id}])
+        print(m2)
     for i in _id:
         # Check if the message is already marked as seen by the user
+       
         existing_record = UserSeenMessages.query.filter_by(user_id=current_user.id, message_id=i).first()
         if not existing_record:
             # If not seen, create a new record
