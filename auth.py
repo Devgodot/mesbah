@@ -201,7 +201,7 @@ def save_data():
         data = request.get_json()
         change_data :dict= data
         for c in change_data.keys():
-            if c not in ["first_name", "last_name", "father_name", "birthday", "icon", "tag", "gender"]:
+            if c not in ["first_name", "last_name", "father_name", "birthday", "icon", "tag", "gender", "custom_name"]:
                 change_data.pop(c)
         
         
