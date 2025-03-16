@@ -389,6 +389,7 @@ def users_message():
     messages = Messages.query.all()
     users = []
     last_users = request.get_json().get("users")
+    
     for m in messages:
         new_message = 0
         if user_name in m.receiverId and len(m.messages) > 0:
@@ -400,7 +401,6 @@ def users_message():
             last_message_time = m.messages[-1].get("timestamp") if m.messages else None
             if last_message_time:
                 last_message_time = datetime.datetime.strptime(last_message_time, "%Y/%m/%d %H:%M:%S")
-            print(last_message_time)
             users.append({
                 "name": user.data.get("first_name", "") + " " + user.data.get("last_name", ""),
                 "username": user.username,
@@ -416,15 +416,17 @@ def users_message():
     # Convert last_message_time back to string
     for user in users:
         if user["last_message_time"]:
-            user["last_message_time"] = user["last_message_time"].isoformat()
+            user["last_message_time"] = user["last_message_time"].strftime("%Y/%m/%d %H:%M:%S")
     add = []
     remove = []
     for user in users:
         if user not in last_users:
             add.append(user)
+    print(add)
     for user in last_users:
         if user not in users:
             remove.append(user)
+    print(remove)
     return jsonify({"add": add, "delete":remove})
 
 @user_bp.post("/user_message")
