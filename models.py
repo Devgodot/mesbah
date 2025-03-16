@@ -82,7 +82,7 @@ class User(db.Model):
 
 class Group(db.Model):
     id = Column(Integer, primary_key=True)
-    name = Column(db.String(20), nullable=False)
+    name = Column(db.String(20), nullable=False, index=True) # Added index=True
     score = Column(db.JSON(), nullable=False, default=0)
     diamonds = Column(db.JSON(), nullable=False, default=0)
     tag = Column(db.Integer(), nullable=False, default=0)

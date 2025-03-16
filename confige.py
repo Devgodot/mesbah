@@ -2,13 +2,14 @@ from flask import Flask
 from flask_jwt_extended import JWTManager
 from flask_sqlalchemy import SQLAlchemy
 import socket
+import os
 
 jwt = JWTManager()
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = 'your_secret_key'  # Replace with a strong secret key
 
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SECRET_KEY"] = "supersecretkey"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # Disable tracking modifications for better performance
 app.config["UPLOAD_FOLDER"] = "static/files"
 app.secret_key = 'abscd'
 
@@ -21,7 +22,6 @@ if socket.gethostname() == "mhh83":
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://pachim:haghshenas67@localhost:3306/data'
 db = SQLAlchemy(app)
-
 
 
 
