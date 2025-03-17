@@ -157,6 +157,7 @@ def whoami():
         data = {}
         for d in current_user.data.keys():
             data[d] = current_user.data.get(d)
+        if data.get("pro") is None:data["pro"] = False
         return jsonify(
             {
                 "message": "message",
