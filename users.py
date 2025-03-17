@@ -211,7 +211,10 @@ def get_user():
             data = user.data
             gender = data.get("gender", 0)
             tag = data.get("tag", 0)
-            return jsonify({"name":data.get("first_name", "") + " " + data.get("last_name", ""), "father_name":data.get("father_name", ""), "phone":user.phone, "scores":[data.get(f"score_{gender}_{tag}_{x}", 0) for x in range(3)], "diamonds":[data.get(f"diamonds{x}", 0) for x in range(3)], "icon":data.get("icon", ""), "gender":data.get("gender", 0), "tag":data.get("tag", 0)})
+            response = {"name":data.get("first_name", "") + " " + data.get("last_name", ""), "father_name":data.get("father_name", ""), "phone":user.phone, "scores":[data.get(f"score_{gender}_{tag}_{x}", 0) for x in range(3)], "diamonds":[data.get(f"diamonds{x}", 0) for x in range(3)], "icon":data.get("icon", ""), "gender":data.get("gender", 0), "tag":data.get("tag", 0)}
+            if data.get("custom_name") is not None:
+                response["custom_name"] = data.get("custom_name")
+            return jsonify(response)
         else:
             return jsonify({"message":"کاربر وجود ندارد"})
     else:
@@ -401,7 +404,7 @@ def users_message():
             last_message_time = m.messages[-1].get("timestamp") if m.messages else None
             if last_message_time:
                 last_message_time = datetime.datetime.strptime(last_message_time, "%Y/%m/%d %H:%M:%S")
-            users.append({
+            data = {
                 "name": user.data.get("first_name", "") + " " + user.data.get("last_name", ""),
                 "username": user.username,
                 "phone": user.phone,
@@ -409,7 +412,11 @@ def users_message():
                 "new": new_message,
                 "icon": user.data.get("icon", ""),
                 "last_message_time": last_message_time
-            })
+            }
+            if user.data.get("custom_name") is not None:
+                data["custom_name"] = user.data.get("custom_name")
+            users.append(data)
+            
     # Sort users by the last message time in descending order
     users.sort(key=lambda x: x["last_message_time"], reverse=True)
     
