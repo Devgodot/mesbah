@@ -156,7 +156,16 @@ def create():
 def get_group():
     group = Group.get_group_by_name(request.args.get("name", ""))
     if group is not None:
-        return jsonify({"users": [hashing(text=user, mode=HashingMode.ENCODE) for user in group.users.get("users", [])] , "leader": hashing(mode=HashingMode.ENCODE, text=group.users.get("leader", "")), "users_info": [{"name": User.get_user_by_username(username=user).data.get("first_name", "") + " " + User.get_user_by_username(username=user).data.get("last_name") + " " + User.get_user_by_username(username=user).data.get("father_name")} for user in group.users.get("users")], "icon": hashing(mode=HashingMode.ENCODE ,text=group.icon), "diamonds":group.diamonds, "scores":group.score})
+        data = {"users": [hashing(text=user, mode=HashingMode.ENCODE) for user in group.users.get("users", [])] , "leader": hashing(mode=HashingMode.ENCODE, text=group.users.get("leader", "")), "icon": hashing(mode=HashingMode.ENCODE ,text=group.icon), "diamonds":group.diamonds, "scores":group.score}
+        users_info = []
+        for username in group.users.get("users"):
+            user = User.get_user_by_username(username=username)
+            user_info = {"name":user.data.get("first_name", "") + " " + user.data.get("last_name") + " " + user.data.get("father_name")}
+            if user.data.get("custom_name") is not None:
+                user_info["custom_name"] = user.data.get("custom_name") + " " + user.data.get("father_name")
+            users_info.append(user_info)
+        data["users_info"] = users_info
+        return jsonify(data)
     return jsonify({"message": "گروه وجود ندارد"}), 400
 
 @group_bp.post("/icon")
