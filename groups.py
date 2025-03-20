@@ -156,6 +156,12 @@ def create():
 def get_group():
     group = Group.get_group_by_name(request.args.get("name", ""))
     if group is not None:
+        group_users = []
+        for u in group.users.get("users", []):
+            if u not in group_users:
+                group_users.append(u)
+        group.users["users"] = group_users
+        db.session.commit()
         data = {"users": [hashing(text=user, mode=HashingMode.ENCODE) for user in group.users.get("users", [])] , "leader": hashing(mode=HashingMode.ENCODE, text=group.users.get("leader", "")), "icon": hashing(mode=HashingMode.ENCODE ,text=group.icon), "diamonds":group.diamonds, "scores":group.score}
         users_info = []
         for username in group.users.get("users"):
