@@ -504,7 +504,7 @@ def send_message_with_media():
         filter_m = request.get_json().get("filter")
         _id = str(uuid.uuid4())
         text = request.get_json().get("text", "")
-        gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
+        gregorian_date = datetime.now(TehranTimezone())  # تاریخ میلادی فعلی
         jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
         message_data = {"text": text, "data": {"time": str(jalali_date)}, "id": _id, "sender": "پشتیبانی", "type": "guid"}
         if audio_url:
