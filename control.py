@@ -444,7 +444,7 @@ def send_message_with_media():
         image_data = request.get_json().get("imagedata")
         if imagefile is not None and allowed_file(imagefile, ALLOWED_IMAGE_EXTENSIONS):
             # Convert the list to bytes
-            if isinstance(json.loads(image_data), list):
+            if not isinstance(json.loads(image_data), list):
                 return jsonify({"error": "فرمت تصویر پشتیبانی نمی شود"}), 400
             try:
                 byte_data = bytes(json.loads(image_data))
@@ -469,7 +469,7 @@ def send_message_with_media():
             image_url = f"/static/uploads/management/{os.path.basename(save_path)}"
         elif audiofile is not None and allowed_file(audiofile, ALLOWED_AUDIO_EXTENSIONS):
             # Convert the list to bytes
-            if isinstance(json.loads(audio_data), list):
+            if not isinstance(json.loads(audio_data), list):
                 return jsonify({"error": "فرمت صدا پشتیبانی نمی شود"}), 400
             try:
                 byte_data = bytes(json.loads(audio_data))
