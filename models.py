@@ -43,6 +43,8 @@ class User(db.Model):
     username = db.Column(String(10), nullable=False, unique=True)
     phone = Column(String(11), nullable=False, default="09")
     password = db.Column(db.Text(), nullable=False)
+    tag = Column(Integer(), nullable=False, default=0)
+    gender = Column(Integer(), nullable=False, default=0)
     data = db.Column(MutableDict.as_mutable(JSON))
 
     def __repr__(self):
