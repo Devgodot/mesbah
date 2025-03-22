@@ -395,8 +395,8 @@ def delete_message():
                 os.remove(file)
         db.session.delete(message)
         db.session.commit()
-        return "پیام با موفقیت حذف شد"
-    return "پیام وجود ندارد"
+        return jsonify({"message":"پیام با موفقیت حذف شد"}), 200
+    return jsonify({"error":"پیام وجود ندارد"}), 400
 @user_bp.get("/change_tag_gender")
 def change_tag_gender():
     users = User.query.all()
