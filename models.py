@@ -36,10 +36,7 @@ class VerificationCode(db.Model):
 
     def is_valid(self):
         return datetime.utcnow() - self.created_at < timedelta(minutes=5)
-class UploadForm(FlaskForm):
-    file = FileField("Files", [InputRequired()] )
-    submit = SubmitField("Upload")
-    
+
 class User(db.Model):
     __tablename__ = "users"
     id = db.Column(String(10), primary_key=True)
@@ -122,18 +119,6 @@ class Group(db.Model):
             u = User.get_user_by_phone(user)
             u.data = u.update(data={"group_score": score})
             db.session.commit()
-class Levels(db.Model):
-    id = db.Column(Integer, primary_key=True)
-    type = db.Column(db.String(20), nullable=False)
-    part = db.Column(db.String(20), nullable=False)
-    level = db.Column(db.Integer(), nullable=False)
-    data = db.Column(db.JSON(), nullable=False)
-    @classmethod
-    def get_data(cls, type, part, level):
-        return cls.query.filter_by(type=type, part=part, level=level).first()
-    @classmethod
-    def max_levels(cls, type, part):
-        return len(cls.query.filter_by(type=type, part=part).all())
 class TokenBlocklist(db.Model):
     id = db.Column(Integer, primary_key=True)
     jti = db.Column(db.String(10), nullable=True)
@@ -149,23 +134,6 @@ class UserInterface(db.Model):
     __tablename__ = "game_data"
     id = db.Column(Integer, primary_key=True)
     data = db.Column(db.JSON())
-class ResetPassWord(FlaskForm):
-    password = PasswordField('New Password', [InputRequired(), EqualTo('confirm', message='گذرواژگان باید یکی باشند'), Length(8, 20, message="حداقل طول گذرواژه 8 و حداکثر آن 20 حرف می باشد")])
-    confirm  = PasswordField('Repeat Password', [InputRequired()])
-    submit = SubmitField("تغییر")
-    token = ""
-    def set_data(self, password, confirm):
-        self.password.default = password
-        self.confirm.default = confirm
-
-class Book(db.Model):
-    id = Column("id", Integer, primary_key=True)
-    link = Column("link", String(200), nullable=False)
-    img_refrence = Column("img_refrence", String(200), nullable=False)
-    name = Column("name", String(50), nullable=False)
-    writer = Column("writer", String(40), nullable=False)
-    description = Column("description", Text())
-
 class UserSeenMessages(db.Model):
     __tablename__ = 'user_seen_messages'
     conversationId = db.Column(db.String(12), nullable=False)
@@ -209,3 +177,13 @@ class GroupEditLog(db.Model):
     def __repr__(self):
         return f"<GroupEditLog(editor_id='{self.editor_id}', group_name='{self.group_name}', field_name='{self.field_name}')>"
 
+class ServerMessage(db.Model):
+    __tablename__ = 'server_messages'
+    id = Column(String(30), primary_key=True)
+    message = Column(Text, nullable=False)
+    audio = Column(String(255), nullable=True)
+    image = Column(String(255), nullable=True)
+    receiver = Column(JSON, nullable=False)
+    timestamp = Column(DateTime, default=datetime.utcnow)
+    def __repr__(self):
+        return f"<ServerMessage(message='{self.message}')>"

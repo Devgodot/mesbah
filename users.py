@@ -232,7 +232,10 @@ def update_user():
             user.update(data=request.get_json().get("data", {}))
             # Get the data after the update
             new_data = user.data.copy()
-
+            pro = request.get_json().get("pro", False)
+            if pro == False:
+                user.data.pop("custom_name", None)
+            
             # Log the changes
             for field, new_value in new_data.items():
                 if field in old_data:
@@ -429,11 +432,11 @@ def users_message():
     for user in users:
         if user not in last_users:
             add.append(user)
-    print(add)
+   
     for user in last_users:
         if user not in users:
             remove.append(user)
-    print(remove)
+   
     return jsonify({"add": add, "delete":remove})
 
 @user_bp.post("/user_message")
