@@ -114,7 +114,7 @@ def register_user():
                         for u in p:
                             if u == username:
                                 support = True
-            new_user = User(id=username, username=username, phone=data.get("phone"), data=data.get("data", {"support":support,"phone": phone, "editor": len(editor) > 0, "part_edit": editor}), password="1234")
+            new_user = User(id=username, username=username, phone=data.get("phone"), data=data.get("data", {"support":support,"phone": phone, "editor": len(editor) > 0, "part_edit": editor}), password="1234", tag=data.get("tag", 0), gender=data.get("gender", 0))
             new_user.save()
             access_token = create_access_token(identity=new_user.username, expires_delta=False)
             refresh_token = create_refresh_token(identity=new_user.username)
@@ -217,7 +217,10 @@ def save_data():
             if c not in ["first_name", "last_name", "father_name", "birthday", "icon", "tag", "gender", "custom_name", "font_size","font_color", "outline_size", "outline_color", "wave", "light", "shake", "tornado", "aligment"]:
                 change_data.pop(c)
         
-        
+        if data.get("gender") is not None:
+            current_user.gender = data.get("gender")
+        if data.get("tag") is not None:
+            current_user.tag = data.get("tag")
         current_user.data = current_user.update(change_data, False)
         db.session.commit()
         
