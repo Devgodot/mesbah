@@ -1,6 +1,6 @@
 from flask import request, Blueprint, jsonify
 from flask_jwt_extended import jwt_required, get_jwt, current_user
-from models import User, UserInterface, Group, Messages, UserSeenMessages, UserEditLog  # Import UserEditLog
+from models import User, UserInterface, Group, Messages, UserSeenMessages, UserEditLog, ServerMessage  # Import UserEditLog
 from schemas import UserSchema
 from sqlalchemy import desc, text
 from confige import db
@@ -336,15 +336,67 @@ def server_message():
 
 @user_bp.post("/delete_message")
 def delete_message():
-    for user in User.query.all():
-        message = user.data.get("message", [])
-        for m in message:
-            if m.get("id", "") == request.get_json().get("id"):
-                message.remove(m)
-        user.data = user.update(data={"message":message})
+    message = ServerMessage.query.filter_by(id=request.get_json().get("id")).first()
+    if message is not None:
+        receiver = message.receiver
+        if isinstance(receiver.get("users"), str) and receiver.get("users") == "all":
+            tags = receiver.get("filter", {}).get("tags", [])
+            if len(tags) > 0:
+                for t in tags:
+                    if receiver.get("filter", {}).get("gender") is None:
+                        for user in User.query.filter_by(tag=t).all():
+                            m = user.data.get("message", [])
+                            for i in m:
+                                if i.get("id") == request.get_json().get("id"):
+                                    m.remove(i)
+                            user.data = user.update(data={"message":m})
+                            db.session.commit()
+                    else:
+                        for user in User.query.filter_by(tag=t, gender=receiver.get("filter", {}).get("gender")).all():
+                            m = user.data.get("message", [])
+                            for i in m:
+                                if i.get("id") == request.get_json().get("id"):
+                                    m.remove(i)
+                            user.data = user.update(data={"message":m})
+                            db.session.commit()
+            else:
+                if receiver.get("filter", {}).get("gender") is None:
+                    for user in User.query.all():
+                        m = user.data.get("message", [])
+                        for i in m:
+                            if i.get("id") == request.get_json().get("id"):
+                                m.remove(i)
+                        user.data = user.update(data={"message":m})
+                        db.session.commit()
+                else:
+                    for user in User.query.filter_by(gender=receiver.get("filter", {}).get("gender")).all():
+                        m = user.data.get("message", [])
+                        for i in m:
+                            if i.get("id") == request.get_json().get("id"):
+                                m.remove(i)
+                        user.data = user.update(data={"message":m})
+                        db.session.commit()
+        if isinstance(receiver.get("users", list)):
+            for user in receiver.get("users"):
+                user = User.get_user_by_username(user)
+                m = user.data.get("message", [])
+                for i in m:
+                    if i.get("id") == request.get_json().get("id"):
+                        m.remove(i)
+                user.data = user.update(data={"message":m})
+                db.session.commit()
+        if message.audio is not None:
+            file = os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config["UPLOAD_FOLDER"], "management", os.path.basename(message.audio))
+            if os.path.exists(file):
+                os.remove(file)
+        if message.image is not None:
+            file = os.path.join(os.path.abspath(os.path.dirname(__file__)), app.config["UPLOAD_FOLDER"], "management", os.path.basename(message.image))
+            if os.path.exists(file):
+                os.remove(file)
+        db.session.delete(message)
         db.session.commit()
-        
-    return "پیام با موفقیت حذف شد"
+        return "پیام با موفقیت حذف شد"
+    return "پیام وجود ندارد"
 @user_bp.get("/change_tag_gender")
 def change_tag_gender():
     users = User.query.all()
