@@ -7,7 +7,7 @@ from wtforms import FileField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, EqualTo, Length
 from sqlalchemy.ext.mutable import MutableDict
 from sqlalchemy.orm import relationship
-from khayam import TehranTimeZone
+from khayyam import TehranTimezone
 from datetime import datetime, timedelta
 
 class Messages(db.Model):
@@ -16,8 +16,8 @@ class Messages(db.Model):
     conversationId = db.Column(db.String(12), nullable=False)
     receiverId = db.Column(db.JSON, nullable=False)
     messages = db.Column(db.JSON, nullable=False)
-    createdAt = db.Column(db.DateTime, default=datetime.now(TehranTimeZone()))
-    updatedAt = db.Column(db.DateTime, default=datetime.now(TehranTimeZone()))
+    createdAt = db.Column(db.DateTime, default=datetime.now(TehranTimezone()))
+    updatedAt = db.Column(db.DateTime, default=datetime.now(TehranTimezone()))
 
     def to_dict(self):
         return {
@@ -32,10 +32,10 @@ class VerificationCode(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     phone = db.Column(db.String(11), nullable=False)
     code = db.Column(db.String(4), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now(TehranTimeZone()))
+    created_at = db.Column(db.DateTime, default=datetime.now(TehranTimezone()))
 
     def is_valid(self):
-        return datetime.now(TehranTimeZone()) - self.created_at < timedelta(minutes=5)
+        return datetime.now(TehranTimezone()) - self.created_at < timedelta(minutes=5)
 
 class User(db.Model):
     __tablename__ = "users"
@@ -124,7 +124,7 @@ class Group(db.Model):
 class TokenBlocklist(db.Model):
     id = db.Column(Integer, primary_key=True)
     jti = db.Column(db.String(10), nullable=True)
-    create_at = db.Column(db.DateTime(), default=datetime.now(TehranTimeZone()))
+    create_at = db.Column(db.DateTime(), default=datetime.now(TehranTimezone()))
 
     def __repr__(self):
         return f"<Token {self.jti}>"
@@ -142,7 +142,7 @@ class UserSeenMessages(db.Model):
     id = Column(Integer, primary_key=True)
     user_id = db.Column(db.String(10))
     message_id = db.Column(db.String(255))
-    timestamp = db.Column(db.DateTime, default=datetime.now(TehranTimeZone()))
+    timestamp = db.Column(db.DateTime, default=datetime.now(TehranTimezone()))
 
     def __repr__(self):
         return f"<UserSeenMessages(user_id='{self.user_id}', message_id='{self.message_id}')>"
@@ -152,7 +152,7 @@ class UserEditLog(db.Model):
     id = Column(Integer, primary_key=True)
     editor_id = Column(String(10), ForeignKey('users.id'))  # ID of the editor
     target_user_id = Column(String(10), ForeignKey('users.id'))  # ID of the user being edited
-    timestamp = Column(DateTime, default=datetime.now(TehranTimeZone()))
+    timestamp = Column(DateTime, default=datetime.now(TehranTimezone()))
     field_name = Column(String(50))  # Name of the field that was changed
     old_value = Column(Text)  # Previous value
     new_value = Column(Text)  # New value
@@ -168,7 +168,7 @@ class GroupEditLog(db.Model):
     id = Column(Integer, primary_key=True)
     editor_id = Column(String(10), ForeignKey('users.id'))  # ID of the editor
     group_name = Column(String(20), ForeignKey('group.name'))  # ID of the group being edited
-    timestamp = Column(DateTime, default=datetime.now(TehranTimeZone()))
+    timestamp = Column(DateTime, default=datetime.now(TehranTimezone()))
     field_name = Column(String(50))  # Name of the field that was changed
     old_value = Column(Text)  # Previous value
     new_value = Column(Text)  # New value
@@ -186,6 +186,6 @@ class ServerMessage(db.Model):
     audio = Column(String(255), nullable=True)
     image = Column(String(255), nullable=True)
     receiver = Column(JSON, nullable=False)
-    timestamp = Column(DateTime, default=datetime.now(TehranTimeZone()))
+    timestamp = Column(DateTime, default=datetime.now(TehranTimezone()))
     def __repr__(self):
         return f"<ServerMessage(message='{self.message}')>"
