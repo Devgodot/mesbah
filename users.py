@@ -3,8 +3,8 @@ from flask_jwt_extended import jwt_required, get_jwt, current_user
 from models import User, UserInterface, Group, Messages, UserSeenMessages, UserEditLog, ServerMessage  # Import UserEditLog
 from schemas import UserSchema
 from sqlalchemy import desc, text
-from confige import db
-import time, uuid
+from confige import db, app
+import time, uuid, os
 import datetime, json
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
 
@@ -376,7 +376,7 @@ def delete_message():
                                 m.remove(i)
                         user.data = user.update(data={"message":m})
                         db.session.commit()
-        if isinstance(receiver.get("users", list)):
+        if isinstance(receiver.get("users"), list):
             for user in receiver.get("users"):
                 user = User.get_user_by_username(user)
                 m = user.data.get("message", [])
