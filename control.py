@@ -437,6 +437,7 @@ def allowed_file(filename, allowed_extensions):
 @jwt_required()
 def send_message_with_media():
     if current_user.username in UserInterface.query.first().data.get("management", []):
+        print(0)
         audio_url = None
         image_url = None
         # دریافت داده‌ها
