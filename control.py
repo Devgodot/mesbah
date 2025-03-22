@@ -437,6 +437,8 @@ def allowed_file(filename, allowed_extensions):
 @jwt_required()
 def send_message_with_media():
     if current_user.username in UserInterface.query.first().data.get("management", []):
+        audio_url = None
+        image_url = None
         # دریافت داده‌ها
         audiofile = request.get_json().get("audioname")
         audio_data = request.get_json().get("audiodata")
@@ -495,10 +497,7 @@ def send_message_with_media():
         else:
             if audiofile is not None or imagefile is not None:
                 return jsonify({"error": "فرمت فایل پشتیبانی نمی‌شود"}), 400
-        if audiofile is None:
-            audio_url = None
-        if imagefile is None:
-            image_url = None
+        
         
         users = request.get_json().get("users")
         filter_m = request.get_json().get("filter")
