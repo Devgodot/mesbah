@@ -345,7 +345,14 @@ def delete_message():
         db.session.commit()
         
     return "پیام با موفقیت حذف شد"
-
+@user_bp.get("/change_tag_gender")
+def change_tag_gender():
+    users = User.query.all()
+    for user in users:
+        user.tag = user.data.get("tag", 0)
+        user.gender = user.data.get("gender", 0)
+    db.session.commit()
+    return "تغییرات اعمال شد"
 @user_bp.get("/check")
 @jwt_required()
 def check():
