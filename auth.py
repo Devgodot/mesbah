@@ -11,7 +11,7 @@ from flask_jwt_extended import (
 )
 from random import randint
 import random, os, shutil
-from models import User, TokenBlocklist, UserInterface, Levels, Group, VerificationCode, Messages, UserSeenMessages
+from models import User, TokenBlocklist, UserInterface, Group, VerificationCode, Messages, UserSeenMessages
 import json
 from datetime import datetime, timedelta
 
@@ -83,6 +83,9 @@ def register_user():
             return jsonify({"message": "username incorrect"})
         user_p = User.get_user_by_username(username=username)
         if user_p is not None:
+            block = user_p.data.get("block", False)
+            if block:
+                return jsonify({"error":"شما مسدود شده اید"}), 400
             user = User.get_user_by_username(username=username)
             access_token = create_access_token(identity=user.username, expires_delta=False)
             refresh_token = create_refresh_token(identity=user.username)
@@ -128,7 +131,9 @@ def register_user():
 @jwt_required()
 def whoami():
     if "GodotEngine" in request.headers.get("User-Agent"):
-        
+        block = current_user.data.get("block", False)
+        if block:
+            return jsonify({"error":"شما بلاک شده اید"}), 400
         editors = {}
         for e in UserInterface.query.first().data.keys():
             if "editor" in e:
@@ -152,6 +157,13 @@ def whoami():
                     message = Messages(conversationId=current_user.username+"_"+str(x), messages=[], receiverId=supporters)
                     db.session.add(message)
                     db.session.commit()
+        sended_message = current_user.data.get("users_sended_message", [])
+        for u in sended_message:
+            group = Group.get_group_by_name(current_user.data.get("group_name", ""))
+            if group is not None:
+                if u in group.users.get("users", []):
+                    current_user.data.get("users_sended_message", []).remove(u)
+            current_user.update(data={"user_sended_message":sended_message})
         current_user.update(data={"editor":len(editor) > 0, "part_edit":editor, "support":support})
         db.session.commit()
         data = {}
