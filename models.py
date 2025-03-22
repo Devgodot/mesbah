@@ -179,7 +179,7 @@ class GroupEditLog(db.Model):
 
 class ServerMessage(db.Model):
     __tablename__ = 'server_messages'
-    id = Column(String(30), primary_key=True)
+    id = Column(String(100), primary_key=True)
     message = Column(Text, nullable=False)
     audio = Column(String(255), nullable=True)
     image = Column(String(255), nullable=True)
