@@ -469,7 +469,7 @@ def send_message_with_media():
             save_path = os.path.join(path, f"{time.strftime('%Y%m%d%H%M%S')}.webp")
             image.save(save_path, "webp")
             image_url = f"https://messbah403.ir/static/files/management/{os.path.basename(save_path)}"
-        elif audiofile is not None and allowed_file(audiofile, ALLOWED_AUDIO_EXTENSIONS):
+        if audiofile is not None and allowed_file(audiofile, ALLOWED_AUDIO_EXTENSIONS):
             # Convert the list to bytes
             if not isinstance(json.loads(audio_data), list):
                 return jsonify({"error": "فرمت صدا پشتیبانی نمی شود"}), 400
