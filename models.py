@@ -32,10 +32,10 @@ class VerificationCode(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     phone = db.Column(db.String(11), nullable=False)
     code = db.Column(db.String(4), nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now(TehranTimezone()))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow())
 
     def is_valid(self):
-        return datetime.now(TehranTimezone()) - self.created_at < timedelta(minutes=5)
+        return datetime.utcnow() - self.created_at < timedelta(minutes=5)
 
 class User(db.Model):
     __tablename__ = "users"
