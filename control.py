@@ -466,7 +466,7 @@ def send_message_with_media():
             time = datetime.now(TehranTimezone())
             save_path = os.path.join(path, f"{time.strftime('%Y%m%d%H%M%S')}.webp")
             image.save(save_path, "webp")
-            image_url = f"/static/uploads/management/{os.path.basename(save_path)}"
+            image_url = f"https://messbah403.ir/static/uploads/management/{os.path.basename(save_path)}"
         elif audiofile is not None and allowed_file(audiofile, ALLOWED_AUDIO_EXTENSIONS):
             # Convert the list to bytes
             if not isinstance(json.loads(audio_data), list):
@@ -491,7 +491,7 @@ def send_message_with_media():
             time = datetime.now(TehranTimezone())
             save_path = os.path.join(path, f"{time.strftime('%Y%m%d%H%M%S')}.mp3")
             audio.export(save_path, format="mp3")
-            audio_url = f"/static/uploads/management/{os.path.basename(save_path)}"
+            audio_url = f"https://messbah403.ir/static/uploads/management/{os.path.basename(save_path)}"
         else:
             if audiofile is not None or imagefile is not None:
                 return jsonify({"error": "فرمت فایل پشتیبانی نمی‌شود"}), 400
