@@ -571,3 +571,12 @@ def send_message_with_media():
         return jsonify({"message": "پیام با موفقیت ارسال شد"}), 200
     else:
         return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
+@control_bp.get("/get_messages")
+@jwt_required()
+def get_messages():
+    messages = ServerMessage.query.all()
+    data = []
+    for message in messages:
+        jalali_date = JalaliDatetime(message.timestamp)
+        data.append({"id":message.id, "text":message.message, "receiver":message.sender, "time":str(jalali_date), "receiver":message.receiver})
+    return jsonify({"data":data}), 200
