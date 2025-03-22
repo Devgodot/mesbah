@@ -506,7 +506,7 @@ def send_message_with_media():
         text = request.get_json().get("text", "")
         gregorian_date = datetime.now(TehranTimezone())  # تاریخ میلادی فعلی
         jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
-        
+        message_data = {"text": text, "data": {"time": str(jalali_date)}, "id": _id, "sender": "پشتیبانی", "type": "guid"}
         if audio_url:
             message_data["sound"] = audio_url
         if image_url:
