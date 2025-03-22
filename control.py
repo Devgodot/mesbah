@@ -506,12 +506,12 @@ def send_message_with_media():
         text = request.get_json().get("text", "")
         gregorian_date = datetime.now(TehranTimezone())  # تاریخ میلادی فعلی
         jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
-        message_data = {"text": text, "data": {"time": str(jalali_date)}, "id": _id}
+        
         if audio_url:
             message_data["sound"] = audio_url
         if image_url:
             message_data["image"] = image_url
-        server_message = ServerMessage(id=_id, image=image_url, audio=audio_url, message=text, receiver={"users": users, "filter": filter_m}, sender="پشتیبانی", time=str(jalali_date))
+        server_message = ServerMessage(id=_id, image=image_url, audio=audio_url, message=text, receiver={"users": users, "filter": filter_m})
         db.session.add(server_message)
         db.session.commit()
         # Check the type of 'users' variable
