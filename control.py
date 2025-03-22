@@ -578,5 +578,5 @@ def get_messages():
     data = []
     for message in messages:
         jalali_date = JalaliDatetime(message.timestamp)
-        data.append({"id":message.id, "text":message.message, "receiver":message.sender, "time":str(jalali_date), "receiver":message.receiver})
+        data.append({"id":message.id, "text":message.message, "time":str(jalali_date), "receiver":message.receiver})
     return jsonify({"data":data}), 200
