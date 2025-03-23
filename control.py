@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request, current_app
 from flask_caching import Cache
 from confige import db, app
+from schemas import UserSchema, GroupSchema
 from flask_jwt_extended import current_user, jwt_required
 from random import randint
 import random, os, shutil
@@ -507,7 +508,7 @@ def send_message_with_media():
         text = request.get_json().get("text", "")
         gregorian_date = datetime.now(TehranTimezone())  # تاریخ میلادی فعلی
         jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
-        message_data = {"text": text, "data": {"time": str(jalali_date)}, "id": _id, "sender": "پشتیبانی", "type": "guid"}
+        message_data = {"text": text, "data": {"time": str(jalali_date)}, "id": _id, "sender": "پشتیبانی", "type": request.get_json().get("type", "guid")}
         if audio_url:
             message_data["sound"] = audio_url
         if image_url:
@@ -592,7 +593,7 @@ def sort_users():
         page = request.args.get("page", default=1, type=int)
         per_page = request.args.get("per_page")
         users = User.query.all()
-        if per_page is None or per_page == 0:
+        if per_page is None or int(per_page) == 0:
             per_page = len(users)
         else:
             per_page = int(float(per_page))
@@ -600,8 +601,9 @@ def sort_users():
         for user in users:
             if sort and sort != [''] and  all(user.data.get(k) is not None for k in sort):
                 u.append(user)
-        if not sort or sort == ['']:
-            u = users
+            elif not sort or sort == ['']:
+                return jsonify({"error": "لطفا فیلتری برای مرتب سازی انتخاب کنید"}), 400
+        
         if sort and sort != []:
             u.sort(key=lambda user: tuple(user.data.get(k) for k in sort), reverse=True)
         u2 = []
@@ -635,6 +637,64 @@ def sort_users():
                 200,
             )
         else:
-            return jsonify({"message": "چنین رتبه بندی وجود ندارد"})
+            return jsonify({"error": "چنین رتبه بندی وجود ندارد"})
+    else:
+        return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
+@control_bp.get("/sort_group")
+@jwt_required()
+def sort_group():
+    if current_user.username in UserInterface.query.first().data.get("management", []):
+        filter_data = []
+        if request.args.get("filter"):
+            filter_data = request.args.get("filter").split("AND")
+        page = request.args.get("page", default=1, type=int)
+        per_page = request.args.get("per_page")
+        groups = Group.query.filter_by(gender=request.args.get("gender", 0, int), tag=request.args.get("tag", 0, int)).all()
+       
+        if per_page is None or int(per_page) == 0:
+            per_page = len(groups)
+        else:
+            per_page = int(float(per_page))
+        
+        groups.sort(key=lambda group: (sum(group.diamonds.values()), sum(group.score.values())), reverse=True)
+        u2 = []
+        for x, group in enumerate(groups):
+            if x >= (page - 1) * per_page and x < page * per_page:
+                u2.append(group)
+        print(u2)
+        previous_score = None
+        current_position = 0
+        for index, group in enumerate(u2):
+            current_score = (sum(group.diamonds.values()), sum(group.score.values()))
+            if current_score != previous_score:
+                current_position = index + 1
+            group.position = current_position
+            group.score = sum(group.score.values())
+            group.diamonds = sum(group.diamonds.values())
+            if filter_data:
+                for username in group.users.get("users", []):
+                    user = User.get_user_by_username(username=username)
+                    d = {}
+                    for key in filter_data:
+                        k = key
+                        if user.data.get(k) is not None:
+                            d[key] = user.data.get(k)
+                    user.data = d
+                    user.data["username"] = username
+                    user.data["phone"] = user.phone
+                    group.users["users"][group.users.get("users", []).index(username)] = user.data
+            previous_score = current_score
+        result = GroupSchema().dump(u2, many=True)
+        if len(u2) > 0:
+            return (
+                jsonify(
+                    {
+                        "groups": result,
+                    }
+                ),
+                200,
+            )
+        else:
+            return jsonify({"error": "چنین رتبه بندی وجود ندارد"})
     else:
         return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
