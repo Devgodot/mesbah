@@ -88,7 +88,7 @@ def get_all_users():
     gender = current_user.data.get("gender", 0)
     tag = current_user.data.get("tag", 0)
     users = User.query.all()
-    if per_page is None:
+    if per_page is None or per_page == 0:
         per_page = len(users)
     else:
         per_page = int(float(per_page))
