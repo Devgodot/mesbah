@@ -75,6 +75,8 @@ def register_user():
     phone = data.get("phone")
     code = data.get("code")
     verification_code = VerificationCode.query.filter_by(phone=phone, code=code).first()
+    print(verification_code.is_valid())
+    print(verification_code)
     if verification_code and verification_code.is_valid():
         db.session.delete(verification_code)
         db.session.commit()
