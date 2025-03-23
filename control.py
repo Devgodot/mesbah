@@ -581,9 +581,9 @@ def get_messages():
         data.append({"id":message.id, "text":message.message, "time":str(jalali_date), "receiver":message.receiver})
     return jsonify({"data":data}), 200
 
-@control_bp.get("/sort")
+@control_bp.get("/sort_users")
 @jwt_required()
-def sort():
+def sort_users():
     if current_user.username in UserInterface.query.first().data.get("management", []):
         filter_data = []
         if request.args.get("filter"):
