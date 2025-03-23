@@ -580,3 +580,61 @@ def get_messages():
         jalali_date = JalaliDatetime(message.timestamp)
         data.append({"id":message.id, "text":message.message, "time":str(jalali_date), "receiver":message.receiver})
     return jsonify({"data":data}), 200
+
+@control_bp.get("/sort")
+@jwt_required()
+def sort():
+    if current_user.username in UserInterface.query.first().data.get("management", []):
+        filter_data = []
+        if request.args.get("filter"):
+            filter_data = request.args.get("filter").split("AND")
+        sort = request.args.get("sort", "").split("AND")
+        page = request.args.get("page", default=1, type=int)
+        per_page = request.args.get("per_page")
+        users = User.query.all()
+        if per_page is None or per_page == 0:
+            per_page = len(users)
+        else:
+            per_page = int(float(per_page))
+        u = []
+        for user in users:
+            if sort and sort != [''] and  all(user.data.get(k) is not None for k in sort):
+                u.append(user)
+        if not sort or sort == ['']:
+            u = users
+        if sort and sort != []:
+            u.sort(key=lambda user: tuple(user.data.get(k) for k in sort), reverse=True)
+        u2 = []
+        for x, user in enumerate(u):
+            if x >= (page - 1) * per_page and x < page * per_page:
+                u2.append(user)
+        if filter_data:
+            for user in u2:
+                d = {}
+                for key in filter_data:
+                    k = key
+                    if user.data.get(k) is not None:
+                        d[key] = user.data.get(k)
+                user.data = d
+        previous_score = None
+        current_position = 0
+        for index, user in enumerate(u2):
+            current_score = tuple(user.data.get(k) for k in sort)
+            if current_score != previous_score:
+                current_position = index + 1
+            user.data['position'] = current_position
+            previous_score = current_score
+        result = UserSchema().dump(u2, many=True)
+        if len(u2) > 0:
+            return (
+                jsonify(
+                    {
+                        "users": result,
+                    }
+                ),
+                200,
+            )
+        else:
+            return jsonify({"message": "چنین رتبه بندی وجود ندارد"})
+    else:
+        return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
