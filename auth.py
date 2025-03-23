@@ -170,6 +170,9 @@ def whoami():
         for d in current_user.data.keys():
             data[d] = current_user.data.get(d)
         if data.get("pro") is None:data["pro"] = False
+        if current_user.username in UserInterface.query.first().data.get("management", []): data["management"] = True 
+        else: data["management"] = False
+        data["update_version"] = UserInterface.query.first().data.get("update_version", "")
         return jsonify(
             {
                 "message": "message",
