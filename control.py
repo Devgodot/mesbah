@@ -348,8 +348,8 @@ def change_user():
         score_0 = current_user.data.get(f"score_{last_gender}_{last_tag}_0", 0)
         score_1 = current_user.data.get(f"score_{last_gender}_{last_tag}_1", 0)
         score_2 = current_user.data.get(f"score_{last_gender}_{last_tag}_2", 0)
-        user.tag = tag
-        user.gender = gender
+        user.tag = tag if tag is not None else last_tag
+        user.gender = gender if gender is not None else last_gender
         user.update(data={"message":user_join_messages, "group_name":"", "users_request":[], "tag": tag if tag is not None else user.data.get("tag"), "gender": gender if gender is not None else user.data.get("gender"), f"score_{gender}_{tag}": score, f"score_{gender}_{tag}_0": score_0, f"score_{gender}_{tag}_1": score_1, f"score_{gender}_{tag}_2": score_2})
         user.data.pop(f"score_{last_gender}_{last_tag}", None)
         user.data.pop(f"score_{last_gender}_{last_tag}_0", None)
