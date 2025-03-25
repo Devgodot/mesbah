@@ -77,16 +77,18 @@ def register_user():
     verification_code = VerificationCode.query.filter_by(phone=phone, code=code).first()
     
     if verification_code:
-        db.session.delete(verification_code)
-        db.session.commit()
+        
         username = data.get("id", "")
         if len(username) != 10:
-            return jsonify({"message": "username incorrect"})
+            return jsonify({"error": "username incorrect"}, 400)
         user_p = User.get_user_by_username(username=username)
         if user_p is not None:
             block = user_p.data.get("block", False)
             if block:
-                return jsonify({"error":"شما مسدود شده اید"}), 400
+                print(0)
+                return jsonify({"error":"شما مسدود شده اید"}, 400)
+            db.session.delete(verification_code)
+            db.session.commit()
             user = User.get_user_by_username(username=username)
             access_token = create_access_token(identity=user.username, expires_delta=False)
             refresh_token = create_refresh_token(identity=user.username)
@@ -99,7 +101,7 @@ def register_user():
         else:
             phone: str = data.get("phone")
             if not phone.startswith("09") or len(phone) != 11:
-                return jsonify({"error": "فرمت شماره نامعتبر است"})
+                return jsonify({"error": "فرمت شماره نامعتبر است"}, 400)
             editors = {}
             for e in UserInterface.query.first().data.keys():
                 if "editor" in e:
