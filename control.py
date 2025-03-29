@@ -323,7 +323,7 @@ def change_user():
                 remove_event.append(message.get("data", {"user":""}).get("user"))
                 user_join_messages.remove(message)
         group_name = user.data.get("group_name", "")
-        group = Group.get_group_by_name(group_name)
+        group = Group.get_group_by_name(name=group_name)
         if group is not None:
             group.users.get("users", []).remove(user.username)
             if len(group.users.get("users", [])) == 0:
