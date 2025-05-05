@@ -87,15 +87,23 @@ def recognize():
     known_names = []
     # فرض: تصاویر در پوشه faces کنار این اسکریپت هستند
     for file in os.listdir('static/files/faces'):
-        if file.endswith('.png'):
+        if file.endswith('.webp'):
             img = face_recognition.load_image_file(f'static/files/faces/{file}')
             enc = face_recognition.face_encodings(img)
             if enc:
                 known_encodings.append(enc[0])
                 known_names.append(file)
-    data = request.json
-    img_data = base64.b64decode(data['image'])
-    nparr = np.frombuffer(img_data, np.uint8)
+    file_data = request.get_json().get("data", "")
+    if not isinstance(json.loads(file_data), list):
+        return jsonify({"error": "Invalid data format"}), 400
+
+    # Convert the list to bytes
+    try:
+        byte_data = bytes(json.loads(file_data))
+    except ValueError as e:
+        current_app.logger.error(f"Error converting list to bytes: {e}")
+        return jsonify({"error": "Error converting list to bytes"}), 400
+    nparr = np.frombuffer(byte_data, np.uint8)
     img = face_recognition.load_image_file(nparr)
     encodings = face_recognition.face_encodings(img)
     if not encodings:
