@@ -103,8 +103,15 @@ def recognize():
     except ValueError as e:
         current_app.logger.error(f"Error converting list to bytes: {e}")
         return jsonify({"error": "Error converting list to bytes"}), 400
-    nparr = np.frombuffer(byte_data, np.uint8)
-    img = face_recognition.load_image_file(nparr)
+
+    # تبدیل داده به تصویر و آرایه numpy
+    try:
+        image = Image.open(io.BytesIO(byte_data))
+        img = np.array(image)
+    except Exception as e:
+        current_app.logger.error(f"Error loading image: {e}")
+        return jsonify({"error": "Error loading image"}), 400
+
     encodings = face_recognition.face_encodings(img)
     if not encodings:
         return jsonify({'result': 'no_face'})
