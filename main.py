@@ -18,6 +18,9 @@ import binascii
 import numpy as np
 from PIL import Image
 import io
+import face_recognition
+
+
 
 def post_request(url, payload={}, custom_header={}):
     headers = {
@@ -76,6 +79,32 @@ def download_file():
         else:
             return jsonify({"message": "File not found"}), 404
     return "شما اجازه دسترسی ندارید", 400
+
+@app.route('/recognize', methods=['POST'])
+def recognize():
+    # بارگذاری تصاویر چهره‌های ذخیره‌شده و استخراج ویژگی‌ها
+    known_encodings = []
+    known_names = []
+    # فرض: تصاویر در پوشه faces کنار این اسکریپت هستند
+    for file in os.listdir('static/files/faces'):
+        if file.endswith('.png'):
+            img = face_recognition.load_image_file(f'static/files/faces/{file}')
+            enc = face_recognition.face_encodings(img)
+            if enc:
+                known_encodings.append(enc[0])
+                known_names.append(file)
+    data = request.json
+    img_data = base64.b64decode(data['image'])
+    nparr = np.frombuffer(img_data, np.uint8)
+    img = face_recognition.load_image_file(nparr)
+    encodings = face_recognition.face_encodings(img)
+    if not encodings:
+        return jsonify({'result': 'no_face'})
+    for i, known in enumerate(known_encodings):
+        matches = face_recognition.compare_faces([known], encodings[0])
+        if matches[0]:
+            return jsonify({'result': 'matched', 'name': known_names[i]})
+    return jsonify({'result': 'not_matched'})
 
 @app.route('/ListFiles', methods=['GET'])
 def get_files():
