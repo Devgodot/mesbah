@@ -118,10 +118,13 @@ def recognize():
     encodings = face_recognition.face_encodings(img)
     if not encodings:
         return jsonify({'result': 'no_face'})
-    for i, known in enumerate(known_encodings):
-        matches = face_recognition.compare_faces([known], encodings[0])
-        if matches[0]:
-            return jsonify({'result': 'matched', 'name': known_names[i]})
+    # دقت بالاتر با tolerance کمتر و بررسی همه چهره‌ها
+    tolerance = 0.45
+    for idx_enc, enc in enumerate(encodings):
+        for i, known in enumerate(known_encodings):
+            match = face_recognition.compare_faces([known], enc, tolerance=tolerance)
+            if match[0]:
+                return jsonify({'result': 'matched', 'name': known_names[i]})
     return jsonify({'result': 'not_matched'})
 
 @app.route('/ListFiles', methods=['GET'])
