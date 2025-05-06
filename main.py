@@ -102,8 +102,15 @@ def recognize():
         img_path = os.path.join(path, "_temp_input_image.webp")
         image.save(img_path, format='webp')
     except Exception as e:
-        current_app.logger.error(f"Error loading image: {e}")
+        current_app.logger.error(f"Error loading image: {e}, data length: {len(byte_data)}")
         return jsonify({"error": "Error loading image"}), 400
+
+    # بررسی ابعاد تصویر
+    if image.mode not in ["RGB", "L"]:
+        current_app.logger.error(f"Unsupported image mode: {image.mode}")
+        os.remove(img_path)
+        return jsonify({"error": "Unsupported image mode"}), 400
+
     # مقایسه با deepface و مدل arcface
     for idx, known_file in enumerate(known_names):
         try:
