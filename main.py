@@ -80,7 +80,7 @@ def download_file():
         else:
             return jsonify({"message": "File not found"}), 404
     return "شما اجازه دسترسی ندارید", 400
-
+@jwt_required()
 @app.route('/recognize', methods=['POST'])
 def recognize():
     # بارگذاری تصاویر چهره‌های ذخیره‌شده و استخراج ویژگی‌ها
