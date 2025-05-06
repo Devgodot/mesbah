@@ -85,14 +85,17 @@ def recognize():
     # بارگذاری تصاویر چهره‌های ذخیره‌شده و استخراج ویژگی‌ها
     known_encodings = []
     known_names = []
+    path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "faces")
     # فرض: تصاویر در پوشه faces کنار این اسکریپت هستند
-    for file in os.listdir('static/files/faces'):
+    for file in os.listdir(path):
         if file.endswith('.webp'):
-            img = face_recognition.load_image_file(f'static/files/faces/{file}')
+            img = face_recognition.load_image_file(os.join(path, file))
             enc = face_recognition.face_encodings(img)
+            print(enc)
             if enc:
                 known_encodings.append(enc[0])
                 known_names.append(file)
+    print(known_names)
     file_data = request.get_json().get("data", "")
     if not isinstance(json.loads(file_data), list):
         return jsonify({"error": "Invalid data format"}), 400
