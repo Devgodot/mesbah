@@ -19,6 +19,7 @@ import numpy as np
 from PIL import Image
 import io
 import face_recognition
+from deepface import DeepFace
 
 
 
@@ -83,48 +84,37 @@ def download_file():
 @app.route('/recognize', methods=['POST'])
 def recognize():
     # بارگذاری تصاویر چهره‌های ذخیره‌شده و استخراج ویژگی‌ها
-    known_encodings = []
     known_names = []
     path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "faces")
-    # فرض: تصاویر در پوشه faces کنار این اسکریپت هستند
     for file in os.listdir(path):
         if file.endswith('.webp'):
-            img = face_recognition.load_image_file(os.path.join(path, file))
-            enc = face_recognition.face_encodings(img)
-            print(enc)
-            if enc:
-                known_encodings.append(enc[0])
-                known_names.append(file)
-    print(known_names)
+            known_names.append(file)
     file_data = request.get_json().get("data", "")
     if not isinstance(json.loads(file_data), list):
         return jsonify({"error": "Invalid data format"}), 400
-
-    # Convert the list to bytes
     try:
         byte_data = bytes(json.loads(file_data))
     except ValueError as e:
         current_app.logger.error(f"Error converting list to bytes: {e}")
         return jsonify({"error": "Error converting list to bytes"}), 400
-
-    # تبدیل داده به تصویر و آرایه numpy
     try:
         image = Image.open(io.BytesIO(byte_data))
-        img = np.array(image)
+        img_path = os.path.join(path, "_temp_input_image.webp")
+        image.save(img_path, format='webp')
     except Exception as e:
         current_app.logger.error(f"Error loading image: {e}")
         return jsonify({"error": "Error loading image"}), 400
-
-    encodings = face_recognition.face_encodings(img)
-    if not encodings:
-        return jsonify({'result': 'no_face'})
-    # دقت بالاتر با tolerance کمتر و بررسی همه چهره‌ها
-    tolerance = 0.45
-    for idx_enc, enc in enumerate(encodings):
-        for i, known in enumerate(known_encodings):
-            match = face_recognition.compare_faces([known], enc, tolerance=tolerance)
-            if match[0]:
-                return jsonify({'result': 'matched', 'name': known_names[i]})
+    # مقایسه با deepface و مدل arcface
+    for idx, known_file in enumerate(known_names):
+        try:
+            result = DeepFace.verify(img1_path=img_path, img2_path=os.path.join(path, known_file), model_name='ArcFace', enforce_detection=False)
+            if result['verified']:
+                os.remove(img_path)
+                return jsonify({'result': 'matched', 'name': known_file})
+        except Exception as e:
+            current_app.logger.error(f"DeepFace error: {e}")
+            continue
+    os.remove(img_path)
     return jsonify({'result': 'not_matched'})
 
 @app.route('/ListFiles', methods=['GET'])
