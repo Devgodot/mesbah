@@ -18,7 +18,7 @@ import binascii
 import numpy as np
 from PIL import Image
 import io
-import face_recognition
+
 from deepface import DeepFace
 
 
