@@ -107,7 +107,7 @@ def recognize():
     # مقایسه با deepface و مدل arcface
     for idx, known_file in enumerate(known_names):
         try:
-            result = DeepFace.verify(img1_path=img_path, img2_path=os.path.join(path, known_file), model_name='ArcFace', enforce_detection=False)
+            result = DeepFace.verify(img1_path=img_path, img2_path=os.path.join(path, known_file), model_name='ArcFace', enforce_detection=True)
             if result['verified']:
                 os.remove(img_path)
                 return jsonify({'result': 'matched', 'name': known_file})
