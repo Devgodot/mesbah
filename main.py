@@ -99,7 +99,7 @@ def recognize():
         return jsonify({"error": "Error converting list to bytes"}), 400
     try:
         image = Image.open(io.BytesIO(byte_data))
-        img_path = os.path.join(path, "_temp_input_image.webp")
+        img_path = os.path.join(path, f"{current_user.username}_temp_input_image.webp")
         image.save(img_path, format='webp')
     except Exception as e:
         current_app.logger.error(f"Error loading image: {e}, data length: {len(byte_data)}")
