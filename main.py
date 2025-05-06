@@ -89,7 +89,7 @@ def recognize():
     # فرض: تصاویر در پوشه faces کنار این اسکریپت هستند
     for file in os.listdir(path):
         if file.endswith('.webp'):
-            img = face_recognition.load_image_file(os.join(path, file))
+            img = face_recognition.load_image_file(os.path.join(path, file))
             enc = face_recognition.face_encodings(img)
             print(enc)
             if enc:
