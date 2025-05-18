@@ -18,10 +18,49 @@ import binascii
 import numpy as np
 from PIL import Image
 import io
+import uuid
 
 from deepface import DeepFace
 
+RESOURCE_INDEX_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static", "files", "resource", "resource_index.json")
+RESOURCE_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static", "files", "resource")
 
+def build_resource_index():
+    """
+    Build or update a dictionary mapping uuid to filenames in the resource folder.
+    If resource_index.json exists, keep uuids for unchanged files.
+    """
+    index = {}
+    # Load existing index if exists
+    if os.path.exists(RESOURCE_INDEX_PATH):
+        try:
+            with open(RESOURCE_INDEX_PATH, 'r', encoding='utf-8') as f:
+                index = json.load(f)
+        except Exception:
+            index = {}
+    # Reverse mapping for quick lookup
+    filename_to_uuid = {v: k for k, v in index.items()}
+    new_index = {}
+    for fname in os.listdir(RESOURCE_DIR):
+        fpath = os.path.join(RESOURCE_DIR, fname)
+        if os.path.isfile(fpath):
+            if fname in filename_to_uuid:
+                new_index[filename_to_uuid[fname]] = fname
+            else:
+                new_index[str(uuid.uuid4())] = fname
+    # Save new index
+    with open(RESOURCE_INDEX_PATH, 'w', encoding='utf-8') as f:
+        json.dump(new_index, f, ensure_ascii=False, indent=2)
+    return new_index
+
+@app.route('/resource_index', methods=['GET'])
+def get_resource_index():
+    """
+    Returns the current resource index (uuid: filename) as JSON.
+    Automatically rebuilds if files changed.
+    """
+    index = build_resource_index()
+    return jsonify(index)
 
 def post_request(url, payload={}, custom_header={}):
     headers = {
