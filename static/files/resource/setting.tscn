@@ -1,0 +1,2536 @@
+[gd_scene load_steps=124 format=3 uid="uid://x85llqsca7tk"]
+
+[ext_resource type="Script" uid="uid://oarddj8g4ncf" path="res://script/setting.gd" id="1_a4uf0"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_lwv4x"]
+[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="1_xi1yv"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="2_5o8yf"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_7capl"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="3_exfct"]
+[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="4_hv2bp"]
+[ext_resource type="Texture2D" uid="uid://cdjcdq5vmjgwr" path="res://sprite/Layer 5.png" id="5_5xkc1"]
+[ext_resource type="Texture2D" uid="uid://cnh2id2fbbp6v" path="res://sprite/Layer 7.png" id="6_erkjs"]
+[ext_resource type="Texture2D" uid="uid://1gjx38igfvf" path="res://sprite/Layer 9.png" id="7_28rpf"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="10_sjuja"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="11_k55o2"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="12_1nelf"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="14_fxm3b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
+bg_color = Color(0.147672, 0.147672, 0.147672, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wr4g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2vmw"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="FontVariation" id="FontVariation_nd0pe"]
+fallbacks = Array[Font]([ExtResource("3_exfct")])
+base_font = ExtResource("2_7capl")
+
+[sub_resource type="FontVariation" id="FontVariation_sfmai"]
+fallbacks = Array[Font]([ExtResource("3_exfct")])
+base_font = ExtResource("2_7capl")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
+texture = ExtResource("1_xi1yv")
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
+texture = ExtResource("2_5o8yf")
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="SystemFont" id="SystemFont_346i2"]
+font_names = PackedStringArray("B Nazanin")
+font_weight = 575
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
+texture = ExtResource("2_5o8yf")
+expand_margin_left = 13.0
+expand_margin_top = 30.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="SystemFont" id="SystemFont_nrddy"]
+font_names = PackedStringArray("B Nazanin")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gwbx"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.819608, 0.780392, 0.411765, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_5oroi"]
+fallbacks = Array[Font]([ExtResource("3_exfct")])
+base_font = ExtResource("2_7capl")
+
+[sub_resource type="Theme" id="Theme_rgiyq"]
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_lwv4x")
+Button/styles/disabled = SubResource("StyleBoxFlat_ngvdg")
+Button/styles/focus = SubResource("StyleBoxEmpty_2wr4g")
+Button/styles/hover = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/normal = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/pressed = SubResource("StyleBoxFlat_d2vmw")
+Label/colors/font_color = Color(0.47451, 0.333333, 0.0784314, 1)
+Label/font_sizes/font_size = 38
+Label/fonts/font = SubResource("FontVariation_nd0pe")
+LineEdit/colors/font_outline_color = Color(0, 0, 0, 1)
+LineEdit/constants/outline_size = 8
+LineEdit/font_sizes/font_size = 40
+LineEdit/fonts/font = SubResource("FontVariation_sfmai")
+LineEdit/styles/focus = SubResource("StyleBoxTexture_3omms")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_c6n5k")
+OptionButton/constants/arrow_margin = 21
+OptionButton/constants/h_separation = 58
+OptionButton/font_sizes/font_size = 30
+OptionButton/fonts/font = SubResource("SystemFont_346i2")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxTexture_qxwpl")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxTexture_qxwpl")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_qxwpl")
+PopupMenu/constants/close_h_offset = 37
+PopupMenu/constants/close_v_offset = 78
+PopupMenu/constants/h_separation = 40
+PopupMenu/font_sizes/font_separator_size = 122
+PopupMenu/font_sizes/font_size = 40
+PopupMenu/fonts/font = SubResource("SystemFont_nrddy")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
+RichTextLabel/colors/default_color = Color(0.505882, 0.372549, 0.00784314, 1)
+RichTextLabel/font_sizes/bold_font_size = 50
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_5oroi")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_82j27"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bifq7"]
+texture = ExtResource("5_5xkc1")
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 20.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gp7io"]
+
+[sub_resource type="GDScript" id="GDScript_ee786"]
+script/source = "extends Button
+var plugin 
+var plugin_name = \"GodotGetImage\"
+var mode
+var group_name = \"\"
+func _ready() -> void:
+	
+	if Engine.has_singleton(plugin_name):
+		plugin = Engine.get_singleton(plugin_name)
+	if plugin:
+		plugin.error.connect(_on_error)
+		plugin.permission_not_granted_by_user.connect(_on_permission_not_granted_by_user)
+	if plugin:
+		var options = {
+		\"image_height\" : 400,
+		\"image_width\" : 400,
+		\"keep_aspect\" : false,
+		\"image_format\" : \"jpg\"
+		}
+		plugin.setOptions(options)
+		plugin.image_request_completed.connect(func (dic):
+			for Buffer in dic.values():
+				if mode:
+					var img = Image.new()
+					img.load_jpg_from_buffer(Buffer)
+					$TextureRect.texture = ImageTexture.create_from_image(img)
+					if mode != 2:
+						mode = null
+				if mode == 2:
+					mode = null
+					var w = Updatedate.add_wait(self)
+					var icon_group = \"\"
+					if $TextureRect.texture != null:
+						var r = HTTPRequest.new()
+						get_tree().get_root().add_child(r)
+						var img :Image= $TextureRect.texture.get_image()
+						var z = str(randi_range(0, 1000000))
+						if !DirAccess.dir_exists_absolute(\"user://group_icon\"):
+							DirAccess.make_dir_absolute(\"user://group_icon\")
+						img.save_webp(\"user://group_icon/\"+group_name+ z +\".webp\")
+						r.request(Updatedate.protocol+Updatedate.subdomin+\"/upload\", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({\"name\":group_name+z+\".webp\", \"data\":img.save_webp_to_buffer()}))
+						var e = await r.request_completed
+						var err = Updatedate.get_json(e[3])
+						if err and err.has(\"error\"):
+							Notification.add_notif(err.error, Notification.ERROR)
+						r.queue_free()
+						icon_group = Updatedate.protocol+Updatedate.subdomin+\"/static/files/users/\"+Updatedate.load_game(\"phone\", \"\")+\"/\"+(group_name + z).uri_encode()+\".webp\"
+						var r2 = HTTPRequest.new()
+						get_tree().get_root().add_child(r2)
+						r2.request(Updatedate.protocol+Updatedate.subdomin+\"/groups/icon\", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({\"name\":group_name, \"icon\":icon_group}))
+						await r2.request_completed
+						r2.queue_free()
+						Notification.add_notif(\"با موفقیت بروزرسانی شد\")
+					w.queue_free()
+					
+				)
+
+func _on_permission_not_granted_by_user(permission):
+	
+	plugin.resendPermission()
+func _on_add_icon_group_pressed(x) -> void:
+	if plugin:
+		mode = x
+		plugin.getGalleryImage()
+func _on_error(e):
+	Notification.add_notif(e, Notification.ERROR)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_psfrh"]
+font_size = 41
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6h70"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vjk0f"]
+font_size = 41
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_drm40"]
+font_size = 41
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m0mjf"]
+font_size = 41
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mhixk"]
+font_size = 41
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5x71v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r8bn7"]
+
+[sub_resource type="Shader" id="Shader_j3ppe"]
+code = "shader_type canvas_item;
+uniform int dir:hint_range(-1, 1, 1)=0;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, vec2(UV.x + float(TIME * float(dir) * 0.2), UV.y));
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcpx7"]
+shader = SubResource("Shader_j3ppe")
+shader_parameter/dir = 0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_48dji"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2/name/texture")
+
+[sub_resource type="FontVariation" id="FontVariation_s4228"]
+fallbacks = Array[Font]([ExtResource("3_exfct")])
+base_font = ExtResource("2_7capl")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_mgrfc"]
+script = ExtResource("11_k55o2")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ur635"]
+script = ExtResource("12_1nelf")
+
+[sub_resource type="LabelSettings" id="LabelSettings_yjjb8"]
+font_size = 41
+font_color = Color(0, 0.395666, 4.81307e-07, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_baa1h"]
+
+[sub_resource type="Gradient" id="Gradient_n5j0i"]
+colors = PackedColorArray(0.811765, 0.858824, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xyh08"]
+gradient = SubResource("Gradient_n5j0i")
+fill_from = Vector2(0, 0.948598)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gqyji"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2/name/texture")
+
+[sub_resource type="FontVariation" id="FontVariation_2tbcc"]
+fallbacks = Array[Font]([ExtResource("3_exfct")])
+base_font = ExtResource("2_7capl")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ttc4i"]
+bg_color = Color(0.473524, 0.253285, 0.0631638, 1)
+
+[sub_resource type="Gradient" id="Gradient_h0lsx"]
+offsets = PackedFloat32Array(0.84, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yfeed"]
+gradient = SubResource("Gradient_h0lsx")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_vobu1"]
+colors = PackedColorArray(1.2514e-06, 0.4464, 0.229803, 1, 0.835294, 0.803922, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_30p4u"]
+gradient = SubResource("Gradient_vobu1")
+fill_from = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rlsyh"]
+font_size = 36
+
+[sub_resource type="Gradient" id="Gradient_1kkg0"]
+colors = PackedColorArray(0, 0.733333, 0.807843, 1, 1, 1, 0.0431373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lcirq"]
+gradient = SubResource("Gradient_1kkg0")
+fill_from = Vector2(0, 0.172897)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ylyq"]
+bg_color = Color(0.25098, 0.45098, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="GDScript" id="GDScript_wcdcv"]
+script/source = "extends Button
+var plugin 
+var plugin_name = \"GodotGetImage\"
+var mode
+func _ready() -> void:
+	
+	if Engine.has_singleton(plugin_name):
+		plugin = Engine.get_singleton(plugin_name)
+	else:
+		print(\"Could not load plugin: \", plugin_name)
+	if plugin:
+		plugin.error.connect(_on_error)
+		plugin.permission_not_granted_by_user.connect(_on_permission_not_granted_by_user)
+	if plugin:
+		var options = {
+		\"image_height\" : 400,
+		\"image_width\" : 400,
+		\"keep_aspect\" : true,
+		\"image_format\" : \"jpg\"
+		}
+		plugin.setOptions(options)
+		plugin.image_request_completed.connect(func (dic):
+			for Buffer in dic.values():
+				if mode:
+					mode = null
+					var w = Updatedate.add_wait(self)
+					var img = Image.new()
+					img.load_jpg_from_buffer(Buffer)
+					$TextureRect.texture = ImageTexture.create_from_image(img)
+					
+					var r = HTTPRequest.new()
+					add_child(r)
+					var z = str(randi_range(0, 100000))
+					r.request(Updatedate.protocol+Updatedate.subdomin+\"/upload\", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({\"name\":Updatedate.load_game(\"user_name\", \"\") + z + \".webp\", \"data\":img.save_webp_to_buffer()}))
+					var e = await r.request_completed
+					var err = Updatedate.get_json(e[3])
+					if err and err.has(\"error\"):
+						Notification.add_notif(err.error, Notification.ERROR)
+					Updatedate.save(\"icon\", Updatedate.protocol+Updatedate.subdomin+\"/static/files/users/\"+Updatedate.load_game(\"phone\", \"\")+\"/\"+ Updatedate.load_game(\"user_name\", \"\") + z + \".webp\")
+					img.save_webp(\"user://users_icon/\"+Updatedate.load_game(\"user_name\", \"\")+ z +\".webp\")
+					w.queue_free()
+					Notification.add_notif(\"با موفقیت بروزرسانی شد\")
+				)
+
+func _on_permission_not_granted_by_user(permission):
+	print(1)
+	plugin.resendPermission()
+
+func _on_error(e):
+	Notification.add_notif(e, Notification.ERROR)
+
+
+func _on_change_icon_pressed(x) -> void:
+	if plugin:
+		mode = x
+		plugin.getGalleryImage()
+	
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_be801"]
+
+[sub_resource type="FontVariation" id="FontVariation_byipm"]
+fallbacks = Array[Font]([ExtResource("3_exfct")])
+base_font = ExtResource("2_7capl")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_h7jm0"]
+script = ExtResource("11_k55o2")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_68cla"]
+script = ExtResource("12_1nelf")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ahabn"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton/SubViewport")
+
+[sub_resource type="Animation" id="Animation_yx6dd"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_fq3nd"]
+resource_name = "transation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pbpi2"]
+_data = {
+&"RESET": SubResource("Animation_yx6dd"),
+&"transation": SubResource("Animation_fq3nd")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4ljxg"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton5/SubViewport")
+
+[sub_resource type="Animation" id="Animation_e83bu"]
+resource_name = "transation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1000, 0), Vector2(0, 0), Vector2(0, 0), Vector2(-1000, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1000, 0), Vector2(1000, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xadi0"]
+_data = {
+&"RESET": SubResource("Animation_yx6dd"),
+&"transation": SubResource("Animation_e83bu")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_y844v"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton2/SubViewport")
+
+[sub_resource type="Animation" id="Animation_y5hqr"]
+resource_name = "transation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i4qjm"]
+_data = {
+&"RESET": SubResource("Animation_yx6dd"),
+&"transation": SubResource("Animation_y5hqr")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_px03s"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton3/SubViewport")
+
+[sub_resource type="Animation" id="Animation_vqke3"]
+resource_name = "transation"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1), Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikf6p"]
+_data = {
+&"RESET": SubResource("Animation_yx6dd"),
+&"transation": SubResource("Animation_vqke3")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_74g20"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton4/SubViewport")
+
+[sub_resource type="Animation" id="Animation_gudwn"]
+resource_name = "transation"
+length = 2.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 1, 1.25, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 3.14159, 3.14159, 3.14159, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.25, 0.5, 1, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [3.14159, 6.28319, 6.28319, 3.14159]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sct6n"]
+_data = {
+&"RESET": SubResource("Animation_yx6dd"),
+&"transation": SubResource("Animation_gudwn")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_scsna"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton6/SubViewport")
+
+[sub_resource type="Animation" id="Animation_7w4ie"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_af5mn"]
+resource_name = "transation"
+length = 8.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vyf6l"]
+_data = {
+&"RESET": SubResource("Animation_7w4ie"),
+&"transation": SubResource("Animation_af5mn")
+}
+
+[sub_resource type="Curve" id="Curve_o0y6x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.649425, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_6fkmm"]
+offsets = PackedFloat32Array(0, 0.486301, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0.184314, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dc1x0"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton7/SubViewport")
+
+[sub_resource type="Animation" id="Animation_am1pf"]
+resource_name = "transation"
+length = 8.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.05, 3.05, 3.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.05, 3.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_quqbb"]
+_data = {
+&"RESET": SubResource("Animation_7w4ie"),
+&"transation": SubResource("Animation_am1pf")
+}
+
+[sub_resource type="Gradient" id="Gradient_thk7l"]
+offsets = PackedFloat32Array(0, 0.521739)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_it1jf"]
+gradient = SubResource("Gradient_thk7l")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_uboeq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.649425, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_hoanv"]
+offsets = PackedFloat32Array(0, 0.486301, 1)
+colors = PackedColorArray(1, 1, 0, 1, 1, 1, 1, 1, 0.964706, 0.537255, 0.184314, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dx3xx"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton8/SubViewport")
+
+[sub_resource type="Animation" id="Animation_kudoy"]
+resource_name = "transation"
+length = 8.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5, 4.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.5, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tn3f1"]
+_data = {
+&"RESET": SubResource("Animation_7w4ie"),
+&"transation": SubResource("Animation_kudoy")
+}
+
+[sub_resource type="Gradient" id="Gradient_qg65h"]
+offsets = PackedFloat32Array(0, 0.652174, 0.804348)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.603604, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_okocl"]
+gradient = SubResource("Gradient_qg65h")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_qejy6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.649425, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_h20vw"]
+offsets = PackedFloat32Array(0, 0.486301, 1)
+colors = PackedColorArray(0.515633, 0.849603, 1, 1, 1, 1, 1, 1, 0.766044, 0.847331, 0.994196, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3eljh"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton9/SubViewport")
+
+[sub_resource type="Animation" id="Animation_6ihfs"]
+resource_name = "transation"
+length = 8.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 6, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0a5e"]
+_data = {
+&"RESET": SubResource("Animation_7w4ie"),
+&"transation": SubResource("Animation_6ihfs")
+}
+
+[sub_resource type="Gradient" id="Gradient_tu26m"]
+offsets = PackedFloat32Array(0, 0.57971, 0.673913, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.666667, 0.666667, 0.666667, 1, 0.949275, 0.949275, 0.949275, 0.152174, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0hc3h"]
+gradient = SubResource("Gradient_tu26m")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_cpkdo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.649425, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_psl4i"]
+offsets = PackedFloat32Array(0, 0.486301, 1)
+colors = PackedColorArray(0.671227, 0.000446268, 0.696112, 1, 1, 1, 1, 1, 0.964706, 0.537255, 0.184314, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gbbau"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton10/SubViewport")
+
+[sub_resource type="Animation" id="Animation_m21l6"]
+resource_name = "transation"
+length = 8.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.5, 7.5, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6.5, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e31sc"]
+_data = {
+&"RESET": SubResource("Animation_7w4ie"),
+&"transation": SubResource("Animation_m21l6")
+}
+
+[sub_resource type="Gradient" id="Gradient_3d0tl"]
+offsets = PackedFloat32Array(0, 0.57971, 0.673913, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.529067, 0.529067, 0.529067, 1, 0.949275, 0.949275, 0.949275, 0.152174, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6frx2"]
+gradient = SubResource("Gradient_3d0tl")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.8, 0.2)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_815jo"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_y8nk4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.413793, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_y1oil"]
+offsets = PackedFloat32Array(0, 0.486301, 1)
+colors = PackedColorArray(0.670588, 1, 0.698039, 1, 1, 1, 1, 1, 0.964706, 0.847059, 0.356863, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_be5np"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6oife"]
+bg_color = Color(0.898039, 0.372549, 0.00784314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.980392, 0.937255, 0.494118, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.0823529, 0.0823529, 0.0823529, 0.776471)
+shadow_size = 2
+shadow_offset = Vector2(-1, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmb1d"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.980392, 0.937255, 0.494118, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.0823529, 0.0823529, 0.0823529, 0.776471)
+shadow_size = 2
+shadow_offset = Vector2(-1, 5)
+
+[sub_resource type="Theme" id="Theme_b7fa4"]
+LineEdit/styles/focus = SubResource("StyleBoxFlat_6oife")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_kmb1d")
+
+[sub_resource type="ImageTexture" id="ImageTexture_trfdu"]
+
+[sub_resource type="GDScript" id="GDScript_j7jst"]
+script/source = "extends ReferenceRect
+
+var target
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if target:
+		show()
+		size = target.size
+		global_position = target.global_position
+"
+
+[sub_resource type="GDScript" id="GDScript_i2mre"]
+script/source = "extends ReferenceRect
+
+var target 
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if target:
+		size = target.size
+		global_position = target.global_position
+"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme = SubResource("Theme_rgiyq")
+script = ExtResource("1_a4uf0")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hv2bp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038
+anchor_top = 0.072
+anchor_right = 0.961
+anchor_bottom = 0.8085
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 100
+theme_override_styles/separator = SubResource("StyleBoxLine_82j27")
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HSeparator"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.719393
+anchor_top = 0.22
+anchor_right = 0.966414
+anchor_bottom = 0.72
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_bifq7")
+text = "مشخصات گروه"
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer" type="TabContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gp7io")
+current_tab = 0
+tabs_visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 29
+text = "ساخت گروه جدید"
+
+[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 29
+text = "پیوستن به گروه"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 35
+metadata/_tab_index = 1
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer7"]
+layout_mode = 2
+text = "افزودن تصویر"
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer7"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "+"
+script = SubResource("GDScript_ee786")
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer7/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 90
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "نام گروه:"
+
+[node name="group_name" type="LineEdit" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 70)
+layout_mode = 2
+alignment = 1
+max_length = 20
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(280, 58)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_psfrh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2" groups=["users"]]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "کد ملی عضو اول:"
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 110
+theme_override_styles/separator = SubResource("StyleBoxEmpty_c6h70")
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+alignment = 2
+max_length = 10
+virtual_keyboard_type = 2
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(281, 58)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_vjk0f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2" groups=["users"]]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+text = "کد ملی عضو دوم:"
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 105
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer3"]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+alignment = 2
+max_length = 10
+virtual_keyboard_type = 2
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer3"]
+custom_minimum_size = Vector2(281, 58)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_drm40")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2" groups=["users"]]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+text = "کد ملی عضو سوم:"
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 95
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer4"]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+alignment = 2
+max_length = 10
+virtual_keyboard_type = 2
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer4"]
+custom_minimum_size = Vector2(281, 58)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_m0mjf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2" groups=["users"]]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer5"]
+layout_mode = 2
+text = "کد ملی عضو چهارم:"
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer5"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 70
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer5"]
+custom_minimum_size = Vector2(250, 40)
+layout_mode = 2
+alignment = 2
+max_length = 10
+virtual_keyboard_type = 2
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer5"]
+custom_minimum_size = Vector2(281, 58)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_mhixk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5x71v")
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer6"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 41
+text = "تایید"
+
+[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer6"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 41
+text = "لغو"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 25
+metadata/_tab_index = 2
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7"]
+layout_mode = 2
+text = "افزودن تصویر"
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("6_erkjs")
+icon_alignment = 1
+expand_icon = true
+script = SubResource("GDScript_ee786")
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 140
+theme_override_styles/separator = SubResource("StyleBoxEmpty_r8bn7")
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "افزودن عضو"
+
+[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("7_28rpf")
+expand_icon = true
+
+[node name="Button3" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "خروج"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+text = "نام گروه:"
+
+[node name="LineEdit" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "عضو اول:"
+
+[node name="name" type="TextureRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gcpx7")
+custom_minimum_size = Vector2(500, 65)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = SubResource("ViewportTexture_48dji")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="texture" type="SubViewport" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2/name"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(719, 65)
+render_target_update_mode = 4
+
+[node name="Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2/name/texture"]
+texture_repeat = 2
+clip_contents = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = SubResource("FontVariation_s4228")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_mgrfc"), SubResource("RichTextEffect_ur635")]
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2"]
+visible = false
+layout_mode = 2
+text = "در انتظار تایید"
+label_settings = SubResource("LabelSettings_yjjb8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3" groups=["users"]]
+visible = false
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer3"]
+layout_mode = 2
+text = "کد ملی عضو جدید"
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer3"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 80
+theme_override_styles/separator = SubResource("StyleBoxEmpty_baa1h")
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+alignment = 2
+virtual_keyboard_type = 2
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer3"]
+custom_minimum_size = Vector2(281, 58)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_mhixk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3"]
+visible = false
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 41
+text = "ثبت"
+
+[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3"]
+visible = false
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 41
+text = "لغو"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7"]
+layout_mode = 2
+text = "تصویر گروه "
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_xyh08")
+draw_center = false
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0646965, 0.0646965, 0.0646965, 1)
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 140
+theme_override_styles/separator = SubResource("StyleBoxEmpty_r8bn7")
+
+[node name="Button3" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7"]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "خروج"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+text = "نام گروه:"
+
+[node name="LineEdit" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "عضو اول:"
+
+[node name="name" type="TextureRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_gcpx7")
+custom_minimum_size = Vector2(595, 65)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = SubResource("ViewportTexture_gqyji")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="texture" type="SubViewport" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2/name"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(799, 65)
+render_target_update_mode = 4
+
+[node name="Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2/name/texture"]
+texture_repeat = 2
+clip_contents = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = SubResource("FontVariation_2tbcc")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_mgrfc"), SubResource("RichTextEffect_ur635")]
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/HBoxContainer"]
+layout_mode = 2
+text = "نام گروه:"
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/HBoxContainer"]
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+alignment = 1
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 0.35
+text = "جستجو"
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 45
+theme_override_constants/margin_right = 45
+theme_override_constants/margin_bottom = 45
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ttc4i")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="instanse" type="BoxContainer" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer/ScrollContainer/VBoxContainer/instanse"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = SubResource("GradientTexture2D_yfeed")
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer/ScrollContainer/VBoxContainer/instanse/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer/ScrollContainer/VBoxContainer/instanse"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "نام گروه :"
+text_overrun_behavior = 4
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer/ScrollContainer/VBoxContainer/instanse"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "اعضا: 5/5"
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer/ScrollContainer/VBoxContainer/instanse"]
+layout_mode = 2
+text = "درخواست پیوستن"
+
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer/Control"]
+layout_mode = 2
+offset_left = -17.0
+offset_top = -18.0
+offset_right = 852.0
+offset_bottom = 426.0
+texture = SubResource("GradientTexture2D_30p4u")
+draw_center = false
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "گروهی برای پیوستن وجود ندارد"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "بازگشت"
+
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 100
+theme_override_styles/separator = SubResource("StyleBoxLine_82j27")
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HSeparator2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.726977
+anchor_top = 0.22
+anchor_right = 0.975081
+anchor_bottom = 0.72
+theme_override_styles/normal = SubResource("StyleBoxTexture_bifq7")
+text = "مشخصات فردی"
+label_settings = SubResource("LabelSettings_rlsyh")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8"]
+layout_mode = 2
+text = "حساب: "
+
+[node name="OptionButton" type="GridContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 60
+theme_override_constants/v_separation = 50
+columns = 5
+
+[node name="TextureButton" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+ignore_texture_size = true
+stretch_mode = 6
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lcirq")
+draw_center = false
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/TextureButton/NinePatchRect"]
+show_behind_parent = true
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/TextureButton"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = 3.0
+offset_right = 4.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ylyq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="add" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture_normal = ExtResource("7_28rpf")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/add"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_lcirq")
+draw_center = false
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/add/NinePatchRect"]
+show_behind_parent = true
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7"]
+layout_mode = 2
+text = "افزودن تصویر"
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("6_erkjs")
+icon_alignment = 1
+expand_icon = true
+script = SubResource("GDScript_wcdcv")
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 125
+theme_override_styles/separator = SubResource("StyleBoxEmpty_be801")
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7"]
+layout_mode = 2
+text = "ثبت چهره"
+
+[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+icon = ExtResource("6_erkjs")
+icon_alignment = 1
+expand_icon = true
+script = SubResource("GDScript_wcdcv")
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "نام سفارشی :"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9"]
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.517647, 0.388235, 0.109804, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_byipm")
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 45
+theme_override_font_sizes/mono_font_size = 40
+theme_override_font_sizes/normal_font_size = 45
+theme_override_font_sizes/bold_font_size = 50
+bbcode_enabled = true
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_h7jm0"), SubResource("RichTextEffect_68cla")]
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9"]
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+size_flags_vertical = 4
+text = "ویرایش"
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "نحوه انتقال :"
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10"]
+layout_mode = 2
+theme_override_constants/h_separation = 50
+columns = 5
+
+[node name="TextureButton" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer"]
+custom_minimum_size = Vector2(80, 160)
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_ahabn")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SubViewport" type="SubViewport" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton"]
+transparent_bg = true
+size = Vector2i(1000, 2000)
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton/SubViewport"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.442765, 0.504, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_pbpi2")
+}
+autoplay = "transation"
+
+[node name="TextureButton5" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer"]
+custom_minimum_size = Vector2(80, 160)
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_4ljxg")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SubViewport" type="SubViewport" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton5"]
+transparent_bg = true
+size = Vector2i(1000, 2000)
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton5/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton5/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1000.0
+offset_right = 1000.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.442765, 0.504, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton5/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_xadi0")
+}
+autoplay = "transation"
+
+[node name="TextureButton2" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer"]
+custom_minimum_size = Vector2(80, 160)
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_y844v")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SubViewport" type="SubViewport" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton2"]
+transparent_bg = true
+size = Vector2i(1000, 2000)
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton2/SubViewport"]
+modulate = Color(1, 1, 1, 0.59328)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton2/SubViewport"]
+modulate = Color(1, 1, 1, 0.40672)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.442765, 0.504, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton2/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_i4qjm")
+}
+autoplay = "transation"
+
+[node name="TextureButton3" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer"]
+custom_minimum_size = Vector2(80, 160)
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_px03s")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SubViewport" type="SubViewport" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton3"]
+transparent_bg = true
+size = Vector2i(1000, 2000)
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton3/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(500, 1000)
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton3/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.872365, 0.872365)
+pivot_offset = Vector2(500, 1000)
+color = Color(0.442765, 0.504, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton3/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_ikf6p")
+}
+autoplay = "transation"
+
+[node name="TextureButton4" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer"]
+custom_minimum_size = Vector2(80, 160)
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_74g20")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SubViewport" type="SubViewport" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton4"]
+transparent_bg = true
+size = Vector2i(1000, 2000)
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton4/SubViewport"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(500, 1000)
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton4/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 4.5734
+pivot_offset = Vector2(500, 1000)
+color = Color(0.442765, 0.504, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton4/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_sct6n")
+}
+autoplay = "transation"
+
+[node name="TextureButton6" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer"]
+custom_minimum_size = Vector2(80, 160)
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_scsna")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SubViewport" type="SubViewport" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton6"]
+transparent_bg = true
+size = Vector2i(1000, 2000)
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton6/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(500, 1000)
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton6/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(500, 1000)
+color = Color(0.442765, 0.504, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton6/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_vyf6l")
+}
+autoplay = "transation"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton6/SubViewport"]
+position = Vector2(500, 1000)
+emitting = false
+amount = 20000
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1000)
+gravity = Vector2(0, 1960)
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_min = 16.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_o0y6x")
+color_ramp = SubResource("Gradient_6fkmm")
+
+[node name="TextureButton7" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer"]
+custom_minimum_size = Vector2(80, 160)
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_dc1x0")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SubViewport" type="SubViewport" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton7"]
+transparent_bg = true
+size = Vector2i(1000, 2000)
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton7/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(500, 1000)
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton7/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(500, 1000)
+color = Color(0.442765, 0.504, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton7/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_quqbb")
+}
+autoplay = "transation"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton7/SubViewport"]
+position = Vector2(500, 1000)
+emitting = false
+amount = 20000
+texture = SubResource("GradientTexture2D_it1jf")
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1000)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 175.26
+initial_velocity_max = 350.52
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_curve = SubResource("Curve_uboeq")
+color_ramp = SubResource("Gradient_hoanv")
+
+[node name="TextureButton8" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer"]
+custom_minimum_size = Vector2(80, 160)
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_dx3xx")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SubViewport" type="SubViewport" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton8"]
+transparent_bg = true
+size = Vector2i(1000, 2000)
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton8/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(500, 1000)
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton8/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(500, 1000)
+color = Color(0.442765, 0.504, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton8/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_tn3f1")
+}
+autoplay = "transation"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton8/SubViewport"]
+position = Vector2(-100, 1000)
+emitting = false
+amount = 20000
+texture = SubResource("GradientTexture2D_okocl")
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1000)
+spread = 0.0
+gravity = Vector2(1000, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_qejy6")
+color_ramp = SubResource("Gradient_h20vw")
+
+[node name="TextureButton9" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer"]
+custom_minimum_size = Vector2(80, 160)
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_3eljh")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SubViewport" type="SubViewport" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton9"]
+transparent_bg = true
+size = Vector2i(1000, 2000)
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton9/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(500, 1000)
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton9/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(500, 1000)
+color = Color(0.442765, 0.504, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton9/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_i0a5e")
+}
+autoplay = "transation"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton9/SubViewport"]
+position = Vector2(500, 1000)
+emitting = false
+amount = 5000
+texture = SubResource("GradientTexture2D_0hc3h")
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1100)
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 83.97
+gravity = Vector2(0, 0)
+initial_velocity_min = 556.7
+initial_velocity_max = 556.7
+angular_velocity_min = -720.0
+angular_velocity_max = 578.97
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_cpkdo")
+color_ramp = SubResource("Gradient_psl4i")
+
+[node name="TextureButton10" type="TextureButton" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer"]
+custom_minimum_size = Vector2(80, 160)
+layout_mode = 2
+texture_normal = SubResource("ViewportTexture_gbbau")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SubViewport" type="SubViewport" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton10"]
+transparent_bg = true
+size = Vector2i(1000, 2000)
+
+[node name="ColorRect" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton10/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(500, 1000)
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton10/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+pivot_offset = Vector2(500, 1000)
+color = Color(0.442765, 0.504, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton10/SubViewport"]
+libraries = {
+&"": SubResource("AnimationLibrary_e31sc")
+}
+autoplay = "transation"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton10/SubViewport"]
+position = Vector2(500, 1000)
+emitting = false
+amount = 2000
+texture = SubResource("GradientTexture2D_6frx2")
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1100)
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 556.7
+initial_velocity_max = 556.7
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+angle_min = 45.0
+angle_max = 45.0
+angle_curve = SubResource("Curve_815jo")
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_y8nk4")
+color_ramp = SubResource("Gradient_y1oil")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 85
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "نام :"
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 110
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "نام خانوادگی:"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 170
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+text = "نام پدر: "
+
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+text = "تاریخ تولد: "
+
+[node name="VSeparator" type="VSeparator" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 200
+theme_override_styles/separator = SubResource("StyleBoxEmpty_be5np")
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme = SubResource("Theme_b7fa4")
+theme_override_icons/updown = SubResource("ImageTexture_trfdu")
+min_value = 1.0
+max_value = 31.0
+value = 1.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="SpinBox2" type="SpinBox" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme = SubResource("Theme_b7fa4")
+theme_override_icons/updown = SubResource("ImageTexture_trfdu")
+min_value = 1.0
+max_value = 12.0
+value = 1.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="SpinBox3" type="SpinBox" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+theme = SubResource("Theme_b7fa4")
+theme_override_icons/updown = SubResource("ImageTexture_trfdu")
+min_value = 1300.0
+max_value = 1403.0
+value = 1380.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer5"]
+layout_mode = 2
+text = "حداکثر تعداد اعلان:           "
+
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer5"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme = SubResource("Theme_b7fa4")
+theme_override_icons/updown = SubResource("ImageTexture_trfdu")
+max_value = 20.0
+value = 5.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5x71v")
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer6"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 41
+text = "ویرایش"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+initial_position = 2
+size = Vector2i(400, 106)
+dialog_autowrap = true
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 777.0
+offset_top = 562.0
+offset_right = 851.0
+offset_bottom = 637.0
+border_width = 5.0
+editor_only = false
+script = SubResource("GDScript_j7jst")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 128.0
+icon = ExtResource("10_sjuja")
+flat = true
+expand_icon = true
+
+[node name="ReferenceRect2" type="ReferenceRect" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 101.0
+offset_top = 756.0
+offset_right = 178.0
+offset_bottom = 916.0
+border_width = 5.0
+editor_only = false
+script = SubResource("GDScript_i2mre")
+
+[node name="SystemBarColorChanger" type="Node" parent="."]
+script = ExtResource("14_fxm3b")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer/Button2" to="." method="join_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer7/Button" to="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer7/Button" method="_on_add_icon_group_pressed" binds= [1]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer6/Button" to="." method="_on_okey_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer6/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button" to="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button" method="_on_add_icon_group_pressed" binds= [2]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button2" to="." method="_on_add_user_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button3" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button" to="." method="_on_send_event_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button2" to="." method="_on_cancel_pressed"]
+[connection signal="gui_input" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect" to="." method="_on_texture_rect_gui_input"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/Button3" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/HBoxContainer/Button" to="." method="_on_fillter_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/Button" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button" to="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button" method="_on_change_icon_pressed" binds= [1]]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button2" to="." method="_on_face_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9/Button" to="." method="_on_edit_name_pressed"]
+[connection signal="value_changed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer5/SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer6/Button" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]

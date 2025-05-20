@@ -1,0 +1,1636 @@
+[gd_scene load_steps=36 format=3 uid="uid://oeyd6gwloxb4"]
+
+[ext_resource type="Texture2D" uid="uid://ctjd8v4bexqaj" path="res://sprite/Layer 7.jpg" id="1_0btii"]
+[ext_resource type="Script" uid="uid://djn03diqbkjm5" path="res://script/menu_2.gd" id="1_n3aui"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="2_t710m"]
+[ext_resource type="Texture2D" uid="uid://c75t1sp4fsdq0" path="res://sprite/2.png" id="3_wm1oy"]
+[ext_resource type="Texture2D" uid="uid://c6hk7whh05o18" path="res://sprite/3.png" id="4_6wi2b"]
+[ext_resource type="Texture2D" uid="uid://ctdu0snqgdijo" path="res://sprite/13950923_0535224.jpg" id="5_hnkpi"]
+[ext_resource type="Texture2D" uid="uid://u4ufg1td5vpo" path="res://sprite/Layer 9.jpg" id="6_fo6y4"]
+[ext_resource type="Texture2D" uid="uid://c7r23jagvv3gd" path="res://sprite/Layer 6 copy 5.png" id="6_mbm2n"]
+[ext_resource type="Texture2D" uid="uid://c3uw8ja4lbsef" path="res://sprite/wp-1544032956945.jpg" id="7_0exik"]
+[ext_resource type="Texture2D" uid="uid://dumdvwi7j8aa" path="res://sprite/12.jpg" id="7_8wdvm"]
+[ext_resource type="Texture2D" uid="uid://ceu4poa2yaa0s" path="res://sprite/جلسات خانوادگی و_.png" id="8_jmxum"]
+[ext_resource type="Texture2D" uid="uid://pee5hyxg4poc" path="res://sprite/14011114_1851874.jpg" id="9_gyb0g"]
+[ext_resource type="Texture2D" uid="uid://b8bymou3hhcy7" path="res://sprite/5.jpg" id="11_3nmnp"]
+[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="14_76scn"]
+[ext_resource type="Texture2D" uid="uid://l6apj4mn1o17" path="res://sprite/6.jpg" id="14_d2jsu"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="16_5mcmv"]
+
+[sub_resource type="Gradient" id="Gradient_la3qc"]
+colors = PackedColorArray(0.94902, 0.713726, 0.388235, 1, 0.831373, 0.752941, 0.407843, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ks511"]
+gradient = SubResource("Gradient_la3qc")
+width = 500
+height = 500
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7y500"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ind8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mbwhd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o1dm6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5uyfl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jngfo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fador"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gs0uy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01b4g"]
+texture = ExtResource("2_t710m")
+expand_margin_top = 60.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="FontVariation" id="FontVariation_4hctf"]
+base_font = ExtResource("14_76scn")
+spacing_top = 14
+spacing_bottom = -26
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nshu"]
+texture = ExtResource("8_jmxum")
+expand_margin_top = 60.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3vyl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifry3"]
+bg_color = Color(0.00215289, 0.197447, 0.774667, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="SystemFont" id="SystemFont_utruk"]
+fallbacks = Array[Font]([null])
+font_names = PackedStringArray("MRT_Unique")
+font_weight = 600
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xpm2t"]
+texture = ExtResource("3_wm1oy")
+expand_margin_top = 60.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_toeio"]
+texture = ExtResource("6_mbm2n")
+expand_margin_top = 60.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kagbl"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n3aui")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ks511")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_7y500")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ind8k")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_mbwhd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o1dm6")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_5uyfl")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_jngfo")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fador")
+tab_alignment = 1
+current_tab = 2
+tabs_visible = false
+
+[node name="TabContainer3" type="TabContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_7y500")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ind8k")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_mbwhd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o1dm6")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_5uyfl")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_jngfo")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fador")
+tab_alignment = 1
+current_tab = 1
+tabs_visible = false
+metadata/_tab_index = 0
+
+[node name="TabContainer" type="TabContainer" parent="TabContainer/TabContainer3"]
+visible = false
+layout_mode = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_7y500")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ind8k")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_mbwhd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o1dm6")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_5uyfl")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_jngfo")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fador")
+tab_alignment = 1
+current_tab = 0
+tabs_visible = false
+metadata/_tab_index = 0
+
+[node name="Control" type="Control" parent="TabContainer/TabContainer3/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer3/TabContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("7_0exik")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 920.0
+offset_right = 828.0
+offset_bottom = 1080.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "تدبر در قرآن (مسطورا) و نهج البلاغه"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "چالش و کارکاه تئوری و عملی احکام"
+metadata/id = 1
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 1291.0
+offset_right = 835.0
+offset_bottom = 1451.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "چالش و گفتمان اعتقادی"
+metadata/id = 2
+
+[node name="Button10" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 1498.0
+offset_right = 904.0
+offset_bottom = 1735.0
+theme_override_fonts/font = SubResource("FontVariation_4hctf")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3nshu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3nshu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3nshu")
+text = "مناجات خانگی
+جلسه هفتگی هیأت
+جلسات خانوادگی و ..."
+metadata/id = 3
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer3/TabContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319
+anchor_top = 0.8955
+anchor_right = 0.662
+anchor_bottom = 0.9635
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control2" type="Control" parent="TabContainer/TabContainer3/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer3/TabContainer/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("7_0exik")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control2" groups=["gallary"]]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 920.0
+offset_right = 828.0
+offset_bottom = 1080.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "تدبر در قرآن (مسطورا) و نهج البلاغه"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control2" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "چالش و کارکاه تئوری و عملی احکام"
+metadata/id = 1
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control2" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 1291.0
+offset_right = 835.0
+offset_bottom = 1451.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "چالش و گفتمان اعتقادی"
+metadata/id = 2
+
+[node name="Button10" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control2" groups=["gallary"]]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 1498.0
+offset_right = 904.0
+offset_bottom = 1735.0
+theme_override_fonts/font = SubResource("FontVariation_4hctf")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3nshu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3nshu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3nshu")
+text = "مناجات خانگی
+جلسه هفتگی هیأت
+جلسات خانوادگی و ..."
+metadata/id = 3
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer3/TabContainer/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control2" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319
+anchor_top = 0.8955
+anchor_right = 0.662
+anchor_bottom = 0.9635
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer2" type="TabContainer" parent="TabContainer/TabContainer3"]
+layout_mode = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_7y500")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ind8k")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_mbwhd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o1dm6")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_5uyfl")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_jngfo")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fador")
+tab_alignment = 1
+current_tab = 1
+tabs_visible = false
+metadata/_tab_index = 1
+
+[node name="Control" type="Control" parent="TabContainer/TabContainer3/TabContainer2"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer3/TabContainer2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("6_fo6y4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 920.0
+offset_right = 828.0
+offset_bottom = 1080.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "تدبر در قرآن (مسطورا) و نهج البلاغه"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "چالش و کارکاه تئوری و عملی احکام"
+metadata/id = 1
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 1291.0
+offset_right = 835.0
+offset_bottom = 1451.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "چالش و گفتمان اعتقادی"
+metadata/id = 2
+
+[node name="Button10" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 1498.0
+offset_right = 904.0
+offset_bottom = 1735.0
+theme_override_fonts/font = SubResource("FontVariation_4hctf")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3nshu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3nshu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3nshu")
+text = "مناجات خانگی
+جلسه هفتگی هیأت
+جلسات خانوادگی و ..."
+metadata/id = 3
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer3/TabContainer2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319
+anchor_top = 0.8955
+anchor_right = 0.662
+anchor_bottom = 0.9635
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control4" type="Control" parent="TabContainer/TabContainer3/TabContainer2"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer3/TabContainer2/Control4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("7_8wdvm")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 920.0
+offset_right = 828.0
+offset_bottom = 1080.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "تدبر در قرآن (مسطورا) و نهج البلاغه"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "چالش و کارکاه تئوری و عملی احکام"
+metadata/id = 1
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 1291.0
+offset_right = 835.0
+offset_bottom = 1451.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "چالش و گفتمان اعتقادی"
+metadata/id = 2
+
+[node name="Button10" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 1498.0
+offset_right = 904.0
+offset_bottom = 1735.0
+theme_override_fonts/font = SubResource("FontVariation_4hctf")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3nshu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3nshu")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3nshu")
+text = "مناجات خانگی
+جلسه هفتگی هیأت
+جلسات خانوادگی و ..."
+metadata/id = 3
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer3/TabContainer2/Control4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control4" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319
+anchor_top = 0.8955
+anchor_right = 0.662
+anchor_bottom = 0.9635
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer" type="TabContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_7y500")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ind8k")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_mbwhd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o1dm6")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_5uyfl")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_jngfo")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fador")
+tab_alignment = 1
+current_tab = 0
+tabs_visible = false
+metadata/_tab_index = 1
+
+[node name="TabContainer" type="TabContainer" parent="TabContainer/TabContainer"]
+layout_mode = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_7y500")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ind8k")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_mbwhd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o1dm6")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_5uyfl")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_jngfo")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fador")
+tab_alignment = 1
+current_tab = 0
+tabs_visible = false
+metadata/_tab_index = 0
+
+[node name="Control" type="Control" parent="TabContainer/TabContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer/TabContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("1_0btii")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer/TabContainer/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 919.0
+offset_right = 835.0
+offset_bottom = 1079.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "شخصیت شناسی و مشاوره"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer/TabContainer/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "تغذیه و طب اسلامی"
+metadata/id = 1
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer/TabContainer/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1295.0
+offset_right = 829.0
+offset_bottom = 1455.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "آمادگی جسمانی"
+metadata/id = 2
+
+[node name="Button10" type="Button" parent="TabContainer/TabContainer/TabContainer/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 1498.0
+offset_right = 904.0
+offset_bottom = 1735.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_utruk")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xpm2t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xpm2t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xpm2t")
+metadata/id = 3
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer/TabContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer/TabContainer/Control" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319
+anchor_top = 0.8955
+anchor_right = 0.662
+anchor_bottom = 0.9635
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control2" type="Control" parent="TabContainer/TabContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer/TabContainer/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("1_0btii")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer/TabContainer/Control2" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 919.0
+offset_right = 835.0
+offset_bottom = 1079.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "شخصیت شناسی و مشاوره"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer/TabContainer/Control2" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "تغذیه و طب اسلامی"
+metadata/id = 1
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer/TabContainer/Control2" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1295.0
+offset_right = 829.0
+offset_bottom = 1455.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "آمادگی جسمانی"
+metadata/id = 2
+
+[node name="Button10" type="Button" parent="TabContainer/TabContainer/TabContainer/Control2" groups=["gallary"]]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 1498.0
+offset_right = 904.0
+offset_bottom = 1735.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_utruk")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xpm2t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xpm2t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xpm2t")
+metadata/id = 3
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer/TabContainer/Control2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer/TabContainer/Control2" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319
+anchor_top = 0.8955
+anchor_right = 0.662
+anchor_bottom = 0.9635
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer2" type="TabContainer" parent="TabContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_7y500")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ind8k")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_mbwhd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o1dm6")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_5uyfl")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_jngfo")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fador")
+tab_alignment = 1
+current_tab = 1
+tabs_visible = false
+metadata/_tab_index = 1
+
+[node name="Control" type="Control" parent="TabContainer/TabContainer/TabContainer2"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer/TabContainer2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("9_gyb0g")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 919.0
+offset_right = 835.0
+offset_bottom = 1079.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 43
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "شخصیت شناسی و مشاوره"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "تغذیه و طب اسلامی"
+metadata/id = 1
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1295.0
+offset_right = 829.0
+offset_bottom = 1455.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "آمادگی جسمانی"
+metadata/id = 2
+
+[node name="Button10" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 1498.0
+offset_right = 904.0
+offset_bottom = 1735.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_utruk")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xpm2t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xpm2t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xpm2t")
+metadata/id = 3
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer/TabContainer2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319
+anchor_top = 0.8955
+anchor_right = 0.662
+anchor_bottom = 0.9635
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control4" type="Control" parent="TabContainer/TabContainer/TabContainer2"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer/TabContainer2/Control4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("11_3nmnp")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 919.0
+offset_right = 835.0
+offset_bottom = 1079.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "شخصیت شناسی و مشاوره"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "تغذیه و طب اسلامی"
+metadata/id = 1
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1295.0
+offset_right = 829.0
+offset_bottom = 1455.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "آمادگی جسمانی"
+metadata/id = 2
+
+[node name="Button10" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 1498.0
+offset_right = 904.0
+offset_bottom = 1735.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_utruk")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xpm2t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xpm2t")
+theme_override_styles/normal = SubResource("StyleBoxTexture_xpm2t")
+metadata/id = 3
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer/TabContainer2/Control4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control4" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319
+anchor_top = 0.8955
+anchor_right = 0.662
+anchor_bottom = 0.9635
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer2" type="TabContainer" parent="TabContainer"]
+layout_mode = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_7y500")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ind8k")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_mbwhd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o1dm6")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_5uyfl")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_jngfo")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fador")
+tab_alignment = 1
+current_tab = 0
+tabs_visible = false
+metadata/_tab_index = 2
+
+[node name="TabContainer" type="TabContainer" parent="TabContainer/TabContainer2"]
+layout_mode = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_7y500")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ind8k")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_mbwhd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o1dm6")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_5uyfl")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_jngfo")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fador")
+tab_alignment = 1
+current_tab = 0
+tabs_visible = false
+metadata/_tab_index = 0
+
+[node name="Control" type="Control" parent="TabContainer/TabContainer2/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer2/TabContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("5_hnkpi")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 919.0
+offset_right = 835.0
+offset_bottom = 1079.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "کتاب و کتابخوانی"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "بازی ها و کارسوق های فکری"
+metadata/id = 1
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1295.0
+offset_right = 829.0
+offset_bottom = 1455.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "مهارت های ساختن، تفکر خلاق"
+metadata/id = 2
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer2/TabContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.332
+anchor_top = 0.7495
+anchor_right = 0.675
+anchor_bottom = 0.8175
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control4" type="Control" parent="TabContainer/TabContainer2/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer2/TabContainer/Control4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("5_hnkpi")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 919.0
+offset_right = 835.0
+offset_bottom = 1079.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "کتاب و کتابخوانی"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "بازی ها و کارسوق های فکری"
+metadata/id = 1
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1295.0
+offset_right = 829.0
+offset_bottom = 1455.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "مهارت های ساختن، تفکر خلاق"
+metadata/id = 2
+
+[node name="Button10" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 1498.0
+offset_right = 904.0
+offset_bottom = 1735.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_utruk")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_toeio")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_toeio")
+theme_override_styles/normal = SubResource("StyleBoxTexture_toeio")
+metadata/id = 3
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer2/TabContainer/Control4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control4" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319
+anchor_top = 0.8955
+anchor_right = 0.662
+anchor_bottom = 0.9635
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="TabContainer2" type="TabContainer" parent="TabContainer/TabContainer2"]
+visible = false
+layout_mode = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_7y500")
+theme_override_styles/tab_disabled = SubResource("StyleBoxEmpty_ind8k")
+theme_override_styles/tabbar_background = SubResource("StyleBoxEmpty_mbwhd")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o1dm6")
+theme_override_styles/tab_selected = SubResource("StyleBoxEmpty_5uyfl")
+theme_override_styles/tab_hovered = SubResource("StyleBoxEmpty_jngfo")
+theme_override_styles/tab_unselected = SubResource("StyleBoxEmpty_fador")
+tab_alignment = 1
+current_tab = 1
+tabs_visible = false
+metadata/_tab_index = 1
+
+[node name="Control" type="Control" parent="TabContainer/TabContainer2/TabContainer2"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer2/TabContainer2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("6_fo6y4")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 919.0
+offset_right = 835.0
+offset_bottom = 1079.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "کتاب و کتابخوانی"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "بازی ها و کارسوق های فکری"
+metadata/id = 1
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1295.0
+offset_right = 829.0
+offset_bottom = 1455.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "مهارت های ساختن، تفکر خلاق"
+metadata/id = 2
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer2/TabContainer2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.337
+anchor_top = 0.764
+anchor_right = 0.68
+anchor_bottom = 0.832
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control4" type="Control" parent="TabContainer/TabContainer2/TabContainer2"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/TabContainer2/TabContainer2/Control4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.4525
+grow_horizontal = 2
+texture = ExtResource("14_d2jsu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button7" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 919.0
+offset_right = 835.0
+offset_bottom = 1079.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "کتاب و کتابخوانی"
+metadata/id = 0
+
+[node name="Button8" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1110.0
+offset_right = 829.0
+offset_bottom = 1270.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "بازی ها و کارسوق های فکری"
+metadata/id = 1
+
+[node name="Button9" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 1295.0
+offset_right = 829.0
+offset_bottom = 1455.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_01b4g")
+theme_override_styles/normal = SubResource("StyleBoxTexture_01b4g")
+text = "مهارت های ساختن، تفکر خلاق"
+metadata/id = 2
+
+[node name="Button10" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control4" groups=["gallary"]]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 1498.0
+offset_right = 904.0
+offset_bottom = 1735.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_utruk")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
+theme_override_styles/hover = SubResource("StyleBoxTexture_toeio")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_toeio")
+theme_override_styles/normal = SubResource("StyleBoxTexture_toeio")
+metadata/id = 3
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/TabContainer2/TabContainer2/Control4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.73
+anchor_top = 0.875
+anchor_right = 0.916
+anchor_bottom = 0.973
+texture = ExtResource("4_6wi2b")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control4" groups=["pos"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.319
+anchor_top = 0.8955
+anchor_right = 0.662
+anchor_bottom = 0.9635
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b3vyl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ifry3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ifry3")
+text = "جایگاه شما و تیم های برتر"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 128.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kagbl")
+icon = ExtResource("16_5mcmv")
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]

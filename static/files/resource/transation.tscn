@@ -1,0 +1,191 @@
+[gd_scene load_steps=18 format=3 uid="uid://q0qb6hk2qunx"]
+
+[ext_resource type="Script" uid="uid://d37nud1taosc1" path="res://script/transation.gd" id="1_rq2yo"]
+
+[sub_resource type="Curve" id="Curve_cy4kb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.87931, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_7vor7"]
+offsets = PackedFloat32Array(0, 0.486301, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0.184314, 1)
+
+[sub_resource type="Gradient" id="Gradient_els0u"]
+offsets = PackedFloat32Array(0, 0.57971)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3a3xk"]
+gradient = SubResource("Gradient_els0u")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_fgquj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.413793, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_e1to7"]
+offsets = PackedFloat32Array(0, 0.486301, 1)
+colors = PackedColorArray(1, 0.756863, 0, 1, 1, 1, 1, 1, 0.964706, 0.537255, 0.184314, 1)
+
+[sub_resource type="Gradient" id="Gradient_j5udr"]
+offsets = PackedFloat32Array(0, 0.57971, 0.673913, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.666667, 0.666667, 0.666667, 1, 0.949275, 0.949275, 0.949275, 0.152174, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dc7sn"]
+gradient = SubResource("Gradient_j5udr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_jmmdn"]
+offsets = PackedFloat32Array(0, 0.486301, 1)
+colors = PackedColorArray(0.671227, 0.000446268, 0.696112, 1, 1, 1, 1, 1, 0.964706, 0.537255, 0.184314, 1)
+
+[sub_resource type="Gradient" id="Gradient_7shpl"]
+offsets = PackedFloat32Array(0, 0.57971, 0.673913, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.529067, 0.529067, 0.529067, 1, 0.949275, 0.949275, 0.949275, 0.152174, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sp0jy"]
+gradient = SubResource("Gradient_7shpl")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.8, 0.2)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_h4mr8"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_cq63n"]
+offsets = PackedFloat32Array(0, 0.486301, 1)
+colors = PackedColorArray(0.670588, 1, 0.698039, 1, 1, 1, 1, 1, 0.964706, 0.847059, 0.356863, 1)
+
+[sub_resource type="Gradient" id="Gradient_11yp1"]
+offsets = PackedFloat32Array(0, 0.652174, 0.804348)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.603604, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ujuc"]
+gradient = SubResource("Gradient_11yp1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_i35hm"]
+offsets = PackedFloat32Array(0, 0.486301, 1)
+colors = PackedColorArray(0.515633, 0.849603, 1, 1, 1, 1, 1, 1, 0.766044, 0.847331, 0.994196, 1)
+
+[node name="SubViewportContainer" type="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_rq2yo")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(500, 1000)
+emitting = false
+amount = 20000
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1100)
+gravity = Vector2(0, 1960)
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_min = 25.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_cy4kb")
+color_ramp = SubResource("Gradient_7vor7")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+position = Vector2(500, 1000)
+emitting = false
+amount = 20000
+texture = SubResource("GradientTexture2D_3a3xk")
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1000)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 175.26
+initial_velocity_max = 350.52
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_fgquj")
+color_ramp = SubResource("Gradient_e1to7")
+
+[node name="CPUParticles2D4" type="CPUParticles2D" parent="."]
+position = Vector2(500, 1000)
+emitting = false
+amount = 5000
+texture = SubResource("GradientTexture2D_dc7sn")
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1100)
+particle_flag_align_y = true
+direction = Vector2(0, 1)
+spread = 83.97
+gravity = Vector2(0, 0)
+initial_velocity_min = 556.7
+initial_velocity_max = 556.7
+angular_velocity_min = -720.0
+angular_velocity_max = 578.97
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_fgquj")
+color_ramp = SubResource("Gradient_jmmdn")
+
+[node name="CPUParticles2D5" type="CPUParticles2D" parent="."]
+position = Vector2(500, 1000)
+emitting = false
+amount = 2000
+texture = SubResource("GradientTexture2D_sp0jy")
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1100)
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 556.7
+initial_velocity_max = 556.7
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+angle_min = 45.0
+angle_max = 45.0
+angle_curve = SubResource("Curve_h4mr8")
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_fgquj")
+color_ramp = SubResource("Gradient_cq63n")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+position = Vector2(-100, 1000)
+emitting = false
+amount = 20000
+texture = SubResource("GradientTexture2D_1ujuc")
+lifetime = 1.5
+one_shot = true
+speed_scale = 1.5
+emission_shape = 3
+emission_rect_extents = Vector2(500, 1000)
+spread = 0.0
+gravity = Vector2(1000, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 400.0
+angle_min = 45.0
+angle_max = 45.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_fgquj")
+color_ramp = SubResource("Gradient_i35hm")

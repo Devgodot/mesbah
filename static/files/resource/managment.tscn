@@ -1,0 +1,2912 @@
+[gd_scene load_steps=121 format=3 uid="uid://cs3wo6e727yo1"]
+
+[ext_resource type="Script" uid="uid://bhrjao205or8u" path="res://script/managment.gd" id="1_6lrso"]
+[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="1_euqnk"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_qjeh5"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_67m70"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="3_wpyoc"]
+[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_dgp0j"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_fb0v3"]
+[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://script/tab_container.gd" id="8_gj3my"]
+[ext_resource type="Texture2D" uid="uid://cnh2id2fbbp6v" path="res://sprite/Layer 7.png" id="8_mvuwd"]
+[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://script/animation_tab.gd" id="9_a86a3"]
+[ext_resource type="PackedScene" uid="uid://ccq5uf2d3qap4" path="res://scenes/music_player.tscn" id="9_gkyeb"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="10_55iem"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="10_25857"]
+[ext_resource type="Script" uid="uid://cnn7hb10qab7t" path="res://script/icon.gd" id="10_hvcdm"]
+[ext_resource type="Texture2D" uid="uid://bjetyx7brb8jl" path="res://sprite/ranking-icon-2048x2046-5ln1igbz2.png" id="10_v0jsr"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="11_dpmkx"]
+[ext_resource type="Texture2D" uid="uid://ceeuv2csd6158" path="res://sprite/ranking-icon-2048x2046-5ln1igbz.png" id="11_idhbe"]
+[ext_resource type="Script" uid="uid://ctyywxyk7kuid" path="res://script/tab_settings.gd" id="12_tdqwm"]
+[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="13_umncv"]
+[ext_resource type="Texture2D" uid="uid://nfst76tsqb3b" path="res://sprite/131-1318263_group-people-communication-message-talk-comments-people-management2.png" id="14_xgbhk"]
+[ext_resource type="Texture2D" uid="uid://2ht05d0hchka" path="res://sprite/131-1318263_group-people-communication-message-talk-comments-people-management.png" id="15_2vjm2"]
+[ext_resource type="Texture2D" uid="uid://dhvoajsyliqfv" path="res://sprite/pngtree-manager-line-icon-png-image_90638982.png" id="16_bwfsb"]
+[ext_resource type="Texture2D" uid="uid://7o0r1301u7y4" path="res://sprite/pngtree-manager-line-icon-png-image_9063898.png" id="17_ux7be"]
+[ext_resource type="Texture2D" uid="uid://cewt88obxmh61" path="res://sprite/1159012.png" id="18_nvf07"]
+[ext_resource type="Texture2D" uid="uid://c11cmfbcs816o" path="res://sprite/115901.png" id="19_fps3j"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="26_71nvp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
+bg_color = Color(0.147672, 0.147672, 0.147672, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wr4g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2vmw"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="FontVariation" id="FontVariation_nd0pe"]
+fallbacks = Array[Font]([ExtResource("3_wpyoc")])
+base_font = ExtResource("2_67m70")
+
+[sub_resource type="FontVariation" id="FontVariation_sfmai"]
+fallbacks = Array[Font]([ExtResource("3_wpyoc")])
+base_font = ExtResource("2_67m70")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
+texture = ExtResource("4_dgp0j")
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
+texture = ExtResource("5_fb0v3")
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
+texture = ExtResource("5_fb0v3")
+expand_margin_left = 13.0
+expand_margin_top = 30.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="SystemFont" id="SystemFont_nrddy"]
+font_names = PackedStringArray("B Nazanin")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gwbx"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.819608, 0.780392, 0.411765, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_5oroi"]
+fallbacks = Array[Font]([ExtResource("3_wpyoc")])
+base_font = ExtResource("2_67m70")
+
+[sub_resource type="Image" id="Image_jl1h1"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 76, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 99, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 99, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 122, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 53, 255, 255, 255, 181, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 54, 255, 255, 255, 182, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 121, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 98, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 98, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 75, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_sq7qb"]
+image = SubResource("Image_jl1h1")
+
+[sub_resource type="FontVariation" id="FontVariation_adnmk"]
+fallbacks = Array[Font]([ExtResource("3_wpyoc")])
+base_font = ExtResource("2_67m70")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx0m5"]
+bg_color = Color(0.882184, 0.370314, 1.34766e-06, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(5.43877e-06, 0.859439, 0.366271, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwkh1"]
+bg_color = Color(0.6, 0.243137, 0.0431373, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.823529, 0.890196, 0.741176, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_rgiyq"]
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_qjeh5")
+Button/styles/disabled = SubResource("StyleBoxFlat_ngvdg")
+Button/styles/focus = SubResource("StyleBoxEmpty_2wr4g")
+Button/styles/hover = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/hover_mirrored = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/normal = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/normal_mirrored = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/pressed = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/pressed_mirrored = SubResource("StyleBoxFlat_d2vmw")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 38
+Label/fonts/font = SubResource("FontVariation_nd0pe")
+LineEdit/colors/font_outline_color = Color(0, 0, 0, 1)
+LineEdit/constants/outline_size = 8
+LineEdit/font_sizes/font_size = 40
+LineEdit/fonts/font = SubResource("FontVariation_sfmai")
+LineEdit/styles/focus = SubResource("StyleBoxTexture_3omms")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_c6n5k")
+OptionButton/constants/arrow_margin = 21
+OptionButton/constants/h_separation = 58
+OptionButton/font_sizes/font_size = 30
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxTexture_qxwpl")
+OptionButton/styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_qxwpl")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxTexture_qxwpl")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_qxwpl")
+PopupMenu/constants/close_h_offset = 37
+PopupMenu/constants/close_v_offset = 78
+PopupMenu/constants/h_separation = 40
+PopupMenu/font_sizes/font_separator_size = 122
+PopupMenu/font_sizes/font_size = 40
+PopupMenu/fonts/font = SubResource("SystemFont_nrddy")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/font_sizes/bold_font_size = 50
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_5oroi")
+SpinBox/icons/updown = SubResource("ImageTexture_sq7qb")
+TextEdit/font_sizes/font_size = 45
+TextEdit/fonts/font = SubResource("FontVariation_adnmk")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_sx0m5")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_xwkh1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xpey2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifxwq"]
+bg_color = Color(0.912695, 0.787143, 0.228988, 1)
+border_width_top = 5
+border_color = Color(0.32549, 0.623529, 0.211765, 1)
+border_blend = true
+
+[sub_resource type="Gradient" id="Gradient_r28px"]
+offsets = PackedFloat32Array(0, 0.610169, 0.686441)
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 0.0941176, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t3stj"]
+gradient = SubResource("Gradient_r28px")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Resource" id="Resource_xlphu"]
+script = ExtResource("9_a86a3")
+texture_progress = SubResource("GradientTexture2D_t3stj")
+fill_mode = 4
+nine_patch_stretch = true
+texture_progress_offset = Vector2(0, 0)
+tint_progress = Color(1, 1, 1, 1)
+tint_over = Color(0, 0, 0, 1)
+tint_under = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fct8m"]
+bg_color = Color(0.154876, 0.154876, 0.154876, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xqpl"]
+bg_color = Color(0.152941, 0.470588, 0.494118, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wyfnf"]
+
+[sub_resource type="Resource" id="Resource_jyhjh"]
+script = ExtResource("12_tdqwm")
+font_size = 0
+selected_color = Color(0.294118, 0.443137, 1, 1)
+unselected_color = Color(0, 0, 0, 1)
+outline_size = 3
+ouline_selected_color = Color(0, 0, 0, 1)
+outline_unselected_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_mdp6e"]
+script = ExtResource("10_hvcdm")
+icon_selected = ExtResource("10_v0jsr")
+icon_unselected = ExtResource("11_idhbe")
+label_settings = SubResource("Resource_jyhjh")
+expand_icon = true
+flat = true
+icon_v_aligment = 0
+icon_h_aligment = 1
+text = "رتبه‌بندی"
+
+[sub_resource type="Resource" id="Resource_v0bqj"]
+script = ExtResource("10_hvcdm")
+icon_selected = ExtResource("14_xgbhk")
+icon_unselected = ExtResource("15_2vjm2")
+label_settings = SubResource("Resource_jyhjh")
+expand_icon = true
+flat = true
+icon_v_aligment = 0
+icon_h_aligment = 1
+text = "مدیریت‌پیام"
+
+[sub_resource type="Resource" id="Resource_somyf"]
+script = ExtResource("10_hvcdm")
+icon_selected = ExtResource("16_bwfsb")
+icon_unselected = ExtResource("17_ux7be")
+label_settings = SubResource("Resource_jyhjh")
+expand_icon = true
+flat = true
+icon_v_aligment = 0
+icon_h_aligment = 1
+text = "کاربران"
+
+[sub_resource type="Resource" id="Resource_f2kgh"]
+script = ExtResource("10_hvcdm")
+icon_selected = ExtResource("18_nvf07")
+icon_unselected = ExtResource("19_fps3j")
+label_settings = SubResource("Resource_jyhjh")
+expand_icon = true
+flat = true
+icon_v_aligment = 0
+icon_h_aligment = 1
+text = "مربیان"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bse5f"]
+bg_color = Color(0.980392, 0.372549, 0.00784314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.980392, 0.945098, 0.505882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2xfb"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.980392, 0.945098, 0.505882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="ImageTexture" id="ImageTexture_hwlxs"]
+
+[sub_resource type="Theme" id="Theme_5v6ag"]
+LineEdit/styles/focus = SubResource("StyleBoxFlat_bse5f")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_w2xfb")
+SpinBox/icons/updown = SubResource("ImageTexture_hwlxs")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qicvs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qinyn"]
+bg_color = Color(0, 0.713726, 0.431373, 0.694118)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.8, 0.580392, 0.231373, 1)
+border_blend = true
+shadow_color = Color(0, 0, 0, 0.654902)
+shadow_size = 10
+shadow_offset = Vector2(0, 10)
+
+[sub_resource type="Gradient" id="Gradient_cam0y"]
+colors = PackedColorArray(0.862745, 0.345098, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kor44"]
+gradient = SubResource("Gradient_cam0y")
+width = 500
+height = 500
+fill_from = Vector2(0.1, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7usrt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6yag"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_offset = Vector2(-1, 2)
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_jqayc"]
+script = ExtResource("10_25857")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_vvjsb"]
+script = ExtResource("11_dpmkx")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_kwwa8"]
+script = ExtResource("10_25857")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_jonc0"]
+script = ExtResource("10_25857")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_4a18m"]
+script = ExtResource("10_25857")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_y4oku"]
+script = ExtResource("11_dpmkx")
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_kd08o"]
+
+[sub_resource type="GDScript" id="GDScript_t0m0i"]
+script/source = "extends AudioStreamPlayer
+
+var effect:AudioEffectRecord
+var recording:AudioStreamWAV
+var play_button:Button
+var state : Label
+var pos = 0
+func _ready():
+	recording = AudioStreamWAV.new()
+	# We get the index of the \"Record\" bus.
+	var idx = AudioServer.get_bus_index(\"Record\")
+	# And use it to retrieve its first effect, which has been defined
+	# as an \"AudioEffectRecord\" resource.
+	effect = AudioServer.get_bus_effect(idx, 0)
+func _process(delta: float) -> void:
+	if effect.is_recording_active():
+		
+		state.text = \"در حال ضبط\" + str(\" 0\" if int(pos) % 60 < 10 else \" \", int(pos) % 60, \" : \", \"0\" if int(pos) / 60 else \"\", int(pos) / 60)
+func _on_record_button_pressed():
+	effect.set_recording_active(true)
+	pos = 0
+	$\"../Timer\".start()
+
+func _on_timer_timeout() -> void:
+	pos += 1
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvydv"]
+bg_color = Color(1, 0.733333, 0.00784314, 1)
+border_width_left = 4
+border_width_right = 4
+border_width_bottom = 5
+border_color = Color(0.933333, 0.894118, 0.47451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnpwk"]
+bg_color = Color(0.742761, 0.392014, 1.92523e-07, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.990006, 0.759946, 0.255078, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fhtb"]
+bg_color = Color(0.380392, 0.156863, 0.254902, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.244211, 0.208137, 0.634912, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78mn1"]
+bg_color = Color(0.882353, 0.627451, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.244211, 0.208137, 0.634912, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jycdh"]
+bg_color = Color(0.147672, 0.147672, 0.147672, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jwt0f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hyao"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77njg"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alyiy"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_relnp"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qofxx"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfhqs"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o41sp"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iqua"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="FontVariation" id="FontVariation_wbl4a"]
+fallbacks = Array[Font]([ExtResource("3_wpyoc")])
+base_font = ExtResource("2_67m70")
+
+[sub_resource type="FontVariation" id="FontVariation_oa6nk"]
+fallbacks = Array[Font]([ExtResource("3_wpyoc")])
+base_font = ExtResource("2_67m70")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s3iw3"]
+load_path = "res://.godot/imported/Layer 6.png-56135b8d1f4c0e7a8e3b4031b0abb1b9.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8w5o"]
+texture = SubResource("CompressedTexture2D_s3iw3")
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dnq87"]
+load_path = "res://.godot/imported/Layer 6 copy 4.png-02cf38065715e63de41109c618e82ffb.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_scvk1"]
+texture = SubResource("CompressedTexture2D_dnq87")
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="SystemFont" id="SystemFont_8txnp"]
+font_names = PackedStringArray("B Nazanin")
+font_weight = 575
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0qhhg"]
+load_path = "res://.godot/imported/Layer 6 copy 4.png-02cf38065715e63de41109c618e82ffb.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nkvqj"]
+texture = SubResource("CompressedTexture2D_0qhhg")
+expand_margin_left = 13.0
+expand_margin_top = 30.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tpif1"]
+load_path = "res://.godot/imported/Layer 6 copy 4.png-02cf38065715e63de41109c618e82ffb.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_djlwn"]
+texture = SubResource("CompressedTexture2D_tpif1")
+expand_margin_left = 13.0
+expand_margin_top = 30.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_84vae"]
+load_path = "res://.godot/imported/Layer 6 copy 4.png-02cf38065715e63de41109c618e82ffb.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s0c51"]
+texture = SubResource("CompressedTexture2D_84vae")
+expand_margin_left = 13.0
+expand_margin_top = 30.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_huxp7"]
+load_path = "res://.godot/imported/Layer 6 copy 4.png-02cf38065715e63de41109c618e82ffb.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v4cay"]
+texture = SubResource("CompressedTexture2D_huxp7")
+expand_margin_left = 13.0
+expand_margin_top = 30.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="SystemFont" id="SystemFont_6wivy"]
+font_names = PackedStringArray("B Nazanin")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1uyr"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.819608, 0.780392, 0.411765, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_8k40e"]
+fallbacks = Array[Font]([ExtResource("3_wpyoc")])
+base_font = ExtResource("2_67m70")
+
+[sub_resource type="Image" id="Image_r4l8q"]
+data = {
+"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 76, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 99, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 99, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 122, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 53, 255, 255, 255, 181, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 54, 255, 255, 255, 182, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 121, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 98, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 98, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 75, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
+"format": "RGBA8",
+"height": 16,
+"mipmaps": false,
+"width": 16
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_gcgbg"]
+image = SubResource("Image_r4l8q")
+
+[sub_resource type="FontVariation" id="FontVariation_e7st4"]
+fallbacks = Array[Font]([ExtResource("3_wpyoc")])
+base_font = ExtResource("2_67m70")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf8c4"]
+bg_color = Color(0.882184, 0.370314, 1.34766e-06, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(5.43877e-06, 0.859439, 0.366271, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gtdme"]
+bg_color = Color(0.6, 0.243137, 0.0431373, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.823529, 0.890196, 0.741176, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_2btop"]
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_qjeh5")
+Button/styles/disabled = SubResource("StyleBoxFlat_jycdh")
+Button/styles/focus = SubResource("StyleBoxEmpty_jwt0f")
+Button/styles/hover = SubResource("StyleBoxFlat_1hyao")
+Button/styles/hover_mirrored = SubResource("StyleBoxFlat_77njg")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_alyiy")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_relnp")
+Button/styles/normal = SubResource("StyleBoxFlat_qofxx")
+Button/styles/normal_mirrored = SubResource("StyleBoxFlat_cfhqs")
+Button/styles/pressed = SubResource("StyleBoxFlat_o41sp")
+Button/styles/pressed_mirrored = SubResource("StyleBoxFlat_3iqua")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 19
+Label/fonts/font = SubResource("FontVariation_wbl4a")
+LineEdit/colors/font_outline_color = Color(0, 0, 0, 1)
+LineEdit/constants/outline_size = 8
+LineEdit/font_sizes/font_size = 20
+LineEdit/fonts/font = SubResource("FontVariation_oa6nk")
+LineEdit/styles/focus = SubResource("StyleBoxTexture_m8w5o")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_scvk1")
+OptionButton/constants/arrow_margin = 21
+OptionButton/constants/h_separation = 58
+OptionButton/font_sizes/font_size = 15
+OptionButton/fonts/font = SubResource("SystemFont_8txnp")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxTexture_nkvqj")
+OptionButton/styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_djlwn")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxTexture_s0c51")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_v4cay")
+PopupMenu/constants/close_h_offset = 37
+PopupMenu/constants/close_v_offset = 78
+PopupMenu/constants/h_separation = 40
+PopupMenu/font_sizes/font_separator_size = 61
+PopupMenu/font_sizes/font_size = 20
+PopupMenu/fonts/font = SubResource("SystemFont_6wivy")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_q1uyr")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/font_sizes/bold_font_size = 50
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_8k40e")
+SpinBox/icons/updown = SubResource("ImageTexture_gcgbg")
+TextEdit/font_sizes/font_size = 22
+TextEdit/fonts/font = SubResource("FontVariation_e7st4")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_nf8c4")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_gtdme")
+
+[sub_resource type="Theme" id="Theme_ss823"]
+Label/font_sizes/font_size = 10
+Label/fonts/font = ExtResource("13_umncv")
+RichTextLabel/font_sizes/normal_font_size = 15
+RichTextLabel/fonts/normal_font = ExtResource("2_67m70")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifacq"]
+bg_color = Color(0.411765, 0.0588235, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.735639, 0.543734, 1)
+border_blend = true
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ncan"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8a5fb"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_yb7qp"]
+script = ExtResource("10_25857")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_gbj5b"]
+script = ExtResource("11_dpmkx")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pu2s7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cug1i"]
+bg_color = Color(1, 0.101961, 0.152941, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.996078)
+shadow_size = 2
+shadow_offset = Vector2(-1, 2)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_rgiyq")
+script = ExtResource("1_6lrso")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_euqnk")
+
+[node name="TabContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_gj3my")
+current_tab = 3
+transation = false
+separation_style = SubResource("StyleBoxEmpty_xpey2")
+panel_style = SubResource("StyleBoxFlat_ifxwq")
+horzonital_pos = 1
+vertical_pos = 1
+height_panel = 140
+element_min_size = Vector2(100, 100)
+tab_animation = SubResource("Resource_xlphu")
+tab_normal = SubResource("StyleBoxFlat_fct8m")
+tab_hover = SubResource("StyleBoxFlat_1xqpl")
+tab_focus = SubResource("StyleBoxEmpty_wyfnf")
+element_1 = SubResource("Resource_mdp6e")
+element_2 = SubResource("Resource_v0bqj")
+element_3 = SubResource("Resource_somyf")
+element_4 = SubResource("Resource_f2kgh")
+
+[node name="Node2D" type="Node2D" parent="TabContainer"]
+
+[node name="1" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -140.0
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/1"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BoxContainer" type="GridContainer" parent="TabContainer/1/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/h_separation = 105
+theme_override_constants/v_separation = 45
+columns = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/1/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "جنسیت : "
+
+[node name="sort_gender" type="OptionButton" parent="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "آقا"
+popup/item_0/id = 0
+popup/item_1/text = "خانم"
+popup/item_1/id = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/1/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "رده : "
+
+[node name="sort_tag" type="OptionButton" parent="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+alignment = 2
+selected = 0
+item_count = 7
+popup/item_0/text = "مهدکودک"
+popup/item_0/id = 0
+popup/item_1/text = "کلاس اول تا سوم"
+popup/item_1/id = 1
+popup/item_2/text = "کلاس چهارم تا ششم"
+popup/item_2/id = 2
+popup/item_3/text = "کلاس هفتم تا نهم"
+popup/item_3/id = 3
+popup/item_4/text = "کلاس دهم تا دوازدهم"
+popup/item_4/id = 4
+popup/item_5/text = "سطوح تحصیلی بالاتر"
+popup/item_5/id = 5
+popup/item_6/text = "کادر اجرایی"
+popup/item_6/id = 6
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/1/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = " سلامت :  "
+
+[node name="sort_part" type="OptionButton" parent="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 2
+selected = 0
+item_count = 5
+popup/item_0/text = "معنوی"
+popup/item_0/id = 0
+popup/item_1/text = "جسمانی"
+popup/item_1/id = 1
+popup/item_2/text = "فکری"
+popup/item_2/id = 2
+popup/item_3/text = "فردی"
+popup/item_3/id = 3
+popup/item_4/text = "گروهی"
+popup/item_4/id = 4
+
+[node name="BoxContainer4" type="BoxContainer" parent="TabContainer/1/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "تعداد : "
+
+[node name="per_page" type="SpinBox" parent="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer4" groups=["spin"]]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+theme = SubResource("Theme_5v6ag")
+max_value = 100000.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer4"]
+layout_mode = 2
+theme_override_constants/separation = 100
+theme_override_styles/separator = SubResource("StyleBoxEmpty_qicvs")
+
+[node name="Button" type="Button" parent="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer4"]
+layout_mode = 2
+text = "جستجو"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="instance" type="PanelContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qinyn")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kor44")
+draw_center = false
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "رتبه : 1"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن: 09999876739 "
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:  5100276150"
+vertical_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "امتیاز: "
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "الماس:"
+vertical_alignment = 1
+
+[node name="instance2" type="PanelContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qinyn")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kor44")
+draw_center = false
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "رتبه : 1"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام گروه: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "امتیاز: "
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "الماس:"
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "سر گروه"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "عضو اول"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "عضو دوم"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "عضو سوم"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "عضو چهارم"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_alignment = 1
+
+[node name="3" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -140.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/3"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BoxContainer" type="VBoxContainer" parent="TabContainer/3/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/3/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "جنسیت : "
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "آقا"
+popup/item_0/id = 0
+popup/item_1/text = "خانم"
+popup/item_1/id = 1
+popup/item_2/text = "هر دو"
+popup/item_2/id = 2
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/3/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "رده : "
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer2"]
+layout_mode = 2
+columns = 4
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer2/GridContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+text = "مهد کودک"
+alignment = 1
+
+[node name="CheckBox2" type="CheckBox" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer2/GridContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+text = "اول تا سوم"
+alignment = 1
+
+[node name="CheckBox3" type="CheckBox" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer2/GridContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+text = "چهارم تا ششم"
+alignment = 1
+
+[node name="CheckBox4" type="CheckBox" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer2/GridContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+text = "هفتم تا نهم"
+alignment = 1
+
+[node name="CheckBox5" type="CheckBox" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer2/GridContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+text = "دهم تا دوازدهم"
+
+[node name="CheckBox6" type="CheckBox" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer2/GridContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+text = "سطوح بالاتر"
+alignment = 1
+
+[node name="CheckBox7" type="CheckBox" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer2/GridContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+text = "کادر اجرایی"
+alignment = 1
+
+[node name="BoxContainer4" type="BoxContainer" parent="TabContainer/3/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "تصویر : "
+
+[node name="Button" type="Button" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+icon = ExtResource("8_mvuwd")
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label2" type="Label" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = " صدا : "
+
+[node name="Button2" type="Button" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7usrt")
+icon = ExtResource("8_mvuwd")
+icon_alignment = 1
+expand_icon = true
+
+[node name="PanelContainer" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4" instance=ExtResource("9_gkyeb")]
+visible = false
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "در حال ضبط"
+
+[node name="Button3" type="Button" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4"]
+visible = false
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+size_flags_vertical = 4
+text = "توقف"
+
+[node name="Button4" type="Button" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4"]
+visible = false
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+size_flags_vertical = 4
+text = "اتمام"
+
+[node name="BoxContainer5" type="BoxContainer" parent="TabContainer/3/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="message" type="TextEdit" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer5"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer5/message"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_filter = 2
+editable = false
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="Button2" type="Button" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer5"]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_n6yag")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_n6yag")
+toggle_mode = true
+text = "نمایش"
+
+[node name="Button" type="Button" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer5"]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+size_flags_vertical = 0
+text = "ارسال"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/3/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="instance" type="PanelContainer" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qinyn")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "متن پیام : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+bbcode_enabled = true
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "دریافت کنندگان:"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer2"]
+custom_minimum_size = Vector2(670, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BoxContainer4" type="BoxContainer" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "زمان ارسال :"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer4"]
+custom_minimum_size = Vector2(670, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Button" type="Button" parent="TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
+text = "حذف پیام"
+
+[node name="4" type="MarginContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -140.0
+focus_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/4"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BoxContainer" type="GridContainer" parent="TabContainer/4/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/h_separation = 105
+theme_override_constants/v_separation = 45
+columns = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/4/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "بر اساس : "
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/4/VBoxContainer/BoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "نام"
+popup/item_0/id = 0
+popup/item_1/text = "کد ملی"
+popup/item_1/id = 1
+popup/item_2/text = "شماره تلفن"
+popup/item_2/id = 2
+popup/item_3/text = "گروه"
+popup/item_3/id = 3
+
+[node name="search" type="LineEdit" parent="TabContainer/4/VBoxContainer/BoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+alignment = 1
+select_all_on_focus = true
+
+[node name="Button" type="Button" parent="TabContainer/4/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "جستجو"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="instance" type="PanelContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qinyn")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kor44")
+draw_center = false
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+bbcode_enabled = true
+custom_effects = [SubResource("RichTextEffect_jqayc"), SubResource("RichTextEffect_vvjsb")]
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن: 09999876739 "
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:  5100276150"
+vertical_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "امتیاز: "
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "الماس:"
+vertical_alignment = 1
+
+[node name="BoxContainer4" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "جنسیت : "
+
+[node name="gender_edit" type="OptionButton" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer4"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 2
+selected = 1
+item_count = 2
+popup/item_0/text = "آقا"
+popup/item_0/id = 0
+popup/item_1/text = "خانم"
+popup/item_1/id = 1
+
+[node name="Button" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer4"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+text = "ثبت"
+
+[node name="BoxContainer6" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "رده : "
+
+[node name="tag_edit" type="OptionButton" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer6"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+alignment = 2
+selected = 0
+item_count = 7
+popup/item_0/text = "مهدکودک"
+popup/item_0/id = 0
+popup/item_1/text = "کلاس اول تا سوم"
+popup/item_1/id = 1
+popup/item_2/text = "کلاس چهارم تا ششم"
+popup/item_2/id = 2
+popup/item_3/text = "کلاس هفتم تا نهم"
+popup/item_3/id = 3
+popup/item_4/text = "کلاس دهم تا دوازدهم"
+popup/item_4/id = 4
+popup/item_5/text = "سطوح تحصیلی بالاتر"
+popup/item_5/id = 5
+popup/item_6/text = "کادر اجرایی"
+popup/item_6/id = 6
+
+[node name="Button" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer6"]
+custom_minimum_size = Vector2(90, 50)
+layout_mode = 2
+text = "ثبت"
+
+[node name="BoxContainer5" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer5"]
+layout_mode = 2
+text = " حساب حرفه ایی "
+
+[node name="CheckBox2" type="CheckBox" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer5"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = " حساب مسدود "
+
+[node name="instance2" type="PanelContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qinyn")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kor44")
+draw_center = false
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام گروه: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "امتیاز: "
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "الماس:"
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "سر گروه"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "حذف از گروه"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "عضو اول"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "حذف از گروه"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "عضو دوم"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "حذف از گروه"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "عضو سوم"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "حذف از گروه"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "عضو چهارم"
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:"
+
+[node name="RichTextLabel" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance2/MarginContainer/VBoxContainer/GridContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "حذف از گروه"
+
+[node name="2" type="MarginContainer" parent="TabContainer"]
+layout_direction = 3
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -140.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/2"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BoxContainer" type="GridContainer" parent="TabContainer/2/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/h_separation = 105
+theme_override_constants/v_separation = 45
+columns = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/2/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "نوع : "
+
+[node name="type" type="OptionButton" parent="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+alignment = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "مربی"
+popup/item_0/id = 1
+popup/item_1/text = "پشتیبان"
+popup/item_1/id = 1
+
+[node name="BoxContainer4" type="BoxContainer" parent="TabContainer/2/VBoxContainer/BoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "جنسیت : "
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer4"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+alignment = 2
+selected = 1
+item_count = 2
+popup/item_0/text = "آقا"
+popup/item_0/id = 0
+popup/item_1/text = "خانم"
+popup/item_1/id = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/2/VBoxContainer/BoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "رده : "
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+alignment = 2
+selected = 0
+item_count = 7
+popup/item_0/text = "مهدکودک"
+popup/item_0/id = 0
+popup/item_1/text = "کلاس اول تا سوم"
+popup/item_1/id = 1
+popup/item_2/text = "کلاس چهارم تا ششم"
+popup/item_2/id = 2
+popup/item_3/text = "کلاس هفتم تا نهم"
+popup/item_3/id = 3
+popup/item_4/text = "کلاس دهم تا دوازدهم"
+popup/item_4/id = 4
+popup/item_5/text = "سطوح تحصیلی بالاتر"
+popup/item_5/id = 5
+popup/item_6/text = "کادر اجرایی"
+popup/item_6/id = 6
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/2/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "سلامت :   "
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+alignment = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "معنوی"
+popup/item_0/id = 0
+popup/item_1/text = "جسمانی"
+popup/item_1/id = 1
+popup/item_2/text = "فکری"
+popup/item_2/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/2/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="Label" type="Label" parent="TabContainer/2/VBoxContainer/BoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "کد ملی : "
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/2/VBoxContainer/BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(215, 56)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+max_length = 10
+virtual_keyboard_type = 2
+
+[node name="add_editor" type="Button" parent="TabContainer/2/VBoxContainer/BoxContainer"]
+layout_mode = 2
+text = "اضافه کردن"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/2/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="instance" type="PanelContainer" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qinyn")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kor44")
+draw_center = false
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Button" type="Button" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "حذف دسترسی"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+bbcode_enabled = true
+custom_effects = [SubResource("RichTextEffect_kwwa8"), SubResource("RichTextEffect_jonc0")]
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام پدر: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+bbcode_enabled = true
+custom_effects = [SubResource("RichTextEffect_4a18m"), SubResource("RichTextEffect_y4oku")]
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن: 09999876739 "
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:  5100276150"
+vertical_alignment = 1
+
+[node name="AudioStreamRecord" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamMicrophone_kd08o")
+bus = &"Record"
+script = SubResource("GDScript_t0m0i")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 128.0
+icon = ExtResource("10_55iem")
+flat = true
+expand_icon = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017
+anchor_top = 0.1065
+anchor_right = 0.513
+anchor_bottom = 0.279
+grow_horizontal = 2
+mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mvydv")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="instance" type="Button" parent="ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+mouse_filter = 1
+text_overrun_behavior = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="PanelContainer/CenterContainer"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lnpwk")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/CenterContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="PanelContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "درحال بارگذاری..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="PanelContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "356Kbi / 2Mbi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_67m70")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/background = SubResource("StyleBoxFlat_7fhtb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_78mn1")
+value = 50.0
+
+[node name="Button" type="Button" parent="PanelContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "لغو"
+
+[node name="Window" type="Window" parent="."]
+transparent_bg = true
+initial_position = 1
+size = Vector2i(512, 1024)
+visible = false
+wrap_controls = true
+unresizable = true
+always_on_top = true
+transparent = true
+theme = SubResource("Theme_2btop")
+
+[node name="TextureRect" type="TextureRect" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_euqnk")
+
+[node name="MarginContainer" type="MarginContainer" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_bottom = 175
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Window/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+focus_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_ss823")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ifacq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
+theme_override_font_sizes/font_size = 13
+text = "کاربر"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+visible = false
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HSeparator2" type="HSeparator" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5ncan")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8a5fb")
+bbcode_enabled = true
+text = "[right]شما از طریق محمد حسین حق شناس به گروه بش دعوت شدید. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست.
+"
+fit_content = true
+context_menu_enabled = true
+custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
+selection_enabled = true
+
+[node name="HSeparator" type="HSeparator" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5ncan")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 85
+alignment = 1
+
+[node name="Button" type="Button" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 35)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+text = "تایید"
+
+[node name="Button2" type="Button" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 35)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pu2s7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cug1i")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cug1i")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cug1i")
+text = "رد"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_5ncan")
+
+[node name="Label2" type="Label" parent="Window/MarginContainer/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
+theme_override_font_sizes/font_size = 13
+text = "1403-05-02 12:05:15"
+horizontal_alignment = 2
+
+[node name="SystemBarColorChanger" type="Node" parent="."]
+script = ExtResource("26_71nvp")
+
+[connection signal="tab_selected" from="TabContainer" to="." method="_on_tab_container_tab_selected"]
+[connection signal="pressed" from="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer4/Button" to="." method="_on_sort_button_pressed"]
+[connection signal="pressed" from="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Button" to="." method="_on_image_button_pressed"]
+[connection signal="pressed" from="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Button3" to="AudioStreamRecord" method="_on_record_button_pressed"]
+[connection signal="pressed" from="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer5/Button" to="." method="_on_send_message_pressed"]
+[connection signal="item_selected" from="TabContainer/4/VBoxContainer/BoxContainer/BoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="text_changed" from="TabContainer/4/VBoxContainer/BoxContainer/search" to="." method="_on_search_text_changed"]
+[connection signal="pressed" from="TabContainer/4/VBoxContainer/BoxContainer/Button" to="." method="_on_search_pressed"]
+[connection signal="item_selected" from="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer/type" to="." method="_on_type_item_selected"]
+[connection signal="item_selected" from="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer4/OptionButton" to="." method="_on_gender_supporter_selected"]
+[connection signal="item_selected" from="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer2/OptionButton" to="." method="_on_tag_supporter_selected"]
+[connection signal="item_selected" from="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer3/OptionButton" to="." method="_on_editor_part_selected"]
+[connection signal="pressed" from="TabContainer/2/VBoxContainer/BoxContainer/add_editor" to="." method="_on_add_editor_pressed"]
+[connection signal="timeout" from="Timer" to="AudioStreamRecord" method="_on_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+[connection signal="go_back_requested" from="Window" to="." method="_on_window_go_back_requested"]

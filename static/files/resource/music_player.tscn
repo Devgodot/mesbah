@@ -1,0 +1,234 @@
+[gd_scene load_steps=23 format=3 uid="uid://ccq5uf2d3qap4"]
+
+[ext_resource type="Texture2D" uid="uid://cge8x0f18cyji" path="res://sprite/3686899.png" id="1_8xnri"]
+[ext_resource type="Script" uid="uid://d30e5a64tt1bl" path="res://script/music_player.gd" id="1_arhmt"]
+[ext_resource type="Texture2D" uid="uid://iodoo0npebl" path="res://sprite/12.png" id="2_5xv0b"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_6nua2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnarj"]
+bg_color = Color(0.435449, 0.326125, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.95316, 0.773062, 0.385346, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 20
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4stb5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sshet"]
+texture = ExtResource("2_5xv0b")
+modulate_color = Color(0.775063, 0.775063, 0.775063, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sidq2"]
+texture = ExtResource("1_8xnri")
+modulate_color = Color(0.886262, 0.886261, 0.886262, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_buutp"]
+texture = ExtResource("2_5xv0b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oyd30"]
+texture = ExtResource("1_8xnri")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v3gep"]
+blend_mode = 3
+
+[sub_resource type="Gradient" id="Gradient_e133n"]
+offsets = PackedFloat32Array(0, 0.546667, 0.553333)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pi7qt"]
+gradient = SubResource("Gradient_e133n")
+width = 128
+height = 127
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_ajhce"]
+_data = [Vector2(0, 0.560439), 0.0, 0.0, 0, 0, Vector2(0.37931, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.208791), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_qr5rk"]
+offsets = PackedFloat32Array(0, 0.60274)
+colors = PackedColorArray(0.917647, 0.168627, 0.231373, 1, 0.996078, 1, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_wii43"]
+offsets = PackedFloat32Array(0, 0.611111, 0.738095)
+colors = PackedColorArray(1, 1, 0.47451, 1, 0.219608, 1, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tqpwl"]
+gradient = SubResource("Gradient_wii43")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gwujv"]
+grow_begin = -5.0
+grow_end = 0.0
+thickness = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nwq1"]
+bg_color = Color(0.2, 0.956863, 0.858824, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.435294, 0.32549, 0, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="Gradient" id="Gradient_xj8y6"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.246575, 0.5, 0.787671)
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_gmm3n"]
+script/source = "@tool
+extends CPUParticles2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if get_parent().max_value != 0:
+		position.x = ((float(get_parent().value) / float(get_parent().max_value)) * get_parent().size.x)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_b2oci"]
+font = ExtResource("3_6nua2")
+font_size = 30
+
+[node name="PanelContainer" type="PanelContainer" groups=["music"]]
+custom_minimum_size = Vector2(550, 154)
+layout_direction = 2
+offset_right = 550.0
+offset_bottom = 154.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nnarj")
+script = ExtResource("1_arhmt")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4stb5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_sshet")
+theme_override_styles/hover = SubResource("StyleBoxTexture_sidq2")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_buutp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_oyd30")
+toggle_mode = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/HBoxContainer/Button"]
+show_behind_parent = true
+clip_children = 2
+material = SubResource("CanvasItemMaterial_v3gep")
+position = Vector2(50, 50)
+texture = SubResource("GradientTexture2D_pi7qt")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="MarginContainer/HBoxContainer/Button/Sprite2D"]
+show_behind_parent = true
+position = Vector2(47, 43)
+emitting = false
+amount = 500
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(-1, -1)
+spread = 50.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 73.81
+initial_velocity_max = 166.59
+angular_velocity_min = 118.76
+angular_velocity_max = 118.76
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_ajhce")
+color_ramp = SubResource("Gradient_qr5rk")
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = SubResource("GradientTexture2D_tqpwl")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_tqpwl")
+theme_override_styles/slider = SubResource("StyleBoxLine_gwujv")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_2nwq1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_2nwq1")
+max_value = 0.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="MarginContainer/HBoxContainer/HSlider"]
+position = Vector2(0, 10)
+emitting = false
+amount = 20
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(-1, 0)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 51.55
+initial_velocity_max = 79.11
+angular_velocity_min = 118.76
+angular_velocity_max = 118.76
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_ajhce")
+color_initial_ramp = SubResource("Gradient_xj8y6")
+script = SubResource("GDScript_gmm3n")
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer/HSlider"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -25.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "3:55/1:00"
+label_settings = SubResource("LabelSettings_b2oci")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="toggled" from="MarginContainer/HBoxContainer/Button" to="." method="_on_button_toggled"]
+[connection signal="drag_ended" from="MarginContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_drag_ended"]
+[connection signal="gui_input" from="MarginContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_gui_input"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

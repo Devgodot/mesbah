@@ -1,0 +1,966 @@
+[gd_scene load_steps=51 format=3 uid="uid://happu6hjiert"]
+
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_gpagd"]
+[ext_resource type="Script" uid="uid://bksxi3frccjpv" path="res://script/control.gd" id="1_ios2j"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_1wrgn"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_af0w1"]
+[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="2_eunfw"]
+[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="3_entea"]
+[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="3_t1uln"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="4_jl1nx"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="7_h4n6a"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="8_6ascx"]
+[ext_resource type="Texture2D" uid="uid://d2a5pf05eb0hk" path="res://sprite/1092884.png" id="8_uej5x"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="12_6dwa3"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="13_irn54"]
+
+[sub_resource type="FontVariation" id="FontVariation_m5l8b"]
+fallbacks = Array[Font]([ExtResource("2_1wrgn")])
+base_font = ExtResource("1_gpagd")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
+bg_color = Color(0.147672, 0.147672, 0.147672, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wr4g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2vmw"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="FontVariation" id="FontVariation_dalxy"]
+fallbacks = Array[Font]([ExtResource("2_1wrgn")])
+base_font = ExtResource("2_af0w1")
+
+[sub_resource type="FontVariation" id="FontVariation_dy4oq"]
+fallbacks = Array[Font]([ExtResource("2_1wrgn")])
+base_font = ExtResource("2_af0w1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
+texture = ExtResource("3_entea")
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
+texture = ExtResource("4_jl1nx")
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="FontVariation" id="FontVariation_7soyd"]
+fallbacks = Array[Font]([ExtResource("2_1wrgn")])
+base_font = ExtResource("2_af0w1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
+texture = ExtResource("4_jl1nx")
+expand_margin_left = 13.0
+expand_margin_top = 30.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gwbx"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.819608, 0.780392, 0.411765, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_adnmk"]
+fallbacks = Array[Font]([ExtResource("2_1wrgn")])
+base_font = ExtResource("2_af0w1")
+
+[sub_resource type="FontVariation" id="FontVariation_l65wg"]
+fallbacks = Array[Font]([ExtResource("2_1wrgn")])
+base_font = ExtResource("3_t1uln")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dx5q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx0m5"]
+bg_color = Color(0.882184, 0.370314, 1.34766e-06, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(5.43877e-06, 0.859439, 0.366271, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwkh1"]
+bg_color = Color(0.6, 0.243137, 0.0431373, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.823529, 0.890196, 0.741176, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_pnsd0"]
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = SubResource("FontVariation_m5l8b")
+Button/styles/disabled = SubResource("StyleBoxFlat_ngvdg")
+Button/styles/focus = SubResource("StyleBoxEmpty_2wr4g")
+Button/styles/hover = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/normal = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/pressed = SubResource("StyleBoxFlat_d2vmw")
+Label/colors/font_color = Color(0.47451, 0.333333, 0.0784314, 1)
+Label/font_sizes/font_size = 38
+Label/fonts/font = SubResource("FontVariation_dalxy")
+LineEdit/font_sizes/font_size = 30
+LineEdit/fonts/font = SubResource("FontVariation_dy4oq")
+LineEdit/styles/focus = SubResource("StyleBoxTexture_3omms")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_c6n5k")
+OptionButton/constants/arrow_margin = 21
+OptionButton/constants/h_separation = 58
+OptionButton/font_sizes/font_size = 30
+OptionButton/fonts/font = SubResource("FontVariation_7soyd")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxTexture_qxwpl")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxTexture_qxwpl")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_qxwpl")
+PopupMenu/constants/close_h_offset = 37
+PopupMenu/constants/close_v_offset = 78
+PopupMenu/constants/h_separation = 40
+PopupMenu/font_sizes/font_separator_size = 122
+PopupMenu/font_sizes/font_size = 40
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
+RichTextLabel/colors/font_outline_color = Color(0, 1, 0.72549, 1)
+RichTextLabel/fonts/bold_font = SubResource("FontVariation_adnmk")
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_l65wg")
+RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_2dx5q")
+TextEdit/fonts/font = SubResource("FontVariation_adnmk")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_sx0m5")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_xwkh1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g05f1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2l8jy"]
+bg_color = Color(0.111444, 0.191605, 0.289168, 1)
+border_width_top = 10
+border_color = Color(0.541176, 0.796078, 0.411765, 1)
+border_blend = true
+expand_margin_left = 20.0
+expand_margin_top = 15.0
+expand_margin_right = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vopps"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iua5"]
+bg_color = Color(1, 0.509804, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.8, 0.8, 0.533333, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elx3q"]
+bg_color = Color(0.433681, 0.20662, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.8, 0.8, 0.533333, 1)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_2y1hm"]
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("3_t1uln")
+RichTextLabel/font_sizes/normal_font_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwblo"]
+bg_color = Color(0.0193923, 0.0569649, 0.596532, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.735639, 0.543734, 1)
+border_blend = true
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bx4kc"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_yb7qp"]
+script = ExtResource("12_6dwa3")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_gbj5b"]
+script = ExtResource("13_irn54")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_53iq2"]
+
+[sub_resource type="Gradient" id="Gradient_skm5r"]
+offsets = PackedFloat32Array(0, 0.536232)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7a6fd"]
+gradient = SubResource("Gradient_skm5r")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.019802, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_1stjb"]
+_data = [Vector2(0, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.413793, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.208791), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_cxcyr"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0410959, 0.547945, 0.965753)
+colors = PackedColorArray(0, 1, 0, 1, 0.027451, 0.372549, 0.443137, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wi0ee"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfn3y"]
+bg_color = Color(0.541176, 0.12549, 0.184314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.735639, 0.543734, 1)
+border_blend = true
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+
+[sub_resource type="Gradient" id="Gradient_mdgmj"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0410959, 0.260274)
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1, 0.541176, 0.12549, 0.184314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0thc"]
+bg_color = Color(1, 0, 0.317647, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.868985, 0.868985, 0.868985, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqwks"]
+font = ExtResource("1_gpagd")
+font_size = 70
+
+[node name="Control" type="Control" groups=["scene_message"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pnsd0")
+script = ExtResource("1_ios2j")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eunfw")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 124.0
+offset_right = 981.0
+offset_bottom = 1589.0
+theme_override_fonts/font = ExtResource("7_h4n6a")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_g05f1")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2l8jy")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vopps")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_1iua5")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_elx3q")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_elx3q")
+tab_alignment = 2
+current_tab = 1
+
+[node name="سلامت معنوی" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت معنوی"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت معنوی/HBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 45
+wrap_mode = 1
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+script = -3579537070038712320
+metadata/_edit_use_anchors_ = true
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت معنوی/HBoxContainer/TextEdit"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = -40.0
+offset_right = 494.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 45
+editable = false
+wrap_mode = 1
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+script = -3579537070038712320
+
+[node name="Button" type="Button" parent="TabContainer/سلامت معنوی/HBoxContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_vertical = 0
+text = "ارسال"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/سلامت معنوی"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت معنوی/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(800, 0)
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_2y1hm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dwblo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
+theme_override_font_sizes/font_size = 26
+text = "شما"
+
+[node name="Button" type="Button" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -33.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bx4kc")
+icon = ExtResource("8_uej5x")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control" type="Control" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label/Button"]
+anchors_preset = 0
+offset_left = -36.0
+offset_top = -20.0
+offset_right = 67.0
+offset_bottom = 66.0
+focus_mode = 2
+mouse_filter = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[right]شما از طریق محمد حسین حق شناس به گروه بش دعوت شدید. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست.
+"
+fit_content = true
+context_menu_enabled = true
+custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
+selection_enabled = true
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
+
+[node name="Label2" type="Label" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "1403-05-02 12:05:15"
+horizontal_alignment = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+position = Vector2(400, 100)
+emitting = false
+amount = 2000
+lifetime = 0.5
+one_shot = true
+texture = SubResource("GradientTexture2D_7a6fd")
+emission_shape = 3
+emission_rect_extents = Vector2(400, 100)
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 208.83
+initial_velocity_max = 280.99
+scale_amount_min = 0.4
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_1stjb")
+color_initial_ramp = SubResource("Gradient_cxcyr")
+
+[node name="سلامت جسمانی" type="VBoxContainer" parent="TabContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت جسمانی"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت جسمانی/HBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 45
+wrap_mode = 1
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+script = -3579537070038712320
+metadata/_edit_use_anchors_ = true
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت جسمانی/HBoxContainer/TextEdit"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = -40.0
+offset_right = 494.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 45
+editable = false
+wrap_mode = 1
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+script = -3579537070038712320
+
+[node name="Button" type="Button" parent="TabContainer/سلامت جسمانی/HBoxContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_vertical = 0
+text = "ارسال"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/سلامت جسمانی"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت جسمانی/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(800, 0)
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_2y1hm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dwblo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
+theme_override_font_sizes/font_size = 26
+text = "شما"
+
+[node name="Button" type="Button" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -33.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bx4kc")
+icon = ExtResource("8_uej5x")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control" type="Control" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label/Button"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -36.0
+offset_top = -20.0
+offset_right = 67.0
+offset_bottom = 66.0
+focus_mode = 2
+mouse_filter = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[right]شما از طریق محمد حسین حق شناس به گروه بش دعوت شدید. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست.
+"
+fit_content = true
+context_menu_enabled = true
+custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
+selection_enabled = true
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
+
+[node name="Label2" type="Label" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "1403-05-02 12:05:15"
+horizontal_alignment = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+position = Vector2(400, 100)
+emitting = false
+amount = 2000
+lifetime = 0.5
+one_shot = true
+texture = SubResource("GradientTexture2D_7a6fd")
+emission_shape = 3
+emission_rect_extents = Vector2(400, 100)
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 208.83
+initial_velocity_max = 280.99
+scale_amount_min = 0.4
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_1stjb")
+color_initial_ramp = SubResource("Gradient_cxcyr")
+
+[node name="سلامت فکری" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+metadata/_tab_index = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت فکری"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت فکری/HBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_af0w1")
+theme_override_font_sizes/font_size = 45
+wrap_mode = 1
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+script = -3579537070038712320
+metadata/_edit_use_anchors_ = true
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت فکری/HBoxContainer/TextEdit"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -496.0
+offset_top = -40.0
+offset_right = 494.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/font_size = 45
+editable = false
+wrap_mode = 1
+scroll_past_end_of_file = true
+scroll_fit_content_height = true
+script = -3579537070038712320
+
+[node name="Button" type="Button" parent="TabContainer/سلامت فکری/HBoxContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_vertical = 0
+text = "ارسال"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/سلامت فکری"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت فکری/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(800, 0)
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 2
+mouse_filter = 1
+theme = SubResource("Theme_2y1hm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_dwblo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
+theme_override_font_sizes/font_size = 26
+text = "شما"
+
+[node name="Button" type="Button" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -33.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 43.0
+grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bx4kc")
+icon = ExtResource("8_uej5x")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Control" type="Control" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label/Button"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -36.0
+offset_top = -20.0
+offset_right = 67.0
+offset_bottom = 66.0
+focus_mode = 2
+mouse_filter = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[right]شما از طریق محمد حسین حق شناس به گروه بش دعوت شدید. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست.
+"
+fit_content = true
+context_menu_enabled = true
+custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
+selection_enabled = true
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
+
+[node name="Label2" type="Label" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "1403-05-02 12:05:15"
+horizontal_alignment = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+position = Vector2(400, 100)
+emitting = false
+amount = 2000
+lifetime = 0.5
+one_shot = true
+texture = SubResource("GradientTexture2D_7a6fd")
+emission_shape = 3
+emission_rect_extents = Vector2(400, 100)
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 208.83
+initial_velocity_max = 280.99
+scale_amount_min = 0.4
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_1stjb")
+color_initial_ramp = SubResource("Gradient_cxcyr")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 128.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wi0ee")
+icon = ExtResource("8_6ascx")
+flat = true
+expand_icon = true
+
+[node name="Container" type="Container" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Container"]
+visible = false
+custom_minimum_size = Vector2(800, 0)
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 2
+focus_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_2y1hm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_nfn3y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Container/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/PanelContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
+theme_override_font_sizes/font_size = 26
+text = "پشتیبان"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 2
+mouse_filter = 1
+bbcode_enabled = true
+text = "[right]شما از طریق محمد حسین حق شناس به گروه بش دعوت شدید. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست.
+"
+fit_content = true
+context_menu_enabled = true
+custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
+selection_enabled = true
+
+[node name="HSeparator" type="HSeparator" parent="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
+
+[node name="Label2" type="Label" parent="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "1403-05-02 12:05:15"
+horizontal_alignment = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+position = Vector2(400, 100)
+emitting = false
+amount = 2000
+lifetime = 0.5
+one_shot = true
+texture = SubResource("GradientTexture2D_7a6fd")
+emission_shape = 3
+emission_rect_extents = Vector2(400, 100)
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 208.83
+initial_velocity_max = 280.99
+scale_amount_min = 0.4
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_1stjb")
+color_initial_ramp = SubResource("Gradient_mdgmj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 86.0
+offset_right = 818.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_b0thc")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 7.0
+offset_bottom = 109.0
+grow_horizontal = 2
+text = "ارتباط با مربی"
+label_settings = SubResource("LabelSettings_yqwks")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 551.0
+offset_top = 88.0
+offset_right = 599.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_b0thc")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 354.0
+offset_top = 88.0
+offset_right = 402.0
+offset_bottom = 137.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_b0thc")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 122.0
+offset_right = 329.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "پشتیبان های برخط: 
+"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[connection signal="tab_selected" from="TabContainer" to="." method="_on_tab_container_tab_selected"]
+[connection signal="pressed" from="TabContainer/سلامت معنوی/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="scroll_ended" from="TabContainer/سلامت معنوی/ScrollContainer" to="." method="_on_scroll_container_scroll_ended"]
+[connection signal="scroll_started" from="TabContainer/سلامت معنوی/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]
+[connection signal="meta_clicked" from="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="pressed" from="TabContainer/سلامت جسمانی/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="scroll_ended" from="TabContainer/سلامت جسمانی/ScrollContainer" to="." method="_on_scroll_container_scroll_ended"]
+[connection signal="scroll_started" from="TabContainer/سلامت جسمانی/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]
+[connection signal="meta_clicked" from="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="pressed" from="TabContainer/سلامت فکری/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="scroll_ended" from="TabContainer/سلامت فکری/ScrollContainer" to="." method="_on_scroll_container_scroll_ended"]
+[connection signal="scroll_started" from="TabContainer/سلامت فکری/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]
+[connection signal="meta_clicked" from="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]
+[connection signal="meta_clicked" from="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]

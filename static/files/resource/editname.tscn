@@ -1,0 +1,760 @@
+[gd_scene load_steps=43 format=3 uid="uid://ci2s8i5q80lle"]
+
+[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="1_f4l5k"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_kxjwa"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="3_b66ii"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="3_yhgb4"]
+[ext_resource type="Script" uid="uid://c1nq81fc3qtun" path="res://script/editname.gd" id="6_1jhxt"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="8_s2ajr"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="8_yttyr"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="9_cxx8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71or4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ns3il"]
+bg_color = Color(0.401446, 0.356074, 0.144324, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 20
+border_blend = true
+expand_margin_top = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ur47k"]
+bg_color = Color(0.180392, 0.752941, 0.513726, 1)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(0.643137, 0.611765, 0.27451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egfyc"]
+bg_color = Color(0.132874, 0.279805, 0.0665333, 1)
+border_color = Color(0.643137, 0.611765, 0.27451, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_nwivp"]
+fallbacks = Array[Font]([ExtResource("3_b66ii")])
+base_font = ExtResource("2_kxjwa")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gu0n7"]
+bg_color = Color(0.234643, 0.118545, 4.81308e-08, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fi2xy"]
+
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_5hban"]
+number_color = Color(0.776471, 1, 0, 1)
+symbol_color = Color(0.886275, 0, 0, 1)
+function_color = Color(0, 0, 1, 1)
+member_variable_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k77cb"]
+bg_color = Color(0.643976, 0.609965, 0.273372, 1)
+border_width_left = 20
+border_width_right = 20
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_gooy1"]
+font = ExtResource("2_kxjwa")
+font_size = 30
+font_color = Color(0.101961, 0.101961, 0.811765, 1)
+shadow_color = Color(0, 0, 0, 0.756863)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45r7t"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.988235, 0.952941, 0.505882, 1)
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_a8jrn"]
+default_font = ExtResource("2_kxjwa")
+default_font_size = 40
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_45r7t")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rk82n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fohpw"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_color = Color(0.988235, 0.952941, 0.505882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jy2j"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_top = 3
+border_color = Color(0.988235, 0.952941, 0.505882, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 15
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jiwcu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23ky6"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.988235, 0.952941, 0.505882, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_ykdo1"]
+default_font = ExtResource("2_kxjwa")
+LineEdit/font_sizes/font_size = 40
+LineEdit/styles/focus = SubResource("StyleBoxEmpty_jiwcu")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_23ky6")
+
+[sub_resource type="ImageTexture" id="ImageTexture_4ssy6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vyurp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ad83c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alt15"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oc6i8"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_havbg"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2v3lt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v600"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+border_width_bottom = 2
+border_color = Color(0.162066, 0.162066, 0.162065, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_3em0w"]
+Button/styles/focus = SubResource("StyleBoxEmpty_ad83c")
+Button/styles/hover = SubResource("StyleBoxFlat_alt15")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_oc6i8")
+Button/styles/normal = SubResource("StyleBoxFlat_havbg")
+Button/styles/pressed = SubResource("StyleBoxFlat_havbg")
+ColorPickerButton/styles/focus = SubResource("StyleBoxEmpty_2v3lt")
+ColorPickerButton/styles/hover = null
+ColorPickerButton/styles/hover_pressed = null
+ColorPickerButton/styles/hover_pressed_mirrored = null
+ColorPickerButton/styles/normal = null
+ColorPickerButton/styles/pressed = null
+LineEdit/styles/focus = SubResource("StyleBoxFlat_8v600")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_8v600")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p573c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qv5u4"]
+bg_color = Color(2.40654e-07, 0.585948, 0.0980374, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 3
+shadow_offset = Vector2(-2, 2)
+
+[sub_resource type="Theme" id="Theme_nqryy"]
+default_font = ExtResource("2_kxjwa")
+default_font_size = 45
+Button/styles/focus = SubResource("StyleBoxEmpty_p573c")
+Button/styles/hover = SubResource("StyleBoxFlat_qv5u4")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_qv5u4")
+Button/styles/normal = SubResource("StyleBoxFlat_qv5u4")
+Button/styles/pressed = SubResource("StyleBoxFlat_qv5u4")
+
+[sub_resource type="Theme" id="Theme_8jer0"]
+
+[sub_resource type="FontVariation" id="FontVariation_tf3lr"]
+fallbacks = Array[Font]([ExtResource("3_b66ii")])
+base_font = ExtResource("2_kxjwa")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_04n2i"]
+script = ExtResource("8_yttyr")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_2blyu"]
+script = ExtResource("9_cxx8k")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("6_1jhxt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_f4l5k")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 137.0
+offset_right = 981.0
+offset_bottom = 776.0
+theme_override_fonts/font = ExtResource("3_yhgb4")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_71or4")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_ns3il")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_ur47k")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_egfyc")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_egfyc")
+current_tab = 1
+
+[node name="TextEdit" type="TextEdit" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_nwivp")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_gu0n7")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fi2xy")
+text = "[right]محمد حسین حق شناس"
+context_menu_enabled = false
+wrap_mode = 1
+syntax_highlighter = SubResource("CodeHighlighter_5hban")
+metadata/_edit_use_anchors_ = true
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer"]
+layout_mode = 2
+focus_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k77cb")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 37
+
+[node name="Control" type="Control" parent="TabContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+text = "جهت چیدمان :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(300, 70)
+layout_mode = 2
+theme = SubResource("Theme_a8jrn")
+theme_override_fonts/font = ExtResource("2_kxjwa")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rk82n")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_fohpw")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_5jy2j")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_5jy2j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5jy2j")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_fohpw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5jy2j")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_5jy2j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5jy2j")
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "راست"
+popup/item_1/text = "وسط"
+popup/item_1/id = 1
+popup/item_2/text = "چپ"
+popup/item_2/id = 2
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+text = "ابعاد :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer2" groups=["spin"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+min_value = 20.0
+value = 20.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 85
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vyurp")
+
+[node name="Label2" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+text = "رنگ :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer2"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_3em0w")
+edit_alpha = false
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+text = "خط دور متن :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer3" groups=["spin"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+max_value = 30.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 85
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vyurp")
+
+[node name="Label2" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+text = "رنگ :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_vertical = 4
+edit_alpha = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+theme = SubResource("Theme_nqryy")
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "پویا نمایی :"
+label_settings = SubResource("LabelSettings_gooy1")
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+text = "لرزش"
+
+[node name="CheckBox2" type="CheckBox" parent="TabContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+text = "نور"
+
+[node name="CheckBox3" type="CheckBox" parent="TabContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+text = "گردباد"
+
+[node name="CheckBox4" type="CheckBox" parent="TabContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+text = "موج"
+
+[node name="BoxContainer4" type="BoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+text = "پویانمایی نور :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4"]
+layout_mode = 2
+theme_override_constants/h_separation = 85
+columns = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "تعداد حرف نور :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer/HBoxContainer" groups=["spin"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+min_value = 1.0
+max_value = 20.0
+value = 1.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer/HBoxContainer3"]
+layout_mode = 2
+text = " سرعت :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer/HBoxContainer3" groups=["spin"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+min_value = 1.0
+value = 1.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer/HBoxContainer4"]
+layout_mode = 2
+text = "تعداد حرف دوره :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer/HBoxContainer4" groups=["spin"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+max_value = 1000.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer/HBoxContainer2"]
+layout_mode = 2
+text = "رنگ :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer4/GridContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_8jer0")
+
+[node name="BoxContainer5" type="BoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer5"]
+layout_mode = 2
+text = "پویانمایی موج :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer5"]
+layout_mode = 2
+theme_override_constants/h_separation = 85
+columns = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer5/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer5/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "طول موج :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer5/GridContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+min_value = 1.0
+value = 10.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer5/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer5/GridContainer/HBoxContainer3"]
+layout_mode = 2
+text = " سرعت :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer5/GridContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+max_value = 30.0
+value = 5.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="BoxContainer6" type="BoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer6"]
+layout_mode = 2
+text = "پویانمایی  گردباد :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer6"]
+layout_mode = 2
+theme_override_constants/h_separation = 85
+columns = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer6/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer6/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "شعاع :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer6/GridContainer/HBoxContainer" groups=["spin"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+min_value = 1.0
+value = 10.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer6/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer6/GridContainer/HBoxContainer3"]
+layout_mode = 2
+text = " سرعت :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer6/GridContainer/HBoxContainer3" groups=["spin"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+max_value = 30.0
+value = 5.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="BoxContainer7" type="BoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer7"]
+layout_mode = 2
+text = "پویانمایی  لرزش :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer7"]
+layout_mode = 2
+theme_override_constants/h_separation = 85
+columns = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer7/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer7/GridContainer/HBoxContainer"]
+layout_mode = 2
+text = "درصد :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer7/GridContainer/HBoxContainer" groups=["spin"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+min_value = 1.0
+value = 50.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer7/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer7/GridContainer/HBoxContainer3"]
+layout_mode = 2
+text = " سرعت :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer7/GridContainer/HBoxContainer3" groups=["spin"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+max_value = 30.0
+value = 5.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer7/GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer7/GridContainer/HBoxContainer4"]
+layout_mode = 2
+text = "سطح :  "
+label_settings = SubResource("LabelSettings_gooy1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/ScrollContainer/VBoxContainer/BoxContainer7/GridContainer/HBoxContainer4" groups=["spin"]]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme = SubResource("Theme_ykdo1")
+theme_override_icons/updown = SubResource("ImageTexture_4ssy6")
+max_value = 30.0
+value = 1.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.081
+anchor_top = 0.406
+anchor_right = 0.913
+anchor_bottom = 0.483
+size_flags_horizontal = 3
+focus_mode = 2
+theme_override_colors/default_color = Color(0.517647, 0.388235, 0.109804, 1)
+theme_override_fonts/normal_font = SubResource("FontVariation_tf3lr")
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 45
+theme_override_font_sizes/mono_font_size = 40
+theme_override_font_sizes/normal_font_size = 45
+theme_override_font_sizes/bold_font_size = 50
+bbcode_enabled = true
+text = "[right]محمد حسین حق شناس"
+fit_content = true
+custom_effects = [SubResource("RichTextEffect_04n2i"), SubResource("RichTextEffect_2blyu")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 1318.0
+offset_right = 595.0
+offset_bottom = 1432.0
+theme = SubResource("Theme_nqryy")
+theme_override_font_sizes/font_size = 90
+text = "ثبت"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 128.0
+icon = ExtResource("8_s2ajr")
+flat = true
+expand_icon = true
+
+[connection signal="text_changed" from="TabContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

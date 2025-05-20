@@ -1,0 +1,328 @@
+[gd_scene load_steps=17 format=3 uid="uid://dlcux0431382n"]
+
+[ext_resource type="Texture2D" uid="uid://qc5tj4m0okuh" path="res://sprite/Layer 6.jpg" id="1_ugpgm"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="2_vlxx7"]
+[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_2cnry"]
+[ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="4_6jmwe"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_6fui8"]
+[ext_resource type="Texture2D" uid="uid://bnef3knjep3sx" path="res://sprite/free-message-icon-1159-thumb.png" id="5_qikbu"]
+[ext_resource type="FontFile" uid="uid://b4px8mb7gd3t" path="res://fonts/B Traffic_0.ttf" id="7_alikw"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="8_a6a7c"]
+
+[sub_resource type="GDScript" id="GDScript_quj8k"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	$SystemBarColorChanger.set_navigation_bar_color(Color(\"e9c93a\"))
+	RenderingServer.set_default_clear_color(Color(\"e9c93a\"))
+	if not Updatedate.load_game(\"support\"):
+		var m2 = await Updatedate.request(\"/auth/unseen_message?p=1\")
+		if m2 and m2.has(\"num\"):
+			if m2.num != 0:
+				Updatedate.seen = m2.num
+				$Button3/Label.show()
+				$Button3/Label.text = str(m2.num)
+	else:
+		$Button3.hide()
+	var m = await Updatedate.request(\"/auth/unseen_message\")
+	if m and m.has(\"num\"):
+		if m.num != 0:
+			$Button2/Label.show()
+			$Button2/Label.text = str(m.num)
+	
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Updatedate.seen > 0:
+		$Button3/Label.show()
+		$Button3/Label.text = str(Updatedate.seen)
+
+func _on_button_7_pressed() -> void:
+	Transation.change(self, load(\"res://scenes/menu1.tscn\"))
+	
+
+func _on_button_pressed() -> void:
+	Transation.change(self, load(\"res://scenes/setting.tscn\"))
+
+
+func _on_button_2_pressed() -> void:
+	Transation.change(self, load(\"res://scenes/messages.tscn\"))
+
+
+func _on_button_8_pressed() -> void:
+	Updatedate.p_scene = scene_file_path.get_file().get_basename()
+	Updatedate.part = 3
+	Transation.change(self, load(\"res://scenes/positions.tscn\"))
+	
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		if Updatedate.load_game(\"editor\", false):
+			print(0)
+			Transation.change(self, load(\"res://scenes/start.tscn\"), -1)
+		else:
+			get_tree().quit()
+func _on_button_5_pressed() -> void:
+	Updatedate.p_scene = scene_file_path.get_file().get_basename()
+	Updatedate.part = 4
+	Transation.change(self, load(\"res://scenes/positions.tscn\"))
+	
+
+func _on_button_3_pressed() -> void:
+	Transation.change(self, load(\"res://scenes/control.tscn\"))
+	
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0uhsw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8fni"]
+texture = ExtResource("2_vlxx7")
+expand_margin_top = 60.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="FontVariation" id="FontVariation_k35su"]
+base_font = ExtResource("3_2cnry")
+spacing_top = -38
+spacing_bottom = 23
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_freqk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_exmok"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk4v5"]
+bg_color = Color(1, 0.235294, 0.105882, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_j4lw3"]
+font = ExtResource("5_6fui8")
+font_size = 51
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_quj8k")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ugpgm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 891.0
+offset_right = 817.0
+offset_bottom = 1024.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_2cnry")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/normal = SubResource("StyleBoxTexture_k8fni")
+text = "رتبه، امتیاز و الماس گروهی"
+
+[node name="Button8" type="Button" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 674.0
+offset_right = 817.0
+offset_bottom = 807.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_2cnry")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/normal = SubResource("StyleBoxTexture_k8fni")
+text = "رتبه، امتیاز و الماس فردی"
+
+[node name="Button6" type="Button" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 462.0
+offset_right = 817.0
+offset_bottom = 600.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_k35su")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/normal = SubResource("StyleBoxTexture_k8fni")
+text = "اقتصاد مقاومتی، اشتغالزایی، 
+محرومیت زدایی"
+autowrap_mode = 3
+
+[node name="Button7" type="Button" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 251.0
+offset_right = 817.0
+offset_bottom = 393.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_2cnry")
+theme_override_font_sizes/font_size = 53
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/normal = SubResource("StyleBoxTexture_k8fni")
+text = "طرح فرهنگی تربیتی"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 11.0
+offset_right = 135.0
+offset_bottom = 138.0
+theme_override_colors/icon_hover_pressed_color = Color(0.788235, 0.14902, 0.262745, 1)
+theme_override_colors/icon_hover_color = Color(0.788235, 0.14902, 0.262745, 1)
+theme_override_colors/icon_pressed_color = Color(0.788235, 0.14902, 0.262745, 1)
+theme_override_colors/icon_focus_color = Color(0.788235, 0.14902, 0.262745, 1)
+theme_override_colors/icon_normal_color = Color(0.788235, 0.14902, 0.262745, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_6fui8")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/focus = SubResource("StyleBoxEmpty_freqk")
+text = "پروفایل"
+icon = ExtResource("4_6jmwe")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -175.0
+offset_top = -3.0
+offset_right = -8.0
+offset_bottom = 170.0
+grow_horizontal = 0
+theme_override_colors/icon_hover_pressed_color = Color(0.831373, 0.054902, 0.294118, 1)
+theme_override_colors/icon_hover_color = Color(0.831373, 0.054902, 0.294118, 1)
+theme_override_colors/icon_pressed_color = Color(0.831373, 0.054902, 0.294118, 1)
+theme_override_colors/icon_focus_color = Color(0.831373, 0.054902, 0.294118, 1)
+theme_override_colors/icon_normal_color = Color(0.831373, 0.054902, 0.294118, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_6fui8")
+theme_override_font_sizes/font_size = 51
+theme_override_styles/focus = SubResource("StyleBoxEmpty_exmok")
+text = "پیام ها"
+icon = ExtResource("5_qikbu")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="Button2"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_pk4v5")
+label_settings = SubResource("LabelSettings_j4lw3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -995.0
+offset_top = 136.0
+offset_right = -825.0
+offset_bottom = 309.0
+grow_horizontal = 0
+theme_override_colors/icon_hover_pressed_color = Color(0.831373, 0.054902, 0.294118, 1)
+theme_override_colors/icon_hover_color = Color(0.831373, 0.054902, 0.294118, 1)
+theme_override_colors/icon_pressed_color = Color(0.831373, 0.054902, 0.294118, 1)
+theme_override_colors/icon_focus_color = Color(0.831373, 0.054902, 0.294118, 1)
+theme_override_colors/icon_normal_color = Color(0.831373, 0.054902, 0.294118, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_6fui8")
+theme_override_font_sizes/font_size = 51
+theme_override_styles/focus = SubResource("StyleBoxEmpty_exmok")
+text = "پرسش و
+پاسخ"
+icon = ExtResource("5_qikbu")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="Button3"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -67.0
+offset_top = -60.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_pk4v5")
+label_settings = SubResource("LabelSettings_j4lw3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 546.0
+offset_right = 806.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("7_alikw")
+theme_override_font_sizes/font_size = 26
+text = "این صفحه درحال تکمیل شدن است..."
+horizontal_alignment = 1
+
+[node name="SystemBarColorChanger" type="Node" parent="."]
+script = ExtResource("8_a6a7c")
+
+[connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="Button8" to="." method="_on_button_8_pressed"]
+[connection signal="pressed" from="Button7" to="." method="_on_button_7_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

@@ -1,0 +1,665 @@
+[gd_scene load_steps=42 format=3 uid="uid://b6iqhfi0bhhec"]
+
+[ext_resource type="Script" uid="uid://ng5a76jd5id6" path="res://script/positions.gd" id="1_4dvpx"]
+[ext_resource type="Texture2D" uid="uid://bmogs15hsxwiu" path="res://sprite/امتیاز اصلی.jpg" id="2_7x7ju"]
+[ext_resource type="Texture2D" uid="uid://dajxo066mj0xm" path="res://sprite/Layer 7 copy 2.png" id="2_dn8m1"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_q5hr4"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="4_t2kx6"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="5_h6dta"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="5_j75fk"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="6_46stg"]
+[ext_resource type="Texture2D" uid="uid://cdjcdq5vmjgwr" path="res://sprite/Layer 5.png" id="6_405lc"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="6_ff8jd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otb3e"]
+bg_color = Color(1, 1, 0, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.384314, 0.262745, 0.141176, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+shadow_offset = Vector2(-5, 4)
+
+[sub_resource type="FontVariation" id="FontVariation_nnfjd"]
+fallbacks = Array[Font]([ExtResource("4_t2kx6")])
+base_font = ExtResource("3_q5hr4")
+
+[sub_resource type="LabelSettings" id="LabelSettings_f5udv"]
+font = SubResource("FontVariation_nnfjd")
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8la0c"]
+bg_color = Color(6.49765e-07, 0.482288, 0.138466, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.964706, 0.913725, 0.486275, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+shadow_offset = Vector2(-5, 4)
+
+[sub_resource type="FontVariation" id="FontVariation_0gqil"]
+fallbacks = Array[Font]([ExtResource("4_t2kx6")])
+base_font = ExtResource("3_q5hr4")
+
+[sub_resource type="LabelSettings" id="LabelSettings_pvly6"]
+font = SubResource("FontVariation_0gqil")
+font_size = 45
+
+[sub_resource type="Shader" id="Shader_sko54"]
+code = "shader_type canvas_item;
+uniform int dir:hint_range(-1, 1, 1)=0;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, vec2(UV.x + float(TIME * float(dir) * 0.2), UV.y));
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aabja"]
+shader = SubResource("Shader_sko54")
+shader_parameter/dir = 0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8k7lt"]
+viewport_path = NodePath("HBoxContainer2/Label2/name/texture")
+
+[sub_resource type="FontVariation" id="FontVariation_4avgx"]
+fallbacks = Array[Font]([ExtResource("4_t2kx6")])
+base_font = ExtResource("3_q5hr4")
+spacing_top = 30
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_888wi"]
+script = ExtResource("5_j75fk")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_2meq6"]
+script = ExtResource("6_46stg")
+
+[sub_resource type="Gradient" id="Gradient_pxsi1"]
+offsets = PackedFloat32Array(0.52, 0.586667, 0.686667)
+colors = PackedColorArray(0, 0.756863, 0.286275, 1, 0, 0.215686, 0.0156863, 1, 0.505882, 0.372549, 0.00784314, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_csf6j"]
+gradient = SubResource("Gradient_pxsi1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkb3x"]
+bg_color = Color(1, 1, 0, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.384314, 0.262745, 0.141176, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+shadow_offset = Vector2(-5, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7ge8"]
+bg_color = Color(0.332602, 0.152427, 0, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8bf4"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.384314, 0.262745, 0.141176, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+shadow_offset = Vector2(-5, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00ih0"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.964706, 0.913725, 0.486275, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 7
+shadow_offset = Vector2(-5, 4)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wyk47"]
+viewport_path = NodePath("ScrollContainer/VBoxContainer/HBoxContainer/Label2/name/texture")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_mgrfc"]
+script = ExtResource("5_j75fk")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ur635"]
+script = ExtResource("6_46stg")
+
+[sub_resource type="Gradient" id="Gradient_02ppr"]
+offsets = PackedFloat32Array(0.52, 0.586667, 0.686667)
+colors = PackedColorArray(0.68317, 0.609914, 0.286867, 1, 0.388235, 0.215686, 0.0156863, 1, 0.505882, 0.372549, 0.00784314, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hbuwu"]
+gradient = SubResource("Gradient_02ppr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6a5q3"]
+bg_color = Color(0.419925, 0.370448, 0.150195, 1)
+draw_center = false
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.820236, 0.565711, 1.92523e-07, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_r5dor"]
+font = ExtResource("5_h6dta")
+font_size = 41
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x8r8q"]
+font = ExtResource("5_h6dta")
+font_size = 50
+font_color = Color(0.14902, 0.494118, 0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn7kf"]
+texture = ExtResource("6_405lc")
+expand_margin_top = 50.0
+expand_margin_bottom = 25.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_7b36x"]
+font = ExtResource("5_h6dta")
+font_size = 50
+
+[sub_resource type="SystemFont" id="SystemFont_0ecoq"]
+font_names = PackedStringArray("2  Traffic")
+font_weight = 675
+
+[sub_resource type="LabelSettings" id="LabelSettings_pnqfa"]
+font = SubResource("SystemFont_0ecoq")
+font_size = 47
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vn1v1"]
+
+[node name="positions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4dvpx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7x7ju")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_direction = 3
+layout_mode = 2
+offset_left = 46.0
+offset_top = 1004.0
+offset_right = 938.0
+offset_bottom = 1124.0
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_otb3e")
+label_settings = SubResource("LabelSettings_f5udv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(450, 120)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8la0c")
+label_settings = SubResource("LabelSettings_pvly6")
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="name" type="TextureRect" parent="HBoxContainer2/Label2"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_aabja")
+custom_minimum_size = Vector2(437, 108)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0133333
+anchor_top = 0.0583333
+anchor_right = 0.984
+anchor_bottom = 0.958
+offset_right = 0.199982
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = SubResource("ViewportTexture_8k7lt")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="texture" type="SubViewport" parent="HBoxContainer2/Label2/name"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(437, 108)
+render_target_update_mode = 4
+
+[node name="Label" type="RichTextLabel" parent="HBoxContainer2/Label2/name/texture"]
+texture_repeat = 2
+clip_contents = false
+custom_minimum_size = Vector2(437, 108)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = SubResource("FontVariation_4avgx")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_888wi"), SubResource("RichTextEffect_2meq6")]
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/Label2"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -80.0
+offset_right = 66.0
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_csf6j")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/Label2/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(130, 120)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_8la0c")
+label_settings = SubResource("LabelSettings_pvly6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rkb3x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer2/Panel"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer2/Panel/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_dn8m1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer2"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 285.0
+offset_right = 966.0
+offset_bottom = 728.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m7ge8")
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_x8bf4")
+text = "1"
+label_settings = SubResource("LabelSettings_f5udv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(450, 120)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_00ih0")
+label_settings = SubResource("LabelSettings_pvly6")
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 4
+
+[node name="name" type="TextureRect" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_aabja")
+custom_minimum_size = Vector2(437, 108)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0133333
+anchor_top = 0.0583333
+anchor_right = 0.984
+anchor_bottom = 0.958
+offset_right = 0.199982
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = SubResource("ViewportTexture_wyk47")
+expand_mode = 1
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="texture" type="SubViewport" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2/name"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(437, 108)
+render_target_update_mode = 4
+
+[node name="Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2/name/texture"]
+texture_repeat = 2
+clip_contents = false
+custom_minimum_size = Vector2(437, 108)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = SubResource("FontVariation_4avgx")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_mgrfc"), SubResource("RichTextEffect_ur635")]
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2"]
+clip_children = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -82.0
+offset_right = 71.0
+offset_bottom = -2.0
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_hbuwu")
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(130, 120)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_00ih0")
+text = "1"
+label_settings = SubResource("LabelSettings_pvly6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel" type="Panel" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x8bf4")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/HBoxContainer/Panel"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/HBoxContainer/Panel/HBoxContainer"]
+modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_dn8m1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 280.0
+offset_right = 975.0
+offset_bottom = 736.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6a5q3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 204.0
+offset_right = 971.0
+offset_bottom = 281.0
+text = "رتبه"
+label_settings = SubResource("LabelSettings_r5dor")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 202.0
+offset_right = 827.0
+offset_bottom = 263.0
+text = "نام و نام خانوادگی"
+label_settings = SubResource("LabelSettings_r5dor")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 205.0
+offset_right = 392.0
+offset_bottom = 266.0
+text = "امتیاز"
+label_settings = SubResource("LabelSettings_r5dor")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 207.0
+offset_right = 231.0
+offset_bottom = 268.0
+text = "الماس"
+label_settings = SubResource("LabelSettings_r5dor")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 952.0
+offset_right = 957.0
+offset_bottom = 1029.0
+text = "رتبه"
+label_settings = SubResource("LabelSettings_r5dor")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 950.0
+offset_right = 832.0
+offset_bottom = 1011.0
+text = "نام و نام خانوادگی"
+label_settings = SubResource("LabelSettings_r5dor")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="."]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 953.0
+offset_right = 378.0
+offset_bottom = 1014.0
+text = "امتیاز"
+label_settings = SubResource("LabelSettings_r5dor")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="."]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 955.0
+offset_right = 217.0
+offset_bottom = 1016.0
+text = "الماس"
+label_settings = SubResource("LabelSettings_r5dor")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="."]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 21.0
+offset_right = 917.0
+offset_bottom = 158.0
+text = "نفرات برتر
+ "
+label_settings = SubResource("LabelSettings_x8r8q")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label11" type="Label" parent="."]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 774.0
+offset_right = 890.0
+offset_bottom = 911.0
+text = "جایگاه شما در
+"
+label_settings = SubResource("LabelSettings_x8r8q")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label12" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 158.0
+offset_top = 1195.0
+offset_right = 893.0
+offset_bottom = 1332.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_dn7kf")
+text = "تعداد نفرات: 5000
+"
+label_settings = SubResource("LabelSettings_7b36x")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label5" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 320.0
+offset_top = 461.0
+offset_right = 676.0
+offset_bottom = 522.0
+text = "رتبه بندی وجود ندارد"
+label_settings = SubResource("LabelSettings_pnqfa")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 128.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vn1v1")
+icon = ExtResource("6_ff8jd")
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]
