@@ -1,0 +1,109 @@
+[gd_scene load_steps=9 format=3 uid="uid://buutbsk2uuv3t"]
+
+[ext_resource type="Texture2D" uid="uid://qc5tj4m0okuh" path="res://sprite/Layer 6.jpg" id="1_cqbpg"]
+[ext_resource type="Script" uid="uid://brq3syutclyg4" path="res://script/menu_1.gd" id="1_rsv5w"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="2_78k7u"]
+[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_3blfn"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="5_c4jcv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0uhsw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8fni"]
+texture = ExtResource("2_78k7u")
+expand_margin_top = 60.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x8j3v"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rsv5w")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_cqbpg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 746.0
+offset_right = 817.0
+offset_bottom = 900.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_3blfn")
+theme_override_font_sizes/font_size = 53
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/normal = SubResource("StyleBoxTexture_k8fni")
+text = "سلامت فکری"
+
+[node name="Button6" type="Button" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 482.0
+offset_right = 817.0
+offset_bottom = 636.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_3blfn")
+theme_override_font_sizes/font_size = 49
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/normal = SubResource("StyleBoxTexture_k8fni")
+text = "سلامت جسمانی"
+autowrap_mode = 3
+
+[node name="Button7" type="Button" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 225.0
+offset_right = 817.0
+offset_bottom = 379.0
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_3blfn")
+theme_override_font_sizes/font_size = 53
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_k8fni")
+theme_override_styles/normal = SubResource("StyleBoxTexture_k8fni")
+text = " سلامت معنوی"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 128.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x8j3v")
+icon = ExtResource("5_c4jcv")
+flat = true
+expand_icon = true
+
+[connection signal="pressed" from="Button5" to="." method="_on_button_pressed" binds= [2]]
+[connection signal="pressed" from="Button6" to="." method="_on_button_pressed" binds= [1]]
+[connection signal="pressed" from="Button7" to="." method="_on_button_pressed" binds= [0]]
+[connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]

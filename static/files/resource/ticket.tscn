@@ -1,0 +1,263 @@
+[gd_scene load_steps=20 format=3 uid="uid://bmq1j0lafkckw"]
+
+[ext_resource type="Texture2D" uid="uid://5hg8r4ndgv2h" path="res://sprite/ChatGPT Image May 14, 2025, 01_41_11 PM.jpg" id="1_7yqn5"]
+[ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_o7y5v"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="2_rn5ye"]
+[ext_resource type="Texture2D" uid="uid://blxp2f1agcvo8" path="res://sprite/toy-train-png-23.png" id="3_rn5ye"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o7y5v"]
+font = ExtResource("2_rn5ye")
+font_size = 46
+font_color = Color(1, 1, 0.0705882, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_o7y5v"]
+colors = PackedColorArray(1, 1, 1, 1, 0.882353, 0.670588, 0.917647, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wp4qn"]
+gradient = SubResource("Gradient_o7y5v")
+
+[sub_resource type="Gradient" id="Gradient_vod7w"]
+colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_28p7m"]
+gradient = SubResource("Gradient_vod7w")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6d827"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_v76cu"]
+viewport_path = NodePath("SubViewport2")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wn1w"]
+bg_color = Color(0.627451, 0.623529, 0.701961, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.32549, 0.101961, 0.662745, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ntr8"]
+bg_color = Color(0.235294, 0.764706, 0.172549, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.32549, 0.101961, 0.662745, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Shader" id="Shader_ythdo"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR.a = texture(TEXTURE, UV).r -.5;
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nf6rg"]
+shader = SubResource("Shader_ythdo")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wmegk"]
+seed = 275
+frequency = 0.0417
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_o5d6j"]
+width = 10
+height = 10
+in_3d_space = true
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_wmegk")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7y5v"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp4qn"]
+bg_color = Color(0.278431, 0.94902, 0.109804, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="ticket" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o7y5v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7yqn5")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 193.0
+offset_right = 969.0
+offset_bottom = 594.0
+theme_override_constants/separation = 45
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "نام و نام خانوادگی: محمدحسین حق شناس"
+label_settings = SubResource("LabelSettings_o7y5v")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "نام پدر: حسن"
+label_settings = SubResource("LabelSettings_o7y5v")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "کدملی: 5100276150"
+label_settings = SubResource("LabelSettings_o7y5v")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 141.0
+offset_right = 248.0
+offset_bottom = 335.0
+texture = SubResource("GradientTexture2D_wp4qn")
+draw_center = false
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="TextureRect2" type="TextureRect" parent="NinePatchRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_28p7m")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 1673.0
+offset_right = 946.0
+offset_bottom = 1737.0
+step = 0.001
+value = 55.0
+texture_under = SubResource("ViewportTexture_6d827")
+texture_progress = SubResource("ViewportTexture_v76cu")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(870, 64)
+
+[node name="Panel" type="Panel" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3wn1w")
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(870, 64)
+
+[node name="Panel" type="Panel" parent="SubViewport2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ntr8")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 1664.0
+offset_right = 517.0
+offset_bottom = 1741.0
+texture = ExtResource("3_rn5ye")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TextureRect2"]
+material = SubResource("ShaderMaterial_nf6rg")
+position = Vector2(139, 10)
+amount = 115
+texture = SubResource("NoiseTexture2D_o5d6j")
+direction = Vector2(-0.5, -1)
+spread = 17.1
+gravity = Vector2(0, 0)
+initial_velocity_min = 41.24
+initial_velocity_max = 103.09
+damping_min = 29.897
+damping_max = 30.928
+scale_amount_max = 5.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+ignore_time_scale = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 1322.0
+offset_right = 775.0
+offset_bottom = 1462.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_rn5ye")
+theme_override_font_sizes/font_size = 81
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o7y5v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wp4qn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wp4qn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wp4qn")
+text = "ثبت نام"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

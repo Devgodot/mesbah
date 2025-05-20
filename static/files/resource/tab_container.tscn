@@ -1,0 +1,157 @@
+[gd_scene load_steps=20 format=3 uid="uid://chblsy5mq22bj"]
+
+[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://script/tab_container.gd" id="1_58g6f"]
+[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://script/animation_tab.gd" id="2_mvg2a"]
+[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="4_uddef"]
+[ext_resource type="Texture2D" uid="uid://cs1ej2y0fhem" path="res://sprite/Background.jpg" id="5_3odfp"]
+[ext_resource type="Texture2D" uid="uid://cg3jo2qcdo44r" path="res://sprite/ورود به طرح رمضان 1403.jpg" id="6_tvhag"]
+[ext_resource type="Texture2D" uid="uid://qc5tj4m0okuh" path="res://sprite/Layer 6.jpg" id="7_bq30x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pka3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58doi"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_tf0du"]
+offsets = PackedFloat32Array(0.633803, 0.704225)
+colors = PackedColorArray(0.521569, 0.521569, 0.521569, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sf8j1"]
+gradient = SubResource("Gradient_tf0du")
+width = 250
+height = 200
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Resource" id="Resource_5cd0l"]
+script = ExtResource("2_mvg2a")
+texture_progress = SubResource("GradientTexture2D_sf8j1")
+fill_mode = 2
+nine_patch_stretch = false
+texture_progress_offset = Vector2(-60, -50)
+tint_progress = Color(0, 0.756863, 0, 1)
+tint_over = Color(0, 0, 0, 1)
+tint_under = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1cghj"]
+
+[sub_resource type="Gradient" id="Gradient_qp1kj"]
+offsets = PackedFloat32Array(0, 0.542253, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.485915, 0.485915, 0.485915, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ifmwp"]
+gradient = SubResource("Gradient_qp1kj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h8xoj"]
+texture = SubResource("GradientTexture2D_ifmwp")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qlbds"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n02rj"]
+
+[sub_resource type="Gradient" id="Gradient_q8bww"]
+offsets = PackedFloat32Array(0.5, 0.586957, 0.666667)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_unq51"]
+gradient = SubResource("Gradient_q8bww")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[node name="TabContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_58g6f")
+current_tab = 0
+separation_style = SubResource("StyleBoxEmpty_0pka3")
+panel_style = SubResource("StyleBoxFlat_58doi")
+horzonital_pos = 1
+vertical_pos = 1
+height_panel = 150
+element_min_size = Vector2(100, 100)
+tab_animation = SubResource("Resource_5cd0l")
+tab_normal = SubResource("StyleBoxEmpty_1cghj")
+tab_hover = SubResource("StyleBoxTexture_h8xoj")
+tab_pressed = SubResource("StyleBoxEmpty_qlbds")
+tab_focus = SubResource("StyleBoxEmpty_n02rj")
+element_1 = null
+element_2 = null
+element_3 = null
+element_4 = null
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1000.0
+offset_bottom = 1850.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_uddef")
+expand_mode = 3
+
+[node name="Control2" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 1000.0
+offset_bottom = 1850.0
+
+[node name="TextureRect" type="TextureRect" parent="Control2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_3odfp")
+expand_mode = 3
+
+[node name="Control3" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 1000.0
+offset_bottom = 1850.0
+
+[node name="TextureRect" type="TextureRect" parent="Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_tvhag")
+expand_mode = 3
+
+[node name="Control4" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 1000.0
+offset_bottom = 1850.0
+
+[node name="TextureRect" type="TextureRect" parent="Control4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_bq30x")
+expand_mode = 3
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control4"]
+layout_mode = 0
+offset_right = 179.0
+offset_bottom = 179.0
+value = 50.0
+fill_mode = 4
+texture_progress = SubResource("GradientTexture2D_unq51")

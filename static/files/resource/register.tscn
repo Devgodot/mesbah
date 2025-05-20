@@ -1,0 +1,1376 @@
+[gd_scene load_steps=39 format=3 uid="uid://bxx043fo5e6d0"]
+
+[ext_resource type="Script" uid="uid://duenrlby8j7jc" path="res://script/register.gd" id="1_3y5xi"]
+[ext_resource type="Texture2D" uid="uid://cg3jo2qcdo44r" path="res://sprite/ورود به طرح رمضان 1403.jpg" id="2_kel6o"]
+[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="3_hhny5"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="3_pl4ct"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="3_ywwrh"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="4_3qv0v"]
+[ext_resource type="StyleBox" uid="uid://dsmmmmf2fqyb5" path="res://styles/normal.tres" id="5_1w3mu"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="5_c032f"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="9_jkotl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
+bg_color = Color(0.147672, 0.147672, 0.147672, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wr4g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2vmw"]
+bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 2
+shadow_offset = Vector2(-1, 3)
+
+[sub_resource type="FontVariation" id="FontVariation_airvk"]
+fallbacks = Array[Font]([ExtResource("5_c032f")])
+base_font = ExtResource("4_3qv0v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
+texture = ExtResource("3_hhny5")
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
+texture = ExtResource("3_ywwrh")
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
+texture = ExtResource("3_ywwrh")
+expand_margin_left = 13.0
+expand_margin_top = 30.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gwbx"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.819608, 0.780392, 0.411765, 1)
+
+[sub_resource type="Theme" id="Theme_akeh0"]
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("3_pl4ct")
+Button/styles/disabled = SubResource("StyleBoxFlat_ngvdg")
+Button/styles/focus = SubResource("StyleBoxEmpty_2wr4g")
+Button/styles/hover = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/normal = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/pressed = SubResource("StyleBoxFlat_d2vmw")
+Label/colors/font_color = Color(0.47451, 0.333333, 0.0784314, 1)
+Label/font_sizes/font_size = 38
+Label/fonts/font = ExtResource("4_3qv0v")
+LineEdit/constants/outline_size = 10
+LineEdit/font_sizes/font_size = 30
+LineEdit/fonts/font = SubResource("FontVariation_airvk")
+LineEdit/styles/focus = SubResource("StyleBoxTexture_3omms")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_c6n5k")
+OptionButton/constants/arrow_margin = 21
+OptionButton/constants/h_separation = 58
+OptionButton/font_sizes/font_size = 30
+OptionButton/fonts/font = ExtResource("4_3qv0v")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxTexture_qxwpl")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxTexture_qxwpl")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_qxwpl")
+PopupMenu/constants/close_h_offset = 37
+PopupMenu/constants/close_v_offset = 78
+PopupMenu/constants/h_separation = 40
+PopupMenu/font_sizes/font_separator_size = 122
+PopupMenu/font_sizes/font_size = 40
+PopupMenu/fonts/font = ExtResource("4_3qv0v")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6oife"]
+bg_color = Color(0.898039, 0.372549, 0.00784314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.980392, 0.937255, 0.494118, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.0823529, 0.0823529, 0.0823529, 0.776471)
+shadow_size = 2
+shadow_offset = Vector2(-1, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmb1d"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.980392, 0.937255, 0.494118, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.0823529, 0.0823529, 0.0823529, 0.776471)
+shadow_size = 2
+shadow_offset = Vector2(-1, 5)
+
+[sub_resource type="Theme" id="Theme_b7fa4"]
+LineEdit/styles/focus = SubResource("StyleBoxFlat_6oife")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_kmb1d")
+
+[sub_resource type="ImageTexture" id="ImageTexture_mh8m2"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_evfqd"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_rv8lf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcdk5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mdp2b"]
+texture = ExtResource("3_hhny5")
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cyws4"]
+texture = ExtResource("3_ywwrh")
+expand_margin_left = 30.0
+expand_margin_top = 30.0
+expand_margin_right = 80.0
+expand_margin_bottom = 20.0
+
+[sub_resource type="Theme" id="Theme_hhgu6"]
+Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/font_sizes/font_size = 57
+Button/fonts/font = ExtResource("3_pl4ct")
+Button/styles/disabled = SubResource("StyleBoxFlat_ngvdg")
+Button/styles/focus = SubResource("StyleBoxEmpty_2wr4g")
+Button/styles/hover = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/normal = SubResource("StyleBoxFlat_d2vmw")
+Button/styles/pressed = SubResource("StyleBoxFlat_d2vmw")
+Label/colors/font_color = Color(0.47451, 0.333333, 0.0784314, 1)
+Label/font_sizes/font_size = 53
+Label/fonts/font = ExtResource("4_3qv0v")
+LineEdit/font_sizes/font_size = 80
+LineEdit/fonts/font = ExtResource("4_3qv0v")
+LineEdit/styles/focus = SubResource("StyleBoxTexture_mdp2b")
+LineEdit/styles/normal = SubResource("StyleBoxTexture_cyws4")
+OptionButton/constants/arrow_margin = 21
+OptionButton/constants/h_separation = 58
+OptionButton/font_sizes/font_size = 30
+OptionButton/fonts/font = ExtResource("4_3qv0v")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxTexture_qxwpl")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxTexture_qxwpl")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_qxwpl")
+PopupMenu/constants/close_h_offset = 37
+PopupMenu/constants/close_v_offset = 78
+PopupMenu/constants/h_separation = 40
+PopupMenu/font_sizes/font_separator_size = 122
+PopupMenu/font_sizes/font_size = 40
+PopupMenu/fonts/font = ExtResource("4_3qv0v")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_826hh"]
+font_size = 100
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xj1c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13gsy"]
+bg_color = Color(1, 0.211765, 0.172549, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(-1, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_narjl"]
+bg_color = Color(1, 0.211765, 0.172549, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(-1, 2)
+
+[sub_resource type="Animation" id="Animation_i8a1l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(915, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(917, 154)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(915, 308)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(915, 462)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(924, 616)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(915, 770)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MarginContainer/VBoxContainer/Button:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1094, 933)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MarginContainer3/VBoxContainer/Button:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-719, 614)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MarginContainer3/VBoxContainer/HBoxContainer3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1008, 303)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MarginContainer3/VBoxContainer/HBoxContainer:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-946, 93)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MarginContainer2/VBoxContainer/HBoxContainer:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-953, 93)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MarginContainer2/VBoxContainer/HBoxContainer3:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1028, 336)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("MarginContainer2/VBoxContainer/Button:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-720, 614)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("MarginContainer4/VBoxContainer/HBoxContainer:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 93)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("MarginContainer4/VBoxContainer/HBoxContainer3:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-80, 303)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("MarginContainer4/VBoxContainer/Button:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(271, 614)]
+}
+
+[sub_resource type="Animation" id="Animation_ex7nm"]
+resource_name = "change"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(915, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 154), Vector2(0, 154), Vector2(917, 154)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 308), Vector2(0, 308), Vector2(915, 308)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 462), Vector2(0, 462), Vector2(915, 462)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.6001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 616), Vector2(0, 616), Vector2(924, 616), Vector2(924, 616)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/VBoxContainer/HBoxContainer6:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 770), Vector2(0, 770), Vector2(915, 770)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MarginContainer/VBoxContainer/Button:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(310, 933), Vector2(310, 933), Vector2(1094, 933)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MarginContainer2/VBoxContainer/HBoxContainer:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-935, 93), Vector2(-5, 93)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MarginContainer2/VBoxContainer/HBoxContainer3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-999, 336), Vector2(-30, 336)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MarginContainer2/VBoxContainer/Button:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.8, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-709, 614), Vector2(271, 614)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MarginContainer4:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MarginContainer3:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_264os"]
+resource_name = "change1"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer3/VBoxContainer/Button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(271, 614), Vector2(268, 614), Vector2(1272, 614)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer3/VBoxContainer/HBoxContainer3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-80, 303), Vector2(-80, 303), Vector2(921, 303)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer3/VBoxContainer/HBoxContainer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, 93), Vector2(914, 93)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer2/VBoxContainer/HBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-953, 93), Vector2(-5, 93)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer2/VBoxContainer/HBoxContainer3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1028, 336), Vector2(-30, 336)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer2/VBoxContainer/Button:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-720, 614), Vector2(271, 614)]
+}
+
+[sub_resource type="Animation" id="Animation_4hbge"]
+resource_name = "change2"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer3/VBoxContainer/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-932, 93), Vector2(-932, 93), Vector2(16, 93)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer3/VBoxContainer/HBoxContainer3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-1010, 303), Vector2(-1010, 303), Vector2(-80, 303)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer3/VBoxContainer/Button:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-721, 614), Vector2(-721, 614), Vector2(271, 614)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer4/VBoxContainer/HBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, 93), Vector2(-925, 86)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer4/VBoxContainer/HBoxContainer3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-80, 303), Vector2(-80, 303), Vector2(-1010, 303)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer4/VBoxContainer/Button:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(271, 614), Vector2(271, 614), Vector2(-727, 614)]
+}
+
+[sub_resource type="Animation" id="Animation_oor60"]
+resource_name = "change3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer4/VBoxContainer/HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(16, 93), Vector2(933, 93)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer4/VBoxContainer/HBoxContainer3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-80, 303), Vector2(-80, 303), Vector2(924, 303)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer4/VBoxContainer/Button:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(271, 614), Vector2(271, 614), Vector2(1258, 614)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer2/VBoxContainer/HBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-910, 93), Vector2(-5, 93)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer2/VBoxContainer/HBoxContainer3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1003, 336), Vector2(-30, 336)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer2/VBoxContainer/Button:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-718, 614), Vector2(272, 614)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hc3bd"]
+_data = {
+&"RESET": SubResource("Animation_i8a1l"),
+&"change": SubResource("Animation_ex7nm"),
+&"change1": SubResource("Animation_264os"),
+&"change2": SubResource("Animation_4hbge"),
+&"change3": SubResource("Animation_oor60")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+script = ExtResource("1_3y5xi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kel6o")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_akeh0")
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 300
+
+[node name="VBoxContainer" type="Control" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 3
+layout_mode = 2
+offset_left = -915.0
+offset_right = -95.0
+offset_bottom = 150.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+text = "نام:                      "
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+select_all_on_focus = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 3
+layout_mode = 2
+offset_left = -917.0
+offset_top = 154.0
+offset_right = -97.0
+offset_bottom = 304.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.2
+text = "نام‌خانوادگی:        "
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+select_all_on_focus = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 3
+layout_mode = 2
+offset_left = -915.0
+offset_top = 308.0
+offset_right = -95.0
+offset_bottom = 458.0
+theme_override_constants/separation = 35
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "تاریخ تولد :            "
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_b7fa4")
+theme_override_icons/updown = SubResource("ImageTexture_mh8m2")
+min_value = 1.0
+max_value = 31.0
+value = 1.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="SpinBox2" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_b7fa4")
+theme_override_icons/updown = SubResource("ImageTexture_evfqd")
+min_value = 1.0
+max_value = 12.0
+value = 1.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="SpinBox3" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_b7fa4")
+theme_override_icons/updown = SubResource("ImageTexture_rv8lf")
+min_value = 1300.0
+max_value = 1404.0
+value = 1300.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 3
+layout_mode = 2
+offset_left = -915.0
+offset_top = 462.0
+offset_right = -95.0
+offset_bottom = 612.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "نام پدر :             "
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+select_all_on_focus = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 3
+layout_mode = 2
+offset_left = -924.0
+offset_top = 616.0
+offset_right = -104.0
+offset_bottom = 766.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "گروه :                          "
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer5"]
+custom_minimum_size = Vector2(370, 60)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+alignment = 1
+selected = 0
+item_count = 7
+popup/item_0/text = "مهدکودک"
+popup/item_0/id = 0
+popup/item_1/text = "کلاس اول تا سوم"
+popup/item_1/id = 1
+popup/item_2/text = "کلاس چهارم تا ششم"
+popup/item_2/id = 2
+popup/item_3/text = "کلاس هفتم تا نهم"
+popup/item_3/id = 3
+popup/item_4/text = "کلاس دهم تا دوازدهم"
+popup/item_4/id = 4
+popup/item_5/text = "سطوح تحصیلی بالاتر"
+popup/item_5/id = 5
+popup/item_6/text = "کادر اجرایی"
+popup/item_6/id = 6
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 3
+layout_mode = 2
+offset_left = -915.0
+offset_top = 770.0
+offset_right = -95.0
+offset_bottom = 920.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "جنسیت :                    "
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer6"]
+custom_minimum_size = Vector2(370, 60)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 36
+alignment = 1
+selected = 0
+item_count = 2
+popup/item_0/text = "آقا"
+popup/item_0/id = 1
+popup/item_1/text = "خانم"
+popup/item_1/id = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 924.0
+offset_right = 820.0
+offset_bottom = 929.0
+mouse_filter = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rcdk5")
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+offset_left = 1094.0
+offset_top = 933.0
+offset_right = 1294.0
+offset_bottom = 1013.0
+size_flags_horizontal = 4
+text = "تایید"
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_hhgu6")
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 300
+
+[node name="VBoxContainer" type="Control" parent="MarginContainer2"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 3
+layout_mode = 2
+offset_left = 923.0
+offset_top = 93.0
+offset_right = 1773.0
+offset_bottom = 243.0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(850, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+text = "بسبس سبس سبس
+سبسب سبس بسببب"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer/Label"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.212941
+anchor_top = 1.02703
+anchor_right = 0.794118
+anchor_bottom = 1.784
+offset_bottom = -0.0240021
+grow_horizontal = 2
+grow_vertical = 0
+focus_mode = 2
+mouse_filter = 1
+theme_override_colors/font_color = Color(0.0862745, 0.278431, 0.917647, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+offset_left = -1028.0
+offset_top = 336.0
+offset_right = -117.0
+offset_bottom = 486.0
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="SpinBox" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer3" groups=["code"]]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 5
+mouse_filter = 0
+theme = SubResource("Theme_b7fa4")
+theme_override_styles/normal = ExtResource("5_1w3mu")
+label_settings = SubResource("LabelSettings_826hh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox2" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer3" groups=["code"]]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 5
+mouse_filter = 0
+theme = SubResource("Theme_b7fa4")
+theme_override_styles/normal = ExtResource("5_1w3mu")
+label_settings = SubResource("LabelSettings_826hh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox3" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer3" groups=["code"]]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 5
+mouse_filter = 0
+theme = SubResource("Theme_b7fa4")
+theme_override_styles/normal = ExtResource("5_1w3mu")
+label_settings = SubResource("LabelSettings_826hh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinBox4" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer3" groups=["code"]]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_horizontal = 5
+mouse_filter = 0
+theme = SubResource("Theme_b7fa4")
+theme_override_styles/normal = ExtResource("5_1w3mu")
+label_settings = SubResource("LabelSettings_826hh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+offset_top = 924.0
+offset_right = 820.0
+offset_bottom = 929.0
+focus_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rcdk5")
+
+[node name="Button" type="Button" parent="MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(300, 130)
+layout_mode = 2
+offset_left = -720.0
+offset_top = 614.0
+offset_right = -420.0
+offset_bottom = 744.0
+size_flags_horizontal = 4
+text = "تایید"
+
+[node name="Button" type="Button" parent="MarginContainer2/VBoxContainer/Button"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = -78.0
+offset_right = 277.0
+offset_bottom = -20.0
+theme_override_colors/font_color = Color(0.409496, 0.261554, 0.129933, 1)
+text = "ویرایش شماره"
+flat = true
+
+[node name="Button2" type="Button" parent="MarginContainer2/VBoxContainer/Button"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -78.0
+offset_right = 288.0
+offset_bottom = -20.0
+theme_override_colors/font_color = Color(0.409496, 0.261554, 0.129933, 1)
+text = "ویرایش کد ملی"
+flat = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_hhgu6")
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 300
+
+[node name="VBoxContainer" type="Control" parent="MarginContainer3"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 3
+layout_mode = 2
+offset_left = 946.0
+offset_top = 93.0
+offset_right = 1766.0
+offset_bottom = 243.0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+text = "شماره تلفن خود را وارد نمایید"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 3
+layout_mode = 2
+offset_left = 917.0
+offset_top = 303.0
+offset_right = 1828.0
+offset_bottom = 453.0
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="phone" type="LineEdit" parent="MarginContainer3/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 15
+alignment = 2
+max_length = 11
+virtual_keyboard_type = 4
+select_all_on_focus = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer3/VBoxContainer"]
+layout_mode = 2
+offset_top = 924.0
+offset_right = 820.0
+offset_bottom = 929.0
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rcdk5")
+
+[node name="Button" type="Button" parent="MarginContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(300, 130)
+layout_mode = 2
+offset_left = -719.0
+offset_top = 614.0
+offset_right = -419.0
+offset_bottom = 744.0
+size_flags_horizontal = 4
+text = "تایید"
+
+[node name="Button" type="Button" parent="MarginContainer3/VBoxContainer/Button"]
+layout_mode = 0
+offset_left = -349.0
+offset_top = -275.0
+offset_right = -200.0
+offset_bottom = -191.0
+text = "بازگشت"
+
+[node name="MarginContainer4" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_hhgu6")
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 300
+
+[node name="VBoxContainer" type="Control" parent="MarginContainer4"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer4/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 3
+layout_mode = 2
+offset_left = -16.0
+offset_top = 93.0
+offset_right = 804.0
+offset_bottom = 243.0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer4/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+text = "کد ملی خود را وارد نمایید"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer4/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 3
+layout_mode = 2
+offset_left = -11.0
+offset_top = 303.0
+offset_right = 900.0
+offset_bottom = 453.0
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="id" type="LineEdit" parent="MarginContainer4/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 15
+alignment = 2
+max_length = 10
+virtual_keyboard_type = 2
+select_all_on_focus = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer4/VBoxContainer"]
+layout_mode = 2
+offset_top = 924.0
+offset_right = 820.0
+offset_bottom = 929.0
+mouse_filter = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rcdk5")
+
+[node name="Button" type="Button" parent="MarginContainer4/VBoxContainer"]
+custom_minimum_size = Vector2(300, 130)
+layout_mode = 2
+offset_left = 271.0
+offset_top = 614.0
+offset_right = 571.0
+offset_bottom = 744.0
+size_flags_horizontal = 4
+text = "تایید"
+
+[node name="Button2" type="Button" parent="MarginContainer4/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(300, 130)
+layout_mode = 2
+offset_left = 271.0
+offset_top = 778.0
+offset_right = 571.0
+offset_bottom = 908.0
+size_flags_horizontal = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7xj1c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_13gsy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_narjl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_narjl")
+text = "لغو"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hc3bd")
+}
+autoplay = "RESET"
+
+[node name="SystemBarColorChanger" type="Node" parent="."]
+script = ExtResource("9_jkotl")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button3_pressed"]
+[connection signal="gui_input" from="MarginContainer2/VBoxContainer/HBoxContainer/Label/Label" to="." method="_on_label_gui_input"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Button/Button" to="." method="_on_edit_phone_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/Button/Button2" to="." method="_on_edit_username_pressed"]
+[connection signal="pressed" from="MarginContainer3/VBoxContainer/Button" to="." method="_on_button2_pressed"]
+[connection signal="pressed" from="MarginContainer3/VBoxContainer/Button/Button" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer4/VBoxContainer/Button" to="." method="_on_button4_pressed"]
+[connection signal="pressed" from="MarginContainer4/VBoxContainer/Button2" to="." method="_on_cancel_pressed"]
