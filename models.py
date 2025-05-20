@@ -121,6 +121,12 @@ class Group(db.Model):
             u = User.get_user_by_phone(user)
             u.data = u.update(data={"group_score": score})
             db.session.commit()
+class Ticket(db.Model):
+    time = Column(DateTime, nullable=False, primary_key=True)
+    users = Column(JSON, default=[])
+    max_users = Column(Integer, nullable=False, default=0)
+    season = Column(Integer, nullable=False, default=0)
+    
 class TokenBlocklist(db.Model):
     id = db.Column(Integer, primary_key=True)
     jti = db.Column(db.String(10), nullable=True)
