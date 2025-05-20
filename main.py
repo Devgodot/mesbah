@@ -102,7 +102,7 @@ def get_resource_index():
     add = []
     delete = []
     with open("hash_list.json", "r") as hash_list:
-        _list :dict= json.loads(hash_list)
+        _list :dict= json.load(hash_list)
         for x in _list.keys():
             if x not in data.keys() or _list[x] != data[x]:
                 add.append([x, _list[x]])
