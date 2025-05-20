@@ -53,15 +53,6 @@ def build_resource_index():
         json.dump(new_index, f, ensure_ascii=False, indent=2)
     return new_index
 
-@app.route('/resource_index', methods=['GET'])
-def get_resource_index():
-    """
-    Returns the current resource index (uuid: filename) as JSON.
-    Automatically rebuilds if files changed.
-    """
-    index = build_resource_index()
-    return jsonify(index)
-
 def post_request(url, payload={}, custom_header={}):
     headers = {
     'content-type': 'application/json'
@@ -104,6 +95,21 @@ def user_lookup_callback(_jwt_headers, jwt_data):
     identity = jwt_data["sub"]
     return User.query.filter_by(username=identity).one_or_none()
 
+@app.route('/check_resource', methods=['POST'])
+@jwt_required()
+def get_resource_index():
+    data:dict= request.get_json().get("data", {})
+    add = []
+    delete = []
+    with open("hash_list.json", "r") as hash_list:
+        _list :dict= json.loads(hash_list)
+        for x in _list.keys():
+            if x not in data.keys() or _list[x] != data[x]:
+                add.append([x, _list[x]])
+        for x in data.keys():
+            if x not in _list.keys():
+                delete.append([x, data[x]])
+    return jsonify({"add":add, "delete":delete})
 @app.route('/download', methods=['GET'])
 def download_file():
     if "GodotEngine" in request.headers.get("User-Agent"):
