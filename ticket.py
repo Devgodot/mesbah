@@ -82,6 +82,8 @@ def add_user_to_ticket():
     users.append(user_id)
     ticket.users = users
     db.session.commit()
+    current_user.data = current_user.update(data={"start_ticket": datetime.datetime.now(TehranTimezone()).timestamp()})
+    db.session.commit()
     return jsonify({"message": "کاربر با موفقیت به بلیط اضافه شد"}), 200
 
 @ticket_bp.post("change_ticket")
