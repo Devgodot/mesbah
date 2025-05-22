@@ -94,3 +94,23 @@ def change_ticket():
         return jsonify({"message": "تیکت با موفقیت تغییر کرد"}), 200
     else:
         return jsonify({"error": "شما مجاز به تغییر بلیط نیستید"}), 403
+    
+@ticket_bp.get("/get_user_ticket")
+@jwt_required()
+def get_user_ticket():
+    if current_user.data.get("accept_account", False) != True:
+        return jsonify({"error": "حساب شما تایید نشده! لطفاً به پشتیبانی مراجعه فرمایید."}), 403
+    user_id = current_user.username
+    tickets = Ticket.query.filter_by(season=UserInterface.query.first().get("train_season", 1)).all()
+    user_ticket = {}
+    for ticket in tickets:
+        if user_id in ticket.users:
+            jalali_date = JalaliDate(ticket.time.year, ticket.time.month, ticket.time.day)
+            user_ticket = {
+                "time": f"{jalali_date.year}/{jalali_date.month}/{jalali_date.day}",
+                "unixtime": ticket.time.timestamp()
+            }
+            
+    if not user_ticket:
+        return jsonify({"error": "کاربر بلیطی ندارد"}), 404
+    return jsonify(user_ticket), 200
