@@ -1563,7 +1563,6 @@ text = "اعمال"
 [connection signal="pressed" from="TabContainer/گروهی/Button" to="." method="_on_button2_pressed"]
 [connection signal="gui_input" from="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer/TextureRect" to="." method="_on_texture_rect_gui_input"]
 [connection signal="pressed" from="TabContainer/گروهی/MarginContainer/VBoxContainer/Button" to="." method="_on_update_group_pressed"]
-[connection signal="tab_selected" from="TabContainer/پیام ها/TabContainer" to="." method="_on_tab_container_tab_selected" binds= [1]]
 [connection signal="scroll_ended" from="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer" to="." method="_on_scroll_container_scroll_ended"]
 [connection signal="meta_clicked" from="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="meta_clicked" from="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance2/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
