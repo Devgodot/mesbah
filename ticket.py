@@ -16,13 +16,17 @@ ticket_bp = Blueprint("ticket", __name__)
 def add_ticket():
     if current_user.username not in UserInterface.query.first().get("management", []):
         data = request.get_json()
-        _time = data.get("time", "1404/03/24")
+        _time = data.get("time", "1404/03/24 15:00")
         season = UserInterface.query.first().get("train_season", 1)
         try:
-            miladi_date = JalaliDate(*map(int, _time.split("/"))).todate()
-        
+            date_part, time_part = _time.split(" ")
+            year, month, day = map(int, date_part.split("/"))
+            hour, minute = map(int, time_part.split(":"))
+            miladi_date = JalaliDatetime(year, month, day, hour, minute).todatetime()
         except Exception as e:
             return jsonify({"error": f"فرمت تاریخ اشتباه است: {e}"}), 400
+        if Ticket.query.filter_by(season=season, time=miladi_date).first():
+            return jsonify({"error": "تیکت با این زمان وجود دارد"}), 400
         ticket = Ticket(time=miladi_date, 
                         users=data.get("users", []),
                         max_users=data.get("max_users", 0),
@@ -32,6 +36,7 @@ def add_ticket():
         return jsonify({"message": "تیکت با موفقیت اضافه شد"}), 201
     else:
         return jsonify({"error": "شما مجاز به اضافه کردن بلیط نیستید"}), 403
+
 @ticket_bp.get("/get_ticket")
 @jwt_required()
 def get_ticket():
@@ -39,23 +44,27 @@ def get_ticket():
         return jsonify({"error": "حساب شما تایید نشده! لطفاً به پشتیبانی مراجعه فرمایید."}), 403
     season = UserInterface.query.first().get("train_season", 1)
     tickets = Ticket.query.filter_by(season=season).all()
-    if not ticket:
+    if not tickets:
         return jsonify({"error": "تیکتی وجود ندارد"}), 404
     tickets_data = []
     for ticket in tickets:
-        jalali_date = JalaliDate(ticket.time.year, ticket.time.month, ticket.time.day)
+        jalali_datetime = JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute)
         ticket_data = {
-            "time": f"{jalali_date.year}/{jalali_date.month}/{jalali_date.day}",
+            "time": f"{jalali_datetime.year}/{jalali_datetime.month}/{jalali_datetime.day} {str(jalali_datetime.hour).zfill(2)}:{str(jalali_datetime.minute).zfill(2)}",
             "max_users": ticket.max_users
         }
         tickets_data.append(ticket_data)
     return jsonify(tickets_data), 200
+
 @ticket_bp.post("/add_user_to_ticket")
 @jwt_required()
 def add_user_to_ticket():
     data = request.get_json()
     ticket_time = data.get("time")
-    miladi_date = JalaliDate(*map(int, ticket_time.split("/"))).todate()
+    date_part, time_part = ticket_time.split(" ")
+    year, month, day = map(int, date_part.split("/"))
+    hour, minute = map(int, time_part.split(":"))
+    miladi_date = JalaliDatetime(year, month, day, hour, minute).todatetime()
     user_id = current_user.username
     ticket = Ticket.query.filter_by(time=miladi_date).first()
     tickets = Ticket.query.filter_by(season=UserInterface.query.first().get("train_season", 1)).all()
@@ -76,17 +85,22 @@ def change_ticket():
     if current_user.username in UserInterface.query.first().get("management", []):
         data = request.get_json()
         ticket_time = data.get("time")
-        miladi_date = JalaliDate(*map(int, ticket_time.split("/"))).todate()
+        date_part, time_part = ticket_time.split(" ")
+        year, month, day = map(int, date_part.split("/"))
+        hour, minute = map(int, time_part.split(":"))
+        miladi_date = JalaliDatetime(year, month, day, hour, minute).todatetime()
         ticket = Ticket.query.filter_by(time=miladi_date).first()
         new_time = data.get("new_time", "")
         if not ticket:
             return jsonify({"error": "تیکتی وجود ندارد"}), 404
         if new_time != "":
             try:
-                new_miladi_date = JalaliDate(*map(int, new_time.split("/"))).todate()
+                date_part, time_part = new_time.split(" ")
+                year, month, day = map(int, date_part.split("/"))
+                hour, minute = map(int, time_part.split(":"))
+                new_miladi_date = JalaliDatetime(year, month, day, hour, minute).todatetime()
             except Exception as e:
                 return jsonify({"error": f"فرمت تاریخ اشتباه است: {e}"}), 400
-        
             ticket.time = new_miladi_date
         if data.get("max_users", 0) != 0:
             ticket.max_users = data.get("max_users", 0)
@@ -94,7 +108,7 @@ def change_ticket():
         return jsonify({"message": "تیکت با موفقیت تغییر کرد"}), 200
     else:
         return jsonify({"error": "شما مجاز به تغییر بلیط نیستید"}), 403
-    
+
 @ticket_bp.get("/get_user_ticket")
 @jwt_required()
 def get_user_ticket():
@@ -105,12 +119,11 @@ def get_user_ticket():
     user_ticket = {}
     for ticket in tickets:
         if user_id in ticket.users:
-            jalali_date = JalaliDate(ticket.time.year, ticket.time.month, ticket.time.day)
+            jalali_datetime = JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute)
             user_ticket = {
-                "time": f"{jalali_date.year}/{jalali_date.month}/{jalali_date.day}",
+                "time": f"{jalali_datetime.year}/{jalali_datetime.month}/{jalali_datetime.day} {str(jalali_datetime.hour).zfill(2)}:{str(jalali_datetime.minute).zfill(2)}",
                 "unixtime": ticket.time.timestamp()
             }
-            
     if not user_ticket:
         return jsonify({"error": "کاربر بلیطی ندارد"}), 404
     return jsonify(user_ticket), 200
