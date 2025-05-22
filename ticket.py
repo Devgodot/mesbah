@@ -128,7 +128,8 @@ def get_user_ticket():
             user_ticket = {
                 "time": jalali_datetime.strftime('%Y/%m/%d %H:%M'),
                 "unixtime": ticket.time.timestamp(),
-                "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M')
+                "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M'),
+                "current_time": time.time().timestamp()
             }
     if not user_ticket:
         return jsonify({"error": "کاربر بلیطی ندارد"}), 404
