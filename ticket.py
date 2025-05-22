@@ -17,7 +17,7 @@ def add_ticket():
     if current_user.username in UserInterface.query.first().data.get("management", []):
         data = request.get_json()
         _time = data.get("time", "1404/03/24 15:00")
-        season = UserInterface.query.first().get("train_season", 1)
+        season = UserInterface.query.first().data.get("train_season", 1)
         try:
             date_part, time_part = _time.split(" ")
             year, month, day = map(int, date_part.split("/"))
@@ -42,7 +42,7 @@ def add_ticket():
 def get_ticket():
     if current_user.data.get("accept_account", False) != True:
         return jsonify({"error": "حساب شما تایید نشده! لطفاً به پشتیبانی مراجعه فرمایید."}), 403
-    season = UserInterface.query.first().get("train_season", 1)
+    season = UserInterface.query.first().data.get("train_season", 1)
     tickets = Ticket.query.filter_by(season=season).all()
     if not tickets:
         return jsonify({"error": "تیکتی وجود ندارد"}), 404
@@ -67,7 +67,7 @@ def add_user_to_ticket():
     miladi_date = JalaliDatetime(year, month, day, hour, minute).todatetime()
     user_id = current_user.username
     ticket = Ticket.query.filter_by(time=miladi_date).first()
-    tickets = Ticket.query.filter_by(season=UserInterface.query.first().get("train_season", 1)).all()
+    tickets = Ticket.query.filter_by(season=UserInterface.query.first().data.get("train_season", 1)).all()
     if not ticket:
         return jsonify({"error": "تیکتی وجود ندارد"}), 404
     for t in tickets:
@@ -115,7 +115,7 @@ def get_user_ticket():
     if current_user.data.get("accept_account", False) != True:
         return jsonify({"error": "حساب شما تایید نشده! لطفاً به پشتیبانی مراجعه فرمایید."}), 403
     user_id = current_user.username
-    tickets = Ticket.query.filter_by(season=UserInterface.query.first().get("train_season", 1)).all()
+    tickets = Ticket.query.filter_by(season=UserInterface.query.first().data.get("train_season", 1)).all()
     user_ticket = {}
     for ticket in tickets:
         if user_id in ticket.users:
