@@ -53,7 +53,8 @@ def get_ticket():
         ticket_data = {
             "time": f"{jalali_datetime.strftime('%Y/%m/%d %H:%M')}",
             "max_users": ticket.max_users,
-            "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M')
+            "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M'),
+            "users": len(ticket.users),
         }
         tickets_data.append(ticket_data)
     return jsonify({"data":tickets_data}), 200
