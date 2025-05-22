@@ -21,7 +21,7 @@ from PIL import Image
 import io
 import uuid
 
-from deepface import DeepFace
+
 
 RESOURCE_INDEX_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static", "files", "resource", "resource_index.json")
 RESOURCE_DIR = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static", "files", "resource")
@@ -130,49 +130,6 @@ def download_file():
             return jsonify({"message": "File not found"}), 404
     return "شما اجازه دسترسی ندارید", 400
 
-@app.route('/recognize', methods=['POST'])
-@jwt_required()
-def recognize():
-    # بارگذاری تصاویر چهره‌های ذخیره‌شده و استخراج ویژگی‌ها
-    known_names = []
-    path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "faces")
-    for file in os.listdir(path):
-        if file.endswith('.webp'):
-            known_names.append(file)
-    file_data = request.get_json().get("data", "")
-    if not isinstance(json.loads(file_data), list):
-        return jsonify({"error": "Invalid data format"}), 400
-    try:
-        byte_data = bytes(json.loads(file_data))
-    except ValueError as e:
-        current_app.logger.error(f"Error converting list to bytes: {e}")
-        return jsonify({"error": "Error converting list to bytes"}), 400
-    try:
-        image = Image.open(io.BytesIO(byte_data))
-        img_path = os.path.join(path, f"{current_user.username}_temp_input_image.webp")
-        image.save(img_path, format='webp')
-    except Exception as e:
-        current_app.logger.error(f"Error loading image: {e}, data length: {len(byte_data)}")
-        return jsonify({"error": "Error loading image"}), 400
-
-    # بررسی ابعاد تصویر
-    if image.mode not in ["RGB", "L"]:
-        current_app.logger.error(f"Unsupported image mode: {image.mode}")
-        os.remove(img_path)
-        return jsonify({"error": "Unsupported image mode"}), 400
-
-    # مقایسه با deepface و مدل arcface
-    for idx, known_file in enumerate(known_names):
-        try:
-            result = DeepFace.verify(img1_path=img_path, img2_path=os.path.join(path, known_file), model_name='ArcFace', enforce_detection=True)
-            if result['verified']:
-                os.remove(img_path)
-                return jsonify({'result': 'matched', 'name': known_file})
-        except Exception as e:
-            current_app.logger.error(f"DeepFace error: {e}")
-            continue
-    os.remove(img_path)
-    return jsonify({'result': 'not_matched'})
 
 @app.route('/ListFiles', methods=['GET'])
 def get_files():

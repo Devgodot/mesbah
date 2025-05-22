@@ -54,7 +54,7 @@ def get_ticket():
             "max_users": ticket.max_users
         }
         tickets_data.append(ticket_data)
-    return jsonify(tickets_data), 200
+    return jsonify({"data":tickets_data}), 200
 
 @ticket_bp.post("/add_user_to_ticket")
 @jwt_required()
@@ -126,4 +126,4 @@ def get_user_ticket():
             }
     if not user_ticket:
         return jsonify({"error": "کاربر بلیطی ندارد"}), 404
-    return jsonify(user_ticket), 200
+    return jsonify({"ticket":user_ticket}), 200
