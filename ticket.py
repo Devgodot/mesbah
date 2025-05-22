@@ -78,7 +78,9 @@ def add_user_to_ticket():
             return jsonify({"error": "این کاربر قبلا به این بلیط اضافه شده است"}), 400
     if len(ticket.users) >= ticket.max_users:
         return jsonify({"error": "ظرفیت بلیط پر است"}), 400
-    ticket.users.append(user_id)
+    users = [user for user in ticket.users]
+    users.append(user_id)
+    ticket.users = users
     db.session.commit()
     return jsonify({"message": "کاربر با موفقیت به بلیط اضافه شد"}), 200
 
