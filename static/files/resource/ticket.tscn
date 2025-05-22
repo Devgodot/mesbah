@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3]
+[gd_scene load_steps=44 format=3]
 
 [ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_v1ciu"]
 [ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_ebnor"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bv1l7l77ucorf" path="res://sprite/train10.png" id="11_plowr"]
 [ext_resource type="Texture2D" uid="uid://bkyjnqos8bjks" path="res://sprite/train6.png" id="12_bhvn0"]
 [ext_resource type="Texture2D" uid="uid://bf7bjl5twqpqs" path="res://sprite/train7.png" id="13_vaoh5"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="14_ebnor"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vod7w"]
 bg_color = Color(1, 0.913725, 0.639216, 1)
@@ -737,6 +738,14 @@ autowrap_mode = 3
 icon_alignment = 1
 expand_icon = true
 
+[node name="Button3" type="Button" parent="."]
+offset_right = 125.0
+offset_bottom = 128.0
+icon = ExtResource("14_ebnor")
+flat = true
+expand_icon = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_back_button_pressed"]
