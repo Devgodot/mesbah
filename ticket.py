@@ -121,10 +121,11 @@ def get_user_ticket():
     user_ticket = {}
     for ticket in tickets:
         if user_id in ticket.users:
-            jalali_datetime = JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute)
+            jalali_datetime = JalaliDatetime(ticket.time)
             user_ticket = {
-                "time": f"{jalali_datetime.year}/{jalali_datetime.month}/{jalali_datetime.day} {str(jalali_datetime.hour).zfill(2)}:{str(jalali_datetime.minute).zfill(2)}",
-                "unixtime": ticket.time.timestamp()
+                "time": jalali_datetime.strftime('%Y/%m/%d %H:%M'),
+                "unixtime": ticket.time.timestamp(),
+                "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M')
             }
     if not user_ticket:
         return jsonify({"error": "کاربر بلیطی ندارد"}), 404
