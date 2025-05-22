@@ -1,19 +1,53 @@
-[gd_scene load_steps=20 format=3 uid="uid://bmq1j0lafkckw"]
+[gd_scene load_steps=38 format=3 uid="uid://bmq1j0lafkckw"]
 
-[ext_resource type="Texture2D" uid="uid://5hg8r4ndgv2h" path="res://sprite/ChatGPT Image May 14, 2025, 01_41_11 PM.jpg" id="1_7yqn5"]
 [ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_o7y5v"]
+[ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_o7y5v"]
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="2_rn5ye"]
 [ext_resource type="Texture2D" uid="uid://blxp2f1agcvo8" path="res://sprite/toy-train-png-23.png" id="3_rn5ye"]
+[ext_resource type="Texture2D" uid="uid://cirtlwugllh08" path="res://sprite/train1.png" id="5_ythdo"]
+[ext_resource type="Texture2D" uid="uid://blr2ctvd6phdi" path="res://sprite/train2.png" id="6_nf6rg"]
+[ext_resource type="Texture2D" uid="uid://id77lxtqara7" path="res://sprite/train3.png" id="7_wmegk"]
+[ext_resource type="Texture2D" uid="uid://315njag78wgn" path="res://sprite/train4.png" id="8_o5d6j"]
+[ext_resource type="Texture2D" uid="uid://c78t7srrwbgxx" path="res://sprite/train9.png" id="9_ldq3j"]
+[ext_resource type="Texture2D" uid="uid://bv1l7l77ucorf" path="res://sprite/train10.png" id="10_a7rri"]
+[ext_resource type="Texture2D" uid="uid://bkyjnqos8bjks" path="res://sprite/train6.png" id="11_7rqr6"]
+[ext_resource type="Texture2D" uid="uid://bf7bjl5twqpqs" path="res://sprite/train7.png" id="12_c1t5e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vod7w"]
+bg_color = Color(1, 0.913725, 0.639216, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.952941, 0.701961, 0.117647, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_o7y5v"]
 font = ExtResource("2_rn5ye")
 font_size = 46
-font_color = Color(1, 1, 0.0705882, 1)
+font_color = Color(0.745098, 0.415686, 0.215686, 1)
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28p7m"]
+bg_color = Color(1, 0.878431, 0.513726, 1)
+border_color = Color(0.952941, 0.701961, 0.117647, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_6d827"]
+font = ExtResource("2_rn5ye")
+font_size = 136
+font_color = Color(0.67451, 0.4, 0.0509804, 1)
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Gradient" id="Gradient_o7y5v"]
-colors = PackedColorArray(1, 1, 1, 1, 0.882353, 0.670588, 0.917647, 1)
+colors = PackedColorArray(0.996078, 0.882353, 0.521569, 1, 0.882353, 0.670588, 0.192157, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wp4qn"]
 gradient = SubResource("Gradient_o7y5v")
@@ -95,16 +129,276 @@ noise = SubResource("FastNoiseLite_wmegk")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7y5v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp4qn"]
-bg_color = Color(0.278431, 0.94902, 0.109804, 1)
-border_width_left = 20
-border_width_top = 20
-border_width_right = 20
-border_width_bottom = 20
+bg_color = Color(0.909804, 0.509804, 0.113725, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.701961, 0.329412, 0, 1)
 border_blend = true
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+corner_radius_top_left = 70
+corner_radius_top_right = 70
+corner_radius_bottom_right = 70
+corner_radius_bottom_left = 70
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e3xla"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_7rqr6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_c1t5e")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_nf6rg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1333, 712)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ythdo"]
+resource_name = "train"
+length = 10.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1333, 712), Vector2(979, 629), Vector2(749, 601), Vector2(510, 592), Vector2(245, 573), Vector2(21, 573), Vector2(-215, 565), Vector2(-353, 564), Vector2(-350, 523)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 3, 4, 5, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0233002, -0.0223911, -0.080789, -0.150052, -0.151609, -0.177722]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wmegk"]
+_data = {
+&"RESET": SubResource("Animation_nf6rg"),
+&"train": SubResource("Animation_ythdo")
+}
+
+[sub_resource type="Animation" id="Animation_ldq3j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Train2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Train3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Train4:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Line2D:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-92, 69, -192, 61)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/Train10:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/Train9:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o5d6j"]
+resource_name = "rotate"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Train2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.213714, -0.039968]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Train3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0415758, -0.178569]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Train4:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.139768, -0.120023]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Line2D:points")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(-92, 69, -192, 61), PackedVector2Array(-92, 69, -203.407, 70.7582), PackedVector2Array(-92, 69, -192.084, 84.4981), PackedVector2Array(-92, 69, -179.367, 72.1985)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/Train10:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -3.14159, -6.28319]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/Train9:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -3.14159, -6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a7rri"]
+_data = {
+&"RESET": SubResource("Animation_ldq3j"),
+&"rotate": SubResource("Animation_o5d6j")
+}
 
 [node name="ticket" type="Control"]
 layout_mode = 3
@@ -122,51 +416,59 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_7yqn5")
+texture = ExtResource("2_o7y5v")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 279.0
-offset_top = 193.0
-offset_right = 969.0
-offset_bottom = 594.0
-theme_override_constants/separation = 45
-
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 2
-text = "نام و نام خانوادگی: محمدحسین حق شناس"
+offset_left = 138.0
+offset_top = 1193.0
+offset_right = 862.0
+offset_bottom = 1358.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_vod7w")
+text = "نام: محمدحسین حق شناس"
 label_settings = SubResource("LabelSettings_o7y5v")
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="."]
 layout_mode = 2
+offset_left = 142.0
+offset_top = 1370.0
+offset_right = 866.0
+offset_bottom = 1535.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_vod7w")
 text = "نام پدر: حسن"
 label_settings = SubResource("LabelSettings_o7y5v")
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="VBoxContainer"]
+[node name="Label3" type="Label" parent="."]
 layout_mode = 2
-text = "کدملی: 5100276150"
-label_settings = SubResource("LabelSettings_o7y5v")
-horizontal_alignment = 2
+offset_left = 204.0
+offset_top = 993.0
+offset_right = 928.0
+offset_bottom = 1158.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_28p7m")
+text = "بلیط قطار"
+label_settings = SubResource("LabelSettings_6d827")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 54.0
-offset_top = 141.0
-offset_right = 248.0
-offset_bottom = 335.0
+offset_left = 107.0
+offset_top = 955.0
+offset_right = 301.0
+offset_bottom = 1149.0
 texture = SubResource("GradientTexture2D_wp4qn")
 draw_center = false
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
+metadata/_edit_group_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="NinePatchRect"]
 show_behind_parent = true
@@ -182,10 +484,10 @@ stretch_mode = 6
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_left = 76.0
-offset_top = 1673.0
-offset_right = 946.0
-offset_bottom = 1737.0
+offset_left = 69.0
+offset_top = 1866.0
+offset_right = 939.0
+offset_bottom = 1930.0
 step = 0.001
 value = 55.0
 texture_under = SubResource("ViewportTexture_6d827")
@@ -217,10 +519,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4ntr8")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 359.0
-offset_top = 1664.0
-offset_right = 517.0
-offset_bottom = 1741.0
+offset_left = 192.0
+offset_top = 1855.0
+offset_right = 350.0
+offset_bottom = 1932.0
 texture = ExtResource("3_rn5ye")
 expand_mode = 1
 stretch_mode = 5
@@ -246,18 +548,69 @@ ignore_time_scale = true
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 211.0
-offset_top = 1322.0
-offset_right = 775.0
-offset_bottom = 1462.0
-theme_override_constants/outline_size = 10
+offset_left = 141.0
+offset_top = 1564.0
+offset_right = 861.0
+offset_bottom = 1765.0
 theme_override_fonts/font = ExtResource("2_rn5ye")
-theme_override_font_sizes/font_size = 81
+theme_override_font_sizes/font_size = 101
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o7y5v")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wp4qn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wp4qn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wp4qn")
-text = "ثبت نام"
+text = "سوار شو"
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+position = Vector2(1333, 712)
+
+[node name="Train1" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("5_ythdo")
+
+[node name="Train2" type="Sprite2D" parent="Node2D"]
+position = Vector2(-67.4724, -34.4829)
+texture = ExtResource("6_nf6rg")
+offset = Vector2(9.47241, -45.5171)
+
+[node name="Train3" type="Sprite2D" parent="Node2D"]
+position = Vector2(95.9344, -25.9566)
+texture = ExtResource("7_wmegk")
+offset = Vector2(4.05945, -36.8204)
+
+[node name="Train4" type="Sprite2D" parent="Node2D"]
+position = Vector2(241.748, 4.02612)
+texture = ExtResource("8_o5d6j")
+offset = Vector2(8.25208, -42.0261)
+
+[node name="Train9" type="Sprite2D" parent="Node2D"]
+position = Vector2(-94, 70)
+texture = ExtResource("9_ldq3j")
+
+[node name="Train10" type="Sprite2D" parent="Node2D"]
+position = Vector2(-191, 72)
+texture = ExtResource("10_a7rri")
+
+[node name="Line2D" type="Line2D" parent="Node2D"]
+points = PackedVector2Array(-92, 69, -192, 61)
+default_color = Color(0.96519, 0.758167, 1.54018e-06, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(-251, -44)
+sprite_frames = SubResource("SpriteFrames_e3xla")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wmegk")
+}
+autoplay = "train"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a7rri")
+}
+autoplay = "rotate"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

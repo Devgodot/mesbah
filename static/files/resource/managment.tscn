@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://cs3wo6e727yo1"]
+[gd_scene load_steps=127 format=3 uid="uid://cs3wo6e727yo1"]
 
 [ext_resource type="Script" uid="uid://bhrjao205or8u" path="res://script/managment.gd" id="1_6lrso"]
 [ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="1_euqnk"]
@@ -282,6 +282,17 @@ icon_v_aligment = 0
 icon_h_aligment = 1
 text = "مربیان"
 
+[sub_resource type="Resource" id="Resource_r4l8q"]
+script = ExtResource("10_hvcdm")
+label_settings = SubResource("Resource_jyhjh")
+expand_icon = false
+max_icon_width = 0
+flat = true
+icon_v_aligment = 0
+icon_h_aligment = 1
+text = "بلیط‌ها"
+metadata/_custom_type_script = "uid://cnn7hb10qab7t"
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bse5f"]
 bg_color = Color(0.980392, 0.372549, 0.00784314, 1)
 border_width_left = 5
@@ -370,6 +381,27 @@ script = ExtResource("10_25857")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_y4oku"]
 script = ExtResource("11_dpmkx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jl1h1"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.972549, 0.517647, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_r4l8q"]
+LineEdit/styles/normal = SubResource("StyleBoxFlat_jl1h1")
+
+[sub_resource type="ImageTexture" id="ImageTexture_ek2el"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_l6ki0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aqyui"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_kd08o"]
 
@@ -647,7 +679,7 @@ border_color = Color(0.819608, 0.780392, 0.411765, 1)
 fallbacks = Array[Font]([ExtResource("3_wpyoc")])
 base_font = ExtResource("2_67m70")
 
-[sub_resource type="Image" id="Image_r4l8q"]
+[sub_resource type="Image" id="Image_ek2el"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 76, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 99, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 99, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 122, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 53, 255, 255, 255, 181, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 54, 255, 255, 255, 182, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 121, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 98, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 98, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 75, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -657,7 +689,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_gcgbg"]
-image = SubResource("Image_r4l8q")
+image = SubResource("Image_ek2el")
 
 [sub_resource type="FontVariation" id="FontVariation_e7st4"]
 fallbacks = Array[Font]([ExtResource("3_wpyoc")])
@@ -801,7 +833,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_gj3my")
-current_tab = 3
+current_tab = 4
 transation = false
 separation_style = SubResource("StyleBoxEmpty_xpey2")
 panel_style = SubResource("StyleBoxFlat_ifxwq")
@@ -817,6 +849,7 @@ element_1 = SubResource("Resource_mdp6e")
 element_2 = SubResource("Resource_v0bqj")
 element_3 = SubResource("Resource_somyf")
 element_4 = SubResource("Resource_f2kgh")
+element_5 = SubResource("Resource_r4l8q")
 
 [node name="Node2D" type="Node2D" parent="TabContainer"]
 
@@ -2374,6 +2407,7 @@ size_flags_horizontal = 0
 text = "حذف از گروه"
 
 [node name="2" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_direction = 3
 layout_mode = 2
 anchor_right = 1.0
@@ -2644,6 +2678,230 @@ theme_override_font_sizes/font_size = 30
 text = "کد ملی:  5100276150"
 vertical_alignment = 1
 
+[node name="5" type="MarginContainer" parent="TabContainer"]
+layout_direction = 3
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -140.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/5"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BoxContainer" type="GridContainer" parent="TabContainer/5/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/v_separation = 45
+columns = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/5/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "تعداد : "
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+theme = SubResource("Theme_r4l8q")
+theme_override_icons/up_disabled = SubResource("ImageTexture_ek2el")
+theme_override_icons/down = SubResource("ImageTexture_l6ki0")
+theme_override_icons/down_hover = SubResource("ImageTexture_l6ki0")
+theme_override_icons/down_pressed = SubResource("ImageTexture_l6ki0")
+theme_override_icons/down_disabled = SubResource("ImageTexture_l6ki0")
+theme_override_icons/up_pressed = SubResource("ImageTexture_l6ki0")
+theme_override_icons/up_hover = SubResource("ImageTexture_l6ki0")
+theme_override_icons/up = SubResource("ImageTexture_l6ki0")
+theme_override_icons/updown = SubResource("ImageTexture_l6ki0")
+max_value = 500.0
+alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/5/VBoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "زمان :   "
+
+[node name="Button" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "00"
+
+[node name="Button2" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "15"
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 45
+theme_override_styles/separator = SubResource("StyleBoxEmpty_aqyui")
+
+[node name="Button3" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "24"
+
+[node name="Button4" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "03"
+
+[node name="Button5" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "1404"
+
+[node name="add_editor" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+text = "اضافه کردن"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="instance" type="PanelContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qinyn")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ColorRect" type="ColorRect" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kor44")
+draw_center = false
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Button" type="Button" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "حذف دسترسی"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+bbcode_enabled = true
+custom_effects = [SubResource("RichTextEffect_kwwa8"), SubResource("RichTextEffect_jonc0")]
+
+[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام پدر: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+bbcode_enabled = true
+custom_effects = [SubResource("RichTextEffect_4a18m"), SubResource("RichTextEffect_y4oku")]
+
+[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن: 09999876739 "
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:  5100276150"
+vertical_alignment = 1
+
 [node name="AudioStreamRecord" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMicrophone_kd08o")
 bus = &"Record"
@@ -2906,6 +3164,12 @@ script = ExtResource("26_71nvp")
 [connection signal="item_selected" from="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer2/OptionButton" to="." method="_on_tag_supporter_selected"]
 [connection signal="item_selected" from="TabContainer/2/VBoxContainer/BoxContainer/BoxContainer3/OptionButton" to="." method="_on_editor_part_selected"]
 [connection signal="pressed" from="TabContainer/2/VBoxContainer/BoxContainer/add_editor" to="." method="_on_add_editor_pressed"]
+[connection signal="pressed" from="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3/Button" to="." method="_on_button_pressed" binds= [0]]
+[connection signal="pressed" from="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3/Button2" to="." method="_on_button_pressed" binds= [1]]
+[connection signal="pressed" from="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3/Button3" to="." method="_on_button_pressed" binds= [2]]
+[connection signal="pressed" from="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3/Button4" to="." method="_on_button_pressed" binds= [3]]
+[connection signal="pressed" from="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3/Button5" to="." method="_on_button_pressed" binds= [4]]
+[connection signal="pressed" from="TabContainer/5/VBoxContainer/BoxContainer/add_editor" to="." method="_on_add_editor_pressed"]
 [connection signal="timeout" from="Timer" to="AudioStreamRecord" method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]
 [connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
