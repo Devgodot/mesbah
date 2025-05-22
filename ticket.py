@@ -35,6 +35,8 @@ def add_ticket():
 @ticket_bp.get("/get_ticket")
 @jwt_required()
 def get_ticket():
+    if current_user.data.get("accept_account", False) != True:
+        return jsonify({"error": "حساب شما تایید نشده! لطفاً به پشتیبانی مراجعه فرمایید."}), 403
     season = UserInterface.query.first().get("train_season", 1)
     tickets = Ticket.query.filter_by(season=season).all()
     if not ticket:
