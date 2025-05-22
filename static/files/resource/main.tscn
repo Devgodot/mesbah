@@ -1,13 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://dlcux0431382n"]
+[gd_scene load_steps=17 format=3]
 
-[ext_resource type="Texture2D" uid="uid://qc5tj4m0okuh" path="res://sprite/Layer 6.jpg" id="1_ugpgm"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="2_vlxx7"]
-[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_2cnry"]
-[ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="4_6jmwe"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_6fui8"]
-[ext_resource type="Texture2D" uid="uid://bnef3knjep3sx" path="res://sprite/free-message-icon-1159-thumb.png" id="5_qikbu"]
-[ext_resource type="FontFile" uid="uid://b4px8mb7gd3t" path="res://fonts/B Traffic_0.ttf" id="7_alikw"]
-[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="8_a6a7c"]
+[ext_resource type="Texture2D" uid="uid://qc5tj4m0okuh" path="res://sprite/Layer 6.jpg" id="1_lwn2k"]
+[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="2_3idth"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="3_tsqxe"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="4_ctm2f"]
+[ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="5_b8ryr"]
+[ext_resource type="Texture2D" uid="uid://bnef3knjep3sx" path="res://sprite/free-message-icon-1159-thumb.png" id="6_qodcy"]
+[ext_resource type="FontFile" uid="uid://b4px8mb7gd3t" path="res://fonts/B Traffic_0.ttf" id="7_a2kgp"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="8_0rdpp"]
 
 [sub_resource type="GDScript" id="GDScript_quj8k"]
 script/source = "extends Control
@@ -40,50 +40,50 @@ func _process(delta: float) -> void:
 		$Button3/Label.text = str(Updatedate.seen)
 
 func _on_button_7_pressed() -> void:
-	Transation.change(self, load(\"res://scenes/menu1.tscn\"))
+	Transation.change(self, \"menu1.tscn\")
 	
 
 func _on_button_pressed() -> void:
-	Transation.change(self, load(\"res://scenes/setting.tscn\"))
+	Transation.change(self, \"setting.tscn\")
 
 
 func _on_button_2_pressed() -> void:
-	Transation.change(self, load(\"res://scenes/messages.tscn\"))
+	Transation.change(self, \"messages.tscn\")
 
 
 func _on_button_8_pressed() -> void:
 	Updatedate.p_scene = scene_file_path.get_file().get_basename()
 	Updatedate.part = 3
-	Transation.change(self, load(\"res://scenes/positions.tscn\"))
+	Transation.change(self, \"positions.tscn\")
 	
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		if Updatedate.load_game(\"editor\", false):
 			print(0)
-			Transation.change(self, load(\"res://scenes/start.tscn\"), -1)
+			Transation.change(self, \"start.tscn\", -1)
 		else:
 			get_tree().quit()
 func _on_button_5_pressed() -> void:
 	Updatedate.p_scene = scene_file_path.get_file().get_basename()
 	Updatedate.part = 4
-	Transation.change(self, load(\"res://scenes/positions.tscn\"))
+	Transation.change(self, \"positions.tscn\")
 	
 
 func _on_button_3_pressed() -> void:
-	Transation.change(self, load(\"res://scenes/control.tscn\"))
+	Transation.change(self, \"control.tscn\")
 	
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0uhsw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8fni"]
-texture = ExtResource("2_vlxx7")
+texture = ExtResource("3_tsqxe")
 expand_margin_top = 60.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="FontVariation" id="FontVariation_k35su"]
-base_font = ExtResource("3_2cnry")
+base_font = ExtResource("2_3idth")
 spacing_top = -38
 spacing_bottom = 23
 
@@ -99,7 +99,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_j4lw3"]
-font = ExtResource("5_6fui8")
+font = ExtResource("4_ctm2f")
 font_size = 51
 
 [node name="Control" type="Control"]
@@ -118,7 +118,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ugpgm")
+texture = ExtResource("1_lwn2k")
 expand_mode = 1
 stretch_mode = 5
 
@@ -133,7 +133,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_2cnry")
+theme_override_fonts/font = ExtResource("2_3idth")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
@@ -152,7 +152,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_2cnry")
+theme_override_fonts/font = ExtResource("2_3idth")
 theme_override_font_sizes/font_size = 46
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
@@ -192,7 +192,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_2cnry")
+theme_override_fonts/font = ExtResource("2_3idth")
 theme_override_font_sizes/font_size = 53
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
@@ -212,11 +212,11 @@ theme_override_colors/icon_pressed_color = Color(0.788235, 0.14902, 0.262745, 1)
 theme_override_colors/icon_focus_color = Color(0.788235, 0.14902, 0.262745, 1)
 theme_override_colors/icon_normal_color = Color(0.788235, 0.14902, 0.262745, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("5_6fui8")
+theme_override_fonts/font = ExtResource("4_ctm2f")
 theme_override_font_sizes/font_size = 41
 theme_override_styles/focus = SubResource("StyleBoxEmpty_freqk")
 text = "پروفایل"
-icon = ExtResource("4_6jmwe")
+icon = ExtResource("5_b8ryr")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -237,11 +237,11 @@ theme_override_colors/icon_pressed_color = Color(0.831373, 0.054902, 0.294118, 1
 theme_override_colors/icon_focus_color = Color(0.831373, 0.054902, 0.294118, 1)
 theme_override_colors/icon_normal_color = Color(0.831373, 0.054902, 0.294118, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("5_6fui8")
+theme_override_fonts/font = ExtResource("4_ctm2f")
 theme_override_font_sizes/font_size = 51
 theme_override_styles/focus = SubResource("StyleBoxEmpty_exmok")
 text = "پیام ها"
-icon = ExtResource("5_qikbu")
+icon = ExtResource("6_qodcy")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -279,12 +279,12 @@ theme_override_colors/icon_pressed_color = Color(0.831373, 0.054902, 0.294118, 1
 theme_override_colors/icon_focus_color = Color(0.831373, 0.054902, 0.294118, 1)
 theme_override_colors/icon_normal_color = Color(0.831373, 0.054902, 0.294118, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("5_6fui8")
+theme_override_fonts/font = ExtResource("4_ctm2f")
 theme_override_font_sizes/font_size = 51
 theme_override_styles/focus = SubResource("StyleBoxEmpty_exmok")
 text = "پرسش و
 پاسخ"
-icon = ExtResource("5_qikbu")
+icon = ExtResource("6_qodcy")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -312,13 +312,13 @@ offset_left = 178.0
 offset_top = 546.0
 offset_right = 806.0
 offset_bottom = 582.0
-theme_override_fonts/font = ExtResource("7_alikw")
+theme_override_fonts/font = ExtResource("7_a2kgp")
 theme_override_font_sizes/font_size = 26
 text = "این صفحه درحال تکمیل شدن است..."
 horizontal_alignment = 1
 
 [node name="SystemBarColorChanger" type="Node" parent="."]
-script = ExtResource("8_a6a7c")
+script = ExtResource("8_0rdpp")
 
 [connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]
 [connection signal="pressed" from="Button8" to="." method="_on_button_8_pressed"]

@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://q0qb6hk2qunx"]
+[gd_scene load_steps=18 format=3]
 
-[ext_resource type="Script" uid="uid://d37nud1taosc1" path="res://script/transation.gd" id="1_rq2yo"]
+[ext_resource type="Script" uid="uid://d37nud1taosc1" path="res://script/transation.gd" id="1_t0rt2"]
 
 [sub_resource type="Curve" id="Curve_cy4kb"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.87931, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -84,7 +84,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_rq2yo")
+script = ExtResource("1_t0rt2")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(500, 1000)

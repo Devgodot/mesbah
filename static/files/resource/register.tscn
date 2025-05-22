@@ -1,14 +1,14 @@
-[gd_scene load_steps=39 format=3 uid="uid://bxx043fo5e6d0"]
+[gd_scene load_steps=39 format=3]
 
-[ext_resource type="Script" uid="uid://duenrlby8j7jc" path="res://script/register.gd" id="1_3y5xi"]
-[ext_resource type="Texture2D" uid="uid://cg3jo2qcdo44r" path="res://sprite/ورود به طرح رمضان 1403.jpg" id="2_kel6o"]
-[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="3_hhny5"]
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="3_pl4ct"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="3_ywwrh"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="4_3qv0v"]
-[ext_resource type="StyleBox" uid="uid://dsmmmmf2fqyb5" path="res://styles/normal.tres" id="5_1w3mu"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="5_c032f"]
-[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="9_jkotl"]
+[ext_resource type="Script" uid="uid://duenrlby8j7jc" path="res://script/register.gd" id="1_843yq"]
+[ext_resource type="Texture2D" uid="uid://cg3jo2qcdo44r" path="res://sprite/ورود به طرح رمضان 1403.jpg" id="2_ubasg"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="3_3hnaa"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="4_rv2xj"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="5_m7ue7"]
+[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="6_amvcj"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="7_4likf"]
+[ext_resource type="StyleBox" uid="uid://dsmmmmf2fqyb5" path="res://styles/normal.tres" id="8_4np7x"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="9_nglna"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
 bg_color = Color(0.147672, 0.147672, 0.147672, 1)
@@ -37,23 +37,23 @@ shadow_size = 2
 shadow_offset = Vector2(-1, 3)
 
 [sub_resource type="FontVariation" id="FontVariation_airvk"]
-fallbacks = Array[Font]([ExtResource("5_c032f")])
-base_font = ExtResource("4_3qv0v")
+fallbacks = Array[Font]([ExtResource("5_m7ue7")])
+base_font = ExtResource("4_rv2xj")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
-texture = ExtResource("3_hhny5")
+texture = ExtResource("6_amvcj")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
-texture = ExtResource("3_ywwrh")
+texture = ExtResource("7_4likf")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
-texture = ExtResource("3_ywwrh")
+texture = ExtResource("7_4likf")
 expand_margin_left = 13.0
 expand_margin_top = 30.0
 expand_margin_bottom = 20.0
@@ -69,7 +69,7 @@ border_color = Color(0.819608, 0.780392, 0.411765, 1)
 [sub_resource type="Theme" id="Theme_akeh0"]
 Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/font_sizes/font_size = 32
-Button/fonts/font = ExtResource("3_pl4ct")
+Button/fonts/font = ExtResource("3_3hnaa")
 Button/styles/disabled = SubResource("StyleBoxFlat_ngvdg")
 Button/styles/focus = SubResource("StyleBoxEmpty_2wr4g")
 Button/styles/hover = SubResource("StyleBoxFlat_d2vmw")
@@ -77,7 +77,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_d2vmw")
 Button/styles/pressed = SubResource("StyleBoxFlat_d2vmw")
 Label/colors/font_color = Color(0.47451, 0.333333, 0.0784314, 1)
 Label/font_sizes/font_size = 38
-Label/fonts/font = ExtResource("4_3qv0v")
+Label/fonts/font = ExtResource("4_rv2xj")
 LineEdit/constants/outline_size = 10
 LineEdit/font_sizes/font_size = 30
 LineEdit/fonts/font = SubResource("FontVariation_airvk")
@@ -86,7 +86,7 @@ LineEdit/styles/normal = SubResource("StyleBoxTexture_c6n5k")
 OptionButton/constants/arrow_margin = 21
 OptionButton/constants/h_separation = 58
 OptionButton/font_sizes/font_size = 30
-OptionButton/fonts/font = ExtResource("4_3qv0v")
+OptionButton/fonts/font = ExtResource("4_rv2xj")
 OptionButton/styles/hover_mirrored = SubResource("StyleBoxTexture_qxwpl")
 OptionButton/styles/normal_mirrored = SubResource("StyleBoxTexture_qxwpl")
 OptionButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_qxwpl")
@@ -95,7 +95,7 @@ PopupMenu/constants/close_v_offset = 78
 PopupMenu/constants/h_separation = 40
 PopupMenu/font_sizes/font_separator_size = 122
 PopupMenu/font_sizes/font_size = 40
-PopupMenu/fonts/font = ExtResource("4_3qv0v")
+PopupMenu/fonts/font = ExtResource("4_rv2xj")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6oife"]
@@ -141,14 +141,14 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_kmb1d")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcdk5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mdp2b"]
-texture = ExtResource("3_hhny5")
+texture = ExtResource("6_amvcj")
 expand_margin_left = 30.0
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cyws4"]
-texture = ExtResource("3_ywwrh")
+texture = ExtResource("7_4likf")
 expand_margin_left = 30.0
 expand_margin_top = 30.0
 expand_margin_right = 80.0
@@ -157,7 +157,7 @@ expand_margin_bottom = 20.0
 [sub_resource type="Theme" id="Theme_hhgu6"]
 Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/font_sizes/font_size = 57
-Button/fonts/font = ExtResource("3_pl4ct")
+Button/fonts/font = ExtResource("3_3hnaa")
 Button/styles/disabled = SubResource("StyleBoxFlat_ngvdg")
 Button/styles/focus = SubResource("StyleBoxEmpty_2wr4g")
 Button/styles/hover = SubResource("StyleBoxFlat_d2vmw")
@@ -165,15 +165,15 @@ Button/styles/normal = SubResource("StyleBoxFlat_d2vmw")
 Button/styles/pressed = SubResource("StyleBoxFlat_d2vmw")
 Label/colors/font_color = Color(0.47451, 0.333333, 0.0784314, 1)
 Label/font_sizes/font_size = 53
-Label/fonts/font = ExtResource("4_3qv0v")
+Label/fonts/font = ExtResource("4_rv2xj")
 LineEdit/font_sizes/font_size = 80
-LineEdit/fonts/font = ExtResource("4_3qv0v")
+LineEdit/fonts/font = ExtResource("4_rv2xj")
 LineEdit/styles/focus = SubResource("StyleBoxTexture_mdp2b")
 LineEdit/styles/normal = SubResource("StyleBoxTexture_cyws4")
 OptionButton/constants/arrow_margin = 21
 OptionButton/constants/h_separation = 58
 OptionButton/font_sizes/font_size = 30
-OptionButton/fonts/font = ExtResource("4_3qv0v")
+OptionButton/fonts/font = ExtResource("4_rv2xj")
 OptionButton/styles/hover_mirrored = SubResource("StyleBoxTexture_qxwpl")
 OptionButton/styles/normal_mirrored = SubResource("StyleBoxTexture_qxwpl")
 OptionButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_qxwpl")
@@ -182,7 +182,7 @@ PopupMenu/constants/close_v_offset = 78
 PopupMenu/constants/h_separation = 40
 PopupMenu/font_sizes/font_separator_size = 122
 PopupMenu/font_sizes/font_size = 40
-PopupMenu/fonts/font = ExtResource("4_3qv0v")
+PopupMenu/fonts/font = ExtResource("4_rv2xj")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
 
 [sub_resource type="LabelSettings" id="LabelSettings_826hh"]
@@ -803,7 +803,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
-script = ExtResource("1_3y5xi")
+script = ExtResource("1_843yq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -812,7 +812,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_kel6o")
+texture = ExtResource("2_ubasg")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -1105,7 +1105,7 @@ layout_mode = 2
 size_flags_horizontal = 5
 mouse_filter = 0
 theme = SubResource("Theme_b7fa4")
-theme_override_styles/normal = ExtResource("5_1w3mu")
+theme_override_styles/normal = ExtResource("8_4np7x")
 label_settings = SubResource("LabelSettings_826hh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1116,7 +1116,7 @@ layout_mode = 2
 size_flags_horizontal = 5
 mouse_filter = 0
 theme = SubResource("Theme_b7fa4")
-theme_override_styles/normal = ExtResource("5_1w3mu")
+theme_override_styles/normal = ExtResource("8_4np7x")
 label_settings = SubResource("LabelSettings_826hh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1127,7 +1127,7 @@ layout_mode = 2
 size_flags_horizontal = 5
 mouse_filter = 0
 theme = SubResource("Theme_b7fa4")
-theme_override_styles/normal = ExtResource("5_1w3mu")
+theme_override_styles/normal = ExtResource("8_4np7x")
 label_settings = SubResource("LabelSettings_826hh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1138,7 +1138,7 @@ layout_mode = 2
 size_flags_horizontal = 5
 mouse_filter = 0
 theme = SubResource("Theme_b7fa4")
-theme_override_styles/normal = ExtResource("5_1w3mu")
+theme_override_styles/normal = ExtResource("8_4np7x")
 label_settings = SubResource("LabelSettings_826hh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1362,7 +1362,7 @@ libraries = {
 autoplay = "RESET"
 
 [node name="SystemBarColorChanger" type="Node" parent="."]
-script = ExtResource("9_jkotl")
+script = ExtResource("9_nglna")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button3_pressed"]

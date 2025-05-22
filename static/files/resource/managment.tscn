@@ -1,31 +1,31 @@
-[gd_scene load_steps=127 format=3 uid="uid://cs3wo6e727yo1"]
+[gd_scene load_steps=129 format=3]
 
-[ext_resource type="Script" uid="uid://bhrjao205or8u" path="res://script/managment.gd" id="1_6lrso"]
-[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="1_euqnk"]
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_qjeh5"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_67m70"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="3_wpyoc"]
-[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_dgp0j"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_fb0v3"]
-[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://script/tab_container.gd" id="8_gj3my"]
-[ext_resource type="Texture2D" uid="uid://cnh2id2fbbp6v" path="res://sprite/Layer 7.png" id="8_mvuwd"]
-[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://script/animation_tab.gd" id="9_a86a3"]
-[ext_resource type="PackedScene" uid="uid://ccq5uf2d3qap4" path="res://scenes/music_player.tscn" id="9_gkyeb"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="10_55iem"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="10_25857"]
-[ext_resource type="Script" uid="uid://cnn7hb10qab7t" path="res://script/icon.gd" id="10_hvcdm"]
-[ext_resource type="Texture2D" uid="uid://bjetyx7brb8jl" path="res://sprite/ranking-icon-2048x2046-5ln1igbz2.png" id="10_v0jsr"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="11_dpmkx"]
-[ext_resource type="Texture2D" uid="uid://ceeuv2csd6158" path="res://sprite/ranking-icon-2048x2046-5ln1igbz.png" id="11_idhbe"]
-[ext_resource type="Script" uid="uid://ctyywxyk7kuid" path="res://script/tab_settings.gd" id="12_tdqwm"]
-[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="13_umncv"]
-[ext_resource type="Texture2D" uid="uid://nfst76tsqb3b" path="res://sprite/131-1318263_group-people-communication-message-talk-comments-people-management2.png" id="14_xgbhk"]
-[ext_resource type="Texture2D" uid="uid://2ht05d0hchka" path="res://sprite/131-1318263_group-people-communication-message-talk-comments-people-management.png" id="15_2vjm2"]
-[ext_resource type="Texture2D" uid="uid://dhvoajsyliqfv" path="res://sprite/pngtree-manager-line-icon-png-image_90638982.png" id="16_bwfsb"]
-[ext_resource type="Texture2D" uid="uid://7o0r1301u7y4" path="res://sprite/pngtree-manager-line-icon-png-image_9063898.png" id="17_ux7be"]
-[ext_resource type="Texture2D" uid="uid://cewt88obxmh61" path="res://sprite/1159012.png" id="18_nvf07"]
-[ext_resource type="Texture2D" uid="uid://c11cmfbcs816o" path="res://sprite/115901.png" id="19_fps3j"]
-[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="26_71nvp"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_l0eir"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_vjcqg"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="3_20e8m"]
+[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_0r44s"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_du7y4"]
+[ext_resource type="Script" uid="uid://bhrjao205or8u" path="res://script/managment.gd" id="6_8axuj"]
+[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="7_o6iub"]
+[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://script/tab_container.gd" id="8_emebq"]
+[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://script/animation_tab.gd" id="9_s5p1w"]
+[ext_resource type="Texture2D" uid="uid://bjetyx7brb8jl" path="res://sprite/ranking-icon-2048x2046-5ln1igbz2.png" id="10_ut861"]
+[ext_resource type="Texture2D" uid="uid://ceeuv2csd6158" path="res://sprite/ranking-icon-2048x2046-5ln1igbz.png" id="11_6h6d7"]
+[ext_resource type="Script" uid="uid://ctyywxyk7kuid" path="res://script/tab_settings.gd" id="12_ddqsb"]
+[ext_resource type="Script" uid="uid://cnn7hb10qab7t" path="res://script/icon.gd" id="13_500ob"]
+[ext_resource type="Texture2D" uid="uid://nfst76tsqb3b" path="res://sprite/131-1318263_group-people-communication-message-talk-comments-people-management2.png" id="14_3wryf"]
+[ext_resource type="Texture2D" uid="uid://2ht05d0hchka" path="res://sprite/131-1318263_group-people-communication-message-talk-comments-people-management.png" id="15_bnrfn"]
+[ext_resource type="Texture2D" uid="uid://dhvoajsyliqfv" path="res://sprite/pngtree-manager-line-icon-png-image_90638982.png" id="16_dig23"]
+[ext_resource type="Texture2D" uid="uid://7o0r1301u7y4" path="res://sprite/pngtree-manager-line-icon-png-image_9063898.png" id="17_3xg5v"]
+[ext_resource type="Texture2D" uid="uid://cewt88obxmh61" path="res://sprite/1159012.png" id="18_lnsl6"]
+[ext_resource type="Texture2D" uid="uid://c11cmfbcs816o" path="res://sprite/115901.png" id="19_y2lt3"]
+[ext_resource type="Texture2D" uid="uid://cnh2id2fbbp6v" path="res://sprite/Layer 7.png" id="20_x0ydb"]
+[ext_resource type="PackedScene" uid="uid://ccq5uf2d3qap4" path="res://scenes/music_player.tscn" id="21_2iibi"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="22_f6wvd"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="23_01njy"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="24_2gup8"]
+[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="25_5lcq2"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="26_p23ap"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
 bg_color = Color(0.147672, 0.147672, 0.147672, 1)
@@ -54,29 +54,29 @@ shadow_size = 2
 shadow_offset = Vector2(-1, 3)
 
 [sub_resource type="FontVariation" id="FontVariation_nd0pe"]
-fallbacks = Array[Font]([ExtResource("3_wpyoc")])
-base_font = ExtResource("2_67m70")
+fallbacks = Array[Font]([ExtResource("3_20e8m")])
+base_font = ExtResource("2_vjcqg")
 
 [sub_resource type="FontVariation" id="FontVariation_sfmai"]
-fallbacks = Array[Font]([ExtResource("3_wpyoc")])
-base_font = ExtResource("2_67m70")
+fallbacks = Array[Font]([ExtResource("3_20e8m")])
+base_font = ExtResource("2_vjcqg")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
-texture = ExtResource("4_dgp0j")
+texture = ExtResource("4_0r44s")
 expand_margin_left = 30.0
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
-texture = ExtResource("5_fb0v3")
+texture = ExtResource("5_du7y4")
 expand_margin_left = 30.0
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
-texture = ExtResource("5_fb0v3")
+texture = ExtResource("5_du7y4")
 expand_margin_left = 13.0
 expand_margin_top = 30.0
 expand_margin_bottom = 20.0
@@ -93,10 +93,10 @@ border_width_bottom = 5
 border_color = Color(0.819608, 0.780392, 0.411765, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_5oroi"]
-fallbacks = Array[Font]([ExtResource("3_wpyoc")])
-base_font = ExtResource("2_67m70")
+fallbacks = Array[Font]([ExtResource("3_20e8m")])
+base_font = ExtResource("2_vjcqg")
 
-[sub_resource type="Image" id="Image_jl1h1"]
+[sub_resource type="Image" id="Image_k6e4a"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 76, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 99, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 99, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 122, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 53, 255, 255, 255, 181, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 54, 255, 255, 255, 182, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 121, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 98, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 98, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 75, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -106,11 +106,11 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_sq7qb"]
-image = SubResource("Image_jl1h1")
+image = SubResource("Image_k6e4a")
 
 [sub_resource type="FontVariation" id="FontVariation_adnmk"]
-fallbacks = Array[Font]([ExtResource("3_wpyoc")])
-base_font = ExtResource("2_67m70")
+fallbacks = Array[Font]([ExtResource("3_20e8m")])
+base_font = ExtResource("2_vjcqg")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx0m5"]
 bg_color = Color(0.882184, 0.370314, 1.34766e-06, 1)
@@ -133,7 +133,7 @@ border_blend = true
 [sub_resource type="Theme" id="Theme_rgiyq"]
 Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/font_sizes/font_size = 32
-Button/fonts/font = ExtResource("1_qjeh5")
+Button/fonts/font = ExtResource("1_l0eir")
 Button/styles/disabled = SubResource("StyleBoxFlat_ngvdg")
 Button/styles/focus = SubResource("StyleBoxEmpty_2wr4g")
 Button/styles/hover = SubResource("StyleBoxFlat_d2vmw")
@@ -196,7 +196,7 @@ fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
 [sub_resource type="Resource" id="Resource_xlphu"]
-script = ExtResource("9_a86a3")
+script = ExtResource("9_s5p1w")
 texture_progress = SubResource("GradientTexture2D_t3stj")
 fill_mode = 4
 nine_patch_stretch = true
@@ -230,7 +230,7 @@ corner_radius_bottom_left = 10
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wyfnf"]
 
 [sub_resource type="Resource" id="Resource_jyhjh"]
-script = ExtResource("12_tdqwm")
+script = ExtResource("12_ddqsb")
 font_size = 0
 selected_color = Color(0.294118, 0.443137, 1, 1)
 unselected_color = Color(0, 0, 0, 1)
@@ -239,9 +239,9 @@ ouline_selected_color = Color(0, 0, 0, 1)
 outline_unselected_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Resource" id="Resource_mdp6e"]
-script = ExtResource("10_hvcdm")
-icon_selected = ExtResource("10_v0jsr")
-icon_unselected = ExtResource("11_idhbe")
+script = ExtResource("13_500ob")
+icon_selected = ExtResource("10_ut861")
+icon_unselected = ExtResource("11_6h6d7")
 label_settings = SubResource("Resource_jyhjh")
 expand_icon = true
 flat = true
@@ -250,9 +250,9 @@ icon_h_aligment = 1
 text = "رتبه‌بندی"
 
 [sub_resource type="Resource" id="Resource_v0bqj"]
-script = ExtResource("10_hvcdm")
-icon_selected = ExtResource("14_xgbhk")
-icon_unselected = ExtResource("15_2vjm2")
+script = ExtResource("13_500ob")
+icon_selected = ExtResource("14_3wryf")
+icon_unselected = ExtResource("15_bnrfn")
 label_settings = SubResource("Resource_jyhjh")
 expand_icon = true
 flat = true
@@ -261,9 +261,9 @@ icon_h_aligment = 1
 text = "مدیریت‌پیام"
 
 [sub_resource type="Resource" id="Resource_somyf"]
-script = ExtResource("10_hvcdm")
-icon_selected = ExtResource("16_bwfsb")
-icon_unselected = ExtResource("17_ux7be")
+script = ExtResource("13_500ob")
+icon_selected = ExtResource("16_dig23")
+icon_unselected = ExtResource("17_3xg5v")
 label_settings = SubResource("Resource_jyhjh")
 expand_icon = true
 flat = true
@@ -272,9 +272,9 @@ icon_h_aligment = 1
 text = "کاربران"
 
 [sub_resource type="Resource" id="Resource_f2kgh"]
-script = ExtResource("10_hvcdm")
-icon_selected = ExtResource("18_nvf07")
-icon_unselected = ExtResource("19_fps3j")
+script = ExtResource("13_500ob")
+icon_selected = ExtResource("18_lnsl6")
+icon_unselected = ExtResource("19_y2lt3")
 label_settings = SubResource("Resource_jyhjh")
 expand_icon = true
 flat = true
@@ -283,7 +283,7 @@ icon_h_aligment = 1
 text = "مربیان"
 
 [sub_resource type="Resource" id="Resource_r4l8q"]
-script = ExtResource("10_hvcdm")
+script = ExtResource("13_500ob")
 label_settings = SubResource("Resource_jyhjh")
 expand_icon = false
 max_icon_width = 0
@@ -365,22 +365,35 @@ shadow_size = 2
 shadow_offset = Vector2(-1, 2)
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_jqayc"]
-script = ExtResource("10_25857")
+script = ExtResource("22_f6wvd")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_vvjsb"]
-script = ExtResource("11_dpmkx")
+script = ExtResource("23_01njy")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_kwwa8"]
-script = ExtResource("10_25857")
+script = ExtResource("22_f6wvd")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_jonc0"]
-script = ExtResource("10_25857")
+script = ExtResource("22_f6wvd")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_4a18m"]
-script = ExtResource("10_25857")
+script = ExtResource("22_f6wvd")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_y4oku"]
-script = ExtResource("11_dpmkx")
+script = ExtResource("23_01njy")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4l8q"]
+bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+draw_center = false
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.4, 0.972549, 0.517647, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jl1h1"]
 bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
@@ -395,6 +408,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="Theme" id="Theme_r4l8q"]
+LineEdit/styles/focus = SubResource("StyleBoxFlat_r4l8q")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_jl1h1")
 
 [sub_resource type="ImageTexture" id="ImageTexture_ek2el"]
@@ -402,6 +416,8 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_jl1h1")
 [sub_resource type="ImageTexture" id="ImageTexture_l6ki0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aqyui"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jl1h1"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_kd08o"]
 
@@ -597,12 +613,12 @@ shadow_size = 2
 shadow_offset = Vector2(-1, 3)
 
 [sub_resource type="FontVariation" id="FontVariation_wbl4a"]
-fallbacks = Array[Font]([ExtResource("3_wpyoc")])
-base_font = ExtResource("2_67m70")
+fallbacks = Array[Font]([ExtResource("3_20e8m")])
+base_font = ExtResource("2_vjcqg")
 
 [sub_resource type="FontVariation" id="FontVariation_oa6nk"]
-fallbacks = Array[Font]([ExtResource("3_wpyoc")])
-base_font = ExtResource("2_67m70")
+fallbacks = Array[Font]([ExtResource("3_20e8m")])
+base_font = ExtResource("2_vjcqg")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s3iw3"]
 load_path = "res://.godot/imported/Layer 6.png-56135b8d1f4c0e7a8e3b4031b0abb1b9.ctex"
@@ -676,10 +692,10 @@ border_width_bottom = 5
 border_color = Color(0.819608, 0.780392, 0.411765, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_8k40e"]
-fallbacks = Array[Font]([ExtResource("3_wpyoc")])
-base_font = ExtResource("2_67m70")
+fallbacks = Array[Font]([ExtResource("3_20e8m")])
+base_font = ExtResource("2_vjcqg")
 
-[sub_resource type="Image" id="Image_ek2el"]
+[sub_resource type="Image" id="Image_bs4x5"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 76, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 99, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 99, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 122, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 53, 255, 255, 255, 181, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 54, 255, 255, 255, 182, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 121, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 98, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 98, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 75, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -689,11 +705,11 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_gcgbg"]
-image = SubResource("Image_ek2el")
+image = SubResource("Image_bs4x5")
 
 [sub_resource type="FontVariation" id="FontVariation_e7st4"]
-fallbacks = Array[Font]([ExtResource("3_wpyoc")])
-base_font = ExtResource("2_67m70")
+fallbacks = Array[Font]([ExtResource("3_20e8m")])
+base_font = ExtResource("2_vjcqg")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf8c4"]
 bg_color = Color(0.882184, 0.370314, 1.34766e-06, 1)
@@ -716,7 +732,7 @@ border_blend = true
 [sub_resource type="Theme" id="Theme_2btop"]
 Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
 Button/font_sizes/font_size = 16
-Button/fonts/font = ExtResource("1_qjeh5")
+Button/fonts/font = ExtResource("1_l0eir")
 Button/styles/disabled = SubResource("StyleBoxFlat_jycdh")
 Button/styles/focus = SubResource("StyleBoxEmpty_jwt0f")
 Button/styles/hover = SubResource("StyleBoxFlat_1hyao")
@@ -763,9 +779,9 @@ TextEdit/styles/normal = SubResource("StyleBoxFlat_gtdme")
 
 [sub_resource type="Theme" id="Theme_ss823"]
 Label/font_sizes/font_size = 10
-Label/fonts/font = ExtResource("13_umncv")
+Label/fonts/font = ExtResource("25_5lcq2")
 RichTextLabel/font_sizes/normal_font_size = 15
-RichTextLabel/fonts/normal_font = ExtResource("2_67m70")
+RichTextLabel/fonts/normal_font = ExtResource("2_vjcqg")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifacq"]
 bg_color = Color(0.411765, 0.0588235, 0, 1)
@@ -785,10 +801,10 @@ corner_radius_bottom_left = 40
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8a5fb"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_yb7qp"]
-script = ExtResource("10_25857")
+script = ExtResource("22_f6wvd")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gbj5b"]
-script = ExtResource("11_dpmkx")
+script = ExtResource("23_01njy")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pu2s7"]
 
@@ -814,7 +830,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_rgiyq")
-script = ExtResource("1_6lrso")
+script = ExtResource("6_8axuj")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -823,7 +839,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_euqnk")
+texture = ExtResource("7_o6iub")
 
 [node name="TabContainer" type="Control" parent="."]
 layout_mode = 1
@@ -832,8 +848,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("8_gj3my")
-current_tab = 4
+script = ExtResource("8_emebq")
+current_tab = 2
 transation = false
 separation_style = SubResource("StyleBoxEmpty_xpey2")
 panel_style = SubResource("StyleBoxFlat_ifxwq")
@@ -1575,7 +1591,7 @@ text = "تصویر : "
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_vertical = 4
-icon = ExtResource("8_mvuwd")
+icon = ExtResource("20_x0ydb")
 icon_alignment = 1
 expand_icon = true
 
@@ -1599,11 +1615,11 @@ custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7usrt")
-icon = ExtResource("8_mvuwd")
+icon = ExtResource("20_x0ydb")
 icon_alignment = 1
 expand_icon = true
 
-[node name="PanelContainer" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4" instance=ExtResource("9_gkyeb")]
+[node name="PanelContainer" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4" instance=ExtResource("21_2iibi")]
 visible = false
 layout_mode = 2
 
@@ -1760,7 +1776,6 @@ layout_mode = 2
 text = "حذف پیام"
 
 [node name="4" type="MarginContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2020,6 +2035,11 @@ text = " حساب حرفه ایی "
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = " حساب مسدود "
+
+[node name="CheckBox3" type="CheckBox" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer5"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+text = " تایید حساب "
 
 [node name="instance2" type="PanelContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer"]
 visible = false
@@ -2679,6 +2699,7 @@ text = "کد ملی:  5100276150"
 vertical_alignment = 1
 
 [node name="5" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_direction = 3
 layout_mode = 2
 anchor_right = 1.0
@@ -2720,8 +2741,11 @@ theme_override_icons/up_pressed = SubResource("ImageTexture_l6ki0")
 theme_override_icons/up_hover = SubResource("ImageTexture_l6ki0")
 theme_override_icons/up = SubResource("ImageTexture_l6ki0")
 theme_override_icons/updown = SubResource("ImageTexture_l6ki0")
+min_value = 1.0
 max_value = 500.0
+value = 1.0
 alignment = 1
+select_all_on_focus = true
 
 [node name="BoxContainer3" type="BoxContainer" parent="TabContainer/5/VBoxContainer/BoxContainer"]
 layout_mode = 2
@@ -2793,114 +2817,82 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 50
 
-[node name="BoxContainer" type="BoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_vertical = 4
-expand_mode = 1
-stretch_mode = 6
-
-[node name="ColorRect" type="ColorRect" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2/TextureRect"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_kor44")
-draw_center = false
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
-
-[node name="Button" type="Button" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "حذف دسترسی"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer"]
-layout_mode = 2
-
-[node name="BoxContainer" type="BoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 30
-text = "نام و نام خانوادگی: "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer"]
-custom_minimum_size = Vector2(390, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-bbcode_enabled = true
-custom_effects = [SubResource("RichTextEffect_kwwa8"), SubResource("RichTextEffect_jonc0")]
-
-[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer3"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 30
-text = "نام پدر: "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer3"]
-custom_minimum_size = Vector2(390, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-bbcode_enabled = true
-custom_effects = [SubResource("RichTextEffect_4a18m"), SubResource("RichTextEffect_y4oku")]
-
-[node name="BoxContainer2" type="BoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Label" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 30
-text = "شماره تلفن: 09999876739 "
-vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer2"]
+[node name="Label" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+text = "زمان: "
+
+[node name="Button" type="Button" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+theme_override_styles/separator = SubResource("StyleBoxEmpty_jl1h1")
+
+[node name="Button3" type="Button" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Button4" type="Button" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 30
-text = "کد ملی:  5100276150"
-vertical_alignment = 1
+text = "تعداد : "
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+theme = SubResource("Theme_r4l8q")
+theme_override_icons/up_disabled = SubResource("ImageTexture_ek2el")
+theme_override_icons/down = SubResource("ImageTexture_l6ki0")
+theme_override_icons/down_hover = SubResource("ImageTexture_l6ki0")
+theme_override_icons/down_pressed = SubResource("ImageTexture_l6ki0")
+theme_override_icons/down_disabled = SubResource("ImageTexture_l6ki0")
+theme_override_icons/up_pressed = SubResource("ImageTexture_l6ki0")
+theme_override_icons/up_hover = SubResource("ImageTexture_l6ki0")
+theme_override_icons/up = SubResource("ImageTexture_l6ki0")
+theme_override_icons/updown = SubResource("ImageTexture_l6ki0")
+min_value = 1.0
+max_value = 500.0
+value = 1.0
+alignment = 1
+select_all_on_focus = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+text = "تغییر"
+
+[node name="Button2" type="Button" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "حذف"
 
 [node name="AudioStreamRecord" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMicrophone_kd08o")
@@ -2913,7 +2905,7 @@ script = SubResource("GDScript_t0m0i")
 layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
-icon = ExtResource("10_55iem")
+icon = ExtResource("24_2gup8")
 flat = true
 expand_icon = true
 
@@ -2993,7 +2985,7 @@ vertical_alignment = 1
 [node name="ProgressBar" type="ProgressBar" parent="PanelContainer/CenterContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("2_67m70")
+theme_override_fonts/font = ExtResource("2_vjcqg")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/background = SubResource("StyleBoxFlat_7fhtb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_78mn1")
@@ -3022,7 +3014,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_euqnk")
+texture = ExtResource("7_o6iub")
 
 [node name="MarginContainer" type="MarginContainer" parent="Window"]
 anchors_preset = 15
@@ -3148,7 +3140,7 @@ text = "1403-05-02 12:05:15"
 horizontal_alignment = 2
 
 [node name="SystemBarColorChanger" type="Node" parent="."]
-script = ExtResource("26_71nvp")
+script = ExtResource("26_p23ap")
 
 [connection signal="tab_selected" from="TabContainer" to="." method="_on_tab_container_tab_selected"]
 [connection signal="pressed" from="TabContainer/1/VBoxContainer/BoxContainer/BoxContainer4/Button" to="." method="_on_sort_button_pressed"]
@@ -3169,7 +3161,7 @@ script = ExtResource("26_71nvp")
 [connection signal="pressed" from="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3/Button3" to="." method="_on_button_pressed" binds= [2]]
 [connection signal="pressed" from="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3/Button4" to="." method="_on_button_pressed" binds= [3]]
 [connection signal="pressed" from="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3/Button5" to="." method="_on_button_pressed" binds= [4]]
-[connection signal="pressed" from="TabContainer/5/VBoxContainer/BoxContainer/add_editor" to="." method="_on_add_editor_pressed"]
+[connection signal="pressed" from="TabContainer/5/VBoxContainer/BoxContainer/add_editor" to="." method="_on_add_ticket_pressed"]
 [connection signal="timeout" from="Timer" to="AudioStreamRecord" method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]
 [connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

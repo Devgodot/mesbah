@@ -1,15 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://buutbsk2uuv3t"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Texture2D" uid="uid://qc5tj4m0okuh" path="res://sprite/Layer 6.jpg" id="1_cqbpg"]
-[ext_resource type="Script" uid="uid://brq3syutclyg4" path="res://script/menu_1.gd" id="1_rsv5w"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="2_78k7u"]
-[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_3blfn"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="5_c4jcv"]
+[ext_resource type="Script" uid="uid://brq3syutclyg4" path="res://script/menu_1.gd" id="1_vy84h"]
+[ext_resource type="Texture2D" uid="uid://qc5tj4m0okuh" path="res://sprite/Layer 6.jpg" id="2_a5d0o"]
+[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_y0ifk"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="4_n15yr"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="5_w5rr7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0uhsw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k8fni"]
-texture = ExtResource("2_78k7u")
+texture = ExtResource("4_n15yr")
 expand_margin_top = 60.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rsv5w")
+script = ExtResource("1_vy84h")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -32,7 +32,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_cqbpg")
+texture = ExtResource("2_a5d0o")
 expand_mode = 1
 stretch_mode = 5
 
@@ -47,7 +47,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_3blfn")
+theme_override_fonts/font = ExtResource("3_y0ifk")
 theme_override_font_sizes/font_size = 53
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
@@ -66,7 +66,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_3blfn")
+theme_override_fonts/font = ExtResource("3_y0ifk")
 theme_override_font_sizes/font_size = 49
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
@@ -86,7 +86,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_3blfn")
+theme_override_fonts/font = ExtResource("3_y0ifk")
 theme_override_font_sizes/font_size = 53
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0uhsw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_k8fni")
@@ -99,11 +99,8 @@ layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_x8j3v")
-icon = ExtResource("5_c4jcv")
+icon = ExtResource("5_w5rr7")
 flat = true
 expand_icon = true
 
-[connection signal="pressed" from="Button5" to="." method="_on_button_pressed" binds= [2]]
-[connection signal="pressed" from="Button6" to="." method="_on_button_pressed" binds= [1]]
-[connection signal="pressed" from="Button7" to="." method="_on_button_pressed" binds= [0]]
 [connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]

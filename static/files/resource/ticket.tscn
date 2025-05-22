@@ -1,17 +1,18 @@
-[gd_scene load_steps=38 format=3 uid="uid://bmq1j0lafkckw"]
+[gd_scene load_steps=43 format=3]
 
-[ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_o7y5v"]
-[ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_o7y5v"]
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="2_rn5ye"]
-[ext_resource type="Texture2D" uid="uid://blxp2f1agcvo8" path="res://sprite/toy-train-png-23.png" id="3_rn5ye"]
-[ext_resource type="Texture2D" uid="uid://cirtlwugllh08" path="res://sprite/train1.png" id="5_ythdo"]
-[ext_resource type="Texture2D" uid="uid://blr2ctvd6phdi" path="res://sprite/train2.png" id="6_nf6rg"]
-[ext_resource type="Texture2D" uid="uid://id77lxtqara7" path="res://sprite/train3.png" id="7_wmegk"]
-[ext_resource type="Texture2D" uid="uid://315njag78wgn" path="res://sprite/train4.png" id="8_o5d6j"]
-[ext_resource type="Texture2D" uid="uid://c78t7srrwbgxx" path="res://sprite/train9.png" id="9_ldq3j"]
-[ext_resource type="Texture2D" uid="uid://bv1l7l77ucorf" path="res://sprite/train10.png" id="10_a7rri"]
-[ext_resource type="Texture2D" uid="uid://bkyjnqos8bjks" path="res://sprite/train6.png" id="11_7rqr6"]
-[ext_resource type="Texture2D" uid="uid://bf7bjl5twqpqs" path="res://sprite/train7.png" id="12_c1t5e"]
+[ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_v1ciu"]
+[ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_ebnor"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="3_flmv1"]
+[ext_resource type="Texture2D" uid="uid://blxp2f1agcvo8" path="res://sprite/toy-train-png-23.png" id="4_2mt7w"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_p12kv"]
+[ext_resource type="Texture2D" uid="uid://cirtlwugllh08" path="res://sprite/train1.png" id="6_nf08a"]
+[ext_resource type="Texture2D" uid="uid://blr2ctvd6phdi" path="res://sprite/train2.png" id="7_mehr6"]
+[ext_resource type="Texture2D" uid="uid://id77lxtqara7" path="res://sprite/train3.png" id="8_1w8aa"]
+[ext_resource type="Texture2D" uid="uid://315njag78wgn" path="res://sprite/train4.png" id="9_lfy8k"]
+[ext_resource type="Texture2D" uid="uid://c78t7srrwbgxx" path="res://sprite/train9.png" id="10_biq4o"]
+[ext_resource type="Texture2D" uid="uid://bv1l7l77ucorf" path="res://sprite/train10.png" id="11_plowr"]
+[ext_resource type="Texture2D" uid="uid://bkyjnqos8bjks" path="res://sprite/train6.png" id="12_bhvn0"]
+[ext_resource type="Texture2D" uid="uid://bf7bjl5twqpqs" path="res://sprite/train7.png" id="13_vaoh5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vod7w"]
 bg_color = Color(1, 0.913725, 0.639216, 1)
@@ -26,7 +27,7 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_o7y5v"]
-font = ExtResource("2_rn5ye")
+font = ExtResource("3_flmv1")
 font_size = 46
 font_color = Color(0.745098, 0.415686, 0.215686, 1)
 outline_size = 4
@@ -41,7 +42,7 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_6d827"]
-font = ExtResource("2_rn5ye")
+font = ExtResource("3_flmv1")
 font_size = 136
 font_color = Color(0.67451, 0.4, 0.0509804, 1)
 outline_color = Color(0, 0, 0, 1)
@@ -126,6 +127,12 @@ seamless = true
 seamless_blend_skirt = 1.0
 noise = SubResource("FastNoiseLite_wmegk")
 
+[sub_resource type="LabelSettings" id="LabelSettings_nf6rg"]
+font = ExtResource("5_p12kv")
+font_size = 40
+font_color = Color(0.466667, 0.133333, 1, 1)
+outline_size = 14
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o7y5v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wp4qn"]
@@ -145,10 +152,10 @@ corner_radius_bottom_left = 70
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_7rqr6")
+"texture": ExtResource("12_bhvn0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_c1t5e")
+"texture": ExtResource("13_vaoh5")
 }],
 "loop": false,
 "name": &"default",
@@ -400,6 +407,33 @@ _data = {
 &"rotate": SubResource("Animation_o5d6j")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmegk"]
+bg_color = Color(0.918668, 0.450138, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.986205, 0.762711, 0.234658, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5d6j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldq3j"]
+bg_color = Color(0.46325, 0.167312, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.917647, 0.45098, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="ticket" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -407,7 +441,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_o7y5v")
+script = ExtResource("1_v1ciu")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -416,7 +450,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_o7y5v")
+texture = ExtResource("2_ebnor")
 expand_mode = 1
 stretch_mode = 6
 
@@ -483,6 +517,7 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 69.0
 offset_top = 1866.0
@@ -518,12 +553,13 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4ntr8")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 192.0
 offset_top = 1855.0
 offset_right = 350.0
 offset_bottom = 1932.0
-texture = ExtResource("3_rn5ye")
+texture = ExtResource("4_2mt7w")
 expand_mode = 1
 stretch_mode = 5
 flip_h = true
@@ -542,8 +578,24 @@ damping_min = 29.897
 damping_max = 30.928
 scale_amount_max = 5.0
 
+[node name="Label4" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.069
+anchor_top = 0.933
+anchor_right = 0.939
+anchor_bottom = 0.9655
+grow_horizontal = 2
+grow_vertical = 2
+text = "1404/03/24 15:00"
+label_settings = SubResource("LabelSettings_nf6rg")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Timer" type="Timer" parent="."]
-autostart = true
+wait_time = 0.001
 ignore_time_scale = true
 
 [node name="Button" type="Button" parent="."]
@@ -552,7 +604,7 @@ offset_left = 141.0
 offset_top = 1564.0
 offset_right = 861.0
 offset_bottom = 1765.0
-theme_override_fonts/font = ExtResource("2_rn5ye")
+theme_override_fonts/font = ExtResource("3_flmv1")
 theme_override_font_sizes/font_size = 101
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o7y5v")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wp4qn")
@@ -560,35 +612,50 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_wp4qn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wp4qn")
 text = "سوار شو"
 
+[node name="Button2" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 141.0
+offset_top = 1564.0
+offset_right = 861.0
+offset_bottom = 1765.0
+theme_override_fonts/font = ExtResource("3_flmv1")
+theme_override_font_sizes/font_size = 101
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o7y5v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wp4qn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wp4qn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wp4qn")
+text = "ثبت در تقویم"
+
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
 position = Vector2(1333, 712)
 
 [node name="Train1" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("5_ythdo")
+texture = ExtResource("6_nf08a")
 
 [node name="Train2" type="Sprite2D" parent="Node2D"]
 position = Vector2(-67.4724, -34.4829)
-texture = ExtResource("6_nf6rg")
+texture = ExtResource("7_mehr6")
 offset = Vector2(9.47241, -45.5171)
 
 [node name="Train3" type="Sprite2D" parent="Node2D"]
 position = Vector2(95.9344, -25.9566)
-texture = ExtResource("7_wmegk")
+texture = ExtResource("8_1w8aa")
 offset = Vector2(4.05945, -36.8204)
 
 [node name="Train4" type="Sprite2D" parent="Node2D"]
 position = Vector2(241.748, 4.02612)
-texture = ExtResource("8_o5d6j")
+texture = ExtResource("9_lfy8k")
 offset = Vector2(8.25208, -42.0261)
 
 [node name="Train9" type="Sprite2D" parent="Node2D"]
 position = Vector2(-94, 70)
-texture = ExtResource("9_ldq3j")
+texture = ExtResource("10_biq4o")
 
 [node name="Train10" type="Sprite2D" parent="Node2D"]
 position = Vector2(-191, 72)
-texture = ExtResource("10_a7rri")
+texture = ExtResource("11_plowr")
 
 [node name="Line2D" type="Line2D" parent="Node2D"]
 points = PackedVector2Array(-92, 69, -192, 61)
@@ -612,5 +679,64 @@ libraries = {
 }
 autoplay = "rotate"
 
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -392.0
+offset_top = -284.0
+offset_right = 392.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmegk")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 15
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/ScrollContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(150, 230)
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.34902, 0.839216, 0, 1)
+theme_override_colors/font_hover_color = Color(0.34902, 0.839216, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0207638, 0.341322, 0.0190776, 1)
+theme_override_colors/font_color = Color(0.34902, 0.839216, 0, 1)
+theme_override_colors/font_focus_color = Color(0.34902, 0.839216, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.34902, 0.839216, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/line_spacing = 15
+theme_override_fonts/font = ExtResource("5_p12kv")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o5d6j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ldq3j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ldq3j")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ldq3j")
+text = "زمان : 1404/03/24  15:00
+تعداد: 50/5"
+autowrap_mode = 3
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button2_pressed"]

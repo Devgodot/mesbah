@@ -1,22 +1,22 @@
-[gd_scene load_steps=51 format=3 uid="uid://happu6hjiert"]
+[gd_scene load_steps=51 format=3]
 
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_gpagd"]
-[ext_resource type="Script" uid="uid://bksxi3frccjpv" path="res://script/control.gd" id="1_ios2j"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_1wrgn"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_af0w1"]
-[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="2_eunfw"]
-[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="3_entea"]
-[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="3_t1uln"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="4_jl1nx"]
-[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="7_h4n6a"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="8_6ascx"]
-[ext_resource type="Texture2D" uid="uid://d2a5pf05eb0hk" path="res://sprite/1092884.png" id="8_uej5x"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="12_6dwa3"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="13_irn54"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_647s5"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_dpnb4"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_iykjf"]
+[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_80fm6"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_6bnws"]
+[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="6_eccyl"]
+[ext_resource type="Script" uid="uid://bksxi3frccjpv" path="res://script/control.gd" id="7_byuqn"]
+[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="8_7sn4o"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="9_xuh5p"]
+[ext_resource type="Texture2D" uid="uid://d2a5pf05eb0hk" path="res://sprite/1092884.png" id="10_0i0fv"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="11_3otl1"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="12_avvg3"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="13_xmqxi"]
 
 [sub_resource type="FontVariation" id="FontVariation_m5l8b"]
-fallbacks = Array[Font]([ExtResource("2_1wrgn")])
-base_font = ExtResource("1_gpagd")
+fallbacks = Array[Font]([ExtResource("2_dpnb4")])
+base_font = ExtResource("1_647s5")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
 bg_color = Color(0.147672, 0.147672, 0.147672, 1)
@@ -45,31 +45,31 @@ shadow_size = 2
 shadow_offset = Vector2(-1, 3)
 
 [sub_resource type="FontVariation" id="FontVariation_dalxy"]
-fallbacks = Array[Font]([ExtResource("2_1wrgn")])
-base_font = ExtResource("2_af0w1")
+fallbacks = Array[Font]([ExtResource("2_dpnb4")])
+base_font = ExtResource("3_iykjf")
 
 [sub_resource type="FontVariation" id="FontVariation_dy4oq"]
-fallbacks = Array[Font]([ExtResource("2_1wrgn")])
-base_font = ExtResource("2_af0w1")
+fallbacks = Array[Font]([ExtResource("2_dpnb4")])
+base_font = ExtResource("3_iykjf")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
-texture = ExtResource("3_entea")
+texture = ExtResource("4_80fm6")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
-texture = ExtResource("4_jl1nx")
+texture = ExtResource("5_6bnws")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="FontVariation" id="FontVariation_7soyd"]
-fallbacks = Array[Font]([ExtResource("2_1wrgn")])
-base_font = ExtResource("2_af0w1")
+fallbacks = Array[Font]([ExtResource("2_dpnb4")])
+base_font = ExtResource("3_iykjf")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
-texture = ExtResource("4_jl1nx")
+texture = ExtResource("5_6bnws")
 expand_margin_left = 13.0
 expand_margin_top = 30.0
 expand_margin_bottom = 20.0
@@ -83,12 +83,12 @@ border_width_bottom = 5
 border_color = Color(0.819608, 0.780392, 0.411765, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_adnmk"]
-fallbacks = Array[Font]([ExtResource("2_1wrgn")])
-base_font = ExtResource("2_af0w1")
+fallbacks = Array[Font]([ExtResource("2_dpnb4")])
+base_font = ExtResource("3_iykjf")
 
 [sub_resource type="FontVariation" id="FontVariation_l65wg"]
-fallbacks = Array[Font]([ExtResource("2_1wrgn")])
-base_font = ExtResource("3_t1uln")
+fallbacks = Array[Font]([ExtResource("2_dpnb4")])
+base_font = ExtResource("6_eccyl")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dx5q"]
 
@@ -181,7 +181,7 @@ border_blend = true
 
 [sub_resource type="Theme" id="Theme_2y1hm"]
 Label/font_sizes/font_size = 20
-Label/fonts/font = ExtResource("3_t1uln")
+Label/fonts/font = ExtResource("6_eccyl")
 RichTextLabel/font_sizes/normal_font_size = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwblo"]
@@ -199,10 +199,10 @@ corner_radius_bottom_left = 40
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bx4kc"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_yb7qp"]
-script = ExtResource("12_6dwa3")
+script = ExtResource("11_3otl1")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gbj5b"]
-script = ExtResource("13_irn54")
+script = ExtResource("12_avvg3")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_53iq2"]
 
@@ -259,7 +259,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqwks"]
-font = ExtResource("1_gpagd")
+font = ExtResource("1_647s5")
 font_size = 70
 
 [node name="Control" type="Control" groups=["scene_message"]]
@@ -270,7 +270,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_pnsd0")
-script = ExtResource("1_ios2j")
+script = ExtResource("7_byuqn")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -279,7 +279,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_eunfw")
+texture = ExtResource("8_7sn4o")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 0
@@ -287,7 +287,7 @@ offset_left = 21.0
 offset_top = 124.0
 offset_right = 981.0
 offset_bottom = 1589.0
-theme_override_fonts/font = ExtResource("7_h4n6a")
+theme_override_fonts/font = ExtResource("9_xuh5p")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_g05f1")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2l8jy")
@@ -403,7 +403,7 @@ offset_right = 4.0
 offset_bottom = 43.0
 grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bx4kc")
-icon = ExtResource("8_uej5x")
+icon = ExtResource("10_0i0fv")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -447,9 +447,9 @@ horizontal_alignment = 2
 position = Vector2(400, 100)
 emitting = false
 amount = 2000
+texture = SubResource("GradientTexture2D_7a6fd")
 lifetime = 0.5
 one_shot = true
-texture = SubResource("GradientTexture2D_7a6fd")
 emission_shape = 3
 emission_rect_extents = Vector2(400, 100)
 particle_flag_align_y = true
@@ -567,7 +567,7 @@ offset_right = 4.0
 offset_bottom = 43.0
 grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bx4kc")
-icon = ExtResource("8_uej5x")
+icon = ExtResource("10_0i0fv")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -612,9 +612,9 @@ horizontal_alignment = 2
 position = Vector2(400, 100)
 emitting = false
 amount = 2000
+texture = SubResource("GradientTexture2D_7a6fd")
 lifetime = 0.5
 one_shot = true
-texture = SubResource("GradientTexture2D_7a6fd")
 emission_shape = 3
 emission_rect_extents = Vector2(400, 100)
 particle_flag_align_y = true
@@ -642,7 +642,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("2_af0w1")
+theme_override_fonts/font = ExtResource("3_iykjf")
 theme_override_font_sizes/font_size = 45
 wrap_mode = 1
 scroll_past_end_of_file = true
@@ -734,7 +734,7 @@ offset_right = 4.0
 offset_bottom = 43.0
 grow_horizontal = 0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bx4kc")
-icon = ExtResource("8_uej5x")
+icon = ExtResource("10_0i0fv")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -779,9 +779,9 @@ horizontal_alignment = 2
 position = Vector2(400, 100)
 emitting = false
 amount = 2000
+texture = SubResource("GradientTexture2D_7a6fd")
 lifetime = 0.5
 one_shot = true
-texture = SubResource("GradientTexture2D_7a6fd")
 emission_shape = 3
 emission_rect_extents = Vector2(400, 100)
 particle_flag_align_y = true
@@ -800,7 +800,7 @@ layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wi0ee")
-icon = ExtResource("8_6ascx")
+icon = ExtResource("13_xmqxi")
 flat = true
 expand_icon = true
 
@@ -870,9 +870,9 @@ horizontal_alignment = 2
 position = Vector2(400, 100)
 emitting = false
 amount = 2000
+texture = SubResource("GradientTexture2D_7a6fd")
 lifetime = 0.5
 one_shot = true
-texture = SubResource("GradientTexture2D_7a6fd")
 emission_shape = 3
 emission_rect_extents = Vector2(400, 100)
 particle_flag_align_y = true

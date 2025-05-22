@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://mm70jxwylvrx"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="1_47gxx"]
-[ext_resource type="Script" uid="uid://b7kb4axb1wvea" path="res://script/notification.gd" id="1_vbd0f"]
+[ext_resource type="Script" uid="uid://b7kb4axb1wvea" path="res://script/notification.gd" id="1_auomb"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_d4ljt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3or0"]
 bg_color = Color(0.737769, 0.148896, 0.217308, 1)
@@ -13,7 +13,7 @@ border_color = Color(0.620373, 0.194126, 0, 1)
 border_blend = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_cvrvv"]
-font = ExtResource("1_47gxx")
+font = ExtResource("2_d4ljt")
 font_size = 30
 
 [sub_resource type="GDScript" id="GDScript_1ckhb"]
@@ -41,7 +41,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_vbd0f")
+script = ExtResource("1_auomb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

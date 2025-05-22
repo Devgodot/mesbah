@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cawm1bo6mybkr"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Texture2D" uid="uid://belh37gcwgvng" path="res://sprite/download-icon-website-buffer-loader-a-spinning-circle-to-download-information-on-the-website-png.png" id="1_yuf8c"]
+[ext_resource type="Texture2D" uid="uid://belh37gcwgvng" path="res://sprite/download-icon-website-buffer-loader-a-spinning-circle-to-download-information-on-the-website-png.png" id="1_spw1n"]
 
 [sub_resource type="GDScript" id="GDScript_3llve"]
 script/source = "extends Node2D
@@ -60,7 +60,7 @@ offset_bottom = 308.0
 pivot_offset = Vector2(250, 154)
 theme_override_constants/icon_max_width = 100
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8x0y4")
-icon = ExtResource("1_yuf8c")
+icon = ExtResource("1_spw1n")
 flat = true
 icon_alignment = 1
 expand_icon = true
