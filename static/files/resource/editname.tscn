@@ -1,13 +1,13 @@
-[gd_scene load_steps=43 format=3 uid="uid://ci2s8i5q80lle"]
+[gd_scene load_steps=43 format=3]
 
-[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="1_f4l5k"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_kxjwa"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="3_b66ii"]
-[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="3_yhgb4"]
-[ext_resource type="Script" uid="uid://c1nq81fc3qtun" path="res://script/editname.gd" id="6_1jhxt"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="8_s2ajr"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="8_yttyr"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="9_cxx8k"]
+[ext_resource type="Script" uid="uid://c1nq81fc3qtun" path="res://script/editname.gd" id="1_qap8r"]
+[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="2_5i7f1"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="3_1cin3"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="4_ekgq7"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="5_nodys"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="6_6i5by"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="7_58yai"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="8_oe8rh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71or4"]
 
@@ -30,8 +30,8 @@ bg_color = Color(0.132874, 0.279805, 0.0665333, 1)
 border_color = Color(0.643137, 0.611765, 0.27451, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_nwivp"]
-fallbacks = Array[Font]([ExtResource("3_b66ii")])
-base_font = ExtResource("2_kxjwa")
+fallbacks = Array[Font]([ExtResource("5_nodys")])
+base_font = ExtResource("4_ekgq7")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gu0n7"]
 bg_color = Color(0.234643, 0.118545, 4.81308e-08, 1)
@@ -57,7 +57,7 @@ border_width_right = 20
 border_blend = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_gooy1"]
-font = ExtResource("2_kxjwa")
+font = ExtResource("4_ekgq7")
 font_size = 30
 font_color = Color(0.101961, 0.101961, 0.811765, 1)
 shadow_color = Color(0, 0, 0, 0.756863)
@@ -72,7 +72,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="Theme" id="Theme_a8jrn"]
-default_font = ExtResource("2_kxjwa")
+default_font = ExtResource("4_ekgq7")
 default_font_size = 40
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_45r7t")
 
@@ -109,7 +109,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_ykdo1"]
-default_font = ExtResource("2_kxjwa")
+default_font = ExtResource("4_ekgq7")
 LineEdit/font_sizes/font_size = 40
 LineEdit/styles/focus = SubResource("StyleBoxEmpty_jiwcu")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_23ky6")
@@ -196,7 +196,7 @@ shadow_size = 3
 shadow_offset = Vector2(-2, 2)
 
 [sub_resource type="Theme" id="Theme_nqryy"]
-default_font = ExtResource("2_kxjwa")
+default_font = ExtResource("4_ekgq7")
 default_font_size = 45
 Button/styles/focus = SubResource("StyleBoxEmpty_p573c")
 Button/styles/hover = SubResource("StyleBoxFlat_qv5u4")
@@ -207,14 +207,14 @@ Button/styles/pressed = SubResource("StyleBoxFlat_qv5u4")
 [sub_resource type="Theme" id="Theme_8jer0"]
 
 [sub_resource type="FontVariation" id="FontVariation_tf3lr"]
-fallbacks = Array[Font]([ExtResource("3_b66ii")])
-base_font = ExtResource("2_kxjwa")
+fallbacks = Array[Font]([ExtResource("5_nodys")])
+base_font = ExtResource("4_ekgq7")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_04n2i"]
-script = ExtResource("8_yttyr")
+script = ExtResource("6_6i5by")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_2blyu"]
-script = ExtResource("9_cxx8k")
+script = ExtResource("7_58yai")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -224,7 +224,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
-script = ExtResource("6_1jhxt")
+script = ExtResource("1_qap8r")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -233,7 +233,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_f4l5k")
+texture = ExtResource("2_5i7f1")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 0
@@ -241,7 +241,7 @@ offset_left = 16.0
 offset_top = 137.0
 offset_right = 981.0
 offset_bottom = 776.0
-theme_override_fonts/font = ExtResource("3_yhgb4")
+theme_override_fonts/font = ExtResource("3_1cin3")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_71or4")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_ns3il")
@@ -295,7 +295,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 theme = SubResource("Theme_a8jrn")
-theme_override_fonts/font = ExtResource("2_kxjwa")
+theme_override_fonts/font = ExtResource("4_ekgq7")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rk82n")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_fohpw")
@@ -310,6 +310,7 @@ alignment = 1
 selected = 0
 item_count = 3
 popup/item_0/text = "راست"
+popup/item_0/id = 0
 popup/item_1/text = "وسط"
 popup/item_1/id = 1
 popup/item_2/text = "چپ"
@@ -751,7 +752,7 @@ text = "ثبت"
 layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
-icon = ExtResource("8_s2ajr")
+icon = ExtResource("8_oe8rh")
 flat = true
 expand_icon = true
 

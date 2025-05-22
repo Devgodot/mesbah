@@ -1,21 +1,21 @@
-[gd_scene load_steps=36 format=3 uid="uid://oeyd6gwloxb4"]
+[gd_scene load_steps=36 format=3]
 
-[ext_resource type="Texture2D" uid="uid://ctjd8v4bexqaj" path="res://sprite/Layer 7.jpg" id="1_0btii"]
-[ext_resource type="Script" uid="uid://djn03diqbkjm5" path="res://script/menu_2.gd" id="1_n3aui"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="2_t710m"]
-[ext_resource type="Texture2D" uid="uid://c75t1sp4fsdq0" path="res://sprite/2.png" id="3_wm1oy"]
-[ext_resource type="Texture2D" uid="uid://c6hk7whh05o18" path="res://sprite/3.png" id="4_6wi2b"]
-[ext_resource type="Texture2D" uid="uid://ctdu0snqgdijo" path="res://sprite/13950923_0535224.jpg" id="5_hnkpi"]
-[ext_resource type="Texture2D" uid="uid://u4ufg1td5vpo" path="res://sprite/Layer 9.jpg" id="6_fo6y4"]
-[ext_resource type="Texture2D" uid="uid://c7r23jagvv3gd" path="res://sprite/Layer 6 copy 5.png" id="6_mbm2n"]
-[ext_resource type="Texture2D" uid="uid://c3uw8ja4lbsef" path="res://sprite/wp-1544032956945.jpg" id="7_0exik"]
-[ext_resource type="Texture2D" uid="uid://dumdvwi7j8aa" path="res://sprite/12.jpg" id="7_8wdvm"]
-[ext_resource type="Texture2D" uid="uid://ceu4poa2yaa0s" path="res://sprite/جلسات خانوادگی و_.png" id="8_jmxum"]
-[ext_resource type="Texture2D" uid="uid://pee5hyxg4poc" path="res://sprite/14011114_1851874.jpg" id="9_gyb0g"]
-[ext_resource type="Texture2D" uid="uid://b8bymou3hhcy7" path="res://sprite/5.jpg" id="11_3nmnp"]
-[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="14_76scn"]
-[ext_resource type="Texture2D" uid="uid://l6apj4mn1o17" path="res://sprite/6.jpg" id="14_d2jsu"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="16_5mcmv"]
+[ext_resource type="Script" uid="uid://djn03diqbkjm5" path="res://script/menu_2.gd" id="1_nuxwb"]
+[ext_resource type="Texture2D" uid="uid://c3uw8ja4lbsef" path="res://sprite/wp-1544032956945.jpg" id="2_3eouo"]
+[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_7mpu7"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="4_kvrl2"]
+[ext_resource type="Texture2D" uid="uid://ceu4poa2yaa0s" path="res://sprite/جلسات خانوادگی و_.png" id="5_rc4rg"]
+[ext_resource type="Texture2D" uid="uid://c6hk7whh05o18" path="res://sprite/3.png" id="6_g2irp"]
+[ext_resource type="Texture2D" uid="uid://u4ufg1td5vpo" path="res://sprite/Layer 9.jpg" id="7_tdabr"]
+[ext_resource type="Texture2D" uid="uid://dumdvwi7j8aa" path="res://sprite/12.jpg" id="8_b6eoj"]
+[ext_resource type="Texture2D" uid="uid://ctjd8v4bexqaj" path="res://sprite/Layer 7.jpg" id="9_mgp1x"]
+[ext_resource type="Texture2D" uid="uid://c75t1sp4fsdq0" path="res://sprite/2.png" id="10_5t4o2"]
+[ext_resource type="Texture2D" uid="uid://pee5hyxg4poc" path="res://sprite/14011114_1851874.jpg" id="11_s26v0"]
+[ext_resource type="Texture2D" uid="uid://b8bymou3hhcy7" path="res://sprite/5.jpg" id="12_d4be1"]
+[ext_resource type="Texture2D" uid="uid://ctdu0snqgdijo" path="res://sprite/13950923_0535224.jpg" id="13_pnch7"]
+[ext_resource type="Texture2D" uid="uid://c7r23jagvv3gd" path="res://sprite/Layer 6 copy 5.png" id="14_hspcg"]
+[ext_resource type="Texture2D" uid="uid://l6apj4mn1o17" path="res://sprite/6.jpg" id="15_upkyi"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="16_co4st"]
 
 [sub_resource type="Gradient" id="Gradient_la3qc"]
 colors = PackedColorArray(0.94902, 0.713726, 0.388235, 1, 0.831373, 0.752941, 0.407843, 1)
@@ -43,18 +43,18 @@ fill_to = Vector2(0, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gs0uy"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_01b4g"]
-texture = ExtResource("2_t710m")
+texture = ExtResource("4_kvrl2")
 expand_margin_top = 60.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="FontVariation" id="FontVariation_4hctf"]
-base_font = ExtResource("14_76scn")
+base_font = ExtResource("3_7mpu7")
 spacing_top = 14
 spacing_bottom = -26
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3nshu"]
-texture = ExtResource("8_jmxum")
+texture = ExtResource("5_rc4rg")
 expand_margin_top = 60.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
@@ -80,13 +80,13 @@ font_names = PackedStringArray("MRT_Unique")
 font_weight = 600
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xpm2t"]
-texture = ExtResource("3_wm1oy")
+texture = ExtResource("10_5t4o2")
 expand_margin_top = 60.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_toeio"]
-texture = ExtResource("6_mbm2n")
+texture = ExtResource("14_hspcg")
 expand_margin_top = 60.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
@@ -100,7 +100,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_n3aui")
+script = ExtResource("1_nuxwb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -169,7 +169,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("7_0exik")
+texture = ExtResource("2_3eouo")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button9" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control" groups=["gallary"]]
@@ -180,10 +180,10 @@ offset_right = 828.0
 offset_bottom = 1080.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 34
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -200,10 +200,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -220,10 +220,10 @@ offset_right = 835.0
 offset_bottom = 1451.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -256,7 +256,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control" groups=["pos"]]
@@ -285,7 +285,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("7_0exik")
+texture = ExtResource("2_3eouo")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button9" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control2" groups=["gallary"]]
@@ -296,10 +296,10 @@ offset_right = 828.0
 offset_bottom = 1080.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 34
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -316,10 +316,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -336,10 +336,10 @@ offset_right = 835.0
 offset_bottom = 1451.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -372,7 +372,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer3/TabContainer/Control2" groups=["pos"]]
@@ -415,7 +415,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("6_fo6y4")
+texture = ExtResource("7_tdabr")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button9" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control" groups=["gallary"]]
@@ -426,10 +426,10 @@ offset_right = 828.0
 offset_bottom = 1080.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 34
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -446,10 +446,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -466,10 +466,10 @@ offset_right = 835.0
 offset_bottom = 1451.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -502,7 +502,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control" groups=["pos"]]
@@ -530,7 +530,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("7_8wdvm")
+texture = ExtResource("8_b6eoj")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button9" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control4" groups=["gallary"]]
@@ -541,10 +541,10 @@ offset_right = 828.0
 offset_bottom = 1080.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 34
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -561,10 +561,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -581,10 +581,10 @@ offset_right = 835.0
 offset_bottom = 1451.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -617,7 +617,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer3/TabContainer2/Control4" groups=["pos"]]
@@ -674,7 +674,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("1_0btii")
+texture = ExtResource("9_mgp1x")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button7" type="Button" parent="TabContainer/TabContainer/TabContainer/Control" groups=["gallary"]]
@@ -685,10 +685,10 @@ offset_right = 835.0
 offset_bottom = 1079.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -705,10 +705,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -725,10 +725,10 @@ offset_right = 829.0
 offset_bottom = 1455.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -745,9 +745,9 @@ offset_right = 904.0
 offset_bottom = 1735.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_utruk")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
@@ -763,7 +763,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer/TabContainer/Control" groups=["pos"]]
@@ -792,7 +792,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("1_0btii")
+texture = ExtResource("9_mgp1x")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button7" type="Button" parent="TabContainer/TabContainer/TabContainer/Control2" groups=["gallary"]]
@@ -803,10 +803,10 @@ offset_right = 835.0
 offset_bottom = 1079.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -823,10 +823,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -843,10 +843,10 @@ offset_right = 829.0
 offset_bottom = 1455.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -863,9 +863,9 @@ offset_right = 904.0
 offset_bottom = 1735.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_utruk")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
@@ -881,7 +881,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer/TabContainer/Control2" groups=["pos"]]
@@ -925,7 +925,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("9_gyb0g")
+texture = ExtResource("11_s26v0")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button7" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control" groups=["gallary"]]
@@ -936,10 +936,10 @@ offset_right = 835.0
 offset_bottom = 1079.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 43
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -956,10 +956,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -976,10 +976,10 @@ offset_right = 829.0
 offset_bottom = 1455.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -996,9 +996,9 @@ offset_right = 904.0
 offset_bottom = 1735.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_utruk")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
@@ -1014,7 +1014,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control" groups=["pos"]]
@@ -1042,7 +1042,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("11_3nmnp")
+texture = ExtResource("12_d4be1")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button7" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control4" groups=["gallary"]]
@@ -1053,10 +1053,10 @@ offset_right = 835.0
 offset_bottom = 1079.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1073,10 +1073,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1093,10 +1093,10 @@ offset_right = 829.0
 offset_bottom = 1455.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1113,9 +1113,9 @@ offset_right = 904.0
 offset_bottom = 1735.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_utruk")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
@@ -1131,7 +1131,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer/TabContainer2/Control4" groups=["pos"]]
@@ -1187,7 +1187,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("5_hnkpi")
+texture = ExtResource("13_pnch7")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button7" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control" groups=["gallary"]]
@@ -1198,10 +1198,10 @@ offset_right = 835.0
 offset_bottom = 1079.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1218,10 +1218,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1238,10 +1238,10 @@ offset_right = 829.0
 offset_bottom = 1455.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1257,7 +1257,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control" groups=["pos"]]
@@ -1286,7 +1286,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("5_hnkpi")
+texture = ExtResource("13_pnch7")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button7" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control4" groups=["gallary"]]
@@ -1297,10 +1297,10 @@ offset_right = 835.0
 offset_bottom = 1079.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1317,10 +1317,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1337,10 +1337,10 @@ offset_right = 829.0
 offset_bottom = 1455.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1357,9 +1357,9 @@ offset_right = 904.0
 offset_bottom = 1735.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_utruk")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
@@ -1375,7 +1375,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer2/TabContainer/Control4" groups=["pos"]]
@@ -1419,7 +1419,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("6_fo6y4")
+texture = ExtResource("7_tdabr")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button7" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control" groups=["gallary"]]
@@ -1430,10 +1430,10 @@ offset_right = 835.0
 offset_bottom = 1079.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1450,10 +1450,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1470,10 +1470,10 @@ offset_right = 829.0
 offset_bottom = 1455.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1489,7 +1489,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control" groups=["pos"]]
@@ -1517,7 +1517,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.4525
 grow_horizontal = 2
-texture = ExtResource("14_d2jsu")
+texture = ExtResource("15_upkyi")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button7" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control4" groups=["gallary"]]
@@ -1528,10 +1528,10 @@ offset_right = 835.0
 offset_bottom = 1079.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1548,10 +1548,10 @@ offset_right = 829.0
 offset_bottom = 1270.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1568,10 +1568,10 @@ offset_right = 829.0
 offset_bottom = 1455.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("14_76scn")
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_7mpu7")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
 theme_override_styles/hover = SubResource("StyleBoxTexture_01b4g")
@@ -1588,9 +1588,9 @@ offset_right = 904.0
 offset_bottom = 1735.0
 theme_override_colors/font_hover_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_utruk")
 theme_override_font_sizes/font_size = 47
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gs0uy")
@@ -1606,7 +1606,7 @@ anchor_left = 0.73
 anchor_top = 0.875
 anchor_right = 0.916
 anchor_bottom = 0.973
-texture = ExtResource("4_6wi2b")
+texture = ExtResource("6_g2irp")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TabContainer/TabContainer2/TabContainer2/Control4" groups=["pos"]]
@@ -1629,7 +1629,7 @@ layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kagbl")
-icon = ExtResource("16_5mcmv")
+icon = ExtResource("16_co4st")
 flat = true
 expand_icon = true
 

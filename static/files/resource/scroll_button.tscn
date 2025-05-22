@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://beamp0230qpu2"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="Script" uid="uid://ds5bydu5o1odx" path="res://script/scroll_button.gd" id="1_6jx52"]
+[ext_resource type="Script" uid="uid://ds5bydu5o1odx" path="res://script/scroll_button.gd" id="1_o6hk8"]
 
 [sub_resource type="Theme" id="Theme_dcrt4"]
 Label/font_sizes/font_size = 50
@@ -41,7 +41,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_dcrt4")
-script = ExtResource("1_6jx52")
+script = ExtResource("1_o6hk8")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

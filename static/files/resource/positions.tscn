@@ -1,15 +1,15 @@
-[gd_scene load_steps=42 format=3 uid="uid://b6iqhfi0bhhec"]
+[gd_scene load_steps=42 format=3]
 
-[ext_resource type="Script" uid="uid://ng5a76jd5id6" path="res://script/positions.gd" id="1_4dvpx"]
-[ext_resource type="Texture2D" uid="uid://bmogs15hsxwiu" path="res://sprite/امتیاز اصلی.jpg" id="2_7x7ju"]
-[ext_resource type="Texture2D" uid="uid://dajxo066mj0xm" path="res://sprite/Layer 7 copy 2.png" id="2_dn8m1"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_q5hr4"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="4_t2kx6"]
-[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="5_h6dta"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="5_j75fk"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="6_46stg"]
-[ext_resource type="Texture2D" uid="uid://cdjcdq5vmjgwr" path="res://sprite/Layer 5.png" id="6_405lc"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="6_ff8jd"]
+[ext_resource type="Script" uid="uid://ng5a76jd5id6" path="res://script/positions.gd" id="1_sooxo"]
+[ext_resource type="Texture2D" uid="uid://bmogs15hsxwiu" path="res://sprite/امتیاز اصلی.jpg" id="2_2kwmg"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_ftk6j"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="4_nuctg"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="5_h6vow"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="6_uicei"]
+[ext_resource type="Texture2D" uid="uid://dajxo066mj0xm" path="res://sprite/Layer 7 copy 2.png" id="7_qnahh"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="8_xb4du"]
+[ext_resource type="Texture2D" uid="uid://cdjcdq5vmjgwr" path="res://sprite/Layer 5.png" id="9_muqfv"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="10_6eckv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otb3e"]
 bg_color = Color(1, 1, 0, 1)
@@ -26,8 +26,8 @@ shadow_size = 7
 shadow_offset = Vector2(-5, 4)
 
 [sub_resource type="FontVariation" id="FontVariation_nnfjd"]
-fallbacks = Array[Font]([ExtResource("4_t2kx6")])
-base_font = ExtResource("3_q5hr4")
+fallbacks = Array[Font]([ExtResource("4_nuctg")])
+base_font = ExtResource("3_ftk6j")
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5udv"]
 font = SubResource("FontVariation_nnfjd")
@@ -49,8 +49,8 @@ shadow_size = 7
 shadow_offset = Vector2(-5, 4)
 
 [sub_resource type="FontVariation" id="FontVariation_0gqil"]
-fallbacks = Array[Font]([ExtResource("4_t2kx6")])
-base_font = ExtResource("3_q5hr4")
+fallbacks = Array[Font]([ExtResource("4_nuctg")])
+base_font = ExtResource("3_ftk6j")
 
 [sub_resource type="LabelSettings" id="LabelSettings_pvly6"]
 font = SubResource("FontVariation_0gqil")
@@ -81,15 +81,15 @@ shader_parameter/dir = 0
 viewport_path = NodePath("HBoxContainer2/Label2/name/texture")
 
 [sub_resource type="FontVariation" id="FontVariation_4avgx"]
-fallbacks = Array[Font]([ExtResource("4_t2kx6")])
-base_font = ExtResource("3_q5hr4")
+fallbacks = Array[Font]([ExtResource("4_nuctg")])
+base_font = ExtResource("3_ftk6j")
 spacing_top = 30
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_888wi"]
-script = ExtResource("5_j75fk")
+script = ExtResource("5_h6vow")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_2meq6"]
-script = ExtResource("6_46stg")
+script = ExtResource("6_uicei")
 
 [sub_resource type="Gradient" id="Gradient_pxsi1"]
 offsets = PackedFloat32Array(0.52, 0.586667, 0.686667)
@@ -155,10 +155,10 @@ shadow_offset = Vector2(-5, 4)
 viewport_path = NodePath("ScrollContainer/VBoxContainer/HBoxContainer/Label2/name/texture")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_mgrfc"]
-script = ExtResource("5_j75fk")
+script = ExtResource("5_h6vow")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ur635"]
-script = ExtResource("6_46stg")
+script = ExtResource("6_uicei")
 
 [sub_resource type="Gradient" id="Gradient_02ppr"]
 offsets = PackedFloat32Array(0.52, 0.586667, 0.686667)
@@ -184,22 +184,22 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_r5dor"]
-font = ExtResource("5_h6dta")
+font = ExtResource("8_xb4du")
 font_size = 41
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_x8r8q"]
-font = ExtResource("5_h6dta")
+font = ExtResource("8_xb4du")
 font_size = 50
 font_color = Color(0.14902, 0.494118, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn7kf"]
-texture = ExtResource("6_405lc")
+texture = ExtResource("9_muqfv")
 expand_margin_top = 50.0
 expand_margin_bottom = 25.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_7b36x"]
-font = ExtResource("5_h6dta")
+font = ExtResource("8_xb4du")
 font_size = 50
 
 [sub_resource type="SystemFont" id="SystemFont_0ecoq"]
@@ -220,7 +220,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4dvpx")
+script = ExtResource("1_sooxo")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -229,7 +229,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_7x7ju")
+texture = ExtResource("2_2kwmg")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_direction = 3
@@ -357,7 +357,7 @@ modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("2_dn8m1")
+texture = ExtResource("7_qnahh")
 expand_mode = 1
 stretch_mode = 5
 
@@ -510,7 +510,7 @@ modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("2_dn8m1")
+texture = ExtResource("7_qnahh")
 expand_mode = 1
 stretch_mode = 5
 
@@ -658,7 +658,7 @@ layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vn1v1")
-icon = ExtResource("6_ff8jd")
+icon = ExtResource("10_6eckv")
 flat = true
 expand_icon = true
 

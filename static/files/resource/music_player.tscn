@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://ccq5uf2d3qap4"]
+[gd_scene load_steps=23 format=3]
 
-[ext_resource type="Texture2D" uid="uid://cge8x0f18cyji" path="res://sprite/3686899.png" id="1_8xnri"]
-[ext_resource type="Script" uid="uid://d30e5a64tt1bl" path="res://script/music_player.gd" id="1_arhmt"]
-[ext_resource type="Texture2D" uid="uid://iodoo0npebl" path="res://sprite/12.png" id="2_5xv0b"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_6nua2"]
+[ext_resource type="Script" uid="uid://d30e5a64tt1bl" path="res://script/music_player.gd" id="1_v2357"]
+[ext_resource type="Texture2D" uid="uid://iodoo0npebl" path="res://sprite/12.png" id="2_t4yv4"]
+[ext_resource type="Texture2D" uid="uid://cge8x0f18cyji" path="res://sprite/3686899.png" id="3_8sjc2"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="4_w7ej4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnarj"]
 bg_color = Color(0.435449, 0.326125, 0, 1)
@@ -20,18 +20,18 @@ corner_radius_bottom_left = 20
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4stb5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sshet"]
-texture = ExtResource("2_5xv0b")
+texture = ExtResource("2_t4yv4")
 modulate_color = Color(0.775063, 0.775063, 0.775063, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sidq2"]
-texture = ExtResource("1_8xnri")
+texture = ExtResource("3_8sjc2")
 modulate_color = Color(0.886262, 0.886261, 0.886262, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_buutp"]
-texture = ExtResource("2_5xv0b")
+texture = ExtResource("2_t4yv4")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oyd30"]
-texture = ExtResource("1_8xnri")
+texture = ExtResource("3_8sjc2")
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v3gep"]
 blend_mode = 3
@@ -110,7 +110,7 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_b2oci"]
-font = ExtResource("3_6nua2")
+font = ExtResource("4_w7ej4")
 font_size = 30
 
 [node name="PanelContainer" type="PanelContainer" groups=["music"]]
@@ -120,7 +120,7 @@ offset_right = 550.0
 offset_bottom = 154.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nnarj")
-script = ExtResource("1_arhmt")
+script = ExtResource("1_v2357")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

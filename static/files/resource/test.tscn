@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmsegimgyu8ec"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" uid="uid://m2snosiyll55" path="res://script/udp.gd" id="1_f6ugi"]
+[ext_resource type="Script" uid="uid://m2snosiyll55" path="res://script/udp.gd" id="1_vwypy"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_eflf8"]
 
@@ -13,7 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_f6ugi")
+script = ExtResource("1_vwypy")
 
 [node name="AudioEffectCapture" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMicrophone_eflf8")
