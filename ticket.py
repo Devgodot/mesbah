@@ -48,7 +48,7 @@ def get_ticket():
         return jsonify({"error": "تیکتی وجود ندارد"}), 404
     tickets_data = []
     for ticket in tickets:
-        jalali_datetime = JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute)
+        jalali_datetime = JalaliDatetime.from_datetime(ticket.time)
         ticket_data = {
             "time": f"{jalali_datetime.year}/{jalali_datetime.month}/{jalali_datetime.day} {str(jalali_datetime.hour).zfill(2)}:{str(jalali_datetime.minute).zfill(2)}",
             "max_users": ticket.max_users
