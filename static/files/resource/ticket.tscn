@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3]
+[gd_scene load_steps=45 format=3]
 
 [ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_v1ciu"]
 [ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_ebnor"]
@@ -435,6 +435,8 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmegk"]
+
 [node name="ticket" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -741,6 +743,7 @@ expand_icon = true
 [node name="Button3" type="Button" parent="."]
 offset_right = 125.0
 offset_bottom = 128.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wmegk")
 icon = ExtResource("14_ebnor")
 flat = true
 expand_icon = true
