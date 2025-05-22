@@ -14,7 +14,7 @@ ticket_bp = Blueprint("ticket", __name__)
 @ticket_bp.post("/add_ticket")
 @jwt_required()
 def add_ticket():
-    if current_user.username not in UserInterface.query.first().get("management", []):
+    if current_user.username not in UserInterface.query.first().data.get("management", []):
         data = request.get_json()
         _time = data.get("time", "1404/03/24 15:00")
         season = UserInterface.query.first().get("train_season", 1)
@@ -82,7 +82,7 @@ def add_user_to_ticket():
 @ticket_bp.post("change_ticket")
 @jwt_required()
 def change_ticket():
-    if current_user.username in UserInterface.query.first().get("management", []):
+    if current_user.username in UserInterface.query.first().data.get("management", []):
         data = request.get_json()
         ticket_time = data.get("time")
         date_part, time_part = ticket_time.split(" ")
