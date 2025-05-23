@@ -643,9 +643,10 @@ texture = ExtResource("7_1w8aa")
 offset = Vector2(9.47241, -45.5171)
 
 [node name="Train3" type="Sprite2D" parent="Node2D"]
-position = Vector2(95.9344, -25.9566)
+position = Vector2(97.2262, -16.067)
+scale = Vector2(0.509301, 0.509301)
 texture = ExtResource("8_ebnor")
-offset = Vector2(4.05945, -36.8204)
+offset = Vector2(2.56897, -102.001)
 
 [node name="Train4" type="Sprite2D" parent="Node2D"]
 position = Vector2(241.748, 4.02612)
