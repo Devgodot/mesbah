@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_nf08a"]
 [ext_resource type="Texture2D" uid="uid://cirtlwugllh08" path="res://sprite/train1.png" id="6_mehr6"]
 [ext_resource type="Texture2D" uid="uid://blr2ctvd6phdi" path="res://sprite/train2.png" id="7_1w8aa"]
-[ext_resource type="Texture2D" uid="uid://id77lxtqara7" path="res://sprite/train3.png" id="8_lfy8k"]
+[ext_resource type="Texture2D" uid="uid://csill647e1784" path="res://sprite/girl.png" id="8_ebnor"]
 [ext_resource type="Texture2D" uid="uid://315njag78wgn" path="res://sprite/train4.png" id="9_biq4o"]
 [ext_resource type="Texture2D" uid="uid://c78t7srrwbgxx" path="res://sprite/train9.png" id="10_plowr"]
 [ext_resource type="Texture2D" uid="uid://bv1l7l77ucorf" path="res://sprite/train10.png" id="11_bhvn0"]
@@ -495,10 +495,10 @@ vertical_alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 313.0
-offset_top = 99.0
-offset_right = 507.0
-offset_bottom = 293.0
+offset_left = 107.0
+offset_top = 955.0
+offset_right = 301.0
+offset_bottom = 1149.0
 texture = SubResource("GradientTexture2D_wp4qn")
 draw_center = false
 patch_margin_left = 10
@@ -644,7 +644,7 @@ offset = Vector2(9.47241, -45.5171)
 
 [node name="Train3" type="Sprite2D" parent="Node2D"]
 position = Vector2(95.9344, -25.9566)
-texture = ExtResource("8_lfy8k")
+texture = ExtResource("8_ebnor")
 offset = Vector2(4.05945, -36.8204)
 
 [node name="Train4" type="Sprite2D" parent="Node2D"]
