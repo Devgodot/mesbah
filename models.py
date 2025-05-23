@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import jsonify
 from confige import db
-from sqlalchemy import String, Column, Integer, Text, JSON, URL, DateTime, ForeignKey
+from sqlalchemy import String, Column, Integer, Text, JSON, URL, DateTime, ForeignKey, Boolean
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, EqualTo, Length
@@ -44,6 +44,7 @@ class User(db.Model):
     phone = Column(String(11), nullable=False, default="09")
     password = db.Column(db.Text(), nullable=False)
     tag = Column(Integer(), nullable=False, default=0)
+    birthday = Column(DateTime(), nullable=False, default=datetime.now(TehranTimezone()))
     gender = Column(Integer(), nullable=False, default=0)
     data = db.Column(MutableDict.as_mutable(JSON))
 
@@ -86,6 +87,7 @@ class Group(db.Model):
     diamonds = Column(db.JSON(), nullable=False, default=0)
     tag = Column(db.Integer(), nullable=False, default=0)
     gender = Column(db.Integer(), nullable=False, default=0)
+    leader_birthday = Column(DateTime(), nullable=False, default=datetime.now(TehranTimezone()))
     icon = Column(String(400), nullable=False)
     users = Column(JSON, nullable=False)  # Assuming users are stored as a list of strings (usernames or IDs)
     def __repr__(self):
@@ -126,7 +128,12 @@ class Ticket(db.Model):
     users = Column(JSON, default=[])
     max_users = Column(Integer, nullable=False, default=0)
     season = Column(Integer, nullable=False, default=0)
-    
+
+class Score(db.Model):
+    gender = Column(Integer, nullable=False, primary_key=True)
+    year = Column(Integer, nullable=False, primary_key=True)
+    scores = Column(JSON, nullable=False, default=[{}, {}, {}, {}, {}, {}, {"5100276150":[{"score": 10, "tag": "ramezan1403", "part": 1}]}])
+    group = Column(Boolean, nullable=False, default=False)
 class TokenBlocklist(db.Model):
     id = db.Column(Integer, primary_key=True)
     jti = db.Column(db.String(10), nullable=True)
