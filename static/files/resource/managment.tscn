@@ -849,7 +849,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_emebq")
-current_tab = 2
+current_tab = 4
 transation = false
 separation_style = SubResource("StyleBoxEmpty_xpey2")
 panel_style = SubResource("StyleBoxFlat_ifxwq")
@@ -1776,6 +1776,7 @@ layout_mode = 2
 text = "حذف پیام"
 
 [node name="4" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2699,7 +2700,6 @@ text = "کد ملی:  5100276150"
 vertical_alignment = 1
 
 [node name="5" type="MarginContainer" parent="TabContainer"]
-visible = false
 layout_direction = 3
 layout_mode = 2
 anchor_right = 1.0
@@ -2787,9 +2787,46 @@ layout_mode = 2
 text = "1404"
 
 [node name="add_editor" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(180, 80)
 layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
 text = "اضافه کردن"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/5/VBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/5/VBoxContainer/BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 4
+
+[node name="CheckBox" type="CheckBox" parent="TabContainer/5/VBoxContainer/BoxContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "زیر شش سال"
+
+[node name="CheckBox2" type="CheckBox" parent="TabContainer/5/VBoxContainer/BoxContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "اول تا سوم"
+
+[node name="CheckBox3" type="CheckBox" parent="TabContainer/5/VBoxContainer/BoxContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "چهارم تا ششم"
+
+[node name="CheckBox4" type="CheckBox" parent="TabContainer/5/VBoxContainer/BoxContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "هفتم تا نهم"
+
+[node name="CheckBox5" type="CheckBox" parent="TabContainer/5/VBoxContainer/BoxContainer/HBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "اتباع"
+alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/5/VBoxContainer"]
 layout_mode = 2
