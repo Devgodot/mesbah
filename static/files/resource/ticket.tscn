@@ -1,19 +1,19 @@
 [gd_scene load_steps=45 format=3]
 
-[ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_v1ciu"]
-[ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_ebnor"]
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="3_flmv1"]
-[ext_resource type="Texture2D" uid="uid://blxp2f1agcvo8" path="res://sprite/toy-train-png-23.png" id="4_2mt7w"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_p12kv"]
-[ext_resource type="Texture2D" uid="uid://cirtlwugllh08" path="res://sprite/train1.png" id="6_nf08a"]
-[ext_resource type="Texture2D" uid="uid://blr2ctvd6phdi" path="res://sprite/train2.png" id="7_mehr6"]
-[ext_resource type="Texture2D" uid="uid://id77lxtqara7" path="res://sprite/train3.png" id="8_1w8aa"]
-[ext_resource type="Texture2D" uid="uid://315njag78wgn" path="res://sprite/train4.png" id="9_lfy8k"]
-[ext_resource type="Texture2D" uid="uid://c78t7srrwbgxx" path="res://sprite/train9.png" id="10_biq4o"]
-[ext_resource type="Texture2D" uid="uid://bv1l7l77ucorf" path="res://sprite/train10.png" id="11_plowr"]
-[ext_resource type="Texture2D" uid="uid://bkyjnqos8bjks" path="res://sprite/train6.png" id="12_bhvn0"]
-[ext_resource type="Texture2D" uid="uid://bf7bjl5twqpqs" path="res://sprite/train7.png" id="13_vaoh5"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="14_ebnor"]
+[ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_ebnor"]
+[ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_flmv1"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="3_2mt7w"]
+[ext_resource type="Texture2D" uid="uid://blxp2f1agcvo8" path="res://sprite/toy-train-png-23.png" id="4_p12kv"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_nf08a"]
+[ext_resource type="Texture2D" uid="uid://cirtlwugllh08" path="res://sprite/train1.png" id="6_mehr6"]
+[ext_resource type="Texture2D" uid="uid://blr2ctvd6phdi" path="res://sprite/train2.png" id="7_1w8aa"]
+[ext_resource type="Texture2D" uid="uid://id77lxtqara7" path="res://sprite/train3.png" id="8_lfy8k"]
+[ext_resource type="Texture2D" uid="uid://315njag78wgn" path="res://sprite/train4.png" id="9_biq4o"]
+[ext_resource type="Texture2D" uid="uid://c78t7srrwbgxx" path="res://sprite/train9.png" id="10_plowr"]
+[ext_resource type="Texture2D" uid="uid://bv1l7l77ucorf" path="res://sprite/train10.png" id="11_bhvn0"]
+[ext_resource type="Texture2D" uid="uid://bkyjnqos8bjks" path="res://sprite/train6.png" id="12_vaoh5"]
+[ext_resource type="Texture2D" uid="uid://bf7bjl5twqpqs" path="res://sprite/train7.png" id="13_bq06f"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="14_6agvo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vod7w"]
 bg_color = Color(1, 0.913725, 0.639216, 1)
@@ -28,7 +28,7 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_o7y5v"]
-font = ExtResource("3_flmv1")
+font = ExtResource("3_2mt7w")
 font_size = 46
 font_color = Color(0.745098, 0.415686, 0.215686, 1)
 outline_size = 4
@@ -43,7 +43,7 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_6d827"]
-font = ExtResource("3_flmv1")
+font = ExtResource("3_2mt7w")
 font_size = 136
 font_color = Color(0.67451, 0.4, 0.0509804, 1)
 outline_color = Color(0, 0, 0, 1)
@@ -129,7 +129,7 @@ seamless_blend_skirt = 1.0
 noise = SubResource("FastNoiseLite_wmegk")
 
 [sub_resource type="LabelSettings" id="LabelSettings_nf6rg"]
-font = ExtResource("5_p12kv")
+font = ExtResource("5_nf08a")
 font_size = 40
 font_color = Color(0.466667, 0.133333, 1, 1)
 outline_size = 14
@@ -153,10 +153,10 @@ corner_radius_bottom_left = 70
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_bhvn0")
+"texture": ExtResource("12_vaoh5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_vaoh5")
+"texture": ExtResource("13_bq06f")
 }],
 "loop": false,
 "name": &"default",
@@ -444,7 +444,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_v1ciu")
+script = ExtResource("1_ebnor")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -453,7 +453,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ebnor")
+texture = ExtResource("2_flmv1")
 expand_mode = 1
 stretch_mode = 6
 
@@ -562,7 +562,7 @@ offset_left = 192.0
 offset_top = 1855.0
 offset_right = 350.0
 offset_bottom = 1932.0
-texture = ExtResource("4_2mt7w")
+texture = ExtResource("4_p12kv")
 expand_mode = 1
 stretch_mode = 5
 flip_h = true
@@ -607,7 +607,7 @@ offset_left = 141.0
 offset_top = 1564.0
 offset_right = 861.0
 offset_bottom = 1765.0
-theme_override_fonts/font = ExtResource("3_flmv1")
+theme_override_fonts/font = ExtResource("3_2mt7w")
 theme_override_font_sizes/font_size = 101
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o7y5v")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wp4qn")
@@ -622,7 +622,7 @@ offset_left = 141.0
 offset_top = 1564.0
 offset_right = 861.0
 offset_bottom = 1765.0
-theme_override_fonts/font = ExtResource("3_flmv1")
+theme_override_fonts/font = ExtResource("3_2mt7w")
 theme_override_font_sizes/font_size = 101
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o7y5v")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wp4qn")
@@ -635,30 +635,30 @@ visible = false
 position = Vector2(1333, 712)
 
 [node name="Train1" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("6_nf08a")
+texture = ExtResource("6_mehr6")
 
 [node name="Train2" type="Sprite2D" parent="Node2D"]
 position = Vector2(-67.4724, -34.4829)
-texture = ExtResource("7_mehr6")
+texture = ExtResource("7_1w8aa")
 offset = Vector2(9.47241, -45.5171)
 
 [node name="Train3" type="Sprite2D" parent="Node2D"]
 position = Vector2(95.9344, -25.9566)
-texture = ExtResource("8_1w8aa")
+texture = ExtResource("8_lfy8k")
 offset = Vector2(4.05945, -36.8204)
 
 [node name="Train4" type="Sprite2D" parent="Node2D"]
 position = Vector2(241.748, 4.02612)
-texture = ExtResource("9_lfy8k")
+texture = ExtResource("9_biq4o")
 offset = Vector2(8.25208, -42.0261)
 
 [node name="Train9" type="Sprite2D" parent="Node2D"]
 position = Vector2(-94, 70)
-texture = ExtResource("10_biq4o")
+texture = ExtResource("10_plowr")
 
 [node name="Train10" type="Sprite2D" parent="Node2D"]
 position = Vector2(-191, 72)
-texture = ExtResource("11_plowr")
+texture = ExtResource("11_bhvn0")
 
 [node name="Line2D" type="Line2D" parent="Node2D"]
 points = PackedVector2Array(-92, 69, -192, 61)
@@ -728,7 +728,7 @@ theme_override_colors/font_focus_color = Color(0.34902, 0.839216, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.34902, 0.839216, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_constants/line_spacing = 15
-theme_override_fonts/font = ExtResource("5_p12kv")
+theme_override_fonts/font = ExtResource("5_nf08a")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5d6j")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ldq3j")
@@ -741,10 +741,11 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="Button3" type="Button" parent="."]
+layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wmegk")
-icon = ExtResource("14_ebnor")
+icon = ExtResource("14_6agvo")
 flat = true
 expand_icon = true
 
