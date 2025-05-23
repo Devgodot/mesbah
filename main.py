@@ -5,7 +5,7 @@ from users import user_bp
 from groups import group_bp
 from control import control_bp
 from ticket import ticket_bp
-from models import User, UserInterface, FlaskForm
+from models import User, UserInterface, FlaskForm, Group
 from werkzeug.utils import secure_filename
 import os
 from math import ceil
@@ -20,7 +20,22 @@ import numpy as np
 from PIL import Image
 import io
 import uuid
-
+from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
+def set_birthday():
+    groups = Group.query.all()
+    for group in groups:
+        user = group.users.get("leader", "") 
+        if user != "":
+            user = User.query.filter_by(username=user).first()
+            if user is not None:
+                birthday = user.birthday
+                if birthday != "":
+                    try:
+                        group.leader_birthday = birthday
+                        db.session.commit()
+                    except Exception as e:
+                        print(f"Error converting date for user {user.username}: {e}")
+       
 
 
 RESOURCE_INDEX_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static", "files", "resource", "resource_index.json")
@@ -278,7 +293,9 @@ def home():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
+        set_birthday()
     app.run(debug=True)
+   
 
 
 
