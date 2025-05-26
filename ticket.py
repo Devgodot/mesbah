@@ -61,6 +61,8 @@ def get_ticket():
                 "max_users": ticket.max_users,
                 "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M'),
                 "users": len(ticket.users),
+                "tag": ticket.tag,
+                "nationality": ticket.nationality
             }
             tickets_data.append(ticket_data)
     else:
