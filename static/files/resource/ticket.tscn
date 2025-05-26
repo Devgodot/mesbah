@@ -1,27 +1,27 @@
-[gd_scene load_steps=75 format=3]
+[gd_scene load_steps=79 format=3]
 
-[ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_ebnor"]
-[ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_flmv1"]
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="3_2mt7w"]
-[ext_resource type="Texture2D" uid="uid://blxp2f1agcvo8" path="res://sprite/toy-train-png-23.png" id="4_p12kv"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_nf08a"]
-[ext_resource type="Texture2D" uid="uid://c2dml5pvtwldv" path="res://sprite/cloud.png" id="6_biq4o"]
-[ext_resource type="Texture2D" uid="uid://cirtlwugllh08" path="res://sprite/train1.png" id="6_mehr6"]
-[ext_resource type="Texture2D" uid="uid://blr2ctvd6phdi" path="res://sprite/train2.png" id="7_1w8aa"]
-[ext_resource type="Texture2D" uid="uid://cl3eiktygnoci" path="res://sprite/بادکنک.png" id="7_plowr"]
-[ext_resource type="Texture2D" uid="uid://csill647e1784" path="res://sprite/girl.png" id="8_ebnor"]
-[ext_resource type="Texture2D" uid="uid://315njag78wgn" path="res://sprite/train4.png" id="9_biq4o"]
-[ext_resource type="Texture2D" uid="uid://c78t7srrwbgxx" path="res://sprite/train9.png" id="10_plowr"]
-[ext_resource type="Texture2D" uid="uid://bv1l7l77ucorf" path="res://sprite/train10.png" id="11_bhvn0"]
-[ext_resource type="Texture2D" uid="uid://bkyjnqos8bjks" path="res://sprite/train6.png" id="12_vaoh5"]
-[ext_resource type="Texture2D" uid="uid://bf7bjl5twqpqs" path="res://sprite/train7.png" id="13_bq06f"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="14_6agvo"]
-[ext_resource type="Texture2D" uid="uid://dtv0evb7xm7kx" path="res://sprite/smoke.png" id="16_bhvn0"]
-[ext_resource type="Texture2D" uid="uid://id3stg85lsh7" path="res://sprite/Tarh.ir.png" id="17_vaoh5"]
-[ext_resource type="Texture2D" uid="uid://bvbb1fmlu4nxo" path="res://sprite/panel.png" id="18_bq06f"]
-[ext_resource type="Texture2D" uid="uid://d2d81m65uc661" path="res://sprite/بلیط.jpg" id="19_6agvo"]
-[ext_resource type="Texture2D" uid="uid://dmlksj83jrbfp" path="res://sprite/lamp.png" id="20_qxlgd"]
-[ext_resource type="Texture2D" uid="uid://g76wq0x4awuw" path="res://sprite/flag2.png" id="21_qt21a"]
+[ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_biq4o"]
+[ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_plowr"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="3_bhvn0"]
+[ext_resource type="Texture2D" uid="uid://blxp2f1agcvo8" path="res://sprite/toy-train-png-23.png" id="4_vaoh5"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_bq06f"]
+[ext_resource type="Texture2D" uid="uid://c2dml5pvtwldv" path="res://sprite/cloud.png" id="6_6agvo"]
+[ext_resource type="Texture2D" uid="uid://cl3eiktygnoci" path="res://sprite/بادکنک.png" id="7_qxlgd"]
+[ext_resource type="Texture2D" uid="uid://cirtlwugllh08" path="res://sprite/train1.png" id="8_qt21a"]
+[ext_resource type="Texture2D" uid="uid://blr2ctvd6phdi" path="res://sprite/train2.png" id="9_iyvpu"]
+[ext_resource type="Texture2D" uid="uid://csill647e1784" path="res://sprite/girl.png" id="10_eu0h4"]
+[ext_resource type="Texture2D" uid="uid://315njag78wgn" path="res://sprite/train4.png" id="11_dk2j7"]
+[ext_resource type="Texture2D" uid="uid://c78t7srrwbgxx" path="res://sprite/train9.png" id="12_i1j04"]
+[ext_resource type="Texture2D" uid="uid://bv1l7l77ucorf" path="res://sprite/train10.png" id="13_so203"]
+[ext_resource type="Texture2D" uid="uid://bkyjnqos8bjks" path="res://sprite/train6.png" id="14_r807r"]
+[ext_resource type="Texture2D" uid="uid://bf7bjl5twqpqs" path="res://sprite/train7.png" id="15_jpooj"]
+[ext_resource type="Texture2D" uid="uid://dtv0evb7xm7kx" path="res://sprite/smoke.png" id="16_exhjb"]
+[ext_resource type="Texture2D" uid="uid://id3stg85lsh7" path="res://sprite/Tarh.ir.png" id="17_xdtn6"]
+[ext_resource type="Texture2D" uid="uid://bvbb1fmlu4nxo" path="res://sprite/panel.png" id="18_w6gcr"]
+[ext_resource type="Texture2D" uid="uid://d2d81m65uc661" path="res://sprite/بلیط.jpg" id="19_8q7l3"]
+[ext_resource type="Texture2D" uid="uid://dmlksj83jrbfp" path="res://sprite/lamp.png" id="20_t38pn"]
+[ext_resource type="Texture2D" uid="uid://g76wq0x4awuw" path="res://sprite/flag2.png" id="21_a48hg"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="22_lorq2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vod7w"]
 bg_color = Color(1, 0.913725, 0.639216, 1)
@@ -36,7 +36,7 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_o7y5v"]
-font = ExtResource("3_2mt7w")
+font = ExtResource("3_bhvn0")
 font_size = 46
 font_color = Color(0.745098, 0.415686, 0.215686, 1)
 outline_size = 4
@@ -51,7 +51,7 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_6d827"]
-font = ExtResource("3_2mt7w")
+font = ExtResource("3_bhvn0")
 font_size = 136
 font_color = Color(0.67451, 0.4, 0.0509804, 1)
 outline_color = Color(0, 0, 0, 1)
@@ -137,7 +137,7 @@ seamless_blend_skirt = 1.0
 noise = SubResource("FastNoiseLite_wmegk")
 
 [sub_resource type="LabelSettings" id="LabelSettings_nf6rg"]
-font = ExtResource("5_nf08a")
+font = ExtResource("5_bq06f")
 font_size = 40
 font_color = Color(0.466667, 0.133333, 1, 1)
 outline_size = 14
@@ -169,10 +169,10 @@ point_count = 2
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("12_vaoh5")
+"texture": ExtResource("14_r807r")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_bq06f")
+"texture": ExtResource("15_jpooj")
 }],
 "loop": false,
 "name": &"default",
@@ -434,7 +434,7 @@ _data = {
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7l842"]
-texture = ExtResource("18_bq06f")
+texture = ExtResource("18_w6gcr")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5d6j"]
 
@@ -453,9 +453,43 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_arfdn"]
 line_spacing = 0.0
-font = ExtResource("3_2mt7w")
+font = ExtResource("3_bhvn0")
 font_size = 31
 font_color = Color(0, 0.0823529, 1, 1)
+outline_size = 11
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7gu8"]
+bg_color = Color(0.0107089, 0.337069, 0.040519, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.887473, 0.81419, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aco6r"]
+bg_color = Color(0.0901961, 0.666667, 0.74902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.887473, 0.81419, 0, 1)
+corner_radius_top_left = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_7l842"]
+font = ExtResource("5_bq06f")
+font_size = 31
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f6c4r"]
+line_spacing = 0.0
+font = ExtResource("3_bhvn0")
+font_size = 25
+font_color = Color(0.713726, 0.0823529, 0, 1)
 outline_size = 11
 
 [sub_resource type="Gradient" id="Gradient_arfdn"]
@@ -491,6 +525,69 @@ height = 50
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_ywr16"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect/PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.349066]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect4:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.349066]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect3:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.349066]
+}
 
 [sub_resource type="Animation" id="Animation_in2g2"]
 resource_name = "light"
@@ -554,69 +651,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-0.349066, 0.349066]
-}
-
-[sub_resource type="Animation" id="Animation_ywr16"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect/PointLight2D:energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TextureRect2:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.349066]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("TextureRect4:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.349066]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("TextureRect3:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.349066]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0hmit"]
@@ -686,6 +720,9 @@ _data = {
 &"light": SubResource("Animation_13n5o")
 }
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_yc2nr"]
+viewport_path = NodePath("SubViewport4")
+
 [sub_resource type="Gradient" id="Gradient_jya3l"]
 offsets = PackedFloat32Array(0, 0.697297)
 colors = PackedColorArray(0, 0, 0, 1, 0.695503, 0.695503, 0.695503, 1)
@@ -700,9 +737,6 @@ fill_to = Vector2(0.440171, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_mbk1q"]
 viewport_path = NodePath("SubViewport3")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yc2nr"]
-viewport_path = NodePath("SubViewport4")
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmegk"]
 
 [node name="ticket" type="Control"]
@@ -712,7 +746,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ebnor")
+script = ExtResource("1_biq4o")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -721,7 +755,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_flmv1")
+texture = ExtResource("2_plowr")
 expand_mode = 1
 stretch_mode = 6
 
@@ -830,7 +864,7 @@ offset_left = 192.0
 offset_top = 1855.0
 offset_right = 350.0
 offset_bottom = 1932.0
-texture = ExtResource("4_p12kv")
+texture = ExtResource("4_vaoh5")
 expand_mode = 1
 stretch_mode = 5
 flip_h = true
@@ -875,7 +909,7 @@ offset_left = 141.0
 offset_top = 1564.0
 offset_right = 861.0
 offset_bottom = 1765.0
-theme_override_fonts/font = ExtResource("3_2mt7w")
+theme_override_fonts/font = ExtResource("3_bhvn0")
 theme_override_font_sizes/font_size = 101
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o7y5v")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wp4qn")
@@ -890,7 +924,7 @@ offset_left = 141.0
 offset_top = 1564.0
 offset_right = 861.0
 offset_bottom = 1765.0
-theme_override_fonts/font = ExtResource("3_2mt7w")
+theme_override_fonts/font = ExtResource("3_bhvn0")
 theme_override_font_sizes/font_size = 101
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o7y5v")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wp4qn")
@@ -901,7 +935,7 @@ text = "ثبت در تقویم"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(-157, 157)
 amount = 4
-texture = ExtResource("6_biq4o")
+texture = ExtResource("6_6agvo")
 lifetime = 20.0
 emission_shape = 3
 emission_rect_extents = Vector2(1, 200)
@@ -919,7 +953,7 @@ position = Vector2(1333, 712)
 position = Vector2(87.023, -0.0274764)
 rotation = 0.20961
 amount = 150
-texture = ExtResource("7_plowr")
+texture = ExtResource("7_qxlgd")
 lifetime = 5.0
 emission_shape = 3
 emission_rect_extents = Vector2(200, 1)
@@ -934,31 +968,31 @@ scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_c7gu8")
 
 [node name="Train1" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("6_mehr6")
+texture = ExtResource("8_qt21a")
 
 [node name="Train2" type="Sprite2D" parent="Node2D"]
 position = Vector2(-67.4724, -34.4829)
-texture = ExtResource("7_1w8aa")
+texture = ExtResource("9_iyvpu")
 offset = Vector2(9.47241, -45.5171)
 
 [node name="Train3" type="Sprite2D" parent="Node2D"]
 position = Vector2(97.2262, -16.067)
 scale = Vector2(0.509301, 0.509301)
-texture = ExtResource("8_ebnor")
+texture = ExtResource("10_eu0h4")
 offset = Vector2(2.56897, -102.001)
 
 [node name="Train4" type="Sprite2D" parent="Node2D"]
 position = Vector2(241.748, 4.02612)
-texture = ExtResource("9_biq4o")
+texture = ExtResource("11_dk2j7")
 offset = Vector2(8.25208, -42.0261)
 
 [node name="Train9" type="Sprite2D" parent="Node2D"]
 position = Vector2(-94, 70)
-texture = ExtResource("10_plowr")
+texture = ExtResource("12_i1j04")
 
 [node name="Train10" type="Sprite2D" parent="Node2D"]
 position = Vector2(-191, 72)
-texture = ExtResource("11_bhvn0")
+texture = ExtResource("13_so203")
 
 [node name="Line2D" type="Line2D" parent="Node2D"]
 points = PackedVector2Array(-92, 69, -192, 61)
@@ -972,7 +1006,7 @@ sprite_frames = SubResource("SpriteFrames_e3xla")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D"]
 position = Vector2(-190.584, -151.601)
-texture = ExtResource("16_bhvn0")
+texture = ExtResource("16_exhjb")
 direction = Vector2(0, -1)
 gravity = Vector2(0, 0)
 initial_velocity_min = 180.26
@@ -984,7 +1018,7 @@ color_ramp = SubResource("Gradient_7l842")
 
 [node name="Tarh_ir" type="Sprite2D" parent="."]
 position = Vector2(878, 933)
-texture = ExtResource("17_vaoh5")
+texture = ExtResource("17_xdtn6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1044,13 +1078,13 @@ theme_override_colors/font_focus_color = Color(0.34902, 0.839216, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.34902, 0.839216, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_constants/line_spacing = 15
-theme_override_fonts/font = ExtResource("5_nf08a")
+theme_override_fonts/font = ExtResource("5_bq06f")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5d6j")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ldq3j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ldq3j")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ldq3j")
-icon = ExtResource("19_6agvo")
+icon = ExtResource("19_8q7l3")
 autowrap_mode = 3
 icon_alignment = 1
 expand_icon = true
@@ -1067,71 +1101,39 @@ label_settings = SubResource("LabelSettings_arfdn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="Panel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(250, 300)
-layout_mode = 2
-theme_override_colors/font_hover_pressed_color = Color(0.34902, 0.839216, 0, 1)
-theme_override_colors/font_hover_color = Color(0.34902, 0.839216, 0, 1)
-theme_override_colors/font_outline_color = Color(0.0207638, 0.341322, 0.0190776, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0.34902, 0.839216, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.34902, 0.839216, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_constants/line_spacing = 15
-theme_override_fonts/font = ExtResource("5_nf08a")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/focus = SubResource("StyleBoxEmpty_o5d6j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ldq3j")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ldq3j")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ldq3j")
-icon = ExtResource("19_6agvo")
-autowrap_mode = 3
-icon_alignment = 1
-expand_icon = true
-
-[node name="Label" type="Label" parent="Panel/MarginContainer/ScrollContainer/GridContainer/Button2"]
+[node name="ProgressBar" type="ProgressBar" parent="Panel/MarginContainer/ScrollContainer/GridContainer/Button"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 154.0
-offset_right = 244.0
-offset_bottom = 228.0
-text = "سه‌شنبه 20 خرداد
-ساعت 9 صبح"
-label_settings = SubResource("LabelSettings_arfdn")
+offset_left = 12.0
+offset_top = 247.0
+offset_right = 172.0
+offset_bottom = 274.0
+theme_override_styles/background = SubResource("StyleBoxFlat_c7gu8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_aco6r")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/ScrollContainer/GridContainer/Button/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -5.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "49 / 50"
+label_settings = SubResource("LabelSettings_7l842")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button3" type="Button" parent="Panel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(250, 300)
-layout_mode = 2
-theme_override_colors/font_hover_pressed_color = Color(0.34902, 0.839216, 0, 1)
-theme_override_colors/font_hover_color = Color(0.34902, 0.839216, 0, 1)
-theme_override_colors/font_outline_color = Color(0.0207638, 0.341322, 0.0190776, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_focus_color = Color(0.34902, 0.839216, 0, 1)
-theme_override_colors/font_pressed_color = Color(0.34902, 0.839216, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_constants/line_spacing = 15
-theme_override_fonts/font = ExtResource("5_nf08a")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/focus = SubResource("StyleBoxEmpty_o5d6j")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ldq3j")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ldq3j")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ldq3j")
-icon = ExtResource("19_6agvo")
-autowrap_mode = 3
-icon_alignment = 1
-expand_icon = true
-
-[node name="Label" type="Label" parent="Panel/MarginContainer/ScrollContainer/GridContainer/Button3"]
+[node name="Label2" type="Label" parent="Panel/MarginContainer/ScrollContainer/GridContainer/Button"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = 154.0
-offset_right = 250.0
-offset_bottom = 228.0
-text = "سه‌شنبه 20 خرداد
-ساعت 9 صبح"
-label_settings = SubResource("LabelSettings_arfdn")
+offset_left = 87.0
+offset_top = 225.0
+offset_right = 322.0
+offset_bottom = 299.0
+text = "ظرفیت:"
+label_settings = SubResource("LabelSettings_f6c4r")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1148,7 +1150,7 @@ offset_right = 50.0
 offset_bottom = 25.0
 grow_vertical = 2
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("20_qxlgd")
+texture = ExtResource("20_t38pn")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1185,7 +1187,7 @@ grow_horizontal = 0
 grow_vertical = 2
 rotation = -0.349066
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("20_qxlgd")
+texture = ExtResource("20_t38pn")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1223,7 +1225,7 @@ grow_horizontal = 0
 grow_vertical = 2
 rotation = 0.349066
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("20_qxlgd")
+texture = ExtResource("20_t38pn")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1248,7 +1250,7 @@ texture_scale = 2.6
 
 [node name="TextureRect4" type="TextureRect" parent="SubViewport3"]
 modulate = Color(1, 0.174532, 0.12372, 1)
-anchors_preset = -1
+anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -1260,7 +1262,7 @@ grow_horizontal = 0
 grow_vertical = 2
 rotation = 0.349066
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("20_qxlgd")
+texture = ExtResource("20_t38pn")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1297,12 +1299,14 @@ size = Vector2i(128, 128)
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_right = 50.0
-offset_bottom = 50.0
+offset_left = 11.71
+offset_top = -1.695
+offset_right = 75.71
+offset_bottom = 62.305
 grow_vertical = 2
 rotation = 3.21141
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("21_qt21a")
+texture = ExtResource("21_a48hg")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1313,15 +1317,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -63.11
+offset_left = -52.625
 offset_top = -1.99
-offset_right = -13.11
-offset_bottom = 48.01
+offset_right = 11.375
+offset_bottom = 62.01
 grow_horizontal = 0
 grow_vertical = 2
 rotation = 3.22013
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("21_qt21a")
+texture = ExtResource("21_a48hg")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1330,6 +1334,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_5gg38")
 }
 autoplay = "light"
+
+[node name="Line2D3" type="Line2D" parent="."]
+texture_repeat = 2
+position = Vector2(41, -46)
+points = PackedVector2Array(1003, 86, 844, 134, 711, 162, 575, 179, 466, 186, 329, 181, 211, 161, -98, 86)
+width = 256.0
+texture = SubResource("ViewportTexture_yc2nr")
+texture_mode = 1
 
 [node name="Line2D2" type="Line2D" parent="."]
 texture_repeat = 2
@@ -1343,17 +1355,9 @@ joint_mode = 2
 
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2
-points = PackedVector2Array(-33, 157, 179, 235, 320, 255, 577, 276, 830, 231, 1031, 148)
+points = PackedVector2Array(-33, 157, 81, 197, 193, 237, 320, 255, 578, 272, 723, 254, 830, 231, 926, 197, 1031, 148)
 width = 256.0
 texture = SubResource("ViewportTexture_mbk1q")
-texture_mode = 1
-
-[node name="Line2D3" type="Line2D" parent="."]
-texture_repeat = 2
-position = Vector2(41, -46)
-points = PackedVector2Array(1003, 86, 844, 134, 711, 162, 575, 179, 466, 186, 329, 181, 211, 161, -98, 86)
-width = 256.0
-texture = SubResource("ViewportTexture_yc2nr")
 texture_mode = 1
 
 [node name="Button3" type="Button" parent="."]
@@ -1361,7 +1365,7 @@ layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wmegk")
-icon = ExtResource("14_6agvo")
+icon = ExtResource("22_lorq2")
 flat = true
 expand_icon = true
 
