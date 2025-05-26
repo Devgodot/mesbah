@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3]
+[gd_scene load_steps=127 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_wumwv"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_087bi"]
@@ -913,6 +913,31 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_y1oil"]
 offsets = PackedFloat32Array(0, 0.486301, 1)
 colors = PackedColorArray(0.670588, 1, 0.698039, 1, 1, 1, 1, 1, 0.964706, 0.847059, 0.356863, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sj267"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k45vp"]
+
+[sub_resource type="Theme" id="Theme_adqxb"]
+SpinBox/icons/down = SubResource("ViewportTexture_sj267")
+SpinBox/icons/down_disabled = SubResource("ViewportTexture_sj267")
+SpinBox/icons/down_hover = SubResource("ViewportTexture_sj267")
+SpinBox/icons/down_pressed = SubResource("ViewportTexture_sj267")
+SpinBox/icons/up = SubResource("ViewportTexture_sj267")
+SpinBox/icons/up_disabled = SubResource("ViewportTexture_sj267")
+SpinBox/icons/up_hover = SubResource("ViewportTexture_sj267")
+SpinBox/icons/up_pressed = SubResource("ViewportTexture_sj267")
+SpinBox/icons/updown = SubResource("ViewportTexture_sj267")
+SpinBox/styles/down_background = SubResource("StyleBoxEmpty_k45vp")
+SpinBox/styles/down_background_disabled = SubResource("StyleBoxEmpty_k45vp")
+SpinBox/styles/down_background_hovered = SubResource("StyleBoxEmpty_k45vp")
+SpinBox/styles/down_background_pressed = SubResource("StyleBoxEmpty_k45vp")
+SpinBox/styles/field_and_buttons_separator = SubResource("StyleBoxEmpty_k45vp")
+SpinBox/styles/up_background = SubResource("StyleBoxEmpty_k45vp")
+SpinBox/styles/up_background_disabled = SubResource("StyleBoxEmpty_k45vp")
+SpinBox/styles/up_background_hovered = SubResource("StyleBoxEmpty_k45vp")
+SpinBox/styles/up_background_pressed = SubResource("StyleBoxEmpty_k45vp")
+SpinBox/styles/up_down_buttons_separator = SubResource("StyleBoxEmpty_k45vp")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_be5np"]
 
@@ -2396,6 +2421,7 @@ select_all_on_focus = true
 [node name="HBoxContainer4" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
 layout_direction = 3
 layout_mode = 2
+theme = SubResource("Theme_adqxb")
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
 layout_mode = 2
@@ -2408,9 +2434,17 @@ theme_override_constants/separation = 200
 theme_override_styles/separator = SubResource("StyleBoxEmpty_be5np")
 
 [node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 theme = SubResource("Theme_b7fa4")
+theme_override_icons/up_disabled = SubResource("ImageTexture_trfdu")
+theme_override_icons/down = SubResource("ImageTexture_trfdu")
+theme_override_icons/down_hover = SubResource("ImageTexture_trfdu")
+theme_override_icons/down_pressed = SubResource("ImageTexture_trfdu")
+theme_override_icons/down_disabled = SubResource("ImageTexture_trfdu")
+theme_override_icons/up_pressed = SubResource("ImageTexture_trfdu")
+theme_override_icons/up_hover = SubResource("ImageTexture_trfdu")
+theme_override_icons/up = SubResource("ImageTexture_trfdu")
 theme_override_icons/updown = SubResource("ImageTexture_trfdu")
 min_value = 1.0
 max_value = 31.0
@@ -2419,7 +2453,7 @@ alignment = 1
 select_all_on_focus = true
 
 [node name="SpinBox2" type="SpinBox" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 theme = SubResource("Theme_b7fa4")
 theme_override_icons/updown = SubResource("ImageTexture_trfdu")
@@ -2430,7 +2464,7 @@ alignment = 1
 select_all_on_focus = true
 
 [node name="SpinBox3" type="SpinBox" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
-custom_minimum_size = Vector2(100, 80)
+custom_minimum_size = Vector2(120, 80)
 layout_mode = 2
 theme = SubResource("Theme_b7fa4")
 theme_override_icons/updown = SubResource("ImageTexture_trfdu")
