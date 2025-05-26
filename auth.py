@@ -117,9 +117,8 @@ def register_user():
                         for u in p:
                             if u == username:
                                 support = True
-            year, month, day = map(int, request.get_json().get("birthday", "1400/02/2").split("/"))
-            miladi_date = JalaliDatetime(year, month, day).todatetime()
-            new_user = User(id=username, username=username,birthday=miladi_date, phone=data.get("phone"), data=data.get("data", {"support":support,"phone": phone, "editor": len(editor) > 0, "part_edit": editor}), password="1234", tag=data.get("tag", 0), gender=data.get("gender", 0))
+           
+            new_user = User(id=username, username=username, phone=data.get("phone"), data=data.get("data", {"support":support,"phone": phone, "editor": len(editor) > 0, "part_edit": editor}), password="1234", tag=data.get("tag", 0), gender=data.get("gender", 0))
             new_user.save()
             access_token = create_access_token(identity=new_user.username, expires_delta=False)
             refresh_token = create_refresh_token(identity=new_user.username)
@@ -224,7 +223,10 @@ def save_data():
         for c in change_data.keys():
             if c not in ["transation","first_name", "last_name", "father_name", "birthday", "icon", "tag", "gender", "custom_name", "font_size","font_color", "outline_size", "outline_color", "wave", "light", "shake", "tornado", "aligment"]:
                 change_data.pop(c)
-        
+        if data.get("birthday") is not None:
+            year, month, day = map(int, request.get_json().get("birthday", "1400/02/2").split("/"))
+            miladi_date = JalaliDatetime(year, month, day).todatetime()
+            current_user.birthday = miladi_date
         if data.get("gender") is not None:
             current_user.gender = data.get("gender")
         if data.get("tag") is not None:
