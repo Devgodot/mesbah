@@ -71,6 +71,7 @@ def get_ticket():
         tickets_data = []
         for ticket in tickets:
             jalali_datetime = JalaliDatetime(ticket.time)
+
             if get_sort_by_birthday(current_user.birthday) in ticket.tag and current_user.data.get("nationality", 0) == ticket.nationality and current_user.gender == ticket.gender:
                 ticket_data = {
                     "time": f"{jalali_datetime.strftime('%Y/%m/%d %H:%M')}",

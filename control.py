@@ -341,6 +341,10 @@ def change_user():
                     user_message.remove(m)
             user2.update(data={"message":user_message})
         tag = data.get("tag")
+        if data.get("birthday", "") != "":
+            year, month, day = map(int, data.get("birthday", "").split("/"))
+            miladi_date = JalaliDatetime(year, month, day).todatetime()
+            user.birthday = miladi_date
         gender = data.get("gender")
         last_gender = user.data.get("gender", 0)
         last_tag = user.data.get("tag", 0)
