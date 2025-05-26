@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3]
+[gd_scene load_steps=40 format=3]
 
 [ext_resource type="Script" uid="uid://duenrlby8j7jc" path="res://script/register.gd" id="1_843yq"]
 [ext_resource type="Texture2D" uid="uid://cg3jo2qcdo44r" path="res://sprite/ورود به طرح رمضان 1403.jpg" id="2_ubasg"]
@@ -128,9 +128,20 @@ shadow_color = Color(0.0823529, 0.0823529, 0.0823529, 0.776471)
 shadow_size = 2
 shadow_offset = Vector2(-1, 5)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_mxuud"]
+
 [sub_resource type="Theme" id="Theme_b7fa4"]
 LineEdit/styles/focus = SubResource("StyleBoxFlat_6oife")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_kmb1d")
+SpinBox/icons/down = SubResource("ViewportTexture_mxuud")
+SpinBox/icons/down_disabled = SubResource("ViewportTexture_mxuud")
+SpinBox/icons/down_hover = SubResource("ViewportTexture_mxuud")
+SpinBox/icons/down_pressed = SubResource("ViewportTexture_mxuud")
+SpinBox/icons/up = SubResource("ViewportTexture_mxuud")
+SpinBox/icons/up_disabled = SubResource("ViewportTexture_mxuud")
+SpinBox/icons/up_hover = SubResource("ViewportTexture_mxuud")
+SpinBox/icons/up_pressed = SubResource("ViewportTexture_mxuud")
+SpinBox/icons/updown = SubResource("ViewportTexture_mxuud")
 
 [sub_resource type="ImageTexture" id="ImageTexture_mh8m2"]
 
@@ -893,7 +904,7 @@ size_flags_vertical = 0
 text = "تاریخ تولد :            "
 
 [node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 size_flags_vertical = 4
 theme = SubResource("Theme_b7fa4")
@@ -905,7 +916,7 @@ alignment = 1
 select_all_on_focus = true
 
 [node name="SpinBox2" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 size_flags_vertical = 4
 theme = SubResource("Theme_b7fa4")
@@ -917,7 +928,7 @@ alignment = 1
 select_all_on_focus = true
 
 [node name="SpinBox3" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(120, 80)
 layout_mode = 2
 size_flags_vertical = 4
 theme = SubResource("Theme_b7fa4")
