@@ -28,7 +28,11 @@ db = SQLAlchemy(app)
 
 
 def get_sort_by_birthday(birthday:datetime):
-    age_years = (datetime.datetime.now(TehranTimezone) - birthday).days // 365
+    now = datetime.datetime.now(TehranTimezone())
+    # اطمینان از اینکه birthday هم timezone-aware باشد
+    if birthday.tzinfo is None:
+        birthday = birthday.replace(tzinfo=TehranTimezone())
+    age_years = (now - birthday).days // 365
     if age_years <= 6:
         return 0
     elif 6 < age_years <= 9:
