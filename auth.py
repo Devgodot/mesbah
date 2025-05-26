@@ -14,7 +14,7 @@ import random, os, shutil
 from models import User, TokenBlocklist, UserInterface, Group, VerificationCode, Messages, UserSeenMessages
 import json
 from datetime import datetime, timedelta
-
+from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
 cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache'})
 auth_bp = Blueprint("auth", __name__)
 import requests, time
@@ -117,7 +117,9 @@ def register_user():
                         for u in p:
                             if u == username:
                                 support = True
-            new_user = User(id=username, username=username, phone=data.get("phone"), data=data.get("data", {"support":support,"phone": phone, "editor": len(editor) > 0, "part_edit": editor}), password="1234", tag=data.get("tag", 0), gender=data.get("gender", 0))
+            year, month, day = map(int, request.get_json().get("birthday", "1400/02/2").split("/"))
+            miladi_date = JalaliDatetime(year, month, day).todatetime()
+            new_user = User(id=username, username=username,birthday=miladi_date, phone=data.get("phone"), data=data.get("data", {"support":support,"phone": phone, "editor": len(editor) > 0, "part_edit": editor}), password="1234", tag=data.get("tag", 0), gender=data.get("gender", 0))
             new_user.save()
             access_token = create_access_token(identity=new_user.username, expires_delta=False)
             refresh_token = create_refresh_token(identity=new_user.username)
