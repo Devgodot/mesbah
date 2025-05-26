@@ -948,6 +948,7 @@ wait_time = 0.001
 ignore_time_scale = true
 
 [node name="Button" type="Button" parent="."]
+clip_children = 2
 layout_mode = 0
 offset_left = 141.0
 offset_top = 1564.0
