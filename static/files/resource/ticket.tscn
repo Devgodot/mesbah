@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3]
+[gd_scene load_steps=88 format=3]
 
 [ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_biq4o"]
 [ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_plowr"]
@@ -22,6 +22,7 @@
 [ext_resource type="FontFile" uid="uid://l2m0ndtot5rp" path="res://fonts/Aviny2-mfnbbn.ttf" id="20_plowr"]
 [ext_resource type="Texture2D" uid="uid://dmlksj83jrbfp" path="res://sprite/lamp.png" id="20_t38pn"]
 [ext_resource type="Texture2D" uid="uid://g76wq0x4awuw" path="res://sprite/flag2.png" id="21_a48hg"]
+[ext_resource type="Texture2D" uid="uid://dmr7u4w0iiyvn" path="res://sprite/Sunshine-Transparent-Images.png" id="21_bhvn0"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="22_lorq2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vod7w"]
@@ -499,6 +500,43 @@ font_size = 35
 font_color = Color(0, 0, 0, 1)
 outline_size = 7
 
+[sub_resource type="Animation" id="Animation_arfdn"]
+resource_name = "light"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 3.72]
+}
+
+[sub_resource type="Animation" id="Animation_f6c4r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ls7rc"]
+_data = {
+&"RESET": SubResource("Animation_f6c4r"),
+&"light": SubResource("Animation_arfdn")
+}
+
 [sub_resource type="Gradient" id="Gradient_arfdn"]
 offsets = PackedFloat32Array(0, 0.433862, 0.730159)
 colors = PackedColorArray(0.0352941, 1, 0.0470588, 0.431373, 0, 1, 0.231373, 0.176471, 0, 1, 0.231373, 0)
@@ -759,7 +797,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.58),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(7, 2013), Vector2(7, 429), Vector2(7, 483)]
+"values": [Vector2(7, 2041), Vector2(7, 429), Vector2(7, 483)]
 }
 
 [sub_resource type="Animation" id="Animation_7l842"]
@@ -774,7 +812,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(7, 1991)]
+"values": [Vector2(5, 2030)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_arfdn"]
@@ -1084,10 +1122,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -493.0
-offset_top = 991.0
-offset_right = 493.0
-offset_bottom = 1686.0
+offset_left = -495.0
+offset_top = 1030.0
+offset_right = 491.0
+offset_bottom = 1725.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7l842")
@@ -1176,13 +1214,13 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Panel/MarginContainer/ScrollContainer/GridContainer/Button"]
 layout_mode = 0
-offset_left = 87.0
+offset_left = 5.0
 offset_top = 225.0
-offset_right = 322.0
+offset_right = 238.0
 offset_bottom = 299.0
 text = "ظرفیت:"
 label_settings = SubResource("LabelSettings_f6c4r")
-horizontal_alignment = 1
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="Panel/MarginContainer/ScrollContainer/GridContainer/Button"]
@@ -1198,6 +1236,17 @@ text = "سانس اول"
 label_settings = SubResource("LabelSettings_ls7rc")
 horizontal_alignment = 3
 vertical_alignment = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="Panel"]
+position = Vector2(501, 16)
+rotation = 0.240621
+texture = ExtResource("21_bhvn0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
+libraries = {
+&"": SubResource("AnimationLibrary_ls7rc")
+}
+autoplay = "light"
 
 [node name="SubViewport3" type="SubViewport" parent="."]
 transparent_bg = true
