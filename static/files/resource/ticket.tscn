@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3]
+[gd_scene load_steps=81 format=3]
 
 [ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_biq4o"]
 [ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_plowr"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://id3stg85lsh7" path="res://sprite/Tarh.ir.png" id="17_xdtn6"]
 [ext_resource type="Texture2D" uid="uid://bvbb1fmlu4nxo" path="res://sprite/panel.png" id="18_w6gcr"]
 [ext_resource type="Texture2D" uid="uid://d2d81m65uc661" path="res://sprite/بلیط.jpg" id="19_8q7l3"]
+[ext_resource type="FontFile" uid="uid://l2m0ndtot5rp" path="res://fonts/Aviny2-mfnbbn.ttf" id="20_plowr"]
 [ext_resource type="Texture2D" uid="uid://dmlksj83jrbfp" path="res://sprite/lamp.png" id="20_t38pn"]
 [ext_resource type="Texture2D" uid="uid://g76wq0x4awuw" path="res://sprite/flag2.png" id="21_a48hg"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="22_lorq2"]
@@ -491,6 +492,12 @@ font = ExtResource("3_bhvn0")
 font_size = 25
 font_color = Color(0.713726, 0.0823529, 0, 1)
 outline_size = 11
+
+[sub_resource type="LabelSettings" id="LabelSettings_ls7rc"]
+font = ExtResource("20_plowr")
+font_size = 35
+font_color = Color(0, 0, 0, 1)
+outline_size = 7
 
 [sub_resource type="Gradient" id="Gradient_arfdn"]
 offsets = PackedFloat32Array(0, 0.433862, 0.730159)
@@ -1049,22 +1056,24 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_7l842")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_top = 0.423022
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 340.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 105
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_top = 55
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 15
+metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_vertical = 10
 columns = 3
 
 [node name="Button" type="Button" parent="Panel/MarginContainer/ScrollContainer/GridContainer"]
@@ -1136,6 +1145,20 @@ text = "ظرفیت:"
 label_settings = SubResource("LabelSettings_f6c4r")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/ScrollContainer/GridContainer/Button"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -105.0
+offset_top = -44.0
+offset_right = 107.0
+grow_horizontal = 2
+text = "سانس اول"
+label_settings = SubResource("LabelSettings_ls7rc")
+horizontal_alignment = 3
+vertical_alignment = 2
 
 [node name="SubViewport3" type="SubViewport" parent="."]
 transparent_bg = true
