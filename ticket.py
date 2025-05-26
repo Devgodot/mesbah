@@ -27,6 +27,8 @@ def add_ticket():
             return jsonify({"error": f"فرمت تاریخ اشتباه است: {e}"}), 400
         if Ticket.query.filter_by(season=season, time=miladi_date).first():
             return jsonify({"error": "تیکت با این زمان وجود دارد"}), 400
+        if request.get_json().get("tag", []) == []:
+            return jsonify({"error": "تگ بلیط نمی‌تواند خالی باشد"}), 400
         ticket = Ticket(time=miladi_date, 
                         users=data.get("users", []),
                         max_users=data.get("max_users", 0),
