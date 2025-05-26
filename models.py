@@ -128,7 +128,9 @@ class Ticket(db.Model):
     users = Column(JSON, default=[])
     max_users = Column(Integer, nullable=False, default=0)
     season = Column(Integer, nullable=False, default=0)
-
+    tag = Column(JSON, nullable=False, default=[])
+    gender = Column(Integer, nullable=False, default=0)
+    nationality = Column(Integer, nullable=False, default=0)
 class Score(db.Model):
     gender = Column(Integer, nullable=False, primary_key=True)
     year = Column(Integer, nullable=False, primary_key=True)
