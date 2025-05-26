@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 import socket
 import os
 import datetime
-from khayam import TehranTimezone
+from khayyam import TehranTimezone
 jwt = JWTManager()
 app = Flask(__name__)
 
