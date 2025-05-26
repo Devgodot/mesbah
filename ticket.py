@@ -3,7 +3,7 @@ from flask_jwt_extended import jwt_required, get_jwt, current_user
 from models import User, UserInterface, Ticket
 from schemas import UserSchema
 from sqlalchemy import desc, text
-from confige import db, app
+from confige import db, app, get_sort_by_birthday
 import time, uuid, os
 import datetime, json
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
@@ -30,7 +30,11 @@ def add_ticket():
         ticket = Ticket(time=miladi_date, 
                         users=data.get("users", []),
                         max_users=data.get("max_users", 0),
-                        season=season)
+                        season=season,
+                        tag=data.get("tag", []),
+                        gender =data.get("gender", 0),
+                        nationality=data.get("nationality", 0)
+                        )
         db.session.add(ticket)
         db.session.commit()
         return jsonify({"message": "تیکت با موفقیت اضافه شد"}), 201
@@ -46,17 +50,32 @@ def get_ticket():
     tickets = Ticket.query.filter_by(season=season).all()
     if not tickets:
         return jsonify({"error": "تیکتی وجود ندارد"}), 404
-    tickets_data = []
-    for ticket in tickets:
-        # تبدیل تاریخ میلادی به جلالی و ساخت رشته خروجی
-        jalali_datetime = JalaliDatetime(ticket.time)
-        ticket_data = {
-            "time": f"{jalali_datetime.strftime('%Y/%m/%d %H:%M')}",
-            "max_users": ticket.max_users,
-            "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M'),
-            "users": len(ticket.users),
-        }
-        tickets_data.append(ticket_data)
+    if current_user.username in UserInterface.query.first().data.get("management", []) and request.args.get("all", "false").lower() == "true":
+        # اگر کاربر مدیریت است و پارامتر all برابر true باشد، همه بلیط‌ها را برمی‌گردانیم
+        tickets_data = []
+        for ticket in tickets:
+            # تبدیل تاریخ میلادی به جلالی و ساخت رشته خروجی
+            jalali_datetime = JalaliDatetime(ticket.time)
+            ticket_data = {
+                "time": f"{jalali_datetime.strftime('%Y/%m/%d %H:%M')}",
+                "max_users": ticket.max_users,
+                "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M'),
+                "users": len(ticket.users),
+            }
+            tickets_data.append(ticket_data)
+    else:
+        tickets_data = []
+        for ticket in tickets:
+            jalali_datetime = JalaliDatetime(ticket.time)
+            if get_sort_by_birthday(current_user.birthday) in ticket.tag and current_user.data.get("nationality", 0) == ticket.nationality and current_user.gender == ticket.gender:
+                ticket_data = {
+                    "time": f"{jalali_datetime.strftime('%Y/%m/%d %H:%M')}",
+                    "max_users": ticket.max_users,
+                    "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M'),
+                    "users": len(ticket.users),
+                    "day": jalali_datetime.strftime('%A')  # روز هفته به فارسی
+                }
+                tickets_data.append(ticket_data)
     return jsonify({"data":tickets_data}), 200
 
 @ticket_bp.post("/add_user_to_ticket")
@@ -73,6 +92,10 @@ def add_user_to_ticket():
     tickets = Ticket.query.filter_by(season=UserInterface.query.first().data.get("train_season", 1)).all()
     if not ticket:
         return jsonify({"error": "تیکتی وجود ندارد"}), 404
+    if current_user.data.get("accept_account", False) != True:
+        return jsonify({"error": "حساب شما تایید نشده! لطفاً به پشتیبانی مراجعه فرمایید."}), 403
+    if get_sort_by_birthday(current_user.birthday) not in ticket.tag and current_user.data.get("nationality", 0) != ticket.nationality and current_user.gender != ticket.gender:
+        return jsonify({"error": "شما مجاز به اضافه شدن به این بلیط نیستید"}), 403
     for t in tickets:
         if user_id in t.users:
             return jsonify({"error": "این کاربر قبلا به این بلیط اضافه شده است"}), 400
@@ -85,7 +108,6 @@ def add_user_to_ticket():
     current_user.data = current_user.update(data={"start_ticket": datetime.datetime.now(TehranTimezone()).timestamp()})
     db.session.commit()
     return jsonify({"message": "کاربر با موفقیت به بلیط اضافه شد", "current_time":datetime.datetime.now(TehranTimezone()).timestamp(), "unixtime":ticket.time.timestamp(), "miladi_time":ticket.time, "time":ticket_time}), 200
-
 @ticket_bp.post("change_ticket")
 @jwt_required()
 def change_ticket():

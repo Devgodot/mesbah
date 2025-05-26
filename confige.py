@@ -3,7 +3,8 @@ from flask_jwt_extended import JWTManager
 from flask_sqlalchemy import SQLAlchemy
 import socket
 import os
-
+import datetime
+from khayam import TehranTimezone
 jwt = JWTManager()
 app = Flask(__name__)
 
@@ -26,3 +27,17 @@ db = SQLAlchemy(app)
 
 
 
+def get_sort_by_birthday(birthday:datetime):
+    age_years = (datetime.datetime.now(TehranTimezone) - birthday).days // 365
+    if age_years <= 6:
+        return 0
+    elif 6 < age_years <= 9:
+        return 1
+    elif 9 < age_years <= 12:
+        return 2
+    elif 12 < age_years <= 15:
+        return 3
+    elif 15 < age_years <= 18:
+        return 4
+    else:
+        return 5
