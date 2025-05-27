@@ -596,21 +596,27 @@ func change_user(_id, num={}, addtion=0):
 	else:
 		return false
 func load_scene(new_scene) -> Object:
-	var s
+	var s:Object
 	if DirAccess.dir_exists_absolute("user://resource"):
+		var script:Script
+		if FileAccess.file_exists("user://resource/"+new_scene.get_file()+".gd"):
+			script = load("user://resource/"+new_scene.get_file()+".gd")
 		if FileAccess.file_exists("user://resource/"+new_scene):
 			ResourceLoader.load_threaded_request("user://resource/"+new_scene)
 			var progress = [0]
 			while progress[0] != 1:
 				ResourceLoader.load_threaded_get_status("user://resource/"+new_scene, progress)
 			s = ResourceLoader.load_threaded_get("user://resource/"+new_scene).instantiate()
+			if script:
+				s.set_script(script)
 		else:
 			ResourceLoader.load_threaded_request("res://scenes/"+new_scene)
 			var progress = [0]
 			while progress[0] != 1:
 				ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene, progress)
 			s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
-			
+			if script:
+				s.set_script(script)
 	else:
 		DirAccess.make_dir_absolute("user://resource")
 		ResourceLoader.load_threaded_request("res://scenes/"+new_scene)
