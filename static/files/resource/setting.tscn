@@ -1839,29 +1839,6 @@ mouse_filter = 2
 theme_override_constants/separation = 125
 theme_override_styles/separator = SubResource("StyleBoxEmpty_be801")
 
-[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7"]
-layout_mode = 2
-text = "ثبت چهره"
-
-[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme_override_font_sizes/font_size = 46
-icon = ExtResource("9_k7mua")
-icon_alignment = 1
-expand_icon = true
-script = SubResource("GDScript_wcdcv")
-
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-stretch_mode = 6
-
 [node name="HBoxContainer9" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/VBoxContainer2"]
 visible = false
 layout_direction = 3
@@ -2563,7 +2540,6 @@ script = ExtResource("14_w5bu4")
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/HBoxContainer/Button" to="." method="_on_fillter_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/Button" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button" to="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button" method="_on_change_icon_pressed" binds= [1]]
-[connection signal="pressed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button2" to="." method="_on_face_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9/Button" to="." method="_on_edit_name_pressed"]
 [connection signal="value_changed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer5/SpinBox" to="." method="_on_spin_box_value_changed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer6/Button" to="." method="_on_edit_pressed"]
