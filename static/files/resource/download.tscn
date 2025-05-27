@@ -33,7 +33,7 @@ script = ExtResource("1_ney84")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(500, 1000)
-amount = 50
+amount = 100
 texture = SubResource("GradientTexture2D_rnbfk")
 speed_scale = 3.66
 emission_shape = 3
