@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3]
+
+[sub_resource type="Gradient" id="Gradient_aadpe"]
+offsets = PackedFloat32Array(0, 0.513228, 0.650794)
+colors = PackedColorArray(1, 1, 1, 1, 0.693122, 0.693122, 0.693122, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rnbfk"]
+gradient = SubResource("Gradient_aadpe")
+width = 5
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_7jy67"]
+_data = [Vector2(0, 0.0449438), 0.0, 0.0, 0, 0, Vector2(0.14218, 1), 0.0, 0.0, 0, 0, Vector2(0.701422, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.314607), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_4eodt"]
+colors = PackedColorArray(1, 1, 0, 1, 0, 1, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(500, 1000)
+amount = 50
+texture = SubResource("GradientTexture2D_rnbfk")
+speed_scale = 3.66
+emission_shape = 3
+emission_rect_extents = Vector2(400, 400)
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+radial_accel_min = -276.05
+radial_accel_max = -276.05
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_7jy67")
+color_initial_ramp = SubResource("Gradient_4eodt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -176.0
+offset_right = 176.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
