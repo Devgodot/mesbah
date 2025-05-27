@@ -28,5 +28,5 @@ func _process(delta: float) -> void:
 	if max_files != 0:
 		$TextureProgressBar.value = 34 + (float(file) / float(max_files)) * 27
 	if file == max_files and file != 0:
-		print(file)
+		await get_tree().create_timer(0.5).timeout
 		queue_free()
