@@ -20,7 +20,7 @@ func _ready() -> void:
 		end_time = int(data.ticket.unixtime)- int(Updatedate.load_game("start_ticket", 0))
 		date = data.ticket.unixtime
 		if calendar:
-			var event = calendar.getCalendarEvent(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
+			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
 			print(event)
 		$Label4.text = data.ticket.time
 		$Label4.show()
