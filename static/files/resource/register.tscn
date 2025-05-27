@@ -128,20 +128,20 @@ shadow_color = Color(0.0823529, 0.0823529, 0.0823529, 0.776471)
 shadow_size = 2
 shadow_offset = Vector2(-1, 5)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mxuud"]
+[sub_resource type="ImageTexture" id="ImageTexture_mxuud"]
 
 [sub_resource type="Theme" id="Theme_b7fa4"]
 LineEdit/styles/focus = SubResource("StyleBoxFlat_6oife")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_kmb1d")
-SpinBox/icons/down = SubResource("ViewportTexture_mxuud")
-SpinBox/icons/down_disabled = SubResource("ViewportTexture_mxuud")
-SpinBox/icons/down_hover = SubResource("ViewportTexture_mxuud")
-SpinBox/icons/down_pressed = SubResource("ViewportTexture_mxuud")
-SpinBox/icons/up = SubResource("ViewportTexture_mxuud")
-SpinBox/icons/up_disabled = SubResource("ViewportTexture_mxuud")
-SpinBox/icons/up_hover = SubResource("ViewportTexture_mxuud")
-SpinBox/icons/up_pressed = SubResource("ViewportTexture_mxuud")
-SpinBox/icons/updown = SubResource("ViewportTexture_mxuud")
+SpinBox/icons/down = SubResource("ImageTexture_mxuud")
+SpinBox/icons/down_disabled = SubResource("ImageTexture_mxuud")
+SpinBox/icons/down_hover = SubResource("ImageTexture_mxuud")
+SpinBox/icons/down_pressed = SubResource("ImageTexture_mxuud")
+SpinBox/icons/up = SubResource("ImageTexture_mxuud")
+SpinBox/icons/up_disabled = SubResource("ImageTexture_mxuud")
+SpinBox/icons/up_hover = SubResource("ImageTexture_mxuud")
+SpinBox/icons/up_pressed = SubResource("ImageTexture_mxuud")
+SpinBox/icons/updown = SubResource("ImageTexture_mxuud")
 
 [sub_resource type="ImageTexture" id="ImageTexture_mh8m2"]
 
