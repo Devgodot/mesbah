@@ -7,8 +7,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d5050"]
 shader = ExtResource("2_n3hi6")
-shader_parameter/lod = 1.0
-shader_parameter/mix_percentage = 0.5
+shader_parameter/lod = 0.9
+shader_parameter/mix_percentage = 0.4
 
 [sub_resource type="Gradient" id="Gradient_aadpe"]
 offsets = PackedFloat32Array(0, 0.513228, 0.650794)
