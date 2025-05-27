@@ -25,7 +25,7 @@ func _ready() -> void:
 				if e.has("title"):
 					if e.title == "یادآور حرکت قطار" or e.end == date * 1000:
 						$Button2.disabled = true
-						$Button2.text = "ث"
+						$Button2.text = "ثبت شده در تقویم"
 		$Label4.text = data.ticket.time
 		$Label4.show()
 		$Timer.start()
