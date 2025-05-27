@@ -914,20 +914,20 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.486301, 1)
 colors = PackedColorArray(0.670588, 1, 0.698039, 1, 1, 1, 1, 1, 0.964706, 0.847059, 0.356863, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_sj267"]
+[sub_resource type="ImageTexture" id="ImageTexture_sj267"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k45vp"]
 
 [sub_resource type="Theme" id="Theme_adqxb"]
-SpinBox/icons/down = SubResource("ViewportTexture_sj267")
-SpinBox/icons/down_disabled = SubResource("ViewportTexture_sj267")
-SpinBox/icons/down_hover = SubResource("ViewportTexture_sj267")
-SpinBox/icons/down_pressed = SubResource("ViewportTexture_sj267")
-SpinBox/icons/up = SubResource("ViewportTexture_sj267")
-SpinBox/icons/up_disabled = SubResource("ViewportTexture_sj267")
-SpinBox/icons/up_hover = SubResource("ViewportTexture_sj267")
-SpinBox/icons/up_pressed = SubResource("ViewportTexture_sj267")
-SpinBox/icons/updown = SubResource("ViewportTexture_sj267")
+SpinBox/icons/down = SubResource("ImageTexture_sj267")
+SpinBox/icons/down_disabled = SubResource("ImageTexture_sj267")
+SpinBox/icons/down_hover = SubResource("ImageTexture_sj267")
+SpinBox/icons/down_pressed = SubResource("ImageTexture_sj267")
+SpinBox/icons/up = SubResource("ImageTexture_sj267")
+SpinBox/icons/up_disabled = SubResource("ImageTexture_sj267")
+SpinBox/icons/up_hover = SubResource("ImageTexture_sj267")
+SpinBox/icons/up_pressed = SubResource("ImageTexture_sj267")
+SpinBox/icons/updown = SubResource("ImageTexture_sj267")
 SpinBox/styles/down_background = SubResource("StyleBoxEmpty_k45vp")
 SpinBox/styles/down_background_disabled = SubResource("StyleBoxEmpty_k45vp")
 SpinBox/styles/down_background_hovered = SubResource("StyleBoxEmpty_k45vp")
