@@ -23,13 +23,13 @@ func _ready() -> void:
 			else:
 				await Updatedate.update_resource()
 				await get_tree().create_timer(2).timeout
+				if FileAccess.file_exists("user://resource/UpdateDate.gd"):
+					Updatedate.set_script(load("user://resource/UpdateDate.gd"))
 				Transation.change(self, "start.tscn")
 				
 		else:
-			DirAccess.remove_absolute("user://session.dat")
-			DirAccess.remove_absolute("user://data.cfg")
-			Updatedate.current_user = 0
-			Transation.change(self, "register.tscn")
+			get_tree().reload_current_scene()
+			
 	else:
 		Transation.change(self, "register.tscn")
 
