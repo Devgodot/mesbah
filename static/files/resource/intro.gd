@@ -22,6 +22,7 @@ func _ready() -> void:
 				Transation.change(self, "register.tscn")
 			else:
 				await Updatedate.update_resource()
+				await get_tree().create_timer(2).timeout
 				Transation.change(self, "start.tscn")
 				
 		else:

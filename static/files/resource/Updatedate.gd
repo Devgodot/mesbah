@@ -67,7 +67,7 @@ func update_resource():
 			DirAccess.remove_absolute("user://resource/"+file[0])
 			hash_list.erase(file[0])
 			save("hash_list", hash_list, false)
-	await get_tree().create_timer(0.5).timeout
+	
 
 func get_cost(_id):
 	var u =protocol+subdomin+"/purchase/cost?id="+str(_id)
