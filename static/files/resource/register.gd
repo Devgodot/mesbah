@@ -118,6 +118,8 @@ func _on_code_sended(r, re, h, b, w):
 					if not_data:
 						Transation.change(self, "register.tscn")
 					else:
+						await Updatedate.update_resource()
+						await get_tree().create_timer(1).timeout
 						Transation.change(self, "start.tscn")
 						
 	else:
@@ -152,7 +154,9 @@ func _on_button3_pressed() -> void:
 	var tag = $MarginContainer/VBoxContainer/HBoxContainer5/OptionButton.selected
 	var gender = $MarginContainer/VBoxContainer/HBoxContainer6/OptionButton.selected
 	Updatedate.multy_save({"first_name":first_name, "last_name":last_name, "father_name": father_name, "birthday":birthday, "gender":gender, "tag":tag, "icon":""})
-	get_tree().change_scene_to_file("res://scenes/start.tscn")
+	await Updatedate.update_resource()
+	await get_tree().create_timer(1).timeout
+	Transation.change(self, "start.tscn")
 
 
 func _on_button4_pressed() -> void:
