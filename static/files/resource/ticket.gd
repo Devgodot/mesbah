@@ -21,7 +21,11 @@ func _ready() -> void:
 		date = data.ticket.unixtime
 		if calendar:
 			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
-			print(event)
+			for e in event:
+				if e.has("title"):
+					if e.title == "یادآور حرکت قطار" or e.end == date * 1000:
+						$Button2.disabled = true
+						$Button2.text = "ث"
 		$Label4.text = data.ticket.time
 		$Label4.show()
 		$Timer.start()
