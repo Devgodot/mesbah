@@ -53,32 +53,31 @@ def get_ticket():
     if not tickets:
         return jsonify({"error": "تیکتی وجود ندارد"}), 404
     if current_user.username in UserInterface.query.first().data.get("management", []) and request.args.get("all", "false").lower() == "true":
-        # اگر کاربر مدیریت است و پارامتر all برابر true باشد، همه بلیط‌ها را برمی‌گردانیم
         tickets_data = []
         for ticket in tickets:
-            # تبدیل تاریخ میلادی به جلالی و ساخت رشته خروجی
-            jalali_datetime = JalaliDatetime(ticket.time)
+            # رفع اختلاف یک روز: به جای JalaliDatetime(ticket.time) از JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute) استفاده کنید
+            jalali_datetime = JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute)
             ticket_data = {
                 "time": f"{jalali_datetime.strftime('%Y/%m/%d %H:%M')}",
                 "max_users": ticket.max_users,
                 "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M'),
                 "users": len(ticket.users),
                 "tag": ticket.tag,
-                "nationality": ticket.nationality
+                "nationality": ticket.nationality,
+                "day": jalali_datetime.strftime('%A')
             }
             tickets_data.append(ticket_data)
     else:
         tickets_data = []
         for ticket in tickets:
-            jalali_datetime = JalaliDatetime(ticket.time)
-
+            jalali_datetime = JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute)
             if get_sort_by_birthday(current_user.birthday) in ticket.tag and current_user.data.get("nationality", 0) == ticket.nationality and current_user.gender == ticket.gender:
                 ticket_data = {
                     "time": f"{jalali_datetime.strftime('%Y/%m/%d %H:%M')}",
                     "max_users": ticket.max_users,
                     "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M'),
                     "users": len(ticket.users),
-                    "day": jalali_datetime.strftime('%A')  # روز هفته به فارسی
+                    "day": jalali_datetime.strftime('%A')
                 }
                 tickets_data.append(ticket_data)
     return jsonify({"data":tickets_data}), 200
@@ -153,11 +152,12 @@ def get_user_ticket():
     user_ticket = {}
     for ticket in tickets:
         if user_id in ticket.users:
-            jalali_datetime = JalaliDatetime(ticket.time)
+            jalali_datetime = JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute)
             user_ticket = {
                 "time": jalali_datetime.strftime('%Y/%m/%d %H:%M'),
                 "unixtime": ticket.time.timestamp(),
-                "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M'),
+                # استفاده از strftime برای تاریخ میلادی تا اختلاف روز رفع شود
+                "miladi_time": ticket.time.strftime('%Y-%m-%d %H:%M'),
                 "current_time": datetime.datetime.now(TehranTimezone()).timestamp()
             }
     if not user_ticket:
