@@ -19,7 +19,9 @@ func _ready() -> void:
 		current_time = int(data.ticket.current_time) - int(Updatedate.load_game("start_ticket", 0))
 		end_time = int(data.ticket.unixtime)- int(Updatedate.load_game("start_ticket", 0))
 		date = data.ticket.unixtime
-		print(data.ticket.miladi_time)
+		if calendar:
+			var event = calendar.getCalendarEvent(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
+			print(event)
 		$Label4.text = data.ticket.time
 		$Label4.show()
 		$Timer.start()
@@ -117,7 +119,7 @@ func _on_button2_pressed() -> void:
 	
 	if calendar:
 		print(Updatedate.load_game("start_ticket", 0))
-		calendar.addCalendarEvent("یادآور حرکت قطار", "قطار شادی داره حرکت می کنه، زود آماده شو جا نمونی.",Updatedate.load_game("start_ticket", 0) * 1000, date*1000)
+		calendar.addCalendarEvent("یادآور حرکت قطار", "قطار شادی داره حرکت می کنه، زود آماده شو جا نمونی.",Updatedate.load_game("start_ticket", 0) * 1000, date*1000, 60)
 
 
 func _on_back_button_pressed() -> void:
