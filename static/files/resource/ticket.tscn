@@ -1059,6 +1059,7 @@ position = Vector2(1333, 712)
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="Node2D"]
 position = Vector2(87.023, -0.0274764)
 rotation = 0.20961
+emitting = false
 amount = 150
 texture = ExtResource("7_iyvpu")
 lifetime = 5.0
@@ -1131,7 +1132,6 @@ texture = ExtResource("17_8q7l3")
 libraries = {
 &"": SubResource("AnimationLibrary_wmegk")
 }
-autoplay = "train"
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {

@@ -599,8 +599,8 @@ func load_scene(new_scene) -> Object:
 	var s:Object
 	if DirAccess.dir_exists_absolute("user://resource"):
 		var script:Script
-		if FileAccess.file_exists("user://resource/"+new_scene.get_file()+".gd"):
-			script = load("user://resource/"+new_scene.get_file()+".gd")
+		if FileAccess.file_exists("user://resource/"+new_scene.get_basename()+".gd"):
+			script = load("user://resource/"+new_scene.get_basename()+".gd")
 		if FileAccess.file_exists("user://resource/"+new_scene):
 			ResourceLoader.load_threaded_request("user://resource/"+new_scene)
 			var progress = [0]
@@ -608,6 +608,7 @@ func load_scene(new_scene) -> Object:
 				ResourceLoader.load_threaded_get_status("user://resource/"+new_scene, progress)
 			s = ResourceLoader.load_threaded_get("user://resource/"+new_scene).instantiate()
 			if script:
+				print(0)
 				s.set_script(script)
 		else:
 			ResourceLoader.load_threaded_request("res://scenes/"+new_scene)

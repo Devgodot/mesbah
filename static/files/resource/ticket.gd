@@ -28,7 +28,7 @@ func _ready() -> void:
 		$Button.hide()
 		$Button2.show()
 	w.queue_free()
-	$Node2D/CPUParticles2D2.emi
+	$Node2D/CPUParticles2D2.emitting = true
 	$AnimationPlayer.play("train")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
