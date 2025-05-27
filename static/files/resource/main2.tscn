@@ -560,29 +560,6 @@ offset_right = 145.0
 offset_bottom = 103.0
 text = "تایید"
 
-[node name="Button2" type="Button" parent="TabContainer/فردی"]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 104.0
-offset_right = 147.0
-offset_bottom = 202.0
-text = "تصویر"
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/فردی/Button2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 149.0
-offset_top = 14.0
-offset_right = 149.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-stretch_mode = 5
-flip_h = true
-
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/فردی"]
 layout_mode = 0
 anchor_top = 0.2135
@@ -1556,7 +1533,6 @@ text = "اعمال"
 
 [connection signal="tab_selected" from="TabContainer" to="." method="_on_tab_container_tab_selected"]
 [connection signal="pressed" from="TabContainer/فردی/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="TabContainer/فردی/Button2" to="." method="_on_facebutton_pressed"]
 [connection signal="gui_input" from="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer/TextureRect" to="." method="_on_texture_rect_gui_input2"]
 [connection signal="pressed" from="TabContainer/فردی/MarginContainer/VBoxContainer/Button" to="." method="_on_update_user_pressed"]
 [connection signal="text_changed" from="TabContainer/گروهی/name" to="." method="_on_name_text_changed"]
