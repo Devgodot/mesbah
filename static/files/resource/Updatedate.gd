@@ -68,7 +68,6 @@ func update_resource():
 			hash_list.erase(file[0])
 			save("hash_list", hash_list, false)
 	
-
 func get_cost(_id):
 	var u =protocol+subdomin+"/purchase/cost?id="+str(_id)
 	var d = await request(u)
