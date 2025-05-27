@@ -7,6 +7,7 @@ from confige import db, app, get_sort_by_birthday
 import time, uuid, os
 import datetime, json
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
+import jdatetime
 
 ticket_bp = Blueprint("ticket", __name__)
 
@@ -22,7 +23,7 @@ def add_ticket():
             date_part, time_part = _time.split(" ")
             year, month, day = map(int, date_part.split("/"))
             hour, minute = map(int, time_part.split(":"))
-            miladi_date = JalaliDatetime(year, month, day, hour, minute).todatetime()
+            miladi_date = jalali_to_gregorian(year, month, day, hour, minute)
         except Exception as e:
             return jsonify({"error": f"فرمت تاریخ اشتباه است: {e}"}), 400
         if Ticket.query.filter_by(season=season, time=miladi_date).first():
@@ -56,7 +57,7 @@ def get_ticket():
         tickets_data = []
         for ticket in tickets:
             # رفع اختلاف یک روز: به جای JalaliDatetime(ticket.time) از JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute) استفاده کنید
-            jalali_datetime = JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute)
+            jalali_datetime = gregorian_to_jalali(ticket.time)
             ticket_data = {
                 "time": f"{jalali_datetime.strftime('%Y/%m/%d %H:%M')}",
                 "max_users": ticket.max_users,
@@ -70,7 +71,7 @@ def get_ticket():
     else:
         tickets_data = []
         for ticket in tickets:
-            jalali_datetime = JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute)
+            jalali_datetime = gregorian_to_jalali(ticket.time)
             if get_sort_by_birthday(current_user.birthday) in ticket.tag and current_user.data.get("nationality", 0) == ticket.nationality and current_user.gender == ticket.gender:
                 ticket_data = {
                     "time": f"{jalali_datetime.strftime('%Y/%m/%d %H:%M')}",
@@ -90,7 +91,7 @@ def add_user_to_ticket():
     date_part, time_part = ticket_time.split(" ")
     year, month, day = map(int, date_part.split("/"))
     hour, minute = map(int, time_part.split(":"))
-    miladi_date = JalaliDatetime(year, month, day, hour, minute).todatetime()
+    miladi_date = jalali_to_gregorian(year, month, day, hour, minute)
     user_id = current_user.username
     ticket = Ticket.query.filter_by(time=miladi_date).first()
     tickets = Ticket.query.filter_by(season=UserInterface.query.first().data.get("train_season", 1)).all()
@@ -121,7 +122,7 @@ def change_ticket():
         date_part, time_part = ticket_time.split(" ")
         year, month, day = map(int, date_part.split("/"))
         hour, minute = map(int, time_part.split(":"))
-        miladi_date = JalaliDatetime(year, month, day, hour, minute).todatetime()
+        miladi_date = jalali_to_gregorian(year, month, day, hour, minute)
         ticket = Ticket.query.filter_by(time=miladi_date).first()
         new_time = data.get("new_time", "")
         if not ticket:
@@ -131,7 +132,7 @@ def change_ticket():
                 date_part, time_part = new_time.split(" ")
                 year, month, day = map(int, date_part.split("/"))
                 hour, minute = map(int, time_part.split(":"))
-                new_miladi_date = JalaliDatetime(year, month, day, hour, minute).todatetime()
+                new_miladi_date = jalali_to_gregorian(year, month, day, hour, minute)
             except Exception as e:
                 return jsonify({"error": f"فرمت تاریخ اشتباه است: {e}"}), 400
             ticket.time = new_miladi_date
@@ -152,14 +153,28 @@ def get_user_ticket():
     user_ticket = {}
     for ticket in tickets:
         if user_id in ticket.users:
-            jalali_datetime = JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute)
+            jalali_datetime = gregorian_to_jalali(ticket.time)
+            miladi_time = ticket.time
             user_ticket = {
                 "time": jalali_datetime.strftime('%Y/%m/%d %H:%M'),
                 "unixtime": ticket.time.timestamp(),
-                # استفاده از strftime برای تاریخ میلادی تا اختلاف روز رفع شود
-                "miladi_time": ticket.time.strftime('%Y-%m-%d %H:%M'),
+                "miladi_time": miladi_time.strftime('%Y-%m-%d %H:%M'),
                 "current_time": datetime.datetime.now(TehranTimezone()).timestamp()
             }
     if not user_ticket:
         return jsonify({"error": "کاربر بلیطی ندارد"}), 404
     return jsonify({"ticket":user_ticket}), 200
+
+# راه دیگر برای تبدیل تاریخ جلالی به میلادی و بالعکس بدون khayyam:
+# استفاده از کتابخانه jdatetime (اگر نصب باشد)
+
+# تبدیل جلالی به میلادی
+def jalali_to_gregorian(jy, jm, jd, hour=0, minute=0):
+    gdate = jdatetime.datetime(jy, jm, jd, hour, minute).togregorian()
+    return gdate
+
+# تبدیل میلادی به جلالی
+def gregorian_to_jalali(dt):
+    jdate = jdatetime.datetime.fromgregorian(datetime=dt)
+    return jdate
+
