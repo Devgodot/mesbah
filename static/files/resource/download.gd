@@ -24,6 +24,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	prints(max_files, file)
 	if max_files != 0:
 		$TextureProgressBar.value = 34 + (float(file) / float(max_files)) * 27
 	if file == max_files and file != 0:
