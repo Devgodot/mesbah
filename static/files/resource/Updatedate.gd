@@ -51,7 +51,7 @@ func update_resource():
 			DirAccess.make_dir_absolute("user://resource")
 		if data.add.size() > 0:
 			get_tree().get_root().add_child(load_scene("download.tscn"))
-		var index = 0
+		var index = 1
 		start_download.emit(data.add.size())
 		
 		for file in data.add:
