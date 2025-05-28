@@ -11,6 +11,7 @@ func _ready() -> void:
 		calendar = Engine.get_singleton("GodotGetFile")
 		calendar.permission_granted.connect(func():
 			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
+			
 			for e in event:
 				if e.has("title"):
 					if e.title == "یادآور حرکت قطار":
@@ -35,6 +36,7 @@ func _ready() -> void:
 		date = data.ticket.unixtime
 		if calendar:
 			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
+			print(event)
 			for e in event:
 				if e.has("title"):
 					if e.title == "یادآور حرکت قطار":
