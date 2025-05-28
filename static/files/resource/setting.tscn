@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_7rmaj"]
 [ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_n1wy8"]
 [ext_resource type="Script" uid="uid://oarddj8g4ncf" path="res://script/setting.gd" id="6_psbjc"]
-[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="7_u1144"]
+[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="7_wumwv"]
 [ext_resource type="Texture2D" uid="uid://cdjcdq5vmjgwr" path="res://sprite/Layer 5.png" id="8_3chvs"]
 [ext_resource type="Texture2D" uid="uid://cnh2id2fbbp6v" path="res://sprite/Layer 7.png" id="9_k7mua"]
 [ext_resource type="Texture2D" uid="uid://1gjx38igfvf" path="res://sprite/Layer 9.png" id="10_uqwbb"]
@@ -1025,7 +1025,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_u1144")
+texture = ExtResource("7_wumwv")
 expand_mode = 1
 stretch_mode = 5
 
