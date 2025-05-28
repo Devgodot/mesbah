@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3]
+[gd_scene load_steps=79 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_lohuj"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_riekw"]
@@ -24,6 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://txty07sw0wdc" path="res://sprite/170259461.jpg" id="20_7erly"]
 [ext_resource type="Script" uid="uid://c8o7njavqtn62" path="res://script/MainButton.gd" id="20_k7alf"]
 [ext_resource type="Texture2D" uid="uid://cvhc8t7r6lv5n" path="res://sprite/169804434.jpg" id="21_ng4qj"]
+[ext_resource type="Texture2D" uid="uid://3nvhf05dl7hx" path="res://sprite/آیکون 1.png" id="25_1lstj"]
+[ext_resource type="Texture2D" uid="uid://dr7jbhvngkexc" path="res://sprite/آیکون 2.png" id="26_1yc3g"]
+[ext_resource type="Texture2D" uid="uid://bu00jw7n80iu" path="res://sprite/آیکون4.png" id="27_4n1tv"]
+[ext_resource type="Texture2D" uid="uid://cw1bo01blyu6f" path="res://sprite/آیکون3.png" id="28_odxo3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qf4cw"]
 
@@ -165,6 +169,12 @@ modulate_color = Color(0.349099, 0.996872, 7.70092e-07, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j7fht"]
 texture = ExtResource("19_7ep1v")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_8wh6k"]
+viewport_path = NodePath("SubViewport5")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_82rlh"]
+viewport_path = NodePath("SubViewport6")
+
 [sub_resource type="Resource" id="Resource_6hmx6"]
 script = ExtResource("11_odxo3")
 font = ExtResource("5_7ep1v")
@@ -176,26 +186,99 @@ ouline_selected_color = Color(0, 0, 0, 1)
 outline_unselected_color = Color(0.541176, 0, 0, 1)
 
 [sub_resource type="Resource" id="Resource_2gfuy"]
+resource_local_to_scene = true
 script = ExtResource("20_k7alf")
 arrow_icon = SubResource("CompressedTexture2D_8aotp")
 max_arrow_width = 100
 offset_arrow = Vector2(3.245, 30)
 start_rotation = 0
 end_rotation = -90
+icon_selected = SubResource("ViewportTexture_8wh6k")
+icon_unselected = SubResource("ViewportTexture_82rlh")
 label_settings = SubResource("Resource_6hmx6")
 expand_icon = true
 flat = false
 disabled = false
 icon_v_aligment = 1
 icon_h_aligment = 2
-aligment = 1
-text = "رمضان 1404"
+aligment = 2
+text = "      رمضان 1404"
 normal_style = SubResource("StyleBoxTexture_j7fht")
 hover_style = SubResource("StyleBoxTexture_j7fht")
 pressed_style = SubResource("StyleBoxTexture_fmdiu")
 hover_pressed_style = SubResource("StyleBoxTexture_fmdiu")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6hmx6"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cc30s"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ya0au"]
+load_path = "res://.godot/imported/free-arrow-left-icon-3099-thumb.png-71742ab9b42da1b4cafdee22a6d930eb.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dmnnq"]
+load_path = "res://.godot/imported/Layer 10.png-efa4ed0ef4b141a1b3dd12860c43c474.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2gfuy"]
+texture = SubResource("CompressedTexture2D_dmnnq")
+modulate_color = Color(0.349099, 0.996872, 7.70092e-07, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cc30s"]
+load_path = "res://.godot/imported/Layer 10.png-efa4ed0ef4b141a1b3dd12860c43c474.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0gyww"]
+texture = SubResource("CompressedTexture2D_cc30s")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1bd0r"]
+viewport_path = NodePath("SubViewport7")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xam4k"]
+viewport_path = NodePath("SubViewport8")
+
+[sub_resource type="Resource" id="Resource_yoxka"]
+script = ExtResource("11_odxo3")
+font = ExtResource("5_7ep1v")
+font_size = 58
+selected_color = Color(1, 1, 1, 1)
+unselected_color = Color(1, 1, 1, 1)
+outline_size = 6
+ouline_selected_color = Color(0, 0, 0, 1)
+outline_unselected_color = Color(0.541176, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xekfo"]
+load_path = "res://.godot/imported/Layer 10.png-efa4ed0ef4b141a1b3dd12860c43c474.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ypgks"]
+texture = SubResource("CompressedTexture2D_xekfo")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cs3pn"]
+load_path = "res://.godot/imported/Layer 10.png-efa4ed0ef4b141a1b3dd12860c43c474.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycbhe"]
+texture = SubResource("CompressedTexture2D_cs3pn")
+modulate_color = Color(0.349099, 0.996872, 7.70092e-07, 1)
+
+[sub_resource type="Resource" id="Resource_5xbah"]
+resource_local_to_scene = true
+script = ExtResource("20_k7alf")
+arrow_icon = SubResource("CompressedTexture2D_ya0au")
+max_arrow_width = 100
+offset_arrow = Vector2(3.245, 30)
+start_rotation = 0
+end_rotation = -90
+icon_selected = SubResource("ViewportTexture_1bd0r")
+icon_unselected = SubResource("ViewportTexture_xam4k")
+label_settings = SubResource("Resource_yoxka")
+expand_icon = true
+flat = false
+disabled = false
+icon_v_aligment = 1
+icon_h_aligment = 2
+aligment = 2
+text = "       غدیر 1404"
+normal_style = SubResource("StyleBoxTexture_ypgks")
+hover_style = SubResource("StyleBoxTexture_0gyww")
+pressed_style = SubResource("StyleBoxTexture_ycbhe")
+hover_pressed_style = SubResource("StyleBoxTexture_2gfuy")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8itgj"]
 
@@ -215,6 +298,27 @@ corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
+
+[sub_resource type="Gradient" id="Gradient_pxum8"]
+offsets = PackedFloat32Array(0, 0.619048, 0.714286)
+colors = PackedColorArray(0.737193, 0.737193, 0.737193, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vdf25"]
+gradient = SubResource("Gradient_pxum8")
+width = 5
+fill = 1
+fill_from = Vector2(0.382906, 0.495726)
+
+[sub_resource type="Curve" id="Curve_0v776"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.388626, 0.876405), 0.0, 0.0, 0, 0, Vector2(0.767773, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.134832), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_k41c7"]
+offsets = PackedFloat32Array(0, 0.610811, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.962162, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_i5q5x"]
+colors = PackedColorArray(0.866667, 1, 0, 1, 1, 1, 1, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -410,8 +514,15 @@ vertical_alignment = 1
 
 [node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_6d3v3")]
 layout_mode = 2
-active = true
 base_button = SubResource("Resource_2gfuy")
+subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
+panel_style = SubResource("StyleBoxEmpty_cc30s")
+height = 250.0
+
+[node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_6d3v3")]
+layout_mode = 2
+base_button = SubResource("Resource_5xbah")
+subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
 
@@ -517,6 +628,98 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_2gfuy")
+
+[node name="SubViewport5" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(522, 487)
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport5"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_right = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("25_1lstj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewport5/TextureRect"]
+position = Vector2(380, 100)
+amount = 20
+texture = SubResource("GradientTexture2D_vdf25")
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 189.66
+initial_velocity_max = 189.66
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_0v776")
+color_ramp = SubResource("Gradient_k41c7")
+color_initial_ramp = SubResource("Gradient_i5q5x")
+
+[node name="SubViewport6" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(522, 487)
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport6"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_right = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("26_1yc3g")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SubViewport7" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(522, 487)
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport7"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_right = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_4n1tv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewport7/TextureRect"]
+position = Vector2(380, 100)
+amount = 20
+texture = SubResource("GradientTexture2D_vdf25")
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 189.66
+initial_velocity_max = 189.66
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_0v776")
+color_ramp = SubResource("Gradient_k41c7")
+color_initial_ramp = SubResource("Gradient_i5q5x")
+
+[node name="SubViewport8" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(522, 487)
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport8"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_right = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("28_odxo3")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
