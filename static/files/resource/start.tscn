@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3]
+[gd_scene load_steps=45 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_lohuj"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_riekw"]
@@ -145,6 +145,12 @@ expand_margin_bottom = 50.0
 font = ExtResource("17_nqan5")
 font_size = 25
 font_color = Color(0.150303, 0.42559, 2.69532e-06, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hp05y"]
+font = ExtResource("17_nqan5")
+font_size = 37
+outline_size = 5
+outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8itgj"]
 
@@ -346,11 +352,16 @@ vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer/MarginContainer/Control"]
 layout_mode = 0
-offset_left = 345.0
-offset_top = 138.0
-offset_right = 385.0
-offset_bottom = 161.0
-text = "طرح"
+offset_left = 251.0
+offset_top = 100.0
+offset_right = 462.0
+offset_bottom = 294.0
+text = " طرح 
+فرهنگی تربیتی
+مصباح"
+label_settings = SubResource("LabelSettings_hp05y")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="CustomTabContainer"]
 visible = false
