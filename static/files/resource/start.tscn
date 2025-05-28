@@ -398,12 +398,12 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="Gradient" id="Gradient_pxum8"]
+[sub_resource type="Gradient" id="Gradient_4n1tv"]
 offsets = PackedFloat32Array(0, 0.619048, 0.714286)
 colors = PackedColorArray(0.737193, 0.737193, 0.737193, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vdf25"]
-gradient = SubResource("Gradient_pxum8")
+gradient = SubResource("Gradient_4n1tv")
 width = 5
 fill = 1
 fill_from = Vector2(0.382906, 0.495726)
