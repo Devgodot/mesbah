@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3]
+[gd_scene load_steps=54 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_lohuj"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_riekw"]
@@ -17,9 +17,12 @@
 [ext_resource type="Texture2D" uid="uid://ce78doms7yhik" path="res://sprite/Layer 4.png" id="15_pup0w"]
 [ext_resource type="Texture2D" uid="uid://d1hp2ojy3bvqc" path="res://sprite/Layer 8.png" id="16_1oawt"]
 [ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="17_nqan5"]
+[ext_resource type="PackedScene" uid="uid://byrq1i1400fl7" path="res://scenes/menu_button.tscn" id="18_6d3v3"]
 [ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="18_wcpcs"]
+[ext_resource type="Texture2D" uid="uid://c1pdrs87jpis2" path="res://sprite/Layer 10.png" id="19_7ep1v"]
 [ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="19_bvtya"]
 [ext_resource type="Texture2D" uid="uid://txty07sw0wdc" path="res://sprite/170259461.jpg" id="20_7erly"]
+[ext_resource type="Script" uid="uid://c8o7njavqtn62" path="res://script/MainButton.gd" id="20_k7alf"]
 [ext_resource type="Texture2D" uid="uid://cvhc8t7r6lv5n" path="res://sprite/169804434.jpg" id="21_ng4qj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qf4cw"]
@@ -151,6 +154,48 @@ font = ExtResource("17_nqan5")
 font_size = 37
 outline_size = 5
 outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8aotp"]
+load_path = "res://.godot/imported/free-arrow-left-icon-3099-thumb.png-71742ab9b42da1b4cafdee22a6d930eb.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fmdiu"]
+texture = ExtResource("19_7ep1v")
+modulate_color = Color(0.349099, 0.996872, 7.70092e-07, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j7fht"]
+texture = ExtResource("19_7ep1v")
+
+[sub_resource type="Resource" id="Resource_6hmx6"]
+script = ExtResource("11_odxo3")
+font = ExtResource("5_7ep1v")
+font_size = 58
+selected_color = Color(1, 1, 1, 1)
+unselected_color = Color(1, 1, 1, 1)
+outline_size = 6
+ouline_selected_color = Color(0, 0, 0, 1)
+outline_unselected_color = Color(0.541176, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_2gfuy"]
+script = ExtResource("20_k7alf")
+arrow_icon = SubResource("CompressedTexture2D_8aotp")
+max_arrow_width = 100
+offset_arrow = Vector2(3.245, 30)
+start_rotation = 0
+end_rotation = -90
+label_settings = SubResource("Resource_6hmx6")
+expand_icon = true
+flat = false
+disabled = false
+icon_v_aligment = 1
+icon_h_aligment = 2
+aligment = 1
+text = "رمضان 1404"
+normal_style = SubResource("StyleBoxTexture_j7fht")
+hover_style = SubResource("StyleBoxTexture_j7fht")
+pressed_style = SubResource("StyleBoxTexture_fmdiu")
+hover_pressed_style = SubResource("StyleBoxTexture_fmdiu")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cc30s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8itgj"]
 
@@ -362,6 +407,13 @@ text = " طرح
 label_settings = SubResource("LabelSettings_hp05y")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_6d3v3")]
+layout_mode = 2
+active = true
+base_button = SubResource("Resource_2gfuy")
+panel_style = SubResource("StyleBoxEmpty_cc30s")
+height = 250.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="CustomTabContainer"]
 visible = false
