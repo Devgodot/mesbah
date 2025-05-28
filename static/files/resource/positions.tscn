@@ -1,7 +1,7 @@
 [gd_scene load_steps=42 format=3]
 
 [ext_resource type="Script" uid="uid://ng5a76jd5id6" path="res://script/positions.gd" id="1_sooxo"]
-[ext_resource type="Texture2D" uid="uid://bmogs15hsxwiu" path="res://sprite/امتیاز اصلی.jpg" id="2_2kwmg"]
+[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_sooxo"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_ftk6j"]
 [ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="4_nuctg"]
 [ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="5_h6vow"]
@@ -230,7 +230,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_2kwmg")
+texture = ExtResource("2_sooxo")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_direction = 3
