@@ -85,6 +85,7 @@ func _ready() -> void:
 	
 	var btn = Button.new()
 	var tex = TextureRect.new()
+	btn.size.y = height
 	tex.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	tex.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	tex.size = Vector2.ONE * (btn.size.y * 3 / 5)
@@ -92,6 +93,7 @@ func _ready() -> void:
 	tex.pivot_offset = tex.size / 2
 	btn.add_child(tex)
 	var panel = Panel.new()
+	
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	btn.add_child(panel)
 	btn.mouse_filter = Control.MOUSE_FILTER_PASS
@@ -105,6 +107,7 @@ func _ready() -> void:
 		)
 	control.queue_free()
 	control = Control.new()
+	control.custom_minimum_size.y = btn.size.y
 	control.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	control.name = "base_counter"
 	control.add_child(btn)

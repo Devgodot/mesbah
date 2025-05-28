@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3]
+[gd_scene load_steps=52 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_k7alf"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_8hiq8"]
@@ -18,10 +18,7 @@
 [ext_resource type="Script" uid="uid://bkb2281gx5vbf" path="res://script/menu_button.gd" id="16_ng4qj"]
 [ext_resource type="Texture2D" uid="uid://d1hp2ojy3bvqc" path="res://sprite/Layer 8.png" id="17_ed63f"]
 [ext_resource type="Script" uid="uid://c8o7njavqtn62" path="res://script/MainButton.gd" id="18_og5kd"]
-[ext_resource type="Script" uid="uid://w6f05d55d5o8" path="res://script/options.gd" id="19_7ye7n"]
 [ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="20_i36ob"]
-[ext_resource type="Texture2D" uid="uid://c1pdrs87jpis2" path="res://sprite/Layer 10.png" id="21_brbys"]
-[ext_resource type="Texture2D" uid="uid://c2ofu4ew587al" path="res://sprite/free-arrow-left-icon-3099-thumb.png" id="22_jubht"]
 [ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="23_w6tu5"]
 [ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="24_e6x5r"]
 [ext_resource type="Texture2D" uid="uid://txty07sw0wdc" path="res://sprite/170259461.jpg" id="25_qdso4"]
@@ -188,212 +185,10 @@ hover_pressed_style = SubResource("StyleBoxTexture_fmdiu")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_728ow"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8jfef"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qfvu4"]
-texture = ExtResource("21_brbys")
-
-[sub_resource type="Resource" id="Resource_g3i1d"]
-script = ExtResource("19_7ye7n")
-id = 0
-menu_button = false
-text = "         سلامت معنوی"
-height = 240
-separation = 21
-active = false
-options = Array[ExtResource("19_7ye7n")]([])
+[sub_resource type="LabelSettings" id="LabelSettings_cdrmf"]
 font = ExtResource("20_i36ob")
-normal_style = SubResource("StyleBoxTexture_qfvu4")
-focus_style = SubResource("StyleBoxEmpty_8jfef")
-hover_style = SubResource("StyleBoxTexture_qfvu4")
-pressed_style = SubResource("StyleBoxTexture_qfvu4")
-font_color = Color(1, 1, 1, 1)
-outline_color = Color(0, 0, 0, 1)
-font_hover_color = Color(0, 0, 0, 1)
-font_pressed_color = Color(0, 0, 0, 1)
-font_disabled_color = Color(0, 0, 0, 1)
-font_focus_color = Color(0, 0, 0, 1)
-outline_size = 0.0
-font_size = 60.0
-
-[sub_resource type="Resource" id="Resource_twuju"]
-script = ExtResource("19_7ye7n")
-id = 1
-menu_button = false
-text = "       سلامت جسمانی"
-height = 240
-separation = 21
-active = false
-options = Array[ExtResource("19_7ye7n")]([])
-font = ExtResource("20_i36ob")
-normal_style = SubResource("StyleBoxTexture_qfvu4")
-focus_style = SubResource("StyleBoxEmpty_8jfef")
-hover_style = SubResource("StyleBoxTexture_qfvu4")
-pressed_style = SubResource("StyleBoxTexture_qfvu4")
-font_color = Color(1, 1, 1, 1)
-outline_color = Color(0, 0, 0, 1)
-font_hover_color = Color(0, 0, 0, 1)
-font_pressed_color = Color(0, 0, 0, 1)
-font_disabled_color = Color(0, 0, 0, 1)
-font_focus_color = Color(0, 0, 0, 1)
-outline_size = 0.0
-font_size = 60.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d7e6r"]
-texture = ExtResource("21_brbys")
-
-[sub_resource type="Resource" id="Resource_728ow"]
-script = ExtResource("11_1oawt")
-font = ExtResource("20_i36ob")
-font_size = 50
-selected_color = Color(1, 1, 1, 1)
-unselected_color = Color(1, 1, 1, 1)
-outline_size = 0
-ouline_selected_color = Color(0, 0, 0, 1)
-outline_unselected_color = Color(0, 0, 0, 1)
-metadata/_custom_type_script = "uid://ctyywxyk7kuid"
-
-[sub_resource type="Resource" id="Resource_8aotp"]
-script = ExtResource("18_og5kd")
-arrow_icon = ExtResource("22_jubht")
-max_arrow_width = 0
-offset_arrow = Vector2(0, 0)
-start_rotation = 0
-end_rotation = -90
-label_settings = SubResource("Resource_728ow")
-expand_icon = false
-max_icon_width = 0
-flat = false
-disabled = false
-icon_v_aligment = 0
-icon_h_aligment = 1
-aligment = 1
-text = "طرح‌های مناسبتی"
-normal_style = SubResource("StyleBoxTexture_d7e6r")
-hover_style = SubResource("StyleBoxTexture_d7e6r")
-pressed_style = SubResource("StyleBoxTexture_d7e6r")
-hover_pressed_style = SubResource("StyleBoxTexture_d7e6r")
-metadata/_custom_type_script = "uid://c8o7njavqtn62"
-
-[sub_resource type="Resource" id="Resource_fmdiu"]
-script = ExtResource("19_7ye7n")
-id = 0
-menu_button = false
-text = "     طرح رمضان"
-height = 240
-separation = 21
-active = false
-options = Array[ExtResource("19_7ye7n")]([])
-font = ExtResource("20_i36ob")
-normal_style = SubResource("StyleBoxTexture_qfvu4")
-focus_style = SubResource("StyleBoxEmpty_8jfef")
-hover_style = SubResource("StyleBoxTexture_qfvu4")
-pressed_style = SubResource("StyleBoxTexture_qfvu4")
-font_color = Color(1, 1, 1, 1)
-outline_color = Color(0, 0, 0, 1)
-font_hover_color = Color(0, 0, 0, 1)
-font_pressed_color = Color(0, 0, 0, 1)
-font_disabled_color = Color(0, 0, 0, 1)
-font_focus_color = Color(0, 0, 0, 1)
-outline_size = 0.0
-font_size = 60.0
-
-[sub_resource type="Resource" id="Resource_d7e6r"]
-script = ExtResource("18_og5kd")
-arrow_icon = ExtResource("22_jubht")
-max_arrow_width = 0
-offset_arrow = Vector2(0, 0)
-start_rotation = 0
-end_rotation = -90
-label_settings = SubResource("Resource_728ow")
-expand_icon = false
-max_icon_width = 0
-flat = false
-disabled = false
-icon_v_aligment = 0
-icon_h_aligment = 1
-aligment = 1
-text = "غدیر 1404"
-normal_style = SubResource("StyleBoxTexture_d7e6r")
-hover_style = SubResource("StyleBoxTexture_d7e6r")
-pressed_style = SubResource("StyleBoxTexture_d7e6r")
-hover_pressed_style = SubResource("StyleBoxTexture_d7e6r")
-metadata/_custom_type_script = "uid://c8o7njavqtn62"
-
-[sub_resource type="Resource" id="Resource_2gfuy"]
-script = ExtResource("19_7ye7n")
-id = 0
-menu_button = false
-text = "     قطار شادی"
-height = 240
-separation = 21
-active = false
-options = Array[ExtResource("19_7ye7n")]([])
-font = ExtResource("20_i36ob")
-normal_style = SubResource("StyleBoxTexture_qfvu4")
-focus_style = SubResource("StyleBoxEmpty_8jfef")
-hover_style = SubResource("StyleBoxTexture_qfvu4")
-pressed_style = SubResource("StyleBoxTexture_qfvu4")
-font_color = Color(1, 1, 1, 1)
-outline_color = Color(0, 0, 0, 1)
-font_hover_color = Color(0, 0, 0, 1)
-font_pressed_color = Color(0, 0, 0, 1)
-font_disabled_color = Color(0, 0, 0, 1)
-font_focus_color = Color(0, 0, 0, 1)
-outline_size = 0.0
-font_size = 60.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxmfj"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wh6k"]
-
-[sub_resource type="Resource" id="Resource_6hmx6"]
-script = ExtResource("19_7ye7n")
-id = 1
-menu_button = true
-text = ""
-height = 240
-separation = 10
-active = false
-base_button = SubResource("Resource_d7e6r")
-panel_style = SubResource("StyleBoxEmpty_gxmfj")
-subpanel_style = SubResource("StyleBoxEmpty_8wh6k")
-options = Array[ExtResource("19_7ye7n")]([SubResource("Resource_2gfuy")])
-font_color = Color(0, 0, 0, 1)
-outline_color = Color(0, 0, 0, 1)
-font_hover_color = Color(0, 0, 0, 1)
-font_pressed_color = Color(0, 0, 0, 1)
-font_disabled_color = Color(0, 0, 0, 1)
-font_focus_color = Color(0, 0, 0, 1)
-outline_size = 0.0
-font_size = 24.0
-metadata/_custom_type_script = "uid://w6f05d55d5o8"
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7fht"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fmdiu"]
-
-[sub_resource type="Resource" id="Resource_cdrmf"]
-script = ExtResource("19_7ye7n")
-id = 2
-menu_button = true
-text = ""
-height = 240
-separation = 10
-active = true
-base_button = SubResource("Resource_8aotp")
-panel_style = SubResource("StyleBoxEmpty_j7fht")
-subpanel_style = SubResource("StyleBoxEmpty_fmdiu")
-options = Array[ExtResource("19_7ye7n")]([SubResource("Resource_fmdiu"), SubResource("Resource_6hmx6")])
-font_color = Color(0, 0, 0, 1)
-outline_color = Color(0, 0, 0, 1)
-font_hover_color = Color(0, 0, 0, 1)
-font_pressed_color = Color(0, 0, 0, 1)
-font_disabled_color = Color(0, 0, 0, 1)
-font_focus_color = Color(0, 0, 0, 1)
-outline_size = 0.0
-font_size = 24.0
-metadata/_custom_type_script = "uid://w6f05d55d5o8"
+font_size = 25
+font_color = Color(0.150303, 0.42559, 2.69532e-06, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8itgj"]
 
@@ -580,18 +375,27 @@ theme_override_constants/margin_bottom = 40
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 script = ExtResource("16_ng4qj")
-active = true
 base_button = SubResource("Resource_b1pjr")
 subpanel_style = SubResource("StyleBoxEmpty_d7e6r")
 panel_style = SubResource("StyleBoxEmpty_728ow")
 height = 400.0
-options = Array[ExtResource("19_7ye7n")]([SubResource("Resource_g3i1d"), SubResource("Resource_twuju"), SubResource("Resource_cdrmf")])
 
 [node name="MarginContainer2" type="MarginContainer" parent="CustomTabContainer"]
 visible = false
 layout_mode = 0
 offset_right = 1000.0
 offset_bottom = 1742.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 607.0
+offset_right = 818.0
+offset_bottom = 746.0
+text = "این صفحه به زودی                  بارگذاری خواهد شد..."
+label_settings = SubResource("LabelSettings_cdrmf")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
