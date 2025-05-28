@@ -186,7 +186,8 @@ corner_radius_bottom_left = 50
 [sub_resource type="LabelSettings" id="LabelSettings_r5dor"]
 font = ExtResource("8_xb4du")
 font_size = 41
-font_color = Color(0, 0, 0, 1)
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_x8r8q"]
 font = ExtResource("8_xb4du")
