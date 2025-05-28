@@ -9,6 +9,13 @@ func _ready() -> void:
 	
 	if Engine.has_singleton("GodotGetFile"):
 		calendar = Engine.get_singleton("GodotGetFile")
+		calendar.permission_granted.connect(func():
+			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
+			for e in event:
+				if e.has("title"):
+					if e.title == "یادآور حرکت قطار":
+						$Button2.disabled = true
+						$Button2.text = "ثبت شده در تقویم")
 		calendar.calendar_event_activity_closed.connect(func():
 			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
 			for e in event:
