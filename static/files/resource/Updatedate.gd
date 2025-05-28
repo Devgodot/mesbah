@@ -607,7 +607,7 @@ func load_scene(new_scene) -> Object:
 				ResourceLoader.load_threaded_get_status("user://resource/"+new_scene, progress)
 			s = ResourceLoader.load_threaded_get("user://resource/"+new_scene).instantiate()
 			if script:
-				print(0)
+
 				s.set_script(script)
 		else:
 			ResourceLoader.load_threaded_request("res://scenes/"+new_scene)
