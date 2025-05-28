@@ -1,7 +1,7 @@
 [gd_scene load_steps=40 format=3]
 
 [ext_resource type="Script" uid="uid://duenrlby8j7jc" path="res://script/register.gd" id="1_843yq"]
-[ext_resource type="Texture2D" uid="uid://cg3jo2qcdo44r" path="res://sprite/ورود به طرح رمضان 1403.jpg" id="2_ubasg"]
+[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_843yq"]
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="3_3hnaa"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="4_rv2xj"]
 [ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="5_m7ue7"]
@@ -823,7 +823,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ubasg")
+texture = ExtResource("2_843yq")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

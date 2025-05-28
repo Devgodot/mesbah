@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3]
+[gd_scene load_steps=86 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_1lstj"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_1yc3g"]
@@ -20,8 +20,10 @@
 [ext_resource type="PackedScene" uid="uid://byrq1i1400fl7" path="res://scenes/menu_button.tscn" id="18_i36ob"]
 [ext_resource type="Texture2D" uid="uid://c1pdrs87jpis2" path="res://sprite/Layer 10.png" id="19_brbys"]
 [ext_resource type="Script" uid="uid://c8o7njavqtn62" path="res://script/MainButton.gd" id="20_jubht"]
+[ext_resource type="Script" uid="uid://w6f05d55d5o8" path="res://script/options.gd" id="21_4n1tv"]
 [ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="21_w6tu5"]
 [ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="22_e6x5r"]
+[ext_resource type="Texture2D" uid="uid://df4ut7g6r8nwh" path="res://sprite/مصباح1.png" id="22_odxo3"]
 [ext_resource type="Texture2D" uid="uid://txty07sw0wdc" path="res://sprite/170259461.jpg" id="23_qdso4"]
 [ext_resource type="Texture2D" uid="uid://cvhc8t7r6lv5n" path="res://sprite/169804434.jpg" id="24_2bsga"]
 [ext_resource type="Texture2D" uid="uid://3nvhf05dl7hx" path="res://sprite/آیکون 1.png" id="25_h770b"]
@@ -213,6 +215,78 @@ hover_pressed_style = SubResource("StyleBoxTexture_fmdiu")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cc30s"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cc30s"]
+texture = ExtResource("22_odxo3")
+
+[sub_resource type="Resource" id="Resource_0gyww"]
+script = ExtResource("21_4n1tv")
+id = 0
+menu_button = false
+text = "سلامت معنوی"
+height = 160
+separation = 2
+active = false
+options = Array[ExtResource("21_4n1tv")]([])
+font = ExtResource("17_7ye7n")
+normal_style = SubResource("StyleBoxTexture_cc30s")
+focus_style = SubResource("StyleBoxTexture_cc30s")
+hover_style = SubResource("StyleBoxTexture_cc30s")
+pressed_style = SubResource("StyleBoxTexture_cc30s")
+font_color = Color(1, 1, 1, 1)
+outline_color = Color(0, 0, 0, 1)
+font_hover_color = Color(1, 1, 1, 1)
+font_pressed_color = Color(1, 1, 1, 1)
+font_disabled_color = Color(1, 1, 1, 1)
+font_focus_color = Color(1, 1, 1, 1)
+outline_size = 0.0
+font_size = 40.0
+
+[sub_resource type="Resource" id="Resource_1bd0r"]
+script = ExtResource("21_4n1tv")
+id = 1
+menu_button = false
+text = "سلامت جسمانی"
+height = 160
+separation = -4
+active = false
+options = Array[ExtResource("21_4n1tv")]([])
+font = ExtResource("17_7ye7n")
+normal_style = SubResource("StyleBoxTexture_cc30s")
+focus_style = SubResource("StyleBoxTexture_cc30s")
+hover_style = SubResource("StyleBoxTexture_cc30s")
+pressed_style = SubResource("StyleBoxTexture_cc30s")
+font_color = Color(1, 1, 1, 1)
+outline_color = Color(0, 0, 0, 1)
+font_hover_color = Color(1, 1, 1, 1)
+font_pressed_color = Color(1, 1, 1, 1)
+font_disabled_color = Color(1, 1, 1, 1)
+font_focus_color = Color(1, 1, 1, 1)
+outline_size = 0.0
+font_size = 40.0
+
+[sub_resource type="Resource" id="Resource_xam4k"]
+script = ExtResource("21_4n1tv")
+id = 2
+menu_button = false
+text = "سلامت فکری"
+height = 160
+separation = 10
+active = false
+options = Array[ExtResource("21_4n1tv")]([])
+font = ExtResource("17_7ye7n")
+normal_style = SubResource("StyleBoxTexture_cc30s")
+focus_style = SubResource("StyleBoxTexture_cc30s")
+hover_style = SubResource("StyleBoxTexture_cc30s")
+pressed_style = SubResource("StyleBoxTexture_cc30s")
+font_color = Color(1, 1, 1, 1)
+outline_color = Color(0, 0, 0, 1)
+font_hover_color = Color(1, 1, 1, 1)
+font_pressed_color = Color(1, 1, 1, 1)
+font_disabled_color = Color(1, 1, 1, 1)
+font_focus_color = Color(1, 1, 1, 1)
+outline_size = 0.0
+font_size = 40.0
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ya0au"]
 load_path = "res://.godot/imported/free-arrow-left-icon-3099-thumb.png-71742ab9b42da1b4cafdee22a6d930eb.ctex"
 
@@ -229,10 +303,10 @@ load_path = "res://.godot/imported/Layer 10.png-efa4ed0ef4b141a1b3dd12860c43c474
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0gyww"]
 texture = SubResource("CompressedTexture2D_cc30s")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1bd0r"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_yoxka"]
 viewport_path = NodePath("SubViewport7")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xam4k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xekfo"]
 viewport_path = NodePath("SubViewport8")
 
 [sub_resource type="Resource" id="Resource_yoxka"]
@@ -258,7 +332,7 @@ load_path = "res://.godot/imported/Layer 10.png-efa4ed0ef4b141a1b3dd12860c43c474
 texture = SubResource("CompressedTexture2D_cs3pn")
 modulate_color = Color(0.349099, 0.996872, 7.70092e-07, 1)
 
-[sub_resource type="Resource" id="Resource_5xbah"]
+[sub_resource type="Resource" id="Resource_ypgks"]
 resource_local_to_scene = true
 script = ExtResource("20_jubht")
 arrow_icon = SubResource("CompressedTexture2D_ya0au")
@@ -266,8 +340,8 @@ max_arrow_width = 100
 offset_arrow = Vector2(3.245, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_1bd0r")
-icon_unselected = SubResource("ViewportTexture_xam4k")
+icon_selected = SubResource("ViewportTexture_yoxka")
+icon_unselected = SubResource("ViewportTexture_xekfo")
 label_settings = SubResource("Resource_yoxka")
 expand_icon = true
 max_icon_width = 225
@@ -281,6 +355,29 @@ normal_style = SubResource("StyleBoxTexture_ypgks")
 hover_style = SubResource("StyleBoxTexture_0gyww")
 pressed_style = SubResource("StyleBoxTexture_ycbhe")
 hover_pressed_style = SubResource("StyleBoxTexture_2gfuy")
+
+[sub_resource type="Resource" id="Resource_cs3pn"]
+script = ExtResource("21_4n1tv")
+id = 0
+menu_button = false
+text = "قطار شادی"
+height = 160
+separation = 2
+active = false
+options = Array[ExtResource("21_4n1tv")]([])
+font = ExtResource("17_7ye7n")
+normal_style = SubResource("StyleBoxTexture_cc30s")
+focus_style = SubResource("StyleBoxTexture_cc30s")
+hover_style = SubResource("StyleBoxTexture_cc30s")
+pressed_style = SubResource("StyleBoxTexture_cc30s")
+font_color = Color(1, 1, 1, 1)
+outline_color = Color(0, 0, 0, 1)
+font_hover_color = Color(1, 1, 1, 1)
+font_pressed_color = Color(1, 1, 1, 1)
+font_disabled_color = Color(1, 1, 1, 1)
+font_focus_color = Color(1, 1, 1, 1)
+outline_size = 0.0
+font_size = 40.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8itgj"]
 
@@ -520,13 +617,16 @@ base_button = SubResource("Resource_2gfuy")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
+options = Array[ExtResource("21_4n1tv")]([SubResource("Resource_0gyww"), SubResource("Resource_1bd0r"), SubResource("Resource_xam4k")])
 
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_i36ob")]
 layout_mode = 2
-base_button = SubResource("Resource_5xbah")
+active = true
+base_button = SubResource("Resource_ypgks")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
+options = Array[ExtResource("21_4n1tv")]([SubResource("Resource_cs3pn")])
 
 [node name="MarginContainer2" type="MarginContainer" parent="CustomTabContainer"]
 visible = false
@@ -726,4 +826,5 @@ stretch_mode = 5
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button2_pressed"]
+[connection signal="item_pressed" from="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer/Control" to="." method="_on_control_item_pressed"]
 [connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
