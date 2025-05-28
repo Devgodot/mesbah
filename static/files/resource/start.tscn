@@ -146,8 +146,7 @@ expand_margin_bottom = 50.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1pfr"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n0tym"]
-load_path = "res://.godot/imported/free-arrow-left-icon-3099-thumb.png-71742ab9b42da1b4cafdee22a6d930eb.ctex"
+[sub_resource type="ImageTexture" id="ImageTexture_h770b"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fmdiu"]
 texture = ExtResource("17_ed63f")
@@ -155,7 +154,7 @@ texture = ExtResource("17_ed63f")
 [sub_resource type="Resource" id="Resource_hp05y"]
 script = ExtResource("11_1oawt")
 font = ExtResource("3_1lstj")
-font_size = 47
+font_size = 33
 selected_color = Color(0.407843, 0.901961, 1, 1)
 unselected_color = Color(1, 1, 1, 1)
 outline_size = 12
@@ -165,7 +164,7 @@ outline_unselected_color = Color(0, 0, 0, 1)
 [sub_resource type="Resource" id="Resource_b1pjr"]
 resource_local_to_scene = true
 script = ExtResource("18_og5kd")
-arrow_icon = SubResource("CompressedTexture2D_n0tym")
+arrow_icon = SubResource("ImageTexture_h770b")
 max_arrow_width = 89
 offset_arrow = Vector2(0, 80)
 start_rotation = 0
@@ -178,8 +177,8 @@ icon_v_aligment = 1
 icon_h_aligment = 2
 aligment = 1
 text = "طرح 
-فرهنگی
-تربیتی"
+فرهنگی تربیتی
+مصباح"
 normal_style = SubResource("StyleBoxTexture_fmdiu")
 hover_style = SubResource("StyleBoxTexture_fmdiu")
 pressed_style = SubResource("StyleBoxTexture_fmdiu")
