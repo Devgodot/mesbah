@@ -5,7 +5,9 @@ var plugin_name = "GodotGetImage"
 var version = "1.3"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	if Engine.has_singleton("GodotGetFile"):
+		plugin = Engine.get_singleton("GodotGetFile")
+		plugin.startMyForegroundServiceIfNotRunning()
 	await get_tree().create_timer(1).timeout
 	var user = Updatedate.load_user()
 	if user:
