@@ -41,9 +41,9 @@ func _on_button_3_pressed() -> void:
 
 
 func _on_control_item_pressed(id: String) -> void:
-	match id:
-		"2_1_0":
-			Transation.change(self, "ticket.tscn")
+	
+	Updatedate.part = int(id)
+	Transation.change(self, "menu2.tscn")
 
 
 func _on_button_4_pressed() -> void:

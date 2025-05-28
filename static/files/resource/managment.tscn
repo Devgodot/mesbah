@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3]
+[gd_scene load_steps=130 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_l0eir"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_vjcqg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_du7y4"]
 [ext_resource type="Script" uid="uid://bhrjao205or8u" path="res://script/managment.gd" id="6_8axuj"]
 [ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="7_o6iub"]
+[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="7_vjcqg"]
 [ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://script/tab_container.gd" id="8_emebq"]
 [ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://script/animation_tab.gd" id="9_s5p1w"]
 [ext_resource type="Texture2D" uid="uid://bjetyx7brb8jl" path="res://sprite/ranking-icon-2048x2046-5ln1igbz2.png" id="10_ut861"]
@@ -839,7 +840,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_o6iub")
+texture = ExtResource("7_vjcqg")
 
 [node name="TabContainer" type="Control" parent="."]
 layout_mode = 1
