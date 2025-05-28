@@ -48,3 +48,9 @@ func _on_control_item_pressed(id: String) -> void:
 
 func _on_button_4_pressed() -> void:
 	Transation.change(self, "setting.tscn")
+
+
+func _on_control_2_item_pressed(id: String) -> void:
+	match id:
+		"0":
+			Transation.change(self, "ticket.tscn")
