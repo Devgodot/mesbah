@@ -1,8 +1,10 @@
-[gd_scene load_steps=42 format=3]
+[gd_scene load_steps=49 format=3]
 
 [ext_resource type="Script" uid="uid://ng5a76jd5id6" path="res://script/positions.gd" id="1_sooxo"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_sooxo"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_ftk6j"]
+[ext_resource type="Texture2D" uid="uid://67pcktx53ulq" path="res://sprite/مصباح10.png" id="3_nuctg"]
+[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="4_h6vow"]
 [ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="4_nuctg"]
 [ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="5_h6vow"]
 [ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="6_uicei"]
@@ -10,6 +12,27 @@
 [ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="8_xb4du"]
 [ext_resource type="Texture2D" uid="uid://cdjcdq5vmjgwr" path="res://sprite/Layer 5.png" id="9_muqfv"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="10_6eckv"]
+
+[sub_resource type="Gradient" id="Gradient_pxum8"]
+offsets = PackedFloat32Array(0, 0.619048, 0.714286)
+colors = PackedColorArray(0.737193, 0.737193, 0.737193, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bcnmc"]
+gradient = SubResource("Gradient_pxum8")
+width = 5
+fill = 1
+fill_from = Vector2(0.382906, 0.495726)
+
+[sub_resource type="Curve" id="Curve_283g4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.388626, 0.876405), 0.0, 0.0, 0, 0, Vector2(0.767773, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.134832), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_db10n"]
+offsets = PackedFloat32Array(0, 0.524324, 0.783784)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.962162, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_bfpu6"]
+colors = PackedColorArray(0.866667, 1, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otb3e"]
 bg_color = Color(1, 1, 0, 1)
@@ -231,6 +254,50 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_sooxo")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1567.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nuctg")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 300.0
+offset_top = 1223.0
+offset_right = -277.0
+offset_bottom = -174.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_h6vow")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TextureRect3"]
+position = Vector2(214, 301)
+amount = 20
+texture = SubResource("GradientTexture2D_bcnmc")
+lifetime = 2.0
+speed_scale = 2.0
+emission_shape = 1
+emission_sphere_radius = 71.65
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 189.66
+initial_velocity_max = 189.66
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_283g4")
+color_ramp = SubResource("Gradient_db10n")
+color_initial_ramp = SubResource("Gradient_bfpu6")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_direction = 3
