@@ -5,7 +5,6 @@ var plugin_name = "GodotGetImage"
 var version = "1.3"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	var user = Updatedate.load_user()
 	if user:
 		var data = await Updatedate.load_from_server()
