@@ -16,12 +16,7 @@ class_name MainButton
 	set(x):
 		expand_icon = x
 		notify_property_list_changed()
-@export var max_icon_width:int=0:
-	set(x):
-		max_icon_width = x
-		if max_icon_width < 0:
-			max_icon_width = 0
-		
+@export var max_icon_width:int=0
 @export var flat : bool = false
 @export var disabled : bool = false
 @export var icon_v_aligment:VerticalAlignment=VERTICAL_ALIGNMENT_TOP
@@ -33,10 +28,3 @@ class_name MainButton
 @export var pressed_style:StyleBox
 @export var hover_pressed_style:StyleBox
 @export var disabled_style:StyleBox
-
-func _validate_property(property: Dictionary) -> void:
-	if property.name == "max_icon_width":
-		if expand_icon:
-			property.usage = PROPERTY_USAGE_EDITOR
-		else:
-			property.usage = PROPERTY_USAGE_NO_EDITOR

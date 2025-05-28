@@ -61,6 +61,7 @@ icon_selected = ExtResource("3_f5pmc")
 icon_unselected = ExtResource("4_k0eds")
 label_settings = SubResource("Resource_rc1qe")
 expand_icon = true
+max_icon_width = 0
 flat = false
 disabled = false
 icon_v_aligment = 1

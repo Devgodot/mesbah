@@ -82,7 +82,7 @@ func _ready() -> void:
 	for child in get_children():
 		if child.name == "base_counter":
 			child.queue_free()
-	
+	print(base_button.max_icon_width)
 	var btn = Button.new()
 	var tex = TextureRect.new()
 	btn.size.y = height
@@ -218,13 +218,26 @@ func _process(delta: float) -> void:
 						tex.pivot_offset = tex.size / 2
 					btn.flat = base_button.flat
 					btn.disabled = base_button.disabled
-					btn.icon = base_button.icon_selected if btn.button_pressed else base_button.icon_unselected
+					var tex 
+					if base_button.icon_selected is ViewportTexture and btn.button_pressed:
+						tex = get_tree().get_first_node_in_group("start").get_node(base_button.icon_selected.viewport_path).get_texture()
+					if base_button.icon_unselected is ViewportTexture and not btn.button_pressed:
+						tex = get_tree().get_first_node_in_group("start").get_node(base_button.icon_unselected.viewport_path).get_texture()
+					if base_button.icon_selected is not ViewportTexture and btn.button_pressed:
+						tex = base_button.icon_selected
+					if base_button.icon_unselected is not ViewportTexture and not btn.button_pressed:
+						tex = base_button.icon_unselected
+						
+					btn.icon = tex
 					btn.expand_icon = base_button.expand_icon
 					btn.icon_alignment = base_button.icon_h_aligment
 					btn.vertical_icon_alignment = base_button.icon_v_aligment
 					btn.alignment = base_button.aligment
 					btn.text = base_button.text
-					btn.add_theme_constant_override("icon_max_width", base_button.max_icon_width)
+					
+					if base_button.max_icon_width != 0:
+						
+						btn.add_theme_constant_override("icon_max_width", base_button.max_icon_width)
 					if base_button.label_settings:
 						btn.add_theme_color_override("font_color", base_button.label_settings.unselected_color)
 						btn.add_theme_color_override("font_hover_color", base_button.label_settings.unselected_color)

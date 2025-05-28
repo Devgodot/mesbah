@@ -1,38 +1,38 @@
 [gd_scene load_steps=79 format=3]
 
-[ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_lohuj"]
-[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_riekw"]
-[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_guufm"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="4_6d3v3"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_7ep1v"]
-[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="6_k7alf"]
-[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://script/tab_container.gd" id="7_8hiq8"]
-[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://script/animation_tab.gd" id="8_1lstj"]
-[ext_resource type="Texture2D" uid="uid://bv0f8la1fmlhi" path="res://sprite/Home_icon_blue-1.png" id="9_1yc3g"]
-[ext_resource type="FontFile" uid="uid://l2m0ndtot5rp" path="res://fonts/Aviny2-mfnbbn.ttf" id="10_4n1tv"]
-[ext_resource type="Script" uid="uid://ctyywxyk7kuid" path="res://script/tab_settings.gd" id="11_odxo3"]
-[ext_resource type="Script" uid="uid://cnn7hb10qab7t" path="res://script/icon.gd" id="12_42lsi"]
-[ext_resource type="Texture2D" uid="uid://bjetyx7brb8jl" path="res://sprite/ranking-icon-2048x2046-5ln1igbz2.png" id="13_vmp6g"]
-[ext_resource type="Texture2D" uid="uid://ceeuv2csd6158" path="res://sprite/ranking-icon-2048x2046-5ln1igbz.png" id="14_d553l"]
-[ext_resource type="Texture2D" uid="uid://ce78doms7yhik" path="res://sprite/Layer 4.png" id="15_pup0w"]
-[ext_resource type="Texture2D" uid="uid://d1hp2ojy3bvqc" path="res://sprite/Layer 8.png" id="16_1oawt"]
-[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="17_nqan5"]
-[ext_resource type="PackedScene" uid="uid://byrq1i1400fl7" path="res://scenes/menu_button.tscn" id="18_6d3v3"]
-[ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="18_wcpcs"]
-[ext_resource type="Texture2D" uid="uid://c1pdrs87jpis2" path="res://sprite/Layer 10.png" id="19_7ep1v"]
-[ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="19_bvtya"]
-[ext_resource type="Texture2D" uid="uid://txty07sw0wdc" path="res://sprite/170259461.jpg" id="20_7erly"]
-[ext_resource type="Script" uid="uid://c8o7njavqtn62" path="res://script/MainButton.gd" id="20_k7alf"]
-[ext_resource type="Texture2D" uid="uid://cvhc8t7r6lv5n" path="res://sprite/169804434.jpg" id="21_ng4qj"]
-[ext_resource type="Texture2D" uid="uid://3nvhf05dl7hx" path="res://sprite/آیکون 1.png" id="25_1lstj"]
-[ext_resource type="Texture2D" uid="uid://dr7jbhvngkexc" path="res://sprite/آیکون 2.png" id="26_1yc3g"]
-[ext_resource type="Texture2D" uid="uid://bu00jw7n80iu" path="res://sprite/آیکون4.png" id="27_4n1tv"]
-[ext_resource type="Texture2D" uid="uid://cw1bo01blyu6f" path="res://sprite/آیکون3.png" id="28_odxo3"]
+[ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_1lstj"]
+[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_1yc3g"]
+[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_4n1tv"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="4_odxo3"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_42lsi"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="6_vmp6g"]
+[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://script/tab_container.gd" id="7_d553l"]
+[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://script/animation_tab.gd" id="8_pup0w"]
+[ext_resource type="Texture2D" uid="uid://bv0f8la1fmlhi" path="res://sprite/Home_icon_blue-1.png" id="9_1oawt"]
+[ext_resource type="FontFile" uid="uid://l2m0ndtot5rp" path="res://fonts/Aviny2-mfnbbn.ttf" id="10_nqan5"]
+[ext_resource type="Script" uid="uid://ctyywxyk7kuid" path="res://script/tab_settings.gd" id="11_wcpcs"]
+[ext_resource type="Script" uid="uid://cnn7hb10qab7t" path="res://script/icon.gd" id="12_bvtya"]
+[ext_resource type="Texture2D" uid="uid://bjetyx7brb8jl" path="res://sprite/ranking-icon-2048x2046-5ln1igbz2.png" id="13_7erly"]
+[ext_resource type="Texture2D" uid="uid://ceeuv2csd6158" path="res://sprite/ranking-icon-2048x2046-5ln1igbz.png" id="14_ng4qj"]
+[ext_resource type="Texture2D" uid="uid://ce78doms7yhik" path="res://sprite/Layer 4.png" id="15_ed63f"]
+[ext_resource type="Texture2D" uid="uid://d1hp2ojy3bvqc" path="res://sprite/Layer 8.png" id="16_og5kd"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="17_7ye7n"]
+[ext_resource type="PackedScene" uid="uid://byrq1i1400fl7" path="res://scenes/menu_button.tscn" id="18_i36ob"]
+[ext_resource type="Texture2D" uid="uid://c1pdrs87jpis2" path="res://sprite/Layer 10.png" id="19_brbys"]
+[ext_resource type="Script" uid="uid://c8o7njavqtn62" path="res://script/MainButton.gd" id="20_jubht"]
+[ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="21_w6tu5"]
+[ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="22_e6x5r"]
+[ext_resource type="Texture2D" uid="uid://txty07sw0wdc" path="res://sprite/170259461.jpg" id="23_qdso4"]
+[ext_resource type="Texture2D" uid="uid://cvhc8t7r6lv5n" path="res://sprite/169804434.jpg" id="24_2bsga"]
+[ext_resource type="Texture2D" uid="uid://3nvhf05dl7hx" path="res://sprite/آیکون 1.png" id="25_h770b"]
+[ext_resource type="Texture2D" uid="uid://dr7jbhvngkexc" path="res://sprite/آیکون 2.png" id="26_wx5k3"]
+[ext_resource type="Texture2D" uid="uid://bu00jw7n80iu" path="res://sprite/آیکون4.png" id="27_qmjwg"]
+[ext_resource type="Texture2D" uid="uid://cw1bo01blyu6f" path="res://sprite/آیکون3.png" id="28_14pln"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qf4cw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_plvwm"]
-texture = ExtResource("4_6d3v3")
+texture = ExtResource("4_odxo3")
 expand_margin_top = 60.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
@@ -45,7 +45,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_t7asv"]
-font = ExtResource("5_7ep1v")
+font = ExtResource("5_42lsi")
 font_size = 51
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8aotp"]
@@ -64,7 +64,7 @@ viewport_path = NodePath("SubViewport3")
 
 [sub_resource type="Resource" id="Resource_j7fht"]
 resource_local_to_scene = true
-script = ExtResource("8_1lstj")
+script = ExtResource("8_pup0w")
 texture_progress = SubResource("ViewportTexture_fmdiu")
 fill_mode = 6
 nine_patch_stretch = false
@@ -77,8 +77,8 @@ metadata/_custom_type_script = "uid://dr0mo850pgc1h"
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hp05y"]
 
 [sub_resource type="Resource" id="Resource_gxmfj"]
-script = ExtResource("11_odxo3")
-font = ExtResource("10_4n1tv")
+script = ExtResource("11_wcpcs")
+font = ExtResource("10_nqan5")
 font_size = 35
 selected_color = Color(0.992157, 0.992157, 0.992157, 1)
 unselected_color = Color(0, 0, 0, 1)
@@ -88,9 +88,9 @@ outline_unselected_color = Color(1, 1, 1, 1)
 metadata/_custom_type_script = "uid://ctyywxyk7kuid"
 
 [sub_resource type="Resource" id="Resource_8wh6k"]
-script = ExtResource("12_42lsi")
-icon_selected = ExtResource("9_1yc3g")
-icon_unselected = ExtResource("9_1yc3g")
+script = ExtResource("12_bvtya")
+icon_selected = ExtResource("9_1oawt")
+icon_unselected = ExtResource("9_1oawt")
 label_settings = SubResource("Resource_gxmfj")
 expand_icon = true
 flat = true
@@ -100,8 +100,8 @@ text = "خانه"
 metadata/_custom_type_script = "uid://cnn7hb10qab7t"
 
 [sub_resource type="Resource" id="Resource_82rlh"]
-script = ExtResource("11_odxo3")
-font = ExtResource("10_4n1tv")
+script = ExtResource("11_wcpcs")
+font = ExtResource("10_nqan5")
 font_size = 35
 selected_color = Color(0.992157, 0.992157, 0.992157, 1)
 unselected_color = Color(0, 0, 0, 1)
@@ -115,7 +115,7 @@ viewport_path = NodePath("SubViewport4")
 
 [sub_resource type="Resource" id="Resource_ya0au"]
 resource_local_to_scene = true
-script = ExtResource("8_1lstj")
+script = ExtResource("8_pup0w")
 texture_progress = SubResource("ViewportTexture_6hmx6")
 fill_mode = 6
 nine_patch_stretch = false
@@ -127,10 +127,10 @@ metadata/_custom_type_script = "uid://dr0mo850pgc1h"
 
 [sub_resource type="Resource" id="Resource_dmnnq"]
 resource_local_to_scene = true
-script = ExtResource("12_42lsi")
+script = ExtResource("12_bvtya")
 tab_animation = SubResource("Resource_ya0au")
-icon_selected = ExtResource("13_vmp6g")
-icon_unselected = ExtResource("14_d553l")
+icon_selected = ExtResource("13_7erly")
+icon_unselected = ExtResource("14_ng4qj")
 label_settings = SubResource("Resource_82rlh")
 expand_icon = true
 flat = true
@@ -140,7 +140,7 @@ text = "رتبه بندی"
 metadata/_custom_type_script = "uid://cnn7hb10qab7t"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_728ow"]
-texture = ExtResource("15_pup0w")
+texture = ExtResource("15_ed63f")
 expand_margin_left = 50.0
 expand_margin_top = 50.0
 expand_margin_right = 50.0
@@ -149,12 +149,12 @@ expand_margin_bottom = 50.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1pfr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cdrmf"]
-font = ExtResource("17_nqan5")
+font = ExtResource("17_7ye7n")
 font_size = 25
 font_color = Color(0.150303, 0.42559, 2.69532e-06, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hp05y"]
-font = ExtResource("17_nqan5")
+font = ExtResource("17_7ye7n")
 font_size = 37
 outline_size = 5
 outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
@@ -163,11 +163,11 @@ outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
 load_path = "res://.godot/imported/free-arrow-left-icon-3099-thumb.png-71742ab9b42da1b4cafdee22a6d930eb.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fmdiu"]
-texture = ExtResource("19_7ep1v")
+texture = ExtResource("19_brbys")
 modulate_color = Color(0.349099, 0.996872, 7.70092e-07, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j7fht"]
-texture = ExtResource("19_7ep1v")
+texture = ExtResource("19_brbys")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8wh6k"]
 viewport_path = NodePath("SubViewport5")
@@ -176,8 +176,8 @@ viewport_path = NodePath("SubViewport5")
 viewport_path = NodePath("SubViewport6")
 
 [sub_resource type="Resource" id="Resource_6hmx6"]
-script = ExtResource("11_odxo3")
-font = ExtResource("5_7ep1v")
+script = ExtResource("11_wcpcs")
+font = ExtResource("5_42lsi")
 font_size = 58
 selected_color = Color(1, 1, 1, 1)
 unselected_color = Color(1, 1, 1, 1)
@@ -187,7 +187,7 @@ outline_unselected_color = Color(0.541176, 0, 0, 1)
 
 [sub_resource type="Resource" id="Resource_2gfuy"]
 resource_local_to_scene = true
-script = ExtResource("20_k7alf")
+script = ExtResource("20_jubht")
 arrow_icon = SubResource("CompressedTexture2D_8aotp")
 max_arrow_width = 100
 offset_arrow = Vector2(3.245, 30)
@@ -197,6 +197,7 @@ icon_selected = SubResource("ViewportTexture_8wh6k")
 icon_unselected = SubResource("ViewportTexture_82rlh")
 label_settings = SubResource("Resource_6hmx6")
 expand_icon = true
+max_icon_width = 222
 flat = false
 disabled = false
 icon_v_aligment = 1
@@ -235,8 +236,8 @@ viewport_path = NodePath("SubViewport7")
 viewport_path = NodePath("SubViewport8")
 
 [sub_resource type="Resource" id="Resource_yoxka"]
-script = ExtResource("11_odxo3")
-font = ExtResource("5_7ep1v")
+script = ExtResource("11_wcpcs")
+font = ExtResource("5_42lsi")
 font_size = 58
 selected_color = Color(1, 1, 1, 1)
 unselected_color = Color(1, 1, 1, 1)
@@ -259,7 +260,7 @@ modulate_color = Color(0.349099, 0.996872, 7.70092e-07, 1)
 
 [sub_resource type="Resource" id="Resource_5xbah"]
 resource_local_to_scene = true
-script = ExtResource("20_k7alf")
+script = ExtResource("20_jubht")
 arrow_icon = SubResource("CompressedTexture2D_ya0au")
 max_arrow_width = 100
 offset_arrow = Vector2(3.245, 30)
@@ -269,6 +270,7 @@ icon_selected = SubResource("ViewportTexture_1bd0r")
 icon_unselected = SubResource("ViewportTexture_xam4k")
 label_settings = SubResource("Resource_yoxka")
 expand_icon = true
+max_icon_width = 225
 flat = false
 disabled = false
 icon_v_aligment = 1
@@ -320,14 +322,14 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.962162, 1, 1, 1, 0)
 [sub_resource type="Gradient" id="Gradient_i5q5x"]
 colors = PackedColorArray(0.866667, 1, 0, 1, 1, 1, 1, 1)
 
-[node name="Control" type="Control"]
+[node name="Control" type="Control" groups=["start"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_lohuj")
+script = ExtResource("1_1lstj")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -336,7 +338,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_riekw")
+texture = ExtResource("2_1yc3g")
 expand_mode = 1
 stretch_mode = 6
 
@@ -352,7 +354,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_guufm")
+theme_override_fonts/font = ExtResource("3_4n1tv")
 theme_override_font_sizes/font_size = 71
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qf4cw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_plvwm")
@@ -372,7 +374,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_guufm")
+theme_override_fonts/font = ExtResource("3_4n1tv")
 theme_override_font_sizes/font_size = 71
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qf4cw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_plvwm")
@@ -392,7 +394,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_guufm")
+theme_override_fonts/font = ExtResource("3_4n1tv")
 theme_override_font_sizes/font_size = 71
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qf4cw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_plvwm")
@@ -420,7 +422,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SystemBarColorChanger" type="Node" parent="."]
-script = ExtResource("6_k7alf")
+script = ExtResource("6_vmp6g")
 
 [node name="CustomTabContainer" type="Control" parent="."]
 layout_mode = 1
@@ -429,7 +431,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("7_8hiq8")
+script = ExtResource("7_d553l")
 current_tab = 0
 transation = false
 separation_style = SubResource("StyleBoxEmpty_8aotp")
@@ -485,7 +487,7 @@ theme_override_constants/margin_bottom = 40
 [node name="Control" type="TextureRect" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(700, 400)
 layout_mode = 2
-texture = ExtResource("16_1oawt")
+texture = ExtResource("16_og5kd")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer/MarginContainer/Control"]
@@ -512,14 +514,14 @@ label_settings = SubResource("LabelSettings_hp05y")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_6d3v3")]
+[node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_i36ob")]
 layout_mode = 2
 base_button = SubResource("Resource_2gfuy")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
 
-[node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_6d3v3")]
+[node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_i36ob")]
 layout_mode = 2
 base_button = SubResource("Resource_5xbah")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
@@ -538,7 +540,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 144.0
 grow_horizontal = 2
-texture = ExtResource("18_wcpcs")
+texture = ExtResource("21_w6tu5")
 
 [node name="Button4" type="Button" parent="."]
 layout_mode = 1
@@ -550,11 +552,11 @@ theme_override_colors/icon_pressed_color = Color(0.788235, 0.14902, 0.262745, 1)
 theme_override_colors/icon_focus_color = Color(0.788235, 0.14902, 0.262745, 1)
 theme_override_colors/icon_normal_color = Color(0.788235, 0.14902, 0.262745, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("5_7ep1v")
+theme_override_fonts/font = ExtResource("5_42lsi")
 theme_override_font_sizes/font_size = 41
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8itgj")
 text = "پروفایل"
-icon = ExtResource("19_bvtya")
+icon = ExtResource("22_e6x5r")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -578,7 +580,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("20_7erly")
+texture = ExtResource("23_qdso4")
 expand_mode = 1
 stretch_mode = 6
 
@@ -601,7 +603,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("21_ng4qj")
+texture = ExtResource("24_2bsga")
 expand_mode = 1
 stretch_mode = 6
 
@@ -641,7 +643,7 @@ offset_left = -30.0
 offset_right = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("25_1lstj")
+texture = ExtResource("25_h770b")
 expand_mode = 1
 stretch_mode = 5
 
@@ -671,7 +673,7 @@ offset_left = -30.0
 offset_right = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("26_1yc3g")
+texture = ExtResource("26_wx5k3")
 expand_mode = 1
 stretch_mode = 5
 
@@ -687,7 +689,7 @@ offset_left = -30.0
 offset_right = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("27_4n1tv")
+texture = ExtResource("27_qmjwg")
 expand_mode = 1
 stretch_mode = 5
 
@@ -717,7 +719,7 @@ offset_left = -30.0
 offset_right = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("28_odxo3")
+texture = ExtResource("28_14pln")
 expand_mode = 1
 stretch_mode = 5
 
