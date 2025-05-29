@@ -141,6 +141,7 @@ def get_hash():
             if x == request.args.get("name", ""):
                 return jsonify({"result":_list[x]})
     return jsonify({"result":""})
+        
 @app.route('/download', methods=['GET'])
 def download_file():
     if "GodotEngine" in request.headers.get("User-Agent"):
@@ -305,7 +306,6 @@ def home():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-        set_birthday()
     app.run(debug=True)
    
 
