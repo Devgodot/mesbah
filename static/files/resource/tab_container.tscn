@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3]
 
-[ext_resource type="Script" path="res://script/tab_container.gd" id="1_sqie6"]
-[ext_resource type="Script" path="res://script/animation_tab.gd" id="2_yfo4g"]
+[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://scripts/tab_container.gd" id="1_sqie6"]
+[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://scripts/animation_tab.gd" id="2_yfo4g"]
 [ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="3_qqk8p"]
 [ext_resource type="Texture2D" uid="uid://cs1ej2y0fhem" path="res://sprite/Background.jpg" id="4_ggdbp"]
 [ext_resource type="Texture2D" uid="uid://cg3jo2qcdo44r" path="res://sprite/ورود به طرح رمضان 1403.jpg" id="5_biy2x"]

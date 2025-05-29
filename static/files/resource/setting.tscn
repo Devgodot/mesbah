@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cdjcdq5vmjgwr" path="res://sprite/Layer 5.png" id="8_3chvs"]
 [ext_resource type="Texture2D" uid="uid://cnh2id2fbbp6v" path="res://sprite/Layer 7.png" id="9_k7mua"]
 [ext_resource type="Texture2D" uid="uid://1gjx38igfvf" path="res://sprite/Layer 9.png" id="10_uqwbb"]
-[ext_resource type="Script" path="res://script/light.gd" id="11_0r47o"]
-[ext_resource type="Script" path="res://script/scaler.gd" id="12_wnjxt"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="11_0r47o"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="12_wnjxt"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="13_a41m6"]
 [ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="14_w5bu4"]
 
