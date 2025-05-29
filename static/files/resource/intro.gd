@@ -9,7 +9,6 @@ func _ready() -> void:
 	print(user)
 	if user:
 		var data = await Updatedate.load_from_server()
-		print(data)
 		Transation.check_trans()
 		Updatedate.save("current_version", version, false)
 		if data:
@@ -21,12 +20,12 @@ func _ready() -> void:
 			if not_data:
 				Transation.change(self, "register.tscn")
 			else:
-				if FileAccess.file_exists("user://resource/UpdateDate.gd"):
-					Updatedate.set_script(load("user://resource/UpdateDate.gd"))
+				if FileAccess.file_exists("user://resource/Updatedate.gd"):
+					Updatedate.set_script(load("user://resource/Updatedate.gd"))
 				await Updatedate.update_resource()
 				await get_tree().create_timer(2).timeout
-				if FileAccess.file_exists("user://resource/UpdateDate.gd"):
-					Updatedate.set_script(load("user://resource/UpdateDate.gd"))
+				if FileAccess.file_exists("user://resource/Updatedate.gd"):
+					Updatedate.set_script(load("user://resource/Updatedate.gd"))
 				Transation.change(self, "start.tscn")
 				
 		else:
