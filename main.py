@@ -10,12 +10,9 @@ from werkzeug.utils import secure_filename
 import os
 from math import ceil
 from flask_jwt_extended import jwt_required, current_user
-import random
 import requests
 from urllib.parse import quote
 import json
-import base64
-import binascii
 import numpy as np
 from PIL import Image
 import io
