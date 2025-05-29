@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="8_7sn4o"]
 [ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="9_xuh5p"]
 [ext_resource type="Texture2D" uid="uid://d2a5pf05eb0hk" path="res://sprite/1092884.png" id="10_0i0fv"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="11_3otl1"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="12_avvg3"]
+[ext_resource type="Script" path="res://script/light.gd" id="11_3otl1"]
+[ext_resource type="Script" path="res://script/scaler.gd" id="12_avvg3"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="13_xmqxi"]
 
 [sub_resource type="FontVariation" id="FontVariation_m5l8b"]
