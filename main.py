@@ -134,7 +134,7 @@ def get_resource_index():
                             add.append(_list[x])
                 for x in data.keys():
                     if x not in _list.keys():
-                        delete.append(data[x])
+                        delete.append([x, data[x]])
         return jsonify({"add":add, "delete":delete})
     else:
         return jsonify({"error":"فایلی برای بررسی وجود ندارد"}), 400
