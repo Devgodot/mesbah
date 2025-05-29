@@ -21,7 +21,7 @@ func _ready() -> void:
 		tween.play()
 		await tween.finished
 		p.queue_free())
-	Updatedate.end_download(func():
+	Updatedate.end_download.connect(func():
 		queue_free())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
