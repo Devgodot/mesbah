@@ -6,8 +6,10 @@ var version = "1.3"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var user = Updatedate.load_user()
+	print(user)
 	if user:
 		var data = await Updatedate.load_from_server()
+		print(data)
 		Transation.check_trans()
 		Updatedate.save("current_version", version, false)
 		if data:
@@ -19,6 +21,8 @@ func _ready() -> void:
 			if not_data:
 				Transation.change(self, "register.tscn")
 			else:
+				if FileAccess.file_exists("user://resource/UpdateDate.gd"):
+					Updatedate.set_script(load("user://resource/UpdateDate.gd"))
 				await Updatedate.update_resource()
 				await get_tree().create_timer(2).timeout
 				if FileAccess.file_exists("user://resource/UpdateDate.gd"):
@@ -26,6 +30,7 @@ func _ready() -> void:
 				Transation.change(self, "start.tscn")
 				
 		else:
+			print(8)
 			get_tree().reload_current_scene()
 	else:
 		Transation.change(self, "register.tscn")
