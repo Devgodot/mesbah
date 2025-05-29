@@ -1,17 +1,17 @@
 [gd_scene load_steps=49 format=3]
 
-[ext_resource type="Script" uid="uid://ng5a76jd5id6" path="res://script/positions.gd" id="1_sooxo"]
-[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_sooxo"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_ftk6j"]
-[ext_resource type="Texture2D" uid="uid://67pcktx53ulq" path="res://sprite/مصباح10.png" id="3_nuctg"]
-[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="4_h6vow"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="4_nuctg"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="5_h6vow"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="6_uicei"]
-[ext_resource type="Texture2D" uid="uid://dajxo066mj0xm" path="res://sprite/Layer 7 copy 2.png" id="7_qnahh"]
-[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="8_xb4du"]
-[ext_resource type="Texture2D" uid="uid://cdjcdq5vmjgwr" path="res://sprite/Layer 5.png" id="9_muqfv"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="10_6eckv"]
+[ext_resource type="Script" uid="uid://ng5a76jd5id6" path="res://script/positions.gd" id="1_ftk6j"]
+[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_nuctg"]
+[ext_resource type="Texture2D" uid="uid://67pcktx53ulq" path="res://sprite/مصباح10.png" id="3_h6vow"]
+[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="4_uicei"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_qnahh"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="6_xb4du"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://script/light.gd" id="7_muqfv"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://script/scaler.gd" id="8_6eckv"]
+[ext_resource type="Texture2D" uid="uid://dajxo066mj0xm" path="res://sprite/Layer 7 copy 2.png" id="9_m4tmf"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="10_a28wx"]
+[ext_resource type="Texture2D" uid="uid://cdjcdq5vmjgwr" path="res://sprite/Layer 5.png" id="11_ebe3p"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="12_fs3ws"]
 
 [sub_resource type="Gradient" id="Gradient_pxum8"]
 offsets = PackedFloat32Array(0, 0.619048, 0.714286)
@@ -49,8 +49,8 @@ shadow_size = 7
 shadow_offset = Vector2(-5, 4)
 
 [sub_resource type="FontVariation" id="FontVariation_nnfjd"]
-fallbacks = Array[Font]([ExtResource("4_nuctg")])
-base_font = ExtResource("3_ftk6j")
+fallbacks = Array[Font]([ExtResource("6_xb4du")])
+base_font = ExtResource("5_qnahh")
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5udv"]
 font = SubResource("FontVariation_nnfjd")
@@ -72,8 +72,8 @@ shadow_size = 7
 shadow_offset = Vector2(-5, 4)
 
 [sub_resource type="FontVariation" id="FontVariation_0gqil"]
-fallbacks = Array[Font]([ExtResource("4_nuctg")])
-base_font = ExtResource("3_ftk6j")
+fallbacks = Array[Font]([ExtResource("6_xb4du")])
+base_font = ExtResource("5_qnahh")
 
 [sub_resource type="LabelSettings" id="LabelSettings_pvly6"]
 font = SubResource("FontVariation_0gqil")
@@ -104,15 +104,15 @@ shader_parameter/dir = 0
 viewport_path = NodePath("HBoxContainer2/Label2/name/texture")
 
 [sub_resource type="FontVariation" id="FontVariation_4avgx"]
-fallbacks = Array[Font]([ExtResource("4_nuctg")])
-base_font = ExtResource("3_ftk6j")
+fallbacks = Array[Font]([ExtResource("6_xb4du")])
+base_font = ExtResource("5_qnahh")
 spacing_top = 30
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_888wi"]
-script = ExtResource("5_h6vow")
+script = ExtResource("7_muqfv")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_2meq6"]
-script = ExtResource("6_uicei")
+script = ExtResource("8_6eckv")
 
 [sub_resource type="Gradient" id="Gradient_pxsi1"]
 offsets = PackedFloat32Array(0.52, 0.586667, 0.686667)
@@ -178,10 +178,10 @@ shadow_offset = Vector2(-5, 4)
 viewport_path = NodePath("ScrollContainer/VBoxContainer/HBoxContainer/Label2/name/texture")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_mgrfc"]
-script = ExtResource("5_h6vow")
+script = ExtResource("7_muqfv")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ur635"]
-script = ExtResource("6_uicei")
+script = ExtResource("8_6eckv")
 
 [sub_resource type="Gradient" id="Gradient_02ppr"]
 offsets = PackedFloat32Array(0.52, 0.586667, 0.686667)
@@ -207,23 +207,24 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_r5dor"]
-font = ExtResource("8_xb4du")
+font = ExtResource("10_a28wx")
 font_size = 41
 outline_size = 7
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_x8r8q"]
-font = ExtResource("8_xb4du")
+font = ExtResource("10_a28wx")
 font_size = 50
-font_color = Color(0.14902, 0.494118, 0, 1)
+font_color = Color(0.760784, 0, 0.133333, 1)
+outline_size = 10
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn7kf"]
-texture = ExtResource("9_muqfv")
+texture = ExtResource("11_ebe3p")
 expand_margin_top = 50.0
 expand_margin_bottom = 25.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_7b36x"]
-font = ExtResource("8_xb4du")
+font = ExtResource("10_a28wx")
 font_size = 50
 
 [sub_resource type="SystemFont" id="SystemFont_0ecoq"]
@@ -244,7 +245,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_sooxo")
+script = ExtResource("1_ftk6j")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -253,7 +254,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_sooxo")
+texture = ExtResource("2_nuctg")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 1
@@ -263,7 +264,7 @@ anchor_bottom = 1.0
 offset_top = 1567.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_nuctg")
+texture = ExtResource("3_h6vow")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="."]
@@ -277,7 +278,7 @@ offset_right = -277.0
 offset_bottom = -174.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_h6vow")
+texture = ExtResource("4_uicei")
 expand_mode = 1
 stretch_mode = 5
 
@@ -287,8 +288,7 @@ amount = 20
 texture = SubResource("GradientTexture2D_bcnmc")
 lifetime = 2.0
 speed_scale = 2.0
-emission_shape = 1
-emission_sphere_radius = 71.65
+local_coords = true
 particle_flag_align_y = true
 spread = 180.0
 gravity = Vector2(0, 0)
@@ -425,7 +425,7 @@ modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("7_qnahh")
+texture = ExtResource("9_m4tmf")
 expand_mode = 1
 stretch_mode = 5
 
@@ -578,7 +578,7 @@ modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("7_qnahh")
+texture = ExtResource("9_m4tmf")
 expand_mode = 1
 stretch_mode = 5
 
@@ -726,7 +726,7 @@ layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vn1v1")
-icon = ExtResource("10_6eckv")
+icon = ExtResource("12_fs3ws")
 flat = true
 expand_icon = true
 
