@@ -79,7 +79,7 @@ func update_resource():
 									list.append(path)
 				var dic = {}
 				for x in list:
-					print(FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()))
+					print(FileAccess.file_exists(x[0]))
 					if x[1] not in dic.keys():
 						if file[0] not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
 							
