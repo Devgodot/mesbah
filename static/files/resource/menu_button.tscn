@@ -1,12 +1,12 @@
 [gd_scene load_steps=19 format=3]
 
-[ext_resource type="Script" uid="uid://bkb2281gx5vbf" path="res://script/menu_button.gd" id="1_c72ys"]
+[ext_resource type="Script" path="res://script/menu_button.gd" id="1_c72ys"]
 [ext_resource type="Texture2D" uid="uid://c2ofu4ew587al" path="res://sprite/free-arrow-left-icon-3099-thumb.png" id="2_2qrkh"]
 [ext_resource type="Texture2D" uid="uid://cge8x0f18cyji" path="res://sprite/3686899.png" id="3_f5pmc"]
 [ext_resource type="Texture2D" uid="uid://iodoo0npebl" path="res://sprite/12.png" id="4_k0eds"]
-[ext_resource type="Script" uid="uid://ctyywxyk7kuid" path="res://script/tab_settings.gd" id="5_68mpc"]
-[ext_resource type="Script" uid="uid://c8o7njavqtn62" path="res://script/MainButton.gd" id="6_ymc6s"]
-[ext_resource type="Script" uid="uid://w6f05d55d5o8" path="res://script/options.gd" id="7_bhqke"]
+[ext_resource type="Script" path="res://script/tab_settings.gd" id="5_68mpc"]
+[ext_resource type="Script" path="res://script/MainButton.gd" id="6_ymc6s"]
+[ext_resource type="Script" path="res://script/options.gd" id="7_bhqke"]
 [ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="8_3fagc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cf2g"]
