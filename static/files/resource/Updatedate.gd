@@ -93,7 +93,7 @@ func update_resource():
 				for node in dic.keys():
 					for p in dic[node]:
 						var h = await request("/get_hash?name="+p.values()[0].get_file().uri_encode())
-						var i = await request("/static/files/source/"+p.values()[0].get_file(), HTTPClient.METHOD_GET, {}, 1)
+						var i = await request("/static/files/source/"+p.values()[0].get_file().uri_encode(), HTTPClient.METHOD_GET, {}, 1)
 						var f = FileAccess.open("user://resource/"+p.values()[0].get_file(), FileAccess.WRITE)
 						f.store_buffer(i)
 						f.close()
@@ -129,9 +129,9 @@ func update_source():
 		get_tree().get_root().add_child(load_scene("download.tscn"))
 	start_download.emit(data.add.size(), "بروزرسانی منابع فایل‌ها")
 	for file in data.add:
-		var f = await request("/static/files/source/"+file[0], HTTPClient.METHOD_GET, {}, 1)
+		var f = await request("/static/files/source/"+file[0].get_file().uri_encode(), HTTPClient.METHOD_GET, {}, 1)
 		download_progress.emit(index)
-		var new_file = FileAccess.open("user://resource/"+file[0], FileAccess.WRITE)
+		var new_file = FileAccess.open("user://resource/"+file[0].get_file(), FileAccess.WRITE)
 		new_file.store_buffer(f)
 		new_file.close()
 		hash_list[file[0]] = file[1]
@@ -267,7 +267,6 @@ func request(url, method=HTTPClient.METHOD_GET,_data={}, result_mode=0):
 		return d[3]
 
 func get_json(_data):
-	print(_data.get_string_from_utf8())
 	var j = JSON.new()
 	if _data is PackedByteArray:
 		if _data.size() == 0:
