@@ -92,7 +92,7 @@ func update_resource():
 					start_download.emit(data.add.size(), "دریافت منابع فایل‌ها")
 				for node in dic.keys():
 					for p in dic[node]:
-						var h = await request("/get_hash?name="+p.values()[0].get_file())
+						var h = await request("/get_hash?name="+p.values()[0].get_file().uri_encode())
 						var i = await request("/static/files/source/"+p.values()[0].get_file(), HTTPClient.METHOD_GET, {}, 1)
 						var f = FileAccess.open("user://resource/"+p.values()[0].get_file(), FileAccess.WRITE)
 						f.store_buffer(i)
