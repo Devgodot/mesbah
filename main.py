@@ -114,7 +114,6 @@ def user_lookup_callback(_jwt_headers, jwt_data):
     return User.query.filter_by(username=identity).one_or_none()
 
 @app.route('/check_resource', methods=['POST'])
-@jwt_required()
 def get_resource_index():
     data:dict= request.get_json().get("data", {})
     add = []
