@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bjetyx7brb8jl" path="res://sprite/ranking-icon-2048x2046-5ln1igbz2.png" id="10_6h6d7"]
 [ext_resource type="Texture2D" uid="uid://ceeuv2csd6158" path="res://sprite/ranking-icon-2048x2046-5ln1igbz.png" id="11_ddqsb"]
 [ext_resource type="Script" uid="uid://ctyywxyk7kuid" path="res://scripts/tab_settings.gd" id="12_500ob"]
-[ext_resource type="Script" uid="uid://cnn7hb10qab7t" path="res://script/icon.gd" id="13_3wryf"]
+[ext_resource type="Script" uid="uid://cnn7hb10qab7t" path="res://scripts/icon.gd" id="13_3wryf"]
 [ext_resource type="Texture2D" uid="uid://nfst76tsqb3b" path="res://sprite/131-1318263_group-people-communication-message-talk-comments-people-management2.png" id="14_bnrfn"]
 [ext_resource type="Texture2D" uid="uid://2ht05d0hchka" path="res://sprite/131-1318263_group-people-communication-message-talk-comments-people-management.png" id="15_dig23"]
 [ext_resource type="Texture2D" uid="uid://dhvoajsyliqfv" path="res://sprite/pngtree-manager-line-icon-png-image_90638982.png" id="16_3xg5v"]
