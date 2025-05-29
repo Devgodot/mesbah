@@ -53,19 +53,15 @@ func update_resource():
 			get_tree().get_root().add_child(load_scene("download.tscn"))
 		var index = 1
 		start_download.emit(data.add.size(), "بروزرسانی فایل‌ها")
+		var source_dic = load_game("source_dic", {})
+		var hash_list2:Dictionary = load_game("hash_list2", {})
+		
 		for file in data.add:
 			var f = await request("/static/files/resource/"+file[0], HTTPClient.METHOD_GET, {}, 1)
 			download_progress.emit(index)
 			var new_file = FileAccess.open("user://resource/"+file[0], FileAccess.WRITE)
 			new_file.store_buffer(f)
 			new_file.close()
-			hash_list[file[0]] = file[1]
-			save("hash_list", hash_list, false)
-			index += 1
-		var source_dic = load_game("source_dic", {})
-		var hash_list2:Dictionary = load_game("hash_list2", {})
-		start_download.emit(data.add.size(), "بررسی منابع فایل‌ها")
-		for file in data.add:
 			if file[0].get_extension() == "tscn":
 				var s = load_scene(file[0])
 				var nodes = s.get_tree_string().split("\n")
@@ -87,16 +83,13 @@ func update_resource():
 					else:
 						if file[0] not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
 							dic[x[1]].append({x[2]:x[0]})
-				await get_tree().create_timer(0.5).timeout
-				if dic.keys().size() > 0:
-					start_download.emit(data.add.size(), "دریافت منابع فایل‌ها")
 				for node in dic.keys():
 					for p in dic[node]:
 						var h = await request("/get_hash?name="+p.values()[0].get_file().uri_encode())
 						var i = await request("/static/files/source/"+p.values()[0].get_file().uri_encode(), HTTPClient.METHOD_GET, {}, 1)
-						var f = FileAccess.open("user://resource/"+p.values()[0].get_file(), FileAccess.WRITE)
-						f.store_buffer(i)
-						f.close()
+						var f2 = FileAccess.open("user://resource/"+p.values()[0].get_file(), FileAccess.WRITE)
+						f2.store_buffer(i)
+						f2.close()
 						hash_list2[p.values()[0].get_file()] = h.result if h else ""
 						save("hash_list2", hash_list2, false)
 						if file[0] not in source_dic.keys():
@@ -107,6 +100,9 @@ func update_resource():
 								source_dic[file[0]][node] = [{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}]
 							else:
 								source_dic[file[0]][node].append([{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}])
+			hash_list[file[0]] = file[1]
+			save("hash_list", hash_list, false)
+			index += 1
 		for file in data.delete:
 			DirAccess.remove_absolute("user://resource/"+file[0])
 			hash_list.erase(file[0])
