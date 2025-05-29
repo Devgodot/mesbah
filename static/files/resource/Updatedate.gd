@@ -2,6 +2,7 @@ extends Node2D
 signal get_image_finished
 signal download_progress
 signal start_download
+signal end_download
 var save_path = "user://data.cfg"
 var token = ""
 var id = ""
@@ -37,23 +38,21 @@ func update_resource():
 	var http = HTTPRequest.new()
 	add_child(http)
 	var hash_list:Dictionary = load_game("hash_list", {})
-	http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list}))
+	http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
 	var d = await http.request_completed
 	http.timeout = 10
 	while d[3].size() == 0:
-		http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list}))
+		http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
 		d = await http.request_completed
 	http.queue_free()
 	var data = get_json(d[3])
 	if data:
-		print(data)
 		if not DirAccess.dir_exists_absolute("user://resource"):
 			DirAccess.make_dir_absolute("user://resource")
 		if data.add.size() > 0:
 			get_tree().get_root().add_child(load_scene("download.tscn"))
 		var index = 1
-		start_download.emit(data.add.size())
-		
+		start_download.emit(data.add.size(), "بروزرسانی فایل‌ها")
 		for file in data.add:
 			var f = await request("/static/files/resource/"+file[0], HTTPClient.METHOD_GET, {}, 1)
 			download_progress.emit(index)
@@ -63,11 +62,83 @@ func update_resource():
 			hash_list[file[0]] = file[1]
 			save("hash_list", hash_list, false)
 			index += 1
+		var source_dic = load_game("source_dic", {})
+		var hash_list2:Dictionary = load_game("hash_list2", {})
+		start_download.emit(data.add.size(), "بررسی منابع فایل‌ها")
+		for file in data.add:
+			var s = load_scene(file)
+			var nodes = s.get_tree_string().split("\n")
+			var list = []
+			for n in nodes:
+				if n!= "":
+					for p in s.get_node(n).get_property_list():
+						if p.type == TYPE_OBJECT:
+							var path = ([s.get_node(n).get(p.name).resource_path, n, p.name] if s.get_node(n).get(p.name) is Resource else null)
+							if path != null:
+								list.append(path)
+			var dic = {}
+			for x in list:
+				if x[1] not in dic.keys():
+					if file not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
+						dic[x[1]] = [{x[2]:x[0]}]
+				else:
+					if file not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
+						dic[x[1]].append({x[2]:x[0]})
+			await get_tree().create_timer(0.5).timeout
+			if dic.keys().size() > 0:
+				start_download.emit(data.add.size(), "دریافت منابع فایل‌ها")
+			for node in dic.keys():
+				for p in dic[node]:
+					var h = await request("/get_hash?name="+p.values()[0].get_file())
+					var i = await request("/static/files/source/"+p.values()[0].get_file(), HTTPClient.METHOD_GET, {}, 1)
+					var f = FileAccess.open("user://resource/"+p.values()[0].get_file(), FileAccess.WRITE)
+					f.store_buffer(i)
+					f.close()
+					hash_list2[p.values()[0].get_file()] = h.result
+					save("hash_list2", hash_list2, false)
+					if file not in source_dic.keys():
+						source_dic[file] = {}
+						source_dic[file][node] = [{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}]
+					else:
+						if node not in source_dic[file]:
+							source_dic[file][node] = [{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}]
+						else:
+							source_dic[file][node].append([{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}])
 		for file in data.delete:
 			DirAccess.remove_absolute("user://resource/"+file[0])
 			hash_list.erase(file[0])
 			save("hash_list", hash_list, false)
-	
+		end_download.emit()
+		await update_source()
+func update_source():
+	var http = HTTPRequest.new()
+	add_child(http)
+	var hash_list:Dictionary = load_game("hash_list2", {})
+	http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list2.json"}))
+	var d = await http.request_completed
+	http.timeout = 10
+	while d[3].size() == 0:
+		http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list2.json"}))
+		d = await http.request_completed
+	var data = get_json(d[3])
+	var index = 1
+	if data.add.size() > 0:
+		get_tree().get_root().add_child(load_scene("download.tscn"))
+	start_download.emit(data.add.size(), "بروزرسانی منابع فایل‌ها")
+	for file in data.add:
+		var f = await request("/static/files/source/"+file[0], HTTPClient.METHOD_GET, {}, 1)
+		download_progress.emit(index)
+		var new_file = FileAccess.open("user://resource/"+file[0], FileAccess.WRITE)
+		new_file.store_buffer(f)
+		new_file.close()
+		hash_list[file[0]] = file[1]
+		save("hash_list2", hash_list, false)
+		index += 1
+	for file in data.delete:
+		DirAccess.remove_absolute("user://resource/"+file[0])
+		hash_list.erase(file[0])
+		save("hash_list2", hash_list, false)
+	end_download.emit()
 func get_cost(_id):
 	var u =protocol+subdomin+"/purchase/cost?id="+str(_id)
 	var d = await request(u)
