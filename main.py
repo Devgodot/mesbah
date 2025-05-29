@@ -119,16 +119,28 @@ def get_resource_index():
     data:dict= request.get_json().get("data", {})
     add = []
     delete = []
-    with open("hash_list.json", "r") as hash_list:
-        print(hash_list)
+    file = request.get_json().get("file", "")
+    if file != "":
+        file = secure_filename(file)
+        with open(file=file, "r") as hash_list:
+            _list :dict= json.load(hash_list)
+            for x in _list.keys():
+                if x not in data.keys() or _list[x] != data[x]:
+                    add.append([x, _list[x]])
+            for x in data.keys():
+                if x not in _list.keys():
+                    delete.append([x, data[x]])
+        return jsonify({"add":add, "delete":delete})
+    else:
+        return jsonify({"error":"فایلی برای بررسی وجود ندارد"}), 400
+@app.route("/get_hash", methods=["GET"])
+def get_hash():
+     with open("hash_list2.json", "r") as hash_list:
         _list :dict= json.load(hash_list)
         for x in _list.keys():
-            if x not in data.keys() or _list[x] != data[x]:
-                add.append([x, _list[x]])
-        for x in data.keys():
-            if x not in _list.keys():
-                delete.append([x, data[x]])
-    return jsonify({"add":add, "delete":delete})
+            if x == request.args.get("name", ""):
+                return jsonify({"result":_list[x]})
+    return jsonify({"result":""})
 @app.route('/download', methods=['GET'])
 def download_file():
     if "GodotEngine" in request.headers.get("User-Agent"):
