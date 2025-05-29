@@ -120,12 +120,21 @@ def get_resource_index():
         file = secure_filename(file)
         with open(file, "r") as hash_list:
             _list :dict= json.load(hash_list)
-            for x in _list.keys():
-                if x not in data.keys() or _list[x] != data[x]:
-                    add.append([x, _list[x]])
-            for x in data.keys():
-                if x not in _list.keys():
-                    delete.append([x, data[x]])
+            if file == "hash_list.json":
+                for x in _list.keys():
+                    if x not in data.keys() or _list[x] != data[x]:
+                        add.append([x, _list[x]])
+                for x in data.keys():
+                    if x not in _list.keys():
+                        delete.append([x, data[x]])
+            else:
+                for x in _list.keys():
+                    if x in data.keys():
+                        if _list.get(x) != data.get(x):
+                            add.append(_list[x])
+                for x in data.keys():
+                    if x not in _list.keys():
+                        delete.append(data[x])
         return jsonify({"add":add, "delete":delete})
     else:
         return jsonify({"error":"فایلی برای بررسی وجود ندارد"}), 400
