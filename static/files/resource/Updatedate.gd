@@ -66,44 +66,45 @@ func update_resource():
 		var hash_list2:Dictionary = load_game("hash_list2", {})
 		start_download.emit(data.add.size(), "بررسی منابع فایل‌ها")
 		for file in data.add:
-			var s = load_scene(file)
-			var nodes = s.get_tree_string().split("\n")
-			var list = []
-			for n in nodes:
-				if n!= "":
-					for p in s.get_node(n).get_property_list():
-						if p.type == TYPE_OBJECT:
-							var path = ([s.get_node(n).get(p.name).resource_path, n, p.name] if s.get_node(n).get(p.name) is Resource else null)
-							if path != null:
-								list.append(path)
-			var dic = {}
-			for x in list:
-				if x[1] not in dic.keys():
-					if file not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
-						dic[x[1]] = [{x[2]:x[0]}]
-				else:
-					if file not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
-						dic[x[1]].append({x[2]:x[0]})
-			await get_tree().create_timer(0.5).timeout
-			if dic.keys().size() > 0:
-				start_download.emit(data.add.size(), "دریافت منابع فایل‌ها")
-			for node in dic.keys():
-				for p in dic[node]:
-					var h = await request("/get_hash?name="+p.values()[0].get_file())
-					var i = await request("/static/files/source/"+p.values()[0].get_file(), HTTPClient.METHOD_GET, {}, 1)
-					var f = FileAccess.open("user://resource/"+p.values()[0].get_file(), FileAccess.WRITE)
-					f.store_buffer(i)
-					f.close()
-					hash_list2[p.values()[0].get_file()] = h.result
-					save("hash_list2", hash_list2, false)
-					if file not in source_dic.keys():
-						source_dic[file] = {}
-						source_dic[file][node] = [{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}]
+			if file.get_extension() == "tscn":
+				var s = load_scene(file)
+				var nodes = s.get_tree_string().split("\n")
+				var list = []
+				for n in nodes:
+					if n!= "":
+						for p in s.get_node(n).get_property_list():
+							if p.type == TYPE_OBJECT:
+								var path = ([s.get_node(n).get(p.name).resource_path, n, p.name] if s.get_node(n).get(p.name) is Resource else null)
+								if path != null:
+									list.append(path)
+				var dic = {}
+				for x in list:
+					if x[1] not in dic.keys():
+						if file not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
+							dic[x[1]] = [{x[2]:x[0]}]
 					else:
-						if node not in source_dic[file]:
+						if file not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
+							dic[x[1]].append({x[2]:x[0]})
+				await get_tree().create_timer(0.5).timeout
+				if dic.keys().size() > 0:
+					start_download.emit(data.add.size(), "دریافت منابع فایل‌ها")
+				for node in dic.keys():
+					for p in dic[node]:
+						var h = await request("/get_hash?name="+p.values()[0].get_file())
+						var i = await request("/static/files/source/"+p.values()[0].get_file(), HTTPClient.METHOD_GET, {}, 1)
+						var f = FileAccess.open("user://resource/"+p.values()[0].get_file(), FileAccess.WRITE)
+						f.store_buffer(i)
+						f.close()
+						hash_list2[p.values()[0].get_file()] = h.result
+						save("hash_list2", hash_list2, false)
+						if file not in source_dic.keys():
+							source_dic[file] = {}
 							source_dic[file][node] = [{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}]
 						else:
-							source_dic[file][node].append([{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}])
+							if node not in source_dic[file]:
+								source_dic[file][node] = [{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}]
+							else:
+								source_dic[file][node].append([{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}])
 		for file in data.delete:
 			DirAccess.remove_absolute("user://resource/"+file[0])
 			hash_list.erase(file[0])
@@ -678,8 +679,8 @@ func load_scene(new_scene) -> Object:
 				ResourceLoader.load_threaded_get_status("user://resource/"+new_scene, progress)
 			s = ResourceLoader.load_threaded_get("user://resource/"+new_scene).instantiate()
 			if script:
-
 				s.set_script(script)
+			
 		else:
 			ResourceLoader.load_threaded_request("res://scenes/"+new_scene)
 			var progress = [0]
@@ -695,4 +696,9 @@ func load_scene(new_scene) -> Object:
 		while progress[0] != 1:
 			ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene, progress)
 		s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
+	var source_dic = load_game("source_dic", {})
+	if new_scene in source_dic.keys():
+		for node in source_dic[new_scene]:
+			for p in source_dic[new_scene][node]:
+				s.get_node(node).set(p.keys()[0], ResourceLoader.load(p.values()[0]))
 	return s
