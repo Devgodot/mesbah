@@ -81,6 +81,7 @@ func update_resource():
 				for x in list:
 					if x[1] not in dic.keys():
 						if file[0] not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
+							print(0)
 							dic[x[1]] = [{x[2]:x[0]}]
 					else:
 						if file[0] not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
@@ -95,7 +96,7 @@ func update_resource():
 						var f = FileAccess.open("user://resource/"+p.values()[0].get_file(), FileAccess.WRITE)
 						f.store_buffer(i)
 						f.close()
-						hash_list2[p.values()[0].get_file()] = h.result
+						hash_list2[p.values()[0].get_file()] = h.result if h else ""
 						save("hash_list2", hash_list2, false)
 						if file[0] not in source_dic.keys():
 							source_dic[file[0]] = {}
