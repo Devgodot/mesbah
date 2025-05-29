@@ -5,11 +5,12 @@ func change(scene, new_scene:String, dir=1):
 	if not active:
 		active = true
 		var s = Updatedate.load_scene(new_scene)
-		
+		print(0)
 		match trans:
 			0:
-				get_tree().get_root().add_child(s)
+				get_tree().get_root().add_child.call_deferred(s)
 				scene.queue_free()
+				print(s)
 			1:
 				get_tree().get_root().add_child(s)
 				s.position.x = -1000 * dir

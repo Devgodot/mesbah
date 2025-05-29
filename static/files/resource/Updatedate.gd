@@ -79,9 +79,10 @@ func update_resource():
 									list.append(path)
 				var dic = {}
 				for x in list:
+					print(FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()))
 					if x[1] not in dic.keys():
 						if file[0] not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
-							print(0)
+							
 							dic[x[1]] = [{x[2]:x[0]}]
 					else:
 						if file[0] not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
@@ -266,7 +267,7 @@ func request(url, method=HTTPClient.METHOD_GET,_data={}, result_mode=0):
 		return d[3]
 
 func get_json(_data):
-	
+	print(_data.get_string_from_utf8())
 	var j = JSON.new()
 	if _data is PackedByteArray:
 		if _data.size() == 0:
