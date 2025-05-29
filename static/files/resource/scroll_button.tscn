@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://script/scroll_button.gd" id="1_o6hk8"]
+[ext_resource type="Script" uid="uid://ds5bydu5o1odx" path="res://scripts/scroll_button.gd" id="1_o6hk8"]
 
 [sub_resource type="Theme" id="Theme_dcrt4"]
 Label/font_sizes/font_size = 50
