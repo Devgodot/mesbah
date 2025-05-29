@@ -122,7 +122,7 @@ def get_resource_index():
     file = request.get_json().get("file", "")
     if file != "":
         file = secure_filename(file)
-        with open(file=file, "r") as hash_list:
+        with open(file, "r") as hash_list:
             _list :dict= json.load(hash_list)
             for x in _list.keys():
                 if x not in data.keys() or _list[x] != data[x]:
@@ -135,13 +135,13 @@ def get_resource_index():
         return jsonify({"error":"فایلی برای بررسی وجود ندارد"}), 400
 @app.route("/get_hash", methods=["GET"])
 def get_hash():
-     with open("hash_list2.json", "r") as hash_list:
+    with open("hash_list2.json", "r") as hash_list:
         _list :dict= json.load(hash_list)
         for x in _list.keys():
             if x == request.args.get("name", ""):
                 return jsonify({"result":_list[x]})
     return jsonify({"result":""})
-        
+
 @app.route('/download', methods=['GET'])
 def download_file():
     if "GodotEngine" in request.headers.get("User-Agent"):
