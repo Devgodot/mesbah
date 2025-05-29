@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3]
+[gd_scene load_steps=78 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_odxo3"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_42lsi"]
@@ -260,6 +260,116 @@ outline_size = 10.0
 font_size = 60.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
+[sub_resource type="Resource" id="Resource_6hmx6"]
+script = ExtResource("22_h770b")
+id = 1
+menu_button = false
+text = "      سلامت جسمانی"
+height = 175
+withd = 635
+offset_x = 160
+separation = -5
+active = false
+options = Array[ExtResource("22_h770b")]([])
+font = ExtResource("10_7erly")
+normal_style = SubResource("StyleBoxTexture_wgong")
+focus_style = SubResource("StyleBoxTexture_wgong")
+hover_style = SubResource("StyleBoxTexture_wgong")
+pressed_style = SubResource("StyleBoxTexture_wgong")
+disabled_style = SubResource("StyleBoxTexture_wgong")
+font_color = Color(0, 0, 1, 1)
+outline_color = Color(1, 1, 1, 1)
+font_hover_color = Color(0, 0, 1, 1)
+font_pressed_color = Color(0, 0, 1, 1)
+font_disabled_color = Color(0, 0, 1, 1)
+font_focus_color = Color(0, 0, 1, 1)
+outline_size = 10.0
+font_size = 60.0
+metadata/_custom_type_script = "uid://w6f05d55d5o8"
+
+[sub_resource type="Resource" id="Resource_2gfuy"]
+script = ExtResource("22_h770b")
+id = 2
+menu_button = false
+text = "      سلامت فکری"
+height = 175
+withd = 635
+offset_x = 90
+separation = -5
+active = false
+options = Array[ExtResource("22_h770b")]([])
+font = ExtResource("10_7erly")
+normal_style = SubResource("StyleBoxTexture_wgong")
+focus_style = SubResource("StyleBoxTexture_wgong")
+hover_style = SubResource("StyleBoxTexture_wgong")
+pressed_style = SubResource("StyleBoxTexture_wgong")
+disabled_style = SubResource("StyleBoxTexture_wgong")
+font_color = Color(0, 0, 1, 1)
+outline_color = Color(1, 1, 1, 1)
+font_hover_color = Color(0, 0, 1, 1)
+font_pressed_color = Color(0, 0, 1, 1)
+font_disabled_color = Color(0, 0, 1, 1)
+font_focus_color = Color(0, 0, 1, 1)
+outline_size = 10.0
+font_size = 60.0
+metadata/_custom_type_script = "uid://w6f05d55d5o8"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cc30s"]
+viewport_path = NodePath("SubViewport7")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
+viewport_path = NodePath("SubViewport8")
+
+[sub_resource type="Resource" id="Resource_1bd0r"]
+resource_local_to_scene = true
+script = ExtResource("20_qdso4")
+arrow_icon = ExtResource("19_e6x5r")
+max_arrow_width = 80
+offset_arrow = Vector2(0, 30)
+start_rotation = 0
+end_rotation = -90
+icon_selected = SubResource("ViewportTexture_cc30s")
+icon_unselected = SubResource("ViewportTexture_0gyww")
+label_settings = SubResource("Resource_ya0au")
+expand_icon = true
+max_icon_width = 225
+flat = false
+disabled = false
+icon_v_aligment = 1
+icon_h_aligment = 2
+aligment = 2
+text = "     غدیر 1404"
+selected_style = SubResource("StyleBoxTexture_dmnnq")
+unselected_style = SubResource("StyleBoxTexture_2gfuy")
+metadata/_custom_type_script = "uid://c8o7njavqtn62"
+
+[sub_resource type="Resource" id="Resource_xam4k"]
+script = ExtResource("22_h770b")
+id = 0
+menu_button = false
+text = "     قطار شادی"
+height = 175
+withd = 635
+offset_x = 80
+separation = -5
+active = false
+options = Array[ExtResource("22_h770b")]([])
+font = ExtResource("10_7erly")
+normal_style = SubResource("StyleBoxTexture_wgong")
+focus_style = SubResource("StyleBoxTexture_wgong")
+hover_style = SubResource("StyleBoxTexture_wgong")
+pressed_style = SubResource("StyleBoxTexture_wgong")
+disabled_style = SubResource("StyleBoxTexture_wgong")
+font_color = Color(0, 0, 1, 1)
+outline_color = Color(1, 1, 1, 1)
+font_hover_color = Color(0, 0, 1, 1)
+font_pressed_color = Color(0, 0, 1, 1)
+font_disabled_color = Color(0, 0, 1, 1)
+font_focus_color = Color(0, 0, 1, 1)
+outline_size = 10.0
+font_size = 60.0
+metadata/_custom_type_script = "uid://w6f05d55d5o8"
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8itgj"]
 
 [sub_resource type="Gradient" id="Gradient_8jfef"]
@@ -495,19 +605,20 @@ vertical_alignment = 1
 
 [node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_w6tu5")]
 layout_mode = 2
-active = true
 base_button = SubResource("Resource_728ow")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
-options = Array[ExtResource("22_h770b")]([SubResource("Resource_gxmfj"), null, null])
+options = Array[ExtResource("22_h770b")]([SubResource("Resource_gxmfj"), SubResource("Resource_6hmx6"), SubResource("Resource_2gfuy")])
 
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_w6tu5")]
 layout_mode = 2
 active = true
+base_button = SubResource("Resource_1bd0r")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
+options = Array[ExtResource("22_h770b")]([SubResource("Resource_xam4k")])
 
 [node name="MarginContainer2" type="MarginContainer" parent="CustomTabContainer"]
 visible = false
