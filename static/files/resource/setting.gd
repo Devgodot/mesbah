@@ -280,12 +280,7 @@ func _process(delta: float) -> void:
 			not_Space2 = true
 	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button.disabled = event_user.size() <= 0
 	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer6/Button.disabled = not (correct_group_name and %group_name.text != "" and %group_name.text != "‌" and not_Space and not_Space2)
-	if FileAccess.file_exists("user://"+Updatedate.load_game("user_name", "")+".webp"):
-		var image = Image.new()
-		image.load("user://"+Updatedate.load_game("user_name", "")+".webp")
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button2/TextureRect.texture = ImageTexture.create_from_image(image)
-	else:
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button2/TextureRect.texture = Image.new()
+	
 func _on_button_pressed() -> void:
 	var w = Updatedate.add_wait($ScrollContainer/VBoxContainer/TabContainer/VBoxContainer/Button)
 	$ScrollContainer/VBoxContainer/TabContainer.current_tab = 1
