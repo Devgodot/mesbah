@@ -12,26 +12,6 @@ func get_direction(text:String):
 		return 1 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var nodes = get_tree_string().split("\n")
-	var list = []
-	for n in nodes:
-		if n!= "":
-			for p in get_node(n).get_property_list():
-				if p.type == TYPE_OBJECT:
-					var path = ([get_node(n).get(p.name).resource_path, n, p.name] if get_node(n).get(p.name) is Resource else null)
-					if path != null:
-						list.append(path)
-	var dic = {}
-	for x in list:
-		if x[1] not in dic.keys():
-			if scene_file_path not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd":
-				dic[x[1]] = [{x[2]:x[0]}]
-		else:
-			if scene_file_path not in x[0] and x[0] != "" and x[0].get_file().get_extension() != "gd" :
-				dic[x[1]].append({x[2]:x[0]})
-	for source in dic.keys():
-		for p in dic[source]:
-			print(p.values()[0].get_file())
 	Updatedate.load_user()
 	mode = Updatedate.part
 	var sort
@@ -116,7 +96,7 @@ func _ready() -> void:
 			var icon = custom_hash.hashing(custom_hash.GET_HASH, data.icon) if data.has("icon") else ""
 			var box: HBoxContainer = $ScrollContainer/VBoxContainer/HBoxContainer.duplicate()
 			box.show()
-			box.get_node("Label").text = str(pos)
+			box.get_node("Label").text = str(int(pos))
 			box.get_node("Label3").text = str(int(score))
 			box.get_node("Label2").get_child(1).get_child(0).gui_input.connect(func (event:InputEvent):
 				if event is InputEventScreenTouch:
@@ -149,7 +129,7 @@ func _ready() -> void:
 			var icon = custom_hash.hashing(custom_hash.GET_HASH, group.icon) if group.has("icon") else ""
 			var box: HBoxContainer = $ScrollContainer/VBoxContainer/HBoxContainer.duplicate()
 			box.show()
-			box.get_node("Label").text = str(pos)
+			box.get_node("Label").text = str(int(pos))
 			box.get_node("Label2").text = _name
 			box.get_node("Label3").text = str(int(score))
 			box.get_node("Label2").get_child(1).get_child(0).gui_input.connect(func (event:InputEvent):
@@ -173,7 +153,7 @@ func _ready() -> void:
 		$HBoxContainer2/Label.text = "-"
 		$HBoxContainer2/Label3.text = "-"
 	if my_pos and my_pos.has("nums"):
-		$HBoxContainer2/Label.text = str(my_pos.pos)
+		$HBoxContainer2/Label.text = str(int(my_pos.pos))
 		$HBoxContainer2/Label3.text = str(int(my_pos.nums[1]))
 		for x in range(my_pos.nums[0]):
 			if x < $HBoxContainer2/Panel/HBoxContainer.get_children().size():
