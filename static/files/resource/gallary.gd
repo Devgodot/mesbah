@@ -57,7 +57,18 @@ func _input(event: InputEvent) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		Transation.change(self,  Updatedate.p_scene+".tscn", -1)
+		if target and get_tree().get_processed_tweens().size() == 0:
+			var tween= get_tree().create_tween()
+			tween.tween_property($TextureRect, "size", target.size, 0.5)
+			tween.play()
+			var tween2= get_tree().create_tween()
+			tween2.tween_property($TextureRect, "position", target.global_position, 0.5)
+			tween2.play()
+			await tween2.finished
+			target = null
+			$TextureRect.hide()
+		else:
+			Transation.change(self,  Updatedate.p_scene+".tscn", -1)
 	
 func _on_back_button_pressed() -> void:
 	if target and get_tree().get_processed_tweens().size() == 0:
