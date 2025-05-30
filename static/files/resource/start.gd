@@ -4,8 +4,8 @@ var seen = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	$SystemBarColorChanger.set_navigation_bar_color(Color("33385e"))
-	RenderingServer.set_default_clear_color(Color("33385e"))
+	$SystemBarColorChanger.set_navigation_bar_color(Color("e8ad31"))
+	
 	if not Updatedate.load_game("management"):
 		$CustomTabContainer.add_tabs(null, $CustomTabContainer.get_child(3), 3)
 	if not Updatedate.load_game("editor", false) or not Updatedate.load_game("support"):
@@ -60,7 +60,7 @@ func _on_control_2_item_pressed(id: String) -> void:
 	if id == "0":
 		Transation.change(self, "ticket.tscn")
 	else:
-		Updatedate.part = "0_"+str(int(id)-1)
+		Updatedate.gallary_part = "0_"+str(int(id)-1)
 		Updatedate.p_scene = "start.tscn"
 		Transation.change(self, "gallary.tscn")
 

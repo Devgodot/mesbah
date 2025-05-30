@@ -8,8 +8,6 @@ var enter_phones = []
 var timers = {}
 var current_phone
 func _ready() -> void:
-	$SystemBarColorChanger.set_navigation_bar_color(Color("f5d570"))
-	RenderingServer.set_default_clear_color(Color("f5d570"))
 	$MarginContainer/VBoxContainer/HBoxContainer3/SpinBox.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 	$MarginContainer/VBoxContainer/HBoxContainer3/SpinBox2.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 	$MarginContainer/VBoxContainer/HBoxContainer3/SpinBox3.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER

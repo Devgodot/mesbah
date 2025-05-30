@@ -6,7 +6,7 @@ var date = ""
 var calendar
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	$SystemBarColorChanger.set_navigation_bar_color(Color("1f7a2f"))
 	if Engine.has_singleton("GodotGetFile"):
 		calendar = Engine.get_singleton("GodotGetFile")
 		calendar.permission_granted.connect(func():
