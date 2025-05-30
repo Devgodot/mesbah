@@ -21,7 +21,7 @@ func _ready() -> void:
 		if m.num != 0:
 			$Button5/Label.show()
 			$Button5/Label.text = str(m.num)
-	$CustomTabContainer.current_tab = Updatedate.load_game("tab", 1)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Updatedate.load_game("support", false) and Updatedate.seen  > 0:
