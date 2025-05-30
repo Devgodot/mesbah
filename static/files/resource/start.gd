@@ -62,7 +62,7 @@ func _on_control_2_item_pressed(id: String) -> void:
 	else:
 		Updatedate.part = "0_"+str(int(id)-1)
 		Updatedate.p_scene = "start.tscn"
-		Transation.change(self, "gallery.tscn")
+		Transation.change(self, "gallary.tscn")
 
 func _on_button_5_pressed() -> void:
 	Transation.change(self, "messages.tscn")
