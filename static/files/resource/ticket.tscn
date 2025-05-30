@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=4]
+[gd_scene load_steps=95 format=4]
 
 [ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_bhvn0"]
 [ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_vaoh5"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://dmlksj83jrbfp" path="res://sprite/lamp.png" id="22_orjrw"]
 [ext_resource type="Texture2D" uid="uid://g76wq0x4awuw" path="res://sprite/flag2.png" id="23_4lt06"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="24_757g2"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="27_6agvo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vod7w"]
 bg_color = Color(1, 0.913725, 0.639216, 1)
@@ -1561,6 +1562,10 @@ expand_icon = true
 libraries = {
 &"": SubResource("AnimationLibrary_arfdn")
 }
+
+[node name="SystemBarColorChanger" type="Node" parent="."]
+script = ExtResource("27_6agvo")
+metadata/_custom_type_script = "uid://beu1imtnkq5ri"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
