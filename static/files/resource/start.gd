@@ -70,3 +70,9 @@ func _on_custom_tab_container_tab_selected(tab: int) -> void:
 			Transation.change(self, "managment.tscn")
 		4:
 			Transation.change(self, "main2.tscn")
+
+
+func _on_control_item_pressed2(id: String) -> void:
+	Updatedate.p_scene = scene_file_path.get_file().get_basename()
+	Updatedate.part = 3 +int(id)
+	Transation.change(self, "positions.tscn")
