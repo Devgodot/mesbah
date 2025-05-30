@@ -58,11 +58,11 @@ func _ready() -> void:
 	w.queue_free()
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		Transation.change(self, "main.tscn", -1)
+		Transation.change(self, "start.tscn", -1)
 		
 
 func _on_back_button_pressed() -> void:
-	Transation.change(self, "main.tscn", -1)
+	Transation.change(self, "start.tscn", -1)
 	
 
 func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
