@@ -61,4 +61,4 @@ func _on_control_2_item_pressed(id: String) -> void:
 
 
 func _on_button_5_pressed() -> void:
-	Transation.change(self, "message.tscn")
+	Transation.change(self, "messages.tscn")

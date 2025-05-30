@@ -82,6 +82,7 @@ func update_resource():
 					else:
 						if file[0].get_file() not in x[0] and x[0] != "" and "tscn" not in x[0].get_file().get_extension() and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
 							dic[x[1]].append({x[2]:x[0]})
+				print(dic)
 				for node in dic.keys():
 					for p in dic[node]:
 						var h = await request("/get_hash?name="+p.values()[0].get_file().uri_encode())
