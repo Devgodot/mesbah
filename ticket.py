@@ -98,7 +98,15 @@ def get_ticket():
 @jwt_required()
 def delete_ticket():
     if current_user.username in UserInterface.query.first().data.get("management", []) :
-        ticket = Ticket.query.filter_by(time=request.get_json().get("time")).first()
+        _time = request.get_json().get("time", "2024/03/24 15:00")
+        try:
+            date_part, time_part = _time.split(" ")
+            year, month, day = map(int, date_part.split("/"))
+            hour, minute = map(int, time_part.split(":"))
+            miladi_date = datetime.datetime(year, month, day, hour, minute)
+        except Exception as e:
+            return jsonify({"error": f"فرمت تاریخ اشتباه است: {e}"}), 400
+        ticket = Ticket.query.filter_by(time=miladi_date).first()
         if not ticket:
             return jsonify({"error": "تیکتی با این زمان وجود ندارد"}), 404
         db.session.delete(ticket)
