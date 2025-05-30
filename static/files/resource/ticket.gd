@@ -35,7 +35,7 @@ func _ready() -> void:
 		end_time = int(data.ticket.unixtime)- int(Updatedate.load_game("start_ticket", 0))
 		date = data.ticket.unixtime
 		if calendar:
-			prints(Updatedate.load_game("start_ticket", 0)*1000, data * 1000)
+			prints(Updatedate.load_game("start_ticket", 0), data)
 			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
 			print(event)
 			for e in event:
