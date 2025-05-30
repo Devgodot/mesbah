@@ -694,8 +694,10 @@ func load_scene(new_scene) -> Object:
 			ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene, progress)
 		s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
 	var source_dic = load_game("source_dic", {})
+	print(source_dic)
 	if new_scene in source_dic.keys():
 		for node in source_dic[new_scene]:
 			for p in source_dic[new_scene][node]:
 				s.get_node(node).set(p.keys()[0], ResourceLoader.load(p.values()[0]))
+				
 	return s
