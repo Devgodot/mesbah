@@ -52,7 +52,7 @@ func update_resource():
 		if data.add.size() > 0:
 			get_tree().get_root().add_child(load_scene("download.tscn"))
 		var index = 1
-		start_download.emit(data.add.size(), "بروزرسانی فایل‌ها...")
+		start_download.emit(data.add.size(), "بروزرسانی فایل‌ها")
 		var source_dic = load_game("source_dic", {})
 		var hash_list2:Dictionary = load_game("hash_list2", {})
 		
@@ -122,7 +122,7 @@ func update_source():
 	var index = 1
 	if data.add.size() > 0:
 		get_tree().get_root().add_child(load_scene("download.tscn"))
-	start_download.emit(data.add.size(), "بروزرسانی منابع فایل‌ها...")
+	start_download.emit(data.add.size(), "بروزرسانی منابع فایل‌ها")
 	for file in data.add:
 		var f = await request("/static/files/source/"+file[0].get_file().uri_encode(), HTTPClient.METHOD_GET, {}, 1)
 		download_progress.emit(index)

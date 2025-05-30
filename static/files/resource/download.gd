@@ -2,12 +2,14 @@ extends Control
 
 var file = 0.0
 var max_files = 0.0
-
+var main_text = ""
+var dots = ""
+var add_dots = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Updatedate.start_download.connect(func(_size, _text):
 		max_files = _size
-		$Label.text =_text)
+		main_text =_text)
 	Updatedate.download_progress.connect(func(i):
 		file = i
 		var p:Polygon2D =$Polygon2D.duplicate()
@@ -28,3 +30,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if max_files != 0:
 		$TextureProgressBar.value = 34 + (float(file) / float(max_files)) * 27
+	if add_dots:
+		add_dots = false
+		dots += "." 
+		if dots.length() > 3:
+			dots = ""
+		await get_tree().create_timer(0.5).timeout
+		add_dots = true
+	$Label.text = "[light color=white freq=20 num=2 len=25]" + main_text + dots
