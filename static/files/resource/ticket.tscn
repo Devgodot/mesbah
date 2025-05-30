@@ -1,32 +1,32 @@
 [gd_scene load_steps=95 format=4]
 
-[ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_bhvn0"]
-[ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_vaoh5"]
-[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="3_6agvo"]
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="3_bq06f"]
-[ext_resource type="Texture2D" uid="uid://blxp2f1agcvo8" path="res://sprite/toy-train-png-23.png" id="4_6agvo"]
-[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="4_qxlgd"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_qxlgd"]
-[ext_resource type="Texture2D" uid="uid://c2dml5pvtwldv" path="res://sprite/cloud.png" id="6_qt21a"]
-[ext_resource type="Texture2D" uid="uid://cl3eiktygnoci" path="res://sprite/بادکنک.png" id="7_iyvpu"]
-[ext_resource type="Texture2D" uid="uid://cirtlwugllh08" path="res://sprite/train1.png" id="8_eu0h4"]
-[ext_resource type="Texture2D" uid="uid://blr2ctvd6phdi" path="res://sprite/train2.png" id="9_dk2j7"]
-[ext_resource type="Texture2D" uid="uid://csill647e1784" path="res://sprite/girl.png" id="10_i1j04"]
-[ext_resource type="Texture2D" uid="uid://315njag78wgn" path="res://sprite/train4.png" id="11_so203"]
-[ext_resource type="Texture2D" uid="uid://c78t7srrwbgxx" path="res://sprite/train9.png" id="12_r807r"]
-[ext_resource type="Texture2D" uid="uid://bv1l7l77ucorf" path="res://sprite/train10.png" id="13_jpooj"]
-[ext_resource type="Texture2D" uid="uid://bkyjnqos8bjks" path="res://sprite/train6.png" id="14_exhjb"]
-[ext_resource type="Texture2D" uid="uid://bf7bjl5twqpqs" path="res://sprite/train7.png" id="15_xdtn6"]
-[ext_resource type="Texture2D" uid="uid://dtv0evb7xm7kx" path="res://sprite/smoke.png" id="16_w6gcr"]
-[ext_resource type="Texture2D" uid="uid://id3stg85lsh7" path="res://sprite/Tarh.ir.png" id="17_8q7l3"]
-[ext_resource type="Texture2D" uid="uid://bvbb1fmlu4nxo" path="res://sprite/panel.png" id="18_t38pn"]
-[ext_resource type="Texture2D" uid="uid://d2d81m65uc661" path="res://sprite/بلیط.jpg" id="19_a48hg"]
-[ext_resource type="FontFile" uid="uid://l2m0ndtot5rp" path="res://fonts/Aviny2-mfnbbn.ttf" id="20_lorq2"]
-[ext_resource type="Texture2D" uid="uid://dmr7u4w0iiyvn" path="res://sprite/Sunshine-Transparent-Images.png" id="21_y221b"]
-[ext_resource type="Texture2D" uid="uid://dmlksj83jrbfp" path="res://sprite/lamp.png" id="22_orjrw"]
-[ext_resource type="Texture2D" uid="uid://g76wq0x4awuw" path="res://sprite/flag2.png" id="23_4lt06"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="24_757g2"]
-[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="27_6agvo"]
+[ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_6agvo"]
+[ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_qxlgd"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="3_qt21a"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="4_iyvpu"]
+[ext_resource type="Texture2D" uid="uid://blxp2f1agcvo8" path="res://sprite/toy-train-png-23.png" id="5_eu0h4"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="6_dk2j7"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="7_i1j04"]
+[ext_resource type="Texture2D" uid="uid://c2dml5pvtwldv" path="res://sprite/cloud.png" id="8_so203"]
+[ext_resource type="Texture2D" uid="uid://cl3eiktygnoci" path="res://sprite/بادکنک.png" id="9_r807r"]
+[ext_resource type="Texture2D" uid="uid://cirtlwugllh08" path="res://sprite/train1.png" id="10_jpooj"]
+[ext_resource type="Texture2D" uid="uid://blr2ctvd6phdi" path="res://sprite/train2.png" id="11_exhjb"]
+[ext_resource type="Texture2D" uid="uid://csill647e1784" path="res://sprite/girl.png" id="12_xdtn6"]
+[ext_resource type="Texture2D" uid="uid://315njag78wgn" path="res://sprite/train4.png" id="13_w6gcr"]
+[ext_resource type="Texture2D" uid="uid://c78t7srrwbgxx" path="res://sprite/train9.png" id="14_8q7l3"]
+[ext_resource type="Texture2D" uid="uid://bv1l7l77ucorf" path="res://sprite/train10.png" id="15_t38pn"]
+[ext_resource type="Texture2D" uid="uid://bkyjnqos8bjks" path="res://sprite/train6.png" id="16_a48hg"]
+[ext_resource type="Texture2D" uid="uid://bf7bjl5twqpqs" path="res://sprite/train7.png" id="17_lorq2"]
+[ext_resource type="Texture2D" uid="uid://dtv0evb7xm7kx" path="res://sprite/smoke.png" id="18_y221b"]
+[ext_resource type="Texture2D" uid="uid://id3stg85lsh7" path="res://sprite/Tarh.ir.png" id="19_orjrw"]
+[ext_resource type="Texture2D" uid="uid://bvbb1fmlu4nxo" path="res://sprite/panel.png" id="20_4lt06"]
+[ext_resource type="Texture2D" uid="uid://d2d81m65uc661" path="res://sprite/بلیط.jpg" id="21_757g2"]
+[ext_resource type="FontFile" uid="uid://l2m0ndtot5rp" path="res://fonts/Aviny2-mfnbbn.ttf" id="22_w00dx"]
+[ext_resource type="Texture2D" uid="uid://dmr7u4w0iiyvn" path="res://sprite/Sunshine-Transparent-Images.png" id="23_kdb70"]
+[ext_resource type="Texture2D" uid="uid://dmlksj83jrbfp" path="res://sprite/lamp.png" id="24_cl4tn"]
+[ext_resource type="Texture2D" uid="uid://g76wq0x4awuw" path="res://sprite/flag2.png" id="25_vmlmn"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="26_655xk"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="27_oaqcc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vod7w"]
 bg_color = Color(1, 0.913725, 0.639216, 1)
@@ -41,7 +41,7 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_o7y5v"]
-font = ExtResource("3_6agvo")
+font = ExtResource("3_qt21a")
 font_size = 52
 font_color = Color(0.71811, 0.397437, 0.20192, 1)
 outline_size = 4
@@ -55,7 +55,7 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_6d827"]
-font = ExtResource("4_qxlgd")
+font = ExtResource("4_iyvpu")
 font_size = 136
 font_color = Color(0.67451, 0.4, 0.0509804, 1)
 outline_color = Color(0, 0, 0, 1)
@@ -156,7 +156,7 @@ seamless_blend_skirt = 1.0
 noise = SubResource("FastNoiseLite_wmegk")
 
 [sub_resource type="LabelSettings" id="LabelSettings_nf6rg"]
-font = ExtResource("5_qxlgd")
+font = ExtResource("6_dk2j7")
 font_size = 40
 font_color = Color(0.466667, 0.133333, 1, 1)
 outline_size = 14
@@ -201,10 +201,10 @@ point_count = 2
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_exhjb")
+"texture": ExtResource("16_a48hg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_xdtn6")
+"texture": ExtResource("17_lorq2")
 }],
 "loop": false,
 "name": &"default",
@@ -470,7 +470,7 @@ _data = {
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7l842"]
-texture = ExtResource("18_t38pn")
+texture = ExtResource("20_4lt06")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5d6j"]
 
@@ -489,7 +489,7 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_arfdn"]
 line_spacing = 0.0
-font = ExtResource("3_bq06f")
+font = ExtResource("7_i1j04")
 font_size = 31
 font_color = Color(0, 0.0823529, 1, 1)
 outline_size = 11
@@ -516,20 +516,20 @@ corner_radius_top_left = 3
 corner_radius_bottom_left = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_7l842"]
-font = ExtResource("5_qxlgd")
+font = ExtResource("6_dk2j7")
 font_size = 31
 outline_size = 7
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_f6c4r"]
 line_spacing = 0.0
-font = ExtResource("3_bq06f")
+font = ExtResource("7_i1j04")
 font_size = 25
 font_color = Color(0.713726, 0.0823529, 0, 1)
 outline_size = 11
 
 [sub_resource type="LabelSettings" id="LabelSettings_ls7rc"]
-font = ExtResource("20_lorq2")
+font = ExtResource("22_w00dx")
 font_size = 35
 font_color = Color(0, 0, 0, 1)
 outline_size = 7
@@ -887,7 +887,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_bhvn0")
+script = ExtResource("1_6agvo")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -896,7 +896,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_vaoh5")
+texture = ExtResource("2_qxlgd")
 expand_mode = 1
 stretch_mode = 6
 
@@ -1013,7 +1013,7 @@ offset_left = 192.0
 offset_top = 1855.0
 offset_right = 350.0
 offset_bottom = 1932.0
-texture = ExtResource("4_6agvo")
+texture = ExtResource("5_eu0h4")
 expand_mode = 1
 stretch_mode = 5
 flip_h = true
@@ -1059,7 +1059,7 @@ offset_left = 141.0
 offset_top = 1564.0
 offset_right = 861.0
 offset_bottom = 1765.0
-theme_override_fonts/font = ExtResource("3_bq06f")
+theme_override_fonts/font = ExtResource("7_i1j04")
 theme_override_font_sizes/font_size = 101
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o7y5v")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wp4qn")
@@ -1075,7 +1075,7 @@ offset_top = 1564.0
 offset_right = 861.0
 offset_bottom = 1765.0
 theme_override_colors/font_disabled_color = Color(0.886262, 0.886261, 0.886262, 1)
-theme_override_fonts/font = ExtResource("3_bq06f")
+theme_override_fonts/font = ExtResource("7_i1j04")
 theme_override_font_sizes/font_size = 101
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o7y5v")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_7l842")
@@ -1087,7 +1087,7 @@ text = "ثبت در تقویم"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(-157, 157)
 amount = 4
-texture = ExtResource("6_qt21a")
+texture = ExtResource("8_so203")
 lifetime = 20.0
 emission_shape = 3
 emission_rect_extents = Vector2(1, 200)
@@ -1106,7 +1106,7 @@ position = Vector2(87.023, -0.0274764)
 rotation = 0.20961
 emitting = false
 amount = 150
-texture = ExtResource("7_iyvpu")
+texture = ExtResource("9_r807r")
 lifetime = 5.0
 emission_shape = 3
 emission_rect_extents = Vector2(200, 1)
@@ -1121,31 +1121,31 @@ scale_amount_max = 0.5
 scale_amount_curve = SubResource("Curve_c7gu8")
 
 [node name="Train1" type="Sprite2D" parent="Node2D"]
-texture = ExtResource("8_eu0h4")
+texture = ExtResource("10_jpooj")
 
 [node name="Train2" type="Sprite2D" parent="Node2D"]
 position = Vector2(-67.4724, -34.4829)
-texture = ExtResource("9_dk2j7")
+texture = ExtResource("11_exhjb")
 offset = Vector2(9.47241, -45.5171)
 
 [node name="Train3" type="Sprite2D" parent="Node2D"]
 position = Vector2(97.2262, -16.067)
 scale = Vector2(0.509301, 0.509301)
-texture = ExtResource("10_i1j04")
+texture = ExtResource("12_xdtn6")
 offset = Vector2(2.56897, -102.001)
 
 [node name="Train4" type="Sprite2D" parent="Node2D"]
 position = Vector2(241.748, 4.02612)
-texture = ExtResource("11_so203")
+texture = ExtResource("13_w6gcr")
 offset = Vector2(8.25208, -42.0261)
 
 [node name="Train9" type="Sprite2D" parent="Node2D"]
 position = Vector2(-94, 70)
-texture = ExtResource("12_r807r")
+texture = ExtResource("14_8q7l3")
 
 [node name="Train10" type="Sprite2D" parent="Node2D"]
 position = Vector2(-191, 72)
-texture = ExtResource("13_jpooj")
+texture = ExtResource("15_t38pn")
 
 [node name="Line2D" type="Line2D" parent="Node2D"]
 points = PackedVector2Array(-92, 69, -192, 61)
@@ -1159,7 +1159,7 @@ sprite_frames = SubResource("SpriteFrames_e3xla")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D"]
 position = Vector2(-190.584, -151.601)
-texture = ExtResource("16_w6gcr")
+texture = ExtResource("18_y221b")
 direction = Vector2(0, -1)
 gravity = Vector2(0, 0)
 initial_velocity_min = 180.26
@@ -1175,7 +1175,7 @@ autoplay = true
 
 [node name="Tarh_ir" type="Sprite2D" parent="."]
 position = Vector2(878, 933)
-texture = ExtResource("17_8q7l3")
+texture = ExtResource("19_orjrw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1237,13 +1237,13 @@ theme_override_colors/font_focus_color = Color(0.34902, 0.839216, 0, 1)
 theme_override_colors/font_pressed_color = Color(0.34902, 0.839216, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_constants/line_spacing = 15
-theme_override_fonts/font = ExtResource("5_qxlgd")
+theme_override_fonts/font = ExtResource("6_dk2j7")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o5d6j")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ldq3j")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ldq3j")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ldq3j")
-icon = ExtResource("19_a48hg")
+icon = ExtResource("21_757g2")
 autowrap_mode = 3
 icon_alignment = 1
 expand_icon = true
@@ -1312,12 +1312,12 @@ vertical_alignment = 2
 
 [node name="Sunshine-transparent-images" type="Sprite2D" parent="Panel"]
 position = Vector2(500.251, 18.4395)
-texture = ExtResource("21_y221b")
+texture = ExtResource("23_kdb70")
 offset = Vector2(2.33722, 1.29529)
 
 [node name="PointLight2D" type="PointLight2D" parent="Panel"]
 position = Vector2(501, 16)
-texture = ExtResource("21_y221b")
+texture = ExtResource("23_kdb70")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
 libraries = {
@@ -1339,7 +1339,7 @@ offset_right = 50.0
 offset_bottom = 25.0
 grow_vertical = 2
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("22_orjrw")
+texture = ExtResource("24_cl4tn")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1376,7 +1376,7 @@ grow_horizontal = 0
 grow_vertical = 2
 rotation = -0.349066
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("22_orjrw")
+texture = ExtResource("24_cl4tn")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1414,7 +1414,7 @@ grow_horizontal = 0
 grow_vertical = 2
 rotation = 0.349066
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("22_orjrw")
+texture = ExtResource("24_cl4tn")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1451,7 +1451,7 @@ grow_horizontal = 0
 grow_vertical = 2
 rotation = 0.349066
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("22_orjrw")
+texture = ExtResource("24_cl4tn")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1495,7 +1495,7 @@ offset_bottom = 62.305
 grow_vertical = 2
 rotation = 3.21141
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("23_4lt06")
+texture = ExtResource("25_vmlmn")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1514,7 +1514,7 @@ grow_horizontal = 0
 grow_vertical = 2
 rotation = 3.22013
 pivot_offset = Vector2(25, 0)
-texture = ExtResource("23_4lt06")
+texture = ExtResource("25_vmlmn")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1554,7 +1554,7 @@ layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wmegk")
-icon = ExtResource("24_757g2")
+icon = ExtResource("26_655xk")
 flat = true
 expand_icon = true
 
@@ -1564,7 +1564,7 @@ libraries = {
 }
 
 [node name="SystemBarColorChanger" type="Node" parent="."]
-script = ExtResource("27_6agvo")
+script = ExtResource("27_oaqcc")
 metadata/_custom_type_script = "uid://beu1imtnkq5ri"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
