@@ -732,11 +732,11 @@ func add_ticket():
 				var http = HTTPRequest.new()
 				add_child(http)
 				var time = str(btn5.text,"/",btn4.text,"/",btn3.text, " ", btn2.text,":", btn.text)
-				http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/cha", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"new_time":time, "time":ticket.time, "max_users":box.get_node("MarginContainer/VBoxContainer/BoxContainer/SpinBox").value}))
+				http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/change_ticket", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"new_time":time, "time":ticket.time, "max_users":box.get_node("MarginContainer/VBoxContainer/BoxContainer/SpinBox").value}))
 				var d2 = await http.request_completed
 				http.timeout = 10
 				while d2[3].size() == 0:
-					http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/cha", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"new_time":time, "time":ticket.time, "max_users":box.get_node("MarginContainer/VBoxContainer/BoxContainer/SpinBox").value}))
+					http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/change_ticket", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"new_time":time, "time":ticket.time, "max_users":box.get_node("MarginContainer/VBoxContainer/BoxContainer/SpinBox").value}))
 					d2 = await http.request_completed
 				http.queue_free()
 				var message = Updatedate.get_json(d2[3])
@@ -748,7 +748,25 @@ func add_ticket():
 						Notification.add_notif(message.message)
 						add_ticket()
 				)
-				
+			box.get_node("MarginContainer/VBoxContainer/HBoxContainer2/Button2").pressed.connect(func():
+				var http = HTTPRequest.new()
+				add_child(http)
+				http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/delete_ticket", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":ticket.time}))
+				var d2 = await http.request_completed
+				http.timeout = 10
+				while d2[3].size() == 0:
+					http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/delete_ticket", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":ticket.time}))
+					d2 = await http.request_completed
+				http.queue_free()
+				var message = Updatedate.get_json(d2[3])
+				if message:
+					
+					if message.has("error"):
+						Notification.add_notif(message.error, Notification.ERROR)
+					if message.has("message"):
+						Notification.add_notif(message.message)
+						add_ticket()
+				)
 			btn.pressed.connect(func():
 				var s = Updatedate.load_scene("scroll_button.tscn")
 				var items = []
