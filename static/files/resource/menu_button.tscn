@@ -8,3 +8,4 @@ offset_top = 21.0
 offset_right = 502.0
 offset_bottom = 63.0
 script = ExtResource("1_2noxt")
+time = null

@@ -1261,6 +1261,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_x1pfr")
 
 [node name="Control" parent="CustomTabContainer/MarginContainer2/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_e6x5r")]
 layout_mode = 2
+time = null
 active = true
 base_button = SubResource("Resource_ycbhe")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
@@ -1346,6 +1347,7 @@ options = Array[ExtResource("22_wx5k3")]([SubResource("Resource_gxmfj"), SubReso
 
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_e6x5r")]
 layout_mode = 2
+time = 0.5
 base_button = SubResource("Resource_mrvu1")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
