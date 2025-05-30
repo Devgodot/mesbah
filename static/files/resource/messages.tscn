@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3]
+[gd_scene load_steps=33 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_oak6f"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_rh4k5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://dv01yawfeum4w" path="res://script/messages.gd" id="6_wgl0a"]
 [ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="7_pllda"]
 [ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="8_bokax"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="8_rh4k5"]
 [ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="9_blg0s"]
 [ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="10_fvop6"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="11_5ddxt"]
@@ -104,7 +105,7 @@ PopupMenu/fonts/font = SubResource("FontVariation_odfkb")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5w68j"]
-font = ExtResource("1_oak6f")
+font = ExtResource("8_rh4k5")
 font_size = 100
 
 [sub_resource type="Theme" id="Theme_fflgh"]

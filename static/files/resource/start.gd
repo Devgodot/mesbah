@@ -16,7 +16,11 @@ func _ready() -> void:
 			for user2 in d:
 				seen += user2.new
 		Updatedate.seen = seen
-	
+	var m = await Updatedate.request("/auth/unseen_message")
+	if m and m.has("num"):
+		if m.num != 0:
+			$Button5/Label.show()
+			$Button5/Label.text = str(m.num)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -54,3 +58,7 @@ func _on_control_2_item_pressed(id: String) -> void:
 	match id:
 		"0":
 			Transation.change(self, "ticket.tscn")
+
+
+func _on_button_5_pressed() -> void:
+	Transation.change(self, "message.tscn")
