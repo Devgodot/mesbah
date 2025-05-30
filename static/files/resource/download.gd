@@ -22,6 +22,12 @@ func _ready() -> void:
 		tween.tween_property(p, "position", $CPUParticles2D.position, 0.5)
 		tween.play()
 		await tween.finished
+		
+		var c: CPUParticles2D =$CPUParticles2D2.duplicate()
+		c.position = p.position
+		c.emitting = true
+		await c.finished
+		c.queue_free()
 		p.queue_free())
 	Updatedate.end_download.connect(func():
 		queue_free())
