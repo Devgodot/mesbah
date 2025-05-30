@@ -245,9 +245,9 @@ func request(url, method=HTTPClient.METHOD_GET,_data={}, result_mode=0):
 		"Authorization: Bearer %s"%token
 	]
 	if _data.keys().size() > 0:
-		http.request(protocol+subdomin+url, header, method)
+		http.request(protocol+subdomin+url if not url.begins_with("http") else url, header, method)
 	else:
-		http.request(protocol+subdomin+url, header, method, JSON.stringify(_data))
+		http.request(protocol+subdomin+url if not url.begins_with("http") else url, header, method, JSON.stringify(_data))
 	var d = await http.request_completed
 	http.timeout = 10
 	while d[3].size() == 0:
@@ -560,6 +560,7 @@ func get_message_image(icon, node):
 func get_message_sound(audio, node):
 	if !DirAccess.dir_exists_absolute("user://messages"):
 		DirAccess.make_dir_absolute("user://messages")
+	print(audio)
 	if audio != "":
 		var w = add_wait(node.get_node("MarginContainer/HBoxContainer/Button"))
 		audio = protocol + audio if not audio.begins_with("http") else audio
