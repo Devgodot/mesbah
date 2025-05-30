@@ -1,7 +1,8 @@
-[gd_scene load_steps=36 format=3]
+[gd_scene load_steps=35 format=3]
 
 [ext_resource type="Script" uid="uid://djn03diqbkjm5" path="res://script/menu_2.gd" id="1_nuxwb"]
 [ext_resource type="Texture2D" uid="uid://c3uw8ja4lbsef" path="res://sprite/wp-1544032956945.jpg" id="2_3eouo"]
+[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_7mpu7"]
 [ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_7mpu7"]
 [ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="4_kvrl2"]
 [ext_resource type="Texture2D" uid="uid://ceu4poa2yaa0s" path="res://sprite/جلسات خانوادگی و_.png" id="5_rc4rg"]
@@ -16,15 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://c7r23jagvv3gd" path="res://sprite/Layer 6 copy 5.png" id="14_hspcg"]
 [ext_resource type="Texture2D" uid="uid://l6apj4mn1o17" path="res://sprite/6.jpg" id="15_upkyi"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="16_co4st"]
-
-[sub_resource type="Gradient" id="Gradient_la3qc"]
-colors = PackedColorArray(0.94902, 0.713726, 0.388235, 1, 0.831373, 0.752941, 0.407843, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ks511"]
-gradient = SubResource("Gradient_la3qc")
-width = 500
-height = 500
-fill_to = Vector2(0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7y500"]
 
@@ -107,9 +99,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 778.0
+offset_bottom = 778.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_ks511")
+texture = ExtResource("2_7mpu7")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
