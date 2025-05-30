@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c1whpvax8m51c" path="res://sprite/مصباح.jpg" id="3_g28nu"]
 [ext_resource type="Texture2D" uid="uid://bponhwur3lott" path="res://sprite/pngtree-islamic-mosque-gate-frame-vector-ornament-png-image_14130251.png" id="4_1005o"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="5_2nllj"]
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="6_fekmm"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="6_814nn"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="7_bxftw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ywlqx"]
@@ -16,7 +16,7 @@ blend_mode = 3
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7dk7t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_44bf7"]
-font = ExtResource("6_fekmm")
+font = ExtResource("6_814nn")
 font_size = 100
 
 [node name="Control" type="Control"]
