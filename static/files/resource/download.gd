@@ -24,12 +24,13 @@ func _ready() -> void:
 		await tween.finished
 		
 		var c: CPUParticles2D =$CPUParticles2D2.duplicate()
-		c.position = p.position
+		c.position = p.position+Vector2(14, 24)
 		c.emitting = true
 		add_child(c)
+		p.queue_free()
 		await c.finished
 		c.queue_free()
-		p.queue_free())
+		)
 	Updatedate.end_download.connect(func():
 		queue_free())
 
