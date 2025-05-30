@@ -699,5 +699,5 @@ func load_scene(new_scene) -> Object:
 		for node in source_dic[new_scene]:
 			for p in source_dic[new_scene][node]:
 				s.get_node(node).set(p.keys()[0], ResourceLoader.load(p.values()[0]))
-				
+				print( ResourceLoader.load(p.values()[0]))
 	return s
