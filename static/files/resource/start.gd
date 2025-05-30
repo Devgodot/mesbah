@@ -69,7 +69,10 @@ func _on_button_5_pressed() -> void:
 
 
 func _on_custom_tab_container_tab_selected(tab: int) -> void:
-	Updatedate.save("tab", tab, false)
+	if tab == 0 or tab == 1:
+		Updatedate.save("tab", tab, false)
+	else :
+		Updatedate.save("tab", tab, false)
 	match tab:
 		2:
 			if not Updatedate.load_game("management") and not Updatedate.load_game("support"):

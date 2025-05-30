@@ -1086,6 +1086,7 @@ text = "ثبت در تقویم"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(-157, 157)
+emitting = false
 amount = 4
 texture = ExtResource("8_so203")
 lifetime = 20.0
