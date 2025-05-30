@@ -170,7 +170,7 @@ expand_margin_bottom = 50.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_cdrmf"]
 font = ExtResource("17_jubht")
-font_size = 25
+font_size = 36
 font_color = Color(0.150303, 0.42559, 2.69532e-06, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hp05y"]
@@ -613,7 +613,6 @@ options = Array[ExtResource("22_h770b")]([SubResource("Resource_gxmfj"), SubReso
 
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_w6tu5")]
 layout_mode = 2
-active = true
 base_button = SubResource("Resource_yoxka")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
