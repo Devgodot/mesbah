@@ -679,11 +679,11 @@ func _on_add_ticket_pressed() -> void:
 				if child.button_pressed:
 					tag.append(x)
 	var nationality = int(%nationality.button_pressed)
-	http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/add_ticket", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":time, "max_users":$"TabContainer/5/VBoxContainer/BoxContainer/BoxContainer/SpinBox".value, "tag":tag, "nationality":nationality}))
+	http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/add_ticket", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":time, "max_users":$"TabContainer/5/VBoxContainer/BoxContainer/BoxContainer/SpinBox".value, "tag":tag, "nationality":nationality, "gender":%sort_gender2.selected}))
 	var d = await http.request_completed
 	http.timeout = 10
 	while d[3].size() == 0:
-		http.request(Updatedate.protocol+Updatedate.subdomin+"/check_resource", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":time, "max_users":$"TabContainer/5/VBoxContainer/BoxContainer/BoxContainer/SpinBox".value, "tag":tag, "nationality":nationality}))
+		http.request(Updatedate.protocol+Updatedate.subdomin+"/check_resource", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":time, "max_users":$"TabContainer/5/VBoxContainer/BoxContainer/BoxContainer/SpinBox".value, "tag":tag, "nationality":nationality, "gender":%sort_gender2.selected}))
 		d = await http.request_completed
 	http.queue_free()
 	var data = Updatedate.get_json(d[3])
@@ -716,7 +716,7 @@ func add_ticket():
 			var btn4 = box.get_node("MarginContainer/VBoxContainer/HBoxContainer/Button4")
 			var btn5 = box.get_node("MarginContainer/VBoxContainer/HBoxContainer/Button5")
 			var l = box.get_node("MarginContainer/VBoxContainer/HBoxContainer3/Label")
-			l.text = "مشخصات : این قطار برای افراد با رده‌های سنی "
+			l.text = "مشخصات : این قطار برای "+["پسر های", "دختر های", "افراد"][ticket.gender]+" با رده‌های سنی "
 			var tags = ["زیر شش سال", "اول تا سوم", "چهارم تا ششم", "هفتم تا نهم"]
 			for t in ticket.tag:
 				l.text += str(tags[t], "، ")
