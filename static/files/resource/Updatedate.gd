@@ -576,7 +576,6 @@ func get_message_sound(audio, node):
 			add_child(r)
 			r.request(audio)
 			var i = await r.request_completed
-			r.timeout = 3
 			while (i[3]).size() == 0:
 				r.request(audio)
 				i = await r.request_completed
