@@ -66,6 +66,8 @@ func _on_button_5_pressed() -> void:
 
 func _on_custom_tab_container_tab_selected(tab: int) -> void:
 	match tab:
+		2:
+			Transation.change(self, "control.tscn")
 		3:
 			Transation.change(self, "managment.tscn")
 		4:
