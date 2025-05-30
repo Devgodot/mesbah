@@ -2709,7 +2709,7 @@ offset_bottom = -140.0
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 300
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/5"]
 layout_mode = 2
@@ -2719,7 +2719,6 @@ theme_override_constants/separation = 40
 layout_direction = 3
 layout_mode = 2
 theme_override_constants/v_separation = 45
-columns = 2
 
 [node name="BoxContainer" type="BoxContainer" parent="TabContainer/5/VBoxContainer/BoxContainer"]
 layout_mode = 2
@@ -2748,6 +2747,22 @@ value = 1.0
 alignment = 1
 select_all_on_focus = true
 
+[node name="Label2" type="Label" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+text = "جنسیت:"
+
+[node name="sort_gender2" type="OptionButton" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+alignment = 1
+selected = 0
+item_count = 2
+popup/item_0/text = "آقا"
+popup/item_0/id = 0
+popup/item_1/text = "خانم"
+popup/item_1/id = 1
+
 [node name="BoxContainer3" type="BoxContainer" parent="TabContainer/5/VBoxContainer/BoxContainer"]
 layout_mode = 2
 
@@ -2757,12 +2772,12 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "زمان :   "
 
 [node name="Button" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 text = "00"
 
 [node name="Button2" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 text = "15"
 
@@ -2773,26 +2788,19 @@ theme_override_constants/separation = 45
 theme_override_styles/separator = SubResource("StyleBoxEmpty_aqyui")
 
 [node name="Button3" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 text = "24"
 
 [node name="Button4" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 text = "03"
 
 [node name="Button5" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 text = "1404"
-
-[node name="add_editor" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer"]
-custom_minimum_size = Vector2(180, 80)
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 4
-text = "اضافه کردن"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/5/VBoxContainer/BoxContainer"]
 layout_mode = 2
@@ -2801,7 +2809,7 @@ size_flags_horizontal = 3
 [node name="GridContainer" type="GridContainer" parent="TabContainer/5/VBoxContainer/BoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 4
+columns = 5
 
 [node name="CheckBox" type="CheckBox" parent="TabContainer/5/VBoxContainer/BoxContainer/HBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(0, 100)
@@ -2825,10 +2833,17 @@ text = "هفتم تا نهم"
 
 [node name="nationality" type="CheckBox" parent="TabContainer/5/VBoxContainer/BoxContainer/HBoxContainer/GridContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
 text = "اتباع"
 alignment = 1
+
+[node name="add_editor" type="Button" parent="TabContainer/5/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(180, 80)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+text = "اضافه کردن"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/5/VBoxContainer"]
 layout_mode = 2
