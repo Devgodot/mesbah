@@ -6,7 +6,6 @@ var version = "1.3"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var user = Updatedate.load_user()
-	print(user)
 	if user:
 		var data = await Updatedate.load_from_server()
 		Transation.check_trans()
@@ -29,7 +28,6 @@ func _ready() -> void:
 				Transation.change(self, "start.tscn")
 				
 		else:
-			print(8)
 			get_tree().reload_current_scene()
 	else:
 		Transation.change(self, "register.tscn")

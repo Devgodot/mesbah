@@ -13,8 +13,9 @@ func _ready() -> void:
 		if !DirAccess.dir_exists_absolute("user://"+part):
 			DirAccess.make_dir_absolute("user://"+part)
 		var names = []
-		
+		print(images)
 		for image in images.files:
+			
 			names.append(image.get_file())
 			var btn = $MarginContainer/ScrollContainer/GridContainer/Button.duplicate()
 			btn.show()
