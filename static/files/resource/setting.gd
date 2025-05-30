@@ -29,8 +29,6 @@ func _ready() -> void:
 	
 	set_process(false)
 	Updatedate.load_user()
-	$SystemBarColorChanger.set_navigation_bar_color(Color("e9c93a"))
-	RenderingServer.set_default_clear_color(Color("e9c93a"))
 	if Engine.has_singleton("GodotGetImage"):
 		camera = Engine.get_singleton("GodotGetImage")
 		camera.setOptions({"use_front_camera":true})
