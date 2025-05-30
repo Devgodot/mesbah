@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="2_usj81"]
 [ext_resource type="Texture2D" uid="uid://crpmkhb3nkjbd" path="res://sprite/چراغ کپسولی قدیمی و چندوجهی.png" id="3_3wrv3"]
 [ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="4_1jj20"]
-[ext_resource type="FontFile" uid="uid://il7mx0bi5scp" path="res://fonts/Sahel-SemiBold.ttf" id="5_rtqw6"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="5_n3hi6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d5050"]
 shader = ExtResource("2_usj81")
@@ -30,12 +30,12 @@ point_count = 4
 colors = PackedColorArray(1, 1, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_d5050"]
-font = ExtResource("5_rtqw6")
+font = ExtResource("5_n3hi6")
 font_size = 70
-font_color = Color(0.329412, 0.54902, 1, 1)
+font_color = Color(1, 1, 0, 1)
 outline_size = 8
-shadow_size = 20
-shadow_color = Color(3.24883e-07, 0.4224, 6.73831e-07, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
 shadow_offset = Vector2(5, 5)
 
 [node name="Control" type="Control"]
