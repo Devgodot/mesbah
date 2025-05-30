@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" uid="uid://5ornlt8iysmk" path="res://script/gallary.gd" id="1_814nn"]
-[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="2_5bpkc"]
+[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_814nn"]
 [ext_resource type="Texture2D" uid="uid://c1whpvax8m51c" path="res://sprite/مصباح.jpg" id="3_g28nu"]
 [ext_resource type="Texture2D" uid="uid://bponhwur3lott" path="res://sprite/pngtree-islamic-mosque-gate-frame-vector-ornament-png-image_14130251.png" id="4_1005o"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="5_2nllj"]
@@ -35,7 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_5bpkc")
+texture = ExtResource("2_814nn")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -114,7 +114,6 @@ layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7dk7t")
-text = "fdfd"
 icon = ExtResource("5_2nllj")
 flat = true
 icon_alignment = 1
@@ -125,8 +124,8 @@ expand_icon = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 15.0
-offset_bottom = 116.0
+offset_top = 1.0
+offset_bottom = 171.0
 grow_horizontal = 2
 text = "گالری تصاویر"
 label_settings = SubResource("LabelSettings_44bf7")
