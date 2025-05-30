@@ -533,6 +533,7 @@ func get_gallery_image(icon, node):
 func get_message_image(icon, node):
 	if !DirAccess.dir_exists_absolute("user://messages"):
 		DirAccess.make_dir_absolute("user://messages")
+	print(icon)
 	if icon != "":
 		var w = add_wait(node)
 		icon = protocol + icon if not icon.begins_with("http") else icon
@@ -547,7 +548,6 @@ func get_message_image(icon, node):
 			add_child(r)
 			r.request(icon)
 			var i = await r.request_completed
-			r.timeout = 3
 			while (i[3]).size() == 0:
 				r.request(icon)
 				i = await r.request_completed
