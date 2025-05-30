@@ -11,6 +11,16 @@ import jdatetime
 
 ticket_bp = Blueprint("ticket", __name__)
 
+PERSIAN_WEEKDAYS = {
+    'Saturday': 'شنبه',
+    'Sunday': 'یکشنبه',
+    'Monday': 'دوشنبه',
+    'Tuesday': 'سه‌شنبه',
+    'Wednesday': 'چهارشنبه',
+    'Thursday': 'پنجشنبه',
+    'Friday': 'جمعه'
+}
+
 
 @ticket_bp.post("/add_ticket")
 @jwt_required()
@@ -65,7 +75,7 @@ def get_ticket():
                 "users": len(ticket.users),
                 "tag": ticket.tag,
                 "nationality": ticket.nationality,
-                "day": jalali_datetime.strftime('%A')
+                "day": PERSIAN_WEEKDAYS.get(jalali_datetime.strftime('%A'), jalali_datetime.strftime('%A'))
             }
             tickets_data.append(ticket_data)
     else:
