@@ -78,7 +78,7 @@ func _on_custom_tab_container_tab_selected(tab: int) -> void:
 			if not Updatedate.load_game("management") and not Updatedate.load_game("support"):
 				Transation.change(self, "control.tscn")
 			else:
-				$CustomTabContainer.change_tab(tab, 1)
+				$CustomTabContainer.current_tab = 1
 				Notification.add_notif("پشتیبانان به این بخش دسترسی ندارند.", Notification.ERROR)
 		3:
 			Transation.change(self, "managment.tscn")
