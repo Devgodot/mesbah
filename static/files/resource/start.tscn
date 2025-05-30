@@ -1208,6 +1208,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_7erly")
+current_tab = 1
 transation = false
 separation = 50.0
 separation_style = SubResource("StyleBoxEmpty_8wh6k")
@@ -1268,7 +1269,6 @@ height = 250.0
 options = Array[ExtResource("21_qmjwg")]([SubResource("Resource_vdf25"), SubResource("Resource_i5q5x")])
 
 [node name="MarginContainer" type="MarginContainer" parent="CustomTabContainer"]
-visible = false
 layout_mode = 0
 offset_right = 1000.0
 offset_bottom = 1722.0
