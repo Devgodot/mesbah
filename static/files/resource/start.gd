@@ -6,10 +6,10 @@ func _ready() -> void:
 	
 	$SystemBarColorChanger.set_navigation_bar_color(Color("33385e"))
 	RenderingServer.set_default_clear_color(Color("33385e"))
-	if Updatedate.load_game("management"):
-		$Button3.show()
-	if Updatedate.load_game("editor", false) or Updatedate.load_game("support"):
-		$Button2.show()
+	if not Updatedate.load_game("management"):
+		$CustomTabContainer.add_tabs(null, $CustomTabContainer.get_child(3), 3)
+	if not Updatedate.load_game("editor", false) or not Updatedate.load_game("support"):
+		$CustomTabContainer.add_tabs(null, $CustomTabContainer.get_child(4), 3)
 	if Updatedate.load_game("support", false):
 		var d = Updatedate.list_users
 		if d :
@@ -62,3 +62,11 @@ func _on_control_2_item_pressed(id: String) -> void:
 
 func _on_button_5_pressed() -> void:
 	Transation.change(self, "messages.tscn")
+
+
+func _on_custom_tab_container_tab_selected(tab: int) -> void:
+	match tab:
+		3:
+			Transation.change(self, "managment.tscn")
+		4:
+			Transation.change(self, "main2.tscn")
