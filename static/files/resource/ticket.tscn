@@ -1,9 +1,11 @@
-[gd_scene load_steps=90 format=4]
+[gd_scene load_steps=92 format=4]
 
 [ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_bhvn0"]
 [ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_vaoh5"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="3_6agvo"]
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="3_bq06f"]
 [ext_resource type="Texture2D" uid="uid://blxp2f1agcvo8" path="res://sprite/toy-train-png-23.png" id="4_6agvo"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="4_qxlgd"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_qxlgd"]
 [ext_resource type="Texture2D" uid="uid://c2dml5pvtwldv" path="res://sprite/cloud.png" id="6_qt21a"]
 [ext_resource type="Texture2D" uid="uid://cl3eiktygnoci" path="res://sprite/بادکنک.png" id="7_iyvpu"]
@@ -38,11 +40,10 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_o7y5v"]
-font = ExtResource("3_bq06f")
-font_size = 46
-font_color = Color(0.745098, 0.415686, 0.215686, 1)
+font = ExtResource("3_6agvo")
+font_size = 52
+font_color = Color(0.71811, 0.397437, 0.20192, 1)
 outline_size = 4
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28p7m"]
 bg_color = Color(1, 0.878431, 0.513726, 1)
@@ -53,19 +54,23 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_6d827"]
-font = ExtResource("3_bq06f")
+font = ExtResource("4_qxlgd")
 font_size = 136
 font_color = Color(0.67451, 0.4, 0.0509804, 1)
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_o7y5v"]
-colors = PackedColorArray(0.996078, 0.882353, 0.521569, 1, 0.882353, 0.670588, 0.192157, 1)
+offsets = PackedFloat32Array(0, 0.656085, 0.719577)
+colors = PackedColorArray(0.996078, 0.882353, 0.521569, 1, 0.882353, 0.596078, 0.192157, 1, 0.882353, 0.596078, 0.192157, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wp4qn"]
 gradient = SubResource("Gradient_o7y5v")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_vod7w"]
-colors = PackedColorArray(0.439049, 0.439049, 0.439049, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.745098, 1, 0.788235, 1, 0, 0.858824, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_28p7m"]
 gradient = SubResource("Gradient_vod7w")
