@@ -581,7 +581,7 @@ expand_mode = 1
 
 [node name="Label" type="Label" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer/MarginContainer/Control"]
 layout_mode = 0
-offset_left = -3.0
+offset_left = 7.0
 offset_top = 293.0
 offset_right = 678.0
 offset_bottom = 432.0
