@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3]
+[gd_scene load_steps=110 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_42lsi"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_vmp6g"]
@@ -417,6 +417,35 @@ font_size = 37
 outline_size = 5
 outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_5xbah"]
+viewport_path = NodePath("SubViewport5")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_pxum8"]
+viewport_path = NodePath("SubViewport6")
+
+[sub_resource type="Resource" id="Resource_q1j5q"]
+resource_local_to_scene = true
+script = ExtResource("20_2bsga")
+arrow_icon = ExtResource("19_qdso4")
+max_arrow_width = 80
+offset_arrow = Vector2(0, 30)
+start_rotation = 0
+end_rotation = -90
+icon_selected = SubResource("ViewportTexture_5xbah")
+icon_unselected = SubResource("ViewportTexture_pxum8")
+label_settings = SubResource("Resource_ya0au")
+expand_icon = true
+max_icon_width = 225
+flat = false
+disabled = false
+icon_v_aligment = 1
+icon_h_aligment = 2
+aligment = 2
+text = "     رمضان 1404"
+selected_style = SubResource("StyleBoxTexture_dmnnq")
+unselected_style = SubResource("StyleBoxTexture_2gfuy")
+metadata/_custom_type_script = "uid://c8o7njavqtn62"
+
 [sub_resource type="Resource" id="Resource_gxmfj"]
 script = ExtResource("22_wx5k3")
 id = 0
@@ -498,13 +527,13 @@ outline_size = 10.0
 font_size = 60.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_q1j5q"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_wqbfb"]
 viewport_path = NodePath("SubViewport7")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wqbfb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mat1i"]
 viewport_path = NodePath("SubViewport8")
 
-[sub_resource type="Resource" id="Resource_mat1i"]
+[sub_resource type="Resource" id="Resource_mrvu1"]
 resource_local_to_scene = true
 script = ExtResource("20_2bsga")
 arrow_icon = ExtResource("19_qdso4")
@@ -512,8 +541,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_q1j5q")
-icon_unselected = SubResource("ViewportTexture_wqbfb")
+icon_selected = SubResource("ViewportTexture_wqbfb")
+icon_unselected = SubResource("ViewportTexture_mat1i")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -747,7 +776,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_wcpcs")
-current_tab = 0
+current_tab = 1
 transation = false
 separation = 50.0
 separation_style = SubResource("StyleBoxEmpty_8wh6k")
@@ -767,6 +796,7 @@ metadata/_custom_type_script = "uid://bsoyamf86eeht"
 metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="CustomTabContainer"]
+visible = false
 layout_mode = 0
 offset_right = 1000.0
 offset_bottom = 1722.0
@@ -807,7 +837,6 @@ height = 250.0
 options = Array[ExtResource("22_wx5k3")]([SubResource("Resource_vdf25"), SubResource("Resource_i5q5x")])
 
 [node name="MarginContainer" type="MarginContainer" parent="CustomTabContainer"]
-visible = false
 layout_mode = 0
 offset_right = 1000.0
 offset_bottom = 1722.0
@@ -877,7 +906,7 @@ vertical_alignment = 1
 
 [node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_e6x5r")]
 layout_mode = 2
-base_button = SubResource("Resource_ycbhe")
+base_button = SubResource("Resource_q1j5q")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
@@ -885,7 +914,7 @@ options = Array[ExtResource("22_wx5k3")]([SubResource("Resource_gxmfj"), SubReso
 
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_e6x5r")]
 layout_mode = 2
-base_button = SubResource("Resource_mat1i")
+base_button = SubResource("Resource_mrvu1")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
