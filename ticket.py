@@ -88,7 +88,7 @@ def get_ticket():
                     "max_users": ticket.max_users,
                     "miladi_time": ticket.time.strftime('%Y/%m/%d %H:%M'),
                     "users": len(ticket.users),
-                    "day": jalali_datetime.strftime('%A')
+                    "day": PERSIAN_WEEKDAYS.get(jalali_datetime.strftime('%A'), jalali_datetime.strftime('%A'))
                 }
                 tickets_data.append(ticket_data)
     return jsonify({"data":tickets_data}), 200
