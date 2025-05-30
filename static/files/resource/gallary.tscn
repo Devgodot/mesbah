@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" uid="uid://5ornlt8iysmk" path="res://script/gallary.gd" id="1_814nn"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_5bpkc"]
@@ -6,7 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bponhwur3lott" path="res://sprite/pngtree-islamic-mosque-gate-frame-vector-ornament-png-image_14130251.png" id="4_1005o"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="5_2nllj"]
 [ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="6_fekmm"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="7_bxftw"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="7_814nn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_44bf7"]
+font = ExtResource("6_fekmm")
+font_size = 100
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ywlqx"]
 
@@ -15,9 +19,9 @@ blend_mode = 3
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7dk7t"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_44bf7"]
-font = ExtResource("6_fekmm")
-font_size = 100
+[sub_resource type="RichTextEffect" id="RichTextEffect_b1rj0"]
+script = ExtResource("7_814nn")
+metadata/_custom_type_script = "uid://dcls0pguhob1u"
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -27,7 +31,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_814nn")
-metadata/_edit_vertical_guides_ = [652.0]
 
 [node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -37,6 +40,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_5bpkc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 1.0
+offset_bottom = 171.0
+grow_horizontal = 2
+text = "گالری تصاویر"
+label_settings = SubResource("LabelSettings_44bf7")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -123,19 +138,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 1.0
-offset_bottom = 171.0
-grow_horizontal = 2
-text = "گالری تصاویر"
-label_settings = SubResource("LabelSettings_44bf7")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="RichTextLabel" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -143,12 +146,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0.482353, 0, 1)
+theme_override_colors/font_outline_color = Color(0.244776, 0.244776, 0.244776, 1)
 theme_override_constants/outline_size = 17
-theme_override_fonts/font = ExtResource("7_bxftw")
-theme_override_font_sizes/font_size = 145
-text = "در این صفحه اکنون تصویری موجود نمی باشد."
+theme_override_fonts/normal_font = ExtResource("6_fekmm")
+theme_override_font_sizes/normal_font_size = 163
+bbcode_enabled = true
+text = "[light color=yellow num=3 freq=30 len=50]در این صفحه اکنون تصویری موجود نمی باشد."
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
+custom_effects = [SubResource("RichTextEffect_b1rj0")]
 
 [connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]
