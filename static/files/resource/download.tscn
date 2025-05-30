@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3]
 
-[ext_resource type="Script" uid="uid://drwanaxpaq4cj" path="res://script/download.gd" id="1_n3hi6"]
-[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="2_usj81"]
-[ext_resource type="Texture2D" uid="uid://crpmkhb3nkjbd" path="res://sprite/چراغ کپسولی قدیمی و چندوجهی.png" id="3_3wrv3"]
-[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="4_1jj20"]
-[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="5_n3hi6"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="6_usj81"]
+[ext_resource type="Script" uid="uid://drwanaxpaq4cj" path="res://script/download.gd" id="1_usj81"]
+[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="2_3wrv3"]
+[ext_resource type="Texture2D" uid="uid://crpmkhb3nkjbd" path="res://sprite/چراغ کپسولی قدیمی و چندوجهی.png" id="3_1jj20"]
+[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="4_rtqw6"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="5_h0ouy"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="6_v83e8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d5050"]
-shader = ExtResource("2_usj81")
+shader = ExtResource("2_3wrv3")
 shader_parameter/lod = 0.623
 shader_parameter/mix_percentage = 0.651
 
@@ -31,7 +31,7 @@ point_count = 4
 colors = PackedColorArray(1, 1, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_1nfub"]
-script = ExtResource("6_usj81")
+script = ExtResource("6_v83e8")
 metadata/_custom_type_script = "uid://dcls0pguhob1u"
 
 [node name="Control" type="Control"]
@@ -41,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_n3hi6")
+script = ExtResource("1_usj81")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_d5050")
@@ -87,8 +87,8 @@ grow_vertical = 2
 step = 0.01
 value = 34.0
 fill_mode = 3
-texture_under = ExtResource("3_3wrv3")
-texture_progress = ExtResource("4_1jj20")
+texture_under = ExtResource("3_1jj20")
+texture_progress = ExtResource("4_rtqw6")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 visible = false
@@ -107,7 +107,7 @@ offset_bottom = 526.0
 theme_override_colors/default_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("5_n3hi6")
+theme_override_fonts/normal_font = ExtResource("5_h0ouy")
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 shortcut_keys_enabled = false
