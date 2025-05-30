@@ -16,6 +16,7 @@ func _ready() -> void:
 			for user2 in d:
 				seen += user2.new
 		Updatedate.seen = seen
+	
 	var m = await Updatedate.request("/auth/unseen_message")
 	if m and m.has("num"):
 		if m.num != 0:
