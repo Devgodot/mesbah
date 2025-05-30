@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3]
+[gd_scene load_steps=99 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_42lsi"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_vmp6g"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cnn7hb10qab7t" path="res://scripts/icon.gd" id="13_7ye7n"]
 [ext_resource type="Texture2D" uid="uid://cpcdjtebg7a06" path="res://sprite/مدیریت(1).png" id="14_i36ob"]
 [ext_resource type="Texture2D" uid="uid://ce78doms7yhik" path="res://sprite/Layer 4.png" id="15_brbys"]
+[ext_resource type="Texture2D" uid="uid://c3w8o3pjpjoch" path="res://sprite/مربیان.png" id="15_d553l"]
 [ext_resource type="Texture2D" uid="uid://d1hp2ojy3bvqc" path="res://sprite/Layer 8.png" id="16_jubht"]
 [ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="17_w6tu5"]
 [ext_resource type="PackedScene" uid="uid://byrq1i1400fl7" path="res://scenes/menu_button.tscn" id="18_e6x5r"]
@@ -32,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bu00jw7n80iu" path="res://sprite/آیکون4.png" id="30_pjyy5"]
 [ext_resource type="Texture2D" uid="uid://cw1bo01blyu6f" path="res://sprite/آیکون3.png" id="31_wgong"]
 [ext_resource type="Texture2D" uid="uid://bnef3knjep3sx" path="res://sprite/free-message-icon-1159-thumb.png" id="32_xx6tv"]
+[ext_resource type="Texture2D" uid="uid://bv0f8la1fmlhi" path="res://sprite/Home_icon_blue-1.png" id="34_pup0w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qf4cw"]
 
@@ -209,6 +211,49 @@ icon_h_aligment = 1
 text = "مدیریت"
 metadata/_custom_type_script = "uid://cnn7hb10qab7t"
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_2gfuy"]
+viewport_path = NodePath("SubViewport10")
+
+[sub_resource type="Resource" id="Resource_cc30s"]
+script = ExtResource("12_og5kd")
+font = ExtResource("11_ed63f")
+font_size = 38
+selected_color = Color(0, 0.305882, 1, 1)
+unselected_color = Color(0, 0, 0, 1)
+outline_size = 3
+ouline_selected_color = Color(1, 1, 1, 1)
+outline_unselected_color = Color(1, 1, 1, 1)
+metadata/_custom_type_script = "uid://ctyywxyk7kuid"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
+viewport_path = NodePath("SubViewport4")
+
+[sub_resource type="Resource" id="Resource_yoxka"]
+resource_local_to_scene = true
+script = ExtResource("8_bvtya")
+texture_progress = SubResource("ViewportTexture_0gyww")
+fill_mode = 6
+nine_patch_stretch = false
+texture_progress_offset = Vector2(0, 115)
+tint_progress = Color(0, 0.403922, 0.67451, 1)
+tint_over = Color(0, 0, 0, 1)
+tint_under = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://dr0mo850pgc1h"
+
+[sub_resource type="Resource" id="Resource_xekfo"]
+resource_local_to_scene = true
+script = ExtResource("13_7ye7n")
+tab_animation = SubResource("Resource_yoxka")
+icon_selected = SubResource("ViewportTexture_2gfuy")
+icon_unselected = ExtResource("15_d553l")
+label_settings = SubResource("Resource_cc30s")
+expand_icon = true
+flat = true
+icon_v_aligment = 0
+icon_h_aligment = 1
+text = "مربیان"
+metadata/_custom_type_script = "uid://cnn7hb10qab7t"
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_728ow"]
 texture = ExtResource("15_brbys")
 expand_margin_left = 50.0
@@ -229,10 +274,10 @@ font_size = 37
 outline_size = 5
 outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_8wh6k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ypgks"]
 viewport_path = NodePath("SubViewport5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_82rlh"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cs3pn"]
 viewport_path = NodePath("SubViewport6")
 
 [sub_resource type="Resource" id="Resource_ya0au"]
@@ -253,7 +298,7 @@ modulate_color = Color(0.447059, 1, 0.266667, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2gfuy"]
 texture = ExtResource("21_h770b")
 
-[sub_resource type="Resource" id="Resource_cc30s"]
+[sub_resource type="Resource" id="Resource_ycbhe"]
 resource_local_to_scene = true
 script = ExtResource("20_2bsga")
 arrow_icon = ExtResource("19_qdso4")
@@ -261,8 +306,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_8wh6k")
-icon_unselected = SubResource("ViewportTexture_82rlh")
+icon_selected = SubResource("ViewportTexture_ypgks")
+icon_unselected = SubResource("ViewportTexture_cs3pn")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -364,13 +409,13 @@ outline_size = 10.0
 font_size = 60.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5xbah"]
 viewport_path = NodePath("SubViewport7")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_1bd0r"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_pxum8"]
 viewport_path = NodePath("SubViewport8")
 
-[sub_resource type="Resource" id="Resource_yoxka"]
+[sub_resource type="Resource" id="Resource_vdf25"]
 resource_local_to_scene = true
 script = ExtResource("20_2bsga")
 arrow_icon = ExtResource("19_qdso4")
@@ -378,8 +423,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_0gyww")
-icon_unselected = SubResource("ViewportTexture_1bd0r")
+icon_selected = SubResource("ViewportTexture_5xbah")
+icon_unselected = SubResource("ViewportTexture_pxum8")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -472,6 +517,32 @@ corner_radius_bottom_left = 50
 [sub_resource type="LabelSettings" id="LabelSettings_5xbah"]
 font = ExtResource("5_1oawt")
 font_size = 51
+
+[sub_resource type="Shader" id="Shader_0v776"]
+code = "shader_type canvas_item;
+uniform vec4 color:source_color;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = color;
+	COLOR.a = texture(TEXTURE, UV).a;
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k41c7"]
+shader = SubResource("Shader_0v776")
+shader_parameter/color = Color(0, 0.403922, 0.67451, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5q5x"]
+shader = SubResource("Shader_0v776")
+shader_parameter/color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control" groups=["start"]]
 layout_mode = 3
@@ -583,7 +654,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_wcpcs")
-current_tab = 2
+current_tab = 3
 transation = false
 separation_style = SubResource("StyleBoxEmpty_8wh6k")
 panel_style = SubResource("StyleBoxFlat_hp05y")
@@ -596,6 +667,7 @@ tab_focus = SubResource("StyleBoxEmpty_8aotp")
 element_1 = SubResource("Resource_0gyww")
 element_2 = SubResource("Resource_pxum8")
 element_3 = SubResource("Resource_ypgks")
+element_4 = SubResource("Resource_xekfo")
 metadata/_custom_type_script = "uid://bsoyamf86eeht"
 metadata/_edit_use_anchors_ = true
 
@@ -676,7 +748,7 @@ vertical_alignment = 1
 
 [node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_e6x5r")]
 layout_mode = 2
-base_button = SubResource("Resource_cc30s")
+base_button = SubResource("Resource_ycbhe")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
@@ -684,13 +756,19 @@ options = Array[ExtResource("22_wx5k3")]([SubResource("Resource_gxmfj"), SubReso
 
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("18_e6x5r")]
 layout_mode = 2
-base_button = SubResource("Resource_yoxka")
+base_button = SubResource("Resource_vdf25")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
 options = Array[ExtResource("22_wx5k3")]([SubResource("Resource_xam4k")])
 
 [node name="Control" type="Control" parent="CustomTabContainer"]
+visible = false
+anchors_preset = 0
+offset_right = 1000.0
+offset_bottom = 1722.0
+
+[node name="Control2" type="Control" parent="CustomTabContainer"]
 anchors_preset = 0
 offset_right = 1000.0
 offset_bottom = 1722.0
@@ -925,6 +1003,44 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ycbhe")
 label_settings = SubResource("LabelSettings_5xbah")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SubViewport9" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport9"]
+material = SubResource("ShaderMaterial_k41c7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_i36ob")
+
+[node name="SubViewport10" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport10"]
+material = SubResource("ShaderMaterial_k41c7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("15_d553l")
+
+[node name="SubViewport11" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport11"]
+material = SubResource("ShaderMaterial_i5q5x")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_pup0w")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
