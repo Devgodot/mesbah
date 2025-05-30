@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=4]
+[gd_scene load_steps=94 format=4]
 
 [ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_bhvn0"]
 [ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_vaoh5"]
@@ -74,6 +74,17 @@ colors = PackedColorArray(0.745098, 1, 0.788235, 1, 0, 0.858824, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_28p7m"]
 gradient = SubResource("Gradient_vod7w")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_8bf1e"]
+offsets = PackedFloat32Array(0.560847, 0.624339, 0.671958, 0.724868)
+colors = PackedColorArray(0, 0, 0, 0, 0.788235, 0.917647, 0, 1, 1, 0.878431, 0.513726, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nld6c"]
+gradient = SubResource("Gradient_8bf1e")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
@@ -914,28 +925,24 @@ vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 2
-offset_left = 204.0
-offset_top = 993.0
-offset_right = 928.0
-offset_bottom = 1158.0
+offset_left = 199.0
+offset_top = 959.0
+offset_right = 923.0
+offset_bottom = 1171.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_28p7m")
 text = "بلیط قطار"
 label_settings = SubResource("LabelSettings_6d827")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="TextureRect" parent="."]
+clip_children = 2
 layout_mode = 0
 offset_left = 107.0
 offset_top = 955.0
 offset_right = 301.0
 offset_bottom = 1149.0
 texture = SubResource("GradientTexture2D_wp4qn")
-draw_center = false
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
 metadata/_edit_group_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="NinePatchRect"]
@@ -947,6 +954,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_28p7m")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TextureRect3" type="TextureRect" parent="NinePatchRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_nld6c")
 expand_mode = 1
 stretch_mode = 6
 

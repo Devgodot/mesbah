@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3]
+[gd_scene load_steps=52 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_647s5"]
 [ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_dpnb4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="11_3otl1"]
 [ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="12_avvg3"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="13_xmqxi"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="14_dpnb4"]
 
 [sub_resource type="FontVariation" id="FontVariation_m5l8b"]
 fallbacks = Array[Font]([ExtResource("2_dpnb4")])
@@ -259,7 +260,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqwks"]
-font = ExtResource("1_647s5")
+font = ExtResource("14_dpnb4")
 font_size = 70
 
 [node name="Control" type="Control" groups=["scene_message"]]
