@@ -751,16 +751,15 @@ func add_ticket():
 			box.get_node("MarginContainer/VBoxContainer/HBoxContainer2/Button2").pressed.connect(func():
 				var http = HTTPRequest.new()
 				add_child(http)
-				http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/delete_ticket", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":ticket.time}))
+				http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/delete_ticket", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":ticket.miladi_time}))
 				var d2 = await http.request_completed
 				http.timeout = 10
 				while d2[3].size() == 0:
-					http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/delete_ticket", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":ticket.time}))
+					http.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/delete_ticket", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":ticket.miladi_time}))
 					d2 = await http.request_completed
 				http.queue_free()
 				var message = Updatedate.get_json(d2[3])
 				if message:
-					
 					if message.has("error"):
 						Notification.add_notif(message.error, Notification.ERROR)
 					if message.has("message"):
