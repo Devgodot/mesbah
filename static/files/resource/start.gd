@@ -72,11 +72,14 @@ func _on_custom_tab_container_tab_selected(tab: int) -> void:
 	if tab == 0 or tab == 1:
 		Updatedate.save("tab", tab, false)
 	else :
-		Updatedate.save("tab", tab, false)
+		Updatedate.save("tab", 1, false)
 	match tab:
 		2:
 			if not Updatedate.load_game("management") and not Updatedate.load_game("support"):
 				Transation.change(self, "control.tscn")
+			else:
+				$CustomTabContainer.change_tab(tab, 1)
+				Notification.add_notif("پشتیبانان به این بخش دسترسی ندارند.", Notification.ERROR)
 		3:
 			Transation.change(self, "managment.tscn")
 		4:
