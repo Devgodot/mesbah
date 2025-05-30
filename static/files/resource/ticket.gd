@@ -11,7 +11,6 @@ func _ready() -> void:
 		calendar = Engine.get_singleton("GodotGetFile")
 		calendar.permission_granted.connect(func():
 			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
-			
 			for e in event:
 				if e.has("title"):
 					if e.title == "یادآور حرکت قطار":
@@ -108,7 +107,7 @@ func add_ticket():
 						Notification.add_notif(message.message)
 						$Panel.hide()
 						current_time = 0
-						Updatedate.save("start_ticket", message.current_time, false)
+						Updatedate.save("start_ticket", message.current_time)
 						end_time = int(message.unixtime)- int(message.current_time)
 						date = message.miladi_time
 						$Label4.text = message.time
