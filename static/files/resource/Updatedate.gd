@@ -533,7 +533,6 @@ func get_gallery_image(icon, node):
 func get_message_image(icon, node):
 	if !DirAccess.dir_exists_absolute("user://messages"):
 		DirAccess.make_dir_absolute("user://messages")
-	print(icon)
 	if icon != "":
 		var w = add_wait(node)
 		icon = protocol + icon if not icon.begins_with("http") else icon
@@ -560,7 +559,6 @@ func get_message_image(icon, node):
 func get_message_sound(audio, node):
 	if !DirAccess.dir_exists_absolute("user://messages"):
 		DirAccess.make_dir_absolute("user://messages")
-	print(audio)
 	if audio != "":
 		var w = add_wait(node.get_node("MarginContainer/HBoxContainer/Button"))
 		audio = protocol + audio if not audio.begins_with("http") else audio
