@@ -22,7 +22,6 @@ func _ready() -> void:
 				if FileAccess.file_exists("user://resource/Updatedate.gd"):
 					Updatedate.set_script(ResourceLoader.load("user://resource/Updatedate.gd"))
 				await Updatedate.update_resource()
-				await get_tree().create_timer(2).timeout
 				if FileAccess.file_exists("user://resource/Updatedate.gd"):
 					Updatedate.set_script(ResourceLoader.load("user://resource/Updatedate.gd"))
 				Transation.change(self, "start.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=17 format=3]
 
 [ext_resource type="Script" uid="uid://drwanaxpaq4cj" path="res://script/download.gd" id="1_usj81"]
 [ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="2_3wrv3"]
@@ -33,6 +33,24 @@ colors = PackedColorArray(1, 1, 0, 1, 0, 1, 0, 1)
 [sub_resource type="RichTextEffect" id="RichTextEffect_1nfub"]
 script = ExtResource("6_v83e8")
 metadata/_custom_type_script = "uid://dcls0pguhob1u"
+
+[sub_resource type="Gradient" id="Gradient_d5050"]
+offsets = PackedFloat32Array(0.629758, 0.695502)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1nfub"]
+gradient = SubResource("Gradient_d5050")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_0jj61"]
+_data = [Vector2(0, 0.427461), 0.0, 0.0, 0, 0, Vector2(0.257235, 1), 0.0, 0.0, 0, 0, Vector2(0.617363, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.208549), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_xxqtk"]
+offsets = PackedFloat32Array(0, 0.150877, 0.561404, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.14902, 0.14902, 1, 1, 0.380392, 0, 1, 1, 1, 0, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -91,7 +109,6 @@ texture_under = ExtResource("3_1jj20")
 texture_progress = ExtResource("4_rtqw6")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
 polygon = PackedVector2Array(0, 0, 22, 0, 33, 9, 33, 47, 0, 47)
 
 [node name="Polygon2D" type="Polygon2D" parent="Polygon2D"]
@@ -116,3 +133,18 @@ vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_1nfub")]
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+texture = SubResource("GradientTexture2D_1nfub")
+one_shot = true
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 78.31
+initial_velocity_max = 120.48
+angular_velocity_min = -164.82
+angular_velocity_max = 364.34
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_0jj61")
+color_ramp = SubResource("Gradient_xxqtk")

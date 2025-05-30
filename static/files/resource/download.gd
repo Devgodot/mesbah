@@ -26,6 +26,7 @@ func _ready() -> void:
 		var c: CPUParticles2D =$CPUParticles2D2.duplicate()
 		c.position = p.position
 		c.emitting = true
+		add_child(c)
 		await c.finished
 		c.queue_free()
 		p.queue_free())
