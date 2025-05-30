@@ -58,7 +58,7 @@ def add_ticket():
 @jwt_required()
 def get_ticket():
     if current_user.data.get("accept_account", False) != True:
-        return jsonify({"error": "حساب شما تایید نشده! لطفاً به پشتیبانی مراجعه فرمایید."}), 403
+        return jsonify({"error": "حساب شما تایید نشده! لطفاً به مسجد جامع مراجعه فرمایید."}), 403
     season = UserInterface.query.first().data.get("train_season", 1)
     tickets = Ticket.query.filter_by(season=season).all()
     if not tickets:
@@ -94,7 +94,18 @@ def get_ticket():
                 }
                 tickets_data.append(ticket_data)
     return jsonify({"data":tickets_data}), 200
-
+@ticket_bp.post('/delete_ticket')
+@jwt_required()
+def delete_ticket():
+    if current_user.username in UserInterface.query.first().data.get("management", []) :
+        ticket = Ticket.query.filter_by(time=request.get_json().get("time")).first()
+        if not ticket:
+            return jsonify({"error": "تیکتی با این زمان وجود ندارد"}), 404
+        db.session.delete(ticket)
+        db.session.commit()
+        return jsonify({"message": "تیکت با موفقیت حذف شد"}), 200
+    else:
+        return jsonify({"error": "شما مجاز به حذف بلیط نیستید"}), 403
 @ticket_bp.post("/add_user_to_ticket")
 @jwt_required()
 def add_user_to_ticket():
@@ -159,7 +170,7 @@ def change_ticket():
 @jwt_required()
 def get_user_ticket():
     if current_user.data.get("accept_account", False) != True:
-        return jsonify({"error": "حساب شما تایید نشده! لطفاً به پشتیبانی مراجعه فرمایید."}), 403
+        return jsonify({"error": "حساب شما تایید نشده! لطفاً به مسجد جامع مراجعه فرمایید."}), 403
     user_id = current_user.username
     tickets = Ticket.query.filter_by(season=UserInterface.query.first().data.get("train_season", 1)).all()
     user_ticket = {}
