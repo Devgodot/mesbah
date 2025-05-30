@@ -56,10 +56,13 @@ func _on_button_4_pressed() -> void:
 
 
 func _on_control_2_item_pressed(id: String) -> void:
-	match id:
-		"0":
-			Transation.change(self, "ticket.tscn")
 
+	if id == "0":
+		Transation.change(self, "ticket.tscn")
+	else:
+		Updatedate.part = "0_"+str(int(id)-1)
+		Updatedate.p_scene = "start.tscn"
+		Transation.change(self, "gallery.tscn")
 
 func _on_button_5_pressed() -> void:
 	Transation.change(self, "messages.tscn")
