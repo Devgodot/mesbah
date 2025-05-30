@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="4_ga04v"]
 [ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="5_3vab7"]
 [ext_resource type="Script" uid="uid://dv01yawfeum4w" path="res://script/messages.gd" id="6_wgl0a"]
-[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="7_pllda"]
+[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="7_rh4k5"]
 [ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="8_bokax"]
 [ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="8_rh4k5"]
 [ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="9_blg0s"]
@@ -172,7 +172,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_pllda")
+texture = ExtResource("7_rh4k5")
 expand_mode = 1
 stretch_mode = 6
 
@@ -180,8 +180,8 @@ stretch_mode = 6
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 15.0
-offset_bottom = 116.0
+offset_top = 2.0
+offset_bottom = 171.0
 grow_horizontal = 2
 text = "پیام ها"
 label_settings = SubResource("LabelSettings_5w68j")
