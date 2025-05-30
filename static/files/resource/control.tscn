@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_6bnws"]
 [ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="6_eccyl"]
 [ext_resource type="Script" uid="uid://bksxi3frccjpv" path="res://script/control.gd" id="7_byuqn"]
-[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="8_7sn4o"]
+[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="8_dpnb4"]
 [ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="9_xuh5p"]
 [ext_resource type="Texture2D" uid="uid://d2a5pf05eb0hk" path="res://sprite/1092884.png" id="10_0i0fv"]
 [ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="11_3otl1"]
@@ -280,7 +280,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_7sn4o")
+texture = ExtResource("8_dpnb4")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 0
@@ -904,9 +904,8 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 7.0
-offset_top = 8.0
 offset_right = 7.0
-offset_bottom = 109.0
+offset_bottom = 118.0
 grow_horizontal = 2
 text = "ارتباط با مربی"
 label_settings = SubResource("LabelSettings_yqwks")
