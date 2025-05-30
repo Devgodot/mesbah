@@ -75,7 +75,8 @@ def get_ticket():
                 "users": len(ticket.users),
                 "tag": ticket.tag,
                 "nationality": ticket.nationality,
-                "day": PERSIAN_WEEKDAYS.get(jalali_datetime.strftime('%A'), jalali_datetime.strftime('%A'))
+                "day": PERSIAN_WEEKDAYS.get(jalali_datetime.strftime('%A'), jalali_datetime.strftime('%A')),
+                "gender": ticket.gender
             }
             tickets_data.append(ticket_data)
     else:
