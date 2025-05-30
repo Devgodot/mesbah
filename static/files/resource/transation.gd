@@ -5,12 +5,24 @@ func change(scene, new_scene:String, dir=1):
 	if not active:
 		active = true
 		var s = Updatedate.load_scene(new_scene)
-		print(0)
+		
 		match trans:
 			0:
-				get_tree().get_root().add_child.call_deferred(s)
+				get_tree().get_root().add_child(s)
+				s.modulate.a = 0
+				scene.modulate.a = 1
+				var tween = get_tree().create_tween()
+				tween.tween_property(scene, "modulate:a", 0, 0.5)
+				tween.set_ease(Tween.EASE_IN)
+				tween.play()
+				var tween2 = get_tree().create_tween()
+				tween2.tween_property(s, "modulate:a", 1, 0.5)
+				tween2.play()
+				tween2.set_ease(Tween.EASE_OUT)
+				await tween.finished
 				scene.queue_free()
-				print(s)
+			
+				
 			1:
 				get_tree().get_root().add_child(s)
 				s.position.x = -1000 * dir
