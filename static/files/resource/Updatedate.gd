@@ -109,6 +109,7 @@ func update_resource():
 			DirAccess.remove_absolute("user://resource/"+file[0])
 			hash_list.erase(file[0])
 			save("hash_list", hash_list, false)
+		await get_tree().create_timer(0.5).timeout
 		end_download.emit()
 		await update_source()
 func update_source():
@@ -122,24 +123,26 @@ func update_source():
 		http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list2.json"}))
 		d = await http.request_completed
 	var data = get_json(d[3])
-	var index = 1
-	if data.add.size() > 0:
-		get_tree().get_root().add_child(load_scene("download.tscn"))
-	start_download.emit(data.add.size(), "بروزرسانی منابع فایل‌ها")
-	for file in data.add:
-		var f = await request("/static/files/source/"+file[0].get_file().uri_encode(), HTTPClient.METHOD_GET, {}, 1)
-		download_progress.emit(index)
-		var new_file = FileAccess.open("user://resource/"+file[0].get_file(), FileAccess.WRITE)
-		new_file.store_buffer(f)
-		new_file.close()
-		hash_list[file[0]] = file[1]
-		save("hash_list2", hash_list, false)
-		index += 1
-	for file in data.delete:
-		DirAccess.remove_absolute("user://resource/"+file[0])
-		hash_list.erase(file[0])
-		save("hash_list2", hash_list, false)
-	end_download.emit()
+	if data:
+		var index = 1
+		if data.add.size() > 0:
+			get_tree().get_root().add_child(load_scene("download.tscn"))
+		start_download.emit(data.add.size(), "بروزرسانی منابع فایل‌ها")
+		for file in data.add:
+			var f = await request("/static/files/source/"+file[0].get_file().uri_encode(), HTTPClient.METHOD_GET, {}, 1)
+			download_progress.emit(index)
+			var new_file = FileAccess.open("user://resource/"+file[0].get_file(), FileAccess.WRITE)
+			new_file.store_buffer(f)
+			new_file.close()
+			hash_list[file[0]] = file[1]
+			save("hash_list2", hash_list, false)
+			index += 1
+		for file in data.delete:
+			DirAccess.remove_absolute("user://resource/"+file[0])
+			hash_list.erase(file[0])
+			save("hash_list2", hash_list, false)
+		await get_tree().create_timer(0.5).timeout
+		end_download.emit()
 func get_cost(_id):
 	var u =protocol+subdomin+"/purchase/cost?id="+str(_id)
 	var d = await request(u)
