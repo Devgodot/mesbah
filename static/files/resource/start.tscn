@@ -1208,7 +1208,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_7erly")
-current_tab = 1
 transation = false
 separation = 50.0
 separation_style = SubResource("StyleBoxEmpty_8wh6k")
