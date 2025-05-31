@@ -848,7 +848,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_s5p1w")
-current_tab = 4
+current_tab = 2
 transation = false
 separation_style = SubResource("StyleBoxEmpty_xpey2")
 panel_style = SubResource("StyleBoxFlat_ifxwq")
@@ -1775,7 +1775,6 @@ layout_mode = 2
 text = "حذف پیام"
 
 [node name="4" type="MarginContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1847,7 +1846,6 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 40
 
 [node name="instance" type="PanelContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer"]
-visible = false
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1993,30 +1991,22 @@ theme_override_constants/separation = 30
 [node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer6"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "رده : "
+text = "تاریخ تولد : "
 
-[node name="tag_edit" type="OptionButton" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer6"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Button3" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer6"]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 36
-alignment = 2
-selected = 0
-item_count = 7
-popup/item_0/text = "مهدکودک"
-popup/item_0/id = 0
-popup/item_1/text = "کلاس اول تا سوم"
-popup/item_1/id = 1
-popup/item_2/text = "کلاس چهارم تا ششم"
-popup/item_2/id = 2
-popup/item_3/text = "کلاس هفتم تا نهم"
-popup/item_3/id = 3
-popup/item_4/text = "کلاس دهم تا دوازدهم"
-popup/item_4/id = 4
-popup/item_5/text = "سطوح تحصیلی بالاتر"
-popup/item_5/id = 5
-popup/item_6/text = "کادر اجرایی"
-popup/item_6/id = 6
+text = "24"
+
+[node name="Button4" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer6"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+text = "03"
+
+[node name="Button5" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer6"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+text = "1404"
 
 [node name="Button" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer6"]
 custom_minimum_size = Vector2(90, 50)
@@ -2699,6 +2689,7 @@ text = "کد ملی:  5100276150"
 vertical_alignment = 1
 
 [node name="5" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_direction = 3
 layout_mode = 2
 anchor_right = 1.0
