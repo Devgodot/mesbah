@@ -37,11 +37,9 @@ func change(_name):
 func update_resource():
 	var http = HTTPRequest.new()
 	add_child(http)
-	var json = JSON.new()
 	var file2 = FileAccess.open("res://hash_list.json", FileAccess.READ)
-	json.parse_string(file2.get_as_text())
-	print(json.get_data())
-	var hash_list:Dictionary = load_game("hash_list", json.get_data())
+	var json= JSON.parse_string(file2.get_as_text())
+	var hash_list:Dictionary = load_game("hash_list", json)
 	http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
 	var d = await http.request_completed
 	http.timeout = 10
