@@ -40,6 +40,7 @@ func update_resource():
 	var json = JSON.new()
 	var file2 = FileAccess.open("res://hash_list.json", FileAccess.READ)
 	json.parse_string(file2.get_as_text())
+	print(json.get_data())
 	var hash_list:Dictionary = load_game("hash_list", json.get_data())
 	http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
 	var d = await http.request_completed
