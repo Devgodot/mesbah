@@ -325,11 +325,72 @@ func add_users(data):
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox").button_pressed = user.pro if user.has("pro") else false
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox2").button_pressed = user.block if user.has("block") else false
 		box.show()
+		var day = box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/Button3")
+		var month = box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/Button4")
+		var year = box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/Button5")
+		var birthday = user.birthday.split("/")
+		day.text = birthday[2]
+		month.text = birthday[1]
+		day.text = birthday[0]
+		day.pressed.conncet(func():
+			var s = Updatedate.load_scene("scroll_button.tscn")
+			var items = []
+			var d = 30
+			var m = month.text
+			var y = year.text
+			if int(m) < 7:
+				d = 31
+			if int(m) == 12:
+				d = 29 if int(y) % 4 != 3 else 30
+			for x in range(d):
+				if x < 10:
+					items.append(str("0", x+1))
+				else:
+					items.append(str(x+1))
+			for x in range(items.size()):
+				if day.text == items[x]:
+					s.current = -x
+			s.select.connect(func(item):
+				day.text = item)
+			s.items = items
+			add_child(s))
+		month.pressed.connect(func():
+			var s = Updatedate.load_scene("scroll_button.tscn")
+			var items = []
+			for x in range(12):
+				if x < 10:
+					items.append(str("0", x))
+				else:
+					items.append(str(x))
+			for x in range(items.size()):
+				if month.text == items[x]:
+					s.current = -x
+			s.select.connect(func(item):
+				month.text = item)
+			s.items = items
+			add_child(s))
+		year.pressed.connect(func():
+			var s = Updatedate.load_scene("scroll_button.tscn")
+			var items = []
+			for x in range(1404, 1450):
+				if x < 10:
+					items.append(str("0", x))
+				else:
+					items.append(str(x))
+			for x in range(items.size()):
+				if year.text == items[x]:
+					s.current = -x
+			s.select.connect(func(item):
+				year.text = item)
+			s.items = items
+			add_child(s))
+			
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/Button").pressed.connect(func():
 			var w = Updatedate.add_wait(box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/Button"))
 			var r = HTTPRequest.new()
 			add_child(r)
-			r.request(Updatedate.protocol+Updatedate.subdomin+"/control/change_user", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "tag":box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/tag_edit").selected}))
+			var new_birthday = str(year.text, "/", month.text, "/", day.text)
+			r.request(Updatedate.protocol+Updatedate.subdomin+"/control/change_user", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "birthday":new_birthday}))
 			var body = await r.request_completed
 			r.timeout = 10
 			while body[3].size() == 0:

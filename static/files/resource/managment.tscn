@@ -335,8 +335,6 @@ border_width_right = 20
 border_width_bottom = 20
 border_color = Color(0.8, 0.580392, 0.231373, 1)
 border_blend = true
-shadow_color = Color(0, 0, 0, 0.654902)
-shadow_size = 10
 shadow_offset = Vector2(0, 10)
 
 [sub_resource type="Gradient" id="Gradient_cam0y"]
@@ -2728,7 +2726,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "تعداد : "
 
-[node name="SpinBox" type="SpinBox" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer"]
+[node name="SpinBox" type="SpinBox" parent="TabContainer/5/VBoxContainer/BoxContainer/BoxContainer" groups=["spin"]]
 custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 theme = SubResource("Theme_r4l8q")
@@ -2924,7 +2922,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "تعداد : "
 
-[node name="SpinBox" type="SpinBox" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer"]
+[node name="SpinBox" type="SpinBox" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer" groups=["spin"]]
 custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 theme = SubResource("Theme_r4l8q")
