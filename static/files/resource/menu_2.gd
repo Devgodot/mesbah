@@ -14,7 +14,7 @@ func _ready() -> void:
 	$TabContainer.get_child(part).get_child(gender).current_tab = 0 if tag < 3 else 1
 	for btn in get_tree().get_nodes_in_group("gallary"):
 		btn.pressed.connect(func():
-			Updatedate.gallary_part = str(part, "_", gender, "_", tag,"_", btn.get_meta("id"))
+			Updatedate.gallary_part = str(part, "_", int(gender), "_", int(tag),"_", btn.get_meta("id"))
 			Updatedate.p_scene = scene_file_path.get_file().get_basename()
 			Transation.change(self, "gallary.tscn")
 			)
