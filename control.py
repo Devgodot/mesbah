@@ -268,7 +268,7 @@ def get_users():
             gender = user.data.get("gender", 0)
             tag = user.data.get("tag", 0)
             for n in user.data.keys():
-                if n in ["first_name", "last_name", "father_name", "icon", "custom_name", "pro", f"score_{gender}_{tag}", "diamonds", "block", "tag", "gender"]:
+                if n in ["first_name", "last_name", "father_name", "icon", "custom_name", "pro", f"score_{gender}_{tag}", "diamonds", "block", "tag", "gender", "accept_account"]:
                     d[n] = user.data.get(n, "")
             d["username"] = user.username
             d["phone"] = user.phone
