@@ -19,6 +19,8 @@ var plugin_name = "GodotGetImage"
 var mode = 0
 var groupmate = []
 var camera
+var refrence_t
+var refrence_a
 func get_direction(text:String):
 	if text[0] < "ی" and text[0] > "آ":
 		return -1
@@ -50,8 +52,10 @@ func _ready() -> void:
 		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4.hide()
 	Transation.check_trans()
 	if Updatedate.load_game("pro", true):
-		$ReferenceRect2.show()
-		$ReferenceRect2.target = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer.get_child(Transation.trans)
+		refrence_t = $ReferenceRect2.duplicate()
+		refrence_t.target = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer.get_child(Transation.trans)
+		refrence_t.show()
+		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer.get_child(Transation.trans).add_child(refrence_t)
 		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10.show()
 		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9.show()
 		for x in range($ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer.get_children().size()):
@@ -59,10 +63,16 @@ func _ready() -> void:
 			child.pressed.connect(func ():
 				Updatedate.save("transation", x)
 				Transation.check_trans()
-				$ReferenceRect2.target = child)
+				refrence_t.queue_free()
+				refrence_t = $ReferenceRect2.duplicate()
+				refrence_t.target = child
+				refrence_t.show()
+				child.add_child(refrence_t))
 		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9/RichTextLabel.text = Updatedate.load_game("custom_name", "[right]" + Updatedate.load_game("first_name", "")+ " "+ Updatedate.load_game("last_name", ""))
 	else:
 		Transation.trans = 0
+		if refrence_t:
+			refrence_t.queue_free()
 		$ReferenceRect2.hide()
 		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10.hide()
 		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9.hide()
@@ -118,7 +128,10 @@ func _ready() -> void:
 			Transation.change(self, "setting.tscn")
 			)
 		if x == Updatedate.current_user:
-			$ReferenceRect.target = btn
+			refrence_a = $ReferenceRect.duplicate()
+			refrence_a.target = btn
+			refrence_a.show()
+			btn.add_child(refrence_a)
 		btn.get_node("Label").text = a[x]
 		btn.show()
 		%OptionButton.add_child(btn)

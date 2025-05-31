@@ -321,7 +321,6 @@ func add_users(data):
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer3/Label").text = "امتیاز : " + str(user.score) if user.has("score") else "امتیاز : 0"
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer3/Label2").text = "الماس : " + str(user.diamonds) if user.has("diamonds") else "الماس : 0"
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer4/gender_edit").select(user.gender if user.has("gender") else 0)
-		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/tag_edit").select(user.tag if user.has("tag") else 0)
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox").button_pressed = user.pro if user.has("pro") else false
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox2").button_pressed = user.block if user.has("block") else false
 		box.show()
