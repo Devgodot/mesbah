@@ -6,6 +6,7 @@ var change = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	part = Updatedate.gallary_part
+	print(part)
 	var w = Updatedate.add_wait($MarginContainer)
 	var images = await Updatedate.request("/ListFiles?path=app/"+part)
 	

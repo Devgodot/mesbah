@@ -8,7 +8,7 @@ func change(scene, new_scene:String, dir=1):
 		
 		match trans:
 			0:
-				get_tree().get_root().add_child(s)
+				get_tree().get_root().add_child.call_deferred(s)
 				s.modulate.a = 0
 				scene.modulate.a = 1
 				var tween = get_tree().create_tween()
