@@ -9,7 +9,7 @@ from models import User, UserInterface, Group, ServerMessage
 import json
 from datetime import datetime, timedelta
 from sqlalchemy.orm.attributes import flag_modified
-
+import jdatetime
 cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache'})
 control_bp = Blueprint("control", __name__)
 import requests, time
@@ -272,6 +272,7 @@ def get_users():
                     d[n] = user.data.get(n, "")
             d["username"] = user.username
             d["phone"] = user.phone
+            d["birthday"] = gregorian_to_jalali(user.birthday).strftime("%Y/%m/%d") if user.birthday else ""
             filter_users[filter_users.index(user)] = d
             
         if len(filter_users) == 0:
@@ -343,7 +344,7 @@ def change_user():
         tag = data.get("tag")
         if data.get("birthday", "") != "":
             year, month, day = map(int, data.get("birthday", "").split("/"))
-            miladi_date = JalaliDatetime(year, month, day).todatetime()
+            miladi_date = jalali_to_gregorian(year, month, day).todatetime()
             user.birthday = miladi_date
         gender = data.get("gender")
         last_gender = user.data.get("gender", 0)
@@ -511,7 +512,7 @@ def send_message_with_media():
         _id = str(uuid.uuid4())
         text = request.get_json().get("text", "")
         gregorian_date = datetime.now(TehranTimezone())  # تاریخ میلادی فعلی
-        jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
+        jalali_date = gregorian_to_jalali(gregorian_date)  # تبدیل به تاریخ شمسی
         message_data = {"text": text, "data": {"time": str(jalali_date)}, "id": _id, "sender": "پشتیبانی", "type": request.get_json().get("type", "guid")}
         if audio_url:
             message_data["sound"] = audio_url
@@ -702,3 +703,13 @@ def sort_group():
             return jsonify({"error": "چنین رتبه بندی وجود ندارد"})
     else:
         return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
+    
+def jalali_to_gregorian(jy, jm, jd, hour=0, minute=0):
+    gdate = jdatetime.datetime(jy, jm, jd, hour, minute).togregorian()
+    return gdate
+
+# تبدیل میلادی به جلالی
+def gregorian_to_jalali(dt):
+    jdate = jdatetime.datetime.fromgregorian(datetime=dt)
+    return jdate
+
