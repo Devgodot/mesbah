@@ -273,6 +273,7 @@ def get_users():
             d["username"] = user.username
             d["phone"] = user.phone
             d["birthday"] = gregorian_to_jalali(user.birthday).strftime("%Y/%m/%d") if user.birthday else ""
+            print(d["birthday"])
             filter_users[filter_users.index(user)] = d
             
         if len(filter_users) == 0:
@@ -346,6 +347,7 @@ def change_user():
             year, month, day = map(int, data.get("birthday", "").split("/"))
             miladi_date = jalali_to_gregorian(year, month, day)
             user.birthday = miladi_date
+            db.session.commit()
         gender = data.get("gender")
         last_gender = user.data.get("gender", 0)
         last_tag = user.data.get("tag", 0)
