@@ -32,6 +32,8 @@ func _ready() -> void:
 	if Engine.has_singleton("GodotGetImage"):
 		camera = Engine.get_singleton("GodotGetImage")
 		camera.setOptions({"use_front_camera":true})
+	if Updatedate.load_game("accept_account", false):
+		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4.hide()
 	if camera:
 		camera.image_request_completed.connect(_on_texture_rect_face_detected)
 	var wait = Updatedate.add_wait($ScrollContainer/VBoxContainer/TabContainer)
@@ -44,6 +46,8 @@ func _ready() -> void:
 		Updatedate.current_user = 0
 		await get_tree().create_timer(0.5).timeout
 		Transation.change(self, "register.tscn")
+	if Updatedate.load_game("accept_account", false):
+		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4.hide()
 	Transation.check_trans()
 	if Updatedate.load_game("pro", true):
 		$ReferenceRect2.show()
