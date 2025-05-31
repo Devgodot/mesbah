@@ -330,8 +330,8 @@ func add_users(data):
 		var birthday = user.birthday.split("/")
 		day.text = birthday[2]
 		month.text = birthday[1]
-		day.text = birthday[0]
-		day.pressed.conncet(func():
+		year.text = birthday[0]
+		day.pressed.connect(func():
 			var s = Updatedate.load_scene("scroll_button.tscn")
 			var items = []
 			var d = 30
@@ -593,7 +593,7 @@ func _on_sort_button_pressed() -> void:
 		if "instance" not in child.name:
 			child.queue_free()
 	if %sort_part.selected != 4:
-		var d = await Updatedate.request("/control/sort_users?sort={1}AND{0}&filter={0}AND{1}ANDfirst_nameANDlast_nameANDicon&per_page={2}".format(["score_"+str(%sort_gender.selected, "_", %sort_tag.selected) + (str("_", %sort_part.selected)  if %sort_part.selected < 3 else ""), "diamonds"+str(%sort_part.selected if %sort_part.selected < 3 else ""), %per_page.value]))
+		var d = await Updatedate.request("/control/sort_users?sort={1}AND{0}&filter={0}AND{1}ANDfirst_nameANDlast_nameANDicon&per_page={2}".format(["score_"+str(%sort_gender.selected, "_", %sort_tag.selected) + (str("_", %sort_part.selected)  if %sort_part.selected < 3 else ""), "diamonds"+str(%sort_part.selected if %sort_part.selected < 3 else ""), int(%per_page.value)]))
 		if d.has("error"):
 			Notification.add_notif(d.error, Notification.ERROR)
 			w.queue_free()
@@ -603,16 +603,16 @@ func _on_sort_button_pressed() -> void:
 			for user in users:
 				var box = $"TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance".duplicate()
 				Updatedate.get_icon_user(user.data.icon if user.data.has("icon") else "", user.username, box.get_node("MarginContainer/BoxContainer/TextureRect"))
-				box.get_node("MarginContainer/BoxContainer/VBoxContainer/Label").text = str("رتبه : ", user.data.position)
+				box.get_node("MarginContainer/BoxContainer/VBoxContainer/Label").text = str("رتبه : ", int(user.data.position))
 				box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer/RichTextLabel").text = user.data.first_name + " " + user.data.last_name
 				box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer2/Label2").text = "کدملی : "+user.username
 				box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer2/Label").text = "شماره تلفن : "+user.phone
-				box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer3/Label").text = "امتیاز : "+str(user.data["score_"+str(%sort_gender.selected, "_", %sort_tag.selected) + (str("_", %sort_part.selected) if %sort_part.selected < 3 else "")])
-				box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer3/Label2").text = "الماس : "+str(user.data["diamonds"+str(%sort_part.selected if %sort_part.selected < 3 else "")])
+				box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer3/Label").text = "امتیاز : "+str(int(user.data["score_"+str(%sort_gender.selected, "_", %sort_tag.selected) + (str("_", %sort_part.selected) if %sort_part.selected < 3 else "")]))
+				box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer3/Label2").text = "الماس : "+str(int(user.data["diamonds"+str(%sort_part.selected if %sort_part.selected < 3 else "")]))
 				box.show()
 				$"TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer".add_child(box)
 	else:
-		var d = await Updatedate.request("/control/sort_group?gender={0}&tag={1}&sort_group?&filter=first_nameANDlast_name&per_page={2}".format([%sort_gender.selected, %sort_tag.selected, %per_page.value]))
+		var d = await Updatedate.request("/control/sort_group?gender={0}&tag={1}&sort_group?&filter=first_nameANDlast_name&per_page={2}".format([%sort_gender.selected, %sort_tag.selected, int(%per_page.value)]))
 		if d.has("error"):
 			w.queue_free()
 			Notification.add_notif(d.error, Notification.ERROR)
@@ -622,7 +622,7 @@ func _on_sort_button_pressed() -> void:
 			for group in groups:
 				var box = $"TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer/instance2".duplicate()
 				Updatedate.get_icon_group(group.icon if group.has("icon") else "", group.name, box.get_node("MarginContainer/VBoxContainer/BoxContainer/TextureRect"))
-				box.get_node("MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/Label").text = str("رتبه : ", group.position)
+				box.get_node("MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/Label").text = str("رتبه : ", int(group.position))
 				box.get_node("MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer/RichTextLabel").text = group.name
 				for x in range(5):
 					if x < group.users.users.size():
@@ -633,8 +633,8 @@ func _on_sort_button_pressed() -> void:
 						box2.get_node("BoxContainer2/RichTextLabel").text = user.phone
 					else:
 						box.get_node("MarginContainer/VBoxContainer/GridContainer").get_child(x).hide()
-				box.get_node("MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer3/Label").text = "امتیاز : "+str(group.score)
-				box.get_node("MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer3/Label2").text = "الماس : "+str(group.diamonds)
+				box.get_node("MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer3/Label").text = "امتیاز : "+str(int(group.score))
+				box.get_node("MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer3/Label2").text = "الماس : "+str(int(group.diamonds))
 				box.show()
 				$"TabContainer/1/VBoxContainer/ScrollContainer/VBoxContainer".add_child(box)
 	w.queue_free()

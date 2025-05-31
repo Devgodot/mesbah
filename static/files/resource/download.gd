@@ -24,7 +24,7 @@ func _ready() -> void:
 		await tween.finished
 		
 		var c: CPUParticles2D =$CPUParticles2D2.duplicate()
-		c.position = p.position+Vector2(14, 24)
+		c.position = p.position+Vector2(17, 24)
 		c.emitting = true
 		add_child(c)
 		p.queue_free()

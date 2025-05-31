@@ -344,7 +344,7 @@ def change_user():
         tag = data.get("tag")
         if data.get("birthday", "") != "":
             year, month, day = map(int, data.get("birthday", "").split("/"))
-            miladi_date = jalali_to_gregorian(year, month, day).todatetime()
+            miladi_date = jalali_to_gregorian(year, month, day)
             user.birthday = miladi_date
         gender = data.get("gender")
         last_gender = user.data.get("gender", 0)
