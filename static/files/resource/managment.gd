@@ -323,6 +323,7 @@ func add_users(data):
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer4/gender_edit").select(user.gender if user.has("gender") else 0)
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox").button_pressed = user.pro if user.has("pro") else false
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox2").button_pressed = user.block if user.has("block") else false
+		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox3").button_pressed = user.accept_account if user.has("accept_account") else false
 		box.show()
 		var day = box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/Button3")
 		var month = box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/Button4")
