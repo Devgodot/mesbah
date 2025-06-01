@@ -67,6 +67,7 @@ class User(db.Model):
     @classmethod
     def get_user_by_username(cls, username):
         # جستجو با username هش شده
+        print(hashing(HashingMode.ENCODE, username))
         return cls.query.filter_by(username=hashing(HashingMode.ENCODE, username)).first()
 
     def set_username(self, username):
