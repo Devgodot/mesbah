@@ -23,7 +23,7 @@ def set_birthday():
     for group in groups:
         user = group.users.get("leader", "") 
         if user != "":
-            user = User.query.filter_by(username=user).first()
+            user = User.get_user_by_username(user)
             if user is not None:
                 birthday = user.birthday
                 if birthday != "":
@@ -108,7 +108,7 @@ app.register_blueprint(ticket_bp, url_prefix="/ticket")
 @jwt.user_lookup_loader
 def user_lookup_callback(_jwt_headers, jwt_data):
     identity = jwt_data["sub"]
-    return User.query.filter_by(username=identity).one_or_none()
+    return User.get_user_by_username(identity)
 
 @app.route('/check_resource', methods=['POST'])
 def get_resource_index():
@@ -312,7 +312,7 @@ if __name__ == "__main__":
     with app.app_context():
         db.create_all()
     app.run(debug=True)
-   
+
 
 
 
