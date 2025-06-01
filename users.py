@@ -129,7 +129,6 @@ def get_all_users():
             user.data = d
             user.id = hashing(mode=HashingMode.ENCODE, text=user.id)
             user.phone = hashing(mode=HashingMode.ENCODE, text=user.phone)
-            user.username = hashing(mode=HashingMode.ENCODE, text=user.username)
     for k in sort:
         if k == f"score_{gender}_{tag}":
             sort.remove(k)
@@ -170,9 +169,9 @@ def event():
             gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
             jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
             messager_neme = [" آقای", " خانم"][current_user.data.get("gender", 0)] + " " + current_user.data.get("first_name", "") + " " + current_user.data.get("last_name", "")
-            message.append({"text":f"{messager_neme} شما را به عضویت در گروه {_name} دعوت کرده است. آیا این دعوت را می پذیرید؟ ", "data":{"group_name": _name, "time":str(jalali_date), "user":current_user.username}, "time":time.time(), "id":str(uuid.uuid4()), "sender":"کاربر", "type":"join"})
+            message.append({"text":f"{messager_neme} شما را به عضویت در گروه {_name} دعوت کرده است. آیا این دعوت را می پذیرید؟ ", "data":{"group_name": _name, "time":str(jalali_date), "user":user.get_username()}, "time":time.time(), "id":str(uuid.uuid4()), "sender":"کاربر", "type":"join"})
             user.data = user.update(data={"message":message})
-            users_sended_message.append(user.username)
+            users_sended_message.append(user.get_username())
         current_user.update(data={"users_sended_message":users_sended_message})
         db.session.commit()
         return jsonify({"message":"successe"})
@@ -193,9 +192,9 @@ def user_request():
             jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
             _id = str(uuid.uuid4())
             messager_neme = [" آقای", " خانم"][current_user.data.get("gender", 0)] + " " + current_user.data.get("first_name", "") + " " + current_user.data.get("last_name", "") + " " + current_user.data.get("father_name", "")
-            message.append({"text":f"{messager_neme} درخواست عضویت در گروه شما را دارد. آیا این درخواست را می پذیرید؟ پس از آن امکان حذف عضو وجود ندارد.", "data":{"group_name": _name, "time":str(jalali_date), "user":current_user.username}, "time":time.time(), "id":_id, "sender":"کاربر", "type":"request"})
+            message.append({"text":f"{messager_neme} درخواست عضویت در گروه شما را دارد. آیا این درخواست را می پذیرید؟ پس از آن امکان حذف عضو وجود ندارد.", "data":{"group_name": _name, "time":str(jalali_date), "user":user.get_username()}, "time":time.time(), "id":_id, "sender":"کاربر", "type":"request"})
             user.data = user.update(data={"message":message})
-            users_sended_message.append([user.username, _id])
+            users_sended_message.append([user.get_username(), _id])
         current_user.update(data={"users_request":users_sended_message})
         db.session.commit()
         return jsonify({"message":"successe"})
@@ -232,8 +231,8 @@ def update_user():
             user.update(data=request.get_json().get("data", {}))
             # Get the data after the update
             new_data = user.data.copy()
-            pro = request.get_json().get("pro", False)
-            if pro == False:
+            pro = request.get_json().get("pro")
+            if pro is not None and pro == False:
                 user.data.pop("custom_name", None)
             
             # Log the changes
@@ -440,7 +439,7 @@ def support():
 @jwt_required()
 def support_message():
     
-    user_name = current_user.username
+    user_name = user.get_username()
     part = request.args.get("part", 0)
     message = Messages.query.filter_by(conversationId=user_name+"_"+str(part)).first()
     if message is not None:
@@ -450,7 +449,7 @@ def support_message():
 @user_bp.post("/users_message")
 @jwt_required()
 def users_message():
-    user_name = current_user.username
+    user_name = user.get_username()
     messages = Messages.query.all()
     users = []
     last_users = request.get_json().get("users")
@@ -468,7 +467,7 @@ def users_message():
                 last_message_time = datetime.datetime.strptime(last_message_time, "%Y/%m/%d %H:%M:%S")
             data = {
                 "name": user.data.get("first_name", "") + " " + user.data.get("last_name", ""),
-                "username": user.username,
+                "username": user.get_username(),
                 "phone": user.phone,
                 "conversationId": m.conversationId,
                 "new": new_message,
