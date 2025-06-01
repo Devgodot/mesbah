@@ -17,7 +17,7 @@ import requests, time
 @control_bp.post("/add_editor")
 @jwt_required()
 def editor():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         data = request.get_json()
         user = User.get_user_by_username(username=data.get("username", ""))
         if user is None:
@@ -25,12 +25,12 @@ def editor():
         game_data = UserInterface.query.first()
         editor = []
         part = data.get("part")
-        if user.username in game_data.data.get("management", []) and "5100276150" != current_user.username:
+        if user.get_username() in game_data.data.get("management", []) and "5100276150" != current_user.get_username():
             return jsonify({"error": "این کاربر مدیر است"}), 400
         for e in game_data.data.get(f"editor{part}", {}):
             editor.append(e)
-        if user.username not in editor:
-            editor.append(user.username)
+        if user.get_username() not in editor:
+            editor.append(user.get_username())
             game_data.data.update({f"editor{part}" : editor})
             flag_modified(game_data, "data")
             db.session.commit()
@@ -41,11 +41,11 @@ def editor():
                     for n in user2.data.keys():
                         if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
                             d[n] = user2.data.get(n, "")
-                    d["username"] = user2.username
+                    d["username"] = user.get_username()
                     d["phone"] = user2.phone
-                    if e in game_data.data.get("management", []) or e == current_user.username:
+                    if e in game_data.data.get("management", []) or e == current_user.get_username():
                         d["management"] = True
-                    if e != current_user.username and current_user.username == "5100276150":
+                    if e != current_user.get_username() and current_user.get_username() == "5100276150":
                         d.pop("management", None)
                     editor[editor.index(e)] = d
             return jsonify({"data": editor, "message": "ویرایشگر با موفقیت اضافه شد."}), 200
@@ -57,7 +57,7 @@ def editor():
 @control_bp.post("/remove_editor")
 @jwt_required()
 def remove_editor():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         data = request.get_json()
         user = User.get_user_by_username(username=data.get("username", ""))
         if user is None:
@@ -70,8 +70,8 @@ def remove_editor():
         for e in game_data.data.get(f"editor{part}", {}):
             editor.append(e)
         
-        if user.username in editor:
-            editor.remove(user.username)
+        if user.get_username() in editor:
+            editor.remove(user.get_username())
             game_data.data.update({f"editor{part}": editor})
             
             # اطلاع دادن به SQLAlchemy که دیکشنری تغییر کرده است
@@ -84,11 +84,11 @@ def remove_editor():
                     for n in user2.data.keys():
                         if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
                             d[n] = user2.data.get(n, "")
-                    d["username"] = user2.username
+                    d["username"] = user.get_username()
                     d["phone"] = user2.phone
-                    if e in game_data.data.get("management", []) or e == current_user.username:
+                    if e in game_data.data.get("management", []) or e == current_user.get_username():
                         d["management"] = True
-                    if e != current_user.username and current_user.username == "5100276150":
+                    if e != current_user.get_username() and current_user.get_username() == "5100276150":
                         d.pop("management", None)
                     editor[editor.index(e)] = d
             return jsonify({"data":editor, "message": "ویرایشگر با موفقیت حذف شد."}), 200
@@ -100,7 +100,7 @@ def remove_editor():
 @control_bp.get("/get_editors")
 @jwt_required()
 def get_editors():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         data = request.args
         game_data = UserInterface.query.first()
         editor = []
@@ -114,11 +114,11 @@ def get_editors():
                 for n in user.data.keys():
                     if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
                         d[n] = user.data.get(n, "")
-                d["username"] = user.username
+                d["username"] = user.get_username()
                 d["phone"] = user.phone
-                if e in game_data.data.get("management", []) or e == current_user.username:
+                if e in game_data.data.get("management", []) or e == current_user.get_username():
                     d["management"] = True
-                if e != current_user.username and current_user.username == "5100276150":
+                if e != current_user.get_username() and current_user.get_username() == "5100276150":
                     d.pop("management", None)
                 editor[editor.index(e)] = d
         return jsonify({"data": editor})
@@ -127,17 +127,17 @@ def get_editors():
 @control_bp.post("/add_supporter")
 @jwt_required()
 def supporter():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         data = request.get_json()
         user = User.get_user_by_username(username=data.get("username", ""))
         if user is None:
             return jsonify({"error": "کاربر وجود ندارد"}), 404
         game_data = UserInterface.query.first()
         supporters = game_data.data.get("supporters", {"male": [], "female": []}).get(["male", "female"][data.get("gender", 0)])[data.get("tag", 0)][data.get("part", 0)]
-        if user.username in game_data.data.get("management", []) and "5100276150" != current_user.username:
+        if user.get_username() in game_data.data.get("management", []) and "5100276150" != current_user.get_username():
             return jsonify({"error": "این کاربر مدیر است"}), 400
-        if user.username not in supporters:
-            supporters.append(user.username)
+        if user.get_username() not in supporters:
+            supporters.append(user.get_username())
             all_supporters = {"male": [], "female": []}
             for g in game_data.data.get("supporters", {"male": [], "female": []}).keys():
                 for t in game_data.data.get("supporters", {"male": [], "female": []}).get(g, []):
@@ -159,11 +159,11 @@ def supporter():
                     for n in user2.data.keys():
                         if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
                             d[n] = user2.data.get(n, "")
-                    d["username"] = user2.username
+                    d["username"] = user.get_username()
                     d["phone"] = user2.phone
-                    if s in game_data.data.get("management", []) or s == current_user.username:
+                    if s in game_data.data.get("management", []) or s == current_user.get_username():
                         d["management"] = True
-                    if s != current_user.username and current_user.username == "5100276150":
+                    if s != current_user.get_username() and current_user.get_username() == "5100276150":
                         d.pop("management", None)
                     supporters[supporters.index(s)] = d
             return jsonify({"data": supporters, "message": "پشتیبان با موفقیت اضافه شد."}), 200
@@ -175,15 +175,15 @@ def supporter():
 @control_bp.post("/remove_supporter")
 @jwt_required()
 def remove_supporter():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         data = request.get_json()
         user = User.get_user_by_username(username=data.get("username", ""))
         if user is None:
             return jsonify({"error": "کاربر وجود ندارد"}), 404
         game_data = UserInterface.query.first()
         supporters = game_data.data.get("supporters", {"male": [], "female": []}).get(["male", "female"][data.get("gender", 0)])[data.get("tag", 0)][data.get("part", 0)]
-        if user.username in supporters:
-            supporters.remove(user.username)
+        if user.get_username() in supporters:
+            supporters.remove(user.get_username())
             all_supporters = {"male": [], "female": []}
             for g in game_data.data.get("supporters", {"male": [], "female": []}).keys():
                 for t in game_data.data.get("supporters", {"male": [], "female": []}).get(g, []):
@@ -205,11 +205,11 @@ def remove_supporter():
                     for n in user2.data.keys():
                         if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
                             d[n] = user2.data.get(n, "")
-                    d["username"] = user2.username
+                    d["username"] = user.get_username()
                     d["phone"] = user2.phone
-                    if s in game_data.data.get("management", []) or s == current_user.username:
+                    if s in game_data.data.get("management", []) or s == current_user.get_username():
                         d["management"] = True
-                    if s != current_user.username and current_user.username == "5100276150":
+                    if s != current_user.get_username() and current_user.get_username() == "5100276150":
                         d.pop("management", None)
                     supporters[supporters.index(s)] = d
             return jsonify({"data": supporters, "message": "پشتیبان با موفقیت حذف شد."}), 200
@@ -221,7 +221,7 @@ def remove_supporter():
 @control_bp.get("/get_supporters")
 @jwt_required()
 def get_supporters():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         data = request.args
         game_data = UserInterface.query.first()
         supporters = game_data.data.get("supporters", {"male": [], "female": []}).get(["male", "female"][int(data.get("gender", 0))])[int(data.get("tag", 0))][int(data.get("part", 0))]
@@ -233,11 +233,11 @@ def get_supporters():
                     for n in user2.data.keys():
                         if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
                             d[n] = user2.data.get(n, "")
-                    d["username"] = user2.username
+                    d["username"] = user2.get_username()
                     d["phone"] = user2.phone
-                    if s in game_data.data.get("management", []) or s == current_user.username:
+                    if s in game_data.data.get("management", []) or s == current_user.get_username():
                         d["management"] = True
-                    if s != current_user.username and current_user.username == "5100276150":
+                    if s != current_user.get_username() and current_user.get_username() == "5100276150":
                         d.pop("management", None)
                     supporters[supporters.index(s)] = d
             return jsonify({"data": supporters, "message": "پشتیبان با موفقیت اضافه شد."}), 200
@@ -249,7 +249,7 @@ def get_supporters():
 @control_bp.get("/get_users")
 @jwt_required()
 def get_users():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         users = User.query.all()
         filter_users = []
         for user in users:
@@ -261,7 +261,7 @@ def get_users():
                 if request.args.get("phone") in user.phone:
                     filter_users.append(user)
             if request.args.get("username") is not None:
-                if request.args.get("username") in user.username:
+                if request.args.get("username") in user.get_username():
                     filter_users.append(user)
         for user in filter_users:
             d = {}
@@ -270,7 +270,7 @@ def get_users():
             for n in user.data.keys():
                 if n in ["first_name", "last_name", "father_name", "icon", "custom_name", "pro", f"score_{gender}_{tag}", "diamonds", "block", "tag", "gender", "accept_account"]:
                     d[n] = user.data.get(n, "")
-            d["username"] = user.username
+            d["username"] = user.get_username()
             d["phone"] = user.phone
             d["birthday"] = gregorian_to_jalali(user.birthday).strftime("%Y/%m/%d") if user.birthday else ""
             print(d["birthday"])
@@ -284,7 +284,7 @@ def get_users():
 @control_bp.get("/get_group")
 @jwt_required()
 def get_group():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         group = Group.query.filter_by(name=request.args.get("name")).first()
         if group is None:
             return jsonify({"error": "گروهی با این نام وجود ندارد"}), 404
@@ -297,7 +297,7 @@ def get_group():
                 for n in user.data.keys():
                     if n in ["first_name", "last_name", "father_name", "custom_name"]:
                         d[n] = user.data.get(n, "")
-                d["username"] = user.username
+                d["username"] = user.get_username()
                 d["phone"] = user.phone
                 data.append(d)
         return jsonify({"data": data, "diamonds":sum(group.diamonds.values()), "score":sum(group.score.values()), "leader":group.users.get("leader", ""), "icon":group.icon}), 200
@@ -307,7 +307,7 @@ def get_group():
 @control_bp.post("change_user")
 @jwt_required()
 def change_user():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         data = request.get_json()
         user = User.get_user_by_username(username=data.get("username", ""))
         if user is None:
@@ -315,7 +315,7 @@ def change_user():
         for u in user.data.get("users_sended_message", []):
             messages = User.get_user_by_username(username=u).data.get("message", [])
             for message in messages:
-                if message.get("data", {"user":""}).get("user") == user.username:
+                if message.get("data", {"user":""}).get("user") == user.get_username():
                     messages.remove(message)
             User.get_user_by_username(username=u).update(data={"message":messages})
         user_join_messages = user.data.get("message", [])
@@ -327,7 +327,7 @@ def change_user():
         group_name = user.data.get("group_name", "")
         group = Group.get_group_by_name(name=group_name)
         if group is not None:
-            group.users.get("users", []).remove(user.username)
+            group.users.get("users", []).remove(user.get_username())
             if len(group.users.get("users", [])) == 0:
                 db.session.delete(group)
             else:
@@ -348,27 +348,28 @@ def change_user():
             miladi_date = jalali_to_gregorian(year, month, day)
             user.birthday = miladi_date
             db.session.commit()
-        gender = data.get("gender")
-        last_gender = user.data.get("gender", 0)
-        last_tag = user.data.get("tag", 0)
-        score = current_user.data.get(f"score_{last_gender}_{last_tag}", 0)
-        score_0 = current_user.data.get(f"score_{last_gender}_{last_tag}_0", 0)
-        score_1 = current_user.data.get(f"score_{last_gender}_{last_tag}_1", 0)
-        score_2 = current_user.data.get(f"score_{last_gender}_{last_tag}_2", 0)
-        user.tag = tag if tag is not None else last_tag
-        user.gender = gender if gender is not None else last_gender
-        user.update(data={"message":user_join_messages, "group_name":"", "users_request":[], "tag": tag if tag is not None else user.data.get("tag"), "gender": gender if gender is not None else user.data.get("gender"), f"score_{gender}_{tag}": score, f"score_{gender}_{tag}_0": score_0, f"score_{gender}_{tag}_1": score_1, f"score_{gender}_{tag}_2": score_2})
-        user.data.pop(f"score_{last_gender}_{last_tag}", None)
-        user.data.pop(f"score_{last_gender}_{last_tag}_0", None)
-        user.data.pop(f"score_{last_gender}_{last_tag}_1", None)
-        user.data.pop(f"score_{last_gender}_{last_tag}_2", None)
-        
+        if data.get("gender", "") != "":
+            gender = data.get("gender")
+            last_gender = user.data.get("gender", 0)
+            last_tag = user.data.get("tag", 0)
+            score = current_user.data.get(f"score_{last_gender}_{last_tag}", 0)
+            score_0 = current_user.data.get(f"score_{last_gender}_{last_tag}_0", 0)
+            score_1 = current_user.data.get(f"score_{last_gender}_{last_tag}_1", 0)
+            score_2 = current_user.data.get(f"score_{last_gender}_{last_tag}_2", 0)
+            user.tag = tag if tag is not None else last_tag
+            user.gender = gender if gender is not None else last_gender
+            user.update(data={"message":user_join_messages, "group_name":"", "users_request":[], "tag": tag if tag is not None else user.data.get("tag"), "gender": gender if gender is not None else user.data.get("gender"), f"score_{user.gender}_{user.tag}": score, f"score_{user.gender}_{user.tag}_0": score_0, f"score_{user.gender}_{user.tag}_1": score_1, f"score_{user.gender}_{user.tag}_2": score_2})
+            user.data.pop(f"score_{last_gender}_{last_tag}", None)
+            user.data.pop(f"score_{last_gender}_{last_tag}_0", None)
+            user.data.pop(f"score_{last_gender}_{last_tag}_1", None)
+            user.data.pop(f"score_{last_gender}_{last_tag}_2", None)
+            
         for u in remove_event:
             user2 = User.get_user_by_username(u)
             if user2 is not None:
                 sended_message = user2.data.get("users_sended_message", [])
-                if user.username in sended_message:
-                    sended_message.remove(user.username)
+                if user.get_username() in sended_message:
+                    sended_message.remove(user.get_username())
                 user2.update(data= {"users_sended_message":sended_message})
         db.session.commit()
         return jsonify({"message": "کاربر با موفقیت تغییر یافت."}), 200
@@ -386,13 +387,13 @@ def left_group():
         return jsonify({"error": "گروه وجود ندارد"})
     users = []
     for user in group.users.get("users", []):
-        if user != delete_user.username:
+        if user != delete_user.get_username():
             users.append(user)
     
     for user in delete_user.data.get("users_sended_message", []):
         messages = User.get_user_by_username(username=user).data.get("message", [])
         for message in messages:
-            if message.get("data", {"user":""}).get("user") == delete_user.username:
+            if message.get("data", {"user":""}).get("user") == delete_user.get_username():
                 messages.remove(message)
         User.get_user_by_username(username=user).update(data={"message":messages})
     messages = delete_user.data.get("message", [])
@@ -401,15 +402,15 @@ def left_group():
             user = User.get_user_by_username(username=message.get("data", {"user":""}).get("user"))
             request_message = user.data.get("users_request", [])
             for r in request_message:
-                if r[0] == delete_user.username:
+                if r[0] == delete_user.get_username():
                     request_message.remove(r)
             user.update(data={"users_request":request_message})
             messages.remove(message)
     delete_user.update(data={"group_name":"", "message":messages, "users_sended_message": []})
     db.session.commit()
     if len(users) > 0:
-        leader = group.users.get("leader", "") if group.users.get("leader", "") != delete_user.username else users[0]
-        if group.users.get("leader", "") == delete_user.username:
+        leader = group.users.get("leader", "") if group.users.get("leader", "") != delete_user.get_username() else users[0]
+        if group.users.get("leader", "") == delete_user.get_username():
             if group.icon != "":
                 path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "users")
                 phone = User.get_user_by_username(username=users[0]).phone
@@ -446,7 +447,7 @@ def allowed_file(filename, allowed_extensions):
 @control_bp.post("/send_message")
 @jwt_required()
 def send_message_with_media():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         audio_url = None
         image_url = None
         # دریافت داده‌ها
@@ -592,7 +593,7 @@ def get_messages():
 @control_bp.get("/sort_users")
 @jwt_required()
 def sort_users():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         filter_data = []
         if request.args.get("filter"):
             filter_data = request.args.get("filter").split("AND")
@@ -650,7 +651,7 @@ def sort_users():
 @control_bp.get("/sort_group")
 @jwt_required()
 def sort_group():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         filter_data = []
         if request.args.get("filter"):
             filter_data = request.args.get("filter").split("AND")

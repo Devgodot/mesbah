@@ -375,7 +375,7 @@ def accept_group():
     group_name = current_user.data.get("group_name", "")
     group = Group.get_group_by_name(group_name)
     if group is not None:
-        users = group.add_user(user=user.username)
+        users = group.add_user(user=user.get_username())
         if isinstance(users, list) and len(users) != 0:
             leader = users[0]
             group.users = {"users":users, "leader":leader}
@@ -409,8 +409,8 @@ def accept_group():
         user2 = User.get_user_by_username(u)
         if user2 is not None:
             sended_message = user2.data.get("users_sended_message", [])
-            if user.username in sended_message:
-                sended_message.remove(user.username)
+            if user.get_username() in sended_message:
+                sended_message.remove(user.get_username())
             user2.update(data= {"users_sended_message":sended_message})
     db.session.commit()
     return jsonify({"message":"کاربر به گروه اضافه شد"})
