@@ -518,7 +518,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_uoqgo")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_1iua5")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_elx3q")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_elx3q")
-current_tab = 1
+current_tab = 2
 all_tabs_in_front = true
 drag_to_rearrange_enabled = true
 
@@ -733,6 +733,7 @@ size_flags_horizontal = 4
 text = "ثبت"
 
 [node name="گروهی" type="Control" parent="TabContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 2
 metadata/_tab_index = 1
@@ -950,7 +951,6 @@ size_flags_horizontal = 4
 text = "ثبت"
 
 [node name="پیام ها" type="Control" parent="TabContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 2
 metadata/_tab_index = 2
@@ -987,7 +987,6 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 40
 
 [node name="instance" type="PanelContainer" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 1
