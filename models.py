@@ -9,6 +9,7 @@ from sqlalchemy.ext.mutable import MutableDict
 from sqlalchemy.orm import relationship
 from khayyam import TehranTimezone
 from datetime import datetime, timedelta
+from utils import hashing, HashingMode
 
 class Messages(db.Model):
     __tablename__ = "Messages"  # اصلاح نام جدول
@@ -40,7 +41,7 @@ class VerificationCode(db.Model):
 class User(db.Model):
     __tablename__ = "users"
     id = db.Column(String(10), primary_key=True)
-    username = db.Column(String(10), nullable=False, unique=True)
+    username = db.Column(String(256), nullable=False, unique=True)  # افزایش طول برای هش
     phone = Column(String(11), nullable=False, default="09")
     password = db.Column(db.Text(), nullable=False)
     tag = Column(Integer(), nullable=False, default=0)
@@ -57,9 +58,23 @@ class User(db.Model):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def __init__(self, **kwargs):
+        # هش کردن username هنگام ساخت شیء
+        if 'username' in kwargs:
+            kwargs['username'] = hashing(HashingMode.ENCODE, kwargs['username'])
+        super().__init__(**kwargs)
+
     @classmethod
     def get_user_by_username(cls, username):
-        return cls.query.filter_by(username=username).first()
+        # جستجو با username هش شده
+        return cls.query.filter_by(username=hashing(HashingMode.ENCODE, username)).first()
+
+    def set_username(self, username):
+        self.username = hashing(HashingMode.ENCODE, username)
+
+    def get_username(self):
+        # بازگرداندن username اصلی
+        return hashing(HashingMode.DECODE, self.username)
 
     @classmethod
     def get_user_by_phone(cls, phone):
