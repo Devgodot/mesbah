@@ -109,7 +109,7 @@ app.register_blueprint(ticket_bp, url_prefix="/ticket")
 @jwt.user_lookup_loader
 def user_lookup_callback(_jwt_headers, jwt_data):
     identity = jwt_data["sub"]
-    return User.get_user_by_username(identity)
+    return User.query.filter_by(username=identity).first()
 
 @app.route('/check_resource', methods=['POST'])
 def get_resource_index():
