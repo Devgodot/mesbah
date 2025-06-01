@@ -449,7 +449,7 @@ def support_message():
 @user_bp.post("/users_message")
 @jwt_required()
 def users_message():
-    user_name = user.get_username()
+    user_name = current_user.get_username()
     messages = Messages.query.all()
     users = []
     last_users = request.get_json().get("users")
