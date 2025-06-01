@@ -16,6 +16,7 @@ import json
 import numpy as np
 from PIL import Image
 import io
+import utils
 import uuid
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
 def set_birthday():
@@ -311,8 +312,7 @@ def home():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-        for user in User.query.all():
-            user.username = user.get_username()
+      
     app.run(debug=True)
 
 

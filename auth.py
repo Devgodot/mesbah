@@ -63,6 +63,7 @@ def check_user():
     data = request.get_json()
     id = data.get("id", "")
     user = User.get_user_by_username(id)
+    print(id, user)
     if user != None:
         return jsonify({"phone":user.phone})
     else:
@@ -144,21 +145,21 @@ def whoami():
                 editors[e] = UserInterface.query.first().data.get(e, [])
         editor = []
         for index, key in enumerate(editors.keys()):
-            if current_user.username in editors[key]:
+            if current_user.get_username() in editors[key]:
                 editor.append(index)
         support = False
         for g in UserInterface.query.first().data.get("supporters").values():
             for r in g:
                 for p in r:
                     for u in p:
-                        if u == current_user.username:
+                        if u == current_user.get_username():
                             support = True
         if not support:
             for x in range(3):
-                messages = Messages.query.filter_by(conversationId=current_user.username+"_"+str(x)).first()
+                messages = Messages.query.filter_by(conversationId=current_user.get_username()+"_"+str(x)).first()
                 supporters = UserInterface.query.first().data.get("supporters").get(["male", "female"][current_user.data.get("gender", 0)])[current_user.data.get("tag", 0)][x]
                 if messages is None:
-                    message = Messages(conversationId=current_user.username+"_"+str(x), messages=[], receiverId=supporters)
+                    message = Messages(conversationId=current_user.get_username()+"_"+str(x), messages=[], receiverId=supporters)
                     db.session.add(message)
                     db.session.commit()
         sended_message = current_user.data.get("users_sended_message", [])
@@ -174,14 +175,14 @@ def whoami():
         for d in current_user.data.keys():
             data[d] = current_user.data.get(d)
         if data.get("pro") is None:data["pro"] = False
-        if current_user.username in UserInterface.query.first().data.get("management", []): data["management"] = True 
+        if current_user.get_username() in UserInterface.query.first().data.get("management", []): data["management"] = True 
         else: data["management"] = False
         data["update_version"] = UserInterface.query.first().data.get("update_version", "")
         return jsonify(
             {
                 "message": "message",
                 "user_details": {
-                    "username": current_user.username,
+                    "username": current_user.get_username(),
                     # Add other user details here if needed
                 },
                 "data": data
@@ -278,11 +279,11 @@ def remove_message():
     user = User.get_user_by_username(request.args.get("user", ""))
     if user is not None:
         sended_message = user.data.get("users_sended_message", [])
-        if current_user.username in sended_message:
-            sended_message.remove(current_user.username)
+        if current_user.get_username() in sended_message:
+            sended_message.remove(current_user.get_username())
         request_message = user.data.get("users_request", [])
         for u in request_message:
-            if current_user.username == u[0]:
+            if current_user.get_username() == u[0]:
                 request_message.remove(u)
         user.update(data= {"users_sended_message":sended_message, "users_request":request_message})
     db.session.commit()
@@ -300,7 +301,7 @@ def join_group():
             messages.remove(message)
     group = Group.get_group_by_name(group_name)
     if group is not None:
-        users = group.add_user(user=current_user.username)
+        users = group.add_user(user=current_user.get_username())
         if isinstance(users, list) and len(users) != 0:
             leader = users[0]
             group.users = {"users":users, "leader":leader}
@@ -332,8 +333,8 @@ def join_group():
         user = User.get_user_by_username(u)
         if user is not None:
             sended_message = user.data.get("users_sended_message", [])
-            if current_user.username in sended_message:
-                sended_message.remove(current_user.username)
+            if current_user.get_username() in sended_message:
+                sended_message.remove(current_user.get_username())
             user.update(data= {"users_sended_message":sended_message})
     db.session.commit()
     return jsonify({"message":"موفقیت آمیز بود."})
@@ -389,7 +390,7 @@ def accept_group():
             user3 = User.get_user_by_username(username=u)
             user_m = user3.data.get("message", [])
             for message in user_m:
-                if message.get("data", {"user":""}).get("user") == current_user.username:
+                if message.get("data", {"user":""}).get("user") == current_user.get_username():
                     user_m.remove(message)
             user3.update(data={"message":user_m})
         current_user.update(data= {"users_sended_message":[]})
@@ -420,13 +421,13 @@ def left_group():
     group = Group.get_group_by_name(current_user.data.get("group_name", ""))
     users = []
     for user in group.users.get("users", []):
-        if user != current_user.username:
+        if user != current_user.get_username():
             users.append(user)
     
     for user in current_user.data.get("users_sended_message", []):
         messages = User.get_user_by_username(username=user).data.get("message", [])
         for message in messages:
-            if message.get("data", {"user":""}).get("user") == current_user.username:
+            if message.get("data", {"user":""}).get("user") == current_user.get_username():
                 messages.remove(message)
         User.get_user_by_username(username=user).update(data={"message":messages})
     messages = current_user.data.get("message", [])
@@ -435,15 +436,15 @@ def left_group():
             user = User.get_user_by_username(username=message.get("data", {"user":""}).get("user"))
             request_message = user.data.get("users_request", [])
             for r in request_message:
-                if r[0] == current_user.username:
+                if r[0] == current_user.get_username():
                     request_message.remove(r)
             user.update(data={"users_request":request_message})
             messages.remove(message)
     current_user.update(data={"group_name":"", "message":messages, "users_sended_message": []})
     db.session.commit()
     if len(users) > 0:
-        leader = group.users.get("leader", "") if group.users.get("leader", "") != current_user.username else users[0]
-        if group.users.get("leader", "") == current_user.username:
+        leader = group.users.get("leader", "") if group.users.get("leader", "") != current_user.get_username() else users[0]
+        if group.users.get("leader", "") == current_user.get_username():
             if group.icon != "":
                 path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "users")
                 phone = User.get_user_by_username(username=users[0]).phone
@@ -477,7 +478,7 @@ def unseen_message():
         # Fetch all message IDs for the current user
         seen_message_ids = [msg.message_id for msg in UserSeenMessages.query.filter_by(user_id=current_user.id).all()]
         for x in range(3):
-            messages = Messages.query.filter_by(conversationId=current_user.username+"_"+str(x)).first()
+            messages = Messages.query.filter_by(conversationId=current_user.get_username()+"_"+str(x)).first()
             if messages is not None:
                 for m in messages.messages:
                     if m.get("id", "") not in seen_message_ids:
