@@ -311,6 +311,8 @@ def home():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
+        for user in User.query.all():
+            user.username = user.get_username()
     app.run(debug=True)
 
 
