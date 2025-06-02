@@ -25,7 +25,7 @@ PERSIAN_WEEKDAYS = {
 @ticket_bp.post("/add_ticket")
 @jwt_required()
 def add_ticket():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         data = request.get_json()
         _time = data.get("time", "1404/03/24 15:00")
         season = UserInterface.query.first().data.get("train_season", 1)
@@ -63,7 +63,7 @@ def get_ticket():
     tickets = Ticket.query.filter_by(season=season).all()
     if not tickets:
         return jsonify({"error": "تیکتی وجود ندارد"}), 404
-    if current_user.username in UserInterface.query.first().data.get("management", []) and request.args.get("all", "false").lower() == "true":
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []) and request.args.get("all", "false").lower() == "true":
         tickets_data = []
         for ticket in tickets:
             # رفع اختلاف یک روز: به جای JalaliDatetime(ticket.time) از JalaliDatetime(ticket.time.year, ticket.time.month, ticket.time.day, ticket.time.hour, ticket.time.minute) استفاده کنید
@@ -97,7 +97,7 @@ def get_ticket():
 @ticket_bp.post('/delete_ticket')
 @jwt_required()
 def delete_ticket():
-    if current_user.username in UserInterface.query.first().data.get("management", []) :
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []) :
         _time = request.get_json().get("time", "2024/03/24 15:00")
         try:
             date_part, time_part = _time.split(" ")
@@ -123,7 +123,7 @@ def add_user_to_ticket():
     year, month, day = map(int, date_part.split("/"))
     hour, minute = map(int, time_part.split(":"))
     miladi_date = jalali_to_gregorian(year, month, day, hour, minute)
-    user_id = current_user.username
+    user_id = current_user.get_username()
     ticket = Ticket.query.filter_by(time=miladi_date).first()
     tickets = Ticket.query.filter_by(season=UserInterface.query.first().data.get("train_season", 1)).all()
     if not ticket:
@@ -147,7 +147,7 @@ def add_user_to_ticket():
 @ticket_bp.post("change_ticket")
 @jwt_required()
 def change_ticket():
-    if current_user.username in UserInterface.query.first().data.get("management", []):
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
         data = request.get_json()
         ticket_time = data.get("time")
         date_part, time_part = ticket_time.split(" ")
@@ -179,7 +179,7 @@ def change_ticket():
 def get_user_ticket():
     if current_user.data.get("accept_account", False) != True:
         return jsonify({"error": "حساب شما تایید نشده! لطفاً به مسجد جامع مراجعه فرمایید."}), 403
-    user_id = current_user.username
+    user_id = current_user.get_username()
     tickets = Ticket.query.filter_by(season=UserInterface.query.first().data.get("train_season", 1)).all()
     user_ticket = {}
     for ticket in tickets:
