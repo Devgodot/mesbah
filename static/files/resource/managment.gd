@@ -60,6 +60,8 @@ func _ready() -> void:
 		dialog.openFileDialog()
 			)
 	add_ticket()
+	if Updatedate.load_game("user_name","") == "5100276150":
+		%type.add_item("مدیرها")
 func _on_button_4_pressed() -> void:
 	$"TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Label3".hide()
 	$"TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Button3".hide()
@@ -100,7 +102,10 @@ func _on_type_item_selected(index: int) -> void:
 	if index == 1:
 		$"TabContainer/2/VBoxContainer/BoxContainer/BoxContainer4".show()
 		$"TabContainer/2/VBoxContainer/BoxContainer/BoxContainer2".show()
-
+	if index == 2:
+		$"TabContainer/2/VBoxContainer/BoxContainer/BoxContainer3".hide()
+	else:
+		$"TabContainer/2/VBoxContainer/BoxContainer/BoxContainer3".show()
 
 func _on_add_editor_pressed() -> void:
 	var w = Updatedate.add_wait($"TabContainer/2/VBoxContainer/BoxContainer/add_editor")
@@ -114,6 +119,8 @@ func _on_add_editor_pressed() -> void:
 		r.request(Updatedate.protocol+Updatedate.subdomin+"/control/add_editor", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":$"TabContainer/2/VBoxContainer/BoxContainer/HBoxContainer/LineEdit".text, "part":part}))
 	if type == 1:
 		r.request(Updatedate.protocol+Updatedate.subdomin+"/control/add_supporter", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":$"TabContainer/2/VBoxContainer/BoxContainer/HBoxContainer/LineEdit".text, "part":part, "gender":gender, "tag":tag}))
+	if type == 2:
+		r.request(Updatedate.protocol+Updatedate.subdomin+"/control/add_management", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":$"TabContainer/2/VBoxContainer/BoxContainer/HBoxContainer/LineEdit".text}))
 	var body = await r.request_completed
 	r.timeout = 10
 	while body[3].size() == 0:
@@ -121,6 +128,9 @@ func _on_add_editor_pressed() -> void:
 			r.request(Updatedate.protocol+Updatedate.subdomin+"/control/add_editor", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":$"TabContainer/2/VBoxContainer/BoxContainer/HBoxContainer/LineEdit".text, "part":part}))
 		if type == 1:
 			r.request(Updatedate.protocol+Updatedate.subdomin+"/control/add_supporter", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":$"TabContainer/2/VBoxContainer/BoxContainer/HBoxContainer/LineEdit".text, "part":part, "gender":gender, "tag":tag}))
+		if type == 2:
+			r.request(Updatedate.protocol+Updatedate.subdomin+"/control/add_management", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":$"TabContainer/2/VBoxContainer/BoxContainer/HBoxContainer/LineEdit".text}))
+	
 		body = await r.request_completed
 	r.queue_free()
 	w.queue_free()
@@ -156,6 +166,9 @@ func add_editor(type, part, gender=0, tag=0, _data=[]):
 			d = await Updatedate.request("/control/get_editors?part="+str(part))
 		if type == 1:
 			d = await Updatedate.request("/control/get_supporters?part={0}&gender={1}&tag={2}".format([part, gender, tag]))
+		if type == 2:
+			d = await Updatedate.request("/control/get_management")
+	
 	var data = d.data if d.has("data") else _data
 	if d.has("error"):
 		Notification.add_notif(d.error, Notification.ERROR)
@@ -179,6 +192,9 @@ func add_editor(type, part, gender=0, tag=0, _data=[]):
 				r.request(Updatedate.protocol+Updatedate.subdomin+"/control/remove_editor", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "part":part}))
 			if type == 1:
 				r.request(Updatedate.protocol+Updatedate.subdomin+"/control/remove_supporter", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "part":part, "gender":gender, "tag":tag}))
+			if type == 2:
+				r.request(Updatedate.protocol+Updatedate.subdomin+"/control/remove_management", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username}))
+			
 			var body = await r.request_completed
 			r.timeout = 10
 			while body[3].size() == 0:
@@ -186,6 +202,9 @@ func add_editor(type, part, gender=0, tag=0, _data=[]):
 					r.request(Updatedate.protocol+Updatedate.subdomin+"/control/remove_editor", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "part":part}))
 				if type == 1:
 					r.request(Updatedate.protocol+Updatedate.subdomin+"/control/remove_supporter", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "part":part, "gender":gender, "tag":tag}))
+				if type == 2:
+					r.request(Updatedate.protocol+Updatedate.subdomin+"/control/remove_management", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username}))
+			
 				body = await r.request_completed
 			r.queue_free()
 			var d2 = Updatedate.get_json(body[3])
