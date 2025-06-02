@@ -245,7 +245,96 @@ def get_supporters():
             return jsonify({"error": "پشتیبانی در این بخش وجود ندارد"}), 400
     else:
         return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
+@control_bp.post("/add_management")
+@jwt_required()
+def add_management():
+    if current_user.get_username() == "5100276150":
+        data = request.get_json()
+        user = User.get_user_by_username(username=data.get("username", ""))
+        if user is None:
+            return jsonify({"error": "کاربر وجود ندارد"}), 404
+        game_data = UserInterface.query.first()
+        management = game_data.data.get("management", [])
+        if user.get_username() not in management:
+            management.append(user.get_username())
+            game_data.data.update({"management": management})
+            flag_modified(game_data, "data")
+            db.session.commit()
+            for m in management:
+                user2 = User.get_user_by_username(username=m)
+                if user2 is not None:
+                    d = {}
+                    for n in user2.data.keys():
+                        if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
+                            d[n] = user2.data.get(n, "")
+                    d["username"] = user2.get_username()
+                    d["phone"] = user2.phone
+                    if m == current_user.get_username():
+                        d["management"] = True
+                    management[management.index(m)] = d
+            return jsonify({"data": management, "message": "مدیر با موفقیت اضافه شد."}), 200
+        else:
+            return jsonify({"error": "این کاربر قبلا اضافه شده است"}), 400
+    else:
+        return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
 
+@control_bp.post("/remove_management")
+@jwt_required()
+def remove_management():
+    if current_user.get_username() == "5100276150":
+        data = request.get_json()
+        user = User.get_user_by_username(username=data.get("username", ""))
+        if user is None:
+            return jsonify({"error": "کاربر وجود ندارد"}), 404
+        game_data = UserInterface.query.first()
+        management = game_data.data.get("management", [])
+        if user.get_username() in management:
+            management.remove(user.get_username())
+            game_data.data.update({"management": management})
+            flag_modified(game_data, "data")
+            db.session.commit()
+            for m in management:
+                user2 = User.get_user_by_username(username=m)
+                if user2 is not None:
+                    d = {}
+                    for n in user2.data.keys():
+                        if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
+                            d[n] = user2.data.get(n, "")
+                    d["username"] = user2.get_username()
+                    d["phone"] = user2.phone
+                    if m == current_user.get_username():
+                        d["management"] = True
+                    management[management.index(m)] = d
+            return jsonify({"data": management, "message": "مدیر با موفقیت حذف شد."}), 200
+        else:
+            return jsonify({"error": "این کاربر مدیر نیست"}), 400
+    else:
+        return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
+
+@control_bp.get("/get_management")
+@jwt_required()
+def get_management():
+    if current_user.get_username() == "5100276150":
+        game_data = UserInterface.query.first()
+        management = game_data.data.get("management", [])
+        if (management is not None) or (len(management) != 0):
+            for m in management:
+                user2 = User.get_user_by_username(username=m)
+                if user2 is not None:
+                    d = {}
+                    for n in user2.data.keys():
+                        if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
+                            d[n] = user2.data.get(n, "")
+                    d["username"] = user2.get_username()
+                    d["phone"] = user2.phone
+                    if m == current_user.get_username():
+                        d["management"] = True
+                    management[management.index(m)] = d
+            return jsonify({"data": management, "message": "مدیران با موفقیت دریافت شدند."}), 200
+        else:
+            return jsonify({"error": "مدیری در این بخش وجود ندارد"}), 400
+    else:
+        return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
 @control_bp.get("/get_users")
 @jwt_required()
 def get_users():
