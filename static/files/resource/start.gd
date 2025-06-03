@@ -9,7 +9,7 @@ func _ready() -> void:
 	if not Updatedate.load_game("management"):
 		$CustomTabContainer.add_tabs(null, $CustomTabContainer.get_child(3), 3)
 	if not Updatedate.load_game("editor", false) or not Updatedate.load_game("support"):
-		$CustomTabContainer.add_tabs(null, $CustomTabContainer.get_child(4), 3)
+		$CustomTabContainer.add_tabs(null, $CustomTabContainer.get_child(4), 4 if not Updatedate.load_game("management") else 3)
 	if Updatedate.load_game("support", false):
 		var d = Updatedate.list_users
 		if d :
