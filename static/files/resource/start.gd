@@ -42,6 +42,7 @@ func get_tab(indx)-> Button:
 			return Button.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	if Updatedate.load_game("support", false) :
 		if Updatedate.seen  > 0:
 			if supporter_label:
