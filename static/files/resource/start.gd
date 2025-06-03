@@ -8,7 +8,7 @@ func _ready() -> void:
 	$SystemBarColorChanger.set_navigation_bar_color(Color("e8ad31"))
 	if not Updatedate.load_game("management"):
 		$CustomTabContainer.add_tabs(null, $CustomTabContainer.get_child(3), 3)
-	if not Updatedate.load_game("editor", false) or not Updatedate.load_game("support"):
+	if not Updatedate.load_game("editor", false) and not Updatedate.load_game("support"):
 		$CustomTabContainer.add_tabs(null, $CustomTabContainer.get_child(4), 4 if Updatedate.load_game("management") else 3)
 	if Updatedate.load_game("support", false):
 		var d = Updatedate.list_users
@@ -115,7 +115,10 @@ func _on_custom_tab_container_tab_selected(tab: int) -> void:
 				$CustomTabContainer.current_tab = 1
 				Notification.add_notif("پشتیبانان به این بخش دسترسی ندارند.", Notification.ERROR)
 		3:
-			Transation.change(self, "managment.tscn")
+			if Updatedate.load_game("mangement", false):
+				Transation.change(self, "managment.tscn")
+			else:
+				Transation.change(self, "main2.tscn")
 		4:
 			Transation.change(self, "main2.tscn")
 
