@@ -36,7 +36,7 @@ func _ready() -> void:
 		print(int(date))
 		if calendar:
 			
-			var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")), ((int(date) / 1000) +  86400) * 1000)
+			var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")), int(date) + 100000000)
 			
 			for e in event:
 				if e.has("title"):
