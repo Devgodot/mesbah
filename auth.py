@@ -221,9 +221,12 @@ def save_data():
     if "GodotEngine" in request.headers.get("User-Agent"):
         data = request.get_json()
         change_data :dict= data
-        for c in change_data.keys():
-            if c not in ["transation","first_name", "last_name", "father_name", "birthday", "icon", "tag", "gender", "custom_name", "font_size","font_color", "outline_size", "outline_color", "wave", "light", "shake", "tornado", "aligment"]:
-                change_data.pop(c)
+        allowed_keys = [
+            "start_ticket", "transation", "first_name", "last_name", "father_name", "birthday", "icon", "tag", "gender", "custom_name", "font_size", "font_color", "outline_size", "outline_color", "wave", "light", "shake", "tornado", "aligment"
+        ]
+        invalid_keys = [c for c in list(change_data.keys()) if c not in allowed_keys]
+        for c in invalid_keys:
+            change_data.pop(c)
         if data.get("birthday") is not None:
             year, month, day = map(int, request.get_json().get("birthday", "1400/02/2").split("/"))
             miladi_date = JalaliDatetime(year, month, day).todatetime()

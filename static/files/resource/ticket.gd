@@ -10,14 +10,14 @@ func _ready() -> void:
 	if Engine.has_singleton("GodotGetFile"):
 		calendar = Engine.get_singleton("GodotGetFile")
 		calendar.permission_granted.connect(func():
-			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0), date)
+			var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")), date)
 			for e in event:
 				if e.has("title"):
 					if e.title == "یادآور حرکت قطار":
 						$Button2.disabled = true
 						$Button2.text = "ثبت شده در تقویم")
 		calendar.calendar_event_activity_closed.connect(func():
-			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0), date)
+			var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")), date)
 			for e in event:
 				if e.has("title"):
 					if e.title == "یادآور حرکت قطار":
@@ -30,12 +30,13 @@ func _ready() -> void:
 	Updatedate.get_icon_user(Updatedate.load_game("icon", ""), Updatedate.load_game("user_name", ""), $NinePatchRect/TextureRect2)
 	var data = await  Updatedate.request("/ticket/get_user_ticket")
 	if data.has("ticket"):
-		current_time = int(data.ticket.current_time) - int(Updatedate.load_game("start_ticket", 0))
-		end_time = int(data.ticket.unixtime)- int(Updatedate.load_game("start_ticket", 0))
+		current_time = int(data.ticket.current_time) - int(int(Updatedate.load_game("start_ticket", "0")))
+		end_time = int(data.ticket.unixtime)- int(int(Updatedate.load_game("start_ticket", "0")))
 		date = data.ticket.unixtime
+		print(int(Updatedate.load_game("start_ticket", "0")))
 		if calendar:
-			prints(Updatedate.load_game("start_ticket", 0), data)
-			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0), date)
+			prints(int(Updatedate.load_game("start_ticket", "0")), data)
+			var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")), date)
 			print(event)
 			for e in event:
 				if e.has("title"):
@@ -108,8 +109,8 @@ func add_ticket():
 						Notification.add_notif(message.message)
 						$Panel.hide()
 						current_time = 0
-						Updatedate.save("start_ticket", message.current_time, false)
-						Notification.add_notif(Updatedate.load_game("start_ticket"))
+						Updatedate.save("start_ticket",str(message.current_time))
+						prints(Updatedate.load_game("start_ticket"), (message.current_time))
 						end_time = int(message.unixtime)- int(message.current_time)
 						date = message.unixtime
 						$Label4.text = message.time
@@ -140,9 +141,8 @@ func _gui_input(event: InputEvent) -> void:
 func _on_button2_pressed() -> void:
 	
 	if calendar:
-		calendar.addCalendarEvent("یادآور حرکت قطار", "قطار شادی داره حرکت می کنه، زود آماده شو جا نمونی.",Updatedate.load_game("start_ticket", 0), date, 60)
-	else:
-		Notification.add_notif("hkh")
+		calendar.addCalendarEvent("یادآور حرکت قطار", "قطار شادی داره حرکت می کنه، زود آماده شو جا نمونی.",int(Updatedate.load_game("start_ticket", "0")), date, 60)
+	
 
 func _on_back_button_pressed() -> void:
 	Transation.change(self, "start.tscn", -1)
