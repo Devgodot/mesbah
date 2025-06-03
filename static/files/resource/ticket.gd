@@ -139,8 +139,9 @@ func _gui_input(event: InputEvent) -> void:
 func _on_button2_pressed() -> void:
 	
 	if calendar:
-		calendar.addCalendarEvent("یادآور حرکت قطار", "قطار شادی داره حرکت می کنه، زود آماده شو جا نمونی.",Updatedate.load_game("start_ticket", 0), date*1000, 60)
-
+		calendar.addCalendarEvent("یادآور حرکت قطار", "قطار شادی داره حرکت می کنه، زود آماده شو جا نمونی.",Updatedate.load_game("start_ticket", 0), date, 60)
+	else:
+		Notification.add_notif("hkh")
 
 func _on_back_button_pressed() -> void:
 	Transation.change(self, "start.tscn", -1)
