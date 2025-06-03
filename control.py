@@ -41,7 +41,7 @@ def editor():
                     for n in user2.data.keys():
                         if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
                             d[n] = user2.data.get(n, "")
-                    d["username"] = user.get_username()
+                    d["username"] = user2.get_username()
                     d["phone"] = user2.phone
                     if e in game_data.data.get("management", []) or e == current_user.get_username():
                         d["management"] = True
@@ -84,7 +84,7 @@ def remove_editor():
                     for n in user2.data.keys():
                         if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
                             d[n] = user2.data.get(n, "")
-                    d["username"] = user.get_username()
+                    d["username"] = user2.get_username()
                     d["phone"] = user2.phone
                     if e in game_data.data.get("management", []) or e == current_user.get_username():
                         d["management"] = True
@@ -159,7 +159,7 @@ def supporter():
                     for n in user2.data.keys():
                         if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
                             d[n] = user2.data.get(n, "")
-                    d["username"] = user.get_username()
+                    d["username"] = user2.get_username()
                     d["phone"] = user2.phone
                     if s in game_data.data.get("management", []) or s == current_user.get_username():
                         d["management"] = True
@@ -205,7 +205,7 @@ def remove_supporter():
                     for n in user2.data.keys():
                         if n in ["first_name", "last_name", "father_name", "icon", "custom_name"]:
                             d[n] = user2.data.get(n, "")
-                    d["username"] = user.get_username()
+                    d["username"] = user2.get_username()
                     d["phone"] = user2.phone
                     if s in game_data.data.get("management", []) or s == current_user.get_username():
                         d["management"] = True
