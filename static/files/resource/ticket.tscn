@@ -1564,7 +1564,6 @@ expand_icon = true
 libraries = {
 &"": SubResource("AnimationLibrary_arfdn")
 }
-autoplay = "RESET"
 
 [node name="SystemBarColorChanger" type="Node" parent="."]
 script = ExtResource("27_oaqcc")
