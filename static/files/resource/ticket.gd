@@ -36,7 +36,7 @@ func _ready() -> void:
 		print(int(Updatedate.load_game("start_ticket", "0")))
 		if calendar:
 			prints(int(Updatedate.load_game("start_ticket", "0")), data)
-			var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")), date)
+			var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")), int(date))
 			print(event)
 			for e in event:
 				if e.has("title"):
