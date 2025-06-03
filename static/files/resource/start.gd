@@ -1,11 +1,11 @@
 extends Control
 
 var seen = 0
+var user_label:Label
+var supporter_label:Label
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	$SystemBarColorChanger.set_navigation_bar_color(Color("e8ad31"))
-	
 	if not Updatedate.load_game("management"):
 		$CustomTabContainer.add_tabs(null, $CustomTabContainer.get_child(3), 3)
 	if not Updatedate.load_game("editor", false) or not Updatedate.load_game("support"):
@@ -16,19 +16,52 @@ func _ready() -> void:
 			for user2 in d:
 				seen += user2.new
 		Updatedate.seen = seen
-	
+		
 	var m = await Updatedate.request("/auth/unseen_message")
 	if m and m.has("num"):
 		if m.num != 0:
 			$Button5/Label.show()
-			$Button5/Label.text = str(m.num)
-	
+			$Button5/Label.text = str(int(m.num))
+	if not Updatedate.load_game("support"):
+		var m2 = await Updatedate.request("/auth/unseen_message?p=1")
+		if m2 and m2.has("num"):
+			if m2.num != 0:
+				Updatedate.seen = m2.num
+				
+func get_tab(indx)-> Button:
+	var buttons = []
+	for child in $CustomTabContainer.panel.get_child(0).get_children():
+		if child is Button:
+			buttons.append(child)
+	if buttons.size() > indx:
+		return buttons[indx]
+	else :
+		if buttons.size() > 0:
+			return buttons[buttons.size() - 1]
+		else:
+			return Button.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Updatedate.load_game("support", false) and Updatedate.seen  > 0:
-		$Button2/Label.show()
-		$Button2/Label.text = str(Updatedate.seen)
-
+	if Updatedate.load_game("support", false) :
+		if Updatedate.seen  > 0:
+			if supporter_label:
+				supporter_label.show()
+				supporter_label.text = str(int(Updatedate.seen))
+				supporter_label.position = Vector2(60, 38)
+			else:
+				var btn = get_tab(4)
+				if btn.text == "مربیان":
+					supporter_label = $Label.duplicate()
+					btn.add_child(supporter_label)
+	else:
+		if Updatedate.seen > 0:
+			if user_label:
+				user_label.show()
+				user_label.text = str(int(Updatedate.seen))
+				user_label.position = Vector2(100, 38)
+			else:
+				user_label = $Label.duplicate()
+				get_tab(2).add_child(user_label)
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		if not Transation.active:

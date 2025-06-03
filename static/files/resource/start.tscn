@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3]
+[gd_scene load_steps=128 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_d553l"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_pup0w"]
@@ -1098,6 +1098,17 @@ shader_parameter/color = Color(0, 0, 0, 1)
 shader = SubResource("Shader_0v776")
 shader_parameter/color = Color(0, 0.403922, 0.67451, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hmx6"]
+bg_color = Color(1, 0.235294, 0.105882, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_ya0au"]
+font = ExtResource("5_wcpcs")
+font_size = 26
+
 [node name="Control" type="Control" groups=["start"]]
 layout_mode = 3
 anchors_preset = 15
@@ -1670,6 +1681,26 @@ grow_vertical = 2
 texture = ExtResource("33_lxtsy")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -488.0
+offset_top = -107.0
+offset_right = -444.0
+offset_bottom = -67.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_6hmx6")
+text = "12"
+label_settings = SubResource("LabelSettings_ya0au")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
