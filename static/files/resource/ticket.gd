@@ -110,7 +110,7 @@ func add_ticket():
 						current_time = 0
 						Updatedate.save("start_ticket", message.current_time, false)
 						end_time = int(message.unixtime)- int(message.current_time)
-						date = message.miladi_time
+						date = message.unixtime
 						$Label4.text = message.time
 						$Label4.show()
 						$Timer.start()
