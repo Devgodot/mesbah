@@ -37,9 +37,10 @@ func _ready() -> void:
 		if calendar:
 			prints(int(Updatedate.load_game("start_ticket", "0")), data)
 			var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")), int(date))
-			print(event)
+			
 			for e in event:
 				if e.has("title"):
+					print(e.title)
 					if e.title == "یادآور حرکت قطار":
 						$Button2.disabled = true
 						$Button2.text = "ثبت شده در تقویم"
