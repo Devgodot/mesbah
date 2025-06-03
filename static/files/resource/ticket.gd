@@ -131,7 +131,7 @@ func _on_button_pressed() -> void:
 		if $AnimationPlayer3.current_animation_position == 0.0:
 			$AnimationPlayer3.play("panel")
 	else:
-		Notification.add_notif("حساب شما تأیید نشده! به مسجد مراجعه کنید.", Notification.ERROR)
+		Notification.add_notif("حساب شما تأیید نشده! به مسجد جامع مراجعه کنید.", Notification.ERROR)
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		if $AnimationPlayer3.current_animation_position != 0.0:

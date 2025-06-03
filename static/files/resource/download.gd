@@ -43,6 +43,6 @@ func _process(delta: float) -> void:
 		dots += "." 
 		if dots.length() > 3:
 			dots = ""
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.8).timeout
 		add_dots = true
-	$Label.text = "[light color=white freq=20 num=2]" + main_text + dots
+	$Label.text = "[light color=white freq=30 num=2]" + main_text + dots
