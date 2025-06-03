@@ -141,10 +141,10 @@ def add_user_to_ticket():
     users.append(user_id)
     ticket.users = users
     db.session.commit()
-    current_user.data = current_user.update(data={"start_ticket": int(datetime.datetime.now(TehranTimezone()).timestamp()) * 1000})
+    current_user.data = current_user.update(data={"start_ticket": int(datetime.datetime.now().timestamp()) * 1000})
     db.session.commit()
     print(int(datetime.datetime.now(TehranTimezone()).timestamp()) * 1000)
-    return jsonify({"message": "کاربر با موفقیت به بلیط اضافه شد", "current_time":int(datetime.datetime.now(TehranTimezone()).timestamp()) * 1000, "unixtime":ticket.time.timestamp(), "miladi_time":ticket.time, "time":ticket_time}), 200
+    return jsonify({"message": "کاربر با موفقیت به بلیط اضافه شد", "current_time":int(datetime.datetime.now().timestamp()) * 1000, "unixtime":ticket.time.timestamp(), "miladi_time":ticket.time, "time":ticket_time}), 200
 @ticket_bp.post("change_ticket")
 @jwt_required()
 def change_ticket():
@@ -189,9 +189,9 @@ def get_user_ticket():
             miladi_time = ticket.time
             user_ticket = {
                 "time": jalali_datetime.strftime('%Y/%m/%d %H:%M'),
-                "unixtime": ticket.time.timestamp(),
+                "unixtime": int(ticket.time.timestamp()) * 1000,
                 "miladi_time": miladi_time.strftime('%Y-%m-%d %H:%M'),
-                "current_time": int(datetime.datetime.now(TehranTimezone()).timestamp()) * 1000,
+                "current_time": int(datetime.datetime.now().timestamp()) * 1000,
             }
     if not user_ticket:
         return jsonify({"error": "کاربر بلیطی ندارد"}), 404
