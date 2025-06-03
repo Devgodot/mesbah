@@ -139,7 +139,7 @@ func _gui_input(event: InputEvent) -> void:
 func _on_button2_pressed() -> void:
 	
 	if calendar:
-		calendar.addCalendarEvent("یادآور حرکت قطار", "قطار شادی داره حرکت می کنه، زود آماده شو جا نمونی.",Updatedate.load_game("start_ticket", 0) * 1000, date*1000, 60)
+		calendar.addCalendarEvent("یادآور حرکت قطار", "قطار شادی داره حرکت می کنه، زود آماده شو جا نمونی.",Updatedate.load_game("start_ticket", 0), date*1000, 60)
 
 
 func _on_back_button_pressed() -> void:
