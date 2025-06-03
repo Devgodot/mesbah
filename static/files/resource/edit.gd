@@ -48,7 +48,7 @@ func _process(delta: float) -> void:
 			if seen > 0:
 				$Label2.show()
 				if seen < 100:
-					$Label2.text = str(seen)
+					$Label2.text = str(int(seen))
 				else:
 					$Label2.text = "+99"
 			else:
@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 			if seen2 > 0:
 				$Label3.show()
 				if seen2 < 100:
-					$Label3.text = str(seen2)
+					$Label3.text = str(int(seen2))
 				else:
 					$Label3.text = "+99"
 			else:
@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 			if seen + seen2 > 0:
 				$Label.show()
 				if seen + seen2 < 100:
-					$Label.text = str(seen + seen2)
+					$Label.text = str(int(seen + seen2))
 				else:
 					$Label.text = "+99"
 			else:
@@ -183,7 +183,6 @@ func _on_button_pressed() -> void:
 		tag = d.tag
 		$"TabContainer/فردی/MarginContainer/VBoxContainer".show()
 		var edit_part:Array = Updatedate.load_game("part_edit", [])
-		print(edit_part)
 		for di in d.diamonds:
 			diamonds.append(di)
 		for s in d.scores:
@@ -425,7 +424,7 @@ func add_list(_filter={}):
 			
 			box.get_node("MarginContainer/VBoxContainer/HBoxContainer/Label").text = "نام و نام خانودگی : "
 			box.get_node("MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport/Label").text = user.custom_name if user.has("custom_name") else "[center]"+user.name
-			box.get_node("MarginContainer/VBoxContainer/HBoxContainer/Label2").text = "پیام جدید : "+str(user.new)
+			box.get_node("MarginContainer/VBoxContainer/HBoxContainer/Label2").text = "پیام جدید : "+str(int(user.new))
 			box.get_node("MarginContainer/VBoxContainer/HBoxContainer2/Label").text = "کد ملی : "+str(user.username)
 			box.get_node("MarginContainer/VBoxContainer/HBoxContainer2/Label3").text =  ["معنوی", "جسمانی", "فکری"][int(user.conversationId.right(1))]
 			box.get_node("MarginContainer/VBoxContainer/HBoxContainer2/Label2").text = "شماره : "+str(user.phone)
