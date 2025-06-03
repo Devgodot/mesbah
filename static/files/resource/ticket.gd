@@ -10,14 +10,14 @@ func _ready() -> void:
 	if Engine.has_singleton("GodotGetFile"):
 		calendar = Engine.get_singleton("GodotGetFile")
 		calendar.permission_granted.connect(func():
-			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
+			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0), date)
 			for e in event:
 				if e.has("title"):
 					if e.title == "یادآور حرکت قطار":
 						$Button2.disabled = true
 						$Button2.text = "ثبت شده در تقویم")
 		calendar.calendar_event_activity_closed.connect(func():
-			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
+			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0), date)
 			for e in event:
 				if e.has("title"):
 					if e.title == "یادآور حرکت قطار":
@@ -35,7 +35,7 @@ func _ready() -> void:
 		date = data.ticket.unixtime
 		if calendar:
 			prints(Updatedate.load_game("start_ticket", 0), data)
-			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0)*1000, date*1000)
+			var event = calendar.getCalendarEvents(Updatedate.load_game("start_ticket", 0), date)
 			print(event)
 			for e in event:
 				if e.has("title"):
@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 	if randi_range(0, 100) == 1:
 		$Node2D/AnimatedSprite2D.frame = not $Node2D/AnimatedSprite2D.frame
 func _on_timer_timeout() -> void:
-	current_time += 0.001
+	current_time += 1
 
 func add_ticket():
 	var w = Updatedate.add_wait($Button)
@@ -108,7 +108,7 @@ func add_ticket():
 						Notification.add_notif(message.message)
 						$Panel.hide()
 						current_time = 0
-						Updatedate.save("start_ticket", message.current_time)
+						Updatedate.save("start_ticket", message.current_time, false)
 						end_time = int(message.unixtime)- int(message.current_time)
 						date = message.miladi_time
 						$Label4.text = message.time

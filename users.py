@@ -439,7 +439,7 @@ def support():
 @jwt_required()
 def support_message():
     
-    user_name = user.get_username()
+    user_name = current_user.get_username()
     part = request.args.get("part", 0)
     message = Messages.query.filter_by(conversationId=user_name+"_"+str(part)).first()
     if message is not None:
