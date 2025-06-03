@@ -1227,6 +1227,7 @@ size_flags_vertical = 10
 columns = 3
 
 [node name="Button" type="Button" parent="Panel/MarginContainer/ScrollContainer/GridContainer"]
+visible = false
 custom_minimum_size = Vector2(250, 300)
 layout_mode = 2
 mouse_filter = 1
