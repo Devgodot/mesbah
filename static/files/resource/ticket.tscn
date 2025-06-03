@@ -1221,13 +1221,11 @@ metadata/_edit_use_anchors_ = true
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer/ScrollContainer"]
+[node name="GridContainer" type="HBoxContainer" parent="Panel/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_vertical = 10
-columns = 3
 
 [node name="Button" type="Button" parent="Panel/MarginContainer/ScrollContainer/GridContainer"]
-visible = false
 custom_minimum_size = Vector2(250, 300)
 layout_mode = 2
 mouse_filter = 1
