@@ -83,7 +83,7 @@ func add_ticket():
 			var btn = $Panel/MarginContainer/ScrollContainer/GridContainer/Button.duplicate()
 			btn.show()
 			var t = ticket.time.split(" ")
-			btn.get_node("Label").text = str(ticket.day, " ", t[0].split("/")[2], " ",month[int(t[0].split("/")[1])], "\n", "ساعت ", t[1] if int(t[1].split(":")[0]) <= 12 else str(int(t[1].split(":")[0]) - 12, ":"  if int(t[1].split(":")[1]) != 0 else "", t[1].split(":")[1] if int(t[1].split(":")[1]) != 0 else "") , " صبح" if int(t[1].split(":")[0]) < 12 else " عصر")
+			btn.get_node("Label").text = str(ticket.day, " ", t[0].split("/")[2], " ",month[int(t[0].split("/")[1]) - 1], "\n", "ساعت ", t[1] if int(t[1].split(":")[0]) <= 12 else str(int(t[1].split(":")[0]) - 12, ":"  if int(t[1].split(":")[1]) != 0 else "", t[1].split(":")[1] if int(t[1].split(":")[1]) != 0 else "") , " صبح" if int(t[1].split(":")[0]) < 12 else " عصر")
 			btn.get_node("ProgressBar").value = int(ticket.users) * 100 / int(ticket.max_users)
 			btn.get_node("ProgressBar/Label").text = str(int(ticket.users)," / " ,int(ticket.max_users))
 			btn.get_node("Label3").text = str("سانس ", ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم"][index])
