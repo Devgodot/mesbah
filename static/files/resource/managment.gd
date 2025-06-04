@@ -290,6 +290,7 @@ func _on_search_pressed() -> void:
 						box.get_node("BoxContainer/RichTextLabel").text = data[x].first_name + " " + data[x].last_name if data[x].has("first_name") else ""
 						box.get_node("BoxContainer2/RichTextLabel").text = data[x].phone if data[x].has("phone") else ""
 						box.get_node("BoxContainer3/RichTextLabel").text = data[x].username if data[x].has("username") else ""
+						
 						box.get_node("Button").pressed.connect(func():
 							var w2 = Updatedate.add_wait(box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/Button"))
 							var r = HTTPRequest.new()
@@ -343,7 +344,45 @@ func add_users(data):
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox").button_pressed = user.pro if user.has("pro") else false
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox2").button_pressed = user.block if user.has("block") else false
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox3").button_pressed = user.accept_account if user.has("accept_account") else false
+		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Label").text = "بلیط قطار: "+ user.time if user.has("time") else "بلیط قطار: کاربر بلیطی ندارد."
+		
 		box.show()
+		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Button").pressed.connect(func():
+			var w = Updatedate.add_wait(box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Button"))
+			var r = HTTPRequest.new()
+			add_child(r)
+			r.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/remove_user", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "time":user.time}))
+			var body = await r.request_completed
+			r.timeout = 10
+			while body[3].size() == 0:
+				r.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/remove_user", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username}))
+				body = await r.request_completed
+			r.queue_free()
+			var d2 = Updatedate.get_json(body[3])
+			w.queue_free()
+			if d2.has("error"):
+				Notification.add_notif(d2.error, Notification.ERROR)
+			if d2.has("message"):
+				Notification.add_notif(d2.message, Notification.SUCCESS)
+				box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Label").text = "بلیط قطار: کاربر بلیطی ندارد."
+			)
+		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer4/Button").pressed.connect(func():
+			var w = Updatedate.add_wait(box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer4/Button"))
+			var r = HTTPRequest.new()
+			add_child(r)
+			r.request(Updatedate.protocol+Updatedate.subdomin+"/control/change_user", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "gender":box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer4/gender_edit").selected}))
+			var body = await r.request_completed
+			r.timeout = 10
+			while body[3].size() == 0:
+				r.request(Updatedate.protocol+Updatedate.subdomin+"/control/change_user", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "gender":box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer4/gender_edit").selected}))
+				body = await r.request_completed
+			r.queue_free()
+			var d2 = Updatedate.get_json(body[3])
+			w.queue_free()
+			if d2.has("error"):
+				Notification.add_notif(d2.error, Notification.ERROR)
+			if d2.has("message"):
+				Notification.add_notif(d2.message, Notification.SUCCESS))
 		var day = box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/Button3")
 		var month = box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/Button4")
 		var year = box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/Button5")
