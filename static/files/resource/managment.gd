@@ -377,7 +377,7 @@ func add_users(data):
 			var s = Updatedate.load_scene("scroll_button.tscn")
 			var items = []
 			for x in range(12):
-				if x < 10:
+				if x < 9:
 					items.append(str("0", x+1))
 				else:
 					items.append(str(x+1))
