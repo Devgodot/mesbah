@@ -1239,6 +1239,7 @@ vertical_alignment = 1
 
 [node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_qdso4")]
 layout_mode = 2
+height = 31.0
 
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_qdso4")]
 layout_mode = 2
