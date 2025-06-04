@@ -96,6 +96,29 @@ def get_ticket():
                 }
                 tickets_data.append(ticket_data)
     return jsonify({"data":tickets_data}), 200
+
+@ticket_bp.post("/remove_user")
+@jwt_required()
+def remove_user():
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
+        data = request.get_json()
+        ticket_time = data.get("time")
+        user_id = data.get("username")
+        date_part, time_part = ticket_time.split(" ")
+        year, month, day = map(int, date_part.split("/"))
+        hour, minute = map(int, time_part.split(":"))
+        miladi_date = jalali_to_gregorian(year, month, day, hour, minute)
+        ticket = Ticket.query.filter_by(time=miladi_date).first()
+        if not ticket:
+            return jsonify({"error": "تیکتی با این زمان وجود ندارد"}), 404
+        if user_id not in ticket.users:
+            return jsonify({"error": "کاربر در این بلیط وجود ندارد"}), 400
+        users = [user for user in ticket.users if user != user_id]
+        ticket.users = users
+        db.session.commit()
+        return jsonify({"message": "کاربر با موفقیت از بلیط حذف شد"}), 200
+    else:
+        return jsonify({"error": "شما مجاز به حذف کاربر از بلیط نیستید"}), 403
 @ticket_bp.post('/delete_ticket')
 @jwt_required()
 def delete_ticket():
