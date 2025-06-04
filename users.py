@@ -223,7 +223,7 @@ def get_user():
 def update_user():
     username = request.get_json().get("username", "")
     user = User.get_user_by_username(username=username)
-    if current_user.data.get("editor", False):
+    if current_user.data.get("editor", False) or current_user.get_username() in UserInterface.query.first().data.get("management", []):
         if user is not None:
             # Get the data before the update
             old_data = user.data.copy()
