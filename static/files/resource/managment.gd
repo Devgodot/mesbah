@@ -378,9 +378,9 @@ func add_users(data):
 			var items = []
 			for x in range(12):
 				if x < 10:
-					items.append(str("0", x))
+					items.append(str("0", x+1))
 				else:
-					items.append(str(x))
+					items.append(str(x+1))
 			for x in range(items.size()):
 				if month.text == items[x]:
 					s.current = -x
