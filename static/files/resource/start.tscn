@@ -531,13 +531,13 @@ outline_size = 10.0
 font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mat1i"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5xbah"]
 viewport_path = NodePath("SubViewport7")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mrvu1"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_pxum8"]
 viewport_path = NodePath("SubViewport8")
 
-[sub_resource type="Resource" id="Resource_yng0n"]
+[sub_resource type="Resource" id="Resource_mat1i"]
 resource_local_to_scene = true
 script = ExtResource("19_h770b")
 arrow_icon = ExtResource("18_2bsga")
@@ -545,8 +545,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_mat1i")
-icon_unselected = SubResource("ViewportTexture_mrvu1")
+icon_selected = SubResource("ViewportTexture_5xbah")
+icon_unselected = SubResource("ViewportTexture_pxum8")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -1361,7 +1361,7 @@ options = Array[ExtResource("21_qmjwg")]([SubResource("Resource_q1j5q"), SubReso
 
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_qdso4")]
 layout_mode = 2
-base_button = SubResource("Resource_yng0n")
+base_button = SubResource("Resource_mat1i")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
