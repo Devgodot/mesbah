@@ -419,7 +419,7 @@ outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
 
 [sub_resource type="GDScript" id="GDScript_6hmx6"]
 script/source = "@tool
-extends VBoxContainer
+extends MenuButton
 class_name MenuButtonBar
 signal item_pressed(id:String)
 var control = Control.new()
