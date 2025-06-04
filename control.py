@@ -365,7 +365,7 @@ def get_users():
             for ticket in Ticket.query.filter_by(season=UserInterface.query.first().data.get("train_season", 0)).all():
                 if user.get_username() in ticket.users:
                     d["time"] = gregorian_to_jalali(ticket.time).strftime("%Y/%m/%d %H:%M")
-  
+                    break
             filter_users[filter_users.index(user)] = d
             
         if len(filter_users) == 0:
