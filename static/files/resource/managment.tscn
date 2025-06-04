@@ -1828,6 +1828,7 @@ alignment = 1
 select_all_on_focus = true
 
 [node name="Button" type="Button" parent="TabContainer/4/VBoxContainer/BoxContainer"]
+clip_children = 2
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
