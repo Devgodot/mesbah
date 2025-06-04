@@ -5,7 +5,7 @@ from schemas import UserSchema, GroupSchema
 from flask_jwt_extended import current_user, jwt_required
 from random import randint
 import random, os, shutil
-from models import User, UserInterface, Group, ServerMessage
+from models import User, UserInterface, Group, ServerMessage, Ticket
 import json
 from datetime import datetime, timedelta
 from sqlalchemy.orm.attributes import flag_modified
@@ -362,7 +362,10 @@ def get_users():
             d["username"] = user.get_username()
             d["phone"] = user.phone
             d["birthday"] = gregorian_to_jalali(user.birthday).strftime("%Y/%m/%d") if user.birthday else ""
-            print(d["birthday"])
+            for ticket in Ticket.query.filter_by(season=UserInterface.query.first().data.get("season", 0)).all():
+                if user.get_username() in ticket.users:
+                    d["time"] = gregorian_to_jalali(ticket.time).strftime("%Y/%m/%d %H:%M")
+                    break
             filter_users[filter_users.index(user)] = d
             
         if len(filter_users) == 0:
@@ -370,6 +373,7 @@ def get_users():
         return jsonify({"data": filter_users}), 200
     else:
         return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
+
 @control_bp.get("/get_group")
 @jwt_required()
 def get_group():
