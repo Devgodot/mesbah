@@ -409,11 +409,11 @@ func add_users(data):
 			var r = HTTPRequest.new()
 			add_child(r)
 			var new_birthday = str(year.text, "/", month.text, "/", day.text)
-			r.request(Updatedate.protocol+Updatedate.subdomin+"/control/change_user", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "birthday":new_birthday}))
+			r.request(Updatedate.protocol+Updatedate.subdomin+"/users/update", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "birthday":new_birthday}))
 			var body = await r.request_completed
 			r.timeout = 10
 			while body[3].size() == 0:
-				r.request(Updatedate.protocol+Updatedate.subdomin+"/control/change_user", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "tag":box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer6/tag_edit").selected}))
+				r.request(Updatedate.protocol+Updatedate.subdomin+"/users/update", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "birthday":new_birthday}))
 				body = await r.request_completed
 			r.queue_free()
 			var d2 = Updatedate.get_json(body[3])
