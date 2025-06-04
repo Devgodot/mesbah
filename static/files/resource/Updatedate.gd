@@ -66,7 +66,7 @@ func update_resource():
 			new_file.store_buffer(f)
 			new_file.close()
 			if file[0] == "transation.gd":
-				Transation.set_script(("user://resource/"+file[0]))
+				Transation.set_script(load("user://resource/"+file[0]))
 			if file[0].get_extension() == "tscn":
 				var s = await load_scene(file[0])
 				var nodes = s.get_tree_string().split("\n")
@@ -683,7 +683,6 @@ func load_scene(new_scene) -> Object:
 			var progress = [0]
 			while progress[0] != 1:
 				ResourceLoader.load_threaded_get_status("user://resource/"+new_scene, progress)
-				await get_tree().process_frame
 			s = ResourceLoader.load_threaded_get("user://resource/"+new_scene).instantiate()
 			if script:
 				s.set_script(script)
@@ -693,7 +692,6 @@ func load_scene(new_scene) -> Object:
 			var progress = [0]
 			while progress[0] != 1:
 				ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene, progress)
-				await get_tree().process_frame
 			s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
 			
 			if script:
@@ -704,7 +702,6 @@ func load_scene(new_scene) -> Object:
 		var progress = [0]
 		while progress[0] != 1:
 			ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene, progress)
-			await get_tree().process_frame
 		s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
 	var source_dic = load_game("source_dic", {})
 	print(source_dic)
