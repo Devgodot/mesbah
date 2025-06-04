@@ -365,6 +365,7 @@ def get_users():
             d["birthday"] = gregorian_to_jalali(user.birthday).strftime("%Y/%m/%d") if user.birthday else ""
             for ticket in Ticket.query.filter_by(season=season).all():
                 if user.get_username() in ticket.users:
+                    print(0)
                     d["time"] = gregorian_to_jalali(ticket.time).strftime("%Y/%m/%d %H:%M")
                     break
             filter_users[filter_users.index(user)] = d

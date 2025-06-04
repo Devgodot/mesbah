@@ -261,6 +261,8 @@ func _on_search_pressed() -> void:
 	if %search.text != "":
 		var d 
 		var w = Updatedate.add_wait($"TabContainer/4/VBoxContainer/ScrollContainer")
+		var w3 = Updatedate.add_wait($"TabContainer/4/VBoxContainer/BoxContainer/Button")
+		
 		match search_type:
 			0:
 				d = await Updatedate.request("/control/get_users?name="+%search.text.uri_encode())
@@ -312,6 +314,7 @@ func _on_search_pressed() -> void:
 		if d.has("error"):
 			Notification.add_notif(d.error, Notification.ERROR)
 		w.queue_free()
+		w3.queue_free()
 func _process(delta: float) -> void:
 	$Window.visible = $"TabContainer/3/VBoxContainer/BoxContainer/BoxContainer5/Button2".button_pressed
 	$ScrollContainer.visible = %search.has_focus() and search_type == 3
@@ -331,7 +334,6 @@ func add_users(data):
 	for child in $"TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer".get_children():
 		if "instance" not in child.name:
 			child.queue_free()
-	
 	for user in data:
 		var box = $"TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance".duplicate()
 		Updatedate.get_icon_user(user.icon if user.has('icon') else "", user.username, box.get_node("MarginContainer/BoxContainer/TextureRect"))
@@ -345,7 +347,8 @@ func add_users(data):
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox2").button_pressed = user.block if user.has("block") else false
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox3").button_pressed = user.accept_account if user.has("accept_account") else false
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Label").text = "بلیط قطار: "+ user.time if user.has("time") else "بلیط قطار: کاربر بلیطی ندارد."
-		
+		if not user.has("time"):
+			box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Button").hide()
 		box.show()
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Button").pressed.connect(func():
 			var w = Updatedate.add_wait(box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Button"))
@@ -365,6 +368,7 @@ func add_users(data):
 			if d2.has("message"):
 				Notification.add_notif(d2.message, Notification.SUCCESS)
 				box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Label").text = "بلیط قطار: کاربر بلیطی ندارد."
+				box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Button").hide()
 			)
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer4/Button").pressed.connect(func():
 			var w = Updatedate.add_wait(box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer4/Button"))
