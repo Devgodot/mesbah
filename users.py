@@ -229,7 +229,11 @@ def update_user():
             # Get the data before the update
             old_data = user.data.copy()
             # Update the user data
-            user.update(data=request.get_json().get("data", {}))
+            user.data = user.update(data=request.get_json().get("data", {}))
+            if data.get("birthday") is not None:
+                year, month, day = map(int, request.get_json().get("birthday", "1400/02/2").split("/"))
+                miladi_date = JalaliDatetime(year, month, day).todatetime()
+                user.birthday = miladi_date
             # Get the data after the update
             new_data = user.data.copy()
             pro = request.get_json().get("pro")
