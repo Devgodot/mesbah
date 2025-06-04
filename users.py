@@ -205,7 +205,7 @@ def user_request():
 def get_user():
     username = request.args.get("username", "")
     user = User.get_user_by_username(username=username)
-    if current_user.data.get("editor", False):
+    if current_user.data.get("editor", False) or current_user.get_username() in UserInterface.query.first().data.get("management", []):
         if user is not None:
             data = user.data
             gender = data.get("gender", 0)
