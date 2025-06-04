@@ -355,7 +355,7 @@ func add_users(data):
 			var body = await r.request_completed
 			r.timeout = 10
 			while body[3].size() == 0:
-				r.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/remove_user", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username}))
+				r.request(Updatedate.protocol+Updatedate.subdomin+"/ticket/remove_user", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "time":user.time}))
 				body = await r.request_completed
 			r.queue_free()
 			var d2 = Updatedate.get_json(body[3])

@@ -848,7 +848,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_s5p1w")
-current_tab = 3
+current_tab = 2
 transation = false
 separation_style = SubResource("StyleBoxEmpty_xpey2")
 panel_style = SubResource("StyleBoxFlat_ifxwq")
@@ -1775,7 +1775,6 @@ layout_mode = 2
 text = "حذف پیام"
 
 [node name="4" type="MarginContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1847,7 +1846,6 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 40
 
 [node name="instance" type="PanelContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer"]
-visible = false
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -2032,6 +2030,22 @@ text = " حساب مسدود "
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 text = " تایید حساب "
+
+[node name="BoxContainer7" type="BoxContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.25
+text = "بلیط قطار:"
+
+[node name="Button" type="Button" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/BoxContainer/VBoxContainer/BoxContainer7"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "حذف"
 
 [node name="instance2" type="PanelContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer"]
 visible = false
@@ -2419,6 +2433,7 @@ size_flags_horizontal = 0
 text = "حذف از گروه"
 
 [node name="2" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_direction = 3
 layout_mode = 2
 anchor_right = 1.0
