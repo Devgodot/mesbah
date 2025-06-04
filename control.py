@@ -362,7 +362,7 @@ def get_users():
             d["username"] = user.get_username()
             d["phone"] = user.phone
             d["birthday"] = gregorian_to_jalali(user.birthday).strftime("%Y/%m/%d") if user.birthday else ""
-            for ticket in Ticket.query.filter_by(season=UserInterface.query.first().data.get("season", 0)).all():
+            for ticket in Ticket.query.filter_by(season=UserInterface.query.first().data.get("train_season", 0)).all():
                 if user.get_username() in ticket.users:
                     d["time"] = gregorian_to_jalali(ticket.time).strftime("%Y/%m/%d %H:%M")
                     break
