@@ -66,7 +66,7 @@ func update_resource():
 			new_file.store_buffer(f)
 			new_file.close()
 			if file[0] == "transation.gd":
-				Transation.set_script("user://resource/"+file[0])
+				Transation.set_script(("user://resource/"+file[0]))
 			if file[0].get_extension() == "tscn":
 				var s = await load_scene(file[0])
 				var nodes = s.get_tree_string().split("\n")
@@ -173,7 +173,7 @@ func _ready() -> void:
 	texture.scale = Vector2.ZERO
 	add_child(texture)
 	if FileAccess.file_exists("user://resource/transation.gd"):
-		Transation.set_script("user://resource/transation.gd")
+		Transation.set_script(load("user://resource/transation.gd"))
 func _process(delta: float) -> void:
 	socket.poll()
 	if socket.get_ready_state() == 3 and load_game("user_name") != "":
