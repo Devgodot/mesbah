@@ -803,6 +803,7 @@ func add_ticket():
 			l.text += "با تابعیت ایران است." if ticket.nationality == 0 else "با تابعیت کشورهای دیگر است."
 			var _time:PackedStringArray = ticket.time.split(" ")
 			btn.text = _time[1].split(":")[1]
+			
 			btn2.text = _time[1].split(":")[0]
 			btn5.text = _time[0].split("/")[0]
 			btn4.text = _time[0].split("/")[1]
