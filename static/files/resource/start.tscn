@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3]
+[gd_scene load_steps=129 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_d553l"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_pup0w"]
@@ -322,7 +322,7 @@ modulate_color = Color(0.447059, 1, 0.266667, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2gfuy"]
 texture = ExtResource("20_wx5k3")
 
-[sub_resource type="Resource" id="Resource_ycbhe"]
+[sub_resource type="Resource" id="Resource_2gfuy"]
 resource_local_to_scene = true
 script = ExtResource("19_h770b")
 arrow_icon = ExtResource("18_2bsga")
@@ -417,13 +417,13 @@ font_size = 37
 outline_size = 5
 outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_wqbfb"]
-viewport_path = NodePath("SubViewport7")
+[sub_resource type="ViewportTexture" id="ViewportTexture_xam4k"]
+viewport_path = NodePath("SubViewport5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mat1i"]
-viewport_path = NodePath("SubViewport8")
+[sub_resource type="ViewportTexture" id="ViewportTexture_yoxka"]
+viewport_path = NodePath("SubViewport6")
 
-[sub_resource type="Resource" id="Resource_mrvu1"]
+[sub_resource type="Resource" id="Resource_ycbhe"]
 resource_local_to_scene = true
 script = ExtResource("19_h770b")
 arrow_icon = ExtResource("18_2bsga")
@@ -431,8 +431,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_wqbfb")
-icon_unselected = SubResource("ViewportTexture_mat1i")
+icon_selected = SubResource("ViewportTexture_xam4k")
+icon_unselected = SubResource("ViewportTexture_yoxka")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -441,10 +441,68 @@ disabled = false
 icon_v_aligment = 1
 icon_h_aligment = 2
 aligment = 2
-text = "     غدیر 1404"
+text = "     رمضان 1404"
 selected_style = SubResource("StyleBoxTexture_dmnnq")
 unselected_style = SubResource("StyleBoxTexture_2gfuy")
 metadata/_custom_type_script = "uid://c8o7njavqtn62"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5xbah"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxum8"]
+
+[sub_resource type="Resource" id="Resource_q1j5q"]
+script = ExtResource("21_qmjwg")
+id = 0
+menu_button = false
+text = "سلامت معنوی"
+height = 175
+withd = 635
+offset_x = 80
+separation = -5
+active = false
+options = Array[ExtResource("21_qmjwg")]([])
+font = ExtResource("23_q54r6")
+normal_style = SubResource("StyleBoxTexture_wgong")
+focus_style = SubResource("StyleBoxTexture_wgong")
+hover_style = SubResource("StyleBoxTexture_wgong")
+pressed_style = SubResource("StyleBoxTexture_wgong")
+disabled_style = SubResource("StyleBoxTexture_wgong")
+font_color = Color(0, 0, 1, 1)
+outline_color = Color(1, 1, 1, 1)
+font_hover_color = Color(0, 0, 1, 1)
+font_pressed_color = Color(0, 0, 1, 1)
+font_disabled_color = Color(0, 0, 1, 1)
+font_focus_color = Color(0, 0, 1, 1)
+outline_size = 10.0
+font_size = 50.0
+metadata/_custom_type_script = "uid://w6f05d55d5o8"
+
+[sub_resource type="Resource" id="Resource_wqbfb"]
+script = ExtResource("21_qmjwg")
+id = 1
+menu_button = false
+text = "سلامت جسمانی"
+height = 175
+withd = 635
+offset_x = 80
+separation = -5
+active = false
+options = Array[ExtResource("21_qmjwg")]([])
+font = ExtResource("23_q54r6")
+normal_style = SubResource("StyleBoxTexture_wgong")
+focus_style = SubResource("StyleBoxTexture_wgong")
+hover_style = SubResource("StyleBoxTexture_wgong")
+pressed_style = SubResource("StyleBoxTexture_wgong")
+disabled_style = SubResource("StyleBoxTexture_wgong")
+font_color = Color(0, 0, 1, 1)
+outline_color = Color(1, 1, 1, 1)
+font_hover_color = Color(0, 0, 1, 1)
+font_pressed_color = Color(0, 0, 1, 1)
+font_disabled_color = Color(0, 0, 1, 1)
+font_focus_color = Color(0, 0, 1, 1)
+outline_size = 10.0
+font_size = 50.0
+metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_xam4k"]
 script = ExtResource("21_qmjwg")
@@ -472,6 +530,35 @@ font_focus_color = Color(0, 0, 1, 1)
 outline_size = 10.0
 font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mat1i"]
+viewport_path = NodePath("SubViewport7")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mrvu1"]
+viewport_path = NodePath("SubViewport8")
+
+[sub_resource type="Resource" id="Resource_yng0n"]
+resource_local_to_scene = true
+script = ExtResource("19_h770b")
+arrow_icon = ExtResource("18_2bsga")
+max_arrow_width = 80
+offset_arrow = Vector2(0, 30)
+start_rotation = 0
+end_rotation = -90
+icon_selected = SubResource("ViewportTexture_mat1i")
+icon_unselected = SubResource("ViewportTexture_mrvu1")
+label_settings = SubResource("Resource_ya0au")
+expand_icon = true
+max_icon_width = 225
+flat = false
+disabled = false
+icon_v_aligment = 1
+icon_h_aligment = 2
+aligment = 2
+text = "     غدیر 1404"
+selected_style = SubResource("StyleBoxTexture_dmnnq")
+unselected_style = SubResource("StyleBoxTexture_2gfuy")
+metadata/_custom_type_script = "uid://c8o7njavqtn62"
 
 [sub_resource type="Resource" id="Resource_w0io0"]
 script = ExtResource("21_qmjwg")
@@ -1163,7 +1250,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_x1pfr")
 [node name="Control" parent="CustomTabContainer/MarginContainer2/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_qdso4")]
 layout_mode = 2
 active = true
-base_button = SubResource("Resource_ycbhe")
+base_button = SubResource("Resource_2gfuy")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
@@ -1239,11 +1326,15 @@ vertical_alignment = 1
 
 [node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_qdso4")]
 layout_mode = 2
-height = 31.0
+base_button = SubResource("Resource_ycbhe")
+subpanel_style = SubResource("StyleBoxEmpty_5xbah")
+panel_style = SubResource("StyleBoxEmpty_pxum8")
+height = 250.0
+options = Array[ExtResource("21_qmjwg")]([SubResource("Resource_q1j5q"), SubResource("Resource_wqbfb"), SubResource("Resource_xam4k")])
 
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_qdso4")]
 layout_mode = 2
-base_button = SubResource("Resource_mrvu1")
+base_button = SubResource("Resource_yng0n")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
