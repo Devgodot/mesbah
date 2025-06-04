@@ -4,7 +4,7 @@ var trans = 0
 func change(scene, new_scene:String, dir=1):
 	if not active:
 		active = true
-		var s = Updatedate.load_scene(new_scene)
+		var s = await Updatedate.load_scene(new_scene)
 		
 		match trans:
 			0:
