@@ -52,7 +52,7 @@ func update_resource():
 		if not DirAccess.dir_exists_absolute("user://resource"):
 			DirAccess.make_dir_absolute("user://resource")
 		if data.add.size() > 0:
-			get_tree().get_root().add_child(load_scene("download.tscn"))
+			get_tree().get_root().add_child(await load_scene("download.tscn"))
 		var index = 1
 		start_download.emit(data.add.size(), "بروزرسانی فایل‌ها")
 		var source_dic = load_game("source_dic", {})
@@ -60,12 +60,15 @@ func update_resource():
 		
 		for file in data.add:
 			var f = await request("/static/files/resource/"+file[0], HTTPClient.METHOD_GET, {}, 1)
+			
 			download_progress.emit(index)
 			var new_file = FileAccess.open("user://resource/"+file[0], FileAccess.WRITE)
 			new_file.store_buffer(f)
 			new_file.close()
+			if file[0] == "transation.gd":
+				Transation.set_script("user://resource/"+file[0])
 			if file[0].get_extension() == "tscn":
-				var s = load_scene(file[0])
+				var s = await load_scene(file[0])
 				var nodes = s.get_tree_string().split("\n")
 				var list = []
 				for n in nodes:
@@ -126,7 +129,7 @@ func update_source():
 	if data:
 		var index = 1
 		if data.add.size() > 0:
-			get_tree().get_root().add_child(load_scene("download.tscn"))
+			get_tree().get_root().add_child(await load_scene("download.tscn"))
 		start_download.emit(data.add.size(), "بروزرسانی منابع فایل‌ها")
 		for file in data.add:
 			var f = await request("/static/files/source/"+file[0].get_file().uri_encode(), HTTPClient.METHOD_GET, {}, 1)
@@ -169,6 +172,8 @@ func _ready() -> void:
 	texture.position = Vector2(300, 800)
 	texture.scale = Vector2.ZERO
 	add_child(texture)
+	if FileAccess.file_exists("user://resource/transation.gd"):
+		Transation.set_script("user://resource/transation.gd")
 func _process(delta: float) -> void:
 	socket.poll()
 	if socket.get_ready_state() == 3 and load_game("user_name") != "":
@@ -678,6 +683,7 @@ func load_scene(new_scene) -> Object:
 			var progress = [0]
 			while progress[0] != 1:
 				ResourceLoader.load_threaded_get_status("user://resource/"+new_scene, progress)
+				await get_tree().process_frame
 			s = ResourceLoader.load_threaded_get("user://resource/"+new_scene).instantiate()
 			if script:
 				s.set_script(script)
@@ -687,7 +693,9 @@ func load_scene(new_scene) -> Object:
 			var progress = [0]
 			while progress[0] != 1:
 				ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene, progress)
+				await get_tree().process_frame
 			s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
+			
 			if script:
 				s.set_script(script)
 	else:
@@ -696,6 +704,7 @@ func load_scene(new_scene) -> Object:
 		var progress = [0]
 		while progress[0] != 1:
 			ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene, progress)
+			await get_tree().process_frame
 		s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
 	var source_dic = load_game("source_dic", {})
 	print(source_dic)
