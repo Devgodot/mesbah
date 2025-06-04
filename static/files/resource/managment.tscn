@@ -1846,6 +1846,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 40
 
 [node name="instance" type="PanelContainer" parent="TabContainer/4/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 3
