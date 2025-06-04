@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3]
+[gd_scene load_steps=130 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_d553l"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_pup0w"]
@@ -559,6 +559,33 @@ text = "     غدیر 1404"
 selected_style = SubResource("StyleBoxTexture_dmnnq")
 unselected_style = SubResource("StyleBoxTexture_2gfuy")
 metadata/_custom_type_script = "uid://c8o7njavqtn62"
+
+[sub_resource type="Resource" id="Resource_6hmx6"]
+script = ExtResource("21_qmjwg")
+id = 0
+menu_button = false
+text = "بلیط قطار شادی"
+height = 175
+withd = 635
+offset_x = 80
+separation = -5
+active = false
+options = Array[ExtResource("21_qmjwg")]([])
+font = ExtResource("23_q54r6")
+normal_style = SubResource("StyleBoxTexture_wgong")
+focus_style = SubResource("StyleBoxTexture_wgong")
+hover_style = SubResource("StyleBoxTexture_wgong")
+pressed_style = SubResource("StyleBoxTexture_wgong")
+disabled_style = SubResource("StyleBoxTexture_wgong")
+font_color = Color(0, 0, 1, 1)
+outline_color = Color(1, 1, 1, 1)
+font_hover_color = Color(0, 0, 1, 1)
+font_pressed_color = Color(0, 0, 1, 1)
+font_disabled_color = Color(0, 0, 1, 1)
+font_focus_color = Color(0, 0, 1, 1)
+outline_size = 10.0
+font_size = 50.0
+metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_w0io0"]
 script = ExtResource("21_qmjwg")
@@ -1338,7 +1365,7 @@ base_button = SubResource("Resource_yng0n")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
-options = Array[ExtResource("21_qmjwg")]([SubResource("Resource_xam4k"), SubResource("Resource_w0io0"), SubResource("Resource_o3l68"), SubResource("Resource_lu225"), SubResource("Resource_nnn2t"), SubResource("Resource_rq2mq"), SubResource("Resource_4pauv"), SubResource("Resource_1b8xm"), SubResource("Resource_eapy6"), SubResource("Resource_e1fbg"), SubResource("Resource_yl6gq"), SubResource("Resource_7168k"), SubResource("Resource_4ev5o"), SubResource("Resource_4bmro"), SubResource("Resource_d3lg5"), SubResource("Resource_avagy"), SubResource("Resource_pf0vb")])
+options = Array[ExtResource("21_qmjwg")]([SubResource("Resource_6hmx6"), SubResource("Resource_w0io0"), SubResource("Resource_o3l68"), SubResource("Resource_lu225"), SubResource("Resource_nnn2t"), SubResource("Resource_rq2mq"), SubResource("Resource_4pauv"), SubResource("Resource_1b8xm"), SubResource("Resource_eapy6"), SubResource("Resource_e1fbg"), SubResource("Resource_yl6gq"), SubResource("Resource_7168k"), SubResource("Resource_4ev5o"), SubResource("Resource_4bmro"), SubResource("Resource_d3lg5"), SubResource("Resource_avagy"), SubResource("Resource_pf0vb")])
 
 [node name="MarginContainer3" type="MarginContainer" parent="CustomTabContainer"]
 visible = false
