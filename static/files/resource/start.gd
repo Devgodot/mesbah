@@ -27,7 +27,11 @@ func _ready() -> void:
 		if m2 and m2.has("num"):
 			if m2.num != 0:
 				Updatedate.seen = m2.num
-	show()
+	get_tree().create_timer(0.10).timeout.connect(func ():
+		show()
+		if $CustomTabContainer.has_method("set_style"):
+			$CustomTabContainer.set_style())
+
 func get_tab(indx)-> Button:
 	var buttons = []
 	for child in $CustomTabContainer.panel.get_child(0).get_children():
