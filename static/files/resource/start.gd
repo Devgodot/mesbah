@@ -27,7 +27,6 @@ func _ready() -> void:
 		if m2 and m2.has("num"):
 			if m2.num != 0:
 				Updatedate.seen = m2.num
-	await get_tree().create_timer(0.1).timeout
 	show()
 func get_tab(indx)-> Button:
 	var buttons = []
