@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request, current_app
+from sqlalchemy.orm.attributes import flag_modified
 from flask_caching import Cache
 from confige import db, app
 from flask_jwt_extended import (
@@ -11,7 +12,7 @@ from flask_jwt_extended import (
 )
 from random import randint
 import random, os, shutil
-from models import User, TokenBlocklist, UserInterface, Group, VerificationCode, Messages, UserSeenMessages
+from models import User, TokenBlocklist, UserInterface, Group, VerificationCode, Messages, UserSeenMessages, Ticket
 import json
 from datetime import datetime, timedelta
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
@@ -189,6 +190,70 @@ def whoami():
             }
         )
     return "شما اجازه دسترسی ندارید", 400
+@auth_bp.get("/change_username")
+@jwt_required()
+def change_username():
+    new_username = request.args.get("new")
+    user_name = current_user.get_username()
+    if User.get_user_by_username(new_username) is None:
+        if new_username:
+            group_name = current_user.data.get("group_name", "")
+            if group_name != "":
+                group = Group.query.filter_by(name=group_name).first()
+                if group:
+                    users = []
+                    for user in group.users.get("users", []):
+                        if user != user_name:
+                            users.append(user)
+                    users.append(new_username)
+                    leader = group.users.get("leader", "") if group.users.get("leader", "") != user_name else new_username
+                    group.users = {"users":users, "leader":leader}
+            for message in Messages.query.all():
+                if user_name in message.conversationId:
+                    message.conversationId = new_username + "_" + message.conversationId.split("_")[1]
+                if user_name in message.receiverId:
+                    message.receiverId.erase(user_name)
+                    message.append(new_username)
+                    flag_modified(message, "receiverId")
+            for ticket in Ticket.query.all():
+                if user_name in ticket.users:
+                    ticket.users.erase(user_name)
+                    ticket.users.append(new_username)
+                    flag_modified(ticket, "users")
+            for user in current_user.data.get("users_request", []):
+                messages = []
+                for message in user[0].data.get("message"):
+                    if message.get("type") == "کاربر":
+                        if message.get("data").get("user") == user_name:
+                            message["data"]["user"] = new_username
+                    messages.append(message)
+                user[0].data = user[0].update(data={"message":messages})
+            
+            path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "users", str(current_user.phone))
+            
+            z = random.randint(0, 10000)
+            for filename in os.listdir(path):
+                if filename.startswith():
+                    os.rename(os.path.join(path, filename), os.path.join(path, new_username+str(z)+".webp"))
+                    current_user.data = current_user.update(data={"icon":"https://messbah403.ir/static/files/users/"+str(current_user.phone)+"/"+new_username+str(z)+".webp"})
+            current_user.data = current_user.update(data={"user_name":new_username})
+            current_user.set_username(new_username)
+            current_user.id = new_username
+            db.session.commit()
+            access_token = create_access_token(identity=current_user.username, expires_delta=False)
+            refresh_token = create_refresh_token(identity=current_user.username)
+            return jsonify({"message":"با موفقیت تغییر کرد", "img":new_username+str(z)+".webp", "tokens":{"access": access_token, "refresh": refresh_token, "id": new_username}, "username":new_username})
+        return jsonify({"error": "کاربری با این کدملی وجود دارد"}, 400)
+    return jsonify({"error": "کدملی جدید را وارد کنید"}, 400)
+@auth_bp.get("/change_phone")
+@jwt_required()
+def change_phone():
+    phone: str = request.args.get("phone")
+    if not phone.startswith("09") or len(phone) != 11:
+        return jsonify({"error": "فرمت شماره نامعتبر است"}, 400)
+    current_user.phone = phone
+    db.session.commit()
+    return jsonify({"message":"با موفقیت تغییر کرد"})
 @auth_bp.get("/get")
 @jwt_required()
 def get_data():
@@ -237,6 +302,7 @@ def save_data():
             current_user.tag = data.get("tag")
         current_user.data = current_user.update(change_data, False)
         db.session.commit()
+        
         
         return jsonify(
             {
