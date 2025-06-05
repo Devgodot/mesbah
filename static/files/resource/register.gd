@@ -44,6 +44,7 @@ func _ready() -> void:
 						boxes[current_box].add_theme_stylebox_override("normal", load("res://styles/normal.tres"))
 						current_box = x
 			)
+	await get_tree().create_timer(0.1).timeout
 	show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

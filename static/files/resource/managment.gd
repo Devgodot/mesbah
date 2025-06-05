@@ -62,6 +62,7 @@ func _ready() -> void:
 	add_ticket()
 	if Updatedate.load_game("user_name","") == "5100276150":
 		%type.add_item("مدیرها")
+	await get_tree().create_timer(0.1).timeout
 	show()
 func _on_button_4_pressed() -> void:
 	$"TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Label3".hide()
