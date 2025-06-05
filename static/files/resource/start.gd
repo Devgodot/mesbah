@@ -112,7 +112,7 @@ func _on_custom_tab_container_tab_selected(tab: int) -> void:
 				Transation.change(self, "control.tscn")
 			else:
 				$CustomTabContainer.current_tab = 1
-				$CustomTabContainer.se
+				$CustomTabContainer.set_style()
 				Notification.add_notif("پشتیبانان به این بخش دسترسی ندارند.", Notification.ERROR)
 		3:
 			if Updatedate.load_game("management", false):
