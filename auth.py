@@ -260,7 +260,7 @@ def change_username():
                 access_token = create_access_token(identity=hashing(HashingMode.ENCODE, new_username), expires_delta=False)
                 refresh_token = create_refresh_token(identity=hashing(HashingMode.ENCODE, new_username))
                 return jsonify({"message":"با موفقیت تغییر کرد", "img":new_username+str(z)+".webp", "tokens":{"access": access_token, "refresh": refresh_token, "id": new_username}, "username":new_username})
-            except Exception e:
+            except Exception as e:
                 logging.info(e)
         return jsonify({"error": "کاربری با این کدملی وجود دارد"}, 400)
     return jsonify({"error": "کدملی جدید را وارد کنید"}, 400)
