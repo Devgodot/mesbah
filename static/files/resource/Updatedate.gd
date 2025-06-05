@@ -172,8 +172,7 @@ func _ready() -> void:
 	texture.position = Vector2(300, 800)
 	texture.scale = Vector2.ZERO
 	add_child(texture)
-	if FileAccess.file_exists("user://resource/transation.gd"):
-		Transation.set_script(load("user://resource/transation.gd"))
+
 func _process(delta: float) -> void:
 	socket.poll()
 	if socket.get_ready_state() == 3 and load_game("user_name") != "":
