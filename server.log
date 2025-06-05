@@ -1,0 +1,6 @@
+2025-06-06 00:28:19,613 WARNING D:\api_flask\env\Lib\site-packages\pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
+2025-06-06 00:28:25,355 WARNING  * Debugger is active!
+2025-06-06 00:28:25,375 INFO  * Debugger PIN: 463-280-465
+2025-06-06 00:30:59,110 INFO  * Detected change in 'D:\\mesbahapi\\auth.py', reloading

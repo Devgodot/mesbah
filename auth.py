@@ -18,6 +18,15 @@ from models import User, TokenBlocklist, UserInterface, Group, VerificationCode,
 import json
 from datetime import datetime, timedelta
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
+import logging
+
+# تنظیمات لاگ‌گیری
+logging.basicConfig(
+    filename='server.log',  # نام فایل لاگ
+    level=logging.INFO,     # سطح لاگ (مثلاً INFO)
+    format='%(asctime)s %(levelname)s %(message)s'
+)
+
 cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache'})
 auth_bp = Blueprint("auth", __name__)
 import requests, time
@@ -199,57 +208,60 @@ def change_username():
     user_name = current_user.get_username()
     if User.get_user_by_username(new_username) is None:
         if new_username:
-            group_name = current_user.data.get("group_name", "")
-            if group_name != "":
-                group = Group.query.filter_by(name=group_name).first()
-                if group:
-                    users = []
-                    for user in group.users.get("users", []):
-                        if user != user_name:
-                            users.append(user)
-                    users.append(new_username)
-                    leader = group.users.get("leader", "") if group.users.get("leader", "") != user_name else new_username
-                    group.users = {"users":users, "leader":leader}
-            for message in Messages.query.all():
-                if user_name in message.conversationId:
-                    message.conversationId = new_username + "_" + message.conversationId.split("_")[1]
-                if user_name in message.receiverId:
-                    message.receiverId.erase(user_name)
-                    message.append(new_username)
-                    flag_modified(message, "receiverId")
-            for ticket in Ticket.query.all():
-                if user_name in ticket.users:
-                    ticket.users.erase(user_name)
-                    ticket.users.append(new_username)
-                    flag_modified(ticket, "users")
-            for user in current_user.data.get("users_request", []):
-                messages = []
-                for message in user[0].data.get("message"):
-                    if message.get("type") == "کاربر":
-                        if message.get("data").get("user") == user_name:
-                            message["data"]["user"] = new_username
-                    messages.append(message)
-                user[0].data = user[0].update(data={"message":messages})
-            
-            path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "users", str(current_user.phone))
-            
-            z = random.randint(0, 10000)
-            for filename in os.listdir(path):
-                if filename.startswith(user_name):
-                    os.rename(os.path.join(path, filename), os.path.join(path, new_username+str(z)+".webp"))
-                    current_user.data = current_user.update(data={"icon":"https://messbah403.ir/static/files/users/"+str(current_user.phone)+"/"+new_username+str(z)+".webp"})
-            current_user.data = current_user.update(data={"user_name":new_username})
-            current_user.set_username(new_username)
-            old_username = current_user.id  # Store old id before changing
-            current_user.id = new_username  # Change id before updating UserEditLog to satisfy FK constraint
-            db.session.commit()
-            # Now update UserEditLog AFTER changing current_user.id
-            for log in UserEditLog.query.filter_by(target_user_id=old_username).all():
-                log.target_user_id = new_username
-            db.session.commit()
-            access_token = create_access_token(identity=hashing(HashingMode.ENCODE, new_username), expires_delta=False)
-            refresh_token = create_refresh_token(identity=hashing(HashingMode.ENCODE, new_username))
-            return jsonify({"message":"با موفقیت تغییر کرد", "img":new_username+str(z)+".webp", "tokens":{"access": access_token, "refresh": refresh_token, "id": new_username}, "username":new_username})
+            try:
+                group_name = current_user.data.get("group_name", "")
+                if group_name != "":
+                    group = Group.query.filter_by(name=group_name).first()
+                    if group:
+                        users = []
+                        for user in group.users.get("users", []):
+                            if user != user_name:
+                                users.append(user)
+                        users.append(new_username)
+                        leader = group.users.get("leader", "") if group.users.get("leader", "") != user_name else new_username
+                        group.users = {"users":users, "leader":leader}
+                for message in Messages.query.all():
+                    if user_name in message.conversationId:
+                        message.conversationId = new_username + "_" + message.conversationId.split("_")[1]
+                    if user_name in message.receiverId:
+                        message.receiverId.erase(user_name)
+                        message.append(new_username)
+                        flag_modified(message, "receiverId")
+                for ticket in Ticket.query.all():
+                    if user_name in ticket.users:
+                        ticket.users.erase(user_name)
+                        ticket.users.append(new_username)
+                        flag_modified(ticket, "users")
+                for user in current_user.data.get("users_request", []):
+                    messages = []
+                    for message in user[0].data.get("message"):
+                        if message.get("type") == "کاربر":
+                            if message.get("data").get("user") == user_name:
+                                message["data"]["user"] = new_username
+                        messages.append(message)
+                    user[0].data = user[0].update(data={"message":messages})
+                
+                path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "users", str(current_user.phone))
+                
+                z = random.randint(0, 10000)
+                for filename in os.listdir(path):
+                    if filename.startswith(user_name):
+                        os.rename(os.path.join(path, filename), os.path.join(path, new_username+str(z)+".webp"))
+                        current_user.data = current_user.update(data={"icon":"https://messbah403.ir/static/files/users/"+str(current_user.phone)+"/"+new_username+str(z)+".webp"})
+                current_user.data = current_user.update(data={"user_name":new_username})
+                current_user.set_username(new_username)
+                old_username = current_user.id  # Store old id before changing
+                current_user.id = new_username  # Change id before updating UserEditLog to satisfy FK constraint
+                db.session.commit()
+                # Now update UserEditLog AFTER changing current_user.id
+                for log in UserEditLog.query.filter_by(target_user_id=old_username).all():
+                    log.target_user_id = new_username
+                db.session.commit()
+                access_token = create_access_token(identity=hashing(HashingMode.ENCODE, new_username), expires_delta=False)
+                refresh_token = create_refresh_token(identity=hashing(HashingMode.ENCODE, new_username))
+                return jsonify({"message":"با موفقیت تغییر کرد", "img":new_username+str(z)+".webp", "tokens":{"access": access_token, "refresh": refresh_token, "id": new_username}, "username":new_username})
+            except Exception e:
+                logging.info(e)
         return jsonify({"error": "کاربری با این کدملی وجود دارد"}, 400)
     return jsonify({"error": "کدملی جدید را وارد کنید"}, 400)
 @auth_bp.get("/change_phone")
