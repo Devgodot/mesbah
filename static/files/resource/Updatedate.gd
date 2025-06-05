@@ -6,7 +6,7 @@ signal end_download
 var save_path = "user://data.cfg"
 var token = ""
 var id = ""
-var protocol = "http://"
+var protocol = "https://"
 var subdomin = "127.0.0.1:5000"
 var part = 0
 var gallary_part = ""
