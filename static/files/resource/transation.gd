@@ -6,8 +6,11 @@ func change(scene, new_scene:String, dir=1):
 		active = true
 		var s = load_scene(new_scene)
 		s.hide()
+		
 		match trans:
 			0:
+				var w = Updatedate.add_wait(scene)
+				await get_tree().create_timer(0.1).timeout
 				get_tree().get_root().add_child(s)
 				await s.visibility_changed
 				scene.queue_free()
