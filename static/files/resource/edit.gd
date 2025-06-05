@@ -32,7 +32,7 @@ func _ready() -> void:
 	focus_mode = FOCUS_ALL
 	$"TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer6/SpinBox".get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 	$"TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer6/SpinBox".get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
-
+	show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$TabContainer.set_tab_disabled(2, not Updatedate.load_game("support", false))

@@ -27,7 +27,8 @@ func _ready() -> void:
 		if m2 and m2.has("num"):
 			if m2.num != 0:
 				Updatedate.seen = m2.num
-				
+	print(1)
+	show()
 func get_tab(indx)-> Button:
 	var buttons = []
 	for child in $CustomTabContainer.panel.get_child(0).get_children():

@@ -272,6 +272,7 @@ func _ready() -> void:
 		var btn = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton.get_child(x)
 		var d2 = await Updatedate.request("/users/icon?username="+a[x])
 		Updatedate.get_icon_user(d2.icon if d2.has("icon") else "", a[x], btn)
+	show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	%OptionButton.get_child(Updatedate.current_user).texture_normal = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button/TextureRect.texture
@@ -603,15 +604,17 @@ func _on_save_button_pressed() -> void:
 			return 
 		var d = await Updatedate.request("/auth/change_username?new="+$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.text)
 		if d and d.has("tokens"):
-			var file = FileAccess.open("user://session.dat", FileAccess.READ_WRITE)
+			print(d)
+			var file = FileAccess.open("user://session.dat", FileAccess.READ)
 			var d2 = file.get_var()
 			d2.remove_at(select_user)
 			d2.append(d.tokens)
 			var a = Updatedate.load_game("accounts", [])
 			a.remove_at(select_user)
 			a.append(d.username)
+			var file2 = FileAccess.open("user://session.dat", FileAccess.WRITE)
+			file2.store_var(d2)
 			Updatedate.save("accounts", a, false)
-			file.store_var(d)
 			file.close()
 			for img in DirAccess.get_files_at("user://users_icon"):
 				if username in img:

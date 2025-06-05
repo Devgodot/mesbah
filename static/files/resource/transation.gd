@@ -4,24 +4,13 @@ var trans = 0
 func change(scene, new_scene:String, dir=1):
 	if not active:
 		active = true
-		var s = await Updatedate.load_scene(new_scene)
-		
+		var s = load_scene(new_scene)
+		s.hide()
 		match trans:
 			0:
-				get_tree().get_root().add_child.call_deferred(s)
-				s.modulate.a = 0
-				scene.modulate.a = 1
-				var tween = get_tree().create_tween()
-				tween.tween_property(scene, "modulate:a", 0, 0.5)
-				tween.set_ease(Tween.EASE_IN)
-				tween.play()
-				var tween2 = get_tree().create_tween()
-				tween2.tween_property(s, "modulate:a", 1, 0.5)
-				tween2.play()
-				tween2.set_ease(Tween.EASE_OUT)
-				await tween.finished
+				get_tree().get_root().add_child(s)
+				await s.visibility_changed
 				scene.queue_free()
-			
 				
 			1:
 				get_tree().get_root().add_child(s)
@@ -117,3 +106,29 @@ func check_trans():
 		trans = int(Updatedate.load_game("transation", 0))
 	else:
 		trans = 0
+func load_scene(new_scene) -> Object:
+	var s:Object
+	if DirAccess.dir_exists_absolute("user://resource"):
+		var script:Script
+		if FileAccess.file_exists("user://resource/"+new_scene.get_basename()+".gd"):
+			script = load("user://resource/"+new_scene.get_basename()+".gd")
+		if FileAccess.file_exists("user://resource/"+new_scene):
+			s = ResourceLoader.load("user://resource/"+new_scene).instantiate()
+			if script:
+				s.set_script(script)
+			
+		else:
+			s = ResourceLoader.load("res://scenes/"+new_scene).instantiate()
+			if script:
+				s.set_script(script)
+	else:
+		DirAccess.make_dir_absolute("user://resource")
+		ResourceLoader.load_threaded_request("res://scenes/"+new_scene)
+		s = ResourceLoader.load("res://scenes/"+new_scene).instantiate()
+	var source_dic = Updatedate.load_game("source_dic", {})
+	if new_scene in source_dic.keys():
+		for node in source_dic[new_scene]:
+			for p in source_dic[new_scene][node]:
+				s.get_node(node).set(p.keys()[0], ResourceLoader.load(p.values()[0]))
+			
+	return s

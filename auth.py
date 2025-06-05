@@ -572,3 +572,4 @@ def unseen_message():
                     if m.get("id", "") not in seen_message_ids:
                         message.append(m)
     return jsonify({"num":len(message)})
+
