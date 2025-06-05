@@ -181,32 +181,28 @@ class UserSeenMessages(db.Model):
 class UserEditLog(db.Model):
     __tablename__ = 'user_edit_log'
     id = Column(Integer, primary_key=True)
-    editor_id = Column(String(10), ForeignKey('users.id'))  # ID of the editor
-    target_user_id = Column(String(10), ForeignKey('users.id'))  # ID of the user being edited
+    editor_id = Column(String(10))  # ID of the editor
+    target_user_id = Column(String(10))  # ID of the user being edited
     timestamp = Column(DateTime, default=datetime.now(TehranTimezone()))
     field_name = Column(String(50))  # Name of the field that was changed
     old_value = Column(Text)  # Previous value
     new_value = Column(Text)  # New value
 
-    editor = relationship("User", foreign_keys=[editor_id])
-    target_user = relationship("User", foreign_keys=[target_user_id])
-
+   
     def __repr__(self):
         return f"<UserEditLog(editor_id='{self.editor_id}', target_user_id='{self.target_user_id}', field_name='{self.field_name}')>"
 
 class GroupEditLog(db.Model):
     __tablename__ = 'group_edit_log'
     id = Column(Integer, primary_key=True)
-    editor_id = Column(String(10), ForeignKey('users.id'))  # ID of the editor
-    group_name = Column(String(20), ForeignKey('group.name'))  # ID of the group being edited
+    editor_id = Column(String(10))  # ID of the editor
+    group_name = Column(String(20))  # ID of the group being edited
     timestamp = Column(DateTime, default=datetime.now(TehranTimezone()))
     field_name = Column(String(50))  # Name of the field that was changed
     old_value = Column(Text)  # Previous value
     new_value = Column(Text)  # New value
 
-    editor = relationship("User", foreign_keys=[editor_id])
-    group = relationship("Group", foreign_keys=[group_name])
-
+   
     def __repr__(self):
         return f"<GroupEditLog(editor_id='{self.editor_id}', group_name='{self.group_name}', field_name='{self.field_name}')>"
 

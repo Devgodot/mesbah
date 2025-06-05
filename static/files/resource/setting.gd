@@ -6,6 +6,8 @@ var tag = 0
 var gender = 0
 var username = ""
 var change = false
+var edit_mode = 0
+var select_user = 0
 var event_user = []
 var sended_message = []
 var request_group = []
@@ -119,13 +121,20 @@ func _ready() -> void:
 	var a = Updatedate.load_game("accounts", [])
 	
 	for x in range(a.size()):
-		var btn = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/TextureButton.duplicate()
+		var btn:TextureButton = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/TextureButton.duplicate()
 		Updatedate.get_icon_user("", a[x], btn)
-		btn.pressed.connect(func():
-			Updatedate.save("current_user", x, false)
-			Updatedate.save("last_user", x, false)
-			Updatedate.current_user = x
-			Transation.change(self, "setting.tscn")
+		btn.gui_input.connect(func(event:InputEvent):
+			if event is InputEventMouseButton :
+				if event.button_index == 1 and event.is_released() and x != Updatedate.current_user:
+					Updatedate.save("current_user", x, false)
+					Updatedate.save("last_user", x, false)
+					Updatedate.current_user = x
+					Transation.change(self, "setting.tscn")
+				if event.is_pressed() and event.button_index == 2:
+					select_user = x
+					$Node2D.show()
+					$Node2D.position = btn.global_position + btn.size / 2
+					$Node2D/AnimationPlayer.play("action")
 			)
 		if x == Updatedate.current_user:
 			refrence_a = $ReferenceRect.duplicate()
@@ -428,7 +437,10 @@ func _on_edit_pressed() -> void:
 	birthday = birthday.split("/")
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		Transation.change(self, "start.tscn", -1)
+		if $ColorRect2.visible:
+			$ColorRect2.hide()
+		else:
+			Transation.change(self, "start.tscn", -1)
 func _on_change_icon_pressed() -> void:
 	if plugin:
 		plugin.getGalleryImage()
@@ -505,6 +517,11 @@ func _on_back_button_pressed() -> void:
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		DisplayServer.virtual_keyboard_hide()
+		$ColorRect2.hide()
+		if $Node2D.visible and not $Node2D/AnimationPlayer.is_playing():
+			$Node2D/AnimationPlayer.play_backwards("action")
+			await $Node2D/AnimationPlayer.animation_finished
+			$Node2D.hide()
 
 
 func _on_texture_rect_gui_input(event: InputEvent) -> void:
@@ -546,3 +563,77 @@ func _on_face_button_pressed() -> void:
 	if camera:
 		mode = 4
 		camera.getCameraImage()
+
+
+func _on_delete_account_pressed() -> void:
+	if FileAccess.file_exists("user://session.dat"):
+		var file = FileAccess.open("user://session.dat", FileAccess.READ_WRITE)
+		var d = file.get_var()
+		if d is Array:
+			if select_user < d.size():
+				d.remove_at(select_user)
+				var a = Updatedate.load_game("accounts", [])
+				a.remove_at(select_user)
+				Updatedate.save("accounts", a, false)
+				file.store_var(d)
+				file.close()
+			if d.size() > 0:
+				Updatedate.current_user = 0
+				Transation.change(self, "setting.tscn")
+			else:
+				Updatedate.current_user = 0
+				Updatedate.save("last_user", 0, false)
+				Transation.change(self, "register.tscn")
+
+
+func _on_edit_phone_pressed() -> void:
+	edit_mode = 1
+	$ColorRect2.show()
+	$ColorRect2/Panel/MarginContainer/VBoxContainer/Label.text = "شماره تلفن جدید خود را وارد کنید."
+	$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.text = ""
+	$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.max_length = 11
+
+func _on_save_button_pressed() -> void:
+	var w = Updatedate.add_wait($ColorRect2/Panel/MarginContainer/VBoxContainer/Button)
+		
+	if edit_mode == 0:
+		if $ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.text.length() < 10:
+			Notification.add_notif("کد ملی باید ده رقم باشد", Notification.ERROR)
+			w.queue_free()
+			return 
+		var d = await Updatedate.request("/auth/change_username?new="+$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.text)
+		if d and d.has("tokens"):
+			var file = FileAccess.open("user://session.dat", FileAccess.READ_WRITE)
+			var d2 = file.get_var()
+			d2.remove_at(select_user)
+			d2.append(d.tokens)
+			var a = Updatedate.load_game("accounts", [])
+			a.remove_at(select_user)
+			a.append(d.username)
+			Updatedate.save("accounts", a, false)
+			file.store_var(d)
+			file.close()
+			for img in DirAccess.get_files_at("user://users_icon"):
+				if username in img:
+					DirAccess.rename_absolute("user://users_icon/"+img, "user://users_icon/"+d.img)
+			
+			Notification.add_notif(d.message)
+			Transation.change(self, "setting.tscn")
+		else:
+			if d and d.has("error"):
+				Notification.add_notif(d.error, Notification.ERROR)
+	if edit_mode == 1:
+		var d = await Updatedate.request("/auth/change_phonee?phone="+$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.text)
+		if d and d.has("error"):
+			Notification.add_notif(d.error, Notification.ERROR)
+		if d and d.has("message"):
+			Notification.add_notif(d.message)
+	w.queue_free()
+func _on_user_name_button_pressed() -> void:
+	edit_mode = 0
+	$ColorRect2.show()
+	$ColorRect2/Panel/MarginContainer/VBoxContainer/Label.text = "کد ملی جدید خود را وارد کنید."
+	$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.text = ""
+	$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.max_length = 10
+	
+	
