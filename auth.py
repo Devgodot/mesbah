@@ -12,7 +12,7 @@ from flask_jwt_extended import (
 )
 from random import randint
 import random, os, shutil
-from models import User, TokenBlocklist, UserInterface, Group, VerificationCode, Messages, UserSeenMessages, Ticket
+from models import User, TokenBlocklist, UserInterface, Group, VerificationCode, Messages, UserSeenMessages, Ticket, UserEditLog
 import json
 from datetime import datetime, timedelta
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
@@ -233,12 +233,17 @@ def change_username():
             
             z = random.randint(0, 10000)
             for filename in os.listdir(path):
-                if filename.startswith():
+                if filename.startswith(user_name):
                     os.rename(os.path.join(path, filename), os.path.join(path, new_username+str(z)+".webp"))
                     current_user.data = current_user.update(data={"icon":"https://messbah403.ir/static/files/users/"+str(current_user.phone)+"/"+new_username+str(z)+".webp"})
             current_user.data = current_user.update(data={"user_name":new_username})
             current_user.set_username(new_username)
-            current_user.id = new_username
+            old_username = current_user.id  # Store old id before changing
+            current_user.id = new_username  # Change id before updating UserEditLog to satisfy FK constraint
+            db.session.commit()
+            # Now update UserEditLog AFTER changing current_user.id
+            for log in UserEditLog.query.filter_by(target_user_id=old_username).all():
+                log.target_user_id = new_username
             db.session.commit()
             access_token = create_access_token(identity=current_user.username, expires_delta=False)
             refresh_token = create_refresh_token(identity=current_user.username)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3]
+[gd_scene load_steps=139 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_wumwv"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_087bi"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="12_wnjxt"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="13_a41m6"]
 [ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="14_w5bu4"]
+[ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="15_7rmaj"]
+[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="16_n1wy8"]
+[ext_resource type="FontFile" uid="uid://il7mx0bi5scp" path="res://fonts/Sahel-SemiBold.ttf" id="17_psbjc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
 bg_color = Color(0.147672, 0.147672, 0.147672, 1)
@@ -1005,6 +1008,214 @@ func _process(delta: float) -> void:
 		size = target.size
 		global_position = target.global_position
 "
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_adqxb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_masab"]
+bg_color = Color(1, 0.236324, 0.0872666, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yrx87"]
+bg_color = Color(0.113219, 0.597162, 0.890654, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="Animation" id="Animation_jnidh"]
+resource_name = "action"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-75, -50), Vector2(-202, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-75, -50), Vector2(45, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Button:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Button2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Button2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-75, -50), Vector2(-75, 62)]
+}
+
+[sub_resource type="Animation" id="Animation_gdp5f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Button3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-202, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Button3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Button:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(45, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Button:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Button2:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Button2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-79, 62)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_admcc"]
+_data = {
+&"RESET": SubResource("Animation_gdp5f"),
+&"action": SubResource("Animation_jnidh")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yrx87"]
+shader = ExtResource("16_n1wy8")
+shader_parameter/lod = 1.186
+shader_parameter/mix_percentage = 0.556
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jnidh"]
+bg_color = Color(0.658824, 0.513726, 0.0980392, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.8, 0.8, 0.215686, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_gdp5f"]
+font = ExtResource("17_psbjc")
+font_size = 29
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -2493,11 +2704,13 @@ dialog_autowrap = true
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
 visible = false
+z_index = 2
 layout_mode = 0
 offset_left = 777.0
 offset_top = 562.0
 offset_right = 851.0
 offset_bottom = 637.0
+mouse_filter = 2
 border_width = 5.0
 editor_only = false
 script = SubResource("GDScript_j7jst")
@@ -2524,6 +2737,125 @@ script = SubResource("GDScript_i2mre")
 [node name="SystemBarColorChanger" type="Node" parent="."]
 script = ExtResource("14_w5bu4")
 
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+position = Vector2(803, 576)
+
+[node name="Button" type="Button" parent="Node2D"]
+z_index = 2
+offset_left = 45.0
+offset_top = 2.0
+offset_right = 195.0
+offset_bottom = 102.0
+pivot_offset = Vector2(75, 50)
+theme_override_fonts/font = ExtResource("15_7rmaj")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_adqxb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_masab")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_masab")
+theme_override_styles/normal = SubResource("StyleBoxFlat_masab")
+text = "حذف حساب"
+
+[node name="Button3" type="Button" parent="Node2D"]
+z_index = 2
+offset_left = -202.0
+offset_top = 2.0
+offset_right = -52.0
+offset_bottom = 102.0
+pivot_offset = Vector2(75, 50)
+theme_override_fonts/font = ExtResource("15_7rmaj")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_adqxb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yrx87")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yrx87")
+theme_override_styles/normal = SubResource("StyleBoxFlat_yrx87")
+text = "ویرایش
+شماره تلفن"
+
+[node name="Button2" type="Button" parent="Node2D"]
+z_index = 2
+offset_left = -79.0
+offset_top = 62.0
+offset_right = 71.0
+offset_bottom = 162.0
+pivot_offset = Vector2(75, 50)
+theme_override_fonts/font = ExtResource("15_7rmaj")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_adqxb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yrx87")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yrx87")
+theme_override_styles/normal = SubResource("StyleBoxFlat_yrx87")
+text = "ویرایش
+کد ملی"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_admcc")
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+z_index = 4
+material = SubResource("ShaderMaterial_yrx87")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -388.0
+offset_top = -361.0
+offset_right = 362.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jnidh")
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Label" type="Label" parent="ColorRect2/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "کدملی جدید خود را وارد کنید."
+label_settings = SubResource("LabelSettings_gdp5f")
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="ColorRect2/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(450, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+max_length = 11
+virtual_keyboard_type = 2
+
+[node name="Button" type="Button" parent="ColorRect2/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "ثبت"
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer/Button2" to="." method="join_pressed"]
@@ -2544,3 +2876,7 @@ script = ExtResource("14_w5bu4")
 [connection signal="value_changed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer5/SpinBox" to="." method="_on_spin_box_value_changed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer6/Button" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Node2D/Button" to="." method="_on_delete_account_pressed"]
+[connection signal="pressed" from="Node2D/Button3" to="." method="_on_edit_phone_pressed"]
+[connection signal="pressed" from="Node2D/Button2" to="." method="_on_user_name_button_pressed"]
+[connection signal="pressed" from="ColorRect2/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_save_button_pressed"]
