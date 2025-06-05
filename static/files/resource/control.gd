@@ -37,7 +37,7 @@ func _ready() -> void:
 	vbox.get_node("ScrollContainer").scroll_vertical = 0
 	scroll[part] = vbox.get_node("ScrollContainer").scroll_vertical
 	w.queue_free()
-
+	show()
 func add_message(m, _id="",obj=vbox.get_node("ScrollContainer/VBoxContainer/PanelContainer")):
 	var box = obj.duplicate()
 	box.show()

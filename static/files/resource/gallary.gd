@@ -40,7 +40,7 @@ func _ready() -> void:
 				DirAccess.remove_absolute("user://"+part+"/"+file)
 		w.queue_free()
 		$Label2.visible = names.size() == 0
-
+	show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

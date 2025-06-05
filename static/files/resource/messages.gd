@@ -56,6 +56,7 @@ func _ready() -> void:
 					$ScrollContainer/VBoxContainer.add_child(box)
 	
 	w.queue_free()
+	show()
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		Transation.change(self, "start.tscn", -1)

@@ -44,7 +44,7 @@ func _ready() -> void:
 						boxes[current_box].add_theme_stylebox_override("normal", load("res://styles/normal.tres"))
 						current_box = x
 			)
-			
+	show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if timers.has(current_phone):
@@ -129,6 +129,7 @@ func _on_code_sended(r, re, h, b, w):
 		r2.request(Updatedate.protocol+Updatedate.subdomin+"/auth/register", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": %phone.text, "code":code2, "id":%id.text}))
 		r2.request_completed.connect(_on_code_sended.bind(w))
 	w.queue_free()
+
 func _on_button2_pressed() -> void:
 	$AnimationPlayer.play("change1")
 	$MarginContainer2/VBoxContainer/HBoxContainer/Label.text = str("لطفاً کد ارسالی به شماره تلفن", %phone.text,"را وارد کنید.")

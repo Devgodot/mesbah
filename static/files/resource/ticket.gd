@@ -54,6 +54,7 @@ func _ready() -> void:
 	$Node2D/CPUParticles2D2.emitting = true
 	$AnimationPlayer.play("train")
 	$CPUParticles2D.emitting = true
+	show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$TextureRect2.position.x = $TextureProgressBar.position.x + ($TextureProgressBar.value * $TextureProgressBar.size.x / 100) - $TextureRect2.size.x / 2 

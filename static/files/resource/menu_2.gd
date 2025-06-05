@@ -25,6 +25,7 @@ func _ready() -> void:
 				Updatedate.p_scene = scene_file_path.get_file().get_basename()
 				Transation.change(self, "positions.tscn")
 				)
+	show()
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		Transation.change(self, "start.tscn", -1)
