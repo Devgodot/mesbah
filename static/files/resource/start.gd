@@ -42,7 +42,6 @@ func get_tab(indx)-> Button:
 			return Button.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	if Updatedate.load_game("support", false) :
 		if Updatedate.seen  > 0:
 			if supporter_label:
@@ -113,6 +112,7 @@ func _on_custom_tab_container_tab_selected(tab: int) -> void:
 				Transation.change(self, "control.tscn")
 			else:
 				$CustomTabContainer.current_tab = 1
+				$CustomTabContainer.se
 				Notification.add_notif("پشتیبانان به این بخش دسترسی ندارند.", Notification.ERROR)
 		3:
 			if Updatedate.load_game("management", false):
