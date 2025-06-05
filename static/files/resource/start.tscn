@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3]
+[gd_scene load_steps=126 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_d553l"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_pup0w"]
@@ -257,38 +257,6 @@ icon_h_aligment = 1
 text = "مدیریت"
 metadata/_custom_type_script = "uid://cnn7hb10qab7t"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2gfuy"]
-viewport_path = NodePath("SubViewport10")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
-viewport_path = NodePath("SubViewport4")
-
-[sub_resource type="Resource" id="Resource_yoxka"]
-resource_local_to_scene = true
-script = ExtResource("8_ng4qj")
-texture_progress = SubResource("ViewportTexture_0gyww")
-fill_mode = 6
-nine_patch_stretch = false
-texture_progress_offset = Vector2(0, 115)
-tint_progress = Color(0, 0.403922, 0.67451, 1)
-tint_over = Color(0, 0, 0, 1)
-tint_under = Color(0, 0, 0, 1)
-metadata/_custom_type_script = "uid://dr0mo850pgc1h"
-
-[sub_resource type="Resource" id="Resource_xekfo"]
-resource_local_to_scene = true
-script = ExtResource("13_brbys")
-tab_animation = SubResource("Resource_yoxka")
-icon_selected = SubResource("ViewportTexture_2gfuy")
-icon_unselected = ExtResource("15_w6tu5")
-label_settings = SubResource("Resource_cc30s")
-expand_icon = true
-flat = true
-icon_v_aligment = 0
-icon_h_aligment = 1
-text = "مربیان"
-metadata/_custom_type_script = "uid://cnn7hb10qab7t"
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_728ow"]
 texture = ExtResource("16_e6x5r")
 expand_margin_left = 50.0
@@ -417,13 +385,13 @@ font_size = 37
 outline_size = 5
 outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xam4k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
 viewport_path = NodePath("SubViewport5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_yoxka"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xam4k"]
 viewport_path = NodePath("SubViewport6")
 
-[sub_resource type="Resource" id="Resource_ycbhe"]
+[sub_resource type="Resource" id="Resource_yoxka"]
 resource_local_to_scene = true
 script = ExtResource("19_h770b")
 arrow_icon = ExtResource("18_2bsga")
@@ -431,8 +399,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_xam4k")
-icon_unselected = SubResource("ViewportTexture_yoxka")
+icon_selected = SubResource("ViewportTexture_0gyww")
+icon_unselected = SubResource("ViewportTexture_xam4k")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -531,13 +499,13 @@ outline_size = 10.0
 font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5xbah"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xekfo"]
 viewport_path = NodePath("SubViewport7")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pxum8"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ypgks"]
 viewport_path = NodePath("SubViewport8")
 
-[sub_resource type="Resource" id="Resource_mat1i"]
+[sub_resource type="Resource" id="Resource_ycbhe"]
 resource_local_to_scene = true
 script = ExtResource("19_h770b")
 arrow_icon = ExtResource("18_2bsga")
@@ -545,8 +513,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_5xbah")
-icon_unselected = SubResource("ViewportTexture_pxum8")
+icon_selected = SubResource("ViewportTexture_xekfo")
+icon_unselected = SubResource("ViewportTexture_ypgks")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -1238,7 +1206,7 @@ element_1 = SubResource("Resource_0gyww")
 element_2 = SubResource("Resource_pxum8")
 element_3 = SubResource("Resource_k41c7")
 element_4 = SubResource("Resource_ypgks")
-element_5 = SubResource("Resource_xekfo")
+element_5 = null
 metadata/_custom_type_script = "uid://bsoyamf86eeht"
 metadata/_edit_use_anchors_ = true
 
@@ -1353,7 +1321,7 @@ vertical_alignment = 1
 
 [node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_qdso4")]
 layout_mode = 2
-base_button = SubResource("Resource_ycbhe")
+base_button = SubResource("Resource_yoxka")
 subpanel_style = SubResource("StyleBoxEmpty_5xbah")
 panel_style = SubResource("StyleBoxEmpty_pxum8")
 height = 250.0
@@ -1361,7 +1329,7 @@ options = Array[ExtResource("21_qmjwg")]([SubResource("Resource_q1j5q"), SubReso
 
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_qdso4")]
 layout_mode = 2
-base_button = SubResource("Resource_mat1i")
+base_button = SubResource("Resource_ycbhe")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
