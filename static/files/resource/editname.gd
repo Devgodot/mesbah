@@ -59,6 +59,7 @@ func _ready() -> void:
 		var tornado_param = tornado.split(" ")
 		$TabContainer/ScrollContainer/VBoxContainer/BoxContainer6/GridContainer/HBoxContainer/SpinBox.value = tornado_param[1].to_int()
 		$TabContainer/ScrollContainer/VBoxContainer/BoxContainer6/GridContainer/HBoxContainer3/SpinBox.value = tornado_param[2].to_int()
+	show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if $TabContainer.current_tab == 1:

@@ -162,6 +162,7 @@ func _ready() -> void:
 	w2.queue_free()
 	w3.queue_free()
 	w4.queue_free()
+	show()
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		Transation.change(self, Updatedate.p_scene+".tscn", -1)
