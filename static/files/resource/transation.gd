@@ -5,7 +5,7 @@ func change(scene, new_scene:String, dir=1):
 	if not active:
 		active = true
 		var s = await Updatedate.load_scene(new_scene)
-		Notification.add_notif("امتحانی هست")
+		
 		match trans:
 			0:
 				get_tree().get_root().add_child.call_deferred(s)
