@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3]
+[gd_scene load_steps=130 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_d553l"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_pup0w"]
@@ -255,6 +255,38 @@ flat = true
 icon_v_aligment = 0
 icon_h_aligment = 1
 text = "مدیریت"
+metadata/_custom_type_script = "uid://cnn7hb10qab7t"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2gfuy"]
+viewport_path = NodePath("SubViewport10")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_yoxka"]
+viewport_path = NodePath("SubViewport4")
+
+[sub_resource type="Resource" id="Resource_xekfo"]
+resource_local_to_scene = true
+script = ExtResource("8_ng4qj")
+texture_progress = SubResource("ViewportTexture_yoxka")
+fill_mode = 6
+nine_patch_stretch = false
+texture_progress_offset = Vector2(0, 115)
+tint_progress = Color(0, 0.403922, 0.67451, 1)
+tint_over = Color(0, 0, 0, 1)
+tint_under = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://dr0mo850pgc1h"
+
+[sub_resource type="Resource" id="Resource_mat1i"]
+resource_local_to_scene = true
+script = ExtResource("13_brbys")
+tab_animation = SubResource("Resource_xekfo")
+icon_selected = SubResource("ViewportTexture_2gfuy")
+icon_unselected = ExtResource("33_lxtsy")
+label_settings = SubResource("Resource_1bd0r")
+expand_icon = true
+flat = true
+icon_v_aligment = 0
+icon_h_aligment = 1
+text = "مربیان"
 metadata/_custom_type_script = "uid://cnn7hb10qab7t"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_728ow"]
@@ -1206,7 +1238,7 @@ element_1 = SubResource("Resource_0gyww")
 element_2 = SubResource("Resource_pxum8")
 element_3 = SubResource("Resource_k41c7")
 element_4 = SubResource("Resource_ypgks")
-element_5 = null
+element_5 = SubResource("Resource_mat1i")
 metadata/_custom_type_script = "uid://bsoyamf86eeht"
 metadata/_edit_use_anchors_ = true
 
