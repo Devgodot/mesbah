@@ -46,7 +46,6 @@ func _ready() -> void:
 	if not _user:
 		Notification.add_notif("حساب شما حذف یا مسدود شده", Notification.ERROR)
 		DirAccess.remove_absolute("user://session.dat")
-		DirAccess.remove_absolute("user://data.cfg")
 		Updatedate.current_user = 0
 		await get_tree().create_timer(0.5).timeout
 		Transation.change(self, "register.tscn")
@@ -582,6 +581,7 @@ func _on_delete_account_pressed() -> void:
 				Updatedate.current_user = 0
 				Transation.change(self, "setting.tscn")
 			else:
+				DirAccess.remove_absolute("user://session.dat")
 				Updatedate.current_user = 0
 				Updatedate.save("last_user", 0, false)
 				Transation.change(self, "register.tscn")
