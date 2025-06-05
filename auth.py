@@ -10,6 +10,8 @@ from flask_jwt_extended import (
     current_user,
     get_jwt_identity,
 )
+
+from utils import hashing, HashingMode
 from random import randint
 import random, os, shutil
 from models import User, TokenBlocklist, UserInterface, Group, VerificationCode, Messages, UserSeenMessages, Ticket, UserEditLog
@@ -245,8 +247,8 @@ def change_username():
             for log in UserEditLog.query.filter_by(target_user_id=old_username).all():
                 log.target_user_id = new_username
             db.session.commit()
-            access_token = create_access_token(identity=current_user.username, expires_delta=False)
-            refresh_token = create_refresh_token(identity=current_user.username)
+            access_token = create_access_token(identity=hashing(HashingMode.ENCODE, new_username), expires_delta=False)
+            refresh_token = create_refresh_token(identity=hashing(HashingMode.ENCODE, new_username))
             return jsonify({"message":"با موفقیت تغییر کرد", "img":new_username+str(z)+".webp", "tokens":{"access": access_token, "refresh": refresh_token, "id": new_username}, "username":new_username})
         return jsonify({"error": "کاربری با این کدملی وجود دارد"}, 400)
     return jsonify({"error": "کدملی جدید را وارد کنید"}, 400)
