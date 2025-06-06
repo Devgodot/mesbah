@@ -37,9 +37,7 @@ func change(_name):
 func update_resource():
 	var http = HTTPRequest.new()
 	add_child(http)
-	var file2 = FileAccess.open("res://hash_list.json", FileAccess.READ)
-	var json= JSON.parse_string(file2.get_as_text())
-	var hash_list:Dictionary = load_game("hash_list", json)
+	var hash_list:Dictionary = load_game("hash_list", HashList.list)
 	http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
 	var d = await http.request_completed
 	http.timeout = 10
@@ -703,7 +701,7 @@ func load_scene(new_scene) -> Object:
 			ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene, progress)
 		s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
 	var source_dic = load_game("source_dic", {})
-	print(source_dic)
+
 	if new_scene in source_dic.keys():
 		for node in source_dic[new_scene]:
 			for p in source_dic[new_scene][node]:
