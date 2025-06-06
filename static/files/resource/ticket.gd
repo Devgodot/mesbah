@@ -153,8 +153,8 @@ func _notification(what: int) -> void:
 
 
 func _on_savebutton_pressed() -> void:
-	$FileDialog.popup()
-	$FileDialog.current_file = Updatedate.load_game("user_name")+".png"
+	
+	OS.shell_open("https://qr-code.ir/api/qr-code?s=5&e=M&t=P&d="+Updatedate.protocol+Updatedate.subdomin+"/ticket/check?user="+Updatedate.load_game("user_name"))
 func create_qur_code():
 	$TextureRect3.show()
 	if FileAccess.file_exists("user://resource/"+Updatedate.load_game("user_name")+".png"):
@@ -178,8 +178,4 @@ func create_qur_code():
 
 
 func _on_file_dialog_file_selected(path: String) -> void:
-	if not OS.has_feature("android"):
-		if not OS.request_permissions():
-			print("Permission denied!")
-	$TextureRect3.texture.get_image().save_png(path)
-	Notification.add_notif("با موفقیت ذخیره شد.")
+	pass
