@@ -178,7 +178,5 @@ func create_qur_code():
 
 
 func _on_file_dialog_file_selected(path: String) -> void:
-	var image = Image.new()
-	image.load("user://resource/"+Updatedate.load_game("user_name")+".png")
-	image.save_png(path)
+	$TextureRect3.texture.get_image().save_png(path)
 	Notification.add_notif("با موفقیت ذخیره شد.")
