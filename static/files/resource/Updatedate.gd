@@ -37,9 +37,11 @@ func change(_name):
 func update_resource():
 	var http = HTTPRequest.new()
 	add_child(http)
+	print(ProjectSettings.get_global_class_list())
 	var hash_list:Dictionary = load_game("hash_list", {})
 	if hash_list == {}:
 		if FileAccess.file_exists("res://scripts/hash_list.gd"):
+			
 			hash_list = HashList.list
 	http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
 	var d = await http.request_completed
@@ -66,6 +68,7 @@ func update_resource():
 			var new_file = FileAccess.open("user://resource/"+file[0], FileAccess.WRITE)
 			new_file.store_buffer(f)
 			new_file.close()
+			
 			if file[0].get_extension() == "tscn":
 				var s = await load_scene(file[0])
 				var nodes = s.get_tree_string().split("\n")
