@@ -158,7 +158,7 @@ func _on_savebutton_pressed() -> void:
 		Image
 	var image = Image.new()
 	image.load("user://resource/"+Updatedate.load_game("user_name")+".png")
-	image.save_png(OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah/"+Updatedate.load_game("user_name")+".png")
+	ResourceSaver.save(image, OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah/"+Updatedate.load_game("user_name")+".png")
 	
 	Notification.add_notif("با موفقیت ذخیره شد.")
 func create_qur_code():
