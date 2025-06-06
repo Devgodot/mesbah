@@ -154,7 +154,7 @@ func _notification(what: int) -> void:
 
 func _on_savebutton_pressed() -> void:
 	$FileDialog.popup()
-	$FileDialog.current_file = Updatedate.load_game("user_name")
+	$FileDialog.current_file = Updatedate.load_game("user_name")+".png"
 func create_qur_code():
 	$TextureRect3.show()
 	if FileAccess.file_exists("user://resource/"+Updatedate.load_game("user_name")+".png"):
