@@ -180,7 +180,5 @@ func create_qur_code():
 func _on_file_dialog_file_selected(path: String) -> void:
 	var image = Image.new()
 	image.load("user://resource/"+Updatedate.load_game("user_name")+".png")
-	var file = FileAccess.open(path, FileAccess.WRITE)
-	file.store_buffer(image.get_data())
-	file.close()
+	image.save_png(path)
 	Notification.add_notif("با موفقیت ذخیره شد.")
