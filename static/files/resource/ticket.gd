@@ -154,7 +154,7 @@ func _notification(what: int) -> void:
 
 func _on_savebutton_pressed() -> void:
 	$FileDialog.popup()
-
+	$FileDialog.current_file = Updatedate.load_game("user_name")
 func create_qur_code():
 	$TextureRect3.show()
 	if FileAccess.file_exists("user://resource/"+Updatedate.load_game("user_name")+".png"):
@@ -180,5 +180,7 @@ func create_qur_code():
 func _on_file_dialog_file_selected(path: String) -> void:
 	var image = Image.new()
 	image.load("user://resource/"+Updatedate.load_game("user_name")+".png")
-	ResourceSaver.save(image,path)
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	file.store_buffer(image.get_data())
+	file.close()
 	Notification.add_notif("با موفقیت ذخیره شد.")
