@@ -187,6 +187,8 @@ def whoami():
         for d in current_user.data.keys():
             data[d] = current_user.data.get(d)
         if data.get("pro") is None:data["pro"] = False
+        if data.get("nationality") is None:data["nationality"] = 0
+        if data.get("accept_account") is None:data["accept_account"] = False
         if current_user.get_username() in UserInterface.query.first().data.get("management", []): data["management"] = True 
         else: data["management"] = False
         data["update_version"] = UserInterface.query.first().data.get("update_version", "")
