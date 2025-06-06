@@ -153,14 +153,8 @@ func _notification(what: int) -> void:
 
 
 func _on_savebutton_pressed() -> void:
-	if not DirAccess.dir_exists_absolute( OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah"):
-		DirAccess.make_dir_absolute(OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah")
+	$FileDialog.popup()
 
-	var image = Image.new()
-	image.load("user://resource/"+Updatedate.load_game("user_name")+".png")
-	ResourceSaver.save(image, OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS)+"/"+Updatedate.load_game("user_name")+".png")
-	
-	Notification.add_notif("با موفقیت ذخیره شد.")
 func create_qur_code():
 	$TextureRect3.show()
 	if FileAccess.file_exists("user://resource/"+Updatedate.load_game("user_name")+".png"):
@@ -181,3 +175,10 @@ func create_qur_code():
 		image.save_png("user://resource/"+Updatedate.load_game("user_name")+".png")
 		$TextureRect3.texture = ImageTexture.create_from_image(image)
 		w.queue_free()
+
+
+func _on_file_dialog_file_selected(path: String) -> void:
+	var image = Image.new()
+	image.load("user://resource/"+Updatedate.load_game("user_name")+".png")
+	ResourceSaver.save(image,path)
+	Notification.add_notif("با موفقیت ذخیره شد.")
