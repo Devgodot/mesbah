@@ -1612,7 +1612,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_ywr16")
 theme_override_styles/hover = SubResource("StyleBoxFlat_0hmit")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0hmit")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0hmit")
-text = "ذخیره"
+text = "باز کردن"
 
 [node name="FileDialog" type="FileDialog" parent="."]
 access = 2
