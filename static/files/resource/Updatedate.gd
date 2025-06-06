@@ -66,8 +66,6 @@ func update_resource():
 			var new_file = FileAccess.open("user://resource/"+file[0], FileAccess.WRITE)
 			new_file.store_buffer(f)
 			new_file.close()
-			if file[0] == "transation.gd":
-				Transation.set_script(load("user://resource/"+file[0]))
 			if file[0].get_extension() == "tscn":
 				var s = await load_scene(file[0])
 				var nodes = s.get_tree_string().split("\n")
