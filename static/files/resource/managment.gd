@@ -348,6 +348,7 @@ func add_users(data):
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox").button_pressed = user.pro if user.has("pro") else false
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox2").button_pressed = user.block if user.has("block") else false
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer5/CheckBox3").button_pressed = user.accept_account if user.has("accept_account") else false
+		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer8/CheckBox").button_pressed = bool(user.nationality) if user.has("nationality") else false
 		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Label").text = "بلیط قطار: "+ user.time if user.has("time") else "بلیط قطار: کاربر بلیطی ندارد."
 		if not user.has("time"):
 			box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer7/Button").hide()
@@ -494,6 +495,24 @@ func add_users(data):
 			r.timeout = 10
 			while body[3].size() == 0:
 				r.request(Updatedate.protocol+Updatedate.subdomin+"/users/update", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "data":{"pro":toggled}}))
+				body = await r.request_completed
+			r.queue_free()
+			var d2 = Updatedate.get_json(body[3])
+			w.queue_free()
+			if d2.has("error"):
+				Notification.add_notif(d2.error, Notification.ERROR)
+			if d2.has("message"):
+				Notification.add_notif(d2.message, Notification.SUCCESS)
+				)
+		box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer8/CheckBox").toggled.connect(func (toggled):
+			var w = Updatedate.add_wait(box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer8/CheckBox"))
+			var r = HTTPRequest.new()
+			add_child(r)
+			r.request(Updatedate.protocol+Updatedate.subdomin+"/users/update", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "data":{"nationality":toggled}}))
+			var body = await r.request_completed
+			r.timeout = 10
+			while body[3].size() == 0:
+				r.request(Updatedate.protocol+Updatedate.subdomin+"/users/update", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"username":user.username, "data":{"nationality":toggled}}))
 				body = await r.request_completed
 			r.queue_free()
 			var d2 = Updatedate.get_json(body[3])
