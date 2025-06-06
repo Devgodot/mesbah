@@ -1,6 +1,6 @@
 from flask import request, Blueprint, jsonify
 from flask_jwt_extended import jwt_required, get_jwt, current_user
-from models import User, UserInterface, Ticket
+from models import User, UserInterface, Ticket, UseTicket
 from schemas import UserSchema
 from sqlalchemy import desc, text
 from confige import db, app, get_sort_by_birthday
@@ -219,7 +219,40 @@ def get_user_ticket():
     if not user_ticket:
         return jsonify({"error": "کاربر بلیطی ندارد"}), 404
     return jsonify({"ticket":user_ticket}), 200
-
+@ticket_bp.get("/check")
+def check():
+    user = request.args.get("user", "")
+    season = UserInterface.query.first().data.get("train_season", 1)
+    user_ticket = None
+    for ticket in Ticket.query.filter_by(season=season).all():
+        if user in ticket.users:
+            user_ticket = ticket
+            break
+    
+    if user_ticket and UseTicket.query.filter_by(id=user).first() is None:
+        now = datetime.datetime.now(TehranTimezone())
+        # اطمینان از اینکه birthday هم timezone-aware باشد
+        if ticket.time.tzinfo is None:
+            ticket.time = ticket.time.replace(tzinfo=TehranTimezone())
+        seconds = (now.timestamp() - ticket.time.timestamp())
+        if seconds < 0:
+            state = "هنوز زمان بلیط فرا نرسیده"
+        if seconds > 0:
+            if seconds > 60 * 30:
+                state = "زمان بلیط منقضی شده"
+            else:
+                state = "بلیط استفاده شد"
+                use_ticket = UseTicket(id=user, season=season)
+                db.session.add(use_ticket)
+                db.session.commit()
+    else:
+        if user_ticket is None:
+            state = "کاربر بلیطی ندارد"
+        else:
+            state = "بلیط قبلاً استفاده شده"
+                
+        
+        
 # راه دیگر برای تبدیل تاریخ جلالی به میلادی و بالعکس بدون khayyam:
 # استفاده از کتابخانه jdatetime (اگر نصب باشد)
 
