@@ -33,7 +33,7 @@ func _ready() -> void:
 		current_time = int(data.ticket.current_time) - int(int(Updatedate.load_game("start_ticket", "0")))
 		end_time = int(data.ticket.unixtime)- int(int(Updatedate.load_game("start_ticket", "0")))
 		date = data.ticket.unixtime
-		
+		create_qur_code()
 		if calendar:
 			
 			var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")) - 100000000, int(date) + 100000000)
@@ -150,3 +150,30 @@ func _on_back_button_pressed() -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		Transation.change(self, "start.tscn", -1)
+
+
+func _on_savebutton_pressed() -> void:
+	if not DirAccess.dir_exists_absolute( OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah"):
+		DirAccess.make_dir_absolute(OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah")
+	$TextureRect3.texture.get_image().save_png(OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah/"+Updatedate.load_game("user_name")+".png")
+	Notification.add_notif("با موفقیت ذخیره شد.")
+func create_qur_code():
+	$TextureRect3.show()
+	if FileAccess.file_exists("user://resource/"+Updatedate.load_game("user_name")+".png"):
+		var image = Image.new()
+		image.load("user://resource/"+Updatedate.load_game("user_name")+".png")
+		$TextureRect3.texture = ImageTexture.create_from_image(image)
+	else:
+		var w = Updatedate.add_wait($TextureRect3)
+		var http = HTTPRequest.new()
+		add_child(http)
+		http.request("https://qr-code.ir/api/qr-code?s=5&e=M&t=P&d="+Updatedate.protocol+Updatedate.subdomin+"/ticket/check?user="+Updatedate.load_game("user_name"))
+		var d = await http.request_completed
+		while d[3].size() == 0:
+			http.request("https://qr-code.ir/api/qr-code?s=5&e=M&t=P&d="+Updatedate.protocol+Updatedate.subdomin+"/ticket/check?user="+Updatedate.load_game("user_name"))
+			d = await http.request_completed
+		var image = Image.new()
+		image.load_png_from_buffer(d[3])
+		image.save_png("user://resource/"+Updatedate.load_game("user_name")+".png")
+		$TextureRect3.texture = ImageTexture.create_from_image(image)
+		w.queue_free()
