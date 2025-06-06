@@ -1616,6 +1616,7 @@ text = "ذخیره"
 
 [node name="FileDialog" type="FileDialog" parent="."]
 access = 2
+use_native_dialog = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
