@@ -228,7 +228,7 @@ def check():
         if user in ticket.users:
             user_ticket = ticket
             break
-    
+    state = {}
     if user_ticket and UseTicket.query.filter_by(id=user).first() is None:
         now = datetime.datetime.now(TehranTimezone())
         # اطمینان از اینکه birthday هم timezone-aware باشد
@@ -236,23 +236,26 @@ def check():
             ticket.time = ticket.time.replace(tzinfo=TehranTimezone())
         seconds = (now.timestamp() - ticket.time.timestamp())
         if seconds < 0:
-            state = "هنوز زمان بلیط فرا نرسیده"
+            state["status"] = "هنوز زمان بلیط فرا نرسیده"
         if seconds > 0:
             if seconds > 60 * 30:
-                state = "زمان بلیط منقضی شده"
+                state["status"] = "زمان بلیط منقضی شده"
             else:
-                state = "بلیط استفاده شد"
+                state["status"] = "بلیط استفاده شد"
                 use_ticket = UseTicket(id=user, season=season)
                 db.session.add(use_ticket)
                 db.session.commit()
     else:
         if user_ticket is None:
-            state = "کاربر بلیطی ندارد"
+            state["status"] = "کاربر بلیطی ندارد"
         else:
-            state = "بلیط قبلاً استفاده شده"
+            state["status"] = "بلیط قبلاً استفاده شده"
     current_user = User.get_user_by_username(user)
     if current_user:
-        response = make_response(render_template("check_ticket.html", state=state, user={"name":current_user.data("first_name", "")+" "+current_user.data.get("last_name", ""), "username":user, "father":current_user.data.get("father_name", "")}), 200)
+        state["name"] = current_user.data("first_name", "")+" "+current_user.data.get("last_name", "")
+        state["username"] = user
+        state["father"] = current_user.data.get("father_name", "")
+        response = make_response(render_template("check_ticket.html", state=state), 200)
     else:
         return "کاربر وجود ندارد"
     return response
