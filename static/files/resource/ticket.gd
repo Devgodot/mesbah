@@ -155,7 +155,7 @@ func _notification(what: int) -> void:
 func _on_savebutton_pressed() -> void:
 	if not DirAccess.dir_exists_absolute( OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah"):
 		DirAccess.make_dir_absolute(OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah")
-	$TextureRect3.texture.get_image().save_png(OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah/"+Updatedate.load_game("user_name")+".png")
+	FileAccess.open((OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah/"+Updatedate.load_game("user_name")+".png"), FileAccess.WRITE).store_buffer($TextureRect3.texture.get_image().get_data())
 	Notification.add_notif("با موفقیت ذخیره شد.")
 func create_qur_code():
 	$TextureRect3.show()
