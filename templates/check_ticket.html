@@ -15,12 +15,12 @@
 <body>
     <div class="text">
         <h1>بررسی وضعیت بلیط</h1>
-        <p>نام و نام خانوادگی: {{user["name"]}}</p>
-        <p>نام پدر: {{user["father"]}}</p>
-        <p>کد ملی: {{user["username"]}}</p>
+        <p>نام و نام خانوادگی: {{state["name"]}}</p>
+        <p>نام پدر: {{state["father"]}}</p>
+        <p>کد ملی: {{state["username"]}}</p>
         <div class="column">
             <div class="box">
-                <p>وضعیت: {{state}} </p>
+                <p>وضعیت: {{state["status"]}} </p>
             </div>
         </div>
     </div>
