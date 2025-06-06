@@ -118,7 +118,7 @@ func _ready() -> void:
 	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.value = int(birthday[1])
 	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.value = int(birthday[0])
 	var a = Updatedate.load_game("accounts", [])
-	
+	print(Updatedate.current_user)
 	for x in range(a.size()):
 		var btn:TextureButton = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/TextureButton.duplicate()
 		Updatedate.get_icon_user("", a[x], btn)
@@ -126,6 +126,7 @@ func _ready() -> void:
 			if event is InputEventMouseButton :
 				if event.button_index == 1 and event.is_released() and x != Updatedate.current_user:
 					Updatedate.save("current_user", x, false)
+					
 					Updatedate.save("last_user", x, false)
 					Updatedate.current_user = x
 					Transation.change(self, "setting.tscn")
@@ -135,7 +136,7 @@ func _ready() -> void:
 					$Node2D.position = btn.global_position + btn.size / 2
 					$Node2D/AnimationPlayer.play("action")
 			)
-		if x == Updatedate.current_user:
+		if x == Updatedate.current_user and a.size() > 0:
 			refrence_a = $ReferenceRect.duplicate()
 			refrence_a.target = btn
 			refrence_a.show()

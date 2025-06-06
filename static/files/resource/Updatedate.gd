@@ -227,7 +227,15 @@ func _process(delta: float) -> void:
 						
 func load_user():
 	var d = null
+	
+		
 	if FileAccess.file_exists("user://session.dat"):
+		if load_game("accounts", []).size() == 0:
+			DirAccess.remove_absolute("user://session.dat")
+			return false
+		if current_user > load_game("accounts", []).size() -1:
+			current_user = 0
+			save("current_user", 0)
 		var file = FileAccess.open("user://session.dat", FileAccess.READ)
 		d = file.get_var()
 		if d is Dictionary:
