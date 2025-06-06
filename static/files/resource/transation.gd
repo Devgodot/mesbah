@@ -5,8 +5,6 @@ func change(scene, new_scene:String, dir=1):
 	if not active:
 		active = true
 		var s = load_scene(new_scene)
-		
-		
 		match trans:
 			0:
 				s.hide()
