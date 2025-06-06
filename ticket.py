@@ -1,4 +1,4 @@
-from flask import request, Blueprint, jsonify
+from flask import request, Blueprint, jsonify, make_response, render_template
 from flask_jwt_extended import jwt_required, get_jwt, current_user
 from models import User, UserInterface, Ticket, UseTicket
 from schemas import UserSchema
@@ -251,8 +251,9 @@ def check():
         else:
             state = "بلیط قبلاً استفاده شده"
                 
-        
-        
+    response = make_response(render_template("check_ticket.html", state=state), 200)
+    return response
+
 # راه دیگر برای تبدیل تاریخ جلالی به میلادی و بالعکس بدون khayyam:
 # استفاده از کتابخانه jdatetime (اگر نصب باشد)
 

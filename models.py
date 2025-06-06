@@ -191,6 +191,12 @@ class UserEditLog(db.Model):
     def __repr__(self):
         return f"<UserEditLog(editor_id='{self.editor_id}', target_user_id='{self.target_user_id}', field_name='{self.field_name}')>"
 
+class UseTicket(db.Model):
+    __tablename__ = 'use_ticket'
+    id = Column(String(10), primary_key=True)
+    timestamp = Column(DateTime, default=datetime.now(TehranTimezone()))
+    season = Column(Integer, default=0)
+    
 class GroupEditLog(db.Model):
     __tablename__ = 'group_edit_log'
     id = Column(Integer, primary_key=True)

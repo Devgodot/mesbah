@@ -4,3 +4,23 @@
 2025-06-06 00:28:25,355 WARNING  * Debugger is active!
 2025-06-06 00:28:25,375 INFO  * Debugger PIN: 463-280-465
 2025-06-06 00:30:59,110 INFO  * Detected change in 'D:\\mesbahapi\\auth.py', reloading
+2025-06-06 15:42:09,524 WARNING D:\api_flask\env\Lib\site-packages\pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
+2025-06-06 15:44:18,231 WARNING D:\api_flask\env\Lib\site-packages\pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
+2025-06-06 15:44:26,659 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-06 15:44:26,659 INFO [33mPress CTRL+C to quit[0m
+2025-06-06 15:44:26,675 INFO  * Restarting with stat
+2025-06-06 15:44:34,573 WARNING D:\api_flask\env\Lib\site-packages\pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
+2025-06-06 15:44:38,372 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-06 15:44:38,372 INFO [33mPress CTRL+C to quit[0m
+2025-06-06 15:44:38,374 INFO  * Restarting with stat
+2025-06-06 15:44:41,634 WARNING D:\api_flask\env\Lib\site-packages\pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
