@@ -158,7 +158,7 @@ func _on_savebutton_pressed() -> void:
 		Image
 	var file = FileAccess.open(OS.get_system_dir(OS.SYSTEM_DIR_DCIM)+"/messbah/"+Updatedate.load_game("user_name")+".png", FileAccess.WRITE)
 	file.store_buffer($TextureRect3.texture.get_image().data)
-	file.clo
+	file.close()
 	Notification.add_notif("با موفقیت ذخیره شد.")
 func create_qur_code():
 	$TextureRect3.show()
