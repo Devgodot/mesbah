@@ -250,8 +250,11 @@ def check():
             state = "کاربر بلیطی ندارد"
         else:
             state = "بلیط قبلاً استفاده شده"
-                
-    response = make_response(render_template("check_ticket.html", state=state), 200)
+    current_user = User.get_user_by_username(user)
+    if current_user:
+        response = make_response(render_template("check_ticket.html", state=state, user={"name":current_user.data("first_name", "")+" "+current_user.data.get("last_name", ""), "username":user, "father":current_user.data.get("father_name", "")}), 200)
+    else:
+        return "کاربر وجود ندارد"
     return response
 
 # راه دیگر برای تبدیل تاریخ جلالی به میلادی و بالعکس بدون khayyam:

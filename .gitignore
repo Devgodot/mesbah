@@ -3,3 +3,4 @@ instance/data.db
 env
 hash_list.json
 hash_list2.json
+server.log
