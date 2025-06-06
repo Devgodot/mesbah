@@ -166,6 +166,7 @@ func _ready() -> void:
 	if load_game("user_name") != "":
 		socket.connect_to_url("ws://shirinasalgame.ir")
 	current_user = load_game("current_user", 0)
+	print(current_user)
 	last_user = load_game("last_user", 0)
 	texture.z_index = 5
 	texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED

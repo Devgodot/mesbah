@@ -5,7 +5,8 @@ var user_label:Label
 var supporter_label:Label
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(Updatedate.current_user)
+	Updatedate.current_user = Updatedate.load_game("current_user", 0)
+	Updatedate.load_user()
 	$SystemBarColorChanger.set_navigation_bar_color(Color("e8ad31"))
 	if not Updatedate.load_game("management"):
 		$CustomTabContainer.add_tabs(null, $CustomTabContainer.get_child(3), 3)
