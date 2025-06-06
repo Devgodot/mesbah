@@ -24,3 +24,49 @@
 2025-06-06 15:44:41,634 WARNING D:\api_flask\env\Lib\site-packages\pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
   warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
 
+2025-06-06 16:10:06,692 WARNING D:\api_flask\env\Lib\site-packages\pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
+2025-06-06 16:10:09,142 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-06 16:10:09,142 INFO [33mPress CTRL+C to quit[0m
+2025-06-06 16:10:09,153 INFO  * Restarting with stat
+2025-06-06 16:10:12,190 WARNING D:\api_flask\env\Lib\site-packages\pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
+2025-06-06 16:10:13,667 WARNING  * Debugger is active!
+2025-06-06 16:10:13,673 INFO  * Debugger PIN: 463-280-465
+2025-06-06 16:11:13,605 INFO 127.0.0.1 - - [06/Jun/2025 16:11:13] "[35m[1mGET /ticket/check?user=5100276153 HTTP/1.1[0m" 500 -
+2025-06-06 16:11:18,833 INFO 127.0.0.1 - - [06/Jun/2025 16:11:18] "GET /ticket/check?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-06-06 16:11:19,863 INFO 127.0.0.1 - - [06/Jun/2025 16:11:19] "GET /ticket/check?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-06-06 16:11:20,111 INFO 127.0.0.1 - - [06/Jun/2025 16:11:20] "GET /ticket/check?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-06-06 16:11:20,123 INFO 127.0.0.1 - - [06/Jun/2025 16:11:20] "[36mGET /ticket/check?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-06-06 16:12:38,568 INFO  * Detected change in 'D:\\mesbahapi\\ticket.py', reloading
+2025-06-06 16:12:39,277 INFO  * Restarting with stat
+2025-06-06 16:12:43,676 WARNING D:\api_flask\env\Lib\site-packages\pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
+2025-06-06 16:12:45,474 WARNING  * Debugger is active!
+2025-06-06 16:12:45,480 INFO  * Debugger PIN: 463-280-465
+2025-06-06 16:12:46,045 INFO 127.0.0.1 - - [06/Jun/2025 16:12:46] "[35m[1mGET /ticket/check?user=5100276153 HTTP/1.1[0m" 500 -
+2025-06-06 16:12:46,340 INFO 127.0.0.1 - - [06/Jun/2025 16:12:46] "[36mGET /ticket/check?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-06-06 16:12:46,349 INFO 127.0.0.1 - - [06/Jun/2025 16:12:46] "[36mGET /ticket/check?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-06-06 16:12:46,368 INFO 127.0.0.1 - - [06/Jun/2025 16:12:46] "[36mGET /ticket/check?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-06-06 16:12:54,152 INFO  * Detected change in 'D:\\mesbahapi\\ticket.py', reloading
+2025-06-06 16:12:54,447 INFO  * Restarting with stat
+2025-06-06 16:12:58,621 WARNING D:\api_flask\env\Lib\site-packages\pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
+2025-06-06 16:13:00,594 WARNING  * Debugger is active!
+2025-06-06 16:13:00,607 INFO  * Debugger PIN: 463-280-465
+2025-06-06 16:13:11,829 INFO  * Detected change in 'D:\\mesbahapi\\ticket.py', reloading
+2025-06-06 16:13:12,752 INFO  * Restarting with stat
+2025-06-06 16:13:16,939 WARNING D:\api_flask\env\Lib\site-packages\pydub\utils.py:170: RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
+2025-06-06 16:13:19,016 WARNING  * Debugger is active!
+2025-06-06 16:13:19,030 INFO  * Debugger PIN: 463-280-465
+2025-06-06 16:13:22,091 INFO 127.0.0.1 - - [06/Jun/2025 16:13:22] "GET /ticket/check?user=5100276153 HTTP/1.1" 200 -
+2025-06-06 16:13:22,694 INFO 127.0.0.1 - - [06/Jun/2025 16:13:22] "GET /static/files/style/styles.css HTTP/1.1" 200 -
+2025-06-06 16:13:23,150 INFO 127.0.0.1 - - [06/Jun/2025 16:13:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-06 16:13:23,659 INFO 127.0.0.1 - - [06/Jun/2025 16:13:23] "GET /static/files/images/Background.jpg HTTP/1.1" 200 -

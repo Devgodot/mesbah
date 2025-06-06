@@ -250,11 +250,11 @@ def check():
             state["status"] = "کاربر بلیطی ندارد"
         else:
             state["status"] = "بلیط قبلاً استفاده شده"
-    current_user = User.get_user_by_username(user)
-    if current_user:
-        state["name"] = current_user.data("first_name", "")+" "+current_user.data.get("last_name", "")
+    _user = User.get_user_by_username(user)
+    if _user:
+        state["name"] = _user.data.get("first_name", "")+" "+_user.data.get("last_name", "")
         state["username"] = user
-        state["father"] = current_user.data.get("father_name", "")
+        state["father"] = _user.data.get("father_name", "")
         response = make_response(render_template("check_ticket.html", state=state), 200)
     else:
         return "کاربر وجود ندارد"
