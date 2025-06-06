@@ -111,7 +111,7 @@ func add_ticket():
 						$Panel.hide()
 						current_time = 0
 						Updatedate.save("start_ticket",str(message.current_time))
-						prints(Updatedate.load_game("start_ticket"), (message.current_time))
+						create_qur_code()
 						end_time = int(message.unixtime)- int(message.current_time)
 						date = message.unixtime
 						$Label4.text = message.time
