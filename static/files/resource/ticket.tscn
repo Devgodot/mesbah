@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4]
+[gd_scene load_steps=100 format=4]
 
 [ext_resource type="Script" uid="uid://bvnl22sdp8owp" path="res://script/ticket.gd" id="1_6agvo"]
 [ext_resource type="Texture2D" uid="uid://dj5xef8w04d18" path="res://sprite/بلیت قطار کودکانه.jpg" id="2_qxlgd"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://g76wq0x4awuw" path="res://sprite/flag2.png" id="25_vmlmn"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="26_655xk"]
 [ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="27_oaqcc"]
+[ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="28_qxlgd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vod7w"]
 bg_color = Color(1, 0.913725, 0.639216, 1)
@@ -879,6 +880,25 @@ _data = {
 &"panel": SubResource("Animation_aco6r")
 }
 
+[sub_resource type="Gradient" id="Gradient_h1f30"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_in2g2"]
+gradient = SubResource("Gradient_h1f30")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ywr16"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hmit"]
+bg_color = Color(0.172549, 0.6, 0.239216, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="ticket" type="Control"]
 clip_contents = true
 layout_mode = 3
@@ -939,10 +959,10 @@ vertical_alignment = 1
 [node name="NinePatchRect" type="TextureRect" parent="."]
 clip_children = 2
 layout_mode = 0
-offset_left = 107.0
-offset_top = 955.0
-offset_right = 301.0
-offset_bottom = 1149.0
+offset_left = 154.0
+offset_top = 957.0
+offset_right = 348.0
+offset_bottom = 1151.0
 texture = SubResource("GradientTexture2D_wp4qn")
 metadata/_edit_group_ = true
 
@@ -1175,7 +1195,7 @@ stream = SubResource("AudioStreamMP3_7l842")
 autoplay = true
 
 [node name="Tarh_ir" type="Sprite2D" parent="."]
-position = Vector2(878, 933)
+position = Vector2(102, 929)
 texture = ExtResource("19_orjrw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -1569,7 +1589,31 @@ libraries = {
 script = ExtResource("27_oaqcc")
 metadata/_custom_type_script = "uid://beu1imtnkq5ri"
 
+[node name="TextureRect3" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 751.0
+offset_top = 971.0
+offset_right = 911.0
+offset_bottom = 1131.0
+texture = SubResource("GradientTexture2D_in2g2")
+
+[node name="Button" type="Button" parent="TextureRect3"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 159.0
+offset_right = 149.0
+offset_bottom = 218.0
+theme_override_fonts/font = ExtResource("28_qxlgd")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ywr16")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0hmit")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0hmit")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0hmit")
+text = "ذخیره"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="TextureRect3/Button" to="." method="_on_savebutton_pressed"]
