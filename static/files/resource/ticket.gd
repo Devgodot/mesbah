@@ -178,5 +178,8 @@ func create_qur_code():
 
 
 func _on_file_dialog_file_selected(path: String) -> void:
+	if not OS.has_feature("android"):
+		if not OS.request_permissions():
+			print("Permission denied!")
 	$TextureRect3.texture.get_image().save_png(path)
 	Notification.add_notif("با موفقیت ذخیره شد.")
