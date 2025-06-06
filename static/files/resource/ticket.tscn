@@ -1614,8 +1614,12 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_0hmit")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0hmit")
 text = "ذخیره"
 
+[node name="FileDialog" type="FileDialog" parent="."]
+access = 2
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="TextureRect3/Button" to="." method="_on_savebutton_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
