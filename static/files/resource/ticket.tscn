@@ -1597,6 +1597,8 @@ offset_top = 971.0
 offset_right = 911.0
 offset_bottom = 1131.0
 texture = SubResource("GradientTexture2D_in2g2")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Button" type="Button" parent="TextureRect3"]
 layout_mode = 0
