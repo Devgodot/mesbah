@@ -854,12 +854,14 @@ func add_ticket():
 		for ticket in data:
 			var box = $"TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance".duplicate()
 			box.get_node("MarginContainer/VBoxContainer/BoxContainer/SpinBox").value = ticket.max_users
+			box.get_node("MarginContainer/VBoxContainer/BoxContainer/Label2").text = str("مسافران: ", int(ticket.users))
 			var btn = box.get_node("MarginContainer/VBoxContainer/HBoxContainer/Button")
 			var btn2 = box.get_node("MarginContainer/VBoxContainer/HBoxContainer/Button2")
 			var btn3 = box.get_node("MarginContainer/VBoxContainer/HBoxContainer/Button3")
 			var btn4 = box.get_node("MarginContainer/VBoxContainer/HBoxContainer/Button4")
 			var btn5 = box.get_node("MarginContainer/VBoxContainer/HBoxContainer/Button5")
 			var l = box.get_node("MarginContainer/VBoxContainer/HBoxContainer3/Label")
+			
 			l.text = "مشخصات : این قطار برای "+["پسر های", "دختر های", "افراد"][ticket.gender]+" با رده‌های سنی "
 			var tags = ["زیر شش سال", "اول تا سوم", "چهارم تا ششم", "هفتم تا نهم"]
 			for t in ticket.tag:
