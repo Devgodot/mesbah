@@ -7,7 +7,7 @@ from confige import db, app
 import time, uuid, os
 import datetime, json
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
-
+import jdatetime
 user_bp = Blueprint("users", __name__)
 from enum import Enum
 class HashingMode(Enum):
@@ -166,8 +166,8 @@ def event():
         users_sended_message = current_user.data.get("users_sended_message", [])
         if user is not None:
             message = user.data.get("message", [])
-            gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
-            jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
+            gregorian_date = datetime.datetime.now(TehranTimezone())  # تاریخ میلادی فعلی
+            jalali_date = gregorian_to_jalali(gregorian_date)  # تبدیل به تاریخ شمسی
             messager_neme = [" آقای", " خانم"][current_user.data.get("gender", 0)] + " " + current_user.data.get("first_name", "") + " " + current_user.data.get("last_name", "")
             message.append({"text":f"{messager_neme} شما را به عضویت در گروه {_name} دعوت کرده است. آیا این دعوت را می پذیرید؟ ", "data":{"group_name": _name, "time":str(jalali_date), "user":user.get_username()}, "time":time.time(), "id":str(uuid.uuid4()), "sender":"کاربر", "type":"join"})
             user.data = user.update(data={"message":message})
@@ -188,8 +188,8 @@ def user_request():
         users_sended_message = current_user.data.get("users_request", [])
         if user is not None:
             message = user.data.get("message", [])
-            gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
-            jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
+            gregorian_date = datetime.datetime.now(TehranTimezone())  # تاریخ میلادی فعلی
+            jalali_date = gregorian_to_jalali(gregorian_date)  # تبدیل به تاریخ شمسی
             _id = str(uuid.uuid4())
             messager_neme = [" آقای", " خانم"][current_user.data.get("gender", 0)] + " " + current_user.data.get("first_name", "") + " " + current_user.data.get("last_name", "") + " " + current_user.data.get("father_name", "")
             message.append({"text":f"{messager_neme} درخواست عضویت در گروه شما را دارد. آیا این درخواست را می پذیرید؟ پس از آن امکان حذف عضو وجود ندارد.", "data":{"group_name": _name, "time":str(jalali_date), "user":user.get_username()}, "time":time.time(), "id":_id, "sender":"کاربر", "type":"request"})
@@ -232,7 +232,7 @@ def update_user():
             user.data = user.update(data=request.get_json().get("data", {}))
             if request.get_json().get("birthday") is not None:
                 year, month, day = map(int, request.get_json().get("birthday", "1400/02/2").split("/"))
-                miladi_date = JalaliDatetime(year, month, day).todatetime()
+                miladi_date = jalali_to_gregorian(year, month, day).todatetime()
                 user.birthday = miladi_date
             # Get the data after the update
             new_data = user.data.copy()
@@ -283,8 +283,8 @@ def server_message():
     text = request.get_json().get("text", "")
     sound = request.get_json().get("sound")
     image = request.get_json().get("image")
-    gregorian_date = datetime.datetime.now()  # تاریخ میلادی فعلی
-    jalali_date = JalaliDatetime(gregorian_date)  # تبدیل به تاریخ شمسی
+    gregorian_date = datetime.datetime.now(TehranTimezone())  # تاریخ میلادی فعلی
+    jalali_date = gregorian_to_jalali(gregorian_date)  # تبدیل به تاریخ شمسی
     message_data = {"text": text, "data": {"time": str(jalali_date)}, "id": _id, "sender": "پشتیبانی", "type": "guid"}
     if sound:
         message_data["sound"] = sound
@@ -525,4 +525,14 @@ def user_message():
             db.session.add(seen_message)
     db.session.commit()
     return jsonify({"receiverId": message.receiverId, "add":add, "delete":remove})
+
+# تبدیل جلالی به میلادی
+def jalali_to_gregorian(jy, jm, jd, hour=0, minute=0):
+    gdate = jdatetime.datetime(jy, jm, jd, hour, minute).togregorian()
+    return gdate
+
+# تبدیل میلادی به جلالی
+def gregorian_to_jalali(dt):
+    jdate = jdatetime.datetime.fromgregorian(datetime=dt)
+    return jdate
 
