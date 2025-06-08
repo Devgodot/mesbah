@@ -236,12 +236,12 @@ def check():
             ticket.time = ticket.time.replace(tzinfo=TehranTimezone())
         seconds = (now.timestamp() - ticket.time.timestamp())
         if seconds < 0:
-            state["status"] = "هنوز زمان بلیط فرا نرسیده"
+            state["status"] = "می‌تواند استفاده شود"
         if seconds > 0:
             if seconds > 60 * 30:
                 state["status"] = "زمان بلیط منقضی شده"
             else:
-                state["status"] = "بلیط استفاده شد"
+                state["status"] = "می‌تواند استفاده شود"
                 use_ticket = UseTicket(id=user, season=season)
                 db.session.add(use_ticket)
                 db.session.commit()
@@ -259,7 +259,9 @@ def check():
     else:
         return "کاربر وجود ندارد"
     return response
-
+@ticket_bp.get("/use_ticket")
+def use_ticket():
+    return "استفاده شد"
 # راه دیگر برای تبدیل تاریخ جلالی به میلادی و بالعکس بدون khayyam:
 # استفاده از کتابخانه jdatetime (اگر نصب باشد)
 

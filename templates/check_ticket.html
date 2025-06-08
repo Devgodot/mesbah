@@ -1,30 +1,324 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="این سایت برای دانلود برنامه مصباح است">
-    <meta name="keywords" content="مصباح, دانلود برنامه مصباح, messbah, برنامه مذهبی, اپلیکیشن مذهبی">
-    <title>مصباح</title>
-    <link rel="stylesheet" href="/static/files/style/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <meta charset="UTF-8">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+    function useTicket() {
+    const username = "{{ state.username }}";
+    fetch(`/ticket/use_ticket?user=${username}`)
+        .then(response => {
+        if (response.ok) {
+            showConfettiMessage();
+        } else {
+            alert("خطا در استفاده از بلیط");
+        }
+        })
+        .catch(err => {
+        console.error(err);
+        alert("مشکلی در ارتباط با سرور به‌وجود آمد");
+        });
+    }
+
+    function showConfettiMessage() {
+    const message = document.getElementById("confetti-message");
+    message.style.display = 'block';
+
+    const duration = 3 * 1000;
+    const end = Date.now() + duration;
+
+    (function frame() {
+        confetti({
+        particleCount: 5,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+        });
+        confetti({
+        particleCount: 5,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+        });
+
+        if (Date.now() < end) {
+        requestAnimationFrame(frame);
+        }
+    })();
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+    const path = document.getElementById("rope-path");
+    const container = document.getElementById("banners-container");
+    const svg = document.getElementById("rope");
+
+    const flagCount = 5;
+    const totalLength = path.getTotalLength();
+
+    // نسبت‌های فاصله پرچم‌ها روی ریسه
+    const positions = [];
+    for (let i = 0; i < flagCount; i++) {
+        const fraction = (i + 1) / (flagCount + 1);
+        positions.push(fraction);
+
+        const banner = document.createElement("div");
+        banner.classList.add("banner");
+        banner.style.backgroundImage = "url('/static/files/app/1-74.png')";
+        banner.style.animationDelay = `${i * 0.2}s`;
+        container.appendChild(banner);
+    }
+
+    function updateBannerPositions() {
+        const svgRect = svg.getBoundingClientRect();
+        const scaleX = svgRect.width / svg.viewBox.baseVal.width;
+        const scaleY = svgRect.height / svg.viewBox.baseVal.height;
+
+        const banners = container.querySelectorAll(".banner");
+        positions.forEach((fraction, i) => {
+        const point = path.getPointAtLength(totalLength * fraction);
+        const x = point.x * scaleX;
+        const y = point.y * scaleY;
+
+        const banner = banners[i];
+        banner.style.left = `${x}px`;
+        banner.style.top = `${y + 10}px`;
+        });
+    }
+
+    // اجرا در ابتدا
+    updateBannerPositions();
+
+    // اجرا هنگام resize
+    window.addEventListener("resize", updateBannerPositions);
+    });
+    </script>
+  <title>عید غدیر خم</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@700&display=swap');
+
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Vazirmatn', sans-serif;
+    background: url('/static/files/app/1.png') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    }
+    .lights-line {
+      width: 100%;
+      height: 60px;
+      background: transparent;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 10px;
+    }
+
+    .light {
+      width: 20px;
+      height: 30px;
+      background: red;
+      border-radius: 50% 50% 40% 40%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      animation: blink 1.5s infinite ease-in-out alternate;
+    }
+    .light:nth-child(2) { background: orange; animation-delay: 0.3s; }
+    .light:nth-child(3) { background: yellow; animation-delay: 0.6s; }
+    .light:nth-child(4) { background: green; animation-delay: 0.9s; }
+    .light:nth-child(5) { background: red; animation-delay: 1.2s; }
+
+    @keyframes blink {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0.3; transform: scale(0.85); }
+    }
+
+    .banner-line {
+        position: relative;
+        width: 100%;
+        height: 150px;
+        overflow: visible;
+        }
+
+        .banner-line svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        color: rgba(0,0,0,0);
+        }
+
+        #banners-container {
+        position: absolute;
+        top: -25px;
+        left: 0;
+        width: 100%;
+        }
+
+        .banner {
+        width: 80px;
+        height: 100px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        position: absolute;
+        transform: translate(-50%, 0); /* مرکز چین شدن */
+        animation: sway 2s ease-in-out infinite alternate;
+        transform-origin: top center;
+        }
+
+        .banner::before {
+        content: '';
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        width: 2px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0);
+        transform: translateX(-50%);
+        }
+
+        @keyframes sway {
+        0%   { transform: translate(-50%, 0) rotate(-6deg); }
+        100% { transform: translate(-50%, 0) rotate(6deg); }
+        }
+    .title {
+      font-size: 38px;
+      margin: 20px 0;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 10px #8d44ff;
+    }
+
+    .center-figures {
+      margin: 30px 0;
+      height: 180px;
+      background: radial-gradient(circle at center, #fff 0%, #fff0 50%), url("https://i.imgur.com/T2t5nx5.png") no-repeat center;
+      background-size: contain;
+    }
+
+    .ticket-box {
+      background: linear-gradient(166deg, #005f2f, #08b619);
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px solid orange;
+      max-width: 400px;
+      width: 90%;
+      margin: 20px auto;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+    }
+    
+
+
+    .ticket-box h2 {
+      margin-bottom: 15px;
+      color: orange;
+    }
+
+    .ticket-box p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      border: 1px solid orange;
+      border-radius: 10px;
+      background-color: #0f4d21;
+    }
+    .use-ticket-btn {
+        padding: 10px 20px;
+        background-color: orange;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        }
+
+        .use-ticket-btn:hover {
+        background-color: darkorange;
+        }
+
+        #confetti-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff3;
+        color: #fff;
+        font-size: 32px;
+        padding: 30px 40px;
+        border-radius: 20px;
+        text-shadow: 0 0 8px #000;
+        z-index: 9999;
+        display: none;
+        }
+
+        #confetti-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9998;
+        }
+
+        .hidden {
+        display: none;
+        }
+  </style>
 </head>
 <body>
-    <div class="text">
-        <h1>بررسی وضعیت بلیط</h1>
-        <div class="info">
-            <p>نام و نام خانوادگی: {{state.name}}</p>
-            <p>نام پدر: {{state.father}}</p>
-            <p>کد ملی: {{state.username}}</p>
-        </div>
-        <div class="column">
-            <div class="box">
-                <p>وضعیت: {{state.status}} </p>
-            </div>
-        </div>
+
+  <div class="lights-line">
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+  </div>
+
+  <div class="banner-line">
+    <svg id="rope" viewBox="0 0 1000 120" preserveAspectRatio="none">
+        <path id="rope-path" d="M0,20 Q500,100 1000,20" stroke="black" stroke-width="2" fill="none" />
+    </svg>
+
+    <div id="banners-container"></div>
+  </div>
+
+  <div class="center-figures"></div>
+
+  <div class="ticket-box">
+    <h2>بررسی وضعیت بلیط</h2>
+    <p>نام و نام خانوادگی: {{state.name}}</p>
+    <p>نام پدر: {{state.father}}</p>
+    <p>کد ملی: {{state.username}}</p>
+    <div class="status">
+        {% if state.status == "می‌تواند استفاده شود" %}
+            <button class="use-ticket-btn" onclick="useTicket()">استفاده از بلیط</button>
+        {% else %}
+            <p>وضعیت: {{ state.status }}</p>
+        {% endif %}
     </div>
+  </div>
+  <!-- جای نمایش پیام موفقیت و انیمیشن -->
+    <div id="confetti-message" class="hidden">
+    <h1>بلیط استفاده شد 🎉</h1>
+    </div>
+    <canvas id="confetti-canvas"></canvas>
+
 </body>
 </html>
