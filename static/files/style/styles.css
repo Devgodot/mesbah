@@ -100,7 +100,15 @@ h1 {
     transition: box-shadow 0.3s ease-in-out;
     animation: boxGlow 2s infinite;
 }
-
+.info {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(10, 247, 243, 0.8); /* افزودن پس‌زمینه نیمه شفاف به باکس */
+    box-shadow: 0 0 10px rgba(10, 212, 247, 0.8), 0 0 20px rgba(10, 247, 235, 0.6);
+    transition: box-shadow 0.3s ease-in-out;
+    animation: boxGlow 2s infinite;
+}
 h2 {
     color: #4a4a4a;
     margin-bottom: 20px;
