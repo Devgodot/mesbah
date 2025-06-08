@@ -848,7 +848,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_s5p1w")
-current_tab = 2
+current_tab = 4
 transation = false
 separation_style = SubResource("StyleBoxEmpty_xpey2")
 panel_style = SubResource("StyleBoxFlat_ifxwq")
@@ -1775,6 +1775,7 @@ layout_mode = 2
 text = "حذف پیام"
 
 [node name="4" type="MarginContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2717,7 +2718,6 @@ text = "کد ملی:  5100276150"
 vertical_alignment = 1
 
 [node name="5" type="MarginContainer" parent="TabContainer"]
-visible = false
 layout_direction = 3
 layout_mode = 2
 anchor_right = 1.0
@@ -2874,7 +2874,6 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 40
 
 [node name="instance" type="PanelContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer"]
-visible = false
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 3
@@ -2939,7 +2938,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "تعداد : "
+text = "ظرفیت : "
 
 [node name="SpinBox" type="SpinBox" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer" groups=["spin"]]
 custom_minimum_size = Vector2(100, 80)
@@ -2959,6 +2958,11 @@ max_value = 500.0
 value = 1.0
 alignment = 1
 select_all_on_focus = true
+
+[node name="Label2" type="Label" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "مسافران: "
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
 layout_mode = 2
