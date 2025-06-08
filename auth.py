@@ -20,12 +20,6 @@ from datetime import datetime, timedelta
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
 import logging
 
-# تنظیمات لاگ‌گیری
-logging.basicConfig(
-    filename='server.log',  # نام فایل لاگ
-    level=logging.INFO,     # سطح لاگ (مثلاً INFO)
-    format='%(asctime)s %(levelname)s %(message)s'
-)
 
 cache = Cache(app, config={'CACHE_TYPE': 'SimpleCache'})
 auth_bp = Blueprint("auth", __name__)
@@ -263,7 +257,7 @@ def change_username():
                 refresh_token = create_refresh_token(identity=hashing(HashingMode.ENCODE, new_username))
                 return jsonify({"message":"با موفقیت تغییر کرد", "img":new_username+str(z)+".webp", "tokens":{"access": access_token, "refresh": refresh_token, "id": new_username}, "username":new_username})
             except Exception as e:
-                logging.info(e)
+                print(e)
         return jsonify({"error": "کاربری با این کدملی وجود دارد"}, 400)
     return jsonify({"error": "کدملی جدید را وارد کنید"}, 400)
 @auth_bp.get("/change_phone")
