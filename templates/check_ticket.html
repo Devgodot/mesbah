@@ -109,34 +109,6 @@
     align-items: center;
     justify-content: flex-start;
     }
-    .lights-line {
-      width: 100%;
-      height: 60px;
-      background: transparent;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 10px;
-    }
-
-    .light {
-      width: 20px;
-      height: 30px;
-      background: red;
-      border-radius: 50% 50% 40% 40%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      animation: blink 1.5s infinite ease-in-out alternate;
-    }
-    .light:nth-child(2) { background: orange; animation-delay: 0.3s; }
-    .light:nth-child(3) { background: yellow; animation-delay: 0.6s; }
-    .light:nth-child(4) { background: green; animation-delay: 0.9s; }
-    .light:nth-child(5) { background: red; animation-delay: 1.2s; }
-
-    @keyframes blink {
-      0% { opacity: 1; transform: scale(1); }
-      100% { opacity: 0.3; transform: scale(0.85); }
-    }
 
     .banner-line {
         position: relative;
@@ -216,8 +188,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-height: 50vh;
-      overflow-y: auto;
+      max-height: 40vh;
+      overflow-y: none;
       
     }
     
@@ -302,15 +274,6 @@
   </style>
 </head>
 <body>
-
-  <div class="lights-line">
-    <div class="light"></div>
-    <div class="light"></div>
-    <div class="light"></div>
-    <div class="light"></div>
-    <div class="light"></div>
-  </div>
-
   <div class="banner-line">
     <svg id="rope" viewBox="0 0 1000 120" preserveAspectRatio="none">
         <path id="rope-path" d="M0,20 Q500,100 1000,20" stroke="black" stroke-width="2" fill="none" />
