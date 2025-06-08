@@ -101,7 +101,9 @@
     font-family: 'Vazirmatn', sans-serif;
     background: url('/static/files/app/1.png') no-repeat center center fixed;
     background-size: cover;
+    overflow-x: hidden;
     min-height: 100vh;
+    max-height: 100vh; /* جلوگیری از اسکرول عمودی */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -214,6 +216,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      max-height: 50vh;
+      overflow-y: auto;
       
     }
     
