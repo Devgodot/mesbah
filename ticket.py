@@ -231,9 +231,8 @@ def check():
     state = {}
     if user_ticket and UseTicket.query.filter_by(id=user).first() is None:
         now = datetime.datetime.now(TehranTimezone())
-        if ticket.time.tzinfo is None:
-            ticket.time = ticket.time.replace(tzinfo=TehranTimezone())
         seconds = (now.timestamp() - ticket.time.timestamp())
+        
         if seconds < 0:
             state["status"] = "هنوز زمان بلیط فرا نرسیده"
         if seconds > 0:
