@@ -246,7 +246,7 @@ def upload_file():
             for filename in os.listdir(path):
                 if filename.startswith(group_name):
                     os.remove(os.path.join(path, filename))
-        if name.startswith(current_user.username):
+        if name.startswith(current_user.get_username()):
             for filename in os.listdir(path):
                 if filename.startswith(current_user.get_username()):
                     os.remove(os.path.join(path, filename))
