@@ -110,7 +110,12 @@ app.register_blueprint(ticket_bp, url_prefix="/ticket")
 def user_lookup_callback(_jwt_headers, jwt_data):
     identity = jwt_data["sub"]
     return User.query.filter_by(username=identity).first()
-
+@app.route("/publish_live")
+def publish():
+    return render_template("live.html")
+@app.route("/view_live")
+def view():
+    return redirect("http://45.138.135.82:5080/WebRTCApp/play.html?id=stream1")
 @app.route('/check_resource', methods=['POST'])
 def get_resource_index():
     data:dict= request.get_json().get("data", {})

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>مشاهده لایو</title>
+</head>
+<body style="background:black; text-align:center;">
+  <div id="video_container">
+    <video id="video-player" class="video-js vjs-default-skin vjs-big-play-centered" controls playsinline style="width:100%;max-width:600px;background:black"></video>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has('id')) params.set('id', 'stream1');
+    params.set('websocketUrl', 'ws://45.138.135.82:5080/WebRTCApp/websocket');
+    params.set('hlsUrl', 'http://45.138.135.82:5080/WebRTCApp/streams/stream1.m3u8');
+    // اگر پارامترها تغییر کرد، صفحه را با پارامتر جدید رفرش کن
+    if (window.location.search !== '?' + params.toString()) {
+      window.location.search = params.toString();
+    }
+  </script>
+  <!-- فقط بعد از ست شدن پارامترها پلیر را لود کن -->
+  <script type="module" src="http://45.138.135.82:5080/WebRTCApp/js/embedded-player.js"></script>
+</body>
+</html>
