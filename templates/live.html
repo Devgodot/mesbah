@@ -42,9 +42,8 @@
     <button onclick="toggleMic()">میکروفن</button>
   </div>
 
-  <script type="module">
-    import { WebRTCAdaptor } from "https://cdn.jsdelivr.net/npm/@antmedia/webrtc_adaptor@latest/dist/webrtc_adaptor.js";
-
+  <script src="https://cdn.jsdelivr.net/npm/@antmedia/webrtc_adaptor@latest/dist/webrtc_adaptor.js"></script>
+  <script>
     let streamId = "stream1";
     let webrtcAdaptor = null;
     let isMicOn = true;
@@ -95,7 +94,8 @@
       webrtcAdaptor.localStream.getAudioTracks()[0].enabled = isMicOn;
     }
 
-    navigator.mediaDevices.getUserMedia({audio:true}).then(s => console.log("ok")).catch(e => console.error(e))
+    // تست دسترسی میکروفن
+    navigator.mediaDevices.getUserMedia({audio:true}).then(s => console.log("ok")).catch(e => console.error(e));
   </script>
 </body>
 </html>
