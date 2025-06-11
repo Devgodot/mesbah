@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>پخش زنده</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      text-align: center;
+      margin: 0;
+      font-family: sans-serif;
+    }
+    video {
+      width: 100%;
+      max-height: 100vh;
+      background: black;
+    }
+    .controls {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+    }
+    button {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <video id="localVideo" autoplay muted playsinline></video>
+  <div class="controls">
+    <button onclick="startPublishing()">شروع لایو</button>
+    <button onclick="switchCamera()">تغییر دوربین</button>
+    <button onclick="toggleMic()">میکروفن</button>
+  </div>
+
+  <script type="module">
+    import { WebRTCAdaptor } from "http://45.138.135.82:5080/WebRTCApp/js/webrtc_adaptor.js";
+
+    let streamId = "stream1";
+    let webrtcAdaptor = null;
+    let isMicOn = true;
+    let currentCamera = "user";
+
+    function initWebRTCAdaptor() {
+      webrtcAdaptor = new WebRTCAdaptor({
+        websocket_url: (location.protocol === "https:" ? "wss://" : "ws://") + "45.138.135.82:" + (location.protocol === "https:" ? "5443" : "5080") + "/WebRTCApp/websocket",
+        localVideoId: "localVideo",
+        mediaConstraints: {
+          video: true,
+          audio: true
+        },
+        peerconnection_config: {
+          'iceServers': [{ 'urls': 'stun:stun.l.google.com:19302' }]
+        },
+        sdp_constraints: {
+          OfferToReceiveAudio: false,
+          OfferToReceiveVideo: false
+        },
+        callback: function(info) {
+          console.log("WebRTCAdaptor callback:", info);
+          if (info === "initialized") {
+            webrtcAdaptor.publish(streamId);
+          }
+          if (info === "publish_started") {
+            alert("استریم با موفقیت ارسال شد!");
+          }
+        },
+        callbackError: function(error) {
+          console.error("WebRTC Error:", error);
+          alert("خطا: " + JSON.stringify(error));
+        }
+      });
+    }
+
+    window.startPublishing = function() {
+      if (!webrtcAdaptor) {
+        initWebRTCAdaptor();
+      } else {
+        webrtcAdaptor.publish(streamId);
+      }
+    }
+
+    window.toggleMic = function() {
+      if (!webrtcAdaptor || !webrtcAdaptor.localStream) return;
+      isMicOn = !isMicOn;
+      webrtcAdaptor.localStream.getAudioTracks()[0].enabled = isMicOn;
+    }
+
+    navigator.mediaDevices.getUserMedia({audio:true}).then(s => console.log("ok")).catch(e => console.error(e))
+  </script>
+</body>
+</html>
