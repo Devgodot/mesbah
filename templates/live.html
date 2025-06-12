@@ -106,23 +106,26 @@
       currentCamera = (currentCamera === "user") ? "environment" : "user";
       if (webrtcAdaptor && webrtcAdaptor.localStream) {
         webrtcAdaptor.stop(streamId);
-        navigator.mediaDevices.getUserMedia({
-          video: { facingMode: currentCamera },
-          audio: {
-            echoCancellation: true,
-            noiseSuppression: true,
-            autoGainControl: true
-          }
-        }).then(stream => {
-          let videoTrack = stream.getVideoTracks()[0];
-          let sender = webrtcAdaptor.peerconnection.getSenders().find(s => s.track && s.track.kind === "video");
-          if (sender) sender.replaceTrack(videoTrack);
-          document.getElementById("localVideo").srcObject = stream;
-          webrtcAdaptor.localStream = stream;
-          setTimeout(() => {
-            webrtcAdaptor.publish(streamId);
-          }, 500);
-        }).catch(e => alert("دوربین مورد نظر پیدا نشد یا اجازه دسترسی داده نشد"));
+        setTimeout(() => {
+          navigator.mediaDevices.getUserMedia({
+            video: { facingMode: currentCamera },
+            audio: {
+              echoCancellation: true,
+              noiseSuppression: true,
+              autoGainControl: true
+            }
+          }).then(stream => {
+            let videoTrack = stream.getVideoTracks()[0];
+            let sender = webrtcAdaptor.peerconnection.getSenders().find(s => s.track && s.track.kind === "video");
+            if (sender) sender.replaceTrack(videoTrack);
+            document.getElementById("localVideo").srcObject = stream;
+            webrtcAdaptor.localStream = stream;
+            // تاخیر بیشتر برای اطمینان از آماده بودن PeerConnection
+            setTimeout(() => {
+              webrtcAdaptor.publish(streamId);
+            }, 1500);
+          }).catch(e => alert("دوربین مورد نظر پیدا نشد یا اجازه دسترسی داده نشد"));
+        }, 1000); // تاخیر بیشتر بعد از stop
       }
     }
 
