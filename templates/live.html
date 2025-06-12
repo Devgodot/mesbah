@@ -49,6 +49,7 @@
     let webrtcAdaptor = null;
     let isMicOn = true;
     let currentCamera = "user";
+    let isInitialized = false;
 
     function initWebRTCAdaptor() {
       webrtcAdaptor = new WebRTCAdaptor({
@@ -70,7 +71,10 @@
           OfferToReceiveVideo: false
         },
         callback: function(info) {
-          if (info === "initialized") webrtcAdaptor.publish(streamId);
+          if (info === "initialized") {
+            isInitialized = true;
+            document.querySelector('button[onclick="startPublishing()"]').disabled = false;
+          }
           if (info === "publish_started") alert("استریم با موفقیت ارسال شد!");
         },
         callbackError: function(error) {
@@ -80,6 +84,10 @@
     }
 
     window.startPublishing = function() {
+      if (!isInitialized) {
+        alert("لطفاً صبر کنید تا ارتباط آماده شود.");
+        return;
+      }
       if (!webrtcAdaptor) initWebRTCAdaptor();
       else webrtcAdaptor.publish(streamId);
     }
@@ -95,7 +103,7 @@
       if (webrtcAdaptor && webrtcAdaptor.localStream) {
         webrtcAdaptor.stop(streamId);
         navigator.mediaDevices.getUserMedia({
-          video: { facingMode: currentCamera }, // فقط facingMode ساده
+          video: { facingMode: currentCamera },
           audio: {
             echoCancellation: true,
             noiseSuppression: true,
@@ -107,10 +115,17 @@
           if (sender) sender.replaceTrack(videoTrack);
           document.getElementById("localVideo").srcObject = stream;
           webrtcAdaptor.localStream = stream;
-          webrtcAdaptor.publish(streamId);
+          setTimeout(() => {
+            webrtcAdaptor.publish(streamId);
+          }, 500);
         }).catch(e => alert("دوربین مورد نظر پیدا نشد یا اجازه دسترسی داده نشد"));
       }
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector('button[onclick="startPublishing()"]').disabled = true;
+      initWebRTCAdaptor();
+    });
   </script>
 </body>
 </html>
