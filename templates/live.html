@@ -93,11 +93,9 @@
     window.switchCamera = function() {
       currentCamera = (currentCamera === "user") ? "environment" : "user";
       if (webrtcAdaptor && webrtcAdaptor.localStream) {
-        // Stop current publishing
         webrtcAdaptor.stop(streamId);
-        // Get new stream with new camera
         navigator.mediaDevices.getUserMedia({
-          video: { facingMode: { exact: currentCamera } },
+          video: { facingMode: currentCamera }, // فقط facingMode ساده
           audio: {
             echoCancellation: true,
             noiseSuppression: true,
@@ -109,9 +107,8 @@
           if (sender) sender.replaceTrack(videoTrack);
           document.getElementById("localVideo").srcObject = stream;
           webrtcAdaptor.localStream = stream;
-          // Start publishing again
           webrtcAdaptor.publish(streamId);
-        }).catch(e => alert("دسترسی به دوربین جدید ممکن نشد"));
+        }).catch(e => alert("دوربین مورد نظر پیدا نشد یا اجازه دسترسی داده نشد"));
       }
     }
   </script>
