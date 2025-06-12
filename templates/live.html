@@ -42,8 +42,9 @@
     <button onclick="toggleMic()">میکروفن</button>
   </div>
 
-  <script src="http://45.138.135.82:5080/WebRTCApp/js/webrtc_adaptor.js"></script>
-  <script>
+  <script type="module">
+    import { WebRTCAdaptor } from "https://live.messbah403.ir:5443/WebRTCApp/js/webrtc_adaptor.js";
+
     let streamId = "stream1";
     let webrtcAdaptor = null;
     let isMicOn = true;
@@ -51,7 +52,7 @@
 
     function initWebRTCAdaptor() {
       webrtcAdaptor = new WebRTCAdaptor({
-        websocket_url: (location.protocol === "https:" ? "wss://" : "ws://") + "45.138.135.82:" + (location.protocol === "https:" ? "5443" : "5080") + "/WebRTCApp/websocket",
+        websocket_url: (location.protocol === "https:" ? "wss://" : "ws://") + "live.messbah403.ir:" + (location.protocol === "https:" ? "5443" : "5080") + "/WebRTCApp/websocket",
         localVideoId: "localVideo",
         mediaConstraints: {
           video: true,
@@ -94,8 +95,7 @@
       webrtcAdaptor.localStream.getAudioTracks()[0].enabled = isMicOn;
     }
 
-    // تست دسترسی میکروفن
-    navigator.mediaDevices.getUserMedia({audio:true}).then(s => console.log("ok")).catch(e => console.error(e));
+    navigator.mediaDevices.getUserMedia({audio:true}).then(s => console.log("ok")).catch(e => console.error(e))
   </script>
 </body>
 </html>
