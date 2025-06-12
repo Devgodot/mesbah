@@ -52,11 +52,15 @@
 
     function initWebRTCAdaptor() {
       webrtcAdaptor = new WebRTCAdaptor({
-        websocket_url: (location.protocol === "https:" ? "wss://" : "ws://") + "live.messbah403.ir:" + (location.protocol === "https:" ? "5443" : "5080") + "/WebRTCApp/websocket",
+        websocket_url: (location.protocol === "https:" ? "wss://" : "ws://") + location.hostname + ":" + (location.protocol === "https:" ? "5443" : "5080") + "/WebRTCApp/websocket",
         localVideoId: "localVideo",
         mediaConstraints: {
-          video: true,
-          audio: true
+          video: { facingMode: { exact: currentCamera } },
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true
+          }
         },
         peerconnection_config: {
           'iceServers': [{ 'urls': 'stun:stun.l.google.com:19302' }]
@@ -66,27 +70,18 @@
           OfferToReceiveVideo: false
         },
         callback: function(info) {
-          console.log("WebRTCAdaptor callback:", info);
-          if (info === "initialized") {
-            webrtcAdaptor.publish(streamId);
-          }
-          if (info === "publish_started") {
-            alert("استریم با موفقیت ارسال شد!");
-          }
+          if (info === "initialized") webrtcAdaptor.publish(streamId);
+          if (info === "publish_started") alert("استریم با موفقیت ارسال شد!");
         },
         callbackError: function(error) {
-          console.error("WebRTC Error:", error);
           alert("خطا: " + JSON.stringify(error));
         }
       });
     }
 
     window.startPublishing = function() {
-      if (!webrtcAdaptor) {
-        initWebRTCAdaptor();
-      } else {
-        webrtcAdaptor.publish(streamId);
-      }
+      if (!webrtcAdaptor) initWebRTCAdaptor();
+      else webrtcAdaptor.publish(streamId);
     }
 
     window.toggleMic = function() {
@@ -95,7 +90,25 @@
       webrtcAdaptor.localStream.getAudioTracks()[0].enabled = isMicOn;
     }
 
-    navigator.mediaDevices.getUserMedia({audio:true}).then(s => console.log("ok")).catch(e => console.error(e))
+    window.switchCamera = function() {
+      currentCamera = (currentCamera === "user") ? "environment" : "user";
+      if (webrtcAdaptor && webrtcAdaptor.localStream) {
+        navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { exact: currentCamera } },
+          audio: {
+            echoCancellation: true,
+            noiseSuppression: true,
+            autoGainControl: true
+          }
+        }).then(stream => {
+          let videoTrack = stream.getVideoTracks()[0];
+          let sender = webrtcAdaptor.peerconnection.getSenders().find(s => s.track && s.track.kind === "video");
+          if (sender) sender.replaceTrack(videoTrack);
+          document.getElementById("localVideo").srcObject = stream;
+          webrtcAdaptor.localStream = stream;
+        }).catch(e => alert("دسترسی به دوربین جدید ممکن نشد"));
+      }
+    }
   </script>
 </body>
 </html>
