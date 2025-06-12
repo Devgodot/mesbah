@@ -53,7 +53,7 @@
 
     function initWebRTCAdaptor() {
       webrtcAdaptor = new WebRTCAdaptor({
-        websocket_url: (location.protocol === "https:" ? "wss://" : "ws://") + "live.messbah403.ir" + ":" + (location.protocol === "https:" ? "5443" : "5080") + "/WebRTCApp/websocket",
+        websocket_url: (location.protocol === "https:" ? "wss://" : "ws://") + "live.messbah403.ir" + ":" + (location.protocol === "https:" ? "5443" : "5080") + "/live/websocket",
         localVideoId: "localVideo",
         mediaConstraints: {
           video: { facingMode: { exact: currentCamera } },
