@@ -115,7 +115,7 @@ def publish():
     return render_template("live.html")
 @app.route("/view_live")
 def view():
-    return redirect("http://45.138.135.82:5080/WebRTCApp/play.html?id=stream1")
+    return redirect("https://live.messbah403.ir/WebRTCApp/play.html?id=stream1")
 @app.route('/check_resource', methods=['POST'])
 def get_resource_index():
     data:dict= request.get_json().get("data", {})
