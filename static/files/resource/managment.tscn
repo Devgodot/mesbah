@@ -1,4 +1,4 @@
-[gd_scene load_steps=158 format=3]
+[gd_scene load_steps=170 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_8axuj"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_o6iub"]
@@ -31,6 +31,7 @@
 [ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="29_24ve5"]
 [ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="30_ibwys"]
 [ext_resource type="Texture2D" uid="uid://1gjx38igfvf" path="res://sprite/Layer 9.png" id="31_qvojr"]
+[ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="32_o6iub"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
 bg_color = Color(0.147672, 0.147672, 0.147672, 1)
@@ -922,8 +923,29 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="Shader" id="Shader_yox5y"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR.rgb = texture(TEXTURE, vec2(UV.x + TIME, UV.y)).rgb;
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gvrr"]
+shader = SubResource("Shader_yox5y")
+
 [sub_resource type="Gradient" id="Gradient_gaixw"]
-colors = PackedColorArray(1, 0.458824, 0, 1, 1, 1, 0, 1)
+offsets = PackedFloat32Array(0, 0.484429, 1)
+colors = PackedColorArray(1, 0.458824, 0, 1, 1, 1, 0, 1, 1, 0.266667, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_lengr"]
 gradient = SubResource("Gradient_gaixw")
@@ -959,6 +981,20 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_vbhef")
 font = ExtResource("30_ibwys")
 font_size = 55
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yox5y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gaixw"]
+bg_color = Color(0, 0.956863, 0.407843, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.956863, 0.407843, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+expand_margin_top = 17.0
+expand_margin_bottom = 17.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuysv"]
 bg_color = Color(0.196078, 0.6, 0.6, 1)
 border_width_left = 10
@@ -968,6 +1004,75 @@ border_width_bottom = 10
 border_color = Color(0, 0.958903, 0.407189, 1)
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkf1h"]
+bg_color = Color(0, 0.344087, 0.248388, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.294118, 0.8, 0.239216, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+shadow_size = 3
+shadow_offset = Vector2(-4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_suo8a"]
+bg_color = Color(0.760916, 0.14909, 0.056418, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.864056, 0.632471, 0, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+shadow_size = 3
+shadow_offset = Vector2(-4, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0gvrr"]
+font = ExtResource("32_o6iub")
+font_size = 70
+
+[sub_resource type="FontVariation" id="FontVariation_scs5k"]
+base_font = ExtResource("30_ibwys")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ceog8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ak4m7"]
+bg_color = Color(0.27451, 0.823529, 0.6, 1)
+border_width_top = 20
+border_width_bottom = 20
+border_color = Color(1.34766e-06, 0.998142, 0.462613, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3374n"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 20
+border_width_bottom = 20
+border_color = Color(0.588595, 0.834852, 1, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p01m0"]
 blend_mode = 2
@@ -3462,6 +3567,8 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lengr")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Panel/Panel"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_0gvrr")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3555,8 +3662,10 @@ custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
 text = "ذخیره"
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="Panel2" type="TabContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(700, 1000)
+layout_direction = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -3569,10 +3678,58 @@ offset_right = 350.0
 offset_bottom = 500.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_yox5y")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_gaixw")
 theme_override_styles/panel = SubResource("StyleBoxFlat_nuysv")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_qkf1h")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_qkf1h")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_suo8a")
+current_tab = 0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel2"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "مخاطبین"
+label_settings = SubResource("LabelSettings_0gvrr")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="Panel2/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_scs5k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ceog8")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ak4m7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_3374n")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_ak4m7")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_3374n")
+toggle_mode = true
+text = "نام: محمدحسین حق شناس حسن
+              کدملی: 5100276150"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel2"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-visible = false
 material = SubResource("CanvasItemMaterial_p01m0")
 layout_mode = 1
 anchors_preset = 15
@@ -3587,7 +3744,7 @@ mouse_target = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1000, 2000)
-render_target_update_mode = 0
+render_target_update_mode = 4
 
 [node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport"]
 anchors_preset = 15
