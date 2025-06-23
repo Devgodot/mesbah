@@ -150,7 +150,10 @@ class Ticket(db.Model):
 class Score(db.Model):
     gender = Column(Integer, nullable=False, primary_key=True)
     year = Column(Integer, nullable=False, primary_key=True)
-    scores = Column(JSON, nullable=False, default=[{}, {}, {}, {}, {}, {}, {"5100276150":[{"score": 10, "tag": "ramezan1403", "part": 1}]}])
+    name = Column(String(256), nullable=False)
+    tag = Column(String(256), nullable=False)
+    sort = Column(Integer, nullable=False)
+    score = Column(Integer, nullable=False)
     group = Column(Boolean, nullable=False, default=False)
 class TokenBlocklist(db.Model):
     id = db.Column(Integer, primary_key=True)
