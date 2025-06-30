@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=3]
+[gd_scene load_steps=137 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_d553l"]
 [ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_pup0w"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://df4ut7g6r8nwh" path="res://sprite/مصباح1.png" id="22_14pln"]
 [ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="23_q54r6"]
 [ext_resource type="Texture2D" uid="uid://d1hp2ojy3bvqc" path="res://sprite/Layer 8.png" id="24_cu1t2"]
+[ext_resource type="Texture2D" uid="uid://bqjypbnu44t5o" path="res://sprite/Layer 2.png" id="24_pup0w"]
 [ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="25_lfobt"]
 [ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="26_0yrpj"]
 [ext_resource type="Texture2D" uid="uid://txty07sw0wdc" path="res://sprite/170259461.jpg" id="27_olbi6"]
@@ -405,6 +406,68 @@ font_focus_color = Color(0, 0, 1, 1)
 outline_size = 10.0
 font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
+
+[sub_resource type="Shader" id="Shader_6hmx6"]
+code = "shader_type canvas_item;
+uniform sampler2D pattern : repeat_enable;
+uniform float scale=1.0;
+uniform vec4 back_color:source_color;
+uniform vec4 fore_color:source_color;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec4 color = texture(pattern, UV * scale);
+	if (color.r >= 0.9 && color.g >= 0.9 && color.b >= 0.9){
+		color.rgb = back_color.rgb;
+	}else{
+		color.rgb = fore_color.rgb;
+	}
+	vec4 tex = texture(TEXTURE, UV);
+	COLOR = color;
+	COLOR.a = tex.a;
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ya0au"]
+shader = SubResource("Shader_6hmx6")
+shader_parameter/pattern = ExtResource("24_pup0w")
+shader_parameter/scale = 3.08
+shader_parameter/back_color = Color(0.909804, 0.678431, 0.192157, 1)
+shader_parameter/fore_color = Color(0.841721, 0.613919, 0.0967172, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ya0au"]
+texture = ExtResource("24_pup0w")
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gyww"]
+draw_center = false
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(1, 0.758087, 0.116056, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 50.0
+expand_margin_top = 50.0
+expand_margin_right = 50.0
+expand_margin_bottom = 50.0
+anti_aliasing_size = 4.068
 
 [sub_resource type="LabelSettings" id="LabelSettings_cdrmf"]
 font = ExtResource("23_q54r6")
@@ -1324,8 +1387,19 @@ theme_override_constants/margin_bottom = 100
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="CustomTabContainer/MarginContainer"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ya0au")
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_728ow")
+theme_override_styles/panel = SubResource("StyleBoxTexture_ya0au")
+
+[node name="Panel" type="Panel" parent="CustomTabContainer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0gyww")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CustomTabContainer/MarginContainer/Panel"]
 layout_mode = 2
