@@ -3548,11 +3548,12 @@ script = SubResource("GDScript_t0m0i")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_right = 125.0
-offset_bottom = 128.0
+anchor_right = 0.125
+anchor_bottom = 0.064
 icon = ExtResource("26_v8355")
 flat = true
 expand_icon = true
+metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 visible = false
