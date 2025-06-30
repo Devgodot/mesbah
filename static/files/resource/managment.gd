@@ -8,7 +8,10 @@ var groups = []
 var upload_request = HTTPRequest.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	$"TabContainer/1/TabContainer".set_tab_title(0, "تغییر برنامه")
+	$"TabContainer/1/TabContainer".set_tab_title(1, "تعریف برنامه")
+	$"TabContainer/1/TabContainer".set_tab_title(2, "رتبه بندی")
+
 	$SystemBarColorChanger.set_navigation_bar_color(Color("e9c93a"))
 	RenderingServer.set_default_clear_color(Color("e9c93a"))
 	add_child(upload_request)
