@@ -1283,13 +1283,17 @@ height = 250.0
 options = Array[ExtResource("21_qmjwg")]([SubResource("Resource_vdf25"), SubResource("Resource_i5q5x")])
 
 [node name="MarginContainer" type="MarginContainer" parent="CustomTabContainer"]
-layout_mode = 0
-offset_right = 1000.0
-offset_bottom = 1722.0
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.919872
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
+metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="CustomTabContainer/MarginContainer"]
 layout_mode = 2
