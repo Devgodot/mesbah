@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=3]
+[gd_scene load_steps=179 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_o6iub"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_emebq"]
@@ -20,15 +20,15 @@
 [ext_resource type="Texture2D" uid="uid://cewt88obxmh61" path="res://sprite/1159012.png" id="18_2gup8"]
 [ext_resource type="Texture2D" uid="uid://c11cmfbcs816o" path="res://sprite/115901.png" id="19_5lcq2"]
 [ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="20_p23ap"]
-[ext_resource type="Texture2D" uid="uid://cnh2id2fbbp6v" path="res://sprite/Layer 7.png" id="21_k6e4a"]
-[ext_resource type="PackedScene" uid="uid://ccq5uf2d3qap4" path="res://scenes/music_player.tscn" id="22_bs4x5"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="23_8v0jw"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="24_djfn7"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="25_2ww4m"]
-[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="26_v8355"]
-[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="27_n6j6v"]
-[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="28_24ve5"]
-[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="29_ibwys"]
+[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="21_k6e4a"]
+[ext_resource type="Texture2D" uid="uid://cnh2id2fbbp6v" path="res://sprite/Layer 7.png" id="22_bs4x5"]
+[ext_resource type="PackedScene" uid="uid://ccq5uf2d3qap4" path="res://scenes/music_player.tscn" id="23_8v0jw"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="24_djfn7"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="25_2ww4m"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="26_v8355"]
+[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="27_n6j6v"]
+[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="28_24ve5"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="29_ibwys"]
 [ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="30_qvojr"]
 [ext_resource type="Texture2D" uid="uid://1gjx38igfvf" path="res://sprite/Layer 9.png" id="31_5rmpm"]
 [ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="32_m406k"]
@@ -102,7 +102,7 @@ border_color = Color(0.819608, 0.780392, 0.411765, 1)
 fallbacks = Array[Font]([ExtResource("3_s5p1w")])
 base_font = ExtResource("2_emebq")
 
-[sub_resource type="Image" id="Image_tn6pw"]
+[sub_resource type="Image" id="Image_yox5y"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 76, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 99, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 99, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 122, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 53, 255, 255, 255, 181, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 54, 255, 255, 255, 182, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 121, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 98, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 98, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 75, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -112,7 +112,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_sq7qb"]
-image = SubResource("Image_tn6pw")
+image = SubResource("Image_yox5y")
 
 [sub_resource type="FontVariation" id="FontVariation_adnmk"]
 fallbacks = Array[Font]([ExtResource("3_s5p1w")])
@@ -300,7 +300,7 @@ text = "بلیط‌ها"
 metadata/_custom_type_script = "uid://cnn7hb10qab7t"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qinyn"]
-bg_color = Color(0, 0.713726, 0.431373, 0.694118)
+bg_color = Color(0.776471, 0.352941, 0, 0.694118)
 border_width_left = 20
 border_width_top = 20
 border_width_right = 20
@@ -330,6 +330,16 @@ shadow_size = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gvrr"]
 bg_color = Color(1, 0.333333, 0.192157, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.743241, 0.455921, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ek2el"]
 
@@ -397,7 +407,58 @@ OptionButton/styles/pressed_mirrored = SubResource("StyleBoxFlat_aqyui")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_qpdhs")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_p01m0")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gvrr"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p01m0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgef1"]
+bg_color = Color(0, 0.572549, 0.215686, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0.807843, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfu3h"]
+bg_color = Color(0.136826, 0.136826, 0.136826, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pa2oh"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yox5y"]
 bg_color = Color(0.72549, 0.596078, 0.227451, 1)
@@ -428,6 +489,14 @@ border_width_bottom = 10
 border_color = Color(0, 0.658824, 0, 1)
 border_blend = true
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yox5y"]
+shader = ExtResource("21_k6e4a")
+shader_parameter/lod = 3.686
+shader_parameter/mix_percentage = 0.479
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qdlj"]
+bg_color = Color(0, 0.408586, 0.0281605, 1)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7usrt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6yag"]
@@ -445,22 +514,22 @@ shadow_size = 2
 shadow_offset = Vector2(-1, 2)
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_jqayc"]
-script = ExtResource("23_8v0jw")
+script = ExtResource("24_djfn7")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_vvjsb"]
-script = ExtResource("24_djfn7")
+script = ExtResource("25_2ww4m")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_kwwa8"]
-script = ExtResource("23_8v0jw")
+script = ExtResource("24_djfn7")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_jonc0"]
-script = ExtResource("23_8v0jw")
+script = ExtResource("24_djfn7")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_4a18m"]
-script = ExtResource("23_8v0jw")
+script = ExtResource("24_djfn7")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_y4oku"]
-script = ExtResource("24_djfn7")
+script = ExtResource("25_2ww4m")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4l8q"]
 bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
@@ -775,7 +844,7 @@ border_color = Color(0.819608, 0.780392, 0.411765, 1)
 fallbacks = Array[Font]([ExtResource("3_s5p1w")])
 base_font = ExtResource("2_emebq")
 
-[sub_resource type="Image" id="Image_ehjoa"]
+[sub_resource type="Image" id="Image_nfu3h"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 76, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 99, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 99, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 122, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 53, 255, 255, 255, 181, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 86, 255, 255, 255, 22, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 22, 255, 255, 255, 86, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 71, 255, 255, 255, 191, 255, 255, 255, 171, 255, 255, 255, 36, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 36, 255, 255, 255, 171, 255, 255, 255, 191, 255, 255, 255, 71, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 12, 255, 255, 255, 142, 255, 255, 255, 191, 255, 255, 255, 181, 255, 255, 255, 53, 255, 255, 255, 54, 255, 255, 255, 182, 255, 255, 255, 191, 255, 255, 255, 142, 255, 255, 255, 12, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 4, 255, 255, 255, 121, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 121, 255, 255, 255, 4, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 98, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 98, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 75, 255, 255, 255, 75, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -785,7 +854,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_gcgbg"]
-image = SubResource("Image_ehjoa")
+image = SubResource("Image_nfu3h")
 
 [sub_resource type="FontVariation" id="FontVariation_e7st4"]
 fallbacks = Array[Font]([ExtResource("3_s5p1w")])
@@ -859,7 +928,7 @@ TextEdit/styles/normal = SubResource("StyleBoxFlat_gtdme")
 
 [sub_resource type="Theme" id="Theme_ss823"]
 Label/font_sizes/font_size = 10
-Label/fonts/font = ExtResource("27_n6j6v")
+Label/fonts/font = ExtResource("28_24ve5")
 RichTextLabel/font_sizes/normal_font_size = 15
 RichTextLabel/fonts/normal_font = ExtResource("2_emebq")
 
@@ -881,10 +950,10 @@ corner_radius_bottom_left = 40
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8a5fb"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_yb7qp"]
-script = ExtResource("23_8v0jw")
+script = ExtResource("24_djfn7")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gbj5b"]
-script = ExtResource("24_djfn7")
+script = ExtResource("25_2ww4m")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pu2s7"]
 
@@ -903,7 +972,7 @@ shadow_size = 2
 shadow_offset = Vector2(-1, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vxsci"]
-shader = ExtResource("29_ibwys")
+shader = ExtResource("21_k6e4a")
 shader_parameter/lod = 1.122
 shader_parameter/mix_percentage = 0.415
 
@@ -980,6 +1049,56 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_vbhef")
 [sub_resource type="LabelSettings" id="LabelSettings_qkf1h"]
 font = ExtResource("30_qvojr")
 font_size = 55
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3wmy"]
+bg_color = Color(0.767368, 0.187067, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.859727, 0.882998, 0.434286, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 3
+shadow_offset = Vector2(-2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yitax"]
+bg_color = Color(6.257e-07, 0.518, 0.338823, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.239216, 0.882353, 0.435294, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 3
+shadow_offset = Vector2(-2, 2)
+
+[sub_resource type="Theme" id="Theme_dgef1"]
+Button/styles/hover_mirrored = SubResource("StyleBoxFlat_a3wmy")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_yitax")
+Button/styles/normal_mirrored = SubResource("StyleBoxFlat_a3wmy")
+Button/styles/pressed_mirrored = SubResource("StyleBoxFlat_yitax")
+LineEdit/constants/outline_size = 0
+LineEdit/font_sizes/font_size = 42
+LineEdit/fonts/font = ExtResource("20_p23ap")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_ek2el")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_0gvrr")
+OptionButton/fonts/font = ExtResource("20_p23ap")
+OptionButton/styles/focus = SubResource("StyleBoxEmpty_ek2el")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxFlat_ceog8")
+OptionButton/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_l6ki0")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_scs5k")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxFlat_ceog8")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxFlat_aqyui")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_qpdhs")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_p01m0")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yox5y"]
 
@@ -1626,10 +1745,18 @@ vertical_alignment = 1
 layout_direction = 3
 layout_mode = 2
 theme = SubResource("Theme_qpdhs")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_0gvrr")
 theme_override_styles/panel = SubResource("StyleBoxEmpty_p01m0")
-current_tab = 0
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_dgef1")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_nfu3h")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_pa2oh")
+tab_alignment = 1
+current_tab = 1
+drag_to_rearrange_enabled = true
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/1/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 10
@@ -1781,9 +1908,133 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_oaudm")
 text = "+"
 
 [node name="MarginContainer2" type="MarginContainer" parent="TabContainer/1/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+metadata/_tab_index = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/1/TabContainer/MarginContainer2"]
+material = SubResource("ShaderMaterial_yox5y")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qdlj")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "نام طرح : "
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "زیر عناوین"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="instance" type="PanelContainer" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_gpp5r")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/instance"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "عنوان: سلامت معنوی"
+
+[node name="Label2" type="Label" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "مربیان: محمد حسین، سعید، ..."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "حد الماس: "
+
+[node name="SpinBox" type="SpinBox" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer" groups=["spin"]]
+custom_minimum_size = Vector2(200, 70)
+layout_mode = 2
+min_value = 1.0
+max_value = 100000.0
+value = 99999.0
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+text = "حذف"
+
+[node name="Button2" type="Button" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "تغییر مربیان"
+
+[node name="add" type="Button" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 71
+theme_override_styles/focus = SubResource("StyleBoxEmpty_scs5k")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_oaudm")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_oaudm")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_oaudm")
+text = "+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 95
+alignment = 1
+
+[node name="Button" type="Button" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+text = "ذخیره"
+
+[node name="Button2" type="Button" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 2
+text = "دوباره"
 
 [node name="MarginContainer3" type="MarginContainer" parent="TabContainer/1/TabContainer"]
 visible = false
@@ -1898,7 +2149,7 @@ text = "تصویر : "
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_vertical = 4
-icon = ExtResource("21_k6e4a")
+icon = ExtResource("22_bs4x5")
 icon_alignment = 1
 expand_icon = true
 
@@ -1922,11 +2173,11 @@ custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7usrt")
-icon = ExtResource("21_k6e4a")
+icon = ExtResource("22_bs4x5")
 icon_alignment = 1
 expand_icon = true
 
-[node name="PanelContainer" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4" instance=ExtResource("22_bs4x5")]
+[node name="PanelContainer" parent="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4" instance=ExtResource("23_8v0jw")]
 visible = false
 layout_mode = 2
 
@@ -3299,7 +3550,7 @@ script = SubResource("GDScript_t0m0i")
 layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
-icon = ExtResource("25_2ww4m")
+icon = ExtResource("26_v8355")
 flat = true
 expand_icon = true
 
@@ -3408,7 +3659,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("26_v8355")
+texture = ExtResource("27_n6j6v")
 
 [node name="MarginContainer" type="MarginContainer" parent="Window"]
 anchors_preset = 15
@@ -3534,9 +3785,10 @@ text = "1403-05-02 12:05:15"
 horizontal_alignment = 2
 
 [node name="SystemBarColorChanger" type="Node" parent="."]
-script = ExtResource("28_24ve5")
+script = ExtResource("29_ibwys")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_vxsci")
 custom_minimum_size = Vector2(700, 1000)
 layout_direction = 3
@@ -3678,16 +3930,18 @@ offset_right = 350.0
 offset_bottom = 500.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_dgef1")
 theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_yox5y")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_gaixw")
 theme_override_styles/panel = SubResource("StyleBoxFlat_nuysv")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_qkf1h")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_qkf1h")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_suo8a")
-current_tab = 0
+current_tab = 1
 metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel2"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 0
@@ -3695,24 +3949,46 @@ theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel2/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel2/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "مربیان"
+label_settings = SubResource("LabelSettings_0gvrr")
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_scs5k")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ceog8")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ak4m7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_3374n")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_ak4m7")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_3374n")
+toggle_mode = true
+text = "نام: محمدحسین حق شناس حسن
+              کدملی: 5100276150"
+
+[node name="Label" type="Label" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 text = "مخاطبین"
 label_settings = SubResource("LabelSettings_0gvrr")
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel2/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer/VBoxContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="Panel2/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_scs5k")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ceog8")
@@ -3725,9 +4001,143 @@ text = "نام: محمدحسین حق شناس حسن
               کدملی: 5100276150"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Panel2"]
-visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
 metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BoxContainer2" type="BoxContainer" parent="Panel2/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel2/MarginContainer2/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "جستجو بر اساس : "
+
+[node name="OptionButton" type="OptionButton" parent="Panel2/MarginContainer2/VBoxContainer/BoxContainer2"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "نام"
+popup/item_0/id = 0
+popup/item_1/text = "کد ملی"
+popup/item_1/id = 1
+popup/item_2/text = "شماره تلفن"
+popup/item_2/id = 2
+
+[node name="BoxContainer" type="HBoxContainer" parent="Panel2/MarginContainer2/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="search" type="LineEdit" parent="Panel2/MarginContainer2/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+alignment = 1
+select_all_on_focus = true
+
+[node name="Button" type="Button" parent="Panel2/MarginContainer2/VBoxContainer/BoxContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "جستجو"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel2/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="instance" type="PanelContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_qinyn")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="BoxContainer" type="BoxContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+bbcode_enabled = true
+custom_effects = [SubResource("RichTextEffect_jqayc"), SubResource("RichTextEffect_vvjsb")]
+
+[node name="BoxContainer2" type="BoxContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن: 09999876739 "
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:  5100276150"
+vertical_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+toggle_mode = true
+text = "انتخاب"
+
+[node name="Button2" type="Button" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+toggle_mode = true
+text = "افزودن به مخابین"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
