@@ -299,10 +299,10 @@ expand_margin_bottom = 50.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1pfr"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6hmx6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ya0au"]
 viewport_path = NodePath("SubViewport5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ya0au"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
 viewport_path = NodePath("SubViewport6")
 
 [sub_resource type="Resource" id="Resource_ya0au"]
@@ -323,7 +323,7 @@ modulate_color = Color(0.447059, 1, 0.266667, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2gfuy"]
 texture = ExtResource("20_qmjwg")
 
-[sub_resource type="Resource" id="Resource_2gfuy"]
+[sub_resource type="Resource" id="Resource_yoxka"]
 resource_local_to_scene = true
 script = ExtResource("19_wx5k3")
 arrow_icon = ExtResource("18_h770b")
@@ -331,8 +331,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_6hmx6")
-icon_unselected = SubResource("ViewportTexture_ya0au")
+icon_selected = SubResource("ViewportTexture_ya0au")
+icon_unselected = SubResource("ViewportTexture_0gyww")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -539,10 +539,10 @@ font_size = 37
 outline_size = 5
 outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xekfo"]
 viewport_path = NodePath("SubViewport5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xam4k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ypgks"]
 viewport_path = NodePath("SubViewport6")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ya0au"]
@@ -573,7 +573,7 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 anti_aliasing_size = 6.627
 
-[sub_resource type="Resource" id="Resource_yoxka"]
+[sub_resource type="Resource" id="Resource_ycbhe"]
 resource_local_to_scene = true
 script = ExtResource("19_wx5k3")
 arrow_icon = ExtResource("18_h770b")
@@ -581,8 +581,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_0gyww")
-icon_unselected = SubResource("ViewportTexture_xam4k")
+icon_selected = SubResource("ViewportTexture_xekfo")
+icon_unselected = SubResource("ViewportTexture_ypgks")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -681,13 +681,13 @@ outline_size = 10.0
 font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xekfo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5xbah"]
 viewport_path = NodePath("SubViewport7")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ypgks"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_pxum8"]
 viewport_path = NodePath("SubViewport8")
 
-[sub_resource type="Resource" id="Resource_ycbhe"]
+[sub_resource type="Resource" id="Resource_mrvu1"]
 resource_local_to_scene = true
 script = ExtResource("19_wx5k3")
 arrow_icon = ExtResource("18_h770b")
@@ -695,8 +695,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_xekfo")
-icon_unselected = SubResource("ViewportTexture_ypgks")
+icon_selected = SubResource("ViewportTexture_5xbah")
+icon_unselected = SubResource("ViewportTexture_pxum8")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -1426,7 +1426,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_x1pfr")
 [node name="Control" parent="CustomTabContainer/MarginContainer2/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_2bsga")]
 layout_mode = 2
 active = true
-base_button = SubResource("Resource_2gfuy")
+base_button = SubResource("Resource_yoxka")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
@@ -1437,6 +1437,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.919872
+offset_bottom = -0.000366211
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 100
@@ -1534,7 +1535,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_2bsga")]
 layout_mode = 2
-base_button = SubResource("Resource_yoxka")
+base_button = SubResource("Resource_ycbhe")
 subpanel_style = SubResource("StyleBoxEmpty_5xbah")
 panel_style = SubResource("StyleBoxEmpty_pxum8")
 height = 250.0
@@ -1542,7 +1543,7 @@ options = Array[ExtResource("21_14pln")]([SubResource("Resource_q1j5q"), SubReso
 
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_2bsga")]
 layout_mode = 2
-base_button = SubResource("Resource_ycbhe")
+base_button = SubResource("Resource_mrvu1")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0

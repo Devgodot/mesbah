@@ -6,8 +6,8 @@ signal end_download
 var save_path = "user://data.cfg"
 var token = ""
 var id = ""
-var protocol = "https://"
-var subdomin = "messbah403.ir"
+var protocol = "http://"
+var subdomin = "127.0.0.1:5000"
 var part = 0
 var gallary_part = ""
 var current_user = 0
@@ -157,7 +157,9 @@ func get_cost(_id):
 	else:
 		return 0
 func _ready() -> void:
-	
+	if OS.get_name() != "Windows":
+		protocol = "https://"
+		subdomin = "messbah403.ir"
 	get_tree().get_root().window_input.connect(func(event):
 		if event is InputEventScreenTouch:
 			if get_global_mouse_position().x < 0 or get_global_mouse_position().y < 0:
