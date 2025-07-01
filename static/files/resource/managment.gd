@@ -1005,3 +1005,16 @@ func add_ticket():
 				)
 			$"TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer".add_child(box)
 	w.queue_free()
+
+
+func _on_save_plan_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_clear_button_pressed() -> void:
+	pass # Replace with function body.
+
+func _remove_child(child, filter_name=["instance", "add"]):
+	for n in child.get_children():
+		if n.name not in filter_name:
+			n.queue_free()
