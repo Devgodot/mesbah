@@ -181,11 +181,12 @@ class UserSeenMessages(db.Model):
     def __repr__(self):
         return f"<UserSeenMessages(user_id='{self.user_id}', message_id='{self.message_id}')>"
 class Planes(db.Model):
-    name = Column(String(256), primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True)
+    name = Column(String(256), nullable=False)
     subplan = Column(String(256), nullable=False)
     editors = Column(JSON(), default=[])
     diamond_range = Column(Integer, default=1)
-    year = Column(Integer, default=datetime.now(TehranTimezone()).year)
+    year = Column(String(4), default=str(datetime.now(TehranTimezone()).year))
 class UserEditLog(db.Model):
     __tablename__ = 'user_edit_log'
     id = Column(Integer, primary_key=True)
