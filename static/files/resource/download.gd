@@ -39,7 +39,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	$CPUParticles2D.position = size / 2
 	if add_dots:
 		add_dots = false
 		dots += "." 
