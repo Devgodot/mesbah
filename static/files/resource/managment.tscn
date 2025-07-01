@@ -1938,7 +1938,8 @@ layout_mode = 2
 layout_mode = 2
 text = "نام طرح : "
 
-[node name="LineEdit" type="LineEdit" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="plan" type="LineEdit" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -2013,6 +2014,7 @@ layout_mode = 2
 text = "تغییر مربیان"
 
 [node name="add" type="Button" parent="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 71
 theme_override_styles/focus = SubResource("StyleBoxEmpty_scs5k")
@@ -4173,6 +4175,8 @@ texture = SubResource("GradientTexture2D_0gvrr")
 texture_scale = 6.81
 
 [connection signal="tab_selected" from="TabContainer" to="." method="_on_tab_container_tab_selected"]
+[connection signal="pressed" from="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Button" to="." method="_on_save_plan_pressed"]
+[connection signal="pressed" from="TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Button2" to="." method="_on_clear_button_pressed"]
 [connection signal="pressed" from="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Button" to="." method="_on_image_button_pressed"]
 [connection signal="pressed" from="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Button3" to="AudioStreamRecord" method="_on_record_button_pressed"]
 [connection signal="pressed" from="TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Button4" to="." method="_on_button_4_pressed"]
