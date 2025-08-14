@@ -1,23 +1,25 @@
-[gd_scene load_steps=52 format=3]
+[gd_scene load_steps=138 format=3]
 
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_dpnb4"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_iykjf"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_80fm6"]
-[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_6bnws"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_eccyl"]
-[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="6_byuqn"]
-[ext_resource type="Script" uid="uid://bksxi3frccjpv" path="res://script/control.gd" id="7_7sn4o"]
-[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="8_xuh5p"]
-[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="9_0i0fv"]
-[ext_resource type="Texture2D" uid="uid://d2a5pf05eb0hk" path="res://sprite/1092884.png" id="10_3otl1"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="11_avvg3"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="12_xmqxi"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="13_5k480"]
-[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="14_nl6dj"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_80fm6"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_6bnws"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_eccyl"]
+[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_byuqn"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_7sn4o"]
+[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="6_xuh5p"]
+[ext_resource type="Script" uid="uid://bksxi3frccjpv" path="res://script/control.gd" id="7_0i0fv"]
+[ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="8_3otl1"]
+[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="9_avvg3"]
+[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="10_xmqxi"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="11_5k480"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="12_nl6dj"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="13_131kw"]
+[ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="14_06d1e"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="15_cj1gv"]
+[ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="16_brft0"]
 
 [sub_resource type="FontVariation" id="FontVariation_m5l8b"]
-fallbacks = Array[Font]([ExtResource("2_iykjf")])
-base_font = ExtResource("1_dpnb4")
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("1_80fm6")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
 bg_color = Color(0.147672, 0.147672, 0.147672, 1)
@@ -46,31 +48,31 @@ shadow_size = 2
 shadow_offset = Vector2(-1, 3)
 
 [sub_resource type="FontVariation" id="FontVariation_dalxy"]
-fallbacks = Array[Font]([ExtResource("2_iykjf")])
-base_font = ExtResource("3_80fm6")
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("3_eccyl")
 
 [sub_resource type="FontVariation" id="FontVariation_dy4oq"]
-fallbacks = Array[Font]([ExtResource("2_iykjf")])
-base_font = ExtResource("3_80fm6")
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("3_eccyl")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
-texture = ExtResource("4_6bnws")
+texture = ExtResource("4_byuqn")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
-texture = ExtResource("5_eccyl")
+texture = ExtResource("5_7sn4o")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="FontVariation" id="FontVariation_7soyd"]
-fallbacks = Array[Font]([ExtResource("2_iykjf")])
-base_font = ExtResource("3_80fm6")
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("3_eccyl")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
-texture = ExtResource("5_eccyl")
+texture = ExtResource("5_7sn4o")
 expand_margin_left = 13.0
 expand_margin_top = 30.0
 expand_margin_bottom = 20.0
@@ -84,12 +86,12 @@ border_width_bottom = 5
 border_color = Color(0.819608, 0.780392, 0.411765, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_adnmk"]
-fallbacks = Array[Font]([ExtResource("2_iykjf")])
-base_font = ExtResource("3_80fm6")
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("3_eccyl")
 
 [sub_resource type="FontVariation" id="FontVariation_l65wg"]
-fallbacks = Array[Font]([ExtResource("2_iykjf")])
-base_font = ExtResource("6_byuqn")
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("6_xuh5p")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dx5q"]
 
@@ -149,40 +151,175 @@ TextEdit/fonts/font = SubResource("FontVariation_adnmk")
 TextEdit/styles/focus = SubResource("StyleBoxFlat_sx0m5")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_xwkh1")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g05f1"]
+[sub_resource type="Gradient" id="Gradient_tac8f"]
+offsets = PackedFloat32Array(0, 0.528571)
+colors = PackedColorArray(0, 0.482353, 0.364706, 1, 0.840137, 0.523984, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2l8jy"]
-bg_color = Color(0.111444, 0.191605, 0.289168, 1)
-border_width_top = 10
-border_color = Color(0.541176, 0.796078, 0.411765, 1)
-border_blend = true
-expand_margin_left = 20.0
-expand_margin_top = 15.0
-expand_margin_right = 20.0
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_usxgj"]
+gradient = SubResource("Gradient_tac8f")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vopps"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6pn8l"]
+shader = ExtResource("8_3otl1")
+shader_parameter/tex = SubResource("GradientTexture2D_usxgj")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1iua5"]
-bg_color = Color(1, 0.509804, 0, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.8, 0.8, 0.533333, 1)
-border_blend = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jf8d"]
+shader = ExtResource("10_xmqxi")
+shader_parameter/lod = 0.0
+shader_parameter/mix_percentage = 0.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elx3q"]
-bg_color = Color(0.433681, 0.20662, 0, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.8, 0.8, 0.533333, 1)
-border_blend = true
+[sub_resource type="GDScript" id="GDScript_vb5ih"]
+script/source = "extends Control
+signal start_scroll
+var max_scroll = 1
+var separation = 30
+var drag = false
+var _scroll = Vector2.ZERO
+var move = false
+var run_tween = false
+var height = 0
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if height <= 0:
+		height = size.y -10
+	if run_tween:
+		scroll(Vector2.ZERO)
+	manage_scroll($VBoxContainer)
+
+func get_item_pos(id:String, dir=1):
+	if move == false:
+		var item = get_tree().get_nodes_in_group(\"message\").filter(func (x): return x.get_meta(\"id\", \"\") == id)
+		if item.size() == 0:
+			while item.size() == 0:
+				scroll(Vector2(0, -100*dir))
+				move = true
+				item = get_tree().get_nodes_in_group(\"message\").filter(func (x): return x.get_meta(\"id\", \"\") == id)
+				await get_tree().physics_frame
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, \"_scroll:y\", item[0].position.y if dir == 1 else item[0].position.y - item[0].size.y, 0.2)
+		tween.play()
+		move = true
+		run_tween = true
+		await tween.finished
+		run_tween = false
+		move = false
+		scroll(Vector2.ZERO)
+		return item[0]
+func set_child_size():
+	var pos = 0
+	for child in get_children():
+		if child is Control:
+			child.position.y = pos
+			child.set_meta(\"pos\",child.position.y)
+			var _size = child.size.y
+			for subchild in child.get_children():
+				if subchild is Control and \"instance\" not in subchild.name:
+					subchild.position.y = _size
+					_size += subchild.size.y + separation
+				
+			pos += _size
+			
+			child.set_deferred(\"size:y\", _size)
+	max_scroll = pos
+	scroll(Vector2.ZERO)
+
+func set_input_child(process):
+	for child in get_children():
+		for subchild in child.get_children():
+			if subchild is Control:
+				subchild.set_process_input(process)
+func _gui_input(event: InputEvent) -> void:
+	if move == false:
+		if event is InputEventScreenDrag:
+			scroll(Vector2(0, -event.relative.y))
+			drag = true
+		if event is InputEventMouseButton:
+			if event.is_pressed() and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				scroll(Vector2(0, 100 * event.factor))
+			if event.is_pressed() and event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				scroll(Vector2(0, -100 * event.factor))
+func scroll(velloity:Vector2):
+	if velloity.y > 0 and !move and _scroll.y <= max_scroll-size.y - 100:
+		start_scroll.emit()
+	$\"../../ColorRect2\".hide()
+	_scroll += velloity
+	_scroll.y = clamp(_scroll.y, -abs(height - size.y), max_scroll-size.y)
+	for child in get_children():
+		child.position.y = -_scroll.y + child.get_meta(\"pos\", 0) - (height - size.y)
+		child.position.y = clamp(child.position.y, -max_scroll+size.y+child.get_meta(\"pos\", 0), child.get_meta(\"pos\", 0))
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_RESIZED:
+		scroll(Vector2.ZERO)
+func manage_scroll(box):
+	for child in box.get_children():
+		if \"instance\" not in child.name:
+			var space = separation
+			var top_pos = global_position.y - child.size.y - space
+			var bottom_pos = global_position.y + size.y + child.size.y + space
+			var left_pos = global_position.x - child.size.x - space
+			var right_pos = global_position.x + size.x + space
+			var child_pos = child.global_position
+			if child_pos.y < top_pos or child_pos.y > bottom_pos or child_pos.x < left_pos or child_pos.x > right_pos:
+				child.hide()
+			else:
+				child.show()
+"
+
+[sub_resource type="GDScript" id="GDScript_2pn8f"]
+script/source = "@tool
+extends Container
+
+@export var separation: int = 8
+
+func _notification(what):
+	if what == NOTIFICATION_SORT_CHILDREN:
+		sort_children_custom()
+func sort_children_custom():
+	var y := 0.0
+	var container_width := size.x
+
+	for child in get_children():
+		if not child is Control or \"instance\" in child.name:
+			continue
+
+		var min_size = child.get_combined_minimum_size()
+		var desired_width = min_size.x
+		var desired_height = min_size.y
+
+		# اگر FILL باشه، کل عرض رو بگیر
+		if child.size_flags_horizontal & Control.SIZE_FILL != 0:
+			desired_width = container_width
+
+		# محاسبه موقعیت X بر اساس SHRINK_MODE
+		var x := 0.0
+
+		var shrink_mode = child.size_flags_horizontal
+		match shrink_mode:
+			Control.SIZE_SHRINK_BEGIN:
+				x = 0
+			Control.SIZE_SHRINK_CENTER:
+				x = (container_width - desired_width) / 2
+			Control.SIZE_SHRINK_END:
+				x = container_width - desired_width
+			_:
+				# حالت پیش‌فرض
+				x = 0
+
+		# اعمال اندازه و موقعیت
+		child.position = Vector2(x, y)
+		child.size = Vector2(desired_width, desired_height)
+		y += desired_height + separation
+	size.y = y
+	if get_parent().get(\"max_scroll\"):
+		get_parent().max_scroll = y
+"
 
 [sub_resource type="Theme" id="Theme_2y1hm"]
 Label/font_sizes/font_size = 20
-Label/fonts/font = ExtResource("6_byuqn")
+Label/fonts/font = ExtResource("6_xuh5p")
 RichTextLabel/font_sizes/normal_font_size = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwblo"]
@@ -197,15 +334,169 @@ corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_left = 40
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bx4kc"]
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_yb7qp"]
-script = ExtResource("11_avvg3")
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_gbj5b"]
-script = ExtResource("12_xmqxi")
+[sub_resource type="GDScript" id="GDScript_apcft"]
+script/source = "extends PanelContainer
+signal screen_entered
+signal response
+signal edit
+var has_on_screen = false
+@export var dir = 1
+var move = false
+var start_pos = 0
+var seen
+var parent:Control
+func _ready() -> void:
+	if get_parent().get_parent() is Control:
+		parent = get_parent().get_parent()
+func _input(event: InputEvent) -> void:
+	if visible and parent:
+		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed():
+				if event.position.y < parent.global_position.y + parent.size.y:
+					var rect = Rect2(Vector2(0, global_position.y), Vector2(get_parent().size.x, size.y))
+					if rect.has_point(event.position) :
+						edit.emit(event.position.y)
+		if event is InputEventScreenDrag:
+			if event.position.y < parent.global_position.y + parent.size.y:
+				var rect = Rect2(Vector2(0, global_position.y), Vector2(get_parent().size.x, size.y))
+				if rect.has_point(event.position) and move == false:
+					var angle = rad_to_deg(event.relative.angle())
+					if dir == 1:
+						if (angle < 2 and angle > -2) and abs(event.relative.x) > 5:
+							move = true
+							start_pos = event.position.x
+							parent.move = true
+					if dir == -1:
+						if (angle > 178 and angle < 182) and abs(event.relative.x) > 5:
+							move = true
+							start_pos = event.position.x
+							parent.move = true
+		if event is InputEventMouseButton:
+			if event.is_released():
+				if move:
+					if dir == 1:
+						if global_position.x > (parent.size.x - size.x) + (size.x / 2.0) - 10:
+							response.emit()
+						var tween = get_tree().create_tween()
+						tween.tween_property(self, \"position:x\", (get_parent().size.x - size.x), 0.2)
+						tween.play()
+						await tween.finished
+					if dir == -1:
+						if global_position.x < (-size.x / 2.0) + 10:
+							response.emit()
+						var tween = get_tree().create_tween()
+						tween.tween_property(self, \"position:x\", 0, 0.2)
+						tween.play()
+						await tween.finished
+				move = false
+				parent.move = false
+func _process(delta: float) -> void:
+	if move:
+		if dir == 1:
+			if get_parent().get_parent() is Control:
+				position.x = (get_parent().size.x - size.x) + (get_global_mouse_position().x - start_pos)
+				position.x = clamp(position.x, get_parent().size.x - size.x, (get_parent().size.x - size.x) + (size.x / 2))
+		if dir == -1:
+			position.x = (get_global_mouse_position().x - start_pos)
+			position.x = clamp(position.x, - (size.x / 2), 0)
+	size.y = 0
+	if get_parent().get_parent() is Control:
+		if has_on_viewport(get_parent().get_parent()):
+			if not has_on_screen:
+				screen_entered.emit(seen)
+				has_on_screen = true
+		else:
+			has_on_screen = false
+func has_on_viewport(parent:Control) -> bool:
+	if global_position.y >= parent.global_position.y and global_position.y <= parent.global_position.y + parent.size.y - size.y:
+		return true
+	return false
+"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_53iq2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vb5ih"]
+bg_color = Color(0.00603573, 0.0190997, 0.343463, 1)
+border_width_right = 10
+border_color = Color(0.796078, 0, 0.243137, 1)
+corner_radius_top_left = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="FontVariation" id="FontVariation_6pn8l"]
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("6_xuh5p")
+variation_embolden = 0.74
+
+[sub_resource type="LabelSettings" id="LabelSettings_0jf8d"]
+font = SubResource("FontVariation_6pn8l")
+font_size = 20
+
+[sub_resource type="FontVariation" id="FontVariation_tfhda"]
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("6_xuh5p")
+variation_embolden = 0.69
+
+[sub_resource type="FontVariation" id="FontVariation_vb5ih"]
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("6_xuh5p")
+variation_embolden = 0.7
+variation_transform = Transform2D(1, 0.4, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_0jf8d"]
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("6_xuh5p")
+variation_transform = Transform2D(1, 0.4, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_2pn8f"]
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("6_xuh5p")
+
+[sub_resource type="Theme" id="Theme_apcft"]
+RichTextLabel/font_sizes/bold_font_size = 42
+RichTextLabel/font_sizes/bold_italics_font_size = 42
+RichTextLabel/font_sizes/italics_font_size = 40
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/bold_font = SubResource("FontVariation_tfhda")
+RichTextLabel/fonts/bold_italics_font = SubResource("FontVariation_vb5ih")
+RichTextLabel/fonts/italics_font = SubResource("FontVariation_0jf8d")
+RichTextLabel/fonts/normal_font = SubResource("FontVariation_2pn8f")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_yb7qp"]
+script = ExtResource("11_5k480")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_gbj5b"]
+script = ExtResource("12_nl6dj")
+
+[sub_resource type="GDScript" id="GDScript_6pn8l"]
+script/source = "@tool
+extends RichTextLabel
+var max_line_size = 700
+@export var preset:Control.LayoutPreset=Control.PRESET_TOP_LEFT
+func _set(property: StringName, value: Variant) -> bool:
+	if property == \"text\":
+		text = value
+		get_child(0).text = value
+		custom_minimum_size.x = clamp($RichTextLabel.get_content_width(), 10, max_line_size)
+		return true
+	return false
+"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_vb5ih"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_6pn8l"]
+script = ExtResource("11_5k480")
+metadata/_custom_type_script = "uid://dcls0pguhob1u"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_0jf8d"]
+script = ExtResource("12_nl6dj")
+metadata/_custom_type_script = "uid://bt1xta4d0rii"
+
+[sub_resource type="LabelSettings" id="LabelSettings_6pn8l"]
+font = ExtResource("13_131kw")
+font_size = 35
+font_color = Color(0.690276, 1, 0.436242, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_skm5r"]
 offsets = PackedFloat32Array(0, 0.536232)
@@ -227,7 +518,134 @@ interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.0410959, 0.547945, 0.965753)
 colors = PackedColorArray(0, 1, 0, 1, 0.027451, 0.372549, 0.443137, 1, 1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wi0ee"]
+[sub_resource type="Curve" id="Curve_6pn8l"]
+_data = [Vector2(0, 0.629685), 0.0, 0.0, 0, 0, Vector2(0.271739, 0.658921), 0.0, 0.0, 0, 0, Vector2(0.554348, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_0jf8d"]
+colors = PackedColorArray(1, 1, 1, 1, 0.340339, 0.340339, 0.340339, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tfhda"]
+gradient = SubResource("Gradient_0jf8d")
+fill_from = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_tfhda"]
+script/source = "extends Node2D
+
+var target:Control
+# Called when the node enters the scene tree for the first ti
+var end = 0
+var start = 0
+var offset = 0
+var move_mode = 0
+var speed = 300
+@onready var line = $Line2D
+
+func _draw_arc(pos, radius, start_angle, end_angle, count_point):
+	var points = []
+	
+	var index = 0
+	while index < count_point:
+		var point = Vector2(radius, 0)
+		point = point.rotated(start_angle)
+		var angle = deg_to_rad(360 / count_point)
+		point = point.rotated(angle * index)
+		
+		if (angle * index) + start_angle > end_angle:
+			break
+		points.append(point)
+		index += 1
+	line.position = pos
+	line.points = points
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	
+	_draw_arc(Vector2.ZERO, 20, start+offset, end+offset, 40.0)
+	if move_mode == 0:
+		end += deg_to_rad(speed*delta)
+	else:
+		start += deg_to_rad(speed*delta)
+	if end > 2 * PI and move_mode == 0:
+		move_mode = 1
+		start = 0
+	if start > 2 * PI and move_mode == 1:
+		move_mode = 0
+		end = 0
+		start = 0
+	offset += deg_to_rad(speed*delta)
+	if offset > 2*PI:
+		offset = 0
+	
+"
+
+[sub_resource type="Curve" id="Curve_lin6m"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.985507, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_lin6m"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="Animation" id="Animation_sej5b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0193923, 0.0569649, 0.596532, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/MarginContainer/VBoxContainer/Label3:theme_override_styles/normal:bg_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.00603573, 0.0190997, 0.343463, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6uaey"]
+resource_name = "action"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.49),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0144777, 0.446191, 0.128137, 1), Color(0.0179451, 0.500374, 0.14778, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/MarginContainer/VBoxContainer/Label3:theme_override_styles/normal:bg_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0751361, 0.249375, 0.0109285, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehb43"]
+_data = {
+&"RESET": SubResource("Animation_sej5b"),
+&"action": SubResource("Animation_6uaey")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfn3y"]
 bg_color = Color(0.541176, 0.12549, 0.184314, 1)
@@ -241,27 +659,1514 @@ corner_radius_top_left = 40
 corner_radius_top_right = 40
 corner_radius_bottom_right = 40
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pn8f"]
+bg_color = Color(0.323455, 0.058508, 0.0963749, 1)
+border_width_right = 10
+border_color = Color(0.0392157, 0.247059, 1, 1)
+corner_radius_top_left = 15
+corner_radius_bottom_left = 15
+
 [sub_resource type="Gradient" id="Gradient_mdgmj"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.0410959, 0.260274)
 colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1, 0.541176, 0.12549, 0.184314, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b0thc"]
-bg_color = Color(1, 0, 0.317647, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.868985, 0.868985, 0.868985, 1)
-border_blend = true
-corner_radius_top_left = 50
-corner_radius_top_right = 50
-corner_radius_bottom_right = 50
-corner_radius_bottom_left = 50
+[sub_resource type="Animation" id="Animation_kaou4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.541176, 0.12549, 0.184314, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/MarginContainer/VBoxContainer/Label3:theme_override_styles/normal:bg_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.323455, 0.058508, 0.0963749, 1)]
+}
 
-[sub_resource type="LabelSettings" id="LabelSettings_yqwks"]
-font = ExtResource("14_nl6dj")
+[sub_resource type="Animation" id="Animation_ednal"]
+resource_name = "action"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.49),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0144777, 0.446191, 0.128137, 1), Color(0.0179451, 0.500374, 0.14778, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/MarginContainer/VBoxContainer/Label3:theme_override_styles/normal:bg_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0751361, 0.249375, 0.0109285, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lr483"]
+_data = {
+&"RESET": SubResource("Animation_kaou4"),
+&"action": SubResource("Animation_ednal")
+}
+
+[sub_resource type="Gradient" id="Gradient_6pn8l"]
+offsets = PackedFloat32Array(0.142857, 0.533333, 0.880952)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2pn8f"]
+gradient = SubResource("Gradient_6pn8l")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tfhda"]
+texture = SubResource("GradientTexture2D_2pn8f")
+
+[sub_resource type="LabelSettings" id="LabelSettings_usxgj"]
+font = ExtResource("13_131kw")
+font_size = 40
+font_color = Color(0.694118, 0, 0.235294, 1)
+outline_size = 7
+
+[sub_resource type="Theme" id="Theme_vb5ih"]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_focus_color = Color(0, 0.221339, 0.265226, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_usxgj"]
+base_font = ExtResource("2_6bnws")
+spacing_space = -110
+baseline_offset = 0.125
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6pn8l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mmsp5"]
+bg_color = Color(0.54902, 0.686275, 0.74902, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.777113, 0.929712, 0.939299, 1)
+border_blend = true
+corner_radius_top_left = 80
+corner_radius_top_right = 80
+corner_radius_bottom_right = 80
+corner_radius_bottom_left = 80
+shadow_color = Color(0, 0, 0, 0.270588)
+shadow_size = 5
+shadow_offset = Vector2(0, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tac8f"]
+bg_color = Color(0.945098, 0.741176, 0, 1)
+border_width_top = 10
+border_blend = true
+expand_margin_bottom = 20.0
+
+[sub_resource type="FontVariation" id="FontVariation_mmsp5"]
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("6_xuh5p")
+
+[sub_resource type="FontVariation" id="FontVariation_an0t8"]
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("6_xuh5p")
+variation_transform = Transform2D(1, 0.6, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_db4rb"]
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("6_xuh5p")
+variation_embolden = 0.7
+variation_transform = Transform2D(1, 0.6, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_6uaey"]
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("6_xuh5p")
+variation_embolden = 0.7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pn8l"]
+bg_color = Color(0.569772, 0.49852, 0.0809918, 1)
+border_width_right = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_sej5b"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ehb43"]
+script = ExtResource("11_5k480")
+metadata/_custom_type_script = "uid://dcls0pguhob1u"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ednal"]
+script = ExtResource("12_nl6dj")
+metadata/_custom_type_script = "uid://bt1xta4d0rii"
+
+[sub_resource type="SystemFont" id="SystemFont_6pn8l"]
+font_names = PackedStringArray("Segoe UI Emoji")
+
+[sub_resource type="SystemFont" id="SystemFont_0jf8d"]
+font_names = PackedStringArray("SamsungColorEmoji")
+
+[sub_resource type="FontVariation" id="FontVariation_sej5b"]
+fallbacks = Array[Font]([SubResource("SystemFont_6pn8l"), SubResource("SystemFont_0jf8d"), ExtResource("2_6bnws")])
+base_font = ExtResource("13_131kw")
+variation_embolden = -0.4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_apcft"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_usxgj"]
+draw_center = false
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color(0.137255, 0.8, 0.141176, 1)
+border_blend = true
+corner_detail = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_apcft"]
+shader = ExtResource("10_xmqxi")
+shader_parameter/lod = 0.0
+shader_parameter/mix_percentage = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wi0ee"]
+
+[sub_resource type="Shader" id="Shader_ourx2"]
+code = "shader_type canvas_item;
+uniform int dir:hint_range(-1, 1, 1)=0;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, vec2(UV.x + float(TIME * float(dir) * 0.2), UV.y));
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vb5ih"]
+shader = SubResource("Shader_ourx2")
+shader_parameter/dir = 0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6pn8l"]
+viewport_path = NodePath("ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name/texture")
+
+[sub_resource type="GDScript" id="GDScript_0jf8d"]
+script/source = "extends TextureRect
+
+var last_size = size
+var dir = 0
+var label_size
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	texture = $texture.get_texture()
+	label_size = $texture/Label.size
+	print(label_size)
+func _process(delta: float) -> void:
+	if last_size != size:
+		last_size = size
+		$texture.size = size
+		if $texture/Label.size.x > size.x:
+			$texture.size.x = size.x * 1.5
+			
+			var m = ShaderMaterial.new()
+			m.shader = material.shader
+			m.set_shader_parameter(\"dir\", dir)
+			material = m
+		else:
+			var m = ShaderMaterial.new()
+			m.shader = material.shader
+			m.set_shader_parameter(\"dir\", 0)
+			material = m
+"
+
+[sub_resource type="FontVariation" id="FontVariation_apcft"]
+fallbacks = Array[Font]([ExtResource("2_6bnws")])
+base_font = ExtResource("3_eccyl")
+spacing_top = 30
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_mgrfc"]
+script = ExtResource("11_5k480")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ur635"]
+script = ExtResource("12_nl6dj")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2pn8f"]
+font = ExtResource("13_131kw")
+font_size = 40
+
+[sub_resource type="Gradient" id="Gradient_how18"]
+offsets = PackedFloat32Array(0, 0.640496, 0.702479)
+colors = PackedColorArray(0, 0, 0, 1, 0.669421, 0.669421, 0.669421, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6pn8l"]
+gradient = SubResource("Gradient_how18")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_dmnnq"]
+offsets = PackedFloat32Array(0, 0.64876)
+colors = PackedColorArray(0.105882, 1, 0, 1, 3.60981e-06, 0.541321, 0.0867349, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0jf8d"]
+gradient = SubResource("Gradient_dmnnq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_1reov"]
+offsets = PackedFloat32Array(0.582645, 0.636364)
+colors = PackedColorArray(0.588235, 1, 1, 0, 0, 0.411765, 0.67451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_apcft"]
+gradient = SubResource("Gradient_1reov")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Animation" id="Animation_apcft"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Control/Button:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_0jf8d"]
+resource_name = "pop_button"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/Control/Button:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.00930272, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Control/Button:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2pn8f"]
+_data = {
+&"RESET": SubResource("Animation_apcft"),
+&"pop_button": SubResource("Animation_0jf8d")
+}
+
+[sub_resource type="Animation" id="Animation_tfhda"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:material:shader_parameter/mix_percentage")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect3:material:shader_parameter/lod")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ColorRect3:material:shader_parameter/mix_percentage")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2pn8f"]
+resource_name = "fade"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect2:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.401141, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 5.0, 0.0, 5.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect2:material:shader_parameter/mix_percentage")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.401141, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.143, 0.0, 0.143]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.00406562, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_ehb43"]
+resource_name = "fade2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect3:material:shader_parameter/lod")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.04, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 5.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect3:material:shader_parameter/mix_percentage")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.04, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_usxgj"]
+_data = {
+&"RESET": SubResource("Animation_tfhda"),
+&"fade": SubResource("Animation_2pn8f"),
+&"fade2": SubResource("Animation_ehb43")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0jf8d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apcft"]
+bg_color = Color(0.122252, 0.122252, 0.122252, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_blend = true
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfhda"]
+bg_color = Color(1, 0.486275, 0.545098, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.611765, 0.0705882, 0.0666667, 1)
+border_blend = true
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_mmsp5"]
+font = ExtResource("16_brft0")
 font_size = 70
+font_color = Color(0.584314, 0.156863, 0.294118, 1)
+outline_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_an0t8"]
+bg_color = Color(0.0511023, 0.0055253, 0.0114793, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_blend = true
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_db4rb"]
+bg_color = Color(2.02149e-06, 0.661709, 0.836132, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.494118, 0.737255, 0.705882, 1)
+border_blend = true
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6uaey"]
+bg_color = Color(0.611613, 0.216623, 0.305173, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.991547, 0.512656, 0.590176, 1)
+border_blend = true
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sej5b"]
+bg_color = Color(2.02149e-06, 0.661709, 0.836132, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.494118, 0.737255, 0.705882, 1)
+border_blend = true
+corner_radius_top_right = 60
+corner_radius_bottom_right = 60
+corner_radius_bottom_left = 60
+
+[sub_resource type="Animation" id="Animation_usxgj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("delete:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("edit:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("copy:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("delete/Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("edit/Label:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("copy/Label:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_6pn8l"]
+resource_name = "action"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("delete:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("edit:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("copy:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("delete/Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": ["", "", "حذف"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("edit/Label:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": ["", "", "ویرایش"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("copy/Label:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": ["", "", "کپی"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mmsp5"]
+_data = {
+&"RESET": SubResource("Animation_usxgj"),
+&"action": SubResource("Animation_6pn8l")
+}
+
+[sub_resource type="Animation" id="Animation_db4rb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("delete:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-133, -182)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("delete:pivot_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(132, 179)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("edit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-175, -57)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("copy:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-126, 89)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("edit:pivot_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(174, 56)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("copy:pivot_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(126, -89)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("copy:theme_override_styles/normal:corner_radius_top_right")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("copy:theme_override_styles/normal:corner_radius_top_left")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("copy:theme_override_styles/disabled:corner_radius_top_right")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("copy:theme_override_styles/disabled:corner_radius_top_left")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("delete:theme_override_styles/normal:corner_radius_bottom_right")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("delete:theme_override_styles/normal:corner_radius_bottom_left")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("delete/Label:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-151, 10)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("edit/Label:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-220, 10)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("copy/Label:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-135, 10)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("delete/Label:horizontal_alignment")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("edit/Label:horizontal_alignment")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("copy/Label:horizontal_alignment")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("copy:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("edit:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("delete:disabled")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_an0t8"]
+resource_name = "flip_l"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("delete:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-133, -182)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("delete:pivot_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(132, 179)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("edit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-175, -57)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("copy:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-126, 89)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("edit:pivot_offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(174, 56)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("copy:pivot_offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(126, -89)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("copy:theme_override_styles/normal:corner_radius_top_right")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("copy:theme_override_styles/normal:corner_radius_top_left")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("copy:theme_override_styles/disabled:corner_radius_top_left")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("copy:theme_override_styles/disabled:corner_radius_top_right")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("delete:theme_override_styles/normal:corner_radius_bottom_left")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("delete:theme_override_styles/normal:corner_radius_bottom_right")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("delete/Label:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-151, 10)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("edit/Label:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-220, 10)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("copy/Label:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-135, 10)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("delete/Label:horizontal_alignment")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("edit/Label:horizontal_alignment")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("copy/Label:horizontal_alignment")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("copy:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("edit:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("delete:disabled")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mmsp5"]
+resource_name = "flip_r"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("edit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(130, -57)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("copy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(62, 89)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("delete:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(55, -182)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("copy:theme_override_styles/normal:corner_radius_top_right")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("copy:theme_override_styles/normal:corner_radius_top_left")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("copy:theme_override_styles/disabled:corner_radius_top_right")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("copy:theme_override_styles/disabled:corner_radius_top_left")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("delete:theme_override_styles/normal:corner_radius_bottom_right")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("delete:theme_override_styles/normal:corner_radius_bottom_left")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("copy:pivot_offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-61, -89)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("delete:pivot_offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-56, 183)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("edit:pivot_offset")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-130, 56)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("delete/Label:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(105, 10)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("edit/Label:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(105, 10)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("copy/Label:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(121, 10)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("delete/Label:horizontal_alignment")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("edit/Label:horizontal_alignment")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("copy/Label:horizontal_alignment")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("edit:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("delete:disabled")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("copy:disabled")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6uaey"]
+_data = {
+&"RESET": SubResource("Animation_db4rb"),
+&"flip_l": SubResource("Animation_an0t8"),
+&"flip_r": SubResource("Animation_mmsp5")
+}
 
 [node name="Control" type="Control" groups=["scene_message"]]
 layout_mode = 3
@@ -271,112 +2176,71 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_pnsd0")
-script = ExtResource("7_7sn4o")
+script = ExtResource("7_0i0fv")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_6pn8l")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_xuh5p")
+texture = ExtResource("9_avvg3")
+expand_mode = 1
+stretch_mode = 1
 
-[node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 124.0
-offset_right = 981.0
-offset_bottom = 1950.0
-theme_override_fonts/font = ExtResource("9_0i0fv")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_g05f1")
-theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2l8jy")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_vopps")
-theme_override_styles/tab_selected = SubResource("StyleBoxFlat_1iua5")
-theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_elx3q")
-theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_elx3q")
-tab_alignment = 2
-current_tab = 1
-
-[node name="سلامت معنوی" type="VBoxContainer" parent="TabContainer"]
+[node name="ColorRect2" type="ColorRect" parent="."]
 visible = false
-layout_mode = 2
-metadata/_edit_use_anchors_ = true
-metadata/_tab_index = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت معنوی"]
-layout_direction = 3
-layout_mode = 2
-
-[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت معنوی/HBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 45
-wrap_mode = 1
-scroll_past_end_of_file = true
-scroll_fit_content_height = true
-script = -3579537070038712320
-metadata/_edit_use_anchors_ = true
-
-[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت معنوی/HBoxContainer/TextEdit"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 80)
+material = SubResource("ShaderMaterial_0jf8d")
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -496.0
-offset_top = -40.0
-offset_right = 494.0
-offset_bottom = 40.0
+offset_top = 216.0
+offset_right = 995.0
+offset_bottom = 588.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0705
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/font_size = 45
-editable = false
-wrap_mode = 1
-scroll_past_end_of_file = true
-scroll_fit_content_height = true
-script = -3579537070038712320
+metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="TabContainer/سلامت معنوی/HBoxContainer"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_vertical = 0
-text = "ارسال"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/سلامت معنوی"]
+[node name="ScrollContainer" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 2
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 3
+mouse_filter = 1
+script = SubResource("GDScript_vb5ih")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت معنوی/ScrollContainer"]
-layout_mode = 2
+[node name="VBoxContainer" type="Container" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 size_flags_horizontal = 3
-alignment = 2
+mouse_filter = 2
+script = SubResource("GDScript_2pn8f")
 
-[node name="PanelContainer" type="PanelContainer" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer"]
+[node name="instance" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 visible = false
-custom_minimum_size = Vector2(800, 0)
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 2
-mouse_filter = 1
+mouse_filter = 2
 theme = SubResource("Theme_2y1hm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_dwblo")
+script = SubResource("GDScript_apcft")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
@@ -384,67 +2248,84 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
 theme_override_font_sizes/font_size = 26
 text = "شما"
 
-[node name="Button" type="Button" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -33.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 43.0
-grow_horizontal = 0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bx4kc")
-icon = ExtResource("10_3otl1")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="Control" type="Control" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label/Button"]
-anchors_preset = 0
-offset_left = -36.0
-offset_top = -20.0
-offset_right = 67.0
-offset_bottom = 66.0
-focus_mode = 2
-mouse_filter = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
+
+[node name="Label3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
 mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_vb5ih")
+text = "سلام چطوری؟
+نکن این کار ها را با ما برادر."
+label_settings = SubResource("LabelSettings_0jf8d")
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(10, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 2
+mouse_filter = 2
+theme = SubResource("Theme_apcft")
 bbcode_enabled = true
-text = "[right]شما از طریق محمد حسین حق شناس به گروه بش دعوت شدید. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست.
-"
 fit_content = true
 context_menu_enabled = true
+horizontal_alignment = 2
 custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
 selection_enabled = true
+script = SubResource("GDScript_6pn8l")
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -22.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_vb5ih"), SubResource("RichTextEffect_6pn8l"), SubResource("RichTextEffect_0jf8d")]
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
 
-[node name="Label2" type="Label" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
 theme_override_font_sizes/font_size = 26
 text = "1403-05-02 12:05:15"
+label_settings = SubResource("LabelSettings_6pn8l")
 horizontal_alignment = 2
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 position = Vector2(400, 100)
 emitting = false
 amount = 2000
@@ -464,367 +2345,61 @@ scale_amount_max = 0.6
 scale_amount_curve = SubResource("Curve_1stjb")
 color_initial_ramp = SubResource("Gradient_cxcyr")
 
-[node name="سلامت جسمانی" type="VBoxContainer" parent="TabContainer"]
-layout_mode = 2
-metadata/_edit_use_anchors_ = true
-metadata/_tab_index = 1
+[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت جسمانی"]
-layout_direction = 3
-layout_mode = 2
+[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Node2D"]
+position = Vector2(1, -3)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_6pn8l")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_tfhda")
+texture_mode = 1
+begin_cap_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت جسمانی/HBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 45
-wrap_mode = 1
-scroll_past_end_of_file = true
-scroll_fit_content_height = true
-script = -3579537070038712320
-metadata/_edit_use_anchors_ = true
+[node name="Line2D2" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Node2D"]
+position = Vector2(11, -2)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_6pn8l")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_tfhda")
+texture_mode = 1
+begin_cap_mode = 2
 
-[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت جسمانی/HBoxContainer/TextEdit"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -496.0
-offset_top = -40.0
-offset_right = 494.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/font_size = 45
-editable = false
-wrap_mode = 1
-scroll_past_end_of_file = true
-scroll_fit_content_height = true
-script = -3579537070038712320
-
-[node name="Button" type="Button" parent="TabContainer/سلامت جسمانی/HBoxContainer"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_vertical = 0
-text = "ارسال"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/سلامت جسمانی"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 2
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 3
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت جسمانی/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer"]
+[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Node2D"]
+process_mode = 3
 visible = false
-custom_minimum_size = Vector2(800, 0)
-layout_direction = 3
-layout_mode = 2
-size_flags_horizontal = 8
-focus_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_2y1hm")
-theme_override_styles/panel = SubResource("StyleBoxFlat_dwblo")
+position = Vector2(31, 24)
+script = SubResource("GDScript_tfhda")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer"]
-layout_mode = 2
+[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Node2D/Node2D"]
+texture_repeat = 2
+width_curve = SubResource("Curve_lin6m")
+gradient = SubResource("Gradient_lin6m")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance"]
+libraries = {
+&"": SubResource("AnimationLibrary_ehb43")
+}
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
-theme_override_font_sizes/font_size = 26
-text = "شما"
-
-[node name="Button" type="Button" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -33.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 43.0
-grow_horizontal = 0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bx4kc")
-icon = ExtResource("10_3otl1")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="Control" type="Control" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label/Button"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -36.0
-offset_top = -20.0
-offset_right = 67.0
-offset_bottom = 66.0
-focus_mode = 2
-mouse_filter = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 2
-mouse_filter = 1
-bbcode_enabled = true
-text = "[right]شما از طریق محمد حسین حق شناس به گروه بش دعوت شدید. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست.
-"
-fit_content = true
-context_menu_enabled = true
-custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
-selection_enabled = true
-
-[node name="HSeparator" type="HSeparator" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 40
-theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
-
-[node name="Label2" type="Label" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
-theme_override_font_sizes/font_size = 26
-text = "1403-05-02 12:05:15"
-horizontal_alignment = 2
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-position = Vector2(400, 100)
-emitting = false
-amount = 2000
-texture = SubResource("GradientTexture2D_7a6fd")
-lifetime = 0.5
-one_shot = true
-emission_shape = 3
-emission_rect_extents = Vector2(400, 100)
-particle_flag_align_y = true
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 208.83
-initial_velocity_max = 280.99
-scale_amount_min = 0.4
-scale_amount_max = 0.6
-scale_amount_curve = SubResource("Curve_1stjb")
-color_initial_ramp = SubResource("Gradient_cxcyr")
-
-[node name="سلامت فکری" type="VBoxContainer" parent="TabContainer"]
+[node name="instance3" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 visible = false
-layout_mode = 2
-metadata/_edit_use_anchors_ = true
-metadata/_tab_index = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت فکری"]
 layout_direction = 3
 layout_mode = 2
-
-[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت فکری/HBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("3_80fm6")
-theme_override_font_sizes/font_size = 45
-wrap_mode = 1
-scroll_past_end_of_file = true
-scroll_fit_content_height = true
-script = -3579537070038712320
-metadata/_edit_use_anchors_ = true
-
-[node name="TextEdit" type="TextEdit" parent="TabContainer/سلامت فکری/HBoxContainer/TextEdit"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -496.0
-offset_top = -40.0
-offset_right = 494.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/font_size = 45
-editable = false
-wrap_mode = 1
-scroll_past_end_of_file = true
-scroll_fit_content_height = true
-script = -3579537070038712320
-
-[node name="Button" type="Button" parent="TabContainer/سلامت فکری/HBoxContainer"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_vertical = 0
-text = "ارسال"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/سلامت فکری"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_mode = 2
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 3
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت فکری/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(800, 0)
-layout_direction = 3
-layout_mode = 2
-size_flags_horizontal = 8
-focus_mode = 2
-mouse_filter = 1
-theme = SubResource("Theme_2y1hm")
-theme_override_styles/panel = SubResource("StyleBoxFlat_dwblo")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
-theme_override_font_sizes/font_size = 26
-text = "شما"
-
-[node name="Button" type="Button" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -33.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 43.0
-grow_horizontal = 0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bx4kc")
-icon = ExtResource("10_3otl1")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="Control" type="Control" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/Label/Button"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -36.0
-offset_top = -20.0
-offset_right = 67.0
-offset_bottom = 66.0
-focus_mode = 2
-mouse_filter = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 2
-mouse_filter = 1
-bbcode_enabled = true
-text = "[right]شما از طریق محمد حسین حق شناس به گروه بش دعوت شدید. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست.
-"
-fit_content = true
-context_menu_enabled = true
-custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
-selection_enabled = true
-
-[node name="HSeparator" type="HSeparator" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 40
-theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
-
-[node name="Label2" type="Label" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
-theme_override_font_sizes/font_size = 26
-text = "1403-05-02 12:05:15"
-horizontal_alignment = 2
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
-position = Vector2(400, 100)
-emitting = false
-amount = 2000
-texture = SubResource("GradientTexture2D_7a6fd")
-lifetime = 0.5
-one_shot = true
-emission_shape = 3
-emission_rect_extents = Vector2(400, 100)
-particle_flag_align_y = true
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 208.83
-initial_velocity_max = 280.99
-scale_amount_min = 0.4
-scale_amount_max = 0.6
-scale_amount_curve = SubResource("Curve_1stjb")
-color_initial_ramp = SubResource("Gradient_cxcyr")
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_right = 125.0
-offset_bottom = 128.0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wi0ee")
-icon = ExtResource("13_5k480")
-flat = true
-expand_icon = true
-
-[node name="Container" type="Container" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PanelContainer" type="PanelContainer" parent="Container"]
-visible = false
-custom_minimum_size = Vector2(800, 0)
-layout_direction = 3
-layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 0
 focus_mode = 2
 mouse_filter = 2
 theme = SubResource("Theme_2y1hm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_nfn3y")
+script = SubResource("GDScript_apcft")
+dir = -1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Container/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Container/PanelContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
@@ -832,42 +2407,73 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Container/PanelContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
 theme_override_font_sizes/font_size = 26
 text = "پشتیبان"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_2pn8f")
+text = "سلام چطوری؟
+نکن این کار ها را با ما برادر."
+label_settings = SubResource("LabelSettings_0jf8d")
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+size_flags_horizontal = 0
 focus_mode = 2
 mouse_filter = 1
+theme = SubResource("Theme_apcft")
 bbcode_enabled = true
-text = "[right]شما از طریق محمد حسین حق شناس به گروه بش دعوت شدید. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست.
-"
 fit_content = true
 context_menu_enabled = true
 custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
 selection_enabled = true
+script = SubResource("GDScript_6pn8l")
+preset = 1
 
-[node name="HSeparator" type="HSeparator" parent="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_vb5ih"), SubResource("RichTextEffect_6pn8l"), SubResource("RichTextEffect_0jf8d")]
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
 
-[node name="Label2" type="Label" parent="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
 theme_override_font_sizes/font_size = 26
 text = "1403-05-02 12:05:15"
+label_settings = SubResource("LabelSettings_6pn8l")
 horizontal_alignment = 2
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
 position = Vector2(400, 100)
 emitting = false
 amount = 2000
@@ -887,80 +2493,471 @@ scale_amount_max = 0.6
 scale_amount_curve = SubResource("Curve_1stjb")
 color_initial_ramp = SubResource("Gradient_mdgmj")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 770.0
-offset_top = 86.0
-offset_right = 818.0
-offset_bottom = 135.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_b0thc")
-text = "1"
+[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
+position = Vector2(-14, -6)
+
+[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/Node2D"]
+position = Vector2(1, -3)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_6pn8l")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_tfhda")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/Node2D"]
+position = Vector2(11, -2)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_6pn8l")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_tfhda")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/Node2D"]
+process_mode = 3
+visible = false
+position = Vector2(31, 24)
+script = SubResource("GDScript_tfhda")
+
+[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/Node2D/Node2D"]
+texture_repeat = 2
+width_curve = SubResource("Curve_lin6m")
+gradient = SubResource("Gradient_lin6m")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3"]
+libraries = {
+&"": SubResource("AnimationLibrary_lr483")
+}
+
+[node name="instance2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_tfhda")
+text = "چهارشنبه 23 مهر"
+label_settings = SubResource("LabelSettings_usxgj")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="."]
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -211.0
+offset_top = -224.0
+offset_right = -51.0
+offset_bottom = -64.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(80, 80)
+theme = SubResource("Theme_vb5ih")
+theme_override_fonts/font = SubResource("FontVariation_usxgj")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6pn8l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mmsp5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mmsp5")
+theme_override_styles/normal = SubResource("StyleBoxFlat_mmsp5")
+text = " ⬇️"
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_tac8f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = SubResource("FontVariation_mmsp5")
+theme_override_fonts/italics_font = SubResource("FontVariation_an0t8")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_db4rb")
+theme_override_fonts/bold_font = SubResource("FontVariation_6uaey")
+theme_override_font_sizes/bold_italics_font_size = 42
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxFlat_6pn8l")
+bbcode_enabled = true
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 2
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_sej5b"), SubResource("RichTextEffect_ehb43"), SubResource("RichTextEffect_ednal")]
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Button" type="Button" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "✖️"
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 85)
+layout_direction = 3
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Control" type="Control" parent="VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -40.0
+offset_right = 50.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(50, 40)
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_6bnws")
+theme_override_font_sizes/font_size = 48
+text = "📨"
+flat = true
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/caret_color = Color(0, 0.65098, 0.741176, 1)
+theme_override_constants/outline_size = 7
+theme_override_constants/caret_width = 5
+theme_override_fonts/font = SubResource("FontVariation_sej5b")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxEmpty_apcft")
+theme_override_styles/focus = SubResource("StyleBoxFlat_usxgj")
+context_menu_enabled = false
+wrap_mode = 1
+scroll_smooth = true
+caret_blink = true
+script = -3579537070038712320
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_apcft")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 7.0
-offset_right = 7.0
-offset_bottom = 118.0
+offset_bottom = 144.0
 grow_horizontal = 2
-text = "ارتباط با مربی"
-label_settings = SubResource("LabelSettings_yqwks")
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("14_06d1e")
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 551.0
-offset_top = 88.0
-offset_right = 599.0
-offset_bottom = 137.0
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wi0ee")
+icon = ExtResource("15_cj1gv")
+flat = true
+expand_icon = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 9.47
+
+[node name="name" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+visible = false
+texture_repeat = 2
+material = SubResource("ShaderMaterial_vb5ih")
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("ViewportTexture_6pn8l")
+expand_mode = 1
+stretch_mode = 6
+script = SubResource("GDScript_0jf8d")
+metadata/_edit_use_anchors_ = true
+
+[node name="texture" type="SubViewport" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(400, 108)
+render_target_update_mode = 4
+
+[node name="Label" type="RichTextLabel" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name/texture"]
+texture_repeat = 2
+clip_contents = false
+custom_minimum_size = Vector2(0, 108)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -54.0
+offset_right = 187.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = SubResource("FontVariation_apcft")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_mgrfc"), SubResource("RichTextEffect_ur635")]
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "وضعیت: آنلاین"
+label_settings = SubResource("LabelSettings_2pn8f")
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 10
+texture = SubResource("GradientTexture2D_6pn8l")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="NinePatchRect" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_0jf8d")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NinePatchRect2" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_apcft")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2pn8f")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_usxgj")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+position = Vector2(563, 1710)
+
+[node name="delete" type="Button" parent="Node2D"]
+offset_left = -133.0
+offset_top = -182.0
+offset_right = -26.0
+offset_bottom = -79.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(132, 179)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_b0thc")
-text = "1"
-horizontal_alignment = 1
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6bnws")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0jf8d")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_apcft")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tfhda")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tfhda")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tfhda")
+disabled = true
+text = "🗑️"
+expand_icon = true
+
+[node name="Label" type="Label" parent="Node2D/delete"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -41.5
+offset_bottom = 42.5
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_mmsp5")
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="."]
-layout_mode = 0
-offset_left = 354.0
-offset_top = 88.0
-offset_right = 402.0
-offset_bottom = 137.0
+[node name="edit" type="Button" parent="Node2D"]
+offset_left = -175.0
+offset_top = -57.0
+offset_right = -68.0
+offset_bottom = 46.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(174, 56)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_b0thc")
-text = "1"
-horizontal_alignment = 1
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6bnws")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0jf8d")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_an0t8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_db4rb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_db4rb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_db4rb")
+disabled = true
+text = "📝"
+alignment = 2
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="Node2D/edit"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -41.5
+offset_bottom = 42.5
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_mmsp5")
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="."]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 122.0
-offset_right = 329.0
-offset_bottom = 177.0
+[node name="copy" type="Button" parent="Node2D"]
+offset_left = -126.0
+offset_top = 89.0
+offset_right = -19.0
+offset_bottom = 192.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(126, -89)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 30
-text = "پشتیبان های برخط: 
-"
-horizontal_alignment = 2
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_6bnws")
+theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0jf8d")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_6uaey")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sej5b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sej5b")
+theme_override_styles/normal = SubResource("StyleBoxFlat_sej5b")
+disabled = true
+text = "🗒️"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="Node2D/copy"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = -41.5
+offset_bottom = 42.5
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_mmsp5")
 vertical_alignment = 1
 
-[connection signal="tab_selected" from="TabContainer" to="." method="_on_tab_container_tab_selected"]
-[connection signal="pressed" from="TabContainer/سلامت معنوی/HBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="scroll_ended" from="TabContainer/سلامت معنوی/ScrollContainer" to="." method="_on_scroll_container_scroll_ended"]
-[connection signal="scroll_started" from="TabContainer/سلامت معنوی/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]
-[connection signal="meta_clicked" from="TabContainer/سلامت معنوی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
-[connection signal="pressed" from="TabContainer/سلامت جسمانی/HBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="scroll_ended" from="TabContainer/سلامت جسمانی/ScrollContainer" to="." method="_on_scroll_container_scroll_ended"]
-[connection signal="scroll_started" from="TabContainer/سلامت جسمانی/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]
-[connection signal="meta_clicked" from="TabContainer/سلامت جسمانی/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
-[connection signal="pressed" from="TabContainer/سلامت فکری/HBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="scroll_ended" from="TabContainer/سلامت فکری/ScrollContainer" to="." method="_on_scroll_container_scroll_ended"]
-[connection signal="scroll_started" from="TabContainer/سلامت فکری/ScrollContainer" to="." method="_on_scroll_container_scroll_started"]
-[connection signal="meta_clicked" from="TabContainer/سلامت فکری/ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
-[connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]
-[connection signal="meta_clicked" from="Container/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_mmsp5")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Node2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_6uaey")
+}
+
+[connection signal="start_scroll" from="VBoxContainer/ScrollContainer" to="." method="_on_scroll_container_start_scroll"]
+[connection signal="meta_clicked" from="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="pressed" from="VBoxContainer/Control/Button" to="." method="_on_scroll_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Button" to="." method="_on_null_ref_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="text_changed" from="VBoxContainer/Panel/VBoxContainer/HBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/Button" to="." method="_on_back_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Node2D/delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="Node2D/edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="Node2D/copy" to="." method="_on_copy_pressed"]

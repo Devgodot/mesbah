@@ -27,7 +27,7 @@ func _ready() -> void:
 				Transation.change(self, "start.tscn")
 				
 		else:
-			get_tree().reload_current_scene()
+			Transation.change(self, "start.tscn")
 	else:
 		Transation.change(self, "register.tscn")
 

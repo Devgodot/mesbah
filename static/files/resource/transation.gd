@@ -101,6 +101,7 @@ func change(scene, new_scene:String, dir=1):
 				scene.queue_free()
 				get_tree().get_root().add_child(s)
 		await get_tree().create_timer(0.5).timeout
+		get_tree().root.move_child(s, get_tree().root.get_child_count() - 3)
 		active = false
 
 func check_trans():
@@ -133,4 +134,4 @@ func load_scene(new_scene) -> Object:
 			for p in source_dic[new_scene][node]:
 				s.get_node(node).set(p.keys()[0], ResourceLoader.load(p.values()[0]))
 			
-	return s
+	return  s

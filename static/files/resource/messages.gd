@@ -20,17 +20,19 @@ func _ready() -> void:
 						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer").hide()
 					else:
 						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Button2").pressed.connect(func ():
-							Updatedate.request("/auth/remove_message?id=%s&user=%s"%[message.id, message.data.user])
-							box.queue_free()
-							Notification.add_notif("با موفقیت لغو شد"))
+							var d= await Updatedate.request("/auth/remove_message?id=%s&user=%s"%[message.id, message.data.user])
+							if d:
+								box.queue_free()
+								Notification.add_notif("با موفقیت لغو شد"))
 						if message.type == "join":
 							box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Button").pressed.connect(func ():
 								var d = await Updatedate.request("/auth/join_group?group="+ message.data.group_name.uri_encode())
-								box.queue_free()
-								if d.has("message"):
-									Notification.add_notif(d.message)
-								if d.has("error"):
-									Notification.add_notif(d.error, Notification.ERROR))
+								if d:
+									box.queue_free()
+									if d.has("message"):
+										Notification.add_notif(d.message)
+									if d.has("error"):
+										Notification.add_notif(d.error, Notification.ERROR))
 								
 						if message.type == "request":
 							box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Button").pressed.connect(func ():
