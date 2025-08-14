@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import jsonify
 from confige import db
-from sqlalchemy import String, Column, Integer, Text, JSON, URL, DateTime, ForeignKey, Boolean
+from sqlalchemy import String, Column, Integer, Text, JSON, URL, DateTime, ForeignKey, Boolean, UUID
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, EqualTo, Length
@@ -10,25 +10,27 @@ from sqlalchemy.orm import relationship
 from khayyam import TehranTimezone
 from datetime import datetime, timedelta
 from utils import hashing, HashingMode
+import uuid
 
 class Messages(db.Model):
     __tablename__ = "Messages"  # اصلاح نام جدول
-    id = db.Column(db.Integer, primary_key=True)
-    conversationId = db.Column(db.String(12), nullable=False)
-    receiverId = db.Column(db.JSON, nullable=False)
+    id = db.Column(String(256), default=lambda: str(uuid.uuid4()), primary_key=True)
+    conversationId = db.Column(db.String(20), nullable=False)
+    sender = db.Column(String(256), nullable=False)
     messages = db.Column(db.JSON, nullable=False)
+    edited = Column(Boolean(), default=False, nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.now(TehranTimezone()))
     updatedAt = db.Column(db.DateTime, default=datetime.now(TehranTimezone()))
-
-    def to_dict(self):
-        return {
-            "id": self.id,
-            "conversationId": self.conversationId,
-            "receiverId": self.receiverId,
-            "messages": self.messages,
-            "createdAt": self.createdAt.isoformat()
-        }
-
+    seen = Column(DateTime(), nullable=True)
+    deleted = Column(DateTime(), nullable=True)
+    response = Column(String(256), nullable=True)
+    time = Column(String(256), nullable=True)
+    part= Column(String(256), nullable=False, default="")
+class Supporter(db.Model):
+    id = Column(Integer, primary_key=True)
+    username = Column(String(256), nullable=False)
+    gender = Column(Integer(), nullable=False, default=0)
+    part = Column(String(256), nullable=False, default="")
 class VerificationCode(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     phone = db.Column(db.String(11), nullable=False)
@@ -67,8 +69,7 @@ class User(db.Model):
     @classmethod
     def get_user_by_username(cls, username):
         # جستجو با username هش شده
-        print(hashing(HashingMode.ENCODE, username))
-        return cls.query.filter_by(username=hashing(HashingMode.ENCODE, username)).first()
+        return cls.query.filter_by(id=username).first()
 
     def set_username(self, username):
         self.username = hashing(HashingMode.ENCODE, username)
@@ -148,12 +149,15 @@ class Ticket(db.Model):
     gender = Column(Integer, nullable=False, default=0)
     nationality = Column(Integer, nullable=False, default=0)
 class Score(db.Model):
-    gender = Column(Integer, nullable=False, primary_key=True)
-    year = Column(Integer, nullable=False, primary_key=True)
+    id = Column(Integer, primary_key=True)
+    gender = Column(Integer, nullable=False)
+    tag = Column(Integer, nullable=False)
+    year = Column(Integer, nullable=False)
     name = Column(String(256), nullable=False)
-    tag = Column(String(256), nullable=False)
-    sort = Column(Integer, nullable=False)
+    plan = Column(String(256), nullable=False)
+    subplan = Column(String(256), nullable=False)
     score = Column(Integer, nullable=False)
+    diamond = Column(Integer, nullable=False, default=0)
     group = Column(Boolean, nullable=False, default=False)
 class TokenBlocklist(db.Model):
     id = db.Column(Integer, primary_key=True)
@@ -232,3 +236,15 @@ class ServerMessage(db.Model):
     timestamp = Column(DateTime, default=datetime.now(TehranTimezone()))
     def __repr__(self):
         return f"<ServerMessage(message='{self.message}')>"
+class Conversation(db.Model):
+    __tablename__ = 'conversations'
+    id = Column(Integer, primary_key=True)
+    conversationId = Column(String(256), nullable=False)
+    user1 = Column(String(10), ForeignKey('users.id'))
+    user2 = Column(String(10), ForeignKey('users.id'))
+    state1 = Column(String(10), nullable=False, default="offline")
+    state2 = Column(String(10), nullable=False, default="offline")
+    last_seen1 = Column(JSON, nullable=True)
+    last_seen2 = Column(JSON, nullable=True)
+    part = Column(String(256), default="")
+    blocked = Column(Boolean, default=False)

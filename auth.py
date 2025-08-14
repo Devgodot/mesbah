@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, current_app
 from sqlalchemy.orm.attributes import flag_modified
 from flask_caching import Cache
-from confige import db, app
+from confige import db, app, get_sort_by_birthday
 from flask_jwt_extended import (
     create_access_token,
     create_refresh_token,
@@ -14,7 +14,7 @@ from flask_jwt_extended import (
 from utils import hashing, HashingMode
 from random import randint
 import random, os, shutil
-from models import User, TokenBlocklist, UserInterface, Group, VerificationCode, Messages, UserSeenMessages, Ticket, UserEditLog
+from models import User, TokenBlocklist, UserInterface, Group, VerificationCode, Messages, UserSeenMessages, Ticket, UserEditLog, Supporter
 import json
 from datetime import datetime, timedelta
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
@@ -117,14 +117,8 @@ def register_user():
             for index, key in enumerate(editors.keys()):
                 if username in editors[key]:
                     editor.append(index)
-            support = False
-            for g in UserInterface.query.first().data.get("supporters").values():
-                for r in g:
-                    for p in r:
-                        for u in p:
-                            if u == username:
-                                support = True
-           
+            support = Supporter.query.filter_by(username=username).first() is not None
+
             new_user = User(id=username, username=username, phone=data.get("phone"), data=data.get("data", {"support":support,"phone": phone, "editor": len(editor) > 0, "part_edit": editor}), password="1234", tag=data.get("tag", 0), gender=data.get("gender", 0))
             new_user.save()
             access_token = create_access_token(identity=new_user.username, expires_delta=False)
@@ -153,21 +147,18 @@ def whoami():
         for index, key in enumerate(editors.keys()):
             if current_user.get_username() in editors[key]:
                 editor.append(index)
-        support = False
-        for g in UserInterface.query.first().data.get("supporters").values():
-            for r in g:
-                for p in r:
-                    for u in p:
-                        if u == current_user.get_username():
-                            support = True
-        if not support:
-            for x in range(3):
-                messages = Messages.query.filter_by(conversationId=current_user.get_username()+"_"+str(x)).first()
-                supporters = UserInterface.query.first().data.get("supporters").get(["male", "female"][current_user.data.get("gender", 0)])[current_user.data.get("tag", 0)][x]
-                if messages is None:
-                    message = Messages(conversationId=current_user.get_username()+"_"+str(x), messages=[], receiverId=supporters)
-                    db.session.add(message)
-                    db.session.commit()
+        support = Supporter.query.filter_by(username=current_user.get_username()).first() is not None
+        if current_user.tag != 6:
+            current_user.tag = get_sort_by_birthday(current_user.birthday)
+            db.session.commit()
+        saved_users = current_user.data.get("saved_users", [])
+        for user in saved_users:
+            user_data = User.get_user_by_username(username=user["username"])
+            if user_data is not None:
+                user["name"] = user_data.data.get("first_name", "") + " " + user_data.data.get("last_name", "") + " " + user_data.data.get("father_name", "")
+            else:
+                saved_users.remove(user)
+        
         sended_message = current_user.data.get("users_sended_message", [])
         for u in sended_message:
             group = Group.get_group_by_name(current_user.data.get("group_name", ""))
@@ -175,7 +166,7 @@ def whoami():
                 if u in group.users.get("users", []):
                     current_user.data.get("users_sended_message", []).remove(u)
             current_user.update(data={"user_sended_message":sended_message})
-        current_user.update(data={"editor":len(editor) > 0, "part_edit":editor, "support":support})
+        current_user.update(data={"editor":len(editor) > 0, "part_edit":editor, "support":support, "saved_users":saved_users})
         db.session.commit()
         data = {}
         for d in current_user.data.keys():
@@ -185,6 +176,8 @@ def whoami():
         if data.get("accept_account") is None:data["accept_account"] = False
         if current_user.get_username() in UserInterface.query.first().data.get("management", []): data["management"] = True 
         else: data["management"] = False
+        data["gender"] = current_user.gender
+        data["tag"] = current_user.tag
         data["update_version"] = UserInterface.query.first().data.get("update_version", "")
         return jsonify(
             {
