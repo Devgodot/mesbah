@@ -272,7 +272,7 @@ def lenght():
 def icon():
     user = User.get_user_by_username(username=request.args.get("username", ""))
     if user is not None:
-        return jsonify({"icon":user.data.get("icon", "")})
+        return jsonify({"icon":user.data.get("icon", ""), "username":current_user.get_username()})
     return jsonify({"message":"کاربر وجود ندارد"})
 
 @user_bp.post("/server_message")
@@ -451,56 +451,6 @@ def support_message():
         return jsonify({"messages":message.messages})
     return jsonify({"messages":[]})
 
-@user_bp.post("/users_message")
-@jwt_required()
-def users_message():
-    user_name = current_user.get_username()
-    messages = Messages.query.all()
-    users = []
-    last_users = request.get_json().get("users")
-    
-    for m in messages:
-        new_message = 0
-        if user_name in m.receiverId and len(m.messages) > 0:
-            for message in m.messages:
-                existing_record = UserSeenMessages.query.filter_by(user_id=current_user.id, message_id=message.get("id")).first()
-                if not existing_record:
-                    new_message += 1
-            user = User.get_user_by_username(username=m.conversationId.split("_")[0])
-            last_message_time = m.messages[-1].get("timestamp") if m.messages else None
-            if last_message_time:
-                last_message_time = datetime.datetime.strptime(last_message_time, "%Y/%m/%d %H:%M:%S")
-            data = {
-                "name": user.data.get("first_name", "") + " " + user.data.get("last_name", ""),
-                "username": user.get_username(),
-                "phone": user.phone,
-                "conversationId": m.conversationId,
-                "new": new_message,
-                "icon": user.data.get("icon", ""),
-                "last_message_time": last_message_time
-            }
-            if user.data.get("custom_name") is not None:
-                data["custom_name"] = user.data.get("custom_name")
-            users.append(data)
-            
-    # Sort users by the last message time in descending order
-    users.sort(key=lambda x: x["last_message_time"], reverse=True)
-    
-    # Convert last_message_time back to string
-    for user in users:
-        if user["last_message_time"]:
-            user["last_message_time"] = user["last_message_time"].strftime("%Y/%m/%d %H:%M:%S")
-    add = []
-    remove = []
-    for user in users:
-        if user not in last_users:
-            add.append(user)
-   
-    for user in last_users:
-        if user not in users:
-            remove.append(user)
-   
-    return jsonify({"add": add, "delete":remove})
 
 @user_bp.post("/user_message")
 @jwt_required()

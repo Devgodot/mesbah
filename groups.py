@@ -3,7 +3,7 @@ from flask_jwt_extended import jwt_required, get_jwt, current_user
 from models import User, UserInterface, Group, GroupEditLog
 from schemas import UserSchema, GroupSchema
 from sqlalchemy import desc, text
-import time, uuid
+import time, uuid, requests
 from confige import db
 from khayyam import JalaliDate, JalaliDatetime, TehranTimezone
 group_bp = Blueprint("groups", __name__)
@@ -99,11 +99,39 @@ def get_names():
     groups = Group.query.all()
     data = []
     for group in groups:
-        leader = hashing(mode=HashingMode.ENCODE,text=group.users.get("leader", ""))
-        icon =  hashing(mode=HashingMode.ENCODE, text=group.icon)
-        data.append([group.name, len(group.users.get("users", [])), group.tag, group.gender, icon, leader])
+        users = group.users if group.users else {}
+        leader = hashing(mode=HashingMode.ENCODE, text=users.get("leader", ""))
+        icon = hashing(mode=HashingMode.ENCODE, text=group.icon or "")
+        tag = int(group.tag) if hasattr(group, "tag") else 0
+        gender = int(group.gender) if hasattr(group, "gender") else 0
+        data.append([
+            group.name,
+            len(users.get("users", [])),
+            tag,
+            gender,
+            icon,
+            leader
+        ])
     return jsonify({"data": data})
+def is_url_image(image_url):
+    """
+    Checks if a given URL points to an image.
 
+    Args:
+        image_url (str): The URL to check.
+
+    Returns:
+        bool: True if the URL points to an image, False otherwise.
+    """
+    image_formats = ("image/png", "image/jpeg", "image/jpg", "image/gif", "image/bmp", "image/webp")
+    try:
+        r = requests.head(image_url, timeout=5)  # Add a timeout for robustness
+        if r.status_code == 200 and r.headers.get("content-type") in image_formats:
+            return True
+        return False
+    except requests.exceptions.RequestException:
+        # Handle network errors, invalid URLs, timeouts, etc.
+        return False
 @group_bp.post("/create")
 @jwt_required()
 def create():
@@ -113,7 +141,7 @@ def create():
     _name = data.get("group_name")
     if _name and not _name in group_names:
         users = {"users": [current_user.username], "leader": current_user.username}
-        new_group = Group(name=_name, gender=current_user.data.get("gender", 0), tag=current_user.data.get("tag", 0), score={f"score{x}" : 0 for x in range(3)}, diamonds={f"diamond{x}":0 for x in range(3)}, users=users, icon=data.get("icon", ""))
+        new_group = Group(name=_name, gender=current_user.gender, tag=current_user.tag, score={f"score{x}" : 0 for x in range(3)}, diamonds={f"diamond{x}":0 for x in range(3)}, users=users, icon=data.get("icon", ""))
         new_group.save()
         remove_event = []
         messages = current_user.data.get("message", [])
@@ -155,6 +183,18 @@ def create():
 @group_bp.get("/get")
 def get_group():
     group = Group.get_group_by_name(request.args.get("name", ""))
+    leader = group.users.get("leader", "")
+    if len(leader) > 10:
+        user_leader = User.query.filter_by(username=leader).first()
+    else:
+        user_leader = User.get_user_by_username(username=leader)
+    if is_url_image(group.icon) == False:
+        group.icon = ""
+        db.session.commit()
+    if user_leader is not None :
+        group.tag = user_leader.tag
+        group.gender = user_leader.gender
+        db.session.commit()
     if group is not None:
         group_users = []
         for u in group.users.get("users", []):
@@ -162,14 +202,19 @@ def get_group():
                 group_users.append(u)
         group.users["users"] = group_users
         db.session.commit()
-        data = {"users": [hashing(text=user, mode=HashingMode.ENCODE) for user in group.users.get("users", [])] , "leader": hashing(mode=HashingMode.ENCODE, text=group.users.get("leader", "")), "icon": hashing(mode=HashingMode.ENCODE ,text=group.icon), "diamonds":group.diamonds, "scores":group.score}
+        data = {"users": [user if len(user) > 10 else hashing(HashingMode.ENCODE, text=user) for user in group.users.get("users", [])] , "leader": group.users.get("leader", "") if len(group.users.get("leader", "")) > 10 else hashing(HashingMode.ENCODE, text=group.users.get("leader", "")), "icon": hashing(mode=HashingMode.ENCODE ,text=group.icon)}
+        
         users_info = []
         for username in group.users.get("users"):
-            user = User.get_user_by_username(username=username)
-            user_info = {"name":user.data.get("first_name", "") + " " + user.data.get("last_name") + " " + user.data.get("father_name")}
-            if user.data.get("custom_name") is not None:
-                user_info["custom_name"] = user.data.get("custom_name") + " " + user.data.get("father_name")
-            users_info.append(user_info)
+            if len(username) == 10:
+                user = User.get_user_by_username(username=username)
+            else:
+                user = User.query.filter_by(username=username).first()
+            if user is not None:
+                user_info = {"name":user.data.get("first_name", "") + " " + user.data.get("last_name") + " " + user.data.get("father_name")}
+                if user.data.get("custom_name") is not None:
+                    user_info["custom_name"] = user.data.get("custom_name") + " " + user.data.get("father_name")
+                users_info.append(user_info)
         data["users_info"] = users_info
         return jsonify(data)
     return jsonify({"message": "گروه وجود ندارد"}), 400

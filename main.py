@@ -5,6 +5,9 @@ from users import user_bp
 from groups import group_bp
 from control import control_bp
 from ticket import ticket_bp
+from planes import plan_bp
+from score import score_bp
+from messages import message_bp
 from models import User, UserInterface, FlaskForm, Group
 from werkzeug.utils import secure_filename
 import os
@@ -104,7 +107,9 @@ app.register_blueprint(user_bp, url_prefix="/users")
 app.register_blueprint(group_bp, url_prefix="/groups")
 app.register_blueprint(control_bp, url_prefix="/control")
 app.register_blueprint(ticket_bp, url_prefix="/ticket")
-
+app.register_blueprint(plan_bp, url_prefix="/planes")
+app.register_blueprint(score_bp, url_prefix="/score")
+app.register_blueprint(message_bp, url_prefix="/messages")
  # load user
 @jwt.user_lookup_loader
 def user_lookup_callback(_jwt_headers, jwt_data):
