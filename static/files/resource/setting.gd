@@ -23,6 +23,30 @@ var groupmate = []
 var camera
 var refrence_t
 var refrence_a
+@onready var new_user_name_box: LineEdit = $ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit
+@onready var birthday_box: HBoxContainer = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4
+@onready var change_group_mode: TabContainer = $ScrollContainer/VBoxContainer/TabContainer
+@onready var vbox_event_user_to_group: VBoxContainer = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2
+@onready var grid_of_transation: GridContainer = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer
+@onready var hbox_of_transation: HBoxContainer = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10
+@onready var hbox_of_custom_name: HBoxContainer = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9
+@onready var reference_rect_2: ReferenceRect = $ReferenceRect2
+@onready var rich_text_label_custom_name: RichTextLabel = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9/RichTextLabel
+@onready var first_name_box: LineEdit = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit
+@onready var last_name_box: LineEdit = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit
+@onready var father_name_box: LineEdit = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/LineEdit
+@onready var v_box_container_3: VBoxContainer = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3
+
+
+func change_label():
+	var f = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit.text
+	var l = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit.text
+	var x = Updatedate.load_game("accounts", []).find(username)
+	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton.get_child(x).get_node("Label2").text = f[0] if f != "" else ""
+	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton.get_child(x).get_node("Label2").text += " " + l[0] if l != "" else ""
+	$ScrollContainer/VBoxContainer/Panel/Button/Label.text = f[0] if f != "" else ""
+	$ScrollContainer/VBoxContainer/Panel/Button/Label.text += " " + l[0] if l != "" else ""
+	
 func get_direction(text:String):
 	if text[0] < "ی" and text[0] > "آ":
 		return -1
@@ -30,53 +54,161 @@ func get_direction(text:String):
 		return 1 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	set_process(false)
 	Updatedate.load_user()
+	var a = Updatedate.load_game("accounts", [])
 	if Engine.has_singleton("GodotGetImage"):
 		camera = Engine.get_singleton("GodotGetImage")
 		camera.setOptions({"use_front_camera":true})
 	if Updatedate.load_game("accept_account", false):
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4.hide()
-	if camera:
-		camera.image_request_completed.connect(_on_texture_rect_face_detected)
-	var wait = Updatedate.add_wait($ScrollContainer/VBoxContainer/TabContainer)
-	var wait2 = Updatedate.add_wait($ScrollContainer/VBoxContainer/VBoxContainer2)
-	var _user = await Updatedate.load_from_server()
-	if not _user:
-		Notification.add_notif("حساب شما حذف یا مسدود شده", Notification.ERROR)
-		DirAccess.remove_absolute("user://session.dat")
-		Updatedate.current_user = 0
-		await get_tree().create_timer(0.5).timeout
-		Transation.change(self, "register.tscn")
+		birthday_box.hide()
+	var wait = Updatedate.add_wait(change_group_mode)
+	var wait2 = Updatedate.add_wait(vbox_event_user_to_group)
+	Updatedate.load_from_server()
+	Updatedate.request_completed.connect(func(data, url:String):
+		if url == "/auth/whoami" and data and data.has("error"):
+			Notification.add_notif("حساب شما حذف یا مسدود شده", Notification.ERROR)
+			Updatedate.delete_user(Updatedate.load_game("user_name", ''))
+			await get_tree().create_timer(0.5).timeout
+			if a.size() == 0:
+				Updatedate.current_user = 0
+				Transation.change(self, "register.tscn")
+			else:
+				Updatedate.current_user = a.find(a.pick_random())
+				Transation.change(self, "setting.tscn")
+		if url.begins_with("/users/icon?username=") and data:
+			Updatedate.save("icon", data.icon, false, data.username)
+			var x = a.find(data.username)
+			var btn = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton.get_child(x)
+			await Updatedate.get_icon_user(data.icon if data.has("icon") else "", data.username, btn)
+			if $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton.get_child(x).texture_normal == null:
+				$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton.get_child(x).get_node("Label2").text = Updatedate.load_game("first_name", "", data.username)[0] + " " + Updatedate.load_game("last_name", "", data.username)[0]
+			if data.username == Updatedate.load_game("user_name", '') and data.icon != "":
+				$ScrollContainer/VBoxContainer/Panel/Button/Label.hide()
+		if url == "/auth/get?name=group_nameANDusers_sended_message" and data:
+			
+			var d = data
+			if d and d.has("nums") and d.nums[0] != null and d.nums[0] != "":
+				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button.group_name = d.nums[0]
+				var group = await Updatedate.request("/groups/get?name="+d.nums[0].uri_encode())
+				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button/Label.text = d.nums[0].split(" ")[0][0]
+				if d.nums[0].split(" ").size() > 1:
+					$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button/Label.text += d.nums[0].split(" ")[-1][0]
+				for child in get_tree().get_nodes_in_group("users_box"):
+					child.queue_free()
+				Updatedate.save("group", group, false)
+				Updatedate.save("users_sended_message", d.nums[1], false)
+				sended_message = d.nums[1] if d.nums[1] != null else []
+				if group != null and group.has("users"):
+					var u = []
+					for user in group.users:
+						u.append(custom_hash.hashing(custom_hash.GET_HASH, user))
+					group_user = u
+					group_user.erase(custom_hash.hashing(custom_hash.GET_HASH,group.leader))
+				if username == custom_hash.hashing(custom_hash.GET_HASH,group.leader):
+					if group.icon and group.icon != "":
+						$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button/Label.hide()
+						Updatedate.get_icon_group(custom_hash.hashing(custom_hash.GET_HASH,group.icon), d.nums[0], $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button/TextureRect)
+					if sended_message.size() + group_user.size() == 4:
+						$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button3.hide()
+					if d.nums[0] != "":
+						change_group_mode.current_tab = 2
+						$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer/LineEdit.text = d.nums[0]
+						var index = 0
+						for x in range(group_user.size()):
+							var user = group_user[x]
+							var num = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"][index]
+							var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
+							box.add_to_group("users_box")
+							box.get_node("Label").text = "عضو " + num + " : "
+							box.get_node("name/texture/Label").text = group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name
+							box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
+							box.show()
+							groupmate.append(box)
+							v_box_container_3.add_child(box)
+							v_box_container_3.move_child(box, v_box_container_3.get_child_count() - 5)
+							
+							index += 1
+						for x in range(d.nums[1].size()):
+							var user = custom_hash.hashing(custom_hash.GET_HASH, d.nums[1][x])
+							var num = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"][index]
+							var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
+							box.add_to_group("users_box")
+							box.get_node("Label2").text = "در انتظار تایید"
+							box.get_node("Label").text = "عضو " + num + " :"
+							box.get_node("Label2").show()
+							box.show()
+							groupmate.append(box)
+							v_box_container_3.add_child(box)
+							v_box_container_3.move_child(box, v_box_container_3.get_child_count() - 5)
+							
+							index += 1
+							box.get_node("name/texture/Label").text = user
+				else:
+					if d.nums[0] != "":
+						if group.icon and group.icon != "":
+							$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect/Label.hide()
+							Updatedate.get_icon_group(custom_hash.hashing(custom_hash.GET_HASH,group.icon), d.nums[0], $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect)
+							$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect.gui_input.connect(func (event:InputEvent):
+								if event is InputEventScreenTouch and event.is_pressed():
+									Updatedate.show_picture($ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect.texture)
+								)
+							
+						change_group_mode.current_tab = 3
+						$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer/LineEdit.text = d.nums[0]
+						var g_name = d.nums[0]
+						$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect/Label.text =g_name.split(" ")[0][0]
+						if g_name.split(" ").size() > 1:
+							$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect/Label.text +=" "+ g_name.split(" ")[-1][0]
+						var b = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2.duplicate()
+						b.add_to_group("users_box")
+						b.get_node("Label").text = "سر گروه :"
+						b.show()
+						b.get_node("name/texture/Label").text = group.users_info[0].custom_name if group.users_info[0].has("custom_name") else "[center]"+ group.users_info[0].name
+						b.get_node("name").dir = get_direction(group.users_info[0].name)
+						$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4.add_child(b)
+						for x in range(group_user.size()):
+							var user = group_user[x]
+							var num = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"][x]
+							var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2.duplicate()
+							box.add_to_group("users_box")
+							box.get_node("Label").text = "عضو " + num + " : "
+							box.get_node("name/texture/Label").text = group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name
+							box.show()
+							box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
+							groupmate.append(box)
+							$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4.add_child(box)
+		)
+		
 	if Updatedate.load_game("accept_account", false):
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4.hide()
+		birthday_box.hide()
+		$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/Label5.hide()
 	Transation.check_trans()
 	if Updatedate.load_game("pro", true):
-		refrence_t = $ReferenceRect2.duplicate()
-		refrence_t.target = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer.get_child(Transation.trans)
+		refrence_t = reference_rect_2.duplicate()
+		refrence_t.target = grid_of_transation.get_child(Transation.trans)
 		refrence_t.show()
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer.get_child(Transation.trans).add_child(refrence_t)
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10.show()
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9.show()
-		for x in range($ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer.get_children().size()):
-			var child:TextureButton = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer.get_child(x)
+		grid_of_transation.get_child(Transation.trans).add_child(refrence_t)
+		hbox_of_transation.show()
+		hbox_of_custom_name.show()
+		for x in range(grid_of_transation.get_children().size()):
+			var child:TextureButton = grid_of_transation.get_child(x)
 			child.pressed.connect(func ():
 				Updatedate.save("transation", x)
 				Transation.check_trans()
 				refrence_t.queue_free()
-				refrence_t = $ReferenceRect2.duplicate()
+				refrence_t = reference_rect_2.duplicate()
 				refrence_t.target = child
 				refrence_t.show()
 				child.add_child(refrence_t))
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9/RichTextLabel.text = Updatedate.load_game("custom_name", "[right]" + Updatedate.load_game("first_name", "")+ " "+ Updatedate.load_game("last_name", ""))
+		rich_text_label_custom_name.text = Updatedate.load_game("custom_name", "[right]" + Updatedate.load_game("first_name", "")+ " "+ Updatedate.load_game("last_name", ""))
 	else:
 		Transation.trans = 0
 		if refrence_t:
 			refrence_t.queue_free()
-		$ReferenceRect2.hide()
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10.hide()
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9.hide()
+		reference_rect_2.hide()
+		hbox_of_transation.hide()
+		hbox_of_custom_name.hide()
 	Updatedate.socket.close()
 	first_name = Updatedate.load_game("first_name", "")
 	last_name = Updatedate.load_game("last_name", "")
@@ -85,7 +217,6 @@ func _ready() -> void:
 		box.get_node("LineEdit").text_changed.connect(func(new_text:String):
 			box.get_node("Label2").text = ""
 			if new_text.length() == 10 and !event_user.has(new_text) and !sended_message.has(new_text):
-				
 				var d = await Updatedate.request("/users/check?username="+new_text)
 				if d and d.has("result"):
 					box.get_node("Label2").text = "وجود دارد"
@@ -104,29 +235,25 @@ func _ready() -> void:
 					box.get_node("Label2").label_settings.font_color = Color.BLACK
 					box.get_node("Label2").text = "قبلاً انتخاب شده"
 				)
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit.text = first_name
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit.text = last_name
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/LineEdit.text = father_name
+	first_name_box.text = first_name
+	last_name_box.text = last_name
+	father_name_box.text = father_name
 	
 	birthday = Updatedate.load_game("birthday", "1380/1/1").split("/")
+	for spin in get_tree().get_nodes_in_group("spin"):
+		spin.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
+	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.value = int(birthday[2])
+	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.value = int(birthday[1])
+	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.value = int(birthday[0])
 	
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer5/SpinBox.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.value = int(birthday[2])
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.value = int(birthday[1])
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.value = int(birthday[0])
-	var a = Updatedate.load_game("accounts", [])
-	print(Updatedate.current_user)
 	for x in range(a.size()):
-		var btn:TextureButton = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/TextureButton.duplicate()
+		var btn:TextureButton = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/TextureButton.duplicate()
 		Updatedate.get_icon_user("", a[x], btn)
 		btn.gui_input.connect(func(event:InputEvent):
 			if event is InputEventMouseButton :
 				if event.button_index == 1 and event.is_released() and x != Updatedate.current_user:
 					Updatedate.save("current_user", x, false)
-					
+					Updatedate.cancel_request()
 					Updatedate.save("last_user", x, false)
 					Updatedate.current_user = x
 					Transation.change(self, "setting.tscn")
@@ -144,9 +271,9 @@ func _ready() -> void:
 		btn.get_node("Label").text = a[x]
 		btn.show()
 		%OptionButton.add_child(btn)
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/TextureButton.queue_free()
+	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/TextureButton.queue_free()
 	if %OptionButton.get_children().size() < 11:
-		var add = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/add.duplicate()
+		var add = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/add.duplicate()
 		add.pressed.connect(func():
 			Updatedate.save("current_user", %OptionButton.get_children().size() - 1, false)
 			Updatedate.last_user = Updatedate.current_user
@@ -155,16 +282,20 @@ func _ready() -> void:
 			)
 		add.show()
 		%OptionButton.add_child(add)
-	$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/add.queue_free()
+	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/add.queue_free()
 	wait2.queue_free()
 	tag = Updatedate.load_game("tag", 0)
 	gender = Updatedate.load_game("gender", 0)
 	username = Updatedate.load_game("user_name", "")
-	Updatedate.get_icon_user(Updatedate.load_game("icon", ""), username, $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button/TextureRect)
-	var d = await Updatedate.request("/auth/get?name=group_nameANDusers_sended_message")
-	if d and d.has("nums") and d.nums[0] != null and d.nums[0] != "":
-		$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button.group_name = d.nums[0]
-		var group = await Updatedate.request("/groups/get?name="+d.nums[0].uri_encode())
+	Updatedate.get_icon_user(Updatedate.load_game("icon", ""), username, $ScrollContainer/VBoxContainer/Panel/Button/TextureRect)
+	
+	if Updatedate.load_game("icon", "") != "":
+		$ScrollContainer/VBoxContainer/Panel/Button/Label.hide()
+	Updatedate.request("/auth/get?name=group_nameANDusers_sended_message")
+	var d = {"nums":[Updatedate.load_game("group", {}), Updatedate.load_game("users_sended_message", [])]}
+	if d and d.has("nums") and d.nums[0] != {}:
+		$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button.group_name = Updatedate.load_game("group_name", "")
+		var group = d.nums[0]
 		sended_message = d.nums[1] if d.nums[1] != null else []
 		if group != null and group.has("users"):
 			var u = []
@@ -173,114 +304,107 @@ func _ready() -> void:
 			group_user = u
 			group_user.erase(custom_hash.hashing(custom_hash.GET_HASH,group.leader))
 		if username == custom_hash.hashing(custom_hash.GET_HASH,group.leader):
-			if group.icon:
-				Updatedate.get_icon_group(custom_hash.hashing(custom_hash.GET_HASH,group.icon), d.nums[0], $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button/TextureRect)
+			if group.icon and group.icon != "":
+				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button/Label.hide()
+				Updatedate.get_icon_group(custom_hash.hashing(custom_hash.GET_HASH,group.icon), Updatedate.load_game("group_name", ""), $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button/TextureRect)
 			if sended_message.size() + group_user.size() == 4:
-				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Label2.hide()
-				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button2.hide()
-			if d.nums[0] != "":
-				$ScrollContainer/VBoxContainer/TabContainer.current_tab = 2
-				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer/LineEdit.text = d.nums[0]
-				var index = 0
-				for x in range(group_user.size()):
-					var user = group_user[x]
-					var num = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"][index]
-					var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
-					box.get_node("Label").text = "عضو " + num + " : "
-					box.get_node("name/texture/Label").text = group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name
-					box.show()
-					groupmate.append(box)
-					$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3.add_child(box)
-					await get_tree().create_timer(0.1).timeout
-					box.get_node("name/texture").size = box.get_node("name").size
-					box.get_node("name").texture = box.get_node("name/texture").get_texture()
-					if box.get_node("name/texture/Label").size.x > box.get_node("name").size.x:
-						box.get_node("name/texture").size.x = box.get_node("name/texture/Label").size.x * 1.5
-						box.get_node("name/texture").size.y = box.get_node("name/texture/Label").size.y
-						var shader =$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2/name.material.shader
-						var _material = ShaderMaterial.new()
-						_material.shader = shader
-						_material.set_shader_parameter("dir", get_direction(group.users_info[x + 1].name))
-						box.get_node("name").material = _material
-					index += 1
-				for x in range(d.nums[1].size()):
-					var user = d.nums[1][x]
-					var num = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"][index]
-					var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
-					box.get_node("Label2").text = "در انتظار تایید"
-					box.get_node("Label").text = "عضو " + num
-					box.get_node("Label2").show()
-					box.show()
-					groupmate.append(box)
-					$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3.add_child(box)
-					index += 1
-					box.get_node("name/texture/Label").text = "[center]"+user
-					box.get_node("name/texture").size = box.get_node("name").size
-					box.get_node("name").texture = box.get_node("name/texture").get_texture()
-					
-		else:
-			if d.nums[0] != "":
-				if group.icon:
-					Updatedate.get_icon_group(custom_hash.hashing(custom_hash.GET_HASH,group.icon), d.nums[0], $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect)
-					$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect.gui_input.connect(func (event:InputEvent):
-						if event is InputEventScreenTouch and event.is_pressed():
-							Updatedate.show_picture($ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect.texture)
-						)
-					
-				$ScrollContainer/VBoxContainer/TabContainer.current_tab = 3
-				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer/LineEdit.text = d.nums[0]
-				var b = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2.duplicate()
-				b.get_node("Label").text = "سر گروه :"
-				b.show()
-				b.get_node("name/texture/Label").text = group.users_info[0].custom_name if group.users_info[0].has("custom_name") else "[center]"+ group.users_info[0].name
-				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4.add_child(b)
-				await get_tree().create_timer(0.1).timeout
-				b.get_node("name/texture").size = b.get_node("name").size
-				b.get_node("name").texture = b.get_node("name/texture").get_texture()
-				if b.get_node("name/texture/Label").size.x > b.get_node("name").size.x:
-					b.get_node("name/texture").size.x = b.get_node("name/texture/Label").size.x * 2
-					b.get_node("name/texture").size.y = b.get_node("name/texture/Label").size.y
-					var shader =$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2/name.material.shader
-					var _material = ShaderMaterial.new()
-					_material.shader = shader
-					_material.set_shader_parameter("dir", get_direction(group.users_info[0].name))
-					b.get_node("name").material = _material
+				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button3.hide()
+			change_group_mode.current_tab = 2
+			var g_name =  Updatedate.load_game("group_name", "")
+			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer/LineEdit.text = g_name
+			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button/Label.text = g_name.split(" ")[0][0] 
+			if g_name.split(" ").size() > 1:
+				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button/Label.text += " "+ g_name.split(" ")[-1][0]
+			var index = 0
+			for x in range(group_user.size()):
+				var user = group_user[x]
+				var num = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"][index]
+				var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
+				box.add_to_group("users_box")
+				box.get_node("Label").text = "عضو " + num + " : "
+				box.get_node("name/texture/Label").text = group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name
+				box.show()
+				box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
+				groupmate.append(box)
+				v_box_container_3.add_child(box)
+				v_box_container_3.move_child(box, v_box_container_3.get_child_count() - 5)
 				
-				for x in range(group_user.size()):
-					var user = group_user[x]
-					var num = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"][x]
-					var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2.duplicate()
-					box.get_node("Label").text = "عضو " + num + " : "
-					box.get_node("name/texture/Label").text = group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name
-					box.show()
-					groupmate.append(box)
-					$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4.add_child(box)
-					await get_tree().create_timer(0.1).timeout
-					box.get_node("name/texture").size = box.get_node("name").size
-					box.get_node("name").texture = box.get_node("name/texture").get_texture()
-					if box.get_node("name/texture/Label").size.x > box.get_node("name").size.x:
-						box.get_node("name/texture").size.x = box.get_node("name/texture/Label").size.x * 2
-						box.get_node("name/texture").size.y = box.get_node("name/texture/Label").size.y
-						var shader =$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2/name.material.shader
-						var _material = ShaderMaterial.new()
-						_material.shader = shader
-						_material.set_shader_parameter("dir", get_direction(d.users_info[x + 1].name))
-						box.get_node("name").material = _material
+				index += 1
+			for x in range(d.nums[1].size()):
+				var user = custom_hash.hashing(custom_hash.GET_HASH, d.nums[1][x])
+				var num = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"][index]
+				var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
+				box.get_node("Label2").text = "در انتظار تایید"
+				box.get_node("Label").text = "عضو " + num + " :"
+				box.get_node("Label2").show()
+				box.show()
+				box.add_to_group("users_box")
+				groupmate.append(box)
+				v_box_container_3.add_child(box)
+				v_box_container_3.move_child(box, v_box_container_3.get_child_count() - 5)
+				
+				index += 1
+				box.get_node("name/texture/Label").text = user
+		else:
+			
+			if group.icon and group.icon != "":
+				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect/Label.hide()
+				Updatedate.get_icon_group(custom_hash.hashing(custom_hash.GET_HASH,group.icon), Updatedate.load_game("group_name", ""), $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect)
+				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect.gui_input.connect(func (event:InputEvent):
+					if event is InputEventScreenTouch and event.is_pressed():
+						Updatedate.show_picture($ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect.texture)
+					)
+				
+			change_group_mode.current_tab = 3
+			var g_name = Updatedate.load_game("group_name", "")
+			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer/LineEdit.text = g_name
+			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect/Label.text =g_name.split(" ")[0][0]
+			if g_name.split(" ").size() > 1:
+				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/TextureRect/Label.text +=" "+ g_name.split(" ")[-1][0]
+			var b = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2.duplicate()
+			b.add_to_group("users_box")
+			b.get_node("Label").text = "سر گروه :"
+			b.show()
+			b.get_node("name").dir = get_direction(group.users_info[0].name)
+			b.get_node("name/texture/Label").text = group.users_info[0].custom_name if group.users_info[0].has("custom_name") else "[center]"+ group.users_info[0].name
+			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4.add_child(b)
+			for x in range(group_user.size()):
+				var user = group_user[x]
+				var num = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"][x]
+				var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2.duplicate()
+				box.add_to_group("users_box")
+				box.get_node("Label").text = "عضو " + num + " : "
+				box.get_node("name/texture/Label").text = group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name
+				box.show()
+				box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
+				groupmate.append(box)
+				$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4.add_child(box)
 	wait.queue_free()
 	set_process(true)
+	$ScrollContainer/VBoxContainer/Panel/Control/Label.text = str("کدملی: ", username, "\n", "شماره تلفن: ", Updatedate.load_game("phone", ""))
+	$ScrollContainer/VBoxContainer/Panel/Control/Label3.text = str("جنسیت: ", ["آقا", "خانم"][Updatedate.load_game("gender", 0)], "\n", "رده: ",["زیر شش سال", "اول تا سوم", "چهارم تا ششم", "هفتم تا نهم", "دهم تا دوازدهم", "سطوح تحصیلی بالاتر", "کادر اجرایی"][Updatedate.load_game("tag", 0)])
 	for x in range(a.size()):
-		var btn = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton.get_child(x)
-		var d2 = await Updatedate.request("/users/icon?username="+a[x])
-		Updatedate.get_icon_user(d2.icon if d2.has("icon") else "", a[x], btn)
+		Updatedate.request("/users/icon?username="+a[x])
+		var btn = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton.get_child(x)
+		Updatedate.get_icon_user(Updatedate.load_game('icon', "", a[x]), a[x], btn)
+		if $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton.get_child(x).texture_normal == null:
+			$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton.get_child(x).get_node("Label2").text = Updatedate.load_game("first_name", "", a[x])[0] + " " + Updatedate.load_game("last_name", "", a[x])[0] 
+		if $ScrollContainer/VBoxContainer/Panel/Button/TextureRect.texture != null:
+			$ScrollContainer/VBoxContainer/Panel/Button/Label.hide()
+	
+	await get_tree().create_timer(0.1).timeout
 	show()
+	change_label()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	%OptionButton.get_child(Updatedate.current_user).texture_normal = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button/TextureRect.texture
-	if $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit.text != first_name or $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit.text != last_name or $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/LineEdit.text != father_name \
-	or $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.value != int(birthday[2]) or $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.value != int(birthday[1]) or $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.value != int(birthday[0]):
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer6/Button.disabled = false
+	%OptionButton.get_child(Updatedate.current_user).texture_normal = $ScrollContainer/VBoxContainer/Panel/Button/TextureRect.texture
+	if $ScrollContainer/VBoxContainer/Panel/Button/TextureRect.texture != null:
+		%OptionButton.get_child(Updatedate.current_user).get_node("Label2").hide()
+	if first_name_box.text != first_name or last_name_box.text != last_name or father_name_box.text != father_name \
+	or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.value != int(birthday[2]) or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.value != int(birthday[1]) or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.value != int(birthday[0]):
+		$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer6/Button.disabled = false
 	else:
-		$ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer6/Button.disabled = true
+		$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer6/Button.disabled = true
 	var correct_group_name = true
 	if groups.has(%group_name.text):
 		correct_group_name = false
@@ -308,7 +432,7 @@ func _process(delta: float) -> void:
 	
 func _on_button_pressed() -> void:
 	var w = Updatedate.add_wait($ScrollContainer/VBoxContainer/TabContainer/VBoxContainer/Button)
-	$ScrollContainer/VBoxContainer/TabContainer.current_tab = 1
+	change_group_mode.current_tab = 1
 	var d = await Updatedate.request("/groups/names")
 	var g = d.data if d and d.has("data") else []
 	groups = []
@@ -318,7 +442,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_button_2_pressed() -> void:
-	$ScrollContainer/VBoxContainer/TabContainer.current_tab = 0
+	change_group_mode.current_tab = 0
 func _on_error(e):
 	var dialog = get_node("AcceptDialog")
 	dialog.window_title = "Error!"
@@ -355,25 +479,37 @@ func _on_okey_pressed() -> void:
 		r.request(Updatedate.protocol+Updatedate.subdomin+"/groups/create", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"group_name":%group_name.text, "event_user":event_user, "icon":icon_group}))
 		d = await r.request_completed
 		data = Updatedate.get_json(d[3])
-	
 	r.queue_free()
+	var g = {
+		"icon": icon_group,
+		"leader": custom_hash.hashing(custom_hash.TO_HASH, Updatedate.load_game("user_name", "")),
+		"users": [custom_hash.hashing(custom_hash.TO_HASH, Updatedate.load_game("user_name", ""))],
+		"users_info": [{
+			"custom_name": Updatedate.load_game("custom_name", ""),
+			"name": first_name + " " + last_name + " " + father_name
+			}]
+		}
+	
 	if data and data.message == "successe":
-		$ScrollContainer/VBoxContainer/TabContainer.current_tab = 2
+		Updatedate.save("group", g, false)
+		change_group_mode.current_tab = 2
 		$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer/LineEdit.text = %group_name.text
+		var hash_user = []
 		for x in range(event_user.size()):
 			var user = event_user[x]
+			hash_user.append(custom_hash.hashing(custom_hash.TO_HASH, user))
 			var num = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"][x]
 			var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
+			box.add_to_group("users_box")
 			box.get_node("name/texture/Label").text = "[center]"+user
 			box.get_node("Label2").text = "در انتظار تایید"
 			box.get_node("Label").text = "عضو " + num
 			box.get_node("Label2").show()
 			box.show()
 			groupmate.append(box)
-			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3.add_child(box)
-			await get_tree().create_timer(0.1).timeout
-			box.get_node("name/texture").size = box.get_node("name").size
-			box.get_node("name").texture = box.get_node("name/texture").get_texture()
+			v_box_container_3.add_child(box)
+			v_box_container_3.move_child(box, v_box_container_3.get_child_count() - 5)
+		Updatedate.save("users_sended_message", hash_user, false)
 	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button.group_name = %group_name.text
 	event_user = []
 	w.queue_free()
@@ -383,18 +519,19 @@ func _on_add_user_pressed() -> void:
 	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button2.show()
 	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button.show()
 	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer3.show()
-	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button2.hide()
-	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Label2.hide()
+	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button3.hide()
+
 
 
 func _on_cancel_pressed() -> void:
 	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button2.hide()
 	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button.hide()
 	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer3.hide()
-	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button2.show()
-	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Label2.show()
+	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button3.show()
+
 
 func _on_send_event_pressed() -> void:
+	var hash_user = Updatedate.load_game("users_sended_message", [])
 	if event_user.size() == 1:
 		var w = Updatedate.add_wait($ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button)
 		var r = HTTPRequest.new()
@@ -411,28 +548,31 @@ func _on_send_event_pressed() -> void:
 		if data and data.message == "successe":
 			var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
 			box.get_node("LineEdit").text = %LineEdit.text
+			box.add_to_group("users_box")
 			%LineEdit.text = ""
 			sended_message.append(%LineEdit.text)
+			hash_user.append(custom_hash.hashing(custom_hash.TO_HASH, %LineEdit.text))
 			var num = ["اول", "دوم", "سوم", "چهارم", "پنجم", "ششم", "هفتم", "هشتم", "نهم", "دهم"][group_user.size() + sended_message.size() - 1]
 			box.get_node("Label2").text = "در انتظار تایید"
-			box.get_node("Label").text = "عضو " + num
+			box.get_node("Label").text = "عضو " + num + " : "
 			box.get_node("Label2").show()
 			box.show()
 			groupmate.append(box)
-			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3.add_child(box)
+			v_box_container_3.add_child(box)
+			v_box_container_3.move_child(box, v_box_container_3.get_child_count() - 5)
 		$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button2.hide()
 		$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button.hide()
 		$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer3.hide()
 		if group_user.size() + sended_message.size() < 4:
-			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button2.show()
-			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Label2.show()
+			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/Button3.show()
 		w.queue_free()
+		Updatedate.save("users_sended_message", hash_user, false)
 
 func _on_edit_pressed() -> void:
-	birthday = str(int($ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.value), "/", int($ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.value), "/", int($ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.value))
-	first_name = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit.text
-	last_name = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit.text
-	father_name = $ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/LineEdit.text
+	birthday = str(int($ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.value), "/", int($ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.value), "/", int($ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.value))
+	first_name = first_name_box.text
+	last_name = last_name_box.text
+	father_name = father_name_box.text
 	Updatedate.multy_save({"first_name":first_name, "last_name":last_name, "father_name":father_name, "birthday":birthday})
 	Notification.add_notif("با موفقیت بروز شد")
 	birthday = birthday.split("/")
@@ -467,12 +607,15 @@ func fillter_group(_name):
 		var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer/ScrollContainer/VBoxContainer/instanse.duplicate()
 		box.show()
 		box.get_node("Label").text = "نام گروه : " + m[0]
-		box.get_node("Label2").text = "اعضا: " + str(m[1] , " / ", 5)
-		box.get_node("TextureRect/TextureRect")
-		box.get_node("TextureRect/TextureRect").gui_input.connect(func (event:InputEvent):
-			if event is InputEventScreenTouch:
-				if event.is_pressed():
-					Updatedate.show_picture(box.get_node("TextureRect/TextureRect").texture))
+		box.get_node("Label2").text = "اعضا: " + str(int(m[1]) , " / ", 5)
+		
+		if m[4] != "":
+			box.get_node("TextureRect/Label").hide()
+		else:
+			var label = box.get_node("TextureRect/Label")
+			label.text = m[0].split(" ")[0][0]
+			if m[0].split(" ").size() > 1:
+				label.text += " " + m[0].split(" ")[-1][0]
 		Updatedate.get_icon_group(custom_hash.hashing(custom_hash.GET_HASH,m[4]), m[0], box.get_node("TextureRect/TextureRect"))
 		box.get_node("Button").pressed.connect(func():
 			Updatedate.request("/users/request?group_name="+m[0].uri_encode())
@@ -481,7 +624,7 @@ func fillter_group(_name):
 			g.erase(m))
 		$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/MarginContainer/ScrollContainer/VBoxContainer.add_child(box)
 func join_pressed() -> void:
-	$ScrollContainer/VBoxContainer/TabContainer.current_tab = 4
+	change_group_mode.current_tab = 4
 	var w = Updatedate.add_wait($ScrollContainer/VBoxContainer/TabContainer/VBoxContainer/Button2)
 	var d = await Updatedate.request("/groups/names")
 	var d2 = await Updatedate.request("/auth/get?name=users_request")
@@ -491,25 +634,8 @@ func join_pressed() -> void:
 func _on_fillter_button_pressed() -> void:
 	fillter_group($ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/HBoxContainer/LineEdit.text)
 
-func _on_left_pressed() -> void:
-	sended_message = []
-	event_user = []
-	var w
-	if $ScrollContainer/VBoxContainer/TabContainer.current_tab == 2:
-		w = Updatedate.add_wait($ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button3)
-	if $ScrollContainer/VBoxContainer/TabContainer.current_tab == 3:
-		w = Updatedate.add_wait($ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer7/Button3)
-	
-	await Updatedate.request("/auth/left_group")
-	w.queue_free()
-	for user in groupmate:
-		user.queue_free()
-	groupmate = []
-	$ScrollContainer/VBoxContainer/TabContainer.current_tab = 0
-
-
 func _on_back_pressed() -> void:
-	$ScrollContainer/VBoxContainer/TabContainer.current_tab = 0
+	change_group_mode.current_tab = 0
 
 
 func _on_back_button_pressed() -> void:
@@ -540,24 +666,6 @@ func _on_spin_box_value_changed(value: float) -> void:
 func _on_edit_name_pressed() -> void:
 	Transation.change(self, "editname.tscn")
 
-
-func _on_texture_rect_face_detected(imageBuffer: Dictionary) -> void:
-	print(mode)
-	if mode == 4:
-		var w = Updatedate.add_wait($ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer7/Button2)
-		var image = Image.new()
-		image.load_jpg_from_buffer(imageBuffer["0"])
-		var http = HTTPRequest.new()
-		add_child(http)
-		http.request(Updatedate.protocol+Updatedate.subdomin+"/upload", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"name":"", "data":imageBuffer["0"], "type":"face"}))
-		var d = await http.request_completed
-		while d[3].size() == 0:
-			http.request(Updatedate.protocol+Updatedate.subdomin+"/upload", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({"name":"", "data":imageBuffer["0"], "type":"face"}))
-			d = await http.request_completed
-		image.save_webp("user://"+Updatedate.load_game("user_name", "")+".webp")
-		http.queue_free()
-		w.queue_free()
-		Notification.add_notif("با موفقیت ثبت شد!")
 
 
 func _on_face_button_pressed() -> void:
@@ -592,18 +700,18 @@ func _on_edit_phone_pressed() -> void:
 	edit_mode = 1
 	$ColorRect2.show()
 	$ColorRect2/Panel/MarginContainer/VBoxContainer/Label.text = "شماره تلفن جدید خود را وارد کنید."
-	$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.text = ""
-	$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.max_length = 11
+	new_user_name_box.text = ""
+	new_user_name_box.max_length = 11
 
 func _on_save_button_pressed() -> void:
 	var w = Updatedate.add_wait($ColorRect2/Panel/MarginContainer/VBoxContainer/Button)
 		
 	if edit_mode == 0:
-		if $ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.text.length() < 10:
+		if new_user_name_box.text.length() < 10:
 			Notification.add_notif("کد ملی باید ده رقم باشد", Notification.ERROR)
 			w.queue_free()
 			return 
-		var d = await Updatedate.request("/auth/change_username?new="+$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.text)
+		var d = await Updatedate.request("/auth/change_username?new="+new_user_name_box.text)
 		if d and d.has("tokens"):
 			print(d)
 			var file = FileAccess.open("user://session.dat", FileAccess.READ)
@@ -627,7 +735,7 @@ func _on_save_button_pressed() -> void:
 			if d and d.has("error"):
 				Notification.add_notif(d.error, Notification.ERROR)
 	if edit_mode == 1:
-		var d = await Updatedate.request("/auth/change_phonee?phone="+$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.text)
+		var d = await Updatedate.request("/auth/change_phonee?phone="+new_user_name_box.text)
 		if d and d.has("error"):
 			Notification.add_notif(d.error, Notification.ERROR)
 		if d and d.has("message"):
@@ -637,7 +745,18 @@ func _on_user_name_button_pressed() -> void:
 	edit_mode = 0
 	$ColorRect2.show()
 	$ColorRect2/Panel/MarginContainer/VBoxContainer/Label.text = "کد ملی جدید خود را وارد کنید."
-	$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.text = ""
-	$ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit.max_length = 10
+	new_user_name_box.text = ""
+	new_user_name_box.max_length = 10
 	
 	
+
+
+func _on_group_name_text_changed(new_text: String) -> void:
+	$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer7/Button/Label.text = new_text.split(" ")[0][0]
+	if new_text.split(" ").size() > 1:
+		
+		$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer7/Button/Label.text += " " + new_text.split(" ")[-1][0]
+
+
+func _on_name_changed(new_text: String) -> void:
+	change_label()

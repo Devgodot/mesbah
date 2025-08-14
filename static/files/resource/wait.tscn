@@ -1,16 +1,53 @@
-[gd_scene load_steps=6 format=3]
-
-[ext_resource type="Texture2D" uid="uid://belh37gcwgvng" path="res://sprite/download-icon-website-buffer-loader-a-spinning-circle-to-download-information-on-the-website-png.png" id="1_spw1n"]
+[gd_scene load_steps=5 format=3]
 
 [sub_resource type="GDScript" id="GDScript_3llve"]
 script/source = "extends Node2D
 
 var target:Control
 # Called when the node enters the scene tree for the first ti
+var end = 0
+var start = 0
+var offset = 0
+var move_mode = 0
+var speed = 300
+var radius = 25
+@onready var line = $Line2D
 
-
+func _draw_arc(pos, radius, start_angle, end_angle, count_point):
+	var points = []
+	
+	var index = 0
+	while index < count_point:
+		var point = Vector2(radius, 0)
+		point = point.rotated(start_angle)
+		var angle = deg_to_rad(360 / count_point)
+		point = point.rotated(angle * index)
+		
+		if (angle * index) + start_angle > end_angle:
+			break
+		points.append(point)
+		index += 1
+	line.position = pos
+	line.points = points
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	_draw_arc(($TextureRect.position + ($TextureRect.size / 2)), radius * 2, start+offset, end+offset, 40.0)
+	if move_mode == 0:
+		end += deg_to_rad(speed*delta)
+	else:
+		start += deg_to_rad(speed*delta)
+	if end > 2 * PI and move_mode == 0:
+		move_mode = 1
+		start = 0
+	if start > 2 * PI and move_mode == 1:
+		move_mode = 0
+		end = 0
+		start = 0
+	offset += deg_to_rad(speed*delta)
+	$Line2D.width = (radius * 2) - 10
+	if offset > 2*PI:
+		offset = 0
 	if target:
 		$TextureRect.position = Vector2.ZERO
 		$ColorRect.position = Vector2.ZERO
@@ -18,49 +55,32 @@ func _process(delta: float) -> void:
 		$TextureRect.size = target.size
 		$TextureRect.pivot_offset =  target.size / 2
 		$ColorRect.size =  target.size
-		$TextureRect.rotation += (deg_to_rad(100) * delta)
+		var s = target.size.x if target.size.x < target.size.y else target.size.y
+		if s < 130:
+			radius = (s - 20) / 6
+		else:
+			radius = 25
 "
-
-[sub_resource type="Shader" id="Shader_sxpvj"]
-code = "shader_type canvas_item;
-uniform vec4 color:source_color;
-uniform float r ;
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
-void fragment() {
-	vec4 tex = texture(TEXTURE, UV);
-	COLOR.a = tex.a;
-	if (tex.r - r < color.r && tex.r + r > color.r && tex.b - r < color.b && tex.b + r > color.b && tex.g - r < color.g && tex.g + r > color.g ){
-		COLOR.rgb = color.rgb;
-	}
-}
-
-//void light() {
-	// Called for every pixel for every light affecting the CanvasItem.
-	// Uncomment to replace the default light processing function with this one.
-//}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b03yy"]
-shader = SubResource("Shader_sxpvj")
-shader_parameter/color = Color(0.890196, 0.827451, 0, 1)
-shader_parameter/r = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8x0y4"]
 
+[sub_resource type="Curve" id="Curve_lin6m"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.985507, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_lin6m"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
 [node name="Node2D" type="Node2D"]
+process_mode = 3
 script = SubResource("GDScript_3llve")
 
 [node name="TextureRect" type="Button" parent="."]
-material = SubResource("ShaderMaterial_b03yy")
 offset_right = 500.0
 offset_bottom = 308.0
 pivot_offset = Vector2(250, 154)
 theme_override_constants/icon_max_width = 100
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8x0y4")
-icon = ExtResource("1_spw1n")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -73,3 +93,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.290196, 0.290196, 0.290196, 0.184314)
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+width = 40.0
+width_curve = SubResource("Curve_lin6m")
+gradient = SubResource("Gradient_lin6m")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2

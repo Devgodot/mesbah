@@ -1,24 +1,48 @@
-[gd_scene load_steps=49 format=3]
+[gd_scene load_steps=55 format=3]
 
-[ext_resource type="Script" uid="uid://ng5a76jd5id6" path="res://script/positions.gd" id="1_ftk6j"]
-[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_nuctg"]
-[ext_resource type="Texture2D" uid="uid://67pcktx53ulq" path="res://sprite/مصباح10.png" id="3_h6vow"]
-[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="4_uicei"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_qnahh"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="6_xb4du"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="7_muqfv"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="8_6eckv"]
-[ext_resource type="Texture2D" uid="uid://dajxo066mj0xm" path="res://sprite/Layer 7 copy 2.png" id="9_m4tmf"]
-[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="10_a28wx"]
-[ext_resource type="Texture2D" uid="uid://cdjcdq5vmjgwr" path="res://sprite/Layer 5.png" id="11_ebe3p"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="12_fs3ws"]
+[ext_resource type="Script" uid="uid://ng5a76jd5id6" path="res://script/positions.gd" id="1_h6vow"]
+[ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="2_uicei"]
+[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="3_qnahh"]
+[ext_resource type="Texture2D" uid="uid://67pcktx53ulq" path="res://sprite/مصباح10.png" id="4_xb4du"]
+[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="5_muqfv"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="6_6eckv"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="7_m4tmf"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="8_a28wx"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="9_ebe3p"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="10_fs3ws"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="11_uvg3x"]
+[ext_resource type="Texture2D" uid="uid://dajxo066mj0xm" path="res://sprite/Layer 7 copy 2.png" id="12_d3d6n"]
+[ext_resource type="FontFile" uid="uid://il7mx0bi5scp" path="res://fonts/Sahel-SemiBold.ttf" id="13_kt6i4"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="14_yikag"]
 
-[sub_resource type="Gradient" id="Gradient_pxum8"]
+[sub_resource type="Gradient" id="Gradient_tac8f"]
+offsets = PackedFloat32Array(0, 0.528571)
+colors = PackedColorArray(0, 0.482353, 0.364706, 1, 0.840137, 0.523984, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_usxgj"]
+gradient = SubResource("Gradient_tac8f")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6pn8l"]
+shader = ExtResource("2_uicei")
+shader_parameter/tex = SubResource("GradientTexture2D_usxgj")
+
+[sub_resource type="GDScript" id="GDScript_mvvfy"]
+script/source = "extends TextureRect
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_RESIZED:
+		$CPUParticles2D.position = size / 2
+"
+
+[sub_resource type="Gradient" id="Gradient_mvvfy"]
 offsets = PackedFloat32Array(0, 0.619048, 0.714286)
 colors = PackedColorArray(0.737193, 0.737193, 0.737193, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bcnmc"]
-gradient = SubResource("Gradient_pxum8")
+gradient = SubResource("Gradient_mvvfy")
 width = 5
 fill = 1
 fill_from = Vector2(0.382906, 0.495726)
@@ -49,13 +73,19 @@ shadow_size = 7
 shadow_offset = Vector2(-5, 4)
 
 [sub_resource type="FontVariation" id="FontVariation_nnfjd"]
-fallbacks = Array[Font]([ExtResource("6_xb4du")])
-base_font = ExtResource("5_qnahh")
+fallbacks = Array[Font]([ExtResource("7_m4tmf")])
+base_font = ExtResource("6_6eckv")
 
 [sub_resource type="LabelSettings" id="LabelSettings_f5udv"]
 font = SubResource("FontVariation_nnfjd")
 font_size = 45
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r5dor"]
+font = ExtResource("8_a28wx")
+font_size = 41
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8la0c"]
 bg_color = Color(6.49765e-07, 0.482288, 0.138466, 1)
@@ -72,8 +102,8 @@ shadow_size = 7
 shadow_offset = Vector2(-5, 4)
 
 [sub_resource type="FontVariation" id="FontVariation_0gqil"]
-fallbacks = Array[Font]([ExtResource("6_xb4du")])
-base_font = ExtResource("5_qnahh")
+fallbacks = Array[Font]([ExtResource("7_m4tmf")])
+base_font = ExtResource("6_6eckv")
 
 [sub_resource type="LabelSettings" id="LabelSettings_pvly6"]
 font = SubResource("FontVariation_0gqil")
@@ -103,16 +133,43 @@ shader_parameter/dir = 0
 [sub_resource type="ViewportTexture" id="ViewportTexture_8k7lt"]
 viewport_path = NodePath("HBoxContainer2/Label2/name/texture")
 
+[sub_resource type="GDScript" id="GDScript_0gyww"]
+script/source = "extends TextureRect
+
+var last_size = size
+var dir = 0
+var label_size
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	texture = $texture.get_texture()
+	label_size = $texture/Label.size
+func _process(delta: float) -> void:
+	if last_size != size:
+		last_size = size
+		$texture.size = size
+		if $texture/Label.size.x > size.x:
+			$texture.size.x = size.x * 1.5
+			
+			var m = ShaderMaterial.new()
+			m.shader = material.shader
+			m.set_shader_parameter(\"dir\", dir)
+			material = m
+		else:
+			var m = ShaderMaterial.new()
+			m.shader = material.shader
+			m.set_shader_parameter(\"dir\", 0)
+			material = m
+"
+
 [sub_resource type="FontVariation" id="FontVariation_4avgx"]
-fallbacks = Array[Font]([ExtResource("6_xb4du")])
-base_font = ExtResource("5_qnahh")
-spacing_top = 30
+fallbacks = Array[Font]([ExtResource("7_m4tmf")])
+base_font = ExtResource("9_ebe3p")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_888wi"]
-script = ExtResource("7_muqfv")
+script = ExtResource("10_fs3ws")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_2meq6"]
-script = ExtResource("8_6eckv")
+script = ExtResource("11_uvg3x")
 
 [sub_resource type="Gradient" id="Gradient_pxsi1"]
 offsets = PackedFloat32Array(0.52, 0.586667, 0.686667)
@@ -123,6 +180,14 @@ gradient = SubResource("Gradient_pxsi1")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcnmc"]
+font = ExtResource("9_ebe3p")
+font_size = 30
+outline_size = 4
+outline_color = Color(0.333333, 0.286275, 0.301961, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.686275)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkb3x"]
 bg_color = Color(1, 1, 0, 1)
@@ -178,10 +243,10 @@ shadow_offset = Vector2(-5, 4)
 viewport_path = NodePath("ScrollContainer/VBoxContainer/HBoxContainer/Label2/name/texture")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_mgrfc"]
-script = ExtResource("7_muqfv")
+script = ExtResource("10_fs3ws")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ur635"]
-script = ExtResource("8_6eckv")
+script = ExtResource("11_uvg3x")
 
 [sub_resource type="Gradient" id="Gradient_02ppr"]
 offsets = PackedFloat32Array(0.52, 0.586667, 0.686667)
@@ -206,35 +271,27 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="LabelSettings" id="LabelSettings_r5dor"]
-font = ExtResource("10_a28wx")
-font_size = 41
-outline_size = 7
-outline_color = Color(0, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_pnqfa"]
+font = ExtResource("13_kt6i4")
+font_size = 72
+outline_size = 5
+outline_color = Color(0.252433, 0.207006, 0.0941396, 1)
+shadow_size = 15
+shadow_color = Color(0, 0, 0, 0.709804)
 
 [sub_resource type="LabelSettings" id="LabelSettings_x8r8q"]
-font = ExtResource("10_a28wx")
+font = ExtResource("8_a28wx")
 font_size = 50
 font_color = Color(0.760784, 0, 0.133333, 1)
 outline_size = 10
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dn7kf"]
-texture = ExtResource("11_ebe3p")
-expand_margin_top = 50.0
-expand_margin_bottom = 25.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_7b36x"]
-font = ExtResource("10_a28wx")
+font = ExtResource("8_a28wx")
 font_size = 50
-
-[sub_resource type="SystemFont" id="SystemFont_0ecoq"]
-font_names = PackedStringArray("2  Traffic")
-font_weight = 675
-
-[sub_resource type="LabelSettings" id="LabelSettings_pnqfa"]
-font = SubResource("SystemFont_0ecoq")
-font_size = 47
-font_color = Color(0, 0, 0, 1)
+outline_size = 5
+outline_color = Color(0.0392157, 0.0784314, 0.341176, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.509804)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vn1v1"]
 
@@ -245,16 +302,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ftk6j")
+script = ExtResource("1_h6vow")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_6pn8l")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_nuctg")
+texture = ExtResource("3_qnahh")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 1
@@ -264,7 +324,7 @@ anchor_bottom = 1.0
 offset_top = 1567.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_h6vow")
+texture = ExtResource("4_xb4du")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="."]
@@ -278,9 +338,10 @@ offset_right = -277.0
 offset_bottom = -174.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_uicei")
+texture = ExtResource("5_muqfv")
 expand_mode = 1
 stretch_mode = 5
+script = SubResource("GDScript_mvvfy")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="TextureRect3"]
 position = Vector2(214, 301)
@@ -302,10 +363,15 @@ color_initial_ramp = SubResource("Gradient_bfpu6")
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_direction = 3
 layout_mode = 2
-offset_left = 46.0
-offset_top = 1004.0
-offset_right = 938.0
-offset_bottom = 1124.0
+anchor_left = 0.046
+anchor_top = 0.502
+anchor_right = 0.946
+anchor_bottom = 0.562
+offset_top = 6.10352e-05
+offset_right = -8.00006
+offset_bottom = -0.00012207
+alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(100, 100)
@@ -314,6 +380,16 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_otb3e")
 label_settings = SubResource("LabelSettings_f5udv")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer2/Label"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -62.0
+offset_right = 104.0
+offset_bottom = 15.0
+text = "رتبه"
+label_settings = SubResource("LabelSettings_r5dor")
+horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(450, 120)
@@ -343,6 +419,7 @@ mouse_filter = 2
 texture = SubResource("ViewportTexture_8k7lt")
 expand_mode = 1
 stretch_mode = 6
+script = SubResource("GDScript_0gyww")
 metadata/_edit_use_anchors_ = true
 
 [node name="texture" type="SubViewport" parent="HBoxContainer2/Label2/name"]
@@ -393,6 +470,28 @@ mouse_filter = 0
 expand_mode = 1
 stretch_mode = 6
 
+[node name="Label" type="Label" parent="HBoxContainer2/Label2/TextureRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_bcnmc")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Label7" type="Label" parent="HBoxContainer2/Label2"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -54.0
+offset_right = 414.0
+offset_bottom = 7.0
+text = "نام و نام خانوادگی"
+label_settings = SubResource("LabelSettings_r5dor")
+horizontal_alignment = 1
+
 [node name="Label3" type="Label" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(130, 120)
 layout_mode = 2
@@ -400,6 +499,16 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_8la0c")
 label_settings = SubResource("LabelSettings_pvly6")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="HBoxContainer2/Label3"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = -51.0
+offset_right = 135.0
+offset_bottom = 10.0
+text = "امتیاز"
+label_settings = SubResource("LabelSettings_r5dor")
+horizontal_alignment = 1
 
 [node name="Panel" type="Panel" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(200, 120)
@@ -425,22 +534,38 @@ modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("9_m4tmf")
+texture = ExtResource("12_d3d6n")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Label9" type="Label" parent="HBoxContainer2/Panel"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = -49.0
+offset_right = 180.0
+offset_bottom = 12.0
+text = "الماس"
+label_settings = SubResource("LabelSettings_r5dor")
+horizontal_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer2"]
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 285.0
-offset_right = 966.0
-offset_bottom = 728.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.253
+anchor_right = 0.5
+anchor_bottom = 0.253
+offset_left = -460.0
+offset_top = -221.0
+offset_right = 466.0
+offset_bottom = 222.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_m7ge8")
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
@@ -493,6 +618,7 @@ mouse_filter = 2
 texture = SubResource("ViewportTexture_wyk47")
 expand_mode = 1
 stretch_mode = 6
+script = SubResource("GDScript_0gyww")
 metadata/_edit_use_anchors_ = true
 
 [node name="texture" type="SubViewport" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2/name"]
@@ -504,20 +630,27 @@ render_target_update_mode = 4
 [node name="Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2/name/texture"]
 texture_repeat = 2
 clip_contents = false
-custom_minimum_size = Vector2(437, 108)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.5
+offset_top = -54.0
+offset_right = 218.5
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = SubResource("FontVariation_4avgx")
-theme_override_font_sizes/normal_font_size = 45
+theme_override_font_sizes/normal_font_size = 55
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_mgrfc"), SubResource("RichTextEffect_ur635")]
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2"]
@@ -544,6 +677,18 @@ grow_vertical = 2
 mouse_filter = 0
 expand_mode = 1
 stretch_mode = 6
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2/TextureRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_bcnmc")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(130, 120)
@@ -578,155 +723,142 @@ modulate = Color(0, 0, 0, 1)
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("9_m4tmf")
+texture = ExtResource("12_d3d6n")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 280.0
-offset_right = 975.0
-offset_bottom = 736.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.254
+anchor_right = 0.5
+anchor_bottom = 0.254
+offset_left = -467.0
+offset_top = -228.0
+offset_right = 475.0
+offset_bottom = 228.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6a5q3")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 864.0
-offset_top = 204.0
-offset_right = 971.0
-offset_bottom = 281.0
+offset_left = 831.0
+offset_top = -76.0
+offset_right = 938.0
+offset_bottom = 1.0
 text = "رتبه"
 label_settings = SubResource("LabelSettings_r5dor")
 
-[node name="Label2" type="Label" parent="."]
+[node name="Label2" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 431.0
-offset_top = 202.0
-offset_right = 827.0
-offset_bottom = 263.0
+offset_left = 398.0
+offset_top = -78.0
+offset_right = 794.0
+offset_bottom = -17.0
 text = "نام و نام خانوادگی"
 label_settings = SubResource("LabelSettings_r5dor")
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="."]
+[node name="Label3" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 275.0
-offset_top = 205.0
-offset_right = 392.0
-offset_bottom = 266.0
+offset_left = 242.0
+offset_top = -75.0
+offset_right = 359.0
+offset_bottom = -14.0
 text = "امتیاز"
 label_settings = SubResource("LabelSettings_r5dor")
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="."]
+[node name="Label4" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 96.0
-offset_top = 207.0
-offset_right = 231.0
-offset_bottom = 268.0
+offset_left = 63.0
+offset_top = -73.0
+offset_right = 198.0
+offset_bottom = -12.0
 text = "الماس"
 label_settings = SubResource("LabelSettings_r5dor")
 horizontal_alignment = 1
 
-[node name="Label6" type="Label" parent="."]
-layout_mode = 0
-offset_left = 850.0
-offset_top = 952.0
-offset_right = 957.0
-offset_bottom = 1029.0
-text = "رتبه"
-label_settings = SubResource("LabelSettings_r5dor")
-horizontal_alignment = 1
-
-[node name="Label7" type="Label" parent="."]
-layout_mode = 0
-offset_left = 436.0
-offset_top = 950.0
-offset_right = 832.0
-offset_bottom = 1011.0
-text = "نام و نام خانوادگی"
-label_settings = SubResource("LabelSettings_r5dor")
-horizontal_alignment = 1
-
-[node name="Label8" type="Label" parent="."]
-layout_mode = 0
-offset_left = 261.0
-offset_top = 953.0
-offset_right = 378.0
-offset_bottom = 1014.0
-text = "امتیاز"
-label_settings = SubResource("LabelSettings_r5dor")
-horizontal_alignment = 1
-
-[node name="Label9" type="Label" parent="."]
-layout_mode = 0
-offset_left = 82.0
-offset_top = 955.0
-offset_right = 217.0
-offset_bottom = 1016.0
-text = "الماس"
-label_settings = SubResource("LabelSettings_r5dor")
-horizontal_alignment = 1
+[node name="Label5" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.521
+anchor_top = 0.474
+anchor_right = 0.521
+anchor_bottom = 0.474
+offset_left = -286.782
+offset_top = -57.144
+offset_right = 286.218
+offset_bottom = 56.856
+text = "رتبه بندی وجود ندارد"
+label_settings = SubResource("LabelSettings_pnqfa")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label10" type="Label" parent="."]
-layout_mode = 0
-offset_left = 182.0
-offset_top = 21.0
-offset_right = 917.0
-offset_bottom = 158.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.528
+anchor_top = 0.032
+anchor_right = 0.528
+anchor_bottom = 0.032
+offset_left = -346.0
+offset_top = -43.0
+offset_right = 389.0
+offset_bottom = 94.0
 text = "نفرات برتر
  "
 label_settings = SubResource("LabelSettings_x8r8q")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Label11" type="Label" parent="."]
-layout_mode = 0
-offset_left = 155.0
-offset_top = 774.0
-offset_right = 890.0
-offset_bottom = 911.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.522
+anchor_top = 0.413
+anchor_right = 0.522
+anchor_bottom = 0.413
+offset_left = -367.0
+offset_top = -52.0001
+offset_right = 368.0
+offset_bottom = 84.9999
 text = "جایگاه شما در
 "
 label_settings = SubResource("LabelSettings_x8r8q")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="Label12" type="Label" parent="."]
 visible = false
-layout_mode = 0
-offset_left = 158.0
-offset_top = 1195.0
-offset_right = 893.0
-offset_bottom = 1332.0
-theme_override_styles/normal = SubResource("StyleBoxTexture_dn7kf")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51
+anchor_top = 0.63
+anchor_right = 0.51
+anchor_bottom = 0.63
+offset_left = -367.0
+offset_top = -68.0001
+offset_right = 368.0
+offset_bottom = 68.9999
 text = "تعداد نفرات: 5000
 "
 label_settings = SubResource("LabelSettings_7b36x")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
-
-[node name="Label5" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 320.0
-offset_top = 461.0
-offset_right = 676.0
-offset_bottom = 522.0
-text = "رتبه بندی وجود ندارد"
-label_settings = SubResource("LabelSettings_pnqfa")
+metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_vn1v1")
-icon = ExtResource("12_fs3ws")
+icon = ExtResource("14_yikag")
 flat = true
 expand_icon = true
 

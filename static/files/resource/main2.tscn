@@ -1,144 +1,211 @@
-[gd_scene load_steps=87 format=3]
+[gd_scene load_steps=106 format=3]
 
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_fsx2o"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_mdd0l"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_2j0gu"]
-[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_8ljhg"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_v2bfr"]
-[ext_resource type="Script" uid="uid://lvempmgv616t" path="res://script/edit.gd" id="6_gjml3"]
-[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="7_gw7a5"]
-[ext_resource type="Texture2D" uid="uid://dajxo066mj0xm" path="res://sprite/Layer 7 copy 2.png" id="8_km56e"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="9_1ti0n"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="10_egshy"]
-[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="11_1s11r"]
-[ext_resource type="Texture2D" uid="uid://d2a5pf05eb0hk" path="res://sprite/1092884.png" id="12_t5gg8"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="13_5dmcg"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="1_2j0gu"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="2_8ljhg"]
+[ext_resource type="FontFile" uid="uid://il7mx0bi5scp" path="res://fonts/Sahel-SemiBold.ttf" id="3_v2bfr"]
+[ext_resource type="Script" uid="uid://lvempmgv616t" path="res://script/edit.gd" id="4_gjml3"]
+[ext_resource type="Texture2D" uid="uid://i6ljdgxr15e5" path="res://sprite/imgonline-com-ua-TextureSeamless-trNdOXoInELqTiy.jpg" id="5_gw7a5"]
+[ext_resource type="Texture2D" uid="uid://dajxo066mj0xm" path="res://sprite/Layer 7 copy 2.png" id="6_km56e"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="7_1ti0n"]
+[ext_resource type="Texture2D" uid="uid://dhvoajsyliqfv" path="res://sprite/pngtree-manager-line-icon-png-image_90638982.png" id="8_egshy"]
+[ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="9_1s11r"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="10_t5gg8"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="11_5dmcg"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="12_3c6vj"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="13_k17vq"]
+[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="14_rq8xg"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="15_3e4qu"]
 
-[sub_resource type="FontVariation" id="FontVariation_oee2c"]
-fallbacks = Array[Font]([ExtResource("2_mdd0l")])
-base_font = ExtResource("1_fsx2o")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ueikh"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
-bg_color = Color(0.147672, 0.147672, 0.147672, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fhlo"]
+bg_color = Color(0.207474, 0.743014, 0.950903, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.172549, 0.745098, 0.32549, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.290196)
+shadow_size = 3
+shadow_offset = Vector2(0, 5)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wr4g"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_how18"]
+bg_color = Color(0.117002, 0.65506, 0.849783, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.172549, 0.745098, 0.32549, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.290196)
+shadow_size = 3
+shadow_offset = Vector2(0, 5)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d2vmw"]
-bg_color = Color(0.25189, 0.452072, 1.92523e-07, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7oi8n"]
+bg_color = Color(0.0543955, 0.476811, 0.624879, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.172549, 0.745098, 0.32549, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_color = Color(0, 0, 0, 0.290196)
+shadow_size = 3
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ek2el"]
+bg_color = Color(0.0894754, 0.726283, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.004815, 0.912046, 0.919879, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 shadow_size = 2
-shadow_offset = Vector2(-1, 3)
 
-[sub_resource type="FontVariation" id="FontVariation_wbumn"]
-fallbacks = Array[Font]([ExtResource("2_mdd0l")])
-base_font = ExtResource("3_2j0gu")
-
-[sub_resource type="FontVariation" id="FontVariation_nrxyq"]
-fallbacks = Array[Font]([ExtResource("2_mdd0l")])
-base_font = ExtResource("3_2j0gu")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
-texture = ExtResource("4_8ljhg")
-expand_margin_left = 20.0
-expand_margin_top = 50.0
-expand_margin_right = 110.0
-expand_margin_bottom = 20.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
-texture = ExtResource("5_v2bfr")
-expand_margin_left = 20.0
-expand_margin_top = 50.0
-expand_margin_right = 110.0
-expand_margin_bottom = 20.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
-texture = ExtResource("5_v2bfr")
-expand_margin_left = 13.0
-expand_margin_top = 30.0
-expand_margin_bottom = 20.0
-
-[sub_resource type="FontVariation" id="FontVariation_nvt0n"]
-fallbacks = Array[Font]([ExtResource("2_mdd0l")])
-base_font = ExtResource("3_2j0gu")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gwbx"]
-bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gvrr"]
+bg_color = Color(1, 0.333333, 0.192157, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
-border_color = Color(0.819608, 0.780392, 0.411765, 1)
-
-[sub_resource type="FontVariation" id="FontVariation_2qdh2"]
-fallbacks = Array[Font]([ExtResource("2_mdd0l")])
-base_font = ExtResource("3_2j0gu")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sx0m5"]
-bg_color = Color(0.882184, 0.370314, 1.34766e-06, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(5.43877e-06, 0.859439, 0.366271, 1)
+border_color = Color(1, 0.743241, 0.455921, 1)
 border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xwkh1"]
-bg_color = Color(0.6, 0.243137, 0.0431373, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.823529, 0.890196, 0.741176, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ek2el"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ceog8"]
+bg_color = Color(1, 0.348471, 0.223993, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6ki0"]
+bg_color = Color(1, 0.348471, 0.223993, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_color = Color(0.8, 0.8, 0.180392, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scs5k"]
+bg_color = Color(1, 0.345261, 0.258232, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqyui"]
+bg_color = Color(1, 0.348471, 0.223993, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_color = Color(0.8, 0.8, 0.180392, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpdhs"]
+draw_center = false
+border_width_top = 20
+border_width_bottom = 20
+border_color = Color(0.933615, 0.785734, 0.328522, 1)
 border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
-[sub_resource type="Theme" id="Theme_pnsd0"]
-Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
-Button/font_sizes/font_size = 32
-Button/fonts/font = SubResource("FontVariation_oee2c")
-Button/styles/disabled = SubResource("StyleBoxFlat_ngvdg")
-Button/styles/focus = SubResource("StyleBoxEmpty_2wr4g")
-Button/styles/hover = SubResource("StyleBoxFlat_d2vmw")
-Button/styles/hover_pressed = SubResource("StyleBoxFlat_d2vmw")
-Button/styles/normal = SubResource("StyleBoxFlat_d2vmw")
-Button/styles/pressed = SubResource("StyleBoxFlat_d2vmw")
-Label/colors/font_color = Color(0.47451, 0.333333, 0.0784314, 1)
-Label/font_sizes/font_size = 38
-Label/fonts/font = SubResource("FontVariation_wbumn")
-LineEdit/font_sizes/font_size = 30
-LineEdit/fonts/font = SubResource("FontVariation_nrxyq")
-LineEdit/styles/focus = SubResource("StyleBoxTexture_3omms")
-LineEdit/styles/normal = SubResource("StyleBoxTexture_c6n5k")
-OptionButton/constants/arrow_margin = 21
-OptionButton/constants/h_separation = 58
-OptionButton/font_sizes/font_size = 30
-OptionButton/styles/hover_mirrored = SubResource("StyleBoxTexture_qxwpl")
-OptionButton/styles/normal_mirrored = SubResource("StyleBoxTexture_qxwpl")
-OptionButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_qxwpl")
-PopupMenu/constants/close_h_offset = 37
-PopupMenu/constants/close_v_offset = 78
-PopupMenu/constants/h_separation = 40
-PopupMenu/font_sizes/font_separator_size = 122
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p01m0"]
+bg_color = Color(1, 0.34902, 0.223529, 1)
+border_width_left = 3
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.180392, 1)
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="Theme" id="Theme_r8a5h"]
+Button/font_sizes/font_size = 40
+Button/fonts/font = ExtResource("1_2j0gu")
+Button/styles/focus = SubResource("StyleBoxEmpty_ueikh")
+Button/styles/hover = SubResource("StyleBoxFlat_1fhlo")
+Button/styles/normal = SubResource("StyleBoxFlat_how18")
+Button/styles/pressed = SubResource("StyleBoxFlat_7oi8n")
+Label/font_sizes/font_size = 45
+Label/fonts/font = ExtResource("1_2j0gu")
+LineEdit/constants/outline_size = 0
+LineEdit/font_sizes/font_size = 42
+LineEdit/fonts/font = ExtResource("2_8ljhg")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_ek2el")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_0gvrr")
+OptionButton/font_sizes/font_size = 40
+OptionButton/fonts/font = ExtResource("2_8ljhg")
+OptionButton/styles/focus = SubResource("StyleBoxEmpty_ek2el")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxFlat_ceog8")
+OptionButton/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_l6ki0")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_scs5k")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxFlat_ceog8")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxFlat_aqyui")
+PopupMenu/constants/v_separation = 100
 PopupMenu/font_sizes/font_size = 40
-PopupMenu/fonts/font = SubResource("FontVariation_nvt0n")
-PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
-TextEdit/fonts/font = SubResource("FontVariation_2qdh2")
-TextEdit/styles/focus = SubResource("StyleBoxFlat_sx0m5")
-TextEdit/styles/normal = SubResource("StyleBoxFlat_xwkh1")
+PopupMenu/fonts/font = ExtResource("2_8ljhg")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_qpdhs")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_p01m0")
+RichTextLabel/font_sizes/normal_font_size = 35
+RichTextLabel/fonts/normal_font = ExtResource("3_v2bfr")
+
+[sub_resource type="Shader" id="Shader_0gvrr"]
+code = "shader_type canvas_item;
+uniform sampler2D tex;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	vec4 color =  texture(tex, UV);
+
+	COLOR = mix(texture(TEXTURE, UV) ,color, 0.5);
+
+
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="Gradient" id="Gradient_pmkxm"]
+offsets = PackedFloat32Array(0.0571429, 0.357143)
+colors = PackedColorArray(0, 0.760784, 0.541176, 1, 0.839216, 0.662745, 0.164706, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ceog8"]
+gradient = SubResource("Gradient_pmkxm")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ueikh"]
+shader = SubResource("Shader_0gvrr")
+shader_parameter/tex = SubResource("GradientTexture2D_ceog8")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2qwh"]
 
@@ -180,13 +247,102 @@ border_width_bottom = 10
 border_color = Color(0.8, 0.8, 0.533333, 1)
 border_blend = true
 
-[sub_resource type="Gradient" id="Gradient_yw0cv"]
-colors = PackedColorArray(0.14902, 0, 1, 1, 0, 1, 0.168627, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_ueikh"]
+font = ExtResource("1_2j0gu")
+font_size = 66
+font_color = Color(0.0946784, 2.26215e-06, 0.491865, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_how18"]
+offsets = PackedFloat32Array(0, 0.640496, 0.702479)
+colors = PackedColorArray(0, 0, 0, 1, 0.669421, 0.669421, 0.669421, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7oi8n"]
+gradient = SubResource("Gradient_how18")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_7oi8n"]
+offsets = PackedFloat32Array(0, 0.64876)
+colors = PackedColorArray(0.588235, 1, 1, 1, 0.14902, 0.466667, 0.698039, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ggucm"]
-gradient = SubResource("Gradient_yw0cv")
+gradient = SubResource("Gradient_7oi8n")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
 
-[sub_resource type="Shader" id="Shader_ourx2"]
+[sub_resource type="Shader" id="Shader_gs8qe"]
+code = "shader_type canvas_item;
+
+uniform float thickness = 0.1;
+uniform float speed = 1.0;
+uniform float arc_speed = 2.0;
+uniform sampler2D gradient_tex;
+
+void fragment() {
+    vec2 uv = UV - vec2(0.5);
+    float radius = length(uv);
+    float angle = atan(uv.y, uv.x);
+
+    float t = TIME * speed;
+    float start_angle = t * 6.2831;
+
+    float arc_length = (sin(TIME * arc_speed) * 0.5 + 0.5);
+
+    float d_angle = mod(angle - start_angle + 3.1416, 6.2831) - 3.1416;
+
+    if (radius > 0.5 - thickness && radius < 0.5) {
+
+        // بدست آوردن UV برای گرادینت به صورت زاویه‌ای
+        float grad_uv = mod((angle + 3.1416) / 6.2831 + t, 1.0);
+
+        vec4 grad_color = texture(gradient_tex, grad_uv * uv);
+        COLOR = grad_color;
+    } else {
+        discard;
+    }
+}
+"
+
+[sub_resource type="Gradient" id="Gradient_pr66g"]
+colors = PackedColorArray(0, 0, 0, 1, 0.866667, 1, 0.717647, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pr66g"]
+gradient = SubResource("Gradient_pr66g")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7obif"]
+shader = SubResource("Shader_gs8qe")
+shader_parameter/thickness = 0.07
+shader_parameter/speed = 1.0
+shader_parameter/arc_speed = 0.0
+shader_parameter/gradient_tex = SubResource("GradientTexture2D_pr66g")
+
+[sub_resource type="Gradient" id="Gradient_1reov"]
+offsets = PackedFloat32Array(0.582645, 0.636364)
+colors = PackedColorArray(0.588235, 1, 1, 0, 0, 0.411765, 0.67451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1dis4"]
+gradient = SubResource("Gradient_1reov")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_1fhlo"]
+font = ExtResource("9_1s11r")
+font_size = 100
+outline_size = 11
+outline_color = Color(0.321971, 0.232393, 0.00322712, 1)
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 0.85098)
+
+[sub_resource type="Shader" id="Shader_how18"]
 code = "shader_type canvas_item;
 uniform int dir:hint_range(-1, 1, 1)=0;
 void vertex() {
@@ -204,24 +360,22 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_du044"]
-shader = SubResource("Shader_ourx2")
+shader = SubResource("Shader_how18")
 shader_parameter/dir = 0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p6csb"]
 viewport_path = NodePath("TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer5/name/texture")
 
 [sub_resource type="FontVariation" id="FontVariation_6vui5"]
-fallbacks = Array[Font]([ExtResource("2_mdd0l")])
-base_font = ExtResource("3_2j0gu")
+fallbacks = Array[Font]([ExtResource("11_5dmcg")])
+base_font = ExtResource("10_t5gg8")
 spacing_top = 30
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_mgrfc"]
-script = ExtResource("9_1ti0n")
+script = ExtResource("12_3c6vj")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ur635"]
-script = ExtResource("10_egshy")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfy1j"]
+script = ExtResource("13_k17vq")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6oife"]
 bg_color = Color(0.898039, 0.372549, 0.00784314, 1)
@@ -259,11 +413,52 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_kmb1d")
 
 [sub_resource type="ImageTexture" id="ImageTexture_g2tad"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_igra5"]
-viewport_path = NodePath("SubViewport2")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gfy1j"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_w074g"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="Gradient" id="Gradient_pxum8"]
+offsets = PackedFloat32Array(0, 0.714286)
+colors = PackedColorArray(0.737193, 0.737193, 0.737193, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gs8qe"]
+gradient = SubResource("Gradient_pxum8")
+width = 5
+fill = 1
+fill_from = Vector2(0.382906, 0.495726)
+
+[sub_resource type="Curve" id="Curve_pr66g"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.388626, 0.876405), 0.0, 0.0, 0, 0, Vector2(0.767773, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_2jfmm"]
+offsets = PackedFloat32Array(0, 0.524324, 0.783784)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.962162, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_7obif"]
+colors = PackedColorArray(0.866667, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GDScript" id="GDScript_1reov"]
+script/source = "extends CPUParticles2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	position = get_parent().size / 2
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dis4"]
+bg_color = Color(0.0894754, 0.726283, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_color = Color(0.004815, 0.912046, 0.919879, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+shadow_size = 2
 
 [sub_resource type="Shader" id="Shader_yhb6a"]
 code = "shader_type canvas_item;
@@ -289,128 +484,43 @@ shader_parameter/dir = 0
 [sub_resource type="ViewportTexture" id="ViewportTexture_r0r82"]
 viewport_path = NodePath("TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer5/name/texture")
 
+[sub_resource type="GDScript" id="GDScript_0gyww"]
+script/source = "extends TextureRect
+
+var last_size = size
+var dir = 0
+var label_size
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	texture = $texture.get_texture()
+	label_size = $texture/Label.size
+func _process(delta: float) -> void:
+	if last_size != size:
+		last_size = size
+		$texture.size = size
+		if $texture/Label.size.x > size.x:
+			$texture.size.x = size.x * 1.5
+			
+			var m = ShaderMaterial.new()
+			m.shader = material.shader
+			m.set_shader_parameter(\"dir\", dir)
+			material = m
+		else:
+			var m = ShaderMaterial.new()
+			m.shader = material.shader
+			m.set_shader_parameter(\"dir\", 0)
+			material = m
+"
+
 [sub_resource type="FontVariation" id="FontVariation_dxqy6"]
-fallbacks = Array[Font]([ExtResource("2_mdd0l")])
-base_font = ExtResource("3_2j0gu")
+fallbacks = Array[Font]([ExtResource("11_5dmcg")])
+base_font = ExtResource("10_t5gg8")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_hwcyp"]
-script = ExtResource("10_egshy")
+script = ExtResource("13_k17vq")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_iihld"]
-script = ExtResource("9_1ti0n")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2m8as"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpch0"]
-bg_color = Color(0.408902, 0.227072, 3.36915e-07, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 75
-corner_radius_top_right = 10
-corner_radius_bottom_right = 55
-shadow_size = 10
-shadow_offset = Vector2(0.27, 0)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_igyri"]
-viewport_path = NodePath("TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport")
-
-[sub_resource type="FontVariation" id="FontVariation_hkhbl"]
-fallbacks = Array[Font]([ExtResource("2_mdd0l")])
-base_font = ExtResource("3_2j0gu")
-spacing_top = 10
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_8ovue"]
-script = ExtResource("10_egshy")
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_3waeb"]
-script = ExtResource("9_1ti0n")
-
-[sub_resource type="Theme" id="Theme_oofdl"]
-Label/font_sizes/font_size = 20
-Label/fonts/font = ExtResource("11_1s11r")
-RichTextLabel/font_sizes/normal_font_size = 30
-RichTextLabel/fonts/normal_font = ExtResource("3_2j0gu")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uskdo"]
-bg_color = Color(0.0784314, 0.137255, 0.454902, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.101961, 0.215686, 0.545098, 1)
-border_blend = true
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_left = 40
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7kjyo"]
-
-[sub_resource type="FontVariation" id="FontVariation_tlgt2"]
-fallbacks = Array[Font]([ExtResource("2_mdd0l")])
-base_font = ExtResource("3_2j0gu")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b7r72"]
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_yb7qp"]
-script = ExtResource("9_1ti0n")
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_gbj5b"]
-script = ExtResource("10_egshy")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3pke6"]
-
-[sub_resource type="Gradient" id="Gradient_j78vx"]
-offsets = PackedFloat32Array(0, 0.536232)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_374q4"]
-gradient = SubResource("Gradient_j78vx")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.019802, 0)
-metadata/_snap_enabled = true
-
-[sub_resource type="Curve" id="Curve_0dcv1"]
-_data = [Vector2(0, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.413793, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.208791), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_rr6eb"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.0410959, 0.260274, 0.972603)
-colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1, 0.0784314, 0.137255, 0.454902, 1, 0, 0, 0, 1)
-
-[sub_resource type="Theme" id="Theme_aaaxv"]
-Label/font_sizes/font_size = 20
-Label/fonts/font = ExtResource("11_1s11r")
-RichTextLabel/font_sizes/normal_font_size = 30
-RichTextLabel/fonts/normal_font = ExtResource("3_2j0gu")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ei7p"]
-bg_color = Color(0.473221, 0, 0.0467029, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 0.735639, 0.543734, 1)
-border_blend = true
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-
-[sub_resource type="FontVariation" id="FontVariation_00pl2"]
-fallbacks = Array[Font]([ExtResource("2_mdd0l")])
-base_font = ExtResource("3_2j0gu")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d0etq"]
-
-[sub_resource type="Gradient" id="Gradient_ccr7n"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.0410959, 0.260274)
-colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1, 0.541176, 0.12549, 0.184314, 1)
+script = ExtResource("12_3c6vj")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kr4pi"]
 
@@ -422,19 +532,12 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_7robg"]
-font = ExtResource("3_2j0gu")
+font = ExtResource("10_t5gg8")
 font_size = 51
 
 [sub_resource type="LabelSettings" id="LabelSettings_igcxn"]
-font = ExtResource("3_2j0gu")
+font = ExtResource("10_t5gg8")
 font_size = 36
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dxnh5"]
-bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
-border_width_left = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.980392, 0.941176, 0.494118, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y4i2l"]
 
@@ -452,6 +555,228 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rovlu"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3wmy"]
+bg_color = Color(0.767368, 0.187067, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.859727, 0.882998, 0.434286, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 3
+shadow_offset = Vector2(-2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yitax"]
+bg_color = Color(6.257e-07, 0.518, 0.338823, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.239216, 0.882353, 0.435294, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 3
+shadow_offset = Vector2(-2, 2)
+
+[sub_resource type="Theme" id="Theme_1fhlo"]
+Button/styles/hover_mirrored = SubResource("StyleBoxFlat_a3wmy")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_yitax")
+Button/styles/normal_mirrored = SubResource("StyleBoxFlat_a3wmy")
+Button/styles/pressed_mirrored = SubResource("StyleBoxFlat_yitax")
+LineEdit/constants/outline_size = 0
+LineEdit/font_sizes/font_size = 42
+LineEdit/fonts/font = ExtResource("2_8ljhg")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_ek2el")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_0gvrr")
+OptionButton/fonts/font = ExtResource("2_8ljhg")
+OptionButton/styles/focus = SubResource("StyleBoxEmpty_ek2el")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxFlat_ceog8")
+OptionButton/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_l6ki0")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_scs5k")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxFlat_ceog8")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxFlat_aqyui")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_qpdhs")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_p01m0")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_how18"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gs8qe"]
+bg_color = Color(0, 0.956863, 0.407843, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.956863, 0.407843, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+expand_margin_top = 17.0
+expand_margin_bottom = 17.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pr66g"]
+bg_color = Color(0.196078, 0.6, 0.6, 1)
+border_width_left = 10
+border_width_top = 25
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.958903, 0.407189, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jfmm"]
+bg_color = Color(0, 0.344087, 0.248388, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.294118, 0.8, 0.239216, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+shadow_size = 3
+shadow_offset = Vector2(-4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7obif"]
+bg_color = Color(0.599406, 0.106969, 0.032327, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.864056, 0.632471, 0, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+shadow_size = 3
+shadow_offset = Vector2(-4, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1reov"]
+bg_color = Color(0.760916, 0.14909, 0.056418, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.864056, 0.632471, 0, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+shadow_size = 3
+shadow_offset = Vector2(-4, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1dis4"]
+font = ExtResource("9_1s11r")
+font_size = 70
+
+[sub_resource type="FontVariation" id="FontVariation_c77lx"]
+base_font = ExtResource("1_2j0gu")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b77ej"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ljnj7"]
+bg_color = Color(0.27451, 0.823529, 0.6, 1)
+border_width_top = 20
+border_width_bottom = 20
+border_color = Color(1.34766e-06, 0.998142, 0.462613, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.105882, 0.352941, 0, 1)
+shadow_size = 10
+shadow_offset = Vector2(-3, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wgk2"]
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 20
+border_width_bottom = 20
+border_color = Color(0.588595, 0.834852, 1, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sws6j"]
+bg_color = Color(0.776471, 0.352941, 0, 0.694118)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.8, 0.580392, 0.231373, 1)
+border_blend = true
+shadow_offset = Vector2(0, 10)
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_jqayc"]
+script = ExtResource("12_3c6vj")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_vvjsb"]
+script = ExtResource("13_k17vq")
+
+[sub_resource type="Gradient" id="Gradient_yox5y"]
+offsets = PackedFloat32Array(0.42562, 0.607438)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.67451)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jhcjm"]
+gradient = SubResource("Gradient_yox5y")
+width = 1000
+height = 2000
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c77lx"]
+bg_color = Color(0.0894754, 0.726283, 0, 1)
+border_width_left = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.004815, 0.912046, 0.919879, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+expand_margin_top = 5.0
+expand_margin_bottom = 20.0
+shadow_size = 2
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7oi8n"]
+
+[sub_resource type="GDScript" id="GDScript_how18"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	custom_minimum_size.x = get_parent().size.x - 100
+"
+
 [node name="Control" type="Control" groups=["scene_message"]]
 layout_mode = 3
 anchors_preset = 15
@@ -460,19 +785,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
-theme = SubResource("Theme_pnsd0")
-script = ExtResource("6_gjml3")
+theme = SubResource("Theme_r8a5h")
+script = ExtResource("4_gjml3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 3
+material = SubResource("ShaderMaterial_ueikh")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_gw7a5")
+texture = ExtResource("5_gw7a5")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 1
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
@@ -485,7 +812,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_km56e")
+texture = ExtResource("6_km56e")
 expand_mode = 1
 stretch_mode = 5
 
@@ -499,17 +826,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_km56e")
+texture = ExtResource("6_km56e")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="TabContainer" type="TabContainer" parent="."]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 180.0
-offset_right = 998.0
-offset_bottom = 1019.0
-theme_override_fonts/font = ExtResource("1_fsx2o")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.002
+anchor_top = 0.09
+anchor_right = 0.998
+anchor_bottom = 0.999
+offset_bottom = -6.10352e-05
+theme_override_fonts/font = ExtResource("7_1ti0n")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_m2qwh")
 theme_override_styles/tab_disabled = SubResource("StyleBoxFlat_yo64n")
@@ -518,55 +847,79 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_uoqgo")
 theme_override_styles/tab_selected = SubResource("StyleBoxFlat_1iua5")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_elx3q")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_elx3q")
-current_tab = 0
+current_tab = 1
 all_tabs_in_front = true
 drag_to_rearrange_enabled = true
+metadata/_edit_use_anchors_ = true
 
-[node name="فردی" type="Control" parent="TabContainer"]
+[node name="فردی" type="VBoxContainer" parent="TabContainer"]
+visible = false
+layout_direction = 3
 layout_mode = 2
 focus_mode = 2
 metadata/_tab_index = 0
 
-[node name="Label" type="Label" parent="TabContainer/فردی"]
-layout_mode = 0
-offset_left = 789.0
-offset_top = 6.0
-offset_right = 990.0
-offset_bottom = 110.0
-text = "کد ملی متربی:"
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/فردی"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/فردی/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "طرح :"
+label_settings = SubResource("LabelSettings_ueikh")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="id" type="LineEdit" parent="TabContainer/فردی"]
+[node name="OptionButton" type="OptionButton" parent="TabContainer/فردی/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="OptionButton2" type="OptionButton" parent="TabContainer/فردی/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/فردی"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/فردی/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "متربی :"
+label_settings = SubResource("LabelSettings_ueikh")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="username" type="LineEdit" parent="TabContainer/فردی/HBoxContainer2"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(550, 0)
-layout_mode = 0
-offset_left = 139.0
-offset_top = 9.0
-offset_right = 689.0
-offset_bottom = 110.0
-theme_override_constants/outline_size = 15
-theme_override_font_sizes/font_size = 81
+layout_mode = 2
+size_flags_horizontal = 3
 alignment = 1
 max_length = 10
 virtual_keyboard_type = 2
 select_all_on_focus = true
 
-[node name="Button" type="Button" parent="TabContainer/فردی"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 5.0
-offset_right = 145.0
-offset_bottom = 103.0
-text = "تایید"
+[node name="Button" type="Button" parent="TabContainer/فردی/HBoxContainer2"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "مخاطبین"
+icon = ExtResource("8_egshy")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="TabContainer/فردی/HBoxContainer2"]
+clip_children = 2
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "جستجو"
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/فردی"]
-layout_mode = 0
-anchor_top = 0.2135
-anchor_right = 0.996
-anchor_bottom = 0.479
-offset_top = 43.492
-offset_bottom = 43.492
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/فردی/MarginContainer"]
@@ -577,29 +930,25 @@ theme_override_constants/separation = 25
 [node name="BoxContainer" type="BoxContainer" parent="TabContainer/فردی/MarginContainer/VBoxContainer"]
 layout_direction = 3
 layout_mode = 2
-alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer"]
-custom_minimum_size = Vector2(80, 80)
+clip_children = 2
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-expand_mode = 1
-stretch_mode = 6
+texture = SubResource("GradientTexture2D_7oi8n")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer/TextureRect"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer/TextureRect"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_ggucm")
-draw_center = false
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+expand_mode = 1
+stretch_mode = 6
 
-[node name="ColorRect" type="ColorRect" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer/TextureRect"]
+[node name="NinePatchRect" type="TextureRect" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer/TextureRect/TextureRect"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -607,8 +956,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_ggucm")
+
+[node name="NinePatchRect2" type="TextureRect" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer/TextureRect/TextureRect"]
+material = SubResource("ShaderMaterial_7obif")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_1dis4")
+
+[node name="Label" type="Label" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer/TextureRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_1fhlo")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="BoxContainer5" type="BoxContainer" parent="TabContainer/فردی/MarginContainer/VBoxContainer"]
 layout_direction = 3
@@ -621,7 +991,7 @@ text = "نام و نام خانوادگی : "
 [node name="name" type="TextureRect" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer5"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_du044")
-custom_minimum_size = Vector2(733, 108)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
@@ -670,34 +1040,15 @@ size_flags_horizontal = 10
 text = " شماره تماس: 09999876739"
 
 [node name="BoxContainer3" type="BoxContainer" parent="TabContainer/فردی/MarginContainer/VBoxContainer"]
-visible = false
 layout_direction = 3
 layout_mode = 2
 
-[node name="Label" type="Label" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer3"]
+[node name="Label2" type="Label" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer3"]
 layout_mode = 2
-text = "بعد جسمانی: 5000 امتیاز و الماس ندارد"
+text = "امتیاز: "
 
-[node name="BoxContainer6" type="BoxContainer" parent="TabContainer/فردی/MarginContainer/VBoxContainer"]
-visible = false
-layout_direction = 3
-layout_mode = 2
-
-[node name="Label" type="Label" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-text = "بعد جسمانی:"
-
-[node name="VSeparator" type="VSeparator" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-theme_override_constants/separation = 85
-theme_override_styles/separator = SubResource("StyleBoxEmpty_gfy1j")
-
-[node name="Label2" type="Label" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-text = "امتیاز"
-
-[node name="SpinBox" type="SpinBox" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer6"]
-custom_minimum_size = Vector2(80, 80)
+[node name="SpinBox" type="SpinBox" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
 theme = SubResource("Theme_b7fa4")
 theme_override_icons/updown = SubResource("ImageTexture_g2tad")
@@ -705,21 +1056,10 @@ max_value = 100000.0
 alignment = 1
 select_all_on_focus = true
 
-[node name="VSeparator2" type="VSeparator" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer6"]
+[node name="VSeparator2" type="VSeparator" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer3"]
 layout_mode = 2
 theme_override_constants/separation = 85
 theme_override_styles/separator = SubResource("StyleBoxEmpty_gfy1j")
-
-[node name="Label3" type="Label" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-text = "الماس"
-
-[node name="CheckBox" type="CheckBox" parent="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer6"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme_override_icons/checked = SubResource("ViewportTexture_igra5")
-theme_override_icons/unchecked = SubResource("ViewportTexture_w074g")
-icon_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/فردی/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -731,56 +1071,101 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "ثبت"
 
-[node name="گروهی" type="Control" parent="TabContainer"]
-visible = false
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/فردی"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("14_rq8xg")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TabContainer/فردی/TextureRect3"]
+position = Vector2(397, 504)
+amount = 50
+texture = SubResource("GradientTexture2D_gs8qe")
+lifetime = 2.0
+speed_scale = 2.0
+local_coords = true
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 189.66
+initial_velocity_max = 189.66
+linear_accel_min = -100.0
+linear_accel_max = 100.0
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+damping_min = 5.594
+damping_max = 5.594
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_pr66g")
+color_ramp = SubResource("Gradient_2jfmm")
+color_initial_ramp = SubResource("Gradient_7obif")
+script = SubResource("GDScript_1reov")
+
+[node name="گروهی" type="VBoxContainer" parent="TabContainer"]
 layout_mode = 2
 focus_mode = 2
 metadata/_tab_index = 1
 
-[node name="Label" type="Label" parent="TabContainer/گروهی"]
-layout_mode = 0
-offset_left = 764.0
-offset_top = -6.0
-offset_right = 965.0
-offset_bottom = 98.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/گروهی"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/گروهی/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "طرح :"
+label_settings = SubResource("LabelSettings_ueikh")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/گروهی/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="OptionButton2" type="OptionButton" parent="TabContainer/گروهی/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/گروهی"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/گروهی/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
 text = "نام گروه:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="name" type="LineEdit" parent="TabContainer/گروهی"]
+[node name="name" type="LineEdit" parent="TabContainer/گروهی/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(550, 0)
-layout_mode = 0
-offset_left = 139.0
-offset_top = 9.0
-offset_right = 689.0
-offset_bottom = 110.0
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 70
+theme_override_styles/focus = SubResource("StyleBoxFlat_1dis4")
 alignment = 1
 select_all_on_focus = true
 
-[node name="Button" type="Button" parent="TabContainer/گروهی"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 5.0
-offset_right = 145.0
-offset_bottom = 103.0
+[node name="Button" type="Button" parent="TabContainer/گروهی/HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
 text = "تایید"
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/گروهی"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.116
-anchor_right = 0.995984
-anchor_bottom = 1.23527
-offset_top = 43.492
-offset_bottom = 43.492
+visible = false
+layout_mode = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/گروهی/MarginContainer"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 25
@@ -792,26 +1177,23 @@ mouse_filter = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer"]
-custom_minimum_size = Vector2(80, 80)
+clip_children = 2
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-expand_mode = 1
-stretch_mode = 6
+texture = SubResource("GradientTexture2D_7oi8n")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer/TextureRect"]
+[node name="TextureRect" type="TextureRect" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer/TextureRect"]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_ggucm")
-draw_center = false
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+expand_mode = 1
+stretch_mode = 6
 
-[node name="ColorRect" type="ColorRect" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer/TextureRect"]
+[node name="NinePatchRect" type="TextureRect" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer/TextureRect/TextureRect"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -819,8 +1201,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_ggucm")
+
+[node name="NinePatchRect2" type="TextureRect" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer/TextureRect/TextureRect"]
+material = SubResource("ShaderMaterial_7obif")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_1dis4")
+
+[node name="Label" type="Label" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer/TextureRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_1fhlo")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
 
 [node name="BoxContainer5" type="BoxContainer" parent="TabContainer/گروهی/MarginContainer/VBoxContainer"]
 visible = false
@@ -837,13 +1240,13 @@ text = "نام  سر گروه:"
 [node name="name" type="TextureRect" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer5"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_he38u")
-custom_minimum_size = Vector2(408, 55)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 texture = SubResource("ViewportTexture_r0r82")
 expand_mode = 1
 stretch_mode = 6
+script = SubResource("GDScript_0gyww")
 
 [node name="texture" type="SubViewport" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer5/name"]
 transparent_bg = true
@@ -855,23 +1258,30 @@ render_target_update_mode = 4
 texture_repeat = 2
 clip_contents = false
 custom_minimum_size = Vector2(350, 50)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -25.0
+offset_right = 175.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = SubResource("FontVariation_dxqy6")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 45
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_hwcyp"), SubResource("RichTextEffect_iihld")]
 
 [node name="Label2" type="Label" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer5"]
-custom_minimum_size = Vector2(408, 46)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -879,42 +1289,26 @@ theme_override_constants/outline_size = 10
 text = "کد ملی: "
 vertical_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/گروهی/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/گروهی/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 40
 
-[node name="BoxContainer3" type="BoxContainer" parent="TabContainer/گروهی/MarginContainer/VBoxContainer"]
-visible = false
-layout_direction = 3
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer3"]
-layout_mode = 2
-text = "بعد جسمانی: 5000 امتیاز و الماس ندارد"
-
 [node name="BoxContainer6" type="BoxContainer" parent="TabContainer/گروهی/MarginContainer/VBoxContainer"]
-visible = false
 layout_direction = 3
 layout_mode = 2
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer6"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "بعد جسمانی:"
-
-[node name="VSeparator" type="VSeparator" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-theme_override_constants/separation = 85
-theme_override_styles/separator = SubResource("StyleBoxEmpty_gfy1j")
-
-[node name="Label2" type="Label" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-text = "امتیاز"
+theme_override_constants/outline_size = 7
+text = "امتیاز: "
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="SpinBox" type="SpinBox" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer6"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(150, 80)
 layout_mode = 2
 theme = SubResource("Theme_b7fa4")
 theme_override_icons/updown = SubResource("ImageTexture_g2tad")
@@ -922,453 +1316,51 @@ max_value = 100000.0
 alignment = 1
 select_all_on_focus = true
 
-[node name="VSeparator2" type="VSeparator" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-theme_override_constants/separation = 85
-theme_override_styles/separator = SubResource("StyleBoxEmpty_gfy1j")
-
-[node name="Label3" type="Label" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer6"]
-layout_mode = 2
-text = "الماس"
-
-[node name="CheckBox" type="CheckBox" parent="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer6"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme_override_icons/checked = SubResource("ViewportTexture_igra5")
-theme_override_icons/unchecked = SubResource("ViewportTexture_w074g")
-icon_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/گروهی/MarginContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 40
-
 [node name="Button" type="Button" parent="TabContainer/گروهی/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "ثبت"
 
-[node name="پیام ها" type="Control" parent="TabContainer"]
-visible = false
-layout_mode = 2
-focus_mode = 2
-metadata/_tab_index = 2
-
-[node name="TabContainer" type="TabContainer" parent="TabContainer/پیام ها"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0130522
-anchor_top = 0.0192802
-anchor_right = 0.985944
-anchor_bottom = 1.02442
-theme_override_fonts/font = ExtResource("1_fsx2o")
-theme_override_font_sizes/font_size = 40
-theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_2l8jy")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_2m8as")
-theme_override_styles/tab_selected = SubResource("StyleBoxFlat_1iua5")
-theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_elx3q")
-theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_elx3q")
-tab_alignment = 2
-current_tab = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="لیست" type="ScrollContainer" parent="TabContainer/پیام ها/TabContainer"]
-layout_mode = 2
-focus_mode = 2
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 3
-metadata/_edit_use_anchors_ = true
-metadata/_tab_index = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/پیام ها/TabContainer/لیست"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 40
-
-[node name="instance" type="PanelContainer" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_vpch0")
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer"]
-layout_direction = 3
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="TextureRect" type="TextureRect" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-mouse_filter = 0
-expand_mode = 1
-stretch_mode = 6
-
-[node name="NinePatchRect" type="NinePatchRect" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_ggucm")
-draw_center = false
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="ColorRect" type="ColorRect" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer/TextureRect"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Label" type="Label" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-mouse_filter = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "نام و نام خانوادگی:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SubViewportContainer" type="TextureRect" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_he38u")
-custom_minimum_size = Vector2(350, 39)
-layout_mode = 2
-mouse_filter = 2
-texture = SubResource("ViewportTexture_igyri")
-expand_mode = 1
-stretch_mode = 6
-
-[node name="SubViewport" type="SubViewport" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(350, 80)
-render_target_update_mode = 4
-
-[node name="Label" type="RichTextLabel" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport"]
-texture_repeat = 2
-clip_contents = false
-custom_minimum_size = Vector2(350, 39)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_fonts/normal_font = SubResource("FontVariation_hkhbl")
-theme_override_font_sizes/normal_font_size = 45
-bbcode_enabled = true
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-custom_effects = [SubResource("RichTextEffect_8ovue"), SubResource("RichTextEffect_3waeb")]
-
-[node name="Label2" type="Label" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = " پیام جدید:0"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer"]
-layout_direction = 3
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Label3" type="Label" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "جسمانی"
-
-[node name="Label" type="Label" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(400, 39)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "کد ملی:5100276150"
-horizontal_alignment = 1
-vertical_alignment = 1
-text_overrun_behavior = 4
-
-[node name="Label2" type="Label" parent="TabContainer/پیام ها/TabContainer/لیست/VBoxContainer/instance/MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "شماره: 09999876739"
-
-[node name="گفتگو" type="Control" parent="TabContainer/پیام ها/TabContainer"]
-visible = false
-layout_mode = 2
-focus_mode = 2
-metadata/_tab_index = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_tab_index = 0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/گروهی"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_mode = 2
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 3
+texture = ExtResource("14_rq8xg")
+expand_mode = 1
+stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 10
-
-[node name="instance" type="PanelContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(800, 0)
-layout_direction = 3
-layout_mode = 2
-size_flags_horizontal = 8
-mouse_filter = 1
-theme = SubResource("Theme_oofdl")
-theme_override_styles/panel = SubResource("StyleBoxFlat_uskdo")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
-theme_override_font_sizes/font_size = 26
-text = "شما"
-
-[node name="Button" type="Button" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Label"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -33.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 43.0
-grow_horizontal = 0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7kjyo")
-icon = ExtResource("12_t5gg8")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="Control" type="Control" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Label/Button"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -31.0
-offset_top = -21.0
-offset_right = 29.0
-offset_bottom = 27.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 2
-mouse_filter = 1
-theme_override_fonts/normal_font = SubResource("FontVariation_tlgt2")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_b7r72")
-bbcode_enabled = true
-text = "[right]شما از طریق محمد حسین حق شناس به گروه بش دعوت شدید. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست.
-"
-fit_content = true
-context_menu_enabled = true
-custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
-selection_enabled = true
-
-[node name="HSeparator" type="HSeparator" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-theme_override_styles/separator = SubResource("StyleBoxEmpty_3pke6")
-
-[node name="Label2" type="Label" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
-theme_override_font_sizes/font_size = 26
-text = "1403-05-02 12:05:15"
-horizontal_alignment = 2
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
-position = Vector2(375, 90)
-emitting = false
-amount = 2000
-texture = SubResource("GradientTexture2D_374q4")
-lifetime = 0.5
-one_shot = true
-emission_shape = 3
-emission_rect_extents = Vector2(400, 100)
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TabContainer/گروهی/TextureRect3"]
+position = Vector2(397, 504)
+amount = 50
+texture = SubResource("GradientTexture2D_gs8qe")
+lifetime = 2.0
+speed_scale = 2.0
+local_coords = true
 particle_flag_align_y = true
-direction = Vector2(0, 0)
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 208.83
-initial_velocity_max = 280.99
-scale_amount_min = 0.4
-scale_amount_max = 0.6
-scale_amount_curve = SubResource("Curve_0dcv1")
-color_initial_ramp = SubResource("Gradient_rr6eb")
-
-[node name="instance2" type="PanelContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(800, 0)
-layout_direction = 3
-layout_mode = 2
-size_flags_horizontal = 0
-mouse_filter = 2
-theme = SubResource("Theme_aaaxv")
-theme_override_styles/panel = SubResource("StyleBoxFlat_8ei7p")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance2"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance2/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance2/HBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance2/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
-theme_override_font_sizes/font_size = 26
-text = "پشتیبان"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance2/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 1
-theme_override_fonts/normal_font = SubResource("FontVariation_00pl2")
-bbcode_enabled = true
-text = "[right]شما از طریق محمد حسین حق شناس به گروه بش دعوت شدید. آیا این دعوت را می پذیرید؟ پس از آن خروج از گروه ممکن نیست.
-"
-fit_content = true
-context_menu_enabled = true
-custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
-
-[node name="HSeparator" type="HSeparator" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance2/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-theme_override_styles/separator = SubResource("StyleBoxEmpty_d0etq")
-
-[node name="Label2" type="Label" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance2/HBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
-theme_override_font_sizes/font_size = 26
-text = "1403-05-02 12:05:15"
-horizontal_alignment = 2
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance2/HBoxContainer/MarginContainer/VBoxContainer"]
-position = Vector2(375, 90)
-emitting = false
-amount = 2000
-texture = SubResource("GradientTexture2D_374q4")
-lifetime = 0.5
-one_shot = true
-emission_shape = 3
-emission_rect_extents = Vector2(400, 100)
-particle_flag_align_y = true
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 208.83
-initial_velocity_max = 280.99
-scale_amount_min = 0.4
-scale_amount_max = 0.6
-scale_amount_curve = SubResource("Curve_0dcv1")
-color_initial_ramp = SubResource("Gradient_ccr7n")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer"]
-layout_direction = 3
-layout_mode = 2
-
-[node name="TextEdit" type="TextEdit" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 45
-wrap_mode = 1
-scroll_past_end_of_file = true
-scroll_fit_content_height = true
-script = -3579537070038712320
-metadata/_edit_use_anchors_ = true
-
-[node name="TextEdit" type="TextEdit" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/HBoxContainer/TextEdit"]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -496.0
-offset_top = -40.0
-offset_right = 494.0
-offset_bottom = 40.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_font_sizes/font_size = 45
-editable = false
-wrap_mode = 1
-scroll_past_end_of_file = true
-scroll_fit_content_height = true
-script = -3579537070038712320
-
-[node name="Button" type="Button" parent="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_vertical = 8
-text = "ارسال"
+initial_velocity_min = 189.66
+initial_velocity_max = 189.66
+linear_accel_min = -100.0
+linear_accel_max = 100.0
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+damping_min = 5.594
+damping_max = 5.594
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_pr66g")
+color_ramp = SubResource("Gradient_2jfmm")
+color_initial_ramp = SubResource("Gradient_7obif")
+script = SubResource("GDScript_1reov")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
 offset_right = 125.0
 offset_bottom = 128.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_kr4pi")
-icon = ExtResource("13_5dmcg")
+icon = ExtResource("15_3e4qu")
 flat = true
 expand_icon = true
 
@@ -1448,38 +1440,6 @@ label_settings = SubResource("LabelSettings_7robg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-visible = false
-z_index = 1
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.174
-anchor_top = 0.1725
-anchor_right = 0.731
-anchor_bottom = 0.345
-grow_horizontal = 2
-mouse_filter = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_dxnh5")
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 20
-
-[node name="Control" type="Control" parent="ScrollContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="instance" type="Button" parent="ScrollContainer/VBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(500, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_filter = 1
-text = "مستشاران قسطنطنیه"
-text_overrun_behavior = 4
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 visible = false
 layout_direction = 3
@@ -1531,18 +1491,293 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "اعمال"
 
+[node name="Panel2" type="TabContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(700, 1000)
+layout_direction = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -500.0
+offset_right = 350.0
+offset_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme = SubResource("Theme_1fhlo")
+theme_override_fonts/font = ExtResource("9_1s11r")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_how18")
+theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_gs8qe")
+theme_override_styles/panel = SubResource("StyleBoxFlat_pr66g")
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_2jfmm")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_7obif")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_1reov")
+current_tab = 0
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel2"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "مربیان"
+label_settings = SubResource("LabelSettings_1dis4")
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "مخاطبین"
+label_settings = SubResource("LabelSettings_1dis4")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="instance" type="Button" parent="Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource("FontVariation_c77lx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b77ej")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_ljnj7")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_0wgk2")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_ljnj7")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_0wgk2")
+text = "نام: محمدحسین حق شناس حسن
+              کدملی: 5100276150"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel2"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="BoxContainer2" type="BoxContainer" parent="Panel2/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel2/MarginContainer2/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "جستجو بر اساس : "
+
+[node name="OptionButton" type="OptionButton" parent="Panel2/MarginContainer2/VBoxContainer/BoxContainer2"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "نام"
+popup/item_0/id = 0
+popup/item_1/text = "کد ملی"
+popup/item_1/id = 1
+popup/item_2/text = "شماره تلفن"
+popup/item_2/id = 2
+
+[node name="BoxContainer" type="HBoxContainer" parent="Panel2/MarginContainer2/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="search2" type="LineEdit" parent="Panel2/MarginContainer2/VBoxContainer/BoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+alignment = 1
+select_all_on_focus = true
+
+[node name="Button" type="Button" parent="Panel2/MarginContainer2/VBoxContainer/BoxContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "جستجو"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel2/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+
+[node name="instance" type="PanelContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer"]
+visible = false
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_sws6j")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance"]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="BoxContainer" type="BoxContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "نام و نام خانوادگی: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer"]
+custom_minimum_size = Vector2(390, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+bbcode_enabled = true
+custom_effects = [SubResource("RichTextEffect_jqayc"), SubResource("RichTextEffect_vvjsb")]
+
+[node name="BoxContainer2" type="BoxContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "شماره تلفن: 09999876739 "
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "کد ملی:  5100276150"
+vertical_alignment = 1
+
+[node name="BoxContainer3" type="BoxContainer" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+text = "انتخاب"
+
+[node name="Button2" type="Button" parent="Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance/MarginContainer/VBoxContainer/BoxContainer3"]
+custom_minimum_size = Vector2(250, 70)
+layout_mode = 2
+toggle_mode = true
+text = "افزودن به مخابین"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_jhcjm")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 135.0
+offset_top = 322.0
+offset_right = 837.0
+offset_bottom = 738.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_c77lx")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7oi8n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Control" type="Control" parent="Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="instance" type="Button" parent="Panel/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+mouse_filter = 1
+text = "مستشاران قسطنطنیه"
+text_overrun_behavior = 4
+script = SubResource("GDScript_how18")
+
 [connection signal="tab_selected" from="TabContainer" to="." method="_on_tab_container_tab_selected"]
-[connection signal="pressed" from="TabContainer/فردی/Button" to="." method="_on_button_pressed"]
-[connection signal="gui_input" from="TabContainer/فردی/MarginContainer/VBoxContainer/BoxContainer/TextureRect" to="." method="_on_texture_rect_gui_input2"]
+[connection signal="item_selected" from="TabContainer/فردی/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="TabContainer/فردی/HBoxContainer/OptionButton2" to="." method="_on_option_button_2_item_selected"]
+[connection signal="pressed" from="TabContainer/فردی/HBoxContainer2/Button" to="." method="_on_select_user_pressed"]
+[connection signal="pressed" from="TabContainer/فردی/HBoxContainer2/Button2" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TabContainer/فردی/MarginContainer/VBoxContainer/Button" to="." method="_on_update_user_pressed"]
-[connection signal="text_changed" from="TabContainer/گروهی/name" to="." method="_on_name_text_changed"]
-[connection signal="pressed" from="TabContainer/گروهی/Button" to="." method="_on_button2_pressed"]
-[connection signal="gui_input" from="TabContainer/گروهی/MarginContainer/VBoxContainer/BoxContainer/TextureRect" to="." method="_on_texture_rect_gui_input"]
+[connection signal="item_selected" from="TabContainer/گروهی/HBoxContainer2/OptionButton" to="." method="_on_option_button_item_selected2"]
+[connection signal="item_selected" from="TabContainer/گروهی/HBoxContainer2/OptionButton2" to="." method="_on_option_button_2_item_selected2"]
+[connection signal="focus_entered" from="TabContainer/گروهی/HBoxContainer/name" to="." method="_on_name_focus_entered"]
+[connection signal="text_changed" from="TabContainer/گروهی/HBoxContainer/name" to="." method="_on_name_text_changed"]
+[connection signal="pressed" from="TabContainer/گروهی/HBoxContainer/Button" to="." method="_on_button2_pressed"]
 [connection signal="pressed" from="TabContainer/گروهی/MarginContainer/VBoxContainer/Button" to="." method="_on_update_group_pressed"]
-[connection signal="scroll_ended" from="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer" to="." method="_on_scroll_container_scroll_ended"]
-[connection signal="meta_clicked" from="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
-[connection signal="meta_clicked" from="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/ScrollContainer/VBoxContainer/instance2/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
-[connection signal="pressed" from="TabContainer/پیام ها/TabContainer/گفتگو/VBoxContainer/HBoxContainer/Button" to="." method="_on_sendbutton_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]
 [connection signal="item_selected" from="HBoxContainer/filter" to="." method="_on_filter_item_selected"]
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_apply_button_pressed"]
+[connection signal="item_selected" from="Panel2/MarginContainer2/VBoxContainer/BoxContainer2/OptionButton" to="." method="_on_search_type_selected"]
+[connection signal="pressed" from="Panel2/MarginContainer2/VBoxContainer/BoxContainer/Button" to="." method="_on_searchButton_pressed"]

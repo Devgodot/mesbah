@@ -1,45 +1,46 @@
-[gd_scene load_steps=142 format=3]
+[gd_scene load_steps=175 format=3]
 
-[ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_pup0w"]
-[ext_resource type="Texture2D" uid="uid://c86fxkejgpq83" path="res://sprite/Layer 3.jpg" id="2_1oawt"]
-[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_nqan5"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="4_wcpcs"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_bvtya"]
-[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="6_7erly"]
-[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://scripts/tab_container.gd" id="7_ng4qj"]
-[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://scripts/animation_tab.gd" id="8_ed63f"]
-[ext_resource type="Texture2D" uid="uid://bjetyx7brb8jl" path="res://sprite/ranking-icon-2048x2046-5ln1igbz2.png" id="9_og5kd"]
-[ext_resource type="Texture2D" uid="uid://ceeuv2csd6158" path="res://sprite/ranking-icon-2048x2046-5ln1igbz.png" id="10_7ye7n"]
-[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="11_i36ob"]
-[ext_resource type="Script" uid="uid://ctyywxyk7kuid" path="res://scripts/tab_settings.gd" id="12_brbys"]
-[ext_resource type="Script" uid="uid://cnn7hb10qab7t" path="res://scripts/icon.gd" id="13_jubht"]
-[ext_resource type="Texture2D" uid="uid://cpcdjtebg7a06" path="res://sprite/مدیریت(1).png" id="14_w6tu5"]
-[ext_resource type="Texture2D" uid="uid://c3w8o3pjpjoch" path="res://sprite/مربیان.png" id="15_e6x5r"]
-[ext_resource type="Texture2D" uid="uid://ce78doms7yhik" path="res://sprite/Layer 4.png" id="16_qdso4"]
-[ext_resource type="PackedScene" uid="uid://byrq1i1400fl7" path="res://scenes/menu_button.tscn" id="17_2bsga"]
-[ext_resource type="Texture2D" uid="uid://c2ofu4ew587al" path="res://sprite/free-arrow-left-icon-3099-thumb.png" id="18_h770b"]
-[ext_resource type="Script" uid="uid://c8o7njavqtn62" path="res://scripts/MainButton.gd" id="19_wx5k3"]
-[ext_resource type="Texture2D" uid="uid://c1pdrs87jpis2" path="res://sprite/Layer 10.png" id="20_qmjwg"]
-[ext_resource type="Script" uid="uid://w6f05d55d5o8" path="res://scripts/options.gd" id="21_14pln"]
-[ext_resource type="Texture2D" uid="uid://df4ut7g6r8nwh" path="res://sprite/مصباح1.png" id="22_q54r6"]
-[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="23_cu1t2"]
-[ext_resource type="Texture2D" uid="uid://bqjypbnu44t5o" path="res://sprite/Layer 2.png" id="24_lfobt"]
-[ext_resource type="Texture2D" uid="uid://d1hp2ojy3bvqc" path="res://sprite/Layer 8.png" id="25_0yrpj"]
-[ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="26_olbi6"]
-[ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="27_pjyy5"]
-[ext_resource type="Texture2D" uid="uid://txty07sw0wdc" path="res://sprite/170259461.jpg" id="28_wgong"]
-[ext_resource type="Texture2D" uid="uid://cvhc8t7r6lv5n" path="res://sprite/169804434.jpg" id="29_xx6tv"]
-[ext_resource type="Texture2D" uid="uid://3nvhf05dl7hx" path="res://sprite/آیکون 1.png" id="30_bopg4"]
-[ext_resource type="Texture2D" uid="uid://dr7jbhvngkexc" path="res://sprite/آیکون 2.png" id="31_by6do"]
-[ext_resource type="Texture2D" uid="uid://bu00jw7n80iu" path="res://sprite/آیکون4.png" id="32_lxtsy"]
-[ext_resource type="Texture2D" uid="uid://cw1bo01blyu6f" path="res://sprite/آیکون3.png" id="33_s3blq"]
-[ext_resource type="Texture2D" uid="uid://bnef3knjep3sx" path="res://sprite/free-message-icon-1159-thumb.png" id="34_kv5ss"]
-[ext_resource type="Texture2D" uid="uid://bv0f8la1fmlhi" path="res://sprite/Home_icon_blue-1.png" id="35_m120n"]
+[ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_1oawt"]
+[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="2_nqan5"]
+[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_wcpcs"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="4_bvtya"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="5_7erly"]
+[ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="6_ng4qj"]
+[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://scripts/tab_container.gd" id="7_ed63f"]
+[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://scripts/animation_tab.gd" id="8_og5kd"]
+[ext_resource type="Texture2D" uid="uid://bjetyx7brb8jl" path="res://sprite/ranking-icon-2048x2046-5ln1igbz2.png" id="9_7ye7n"]
+[ext_resource type="Texture2D" uid="uid://ceeuv2csd6158" path="res://sprite/ranking-icon-2048x2046-5ln1igbz.png" id="10_i36ob"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="11_brbys"]
+[ext_resource type="Script" uid="uid://ctyywxyk7kuid" path="res://scripts/tab_settings.gd" id="12_jubht"]
+[ext_resource type="Script" uid="uid://cnn7hb10qab7t" path="res://scripts/icon.gd" id="13_w6tu5"]
+[ext_resource type="Texture2D" uid="uid://cpcdjtebg7a06" path="res://sprite/مدیریت(1).png" id="14_e6x5r"]
+[ext_resource type="Texture2D" uid="uid://c3w8o3pjpjoch" path="res://sprite/مربیان.png" id="15_qdso4"]
+[ext_resource type="Texture2D" uid="uid://bqjypbnu44t5o" path="res://sprite/Layer 2.png" id="16_2bsga"]
+[ext_resource type="PackedScene" uid="uid://byrq1i1400fl7" path="res://scenes/menu_button.tscn" id="17_h770b"]
+[ext_resource type="Texture2D" uid="uid://c2ofu4ew587al" path="res://sprite/free-arrow-left-icon-3099-thumb.png" id="18_wx5k3"]
+[ext_resource type="Script" uid="uid://c8o7njavqtn62" path="res://scripts/MainButton.gd" id="19_qmjwg"]
+[ext_resource type="Script" uid="uid://w6f05d55d5o8" path="res://scripts/options.gd" id="20_14pln"]
+[ext_resource type="Texture2D" uid="uid://df4ut7g6r8nwh" path="res://sprite/مصباح1.png" id="21_q54r6"]
+[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="22_cu1t2"]
+[ext_resource type="Texture2D" uid="uid://d1hp2ojy3bvqc" path="res://sprite/Layer 8.png" id="23_lfobt"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="24_0yrpj"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="25_olbi6"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="26_pjyy5"]
+[ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="27_wgong"]
+[ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="28_xx6tv"]
+[ext_resource type="Texture2D" uid="uid://txty07sw0wdc" path="res://sprite/170259461.jpg" id="29_bopg4"]
+[ext_resource type="Texture2D" uid="uid://cvhc8t7r6lv5n" path="res://sprite/169804434.jpg" id="30_by6do"]
+[ext_resource type="Texture2D" uid="uid://3nvhf05dl7hx" path="res://sprite/آیکون 1.png" id="31_lxtsy"]
+[ext_resource type="Texture2D" uid="uid://dr7jbhvngkexc" path="res://sprite/آیکون 2.png" id="32_s3blq"]
+[ext_resource type="Texture2D" uid="uid://bu00jw7n80iu" path="res://sprite/آیکون4.png" id="33_kv5ss"]
+[ext_resource type="Texture2D" uid="uid://cw1bo01blyu6f" path="res://sprite/آیکون3.png" id="34_m120n"]
+[ext_resource type="Texture2D" uid="uid://bnef3knjep3sx" path="res://sprite/free-message-icon-1159-thumb.png" id="35_bd720"]
+[ext_resource type="Texture2D" uid="uid://bv0f8la1fmlhi" path="res://sprite/Home_icon_blue-1.png" id="36_px0y4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qf4cw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_plvwm"]
-texture = ExtResource("4_wcpcs")
+texture = ExtResource("4_bvtya")
 expand_margin_top = 60.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
@@ -52,7 +53,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_t7asv"]
-font = ExtResource("5_bvtya")
+font = ExtResource("5_7erly")
 font_size = 51
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wh6k"]
@@ -71,7 +72,7 @@ viewport_path = NodePath("SubViewport3")
 
 [sub_resource type="Resource" id="Resource_fmdiu"]
 resource_local_to_scene = true
-script = ExtResource("8_ed63f")
+script = ExtResource("8_og5kd")
 texture_progress = SubResource("ViewportTexture_8aotp")
 fill_mode = 0
 nine_patch_stretch = false
@@ -84,8 +85,8 @@ metadata/_custom_type_script = "uid://dr0mo850pgc1h"
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8aotp"]
 
 [sub_resource type="Resource" id="Resource_dmnnq"]
-script = ExtResource("12_brbys")
-font = ExtResource("11_i36ob")
+script = ExtResource("12_jubht")
+font = ExtResource("11_brbys")
 font_size = 38
 selected_color = Color(0, 0.305882, 1, 1)
 unselected_color = Color(0, 0, 0, 1)
@@ -99,7 +100,7 @@ viewport_path = NodePath("SubViewport4")
 
 [sub_resource type="Resource" id="Resource_8wh6k"]
 resource_local_to_scene = true
-script = ExtResource("8_ed63f")
+script = ExtResource("8_og5kd")
 texture_progress = SubResource("ViewportTexture_gxmfj")
 fill_mode = 6
 nine_patch_stretch = false
@@ -111,10 +112,10 @@ metadata/_custom_type_script = "uid://dr0mo850pgc1h"
 
 [sub_resource type="Resource" id="Resource_0gyww"]
 resource_local_to_scene = true
-script = ExtResource("13_jubht")
+script = ExtResource("13_w6tu5")
 tab_animation = SubResource("Resource_8wh6k")
-icon_selected = ExtResource("9_og5kd")
-icon_unselected = ExtResource("10_7ye7n")
+icon_selected = ExtResource("9_7ye7n")
+icon_unselected = ExtResource("10_i36ob")
 label_settings = SubResource("Resource_dmnnq")
 expand_icon = true
 flat = true
@@ -130,8 +131,8 @@ load_path = "res://.godot/imported/Home_icon_blue-1.png-36bcca077ed4ad8e6e943115
 viewport_path = NodePath("SubViewport11")
 
 [sub_resource type="Resource" id="Resource_cs3pn"]
-script = ExtResource("12_brbys")
-font = ExtResource("11_i36ob")
+script = ExtResource("12_jubht")
+font = ExtResource("11_brbys")
 font_size = 38
 selected_color = Color(0, 0.305882, 1, 1)
 unselected_color = Color(0, 0, 0, 1)
@@ -145,7 +146,7 @@ viewport_path = NodePath("SubViewport3")
 
 [sub_resource type="Resource" id="Resource_5xbah"]
 resource_local_to_scene = true
-script = ExtResource("8_ed63f")
+script = ExtResource("8_og5kd")
 texture_progress = SubResource("ViewportTexture_ycbhe")
 fill_mode = 6
 nine_patch_stretch = false
@@ -157,7 +158,7 @@ metadata/_custom_type_script = "uid://dr0mo850pgc1h"
 
 [sub_resource type="Resource" id="Resource_pxum8"]
 resource_local_to_scene = true
-script = ExtResource("13_jubht")
+script = ExtResource("13_w6tu5")
 tab_animation = SubResource("Resource_5xbah")
 icon_selected = SubResource("CompressedTexture2D_8wh6k")
 icon_unselected = SubResource("ViewportTexture_bopg4")
@@ -176,8 +177,8 @@ viewport_path = NodePath("SubViewport13")
 viewport_path = NodePath("SubViewport12")
 
 [sub_resource type="Resource" id="Resource_cc30s"]
-script = ExtResource("12_brbys")
-font = ExtResource("11_i36ob")
+script = ExtResource("12_jubht")
+font = ExtResource("11_brbys")
 font_size = 38
 selected_color = Color(0, 0.305882, 1, 1)
 unselected_color = Color(0, 0, 0, 1)
@@ -191,7 +192,7 @@ viewport_path = NodePath("SubViewport4")
 
 [sub_resource type="Resource" id="Resource_0v776"]
 resource_local_to_scene = true
-script = ExtResource("8_ed63f")
+script = ExtResource("8_og5kd")
 texture_progress = SubResource("ViewportTexture_1bd0r")
 fill_mode = 0
 nine_patch_stretch = false
@@ -203,7 +204,7 @@ metadata/_custom_type_script = "uid://dr0mo850pgc1h"
 
 [sub_resource type="Resource" id="Resource_k41c7"]
 resource_local_to_scene = true
-script = ExtResource("13_jubht")
+script = ExtResource("13_w6tu5")
 tab_animation = SubResource("Resource_0v776")
 icon_selected = SubResource("ViewportTexture_dmnnq")
 icon_unselected = SubResource("ViewportTexture_cc30s")
@@ -219,8 +220,8 @@ metadata/_custom_type_script = "uid://cnn7hb10qab7t"
 viewport_path = NodePath("SubViewport9")
 
 [sub_resource type="Resource" id="Resource_1bd0r"]
-script = ExtResource("12_brbys")
-font = ExtResource("11_i36ob")
+script = ExtResource("12_jubht")
+font = ExtResource("11_brbys")
 font_size = 38
 selected_color = Color(0, 0.305882, 1, 1)
 unselected_color = Color(0, 0, 0, 1)
@@ -234,7 +235,7 @@ viewport_path = NodePath("SubViewport4")
 
 [sub_resource type="Resource" id="Resource_s3blq"]
 resource_local_to_scene = true
-script = ExtResource("8_ed63f")
+script = ExtResource("8_og5kd")
 texture_progress = SubResource("ViewportTexture_lxtsy")
 fill_mode = 6
 nine_patch_stretch = false
@@ -246,10 +247,10 @@ metadata/_custom_type_script = "uid://dr0mo850pgc1h"
 
 [sub_resource type="Resource" id="Resource_ypgks"]
 resource_local_to_scene = true
-script = ExtResource("13_jubht")
+script = ExtResource("13_w6tu5")
 tab_animation = SubResource("Resource_s3blq")
 icon_selected = SubResource("ViewportTexture_by6do")
-icon_unselected = ExtResource("14_w6tu5")
+icon_unselected = ExtResource("14_e6x5r")
 label_settings = SubResource("Resource_1bd0r")
 expand_icon = true
 flat = true
@@ -266,7 +267,7 @@ viewport_path = NodePath("SubViewport4")
 
 [sub_resource type="Resource" id="Resource_xekfo"]
 resource_local_to_scene = true
-script = ExtResource("8_ed63f")
+script = ExtResource("8_og5kd")
 texture_progress = SubResource("ViewportTexture_yoxka")
 fill_mode = 6
 nine_patch_stretch = false
@@ -278,10 +279,10 @@ metadata/_custom_type_script = "uid://dr0mo850pgc1h"
 
 [sub_resource type="Resource" id="Resource_mat1i"]
 resource_local_to_scene = true
-script = ExtResource("13_jubht")
+script = ExtResource("13_w6tu5")
 tab_animation = SubResource("Resource_xekfo")
 icon_selected = SubResource("ViewportTexture_2gfuy")
-icon_unselected = ExtResource("15_e6x5r")
+icon_unselected = ExtResource("15_qdso4")
 label_settings = SubResource("Resource_1bd0r")
 expand_icon = true
 flat = true
@@ -289,123 +290,6 @@ icon_v_aligment = 0
 icon_h_aligment = 1
 text = "مربیان"
 metadata/_custom_type_script = "uid://cnn7hb10qab7t"
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_728ow"]
-texture = ExtResource("16_qdso4")
-expand_margin_left = 50.0
-expand_margin_top = 50.0
-expand_margin_right = 50.0
-expand_margin_bottom = 50.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1pfr"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_ya0au"]
-viewport_path = NodePath("SubViewport5")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
-viewport_path = NodePath("SubViewport6")
-
-[sub_resource type="Resource" id="Resource_ya0au"]
-script = ExtResource("12_brbys")
-font = ExtResource("11_i36ob")
-font_size = 75
-selected_color = Color(1, 1, 1, 1)
-unselected_color = Color(1, 1, 1, 1)
-outline_size = 9
-ouline_selected_color = Color(0, 0, 0, 1)
-outline_unselected_color = Color(0, 0, 0, 1)
-metadata/_custom_type_script = "uid://ctyywxyk7kuid"
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dmnnq"]
-texture = ExtResource("20_qmjwg")
-modulate_color = Color(0.447059, 1, 0.266667, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2gfuy"]
-texture = ExtResource("20_qmjwg")
-
-[sub_resource type="Resource" id="Resource_yoxka"]
-resource_local_to_scene = true
-script = ExtResource("19_wx5k3")
-arrow_icon = ExtResource("18_h770b")
-max_arrow_width = 80
-offset_arrow = Vector2(0, 30)
-start_rotation = 0
-end_rotation = -90
-icon_selected = SubResource("ViewportTexture_ya0au")
-icon_unselected = SubResource("ViewportTexture_0gyww")
-label_settings = SubResource("Resource_ya0au")
-expand_icon = true
-max_icon_width = 225
-flat = false
-disabled = false
-icon_v_aligment = 1
-icon_h_aligment = 2
-aligment = 2
-text = "     رمضان 1404"
-selected_style = SubResource("StyleBoxTexture_dmnnq")
-unselected_style = SubResource("StyleBoxTexture_2gfuy")
-metadata/_custom_type_script = "uid://c8o7njavqtn62"
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6hmx6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cc30s"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wgong"]
-texture = ExtResource("22_q54r6")
-
-[sub_resource type="Resource" id="Resource_vdf25"]
-script = ExtResource("21_14pln")
-id = 0
-menu_button = false
-text = "       رتبه و الماس فردی"
-height = 175
-withd = 635
-offset_x = 80
-separation = 10
-active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
-normal_style = SubResource("StyleBoxTexture_wgong")
-focus_style = SubResource("StyleBoxTexture_wgong")
-hover_style = SubResource("StyleBoxTexture_wgong")
-pressed_style = SubResource("StyleBoxTexture_wgong")
-disabled_style = SubResource("StyleBoxTexture_wgong")
-font_color = Color(0, 0, 1, 1)
-outline_color = Color(1, 1, 1, 1)
-font_hover_color = Color(0, 0, 1, 1)
-font_pressed_color = Color(0, 0, 1, 1)
-font_disabled_color = Color(0, 0, 1, 1)
-font_focus_color = Color(0, 0, 1, 1)
-outline_size = 10.0
-font_size = 50.0
-metadata/_custom_type_script = "uid://w6f05d55d5o8"
-
-[sub_resource type="Resource" id="Resource_i5q5x"]
-script = ExtResource("21_14pln")
-id = 1
-menu_button = false
-text = "        رتبه و الماس گروهی"
-height = 175
-withd = 635
-offset_x = 80
-separation = -5
-active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
-normal_style = SubResource("StyleBoxTexture_wgong")
-focus_style = SubResource("StyleBoxTexture_wgong")
-hover_style = SubResource("StyleBoxTexture_wgong")
-pressed_style = SubResource("StyleBoxTexture_wgong")
-disabled_style = SubResource("StyleBoxTexture_wgong")
-font_color = Color(0, 0, 1, 1)
-outline_color = Color(1, 1, 1, 1)
-font_hover_color = Color(0, 0, 1, 1)
-font_pressed_color = Color(0, 0, 1, 1)
-font_disabled_color = Color(0, 0, 1, 1)
-font_focus_color = Color(0, 0, 1, 1)
-outline_size = 10.0
-font_size = 50.0
-metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cc30s"]
 corner_radius_top_left = 50
@@ -447,13 +331,13 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ya0au"]
 shader = SubResource("Shader_6hmx6")
-shader_parameter/pattern = ExtResource("24_lfobt")
+shader_parameter/pattern = ExtResource("16_2bsga")
 shader_parameter/scale = 3.08
 shader_parameter/back_color = Color(0.909804, 0.678431, 0.192157, 1)
 shader_parameter/fore_color = Color(0.841721, 0.613919, 0.0967172, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ya0au"]
-texture = ExtResource("24_lfobt")
+texture = ExtResource("16_2bsga")
 expand_margin_left = 50.0
 expand_margin_top = 50.0
 expand_margin_right = 50.0
@@ -480,7 +364,7 @@ void fragment() {
 	vec2 uv = UV;
     // انتقال UV به مرکز
 	uv -= center;
-	
+
 	uv = vec2(
 		uv.x * cos(angle) - uv.y * sin(angle),
 		uv.x * sin(angle) + uv.y * cos(angle)
@@ -488,9 +372,9 @@ void fragment() {
 
     // بازگرداندن UV به مکان قبلی
     uv += center;
-	
+
 	COLOR.rgb = texture(tex, uv).rgb;
-	
+
 }
 
 //void light() {
@@ -528,22 +412,24 @@ expand_margin_top = 50.0
 expand_margin_right = 50.0
 expand_margin_bottom = 50.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_cdrmf"]
-font = ExtResource("23_cu1t2")
-font_size = 36
-font_color = Color(0.150303, 0.42559, 2.69532e-06, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1pfr"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_hp05y"]
-font = ExtResource("23_cu1t2")
-font_size = 37
-outline_size = 5
-outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_xekfo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
 viewport_path = NodePath("SubViewport5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ypgks"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xam4k"]
 viewport_path = NodePath("SubViewport6")
+
+[sub_resource type="Resource" id="Resource_ya0au"]
+script = ExtResource("12_jubht")
+font = ExtResource("11_brbys")
+font_size = 75
+selected_color = Color(1, 1, 1, 1)
+unselected_color = Color(1, 1, 1, 1)
+outline_size = 9
+ouline_selected_color = Color(0, 0, 0, 1)
+outline_unselected_color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://ctyywxyk7kuid"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ya0au"]
 bg_color = Color(0, 0.832301, 0.200507, 1)
@@ -573,10 +459,111 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 anti_aliasing_size = 6.627
 
+[sub_resource type="Resource" id="Resource_yoxka"]
+resource_local_to_scene = true
+script = ExtResource("19_qmjwg")
+arrow_icon = ExtResource("18_wx5k3")
+max_arrow_width = 80
+offset_arrow = Vector2(0, 30)
+start_rotation = 0
+end_rotation = -90
+icon_selected = SubResource("ViewportTexture_0gyww")
+icon_unselected = SubResource("ViewportTexture_xam4k")
+label_settings = SubResource("Resource_ya0au")
+expand_icon = true
+max_icon_width = 225
+flat = false
+disabled = false
+icon_v_aligment = 1
+icon_h_aligment = 2
+aligment = 2
+text = "     رمضان 1404"
+selected_style = SubResource("StyleBoxFlat_ya0au")
+unselected_style = SubResource("StyleBoxFlat_dmnnq")
+metadata/_custom_type_script = "uid://c8o7njavqtn62"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6hmx6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cc30s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wgong"]
+texture = ExtResource("21_q54r6")
+
+[sub_resource type="Resource" id="Resource_vdf25"]
+script = ExtResource("20_14pln")
+id = 0
+menu_button = false
+text = "       رتبه و الماس فردی"
+height = 175
+withd = 635
+offset_x = 0.5
+separation = 10
+active = false
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
+normal_style = SubResource("StyleBoxTexture_wgong")
+focus_style = SubResource("StyleBoxTexture_wgong")
+hover_style = SubResource("StyleBoxTexture_wgong")
+pressed_style = SubResource("StyleBoxTexture_wgong")
+disabled_style = SubResource("StyleBoxTexture_wgong")
+font_color = Color(0, 0, 1, 1)
+outline_color = Color(1, 1, 1, 1)
+font_hover_color = Color(0, 0, 1, 1)
+font_pressed_color = Color(0, 0, 1, 1)
+font_disabled_color = Color(0, 0, 1, 1)
+font_focus_color = Color(0, 0, 1, 1)
+outline_size = 10.0
+font_size = 50.0
+metadata/_custom_type_script = "uid://w6f05d55d5o8"
+
+[sub_resource type="Resource" id="Resource_i5q5x"]
+script = ExtResource("20_14pln")
+id = 1
+menu_button = false
+text = "        رتبه و الماس گروهی"
+height = 175
+withd = 635
+offset_x = 0.5
+separation = -5
+active = false
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
+normal_style = SubResource("StyleBoxTexture_wgong")
+focus_style = SubResource("StyleBoxTexture_wgong")
+hover_style = SubResource("StyleBoxTexture_wgong")
+pressed_style = SubResource("StyleBoxTexture_wgong")
+disabled_style = SubResource("StyleBoxTexture_wgong")
+font_color = Color(0, 0, 1, 1)
+outline_color = Color(1, 1, 1, 1)
+font_hover_color = Color(0, 0, 1, 1)
+font_pressed_color = Color(0, 0, 1, 1)
+font_disabled_color = Color(0, 0, 1, 1)
+font_focus_color = Color(0, 0, 1, 1)
+outline_size = 10.0
+font_size = 50.0
+metadata/_custom_type_script = "uid://w6f05d55d5o8"
+
+[sub_resource type="LabelSettings" id="LabelSettings_cdrmf"]
+font = ExtResource("22_cu1t2")
+font_size = 36
+font_color = Color(0.150303, 0.42559, 2.69532e-06, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hp05y"]
+font = ExtResource("22_cu1t2")
+font_size = 37
+outline_size = 5
+outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xekfo"]
+viewport_path = NodePath("SubViewport5")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ypgks"]
+viewport_path = NodePath("SubViewport6")
+
 [sub_resource type="Resource" id="Resource_ycbhe"]
 resource_local_to_scene = true
-script = ExtResource("19_wx5k3")
-arrow_icon = ExtResource("18_h770b")
+script = ExtResource("19_qmjwg")
+arrow_icon = ExtResource("18_wx5k3")
 max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
@@ -601,17 +588,17 @@ metadata/_custom_type_script = "uid://c8o7njavqtn62"
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxum8"]
 
 [sub_resource type="Resource" id="Resource_q1j5q"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 0
 menu_button = false
 text = "سلامت معنوی"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -628,17 +615,17 @@ font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_wqbfb"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 1
 menu_button = false
 text = "سلامت جسمانی"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -655,17 +642,17 @@ font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_xam4k"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 2
 menu_button = false
 text = "سلامت فکری"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -689,8 +676,8 @@ viewport_path = NodePath("SubViewport8")
 
 [sub_resource type="Resource" id="Resource_mrvu1"]
 resource_local_to_scene = true
-script = ExtResource("19_wx5k3")
-arrow_icon = ExtResource("18_h770b")
+script = ExtResource("19_qmjwg")
+arrow_icon = ExtResource("18_wx5k3")
 max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
@@ -711,17 +698,17 @@ unselected_style = SubResource("StyleBoxFlat_dmnnq")
 metadata/_custom_type_script = "uid://c8o7njavqtn62"
 
 [sub_resource type="Resource" id="Resource_6hmx6"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 0
 menu_button = false
 text = "بلیط قطار شادی"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -738,17 +725,17 @@ font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_w0io0"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 1
 menu_button = false
 text = "   نذر قربانی"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -765,17 +752,17 @@ font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_o3l68"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 2
 menu_button = false
 text = "  اخلاق علوی"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -792,17 +779,17 @@ font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_lu225"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 3
 menu_button = false
 text = "   جشن های خانگی"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -819,17 +806,17 @@ font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_nnn2t"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 4
 menu_button = false
 text = "   قطار شادی ویژه دختران"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -846,17 +833,17 @@ font_size = 45.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_rq2mq"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 5
 menu_button = false
 text = "    قطار شادی ویژه پسران"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -873,17 +860,17 @@ font_size = 45.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_4pauv"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 6
 menu_button = false
 text = " نذر مادرانه"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -900,17 +887,17 @@ font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_1b8xm"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 7
 menu_button = false
 text = "همایش دختران علوی"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -927,17 +914,17 @@ font_size = 45.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_eapy6"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 8
 menu_button = false
 text = "  دیدار از خانواده شهدا"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -954,17 +941,17 @@ font_size = 45.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_e1fbg"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 9
 menu_button = false
 text = "شهدا امتداد غدیر"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -981,17 +968,17 @@ font_size = 45.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_yl6gq"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 10
 menu_button = false
 text = "حکومت علوی"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -1008,17 +995,17 @@ font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_7168k"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 11
 menu_button = false
 text = "نورافشانی غدیر"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -1035,17 +1022,17 @@ font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_4ev5o"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 12
 menu_button = false
 text = "مهمانی بزرگ همدلی"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -1062,17 +1049,17 @@ font_size = 45.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_4bmro"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 13
 menu_button = false
 text = "کاروان شادی غدیر"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -1089,17 +1076,17 @@ font_size = 45.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_d3lg5"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 14
 menu_button = false
 text = "خانواده علوی"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -1116,17 +1103,17 @@ font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_avagy"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 15
 menu_button = false
 text = "    سرویس دهی رایگان اتوبوس"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -1143,17 +1130,17 @@ font_size = 40.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
 [sub_resource type="Resource" id="Resource_pf0vb"]
-script = ExtResource("21_14pln")
+script = ExtResource("20_14pln")
 id = 16
 menu_button = false
 text = "پخت و توزیع نان صلواتی"
 height = 175
 withd = 635
-offset_x = 80
+offset_x = 0.5
 separation = -5
 active = false
-options = Array[ExtResource("21_14pln")]([])
-font = ExtResource("23_cu1t2")
+options = Array[ExtResource("20_14pln")]([])
+font = ExtResource("22_cu1t2")
 normal_style = SubResource("StyleBoxTexture_wgong")
 focus_style = SubResource("StyleBoxTexture_wgong")
 hover_style = SubResource("StyleBoxTexture_wgong")
@@ -1168,6 +1155,398 @@ font_focus_color = Color(0, 0, 1, 1)
 outline_size = 10.0
 font_size = 40.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
+
+[sub_resource type="GDScript" id="GDScript_cc30s"]
+script/source = "extends Control
+
+signal scroll_start(offset_y:int, max:int)
+var max_scroll = 1
+var separation = 30
+var drag = false
+var scroll = Vector2.ZERO
+var offset = 0
+var begin_id = \"\"
+var last_id = \"\"
+var can_drag = [true, true]
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	scroll = lerp(scroll, Vector2.ZERO, 0.5)
+	can_drag[0] = (not get_tree().has_group(begin_id)) or(get_tree().has_group(begin_id) and get_tree().get_first_node_in_group(begin_id).global_position.y < global_position.y)
+	if last_id != \"\":
+		if get_tree().has_group(last_id):
+			var btn = get_tree().get_first_node_in_group(last_id)
+			if btn.global_position.y < global_position.y + size.y - btn.size.y:
+				can_drag[1] = false
+				$VBoxContainer.get_child(1).position.y += (global_position.y + size.y - btn.size.y) - btn.global_position.y
+			else:
+				can_drag[1] = true
+		else:
+			can_drag[1] = true
+	else: 
+		can_drag[1] = false
+	if get_tree().has_group(begin_id):
+		if get_tree().get_first_node_in_group(begin_id).global_position.y > global_position.y:
+			var tween = get_tree().create_tween()
+			tween.tween_property($VBoxContainer, \"position:y\", 0, 0.1)
+			tween.play()
+			var tween2 = get_tree().create_tween()
+			tween2.tween_property(get_tree().get_first_node_in_group(begin_id), \"position:y\", 0, 0.1)
+			tween2.play()
+	if scroll != Vector2.ZERO:
+		$\"../Control/VSlider\".value -= scroll.y
+		$VBoxContainer.position += scroll
+		$VBoxContainer.position.y = clamp($VBoxContainer.position.y, -211, 210)
+		if $VBoxContainer.get_child_count() > 1:
+			if $VBoxContainer.position.y < -210:
+				$VBoxContainer.get_child(1).position.y -= 210
+				$VBoxContainer.position.y = 0
+			if $VBoxContainer.position.y >= 210:
+				$VBoxContainer.get_child(1).position.y += 210
+				$VBoxContainer.position.y = 0
+func set_child_offset(offset):
+	for child in get_children():
+		child.position.y = offset + child.get_meta(\"pos\", 0)
+		child.position.y = clamp(child.position.y, -max_scroll+size.y + child.get_meta(\"pos\", 0), child.get_meta(\"pos\", 0))
+func set_child_size():
+	var pos = 0
+	for child in get_children():
+		if child is Control:
+			child.position.y = pos 
+			child.set_meta(\"pos\",pos)
+			var _size = child.size.y
+			for subchild in child.get_children():
+				if subchild is Control and subchild.name != \"instance\":
+					subchild.position.y = _size
+					_size += subchild.size.y + separation
+			pos += _size
+			
+			child.set_deferred(\"size:y\", _size)
+	max_scroll = pos
+func set_input_child(process):
+	for child in get_children():
+		for subchild in child.get_children():
+			if subchild is Control:
+				subchild.set_process_input(process)
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenDrag:
+		if event.relative.y > 0 and can_drag[0]:
+			scroll = (Vector2(0, event.relative.y))
+		if event.relative.y < 0 and can_drag[1]:
+			scroll = (Vector2(0, event.relative.y))
+		drag = true
+	if event is InputEventMouseButton:
+		if event.is_pressed() and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			if can_drag[1]:
+				scroll = (Vector2(0, -100 * event.factor))
+		if event.is_pressed() and event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			if can_drag[0]:
+				scroll = (Vector2(0, 100 * event.factor))
+
+
+
+func manage_scroll(box):
+	for child in box.get_children():
+		if child.name != \"instance\":
+			var space = separation
+			var top_pos = global_position.y - child.size.y - space
+			var bottom_pos = global_position.y + size.y + child.size.y + space
+			var left_pos = global_position.x - child.size.x - space
+			var right_pos = global_position.x + size.x + space
+			var child_pos = child.global_position
+			
+			if child_pos.y < top_pos or child_pos.y > bottom_pos or child_pos.x < left_pos or child_pos.x > right_pos:
+				if child.visible:
+					child.hide()
+			else:
+				if not child.visible:
+					child.show()
+				
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bd0r"]
+bg_color = Color(0.522407, 0.426031, 0.199983, 1)
+shadow_size = 15
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gyww"]
+bg_color = Color(0.70546, 0.584045, 0.302655, 1)
+shadow_size = 15
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="GDScript" id="GDScript_w0io0"]
+script/source = "extends Button
+signal screen_entered
+var has_on_screen = false
+var parent:Control
+var next_node
+var pre_node
+var count = 5
+var _index = null
+var label
+func _ready() -> void:
+	if get_parent().get_parent().get_parent() is Control:
+		parent = get_parent().get_parent().get_parent()
+func _process(delta: float) -> void:
+	if parent and name != \"instance\":
+		size.x = parent.size.x
+		
+		if pre_node:
+			if label:
+				position.y = pre_node.position.y + 420
+			else :
+				position.y = pre_node.position.y + 210
+			_index = pre_node._index + 1 if pre_node._index != null else null
+		else:
+			if next_node and _index == null and next_node._index != null:
+				_index = next_node._index - 1
+				#if next_node._index == null:
+					#_index = $\"../../../../..\".last_c
+				#else:
+					#
+			#else:
+				#_index = $\"../../../../..\".last_c
+		if has_on_viewport(parent):
+			screen_entered.emit()
+			has_on_screen = true
+		else:
+			has_on_screen = false
+			out_off_range()
+func has_on_viewport(parent:Control) -> bool:
+	if global_position.y >= parent.global_position.y and global_position.y <= parent.global_position.y + parent.size.y - size.y:
+		return true
+	return false
+func out_off_range():
+	if global_position.y < parent.global_position.y - (210 * count) :
+		queue_free()
+		if label:
+			label.queue_free()
+		if next_node:
+			next_node.pre_node = null
+	if global_position.y > parent.global_position.y + parent.size.y + (210 * count):
+		queue_free()
+		if label:
+			label.queue_free()
+		if pre_node:
+			pre_node.next_node = null
+"
+
+[sub_resource type="Shader" id="Shader_1bd0r"]
+code = "shader_type canvas_item;
+uniform sampler2D tex:repeat_enable;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR.rgb = texture(tex, UV + vec2(TIME * 0.5, 0)).rgb * texture(TEXTURE, UV).a;
+	
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="Gradient" id="Gradient_ya0au"]
+offsets = PackedFloat32Array(0, 0.514286, 1)
+colors = PackedColorArray(1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dmnnq"]
+gradient = SubResource("Gradient_ya0au")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xam4k"]
+shader = SubResource("Shader_1bd0r")
+shader_parameter/tex = SubResource("GradientTexture2D_dmnnq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yoxka"]
+draw_center = false
+border_width_top = 10
+border_width_bottom = 10
+border_blend = true
+
+[sub_resource type="Gradient" id="Gradient_cc30s"]
+offsets = PackedFloat32Array(0, 0.640496, 0.702479)
+colors = PackedColorArray(0, 0, 0, 1, 0.669421, 0.669421, 0.669421, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ya0au"]
+gradient = SubResource("Gradient_cc30s")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_0gyww"]
+offsets = PackedFloat32Array(0, 0.64876)
+colors = PackedColorArray(0.105882, 1, 0, 1, 3.60981e-06, 0.541321, 0.0867349, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2gfuy"]
+gradient = SubResource("Gradient_0gyww")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_xam4k"]
+offsets = PackedFloat32Array(0.582645, 0.636364)
+colors = PackedColorArray(0.588235, 1, 1, 0, 0, 0.411765, 0.67451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yoxka"]
+gradient = SubResource("Gradient_xam4k")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Shader" id="Shader_cc30s"]
+code = "shader_type canvas_item;
+uniform int dir:hint_range(-1, 1, 1)=0;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, vec2(UV.x + float(TIME * float(dir) * 0.2), UV.y));
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xekfo"]
+shader = SubResource("Shader_cc30s")
+shader_parameter/dir = 0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cs3pn"]
+viewport_path = NodePath("CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer/HBoxContainer/name/texture")
+
+[sub_resource type="GDScript" id="GDScript_0gyww"]
+script/source = "extends TextureRect
+
+var last_size = size
+var dir = 0
+var label_size
+var text
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	texture = $texture.get_texture()
+	label_size = $texture/Label.size
+func _process(delta: float) -> void:
+	if last_size != size:
+		last_size = size
+		$texture.size = size
+		if $texture/Label.text == \"\" and text:
+			$texture/Label.text = text
+		if $texture/Label.size.x > size.x:
+			$texture.size.x = size.x * 1.5
+			
+			var m = ShaderMaterial.new()
+			m.shader = material.shader
+			m.set_shader_parameter(\"dir\", dir)
+			material = m
+		else:
+			var m = ShaderMaterial.new()
+			m.shader = material.shader
+			m.set_shader_parameter(\"dir\", 0)
+			material = m
+"
+
+[sub_resource type="FontVariation" id="FontVariation_ycbhe"]
+fallbacks = Array[Font]([ExtResource("24_0yrpj")])
+base_font = ExtResource("5_7erly")
+spacing_top = 30
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_mgrfc"]
+script = ExtResource("25_olbi6")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ur635"]
+script = ExtResource("26_pjyy5")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_cc30s"]
+script = ExtResource("25_olbi6")
+metadata/_custom_type_script = "uid://dcls0pguhob1u"
+
+[sub_resource type="LabelSettings" id="LabelSettings_pxum8"]
+font = ExtResource("5_7erly")
+font_size = 30
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_xam4k"]
+_data = [Vector2(0, 0.629685), 0.0, 0.0, 0, 0, Vector2(0.271739, 0.658921), 0.0, 0.0, 0, 0, Vector2(0.554348, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_0jf8d"]
+colors = PackedColorArray(1, 1, 1, 1, 0.340339, 0.340339, 0.340339, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xekfo"]
+gradient = SubResource("Gradient_0jf8d")
+fill_from = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdf25"]
+font = ExtResource("11_brbys")
+font_size = 40
+font_color = Color(0.290196, 0.168627, 1, 1)
+outline_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0v776"]
+bg_color = Color(3.27289e-06, 0.724809, 0.221273, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_k41c7"]
+font = ExtResource("11_brbys")
+font_size = 44
+
+[sub_resource type="LabelSettings" id="LabelSettings_cc30s"]
+font = ExtResource("11_brbys")
+font_size = 86
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_dmnnq"]
+script/source = "extends Label
+
+var next_node:Button
+var pre_node:Button
+var _index = null
+func _process(delta: float) -> void:
+
+	if next_node:
+		position.y = next_node.position.y - size.y - 10
+		_index = next_node._index
+		size.x = next_node.size.x
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xam4k"]
+bg_color = Color(0.278431, 0.556863, 0.635294, 1)
+draw_center = false
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dmnnq"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2gfuy"]
+color = Color(0, 0.772786, 0.844834, 1)
+grow_begin = -10.0
+grow_end = -10.0
+thickness = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8itgj"]
 
@@ -1219,7 +1598,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_5xbah"]
-font = ExtResource("5_bvtya")
+font = ExtResource("5_7erly")
 font_size = 51
 
 [sub_resource type="Shader" id="Shader_0v776"]
@@ -1260,7 +1639,7 @@ corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="LabelSettings" id="LabelSettings_ya0au"]
-font = ExtResource("5_bvtya")
+font = ExtResource("5_7erly")
 font_size = 26
 
 [node name="Control" type="Control" groups=["start"]]
@@ -1270,7 +1649,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pup0w")
+script = ExtResource("1_1oawt")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -1279,8 +1658,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_1oawt")
-stretch_mode = 6
+texture = ExtResource("2_nqan5")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="Button" type="Button" parent="."]
 visible = false
@@ -1294,7 +1674,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_nqan5")
+theme_override_fonts/font = ExtResource("3_wcpcs")
 theme_override_font_sizes/font_size = 71
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qf4cw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_plvwm")
@@ -1314,7 +1694,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_nqan5")
+theme_override_fonts/font = ExtResource("3_wcpcs")
 theme_override_font_sizes/font_size = 71
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qf4cw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_plvwm")
@@ -1334,7 +1714,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
-theme_override_fonts/font = ExtResource("3_nqan5")
+theme_override_fonts/font = ExtResource("3_wcpcs")
 theme_override_font_sizes/font_size = 71
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qf4cw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_plvwm")
@@ -1362,7 +1742,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SystemBarColorChanger" type="Node" parent="."]
-script = ExtResource("6_7erly")
+script = ExtResource("6_ng4qj")
 
 [node name="CustomTabContainer" type="Control" parent="."]
 layout_mode = 1
@@ -1371,8 +1751,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("7_ng4qj")
-current_tab = 1
+script = ExtResource("7_ed63f")
+current_tab = 2
 transation = false
 separation = 50.0
 separation_style = SubResource("StyleBoxEmpty_8wh6k")
@@ -1402,16 +1782,39 @@ theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 
 [node name="Panel" type="Panel" parent="CustomTabContainer/MarginContainer2"]
+clip_children = 2
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_728ow")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cc30s")
+
+[node name="Panel" type="Panel" parent="CustomTabContainer/MarginContainer2/Panel"]
+material = SubResource("ShaderMaterial_ya0au")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_ya0au")
+
+[node name="Panel" type="Panel" parent="CustomTabContainer/MarginContainer2/Panel/Panel"]
+material = SubResource("ShaderMaterial_yoxka")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xekfo")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CustomTabContainer/MarginContainer2/Panel"]
 layout_mode = 2
-offset_top = -28.0
-offset_right = 800.0
-offset_bottom = 1572.0
+anchor_top = -0.0183968
+anchor_right = 1.0
+anchor_bottom = 1.03285
+offset_bottom = 0.00012207
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CustomTabContainer/MarginContainer2/Panel/ScrollContainer"]
 layout_mode = 2
@@ -1423,16 +1826,18 @@ mouse_filter = 2
 theme_override_constants/separation = 70
 theme_override_styles/separator = SubResource("StyleBoxEmpty_x1pfr")
 
-[node name="Control" parent="CustomTabContainer/MarginContainer2/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_2bsga")]
+[node name="position" parent="CustomTabContainer/MarginContainer2/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_h770b")]
+visible = false
 layout_mode = 2
-active = true
+scroll_path = NodePath("../..")
 base_button = SubResource("Resource_yoxka")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
-options = Array[ExtResource("21_14pln")]([SubResource("Resource_vdf25"), SubResource("Resource_i5q5x")])
+options = Array[ExtResource("20_14pln")]([SubResource("Resource_vdf25"), SubResource("Resource_i5q5x")])
 
 [node name="MarginContainer" type="MarginContainer" parent="CustomTabContainer"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1501,7 +1906,7 @@ theme_override_constants/margin_bottom = 40
 [node name="Control" type="TextureRect" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(700, 400)
 layout_mode = 2
-texture = ExtResource("25_0yrpj")
+texture = ExtResource("23_lfobt")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1533,31 +1938,262 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_2bsga")]
+[node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_h770b")]
 layout_mode = 2
+scroll_path = NodePath("../..")
 base_button = SubResource("Resource_ycbhe")
 subpanel_style = SubResource("StyleBoxEmpty_5xbah")
 panel_style = SubResource("StyleBoxEmpty_pxum8")
 height = 250.0
-options = Array[ExtResource("21_14pln")]([SubResource("Resource_q1j5q"), SubResource("Resource_wqbfb"), SubResource("Resource_xam4k")])
+options = Array[ExtResource("20_14pln")]([SubResource("Resource_q1j5q"), SubResource("Resource_wqbfb"), SubResource("Resource_xam4k")])
 
-[node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_2bsga")]
+[node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_h770b")]
 layout_mode = 2
+scroll_path = NodePath("../..")
 base_button = SubResource("Resource_mrvu1")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
-options = Array[ExtResource("21_14pln")]([SubResource("Resource_6hmx6"), SubResource("Resource_w0io0"), SubResource("Resource_o3l68"), SubResource("Resource_lu225"), SubResource("Resource_nnn2t"), SubResource("Resource_rq2mq"), SubResource("Resource_4pauv"), SubResource("Resource_1b8xm"), SubResource("Resource_eapy6"), SubResource("Resource_e1fbg"), SubResource("Resource_yl6gq"), SubResource("Resource_7168k"), SubResource("Resource_4ev5o"), SubResource("Resource_4bmro"), SubResource("Resource_d3lg5"), SubResource("Resource_avagy"), SubResource("Resource_pf0vb")])
+options = Array[ExtResource("20_14pln")]([SubResource("Resource_6hmx6"), SubResource("Resource_w0io0"), SubResource("Resource_o3l68"), SubResource("Resource_lu225"), SubResource("Resource_nnn2t"), SubResource("Resource_rq2mq"), SubResource("Resource_4pauv"), SubResource("Resource_1b8xm"), SubResource("Resource_eapy6"), SubResource("Resource_e1fbg"), SubResource("Resource_yl6gq"), SubResource("Resource_7168k"), SubResource("Resource_4ev5o"), SubResource("Resource_4bmro"), SubResource("Resource_d3lg5"), SubResource("Resource_avagy"), SubResource("Resource_pf0vb")])
 
 [node name="MarginContainer3" type="MarginContainer" parent="CustomTabContainer"]
-visible = false
 layout_mode = 0
 offset_right = 1000.0
 offset_bottom = 1722.0
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
+
+[node name="ScrollContainer" type="Control" parent="CustomTabContainer/MarginContainer3"]
+layout_mode = 2
+script = SubResource("GDScript_cc30s")
+
+[node name="VBoxContainer" type="Control" parent="CustomTabContainer/MarginContainer3/ScrollContainer"]
+layout_mode = 2
+anchors_preset = 0
+offset_right = 1000.0
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="instance" type="Button" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/hover = SubResource("StyleBoxFlat_1bd0r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0gyww")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0gyww")
+script = SubResource("GDScript_w0io0")
+
+[node name="Panel" type="Panel" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance"]
+material = SubResource("ShaderMaterial_xam4k")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_yoxka")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel"]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 11.0
+offset_right = -18.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_ya0au")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="NinePatchRect" type="TextureRect" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/TextureRect/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_2gfuy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NinePatchRect2" type="TextureRect" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/TextureRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_yoxka")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="name" type="TextureRect" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_xekfo")
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+texture = SubResource("ViewportTexture_cs3pn")
+expand_mode = 1
+stretch_mode = 6
+script = SubResource("GDScript_0gyww")
+metadata/_edit_use_anchors_ = true
+
+[node name="texture" type="SubViewport" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer/HBoxContainer/name"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(400, 108)
+render_target_update_mode = 4
+
+[node name="Label" type="RichTextLabel" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer/HBoxContainer/name/texture"]
+texture_repeat = 2
+clip_contents = false
+custom_minimum_size = Vector2(0, 108)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -54.0
+offset_right = 187.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = SubResource("FontVariation_ycbhe")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_mgrfc"), SubResource("RichTextEffect_ur635")]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("11_brbys")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[light color=yellow freq=20 num=3 len=100][right] مربی طرح رمضان 1403-1404 بخش سلامت معنوی"
+custom_effects = [SubResource("RichTextEffect_cc30s")]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "سلام"
+label_settings = SubResource("LabelSettings_pxum8")
+autowrap_mode = 3
+text_overrun_behavior = 4
+
+[node name="Node2D" type="Node2D" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label"]
+position = Vector2(-23, 36)
+
+[node name="Line2D" type="Line2D" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D"]
+position = Vector2(1, -3)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_xam4k")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_xekfo")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D"]
+position = Vector2(11, -2)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_xam4k")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_xekfo")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "1403/05/25"
+label_settings = SubResource("LabelSettings_vdf25")
+
+[node name="Label2" type="Label" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_0v776")
+text = "+99"
+label_settings = SubResource("LabelSettings_k41c7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="CustomTabContainer/MarginContainer3/ScrollContainer"]
+visible = false
+layout_mode = 2
+offset_right = 1000.0
+offset_bottom = 134.0
+text = "پشتیبان‌ها"
+label_settings = SubResource("LabelSettings_cc30s")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = SubResource("GDScript_dmnnq")
+
+[node name="Control" type="Control" parent="CustomTabContainer/MarginContainer3"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VSlider" type="VScrollBar" parent="CustomTabContainer/MarginContainer3/Control"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.01
+anchor_bottom = 0.996
+offset_left = 30.0
+offset_top = 0.779999
+offset_right = 70.0
+offset_bottom = -0.112061
+grow_vertical = 2
+theme_override_styles/scroll = SubResource("StyleBoxFlat_xam4k")
+theme_override_styles/scroll_focus = SubResource("StyleBoxEmpty_dmnnq")
+theme_override_styles/grabber = SubResource("StyleBoxLine_2gfuy")
+theme_override_styles/grabber_highlight = SubResource("StyleBoxLine_2gfuy")
+theme_override_styles/grabber_pressed = SubResource("StyleBoxLine_2gfuy")
 
 [node name="Control2" type="Control" parent="CustomTabContainer"]
 visible = false
@@ -1577,7 +2213,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 144.0
 grow_horizontal = 2
-texture = ExtResource("26_olbi6")
+texture = ExtResource("27_wgong")
 
 [node name="Button4" type="Button" parent="."]
 layout_mode = 1
@@ -1589,11 +2225,11 @@ theme_override_colors/icon_pressed_color = Color(0.788235, 0.14902, 0.262745, 1)
 theme_override_colors/icon_focus_color = Color(0.788235, 0.14902, 0.262745, 1)
 theme_override_colors/icon_normal_color = Color(0.788235, 0.14902, 0.262745, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("11_i36ob")
+theme_override_fonts/font = ExtResource("11_brbys")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8itgj")
 text = "پروفایل"
-icon = ExtResource("27_pjyy5")
+icon = ExtResource("28_xx6tv")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -1617,7 +2253,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("28_wgong")
+texture = ExtResource("29_bopg4")
 expand_mode = 1
 stretch_mode = 6
 
@@ -1640,7 +2276,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("29_xx6tv")
+texture = ExtResource("30_by6do")
 expand_mode = 1
 stretch_mode = 6
 
@@ -1680,7 +2316,7 @@ offset_left = -30.0
 offset_right = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("30_bopg4")
+texture = ExtResource("31_lxtsy")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1710,7 +2346,7 @@ offset_left = -30.0
 offset_right = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("31_by6do")
+texture = ExtResource("32_s3blq")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1726,7 +2362,7 @@ offset_left = -30.0
 offset_right = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("32_lxtsy")
+texture = ExtResource("33_kv5ss")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1756,7 +2392,7 @@ offset_left = -30.0
 offset_right = -30.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("33_s3blq")
+texture = ExtResource("34_m120n")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1776,11 +2412,11 @@ theme_override_colors/icon_pressed_color = Color(0.831373, 0.054902, 0.294118, 1
 theme_override_colors/icon_focus_color = Color(0.831373, 0.054902, 0.294118, 1)
 theme_override_colors/icon_normal_color = Color(0.831373, 0.054902, 0.294118, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("11_i36ob")
+theme_override_fonts/font = ExtResource("11_brbys")
 theme_override_font_sizes/font_size = 51
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cs3pn")
 text = "پیام ها"
-icon = ExtResource("34_kv5ss")
+icon = ExtResource("35_bd720")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -1812,7 +2448,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("14_w6tu5")
+texture = ExtResource("14_e6x5r")
 
 [node name="SubViewport10" type="SubViewport" parent="."]
 transparent_bg = true
@@ -1824,7 +2460,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("15_e6x5r")
+texture = ExtResource("15_qdso4")
 
 [node name="SubViewport11" type="SubViewport" parent="."]
 transparent_bg = true
@@ -1836,7 +2472,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("35_m120n")
+texture = ExtResource("36_px0y4")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1850,7 +2486,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("34_kv5ss")
+texture = ExtResource("35_bd720")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1864,7 +2500,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("34_kv5ss")
+texture = ExtResource("35_bd720")
 expand_mode = 1
 stretch_mode = 5
 
@@ -1892,8 +2528,9 @@ vertical_alignment = 1
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button2_pressed"]
 [connection signal="tab_selected" from="CustomTabContainer" to="." method="_on_custom_tab_container_tab_selected"]
-[connection signal="item_pressed" from="CustomTabContainer/MarginContainer2/Panel/ScrollContainer/VBoxContainer/Control" to="." method="_on_control_item_pressed2"]
 [connection signal="item_pressed" from="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer/Control" to="." method="_on_control_item_pressed"]
 [connection signal="item_pressed" from="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer/Control2" to="." method="_on_control_2_item_pressed"]
+[connection signal="scroll_start" from="CustomTabContainer/MarginContainer3/ScrollContainer" to="." method="_on_scroll_container_scroll_start"]
+[connection signal="value_changed" from="CustomTabContainer/MarginContainer3/Control/VSlider" to="." method="_on_v_slider_value_changed"]
 [connection signal="pressed" from="Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="Button5" to="." method="_on_button_5_pressed"]

@@ -11,54 +11,99 @@ func get_direction(text:String):
 	else :
 		return 1 
 # Called when the node enters the scene tree for the first time.
+func _sort(data):
+	for box in get_tree().get_nodes_in_group("boxes"):
+		box.queue_free()
+	var users = data.users
+	for user in users:
+		$Panel/Label5.hide()
+		var _name = "[center]"+user.first_name + " " + user.last_name
+		_name = user.custom_name if user.has("custom_name") else _name
+		var diamonds = user.diamond_sum
+		var score = user.score_sum
+		var pos = user.position if user.has("position") else 0
+		var icon = custom_hash.hashing(custom_hash.GET_HASH, user.icon) if user.has("icon") else ""
+		var box: HBoxContainer = $ScrollContainer/VBoxContainer/HBoxContainer.duplicate()
+		box.add_to_group("boxes")
+		box.show()
+		box.get_node("Label").text = str(int(pos))
+		box.get_node("Label3").text = str(int(score))
+		Updatedate.get_icon_user(icon, custom_hash.hashing(custom_hash.GET_HASH, user.name), box.get_node("Label2").get_child(1).get_child(0))
+		var label = box.get_node("Label2").get_child(1).get_child(0).get_node("Label")
+		label.text = user.first_name[0] if user.first_name != "" else ""
+		if user.last_name != "":
+			label.text += " " + user.last_name[0]
+		if user.icon != "" or box.get_node("Label2").get_child(1).get_child(0).texture != null:
+			label.hide()
+		for x in range(max_diamonds - 1):
+			var di = box.get_node("Panel").get_child(0).get_child(0).duplicate()
+			box.get_node("Panel").get_child(0).add_child(di)
+		for x in range(diamonds):
+			if x < box.get_node("Panel").get_child(0).get_children().size():
+				box.get_node("Panel").get_child(0).get_child(x).modulate = Color.WHITE
+		box.get_node("Label2/name/texture/Label").text = _name
+		box.get_node("Label2/name").dir = get_direction(user.first_name)
+		$ScrollContainer/VBoxContainer.add_child(box)
+	$HBoxContainer2/Label.text = str(int(data.your_info.position)) if data.your_info.position else "-"
+	$HBoxContainer2/Label3.text = str(int(data.your_info.score_sum))
+	var label = $HBoxContainer2/Label2/TextureRect/TextureRect/Label
+	var first_name = Updatedate.load_game("first_name", "")
+	var last_name = Updatedate.load_game("last_name", "")
+	label.text = first_name[0] if first_name != "" else ""
+	if last_name != "":
+		label.text += " " + last_name[0]
+	if Updatedate.load_game("icon", '') != "" or $HBoxContainer2/Label2/TextureRect/TextureRect.texture != null:
+		label.hide()
+	for x in range(data.your_info.diamond_sum):
+		if x < $HBoxContainer2/Panel/HBoxContainer.get_children().size():
+			$HBoxContainer2/Panel/HBoxContainer.get_child(x).modulate = Color.WHITE
 func _ready() -> void:
 	Updatedate.load_user()
-	mode = Updatedate.part
-	var sort
-	var my_pos
-	var w = Updatedate.add_wait($ScrollContainer)
-	var w2 = Updatedate.add_wait($HBoxContainer2/Label)
-	var w3 = Updatedate.add_wait($HBoxContainer2/Label3)
-	var w4 = Updatedate.add_wait($HBoxContainer2/Panel)
-	var gender = Updatedate.load_game("gender", 0)
-	var tag = Updatedate.load_game("tag", 0)
-	$HBoxContainer2/Label2/TextureRect/TextureRect.gui_input.connect(func (event:InputEvent):
-		if event is InputEventScreenTouch:
-			if event.is_pressed():
-				Updatedate.show_picture($HBoxContainer2/Label2/TextureRect/TextureRect.texture) )
-	for x in range(max_diamonds - 1):
-		var di = $HBoxContainer2/Panel/HBoxContainer/TextureRect.duplicate()
-		$HBoxContainer2/Panel/HBoxContainer.add_child(di)
-	if mode < 3:
-		sort = await Updatedate.request("/users/all?sort=diamonds%sAND%s&filter=custom_nameANDfirst_nameANDlast_nameANDiconAND%sANDdiamonds%s&pre_page=20"%[str(mode), str("score_", gender, "_", tag, "_", mode), str("score_", gender, "_", tag, "_", mode), str(mode)])
-		my_pos = await Updatedate.request("/users/me?sort=diamonds%sAND%s"%[str(mode), str("score_", gender, "_", tag, "_", mode)])
-	if mode == 3:
-		max_diamonds = 3
-		sort = await Updatedate.request("/users/all?sort=diamondsANDscore&filter=custom_nameANDfirst_nameANDlast_nameANDiconANDscoreANDdiamonds&pre_page=20")
-		my_pos = await Updatedate.request("/users/me?sort=diamondsANDscore")
-		var length = (await Updatedate.request("/users/length"))
-		$Label12.text = "تعداد نفرات: "
-		$Label12.text += str(int(length.length)) if length and length.has("length") else "0"
-		$Label12.show()
-	if mode == 4:
-		$Label10.text = "تیم های برتر\n"+ title_text[3]
-		$Label11.text = "جایگاه تیم شما در\n" +title_text[3]
-		max_diamonds = 3
-		sort = await Updatedate.request("/groups/all?pre_page=20")
-		my_pos = await Updatedate.request("/groups/me")
-		var length = (await Updatedate.request("/groups/length"))
-		$Label12.text = "تعداد گروه ها: "
-		$Label12.text += str(int(length.length)) if length and length.has("length") else "0"
-		$Label12.show()
-		if my_pos and my_pos.has("name"):
-			$HBoxContainer2/Label2.text = my_pos.name
-			Updatedate.get_icon_group(my_pos.icon, my_pos.name, $HBoxContainer2/Label2/TextureRect/TextureRect)
+	if Updatedate.plan != "":
+		if Updatedate.subplan == "":
+			if Updatedate.group_plan:
+				Updatedate.request("/score/group_sort?plan=%s&max_members=%d"%[Updatedate.plan.uri_encode(), 20])
+			else:
+				Updatedate.request("/score/sort?plan=%s&max_members=%d"%[Updatedate.plan.uri_encode(), 20])
 		else:
-			
-			$HBoxContainer2/Label2.text = "عضو گروه نیستید"
-	else:
-		$Label10.text += title_text[mode]
-		$Label11.text += title_text[mode]
+			if Updatedate.group_plan:
+				Updatedate.request("/score/group_sort?plan=%s&max_members=%d&subplan=%s"%[Updatedate.plan.uri_encode(), 20, Updatedate.subplan.uri_encode()])
+			else:
+				Updatedate.request("/score/sort?plan=%s&max_members=%d&subplan=%s"%[Updatedate.plan.uri_encode(), 20, Updatedate.subplan.uri_encode()])
+	Updatedate.request_completed.connect(func(data, url:String):
+		if url.begins_with("/score/group_sort"):
+			if data:
+				Updatedate.save("group_sort_"+Updatedate.plan+Updatedate.subplan, data, false)
+				group_sort(data)
+		if url == "/users/length":
+			if data:
+				Updatedate.save("num_users", data.length)
+				$Label12.text = "تعداد نفرات: "
+				$Label12.text += str(int(data.length)) if data.has("length") else "0"
+				$Label12.show()
+		if url == "/groups/length":
+			if data:
+				Updatedate.save("num_groups", data.length)
+				$Label12.text = "تعداد گروه ها: "
+				$Label12.text += str(int(data.length)) if  data.has("length") else "0"
+				$Label12.show()
+		if data and data.has("users") and url.begins_with("/score/sort"):
+			Updatedate.save("sort_"+Updatedate.plan+Updatedate.subplan, data, false)
+			_sort(data)
+			)
+	if Updatedate.plan != "" and Updatedate.subplan == "" and Updatedate.group_plan == false:
+		max_diamonds = 3
+		Updatedate.request("/users/length")
+		$Label12.text = "تعداد نفرات: "
+		$Label12.text += str(int(Updatedate.load_game("num_users", 0)))
+		$Label12.show()
+	if Updatedate.plan != "" and Updatedate.subplan == "" and Updatedate.group_plan == true:
+		max_diamonds = 3
+		$Label12.text = "تعداد گروه ها: "
+		$Label12.text += str(int(Updatedate.load_game("num_groups", 0)))
+		$Label12.show()
+		Updatedate.request("/groups/length")
+	if Updatedate.group_plan == false:
 		Updatedate.get_icon_user(Updatedate.load_game("icon", ""), Updatedate.load_game("user_name", ""), $HBoxContainer2/Label2/TextureRect/TextureRect)
 		var pro = Updatedate.load_game("pro", false)
 		if pro:
@@ -75,94 +120,84 @@ func _ready() -> void:
 		else:
 			$HBoxContainer2/Label2.text = Updatedate.load_game("first_name", "") + " " + Updatedate.load_game("last_name", "")
 		
-	if sort and sort.has("message"):
-		$Label5.show()
-	if sort and sort.has("users"):
-		var users = sort.users
-		for user in users:
-			var data= user.data
-			var _name = "[center]"+data.first_name + " " + data.last_name if data.has("last_name") and data.has("first_name") else user.phone.left(4) + "***" + user.phone.right(4)
-			_name = data.custom_name if data.has("custom_name") else _name
-			var diamonds = 0
-			var score = 0
-			if mode < 3:
-				score = data[str("score_", gender, "_", tag, "_", mode)] if data.has(str("score_", gender, "_", tag, "_", mode)) else 0
-				diamonds = data["diamonds"+str(mode)] if data.has("diamonds"+str(mode)) else 0
-			else:
-				score = data["score"] if data.has("score") else 0
-				diamonds = data["diamonds"] if data.has("diamonds") else 0
-				
-			var pos = data.position if data.has("position") else 0
-			var icon = custom_hash.hashing(custom_hash.GET_HASH, data.icon) if data.has("icon") else ""
-			var box: HBoxContainer = $ScrollContainer/VBoxContainer/HBoxContainer.duplicate()
-			box.show()
-			box.get_node("Label").text = str(int(pos))
-			box.get_node("Label3").text = str(int(score))
-			box.get_node("Label2").get_child(1).get_child(0).gui_input.connect(func (event:InputEvent):
-				if event is InputEventScreenTouch:
-					if event.is_pressed():
-						Updatedate.show_picture(box.get_node("Label2").get_child(1).get_child(0).texture))
-			Updatedate.get_icon_user(icon, custom_hash.hashing(custom_hash.GET_HASH, user.username), box.get_node("Label2").get_child(1).get_child(0))
-			for x in range(max_diamonds - 1):
-				var di = box.get_node("Panel").get_child(0).get_child(0).duplicate()
-				box.get_node("Panel").get_child(0).add_child(di)
-			for x in range(diamonds):
-				if x < box.get_node("Panel").get_child(0).get_children().size():
-					box.get_node("Panel").get_child(0).get_child(x).modulate = Color.WHITE
-			box.get_node("Label2/name/texture/Label").text = _name
-			$ScrollContainer/VBoxContainer.add_child(box)
-			box.get_node("Label2/name").texture = box.get_node("Label2/name/texture").get_texture()
-			if box.get_node("Label2/name/texture/Label").size.x > 437:
-				box.get_node("Label2/name/texture").size.x = box.get_node("Label2/name/texture/Label").size.x * 1.5
-				var shader = $ScrollContainer/VBoxContainer/HBoxContainer/Label2/name.material.shader
-				var _material = ShaderMaterial.new()
-				_material.shader = shader
-				_material.set_shader_parameter("dir", get_direction(data.first_name + " " + data.last_name))
-				box.get_node("Label2/name").material = _material
-	elif sort and sort.has("result"):
-		var result = sort.result
-		for group in result:
-			var _name = group.name if group.has("name") else ""
-			var diamonds = group.diamonds if group.has("diamonds") else 0
-			var score = group.score if group.has("score") else 0
-			var pos = group.position if group.has("position") else 0
-			var icon = custom_hash.hashing(custom_hash.GET_HASH, group.icon) if group.has("icon") else ""
-			var box: HBoxContainer = $ScrollContainer/VBoxContainer/HBoxContainer.duplicate()
-			box.show()
-			box.get_node("Label").text = str(int(pos))
-			box.get_node("Label2").text = _name
-			box.get_node("Label3").text = str(int(score))
-			box.get_node("Label2").get_child(1).get_child(0).gui_input.connect(func (event:InputEvent):
-				
-				if event is InputEventScreenTouch:
-					
-					if event.is_pressed():
-						Updatedate.show_picture(box.get_node("Label2").get_child(1).get_child(0).texture))
-			Updatedate.get_icon_group(icon, _name, box.get_node("Label2").get_child(1).get_child(0))
-			for x in range(max_diamonds - 1):
-				var di = box.get_node("Panel").get_child(0).get_child(0).duplicate()
-				box.get_node("Panel").get_child(0).add_child(di)
-			for x in range(diamonds):
-				if x < box.get_node("Panel").get_child(0).get_children().size():
-					box.get_node("Panel").get_child(0).get_child(x).modulate = Color.WHITE
-			$ScrollContainer/VBoxContainer.add_child(box)
+	
+	if Updatedate.group_plan:
+		$Label10.text = "تیم های برتر\n" + Updatedate.plan + " "
+		$Label10.text += ("("+ Updatedate.subplan+")") if Updatedate.subplan != "" else ""
+		$Label11.text = "جایگاه تیم شما در\n" + Updatedate.plan + ' '
+		$Label11.text += ("("+ Updatedate.subplan+")") if Updatedate.subplan != "" else ""
+	else:
+		$Label10.text += Updatedate.plan + " "
+		$Label10.text += ("("+ Updatedate.subplan+")") if Updatedate.subplan != "" else ""
+		$Label11.text += Updatedate.plan + " "
+		$Label11.text += ("("+ Updatedate.subplan+")") if Updatedate.subplan != "" else ""
 	for x in range(max_diamonds - 1):
 		var di = $HBoxContainer2/Panel/HBoxContainer/TextureRect.duplicate()
 		$HBoxContainer2/Panel/HBoxContainer.add_child(di)
-	if my_pos and my_pos.has("pos") and my_pos.pos == 0:
-		$HBoxContainer2/Label.text = "-"
-		$HBoxContainer2/Label3.text = "-"
-	if my_pos and my_pos.has("nums"):
-		$HBoxContainer2/Label.text = str(int(my_pos.pos))
-		$HBoxContainer2/Label3.text = str(int(my_pos.nums[1]))
-		for x in range(my_pos.nums[0]):
+	if not Updatedate.group_plan:
+		if Updatedate.load_game("sort_"+Updatedate.plan+Updatedate.subplan, {}) != {}:
+			_sort(Updatedate.load_game("sort_"+Updatedate.plan+Updatedate.subplan, {}))
+	else:
+		if Updatedate.load_game("group_sort_"+Updatedate.plan+Updatedate.subplan, {}) != {}:
+			group_sort(Updatedate.load_game("group_sort_"+Updatedate.plan+Updatedate.subplan, {}))
+	await get_tree().create_timer(0.1).timeout
+	show()
+func group_sort(data):
+	for box in get_tree().get_nodes_in_group("boxes"):
+		box.queue_free()
+	for group in data.groups:
+		$Panel/Label5.hide()
+		var _name = group.name if group.has("name") else ""
+		var diamonds = group.diamond_sum if group.has("diamond_sum") else 0
+		var score = group.score_sum if group.has("score_sum") else 0
+		var pos = group.position if group.has("position") else 0
+		var icon = custom_hash.hashing(custom_hash.GET_HASH, group.icon) if group.has("icon") else ""
+		var box: HBoxContainer = $ScrollContainer/VBoxContainer/HBoxContainer.duplicate()
+		box.add_to_group("boxes")
+		box.show()
+		box.get_node("Label").text = str(int(pos))
+		box.get_node("Label2").text = _name
+		box.get_node("Label3").text = str(int(score))
+		Updatedate.get_icon_group(icon, _name, box.get_node("Label2").get_child(1).get_child(0))
+		var label = box.get_node("Label2").get_child(1).get_child(0).get_node("Label")
+		var split = _name.split(" ")
+		var words = []
+		for g in split:
+			if g != "":
+				words.append(g)
+		label.text = words[0][0]
+		if words.size() > 1:
+			label.text += " " + words.back()[0]
+		if group.icon != "" or box.get_node("Label2").get_child(1).get_child(0).texture != null:
+			label.hide()
+		for x in range(max_diamonds - 1):
+			var di = box.get_node("Panel").get_child(0).get_child(0).duplicate()
+			box.get_node("Panel").get_child(0).add_child(di)
+		for x in range(diamonds):
+			if x < box.get_node("Panel").get_child(0).get_children().size():
+				box.get_node("Panel").get_child(0).get_child(x).modulate = Color.WHITE
+		$ScrollContainer/VBoxContainer.add_child(box)
+	if data.your_info:
+		$HBoxContainer2/Label.text = str(int(data.your_info.position)) if data.your_info.position else "-"
+		$HBoxContainer2/Label3.text = str(int(data.your_info.score_sum))
+		$HBoxContainer2/Label2.text = data.your_info.name
+		Updatedate.get_icon_group(data.your_info.icon, data.your_info.name, $HBoxContainer2/Label2/TextureRect/TextureRect)
+		var label = $HBoxContainer2/Label2/TextureRect/TextureRect/Label
+		var split = data.your_info.name.split(" ")
+		var words = []
+		for g in split:
+			if g != "":
+				words.append(g)
+		label.text = words[0][0]
+		if words.size() > 1:
+			label.text += " " + words.back()[0]
+		if data.your_info.icon != "" or $HBoxContainer2/Label2/TextureRect/TextureRect.texture != null:
+			label.hide()
+		for x in range(data.your_info.diamond_sum):
 			if x < $HBoxContainer2/Panel/HBoxContainer.get_children().size():
 				$HBoxContainer2/Panel/HBoxContainer.get_child(x).modulate = Color.WHITE
-	w.queue_free()
-	w2.queue_free()
-	w3.queue_free()
-	w4.queue_free()
-	show()
+	else:
+		$HBoxContainer2/Label2.text = "عضو گروه نیستید"
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		Transation.change(self, Updatedate.p_scene+".tscn", -1)

@@ -910,6 +910,7 @@ grow_vertical = 2
 script = ExtResource("1_qxlgd")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_repeat = 3
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1566,7 +1567,7 @@ joint_mode = 2
 
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2
-points = PackedVector2Array(-33, 157, 56, 186, 112, 210, 189, 233, 232, 241, 304, 251, 364, 258, 449, 268, 490, 271, 561.475, 270.53, 624, 270, 699, 257, 749, 249, 818, 232, 871, 213, 947, 183, 984.764, 167.265, 1031, 148)
+points = PackedVector2Array(-33, 157, 56, 186, 112, 210, 189, 233, 232, 241, 304, 251, 364, 258, 449, 268, 490, 271, 561.475, 270.53, 624, 270, 699, 257, 749, 249, 818, 232, 871, 213, 947, 183, 984.764, 167.265, 1039, 129)
 width = 256.0
 texture = SubResource("ViewportTexture_mbk1q")
 texture_mode = 1

@@ -4,10 +4,19 @@ var plugin
 var plugin_name = "GodotGetImage"
 var dialog
 var search_type = 0
+var search_type2 = 0
 var groups = []
 var upload_request = HTTPRequest.new()
+var selected_users = []
+var subplan
+var saved_users = []
+var subplanes = []
+var subplanes2 = []
+var plan_name = ""
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
+	
 	$"TabContainer/1/TabContainer".set_tab_title(0, "تغییر برنامه")
 	$"TabContainer/1/TabContainer".set_tab_title(1, "تعریف برنامه")
 	$"TabContainer/1/TabContainer".set_tab_title(2, "رتبه بندی")
@@ -16,7 +25,11 @@ func _ready() -> void:
 	RenderingServer.set_default_clear_color(Color("e9c93a"))
 	add_child(upload_request)
 	Updatedate.load_user()
+	get_plan_by_year($"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/HBoxContainer/SpinBox".value)
 	add_message()
+	saved_users = Updatedate.load_game("saved_users", [])
+	add_saved_users()
+	
 	for spin in get_tree().get_nodes_in_group("spin"):
 		if spin is SpinBox:
 			spin.get_line_edit().virtual_keyboard_type = LineEdit.VirtualKeyboardType.KEYBOARD_TYPE_NUMBER
@@ -1008,13 +1021,335 @@ func add_ticket():
 
 
 func _on_save_plan_pressed() -> void:
-	pass # Replace with function body.
-
+	var data = {"subplanes":[]}
+	var w = Updatedate.add_wait($"TabContainer/1/TabContainer/MarginContainer2")
+	for plan in subplanes:
+		var editors = []
+		for user in plan.get_meta("selected_users", []):
+			editors.append(user.username)
+		data.subplanes.append({"name": plan.get_node("MarginContainer/VBoxContainer/HBoxContainer3/LineEdit").text, "diamond_range":plan.get_node("MarginContainer/VBoxContainer/HBoxContainer/SpinBox").value, "editors":editors})
+	data["name"] = %plan.text
+	var http = HTTPRequest.new()
+	add_child(http)
+	http.request(Updatedate.protocol+Updatedate.subdomin+"/planes/add", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify(data))
+	var d = await http.request_completed
+	while d[3].size() == 0:
+		http.request(Updatedate.protocol+Updatedate.subdomin+"/planes/add", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify(data))
+		d = await http.request_completed
+	var result = Updatedate.get_json(d[3])
+	if result.has("error"):
+		Notification.add_notif(result.error, Notification.ERROR)
+	if result.has("message"):
+		Notification.add_notif(result.message)
+	w.queue_free()
 
 func _on_clear_button_pressed() -> void:
-	pass # Replace with function body.
+	for plan in subplanes:
+		plan.queue_free()
+	subplanes = []
+	subplan = null
+	$Panel2.hide()
+	$TextureRect2.hide()
+	%plan.text = ""
 
 func _remove_child(child, filter_name=["instance", "add"]):
 	for n in child.get_children():
 		if n.name not in filter_name:
 			n.queue_free()
+
+
+func _on_add_subplan_pressed() -> void:
+	var instance = $"TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer/instance".duplicate()
+	instance.show()
+	instance.name = "sub"
+	instance.get_node("MarginContainer/VBoxContainer/HBoxContainer2/Button").pressed.connect(func (): 
+		subplanes.erase(instance)
+		instance.queue_free())
+	instance.get_node("MarginContainer/VBoxContainer/HBoxContainer2/Button2").pressed.connect(func (): 
+		$Panel2.show()
+		$TextureRect2.show()
+		if subplan:
+			subplan.set_meta("selected_users", selected_users)
+			if subplan is PanelContainer:
+				var label = subplan.get_node("MarginContainer/VBoxContainer/Label2")
+				label.text = "[right][b][color=41ff00]مربیان:[/color][/b]"
+				var index = 0
+				for user in selected_users:
+					label.text += " " + user.name
+					if index < selected_users.size() - 1:
+						label.text += " و"
+					index += 1
+		subplan = instance
+		_remove_child($Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer)
+		selected_users = instance.get_meta("selected_users", [])
+		add_saved_users())
+	subplanes.append(instance)
+	$"TabContainer/1/TabContainer/MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer".add_child(instance, true, Node.INTERNAL_MODE_FRONT)
+func  _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if $Panel2.visible:
+			$Panel2.hide()
+			if not $Panel.visible:
+				$TextureRect2.hide()
+			if subplan:
+				subplan.set_meta("selected_users", selected_users)
+				if subplan is PanelContainer:
+					var label = subplan.get_node("MarginContainer/VBoxContainer/Label2")
+					label.text = "[right][b][color=41ff00]مربیان:[/color][/b]"
+					var index = 0
+					for user in selected_users:
+						label.text += " " + user.name
+						if index < selected_users.size() - 1:
+							label.text += " و"
+						index += 1
+		elif $Panel.visible:
+			$Panel.hide()
+			$TextureRect2.hide()
+
+
+func _on_plan_text_submitted(new_text: String) -> void:
+	grab_focus()
+
+
+func _on_search_item_selected(index: int) -> void:
+	%search2.text = ""
+	search_type2 = index
+	match index:
+		0:
+			%search2.alignment = HORIZONTAL_ALIGNMENT_CENTER
+			%search2.max_length = 0
+			%search2.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_DEFAULT
+		1:
+			%search2.alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			%search2.max_length = 10
+			%search.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
+		2:
+			%search2.alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			%search2.max_length = 11
+			%search2.virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_PHONE
+
+
+func _on_searchButton_pressed() -> void:
+	if %search2.text != "":
+		var d 
+		var w = Updatedate.add_wait($Panel2/MarginContainer2/VBoxContainer/ScrollContainer)
+		var w2 = Updatedate.add_wait($Panel2/MarginContainer2/VBoxContainer/BoxContainer/Button)
+		
+		match search_type2:
+			0:
+				d = await Updatedate.request("/control/get_users?name="+%search2.text.uri_encode())
+			1:
+				d = await Updatedate.request("/control/get_users?username="+%search2.text)
+			2:
+				d = await Updatedate.request("/control/get_users?phone="+%search2.text)
+			
+		if d.has("data"):
+			_remove_child($Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer)
+			for user in d.data:
+				var instance: PanelContainer = $Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer/instance.duplicate()
+				instance.get_node("MarginContainer/VBoxContainer/BoxContainer/RichTextLabel").text = "[center]"+ user["first_name"] + " " + user["last_name"]
+				instance.get_node("MarginContainer/VBoxContainer/BoxContainer2/Label").text =  "شماره تلفن: " + user["phone"]
+				instance.get_node("MarginContainer/VBoxContainer/BoxContainer2/Label2").text =  "کدملی: " + user["username"]
+				var btn = instance.get_node("MarginContainer/VBoxContainer/BoxContainer3/Button")
+				var btn2:Button = instance.get_node("MarginContainer/VBoxContainer/BoxContainer3/Button2")
+				
+				var user_data = {"name": user["first_name"] + " " + user["last_name"] + " " +user["father_name"], "username": user["username"]}
+				if selected_users.map(func(x): return x.username).has(user_data.username):
+					btn.text = "لغو انتخاب"
+					btn.button_pressed = true
+				else:
+					btn.text = "انتخاب"
+					btn.button_pressed = false
+				if not saved_users.map(func(x): return x.username).has(user_data.username):
+					btn2.button_pressed = false
+					btn2.text = "افزودن به مخاطبین"
+				else :
+					btn2.text = "حذف از مخاطبین"
+					btn2.button_pressed = true
+				btn2.pressed.connect(func():
+					if saved_users.map(func(x): return x.username).has(user_data.username):
+						saved_users = saved_users.filter(func(x): return x.username != user_data.username)
+						btn2.text = "افزودن به مخاطبین"
+					else :
+						btn2.text = "حذف از مخاطبین"
+						saved_users.append(user_data)
+					add_saved_users()
+					Updatedate.save("saved_users", saved_users))
+					
+				btn.pressed.connect(func():
+					if selected_users.map(func(x): return x.username).has(user_data.username):
+						selected_users = selected_users.filter(func(x): return x.username != user_data.username)
+						btn.text = "انتخاب"
+					else:
+						selected_users.append(user_data)
+						btn.text = "لغو انتخاب"
+					add_saved_users())
+				instance.show()
+				$Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer.add_child(instance)
+		w.queue_free()
+		w2.queue_free()
+func add_saved_users():
+	_remove_child($Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer2)
+	_remove_child($Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer)
+	$Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer2.hide()
+	$Panel2/MarginContainer/ScrollContainer/VBoxContainer/Label2.hide()
+	$Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer.hide()
+	$Panel2/MarginContainer/ScrollContainer/VBoxContainer/Label.hide()
+	
+	for user in saved_users:
+		var btn : Button= $Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer/instance.duplicate()
+		btn.text = "نام: "+ user.name +"\n کدملی: "+ user.username
+		btn.show()
+		btn.name = "user"
+		btn.pressed.connect(func ():
+			if selected_users.map(func(x): return x.username).has(user.username):
+				selected_users = selected_users.filter(func(x): return x.username != user.username)
+			else:
+				selected_users.append(user)
+			add_saved_users())
+		if selected_users.map(func(x): return x.username).has(user.username):
+			btn.button_pressed = true
+			$Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer2.show()
+			$Panel2/MarginContainer/ScrollContainer/VBoxContainer/Label2.show()
+			$Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer2.add_child(btn)
+		else:
+			btn.button_pressed = false
+			$Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer.show()
+			$Panel2/MarginContainer/ScrollContainer/VBoxContainer/Label.show()
+			$Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer.add_child(btn)
+	for user in selected_users:
+		if not saved_users.map(func(x): return x.username).has(user.username):
+			var btn : Button= $Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer/instance.duplicate()
+			btn.text = "نام: "+ user.name +"\n کدملی: "+ user.username
+			btn.show()
+			btn.name = "user"
+			btn.button_pressed = true
+			$Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer2.show()
+			$Panel2/MarginContainer/ScrollContainer/VBoxContainer/Label2.show()
+			$Panel2/MarginContainer/ScrollContainer/VBoxContainer/VBoxContainer2.add_child(btn)
+			btn.pressed.connect(func ():
+				selected_users = selected_users.filter(func(x): return x.username != user.username)
+				add_saved_users())
+
+func get_plan_by_year(year):
+	var d = await Updatedate.request("/planes/get?year=%s"%int(year))
+	var option:OptionButton = $"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/HBoxContainer2/OptionButton"
+	if d.has("planes"):
+		if d.planes.size() == 0:
+			$"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/HBoxContainer2/Label2".show()
+			option.hide()
+		else:
+			$"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/HBoxContainer2/Label2".hide()
+			option.show()
+			option.clear()
+			for plan in d.planes:
+				option.add_item(plan)
+
+
+func _on_get_planes_pressed() -> void:
+	var option:OptionButton = $"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/HBoxContainer2/OptionButton"
+	plan_name = (option.get_item_text(option.selected)).uri_encode()
+	var d = await Updatedate.request("/planes/get?name=%s"%plan_name)
+	for plan in subplanes2:
+		plan.queue_free()
+	subplanes2 = []
+	if d and d.has("subplanes"):
+		for plan in d.subplanes:
+			var instance = $"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer/instance".duplicate()
+			var label = instance.get_node("MarginContainer/VBoxContainer/Label2")
+			label.text = "[right][b][color=41ff00]مربیان:[/color][/b]"
+			var index = 0
+			for user in plan.editors:
+				label.text += " " + user.name
+				if index < plan.editors.size() - 1:
+					label.text += " و"
+				index += 1
+			instance.get_node("MarginContainer/VBoxContainer/HBoxContainer3/LineEdit").text = plan.name
+			instance.get_node("MarginContainer/VBoxContainer/HBoxContainer/SpinBox").value = plan.diamond_range
+			instance.set_meta("selected_users", plan.editors)
+			instance.show()
+			subplanes2.append(instance)
+			instance.get_node("MarginContainer/VBoxContainer/HBoxContainer2/Button").pressed.connect(func (): 
+				subplanes2.erase(instance)
+				instance.queue_free()
+				)
+			instance.get_node("MarginContainer/VBoxContainer/HBoxContainer2/Button2").pressed.connect(func (): 
+				$Panel2.show()
+				$TextureRect2.show()
+				if subplan:
+					subplan.set_meta("selected_users", selected_users)
+					if subplan is PanelContainer:
+						var label2 = subplan.get_node("MarginContainer/VBoxContainer/Label2")
+						label2.text = "[right][b][color=41ff00]مربیان:[/color][/b]"
+						var index2 = 0
+						for user in selected_users:
+							label2.text += " " + user.name
+							if index2 < selected_users.size() - 1:
+								label2.text += " و"
+							index2 += 1
+				subplan = instance
+				_remove_child($Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer)
+				selected_users = instance.get_meta("selected_users", [])
+				add_saved_users())
+			$"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer".add_child(instance, false, Node.INTERNAL_MODE_FRONT)
+			
+	print(d)
+
+
+func _on_reload_changes_pressed() -> void:
+	_on_get_planes_pressed()
+
+
+func _on_save_changes_pressed() -> void:
+	var data = {"subplanes":[]}
+	var w = Updatedate.add_wait($"TabContainer/1/TabContainer/MarginContainer")
+	for plan in subplanes2:
+		var editors = []
+		for user in plan.get_meta("selected_users", []):
+			editors.append(user.username)
+		data.subplanes.append({"name": plan.get_node("MarginContainer/VBoxContainer/HBoxContainer3/LineEdit").text, "diamond_range":plan.get_node("MarginContainer/VBoxContainer/HBoxContainer/SpinBox").value, "editors":editors})
+	data["name"] = plan_name.uri_decode()
+	var http = HTTPRequest.new()
+	add_child(http)
+	http.request(Updatedate.protocol+Updatedate.subdomin+"/planes/edit", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify(data))
+	var d = await http.request_completed
+	while d[3].size() == 0:
+		http.request(Updatedate.protocol+Updatedate.subdomin+"/planes/edit", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify(data))
+		d = await http.request_completed
+	var result = Updatedate.get_json(d[3])
+	if result.has("error"):
+		Notification.add_notif(result.error, Notification.ERROR)
+	if result.has("message"):
+		Notification.add_notif(result.message)
+	w.queue_free()
+
+
+func _on_add_pressed() -> void:
+	if plan_name != "":
+		var instance = $"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer/instance".duplicate()
+		instance.show()
+		subplanes2.append(instance)
+		instance.get_node("MarginContainer/VBoxContainer/HBoxContainer2/Button").pressed.connect(func (): 
+			subplanes2.erase(instance)
+			instance.queue_free()
+		)
+		instance.get_node("MarginContainer/VBoxContainer/HBoxContainer2/Button2").pressed.connect(func (): 
+			$Panel2.show()
+			$TextureRect2.show()
+			if subplan:
+				subplan.set_meta("selected_users", selected_users)
+				if subplan is PanelContainer:
+					var label2 = subplan.get_node("MarginContainer/VBoxContainer/Label2")
+					label2.text = "[right][b][color=41ff00]مربیان:[/color][/b]"
+					var index2 = 0
+					for user in selected_users:
+						label2.text += " " + user.name
+						if index2 < selected_users.size() - 1:
+							label2.text += " و"
+						index2 += 1
+			subplan = instance
+			_remove_child($Panel2/MarginContainer2/VBoxContainer/ScrollContainer/VBoxContainer)
+			selected_users = instance.get_meta("selected_users", [])
+			add_saved_users())
+		$"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer".add_child(instance, false, Node.INTERNAL_MODE_FRONT)
+		

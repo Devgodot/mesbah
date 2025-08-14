@@ -1,19 +1,33 @@
-extends Node2D
+extends Control
 signal get_image_finished
 signal download_progress
 signal start_download
 signal end_download
+signal request_completed
+signal recive_message
+signal delete_message
+signal seen_message
+signal edit_message(message:Dictionary)
+signal update_list
+var globals = ["accounts", "current_version", "hash_list", "source_dic", "hash_list2", "current_user", "last_user", "planes", "num_users", "num_groups"]
+var plan = ""
+var subplan = ""
+var group_plan = false
 var save_path = "user://data.cfg"
 var token = ""
+var year = "1404"
 var id = ""
+var waiting_message = {}
 var protocol = "http://"
 var subdomin = "127.0.0.1:5000"
+var conversation = {}
 var part = 0
 var gallary_part = ""
 var current_user = 0
 var last_user = 0
 var online_supporter = [0, 0, 0]
 var texture = TextureRect.new()
+var bg = ColorRect.new()
 var p_scene
 var socket = WebSocketPeer.new()
 var set_user = false
@@ -35,89 +49,89 @@ func change(_name):
 	if change_scene[_name]:
 		get_tree().change_scene_to_file("res://scenes/"+change_scene[_name]+".tscn")
 func update_resource():
-	var http = HTTPRequest.new()
-	add_child(http)
+	if subdomin != "127.0.0.1:5000":
+		var http = HTTPRequest.new()
+		add_child(http)
 
-	var hash_list:Dictionary = load_game("hash_list", {})
-	if hash_list == {}:
-		if FileAccess.file_exists("res://scripts/hash_list.gd"):
-			for child in get_tree().get_root().get_children():
-				if child.name == "HashList":
-					hash_list = child.list
-	http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
-	var d = await http.request_completed
-	http.timeout = 10
-	while d[3].size() == 0:
+		var hash_list:Dictionary = load_game("hash_list", {})
+		if hash_list == {}:
+			if FileAccess.file_exists("res://scripts/hash_list.gd"):
+				for child in get_tree().get_root().get_children():
+					if child.name == "HashList":
+						hash_list = child.list
 		http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
-		d = await http.request_completed
-	http.queue_free()
-	var data = get_json(d[3])
-	if data:
-		if not DirAccess.dir_exists_absolute("user://resource"):
-			DirAccess.make_dir_absolute("user://resource")
-		if data.add.size() > 0:
-			get_tree().get_root().add_child(await load_scene("download.tscn"))
-		var index = 1
-		start_download.emit(data.add.size(), "بروزرسانی فایل‌ها")
-		var source_dic = load_game("source_dic", {})
-		var hash_list2:Dictionary = load_game("hash_list2", {})
-		
-		for file in data.add:
-			var f = await request("/static/files/resource/"+file[0], HTTPClient.METHOD_GET, {}, 1)
+		var d = await http.request_completed
+		http.timeout = 10
+		while d[3].size() == 0:
+			http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
+			d = await http.request_completed
+		http.queue_free()
+		var data = get_json(d[3])
+		if data:
+			if not DirAccess.dir_exists_absolute("user://resource"):
+				DirAccess.make_dir_absolute("user://resource")
+			if data.add.size() > 0:
+				get_tree().get_root().add_child(await load_scene("download.tscn"))
+			var index = 1
+			start_download.emit(data.add.size(), "بروزرسانی فایل‌ها")
+			var source_dic = load_game("source_dic", {})
+			var hash_list2:Dictionary = load_game("hash_list2", {})
 			
-			download_progress.emit(index)
-			var new_file = FileAccess.open("user://resource/"+file[0], FileAccess.WRITE)
-			new_file.store_buffer(f)
-			new_file.close()
-			
-			if file[0].get_extension() == "tscn":
-				var s = await load_scene(file[0])
-				var nodes = s.get_tree_string().split("\n")
-				var list = []
-				for n in nodes:
-					if n!= "":
-						for p in s.get_node(n).get_property_list():
-							if p.type == TYPE_OBJECT:
-								var path = ([s.get_node(n).get(p.name).resource_path, n, p.name] if s.get_node(n).get(p.name) is Resource else null)
-								if path != null:
-									list.append(path)
-				var dic = {}
-				for x in list:
-					
-					if x[1] not in dic.keys():
-						if file[0].get_file() not in x[0] and "tscn" not in x[0].get_file().get_extension() and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
-							dic[x[1]] = [{x[2]:x[0]}]
-					else:
-						if file[0].get_file() not in x[0] and x[0] != "" and "tscn" not in x[0].get_file().get_extension() and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
-							dic[x[1]].append({x[2]:x[0]})
-				print(dic)
-				for node in dic.keys():
-					for p in dic[node]:
-						var h = await request("/get_hash?name="+p.values()[0].get_file().uri_encode())
-						var i = await request("/static/files/source/"+p.values()[0].get_file().uri_encode(), HTTPClient.METHOD_GET, {}, 1)
-						var f2 = FileAccess.open("user://resource/"+p.values()[0].get_file(), FileAccess.WRITE)
-						f2.store_buffer(i)
-						f2.close()
-						hash_list2[p.values()[0].get_file()] = h.result if h else ""
-						save("hash_list2", hash_list2, false)
-						if file[0] not in source_dic.keys():
-							source_dic[file[0]] = {}
-							source_dic[file[0]][node] = [{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}]
+			for file in data.add:
+				var f = await request("/static/files/resource/"+file[0], HTTPClient.METHOD_GET, {}, 1)
+				
+				download_progress.emit(index)
+				var new_file = FileAccess.open("user://resource/"+file[0], FileAccess.WRITE)
+				new_file.store_buffer(f)
+				new_file.close()
+				
+				if file[0].get_extension() == "tscn":
+					var s = await load_scene(file[0])
+					var nodes = s.get_tree_string().split("\n")
+					var list = []
+					for n in nodes:
+						if n!= "":
+							for p in s.get_node(n).get_property_list():
+								if p.type == TYPE_OBJECT:
+									var path = ([s.get_node(n).get(p.name).resource_path, n, p.name] if s.get_node(n).get(p.name) is Resource else null)
+									if path != null:
+										list.append(path)
+					var dic = {}
+					for x in list:
+						
+						if x[1] not in dic.keys():
+							if file[0].get_file() not in x[0] and "tscn" not in x[0].get_file().get_extension() and x[0] != "" and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
+								dic[x[1]] = [{x[2]:x[0]}]
 						else:
-							if node not in source_dic[file[0]]:
+							if file[0].get_file() not in x[0] and x[0] != "" and "tscn" not in x[0].get_file().get_extension() and x[0].get_file().get_extension() != "gd" and not FileAccess.file_exists(x[0]) and not FileAccess.file_exists("user://resource/"+x[0].get_file()):
+								dic[x[1]].append({x[2]:x[0]})
+					for node in dic.keys():
+						for p in dic[node]:
+							var h = await request("/get_hash?name="+p.values()[0].get_file().uri_encode())
+							var i = await request("/static/files/source/"+p.values()[0].get_file().uri_encode(), HTTPClient.METHOD_GET, {}, 1)
+							var f2 = FileAccess.open("user://resource/"+p.values()[0].get_file(), FileAccess.WRITE)
+							f2.store_buffer(i)
+							f2.close()
+							hash_list2[p.values()[0].get_file()] = h.result if h else ""
+							save("hash_list2", hash_list2, false)
+							if file[0] not in source_dic.keys():
+								source_dic[file[0]] = {}
 								source_dic[file[0]][node] = [{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}]
 							else:
-								source_dic[file[0]][node].append([{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}])
-			hash_list[file[0]] = file[1]
-			save("hash_list", hash_list, false)
-			index += 1
-		for file in data.delete:
-			DirAccess.remove_absolute("user://resource/"+file[0])
-			hash_list.erase(file[0])
-			save("hash_list", hash_list, false)
-		await get_tree().create_timer(0.5).timeout
-		end_download.emit()
-		await update_source()
+								if node not in source_dic[file[0]]:
+									source_dic[file[0]][node] = [{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}]
+								else:
+									source_dic[file[0]][node].append([{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}])
+				hash_list[file[0]] = file[1]
+				save("hash_list", hash_list, false)
+				index += 1
+			for file in data.delete:
+				DirAccess.remove_absolute("user://resource/"+file[0])
+				hash_list.erase(file[0])
+				save("hash_list", hash_list, false)
+			await get_tree().create_timer(0.5).timeout
+			end_download.emit()
+			await update_source()
 func update_source():
 	var http = HTTPRequest.new()
 	add_child(http)
@@ -157,6 +171,8 @@ func get_cost(_id):
 	else:
 		return 0
 func _ready() -> void:
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
 	if OS.get_name() != "Windows":
 		protocol = "https://"
 		subdomin = "messbah403.ir"
@@ -168,70 +184,93 @@ func _ready() -> void:
 	if load_game("user_name") != "":
 		socket.connect_to_url("ws://shirinasalgame.ir")
 	current_user = load_game("current_user", 0)
-	print(current_user)
 	last_user = load_game("last_user", 0)
 	texture.z_index = 5
 	texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	texture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	texture.size = Vector2(400, 400)
 	texture.pivot_offset = Vector2(200, 200)
-	texture.position = Vector2(300, 800)
+	texture.set_anchors_and_offsets_preset(Control.PRESET_CENTER,Control.PRESET_MODE_KEEP_SIZE)
+	
 	texture.scale = Vector2.ZERO
-	add_child(texture)
+	texture.mouse_filter = Control.MOUSE_FILTER_STOP
+	bg.size = size
+	bg.pivot_offset = bg.size/2
+	bg.hide()
+	bg.z_index = 4
+	var m = ShaderMaterial.new()
+	m.shader = load("res://shaders/floor.gdshader")
+	m.set_shader_parameter("lod", 0)
+	m.set_shader_parameter("mix_percentage", 0.0)
+	bg.material = m
+	bg.mouse_filter = Control.MOUSE_FILTER_STOP
+	load_user()
+	request("/messages/get?time=%d"%load_game("last_seen", 0))
+	request_completed.connect(func(data, url):
+		if url == "/messages/get?time=%d"%load_game("last_seen", 0) and data and data.has("conversations"):
+			save("last_seen", data.time)
+			for conversationId in data.conversations:
+				save_user_messages(conversationId, data.conversations[conversationId])
+			update_list.emit(list_messages()))
+			
+	bg.gui_input.connect(func(event:InputEvent):
+		if event is InputEventMouseButton:
+			if event.is_pressed():
+				if texture.scale == Vector2.ONE:
+					set_anchors_preset(Control.PRESET_FULL_RECT)
+					hide_picture()
+				if texture.scale > Vector2.ONE:
+					set_anchors_preset(Control.PRESET_FULL_RECT)
+					var tween = get_tree().create_tween()
+					tween.tween_property(texture, "scale", Vector2.ONE, 0.2)
+					tween.play()
+					var tween2 = get_tree().create_tween()
+					tween2.tween_property(texture, "position", (size / 2) - (texture.size / 2), 0.2)
+					tween2.play()
+					)
+	zoom(texture)
+	get_tree().root.size_changed.connect(func():
+		bg.size = size
+		bg.pivot_offset = bg.size/2)
 
+func zoom(texture:TextureRect):
+	texture.gui_input.connect(func(event:InputEvent):
+		if event is InputEventMouseButton:
+			if event.ctrl_pressed and event.is_pressed():
+				if event.button_index == 5:
+					print(event.factor)
+					if texture.scale.x > 1.0:
+						texture.scale -= Vector2.ONE * event.factor / 2
+				if event.button_index == 4:
+					if texture.scale.x < 10.0:
+						texture.scale += Vector2.ONE * event.factor / 2
+		if event is InputEventScreenDrag:
+			texture.position += event.relative * texture.scale
+			texture.position = clamp(texture.position, Vector2.ZERO, size)
+		)
 func _process(delta: float) -> void:
+	if not get_tree().root.get_children().has(texture):
+		get_tree().root.add_child(bg)
+		get_tree().root.add_child(texture)
+		
+		
 	socket.poll()
 	if socket.get_ready_state() == 3 and load_game("user_name") != "":
 		socket.connect_to_url("ws://shirinasalgame.ir")
 		set_user = false
+		print(0)
 	if socket.get_ready_state() == 1:
 		if not set_user:
+			request("/messages/get?time=%d"%load_game("last_seen", 0))
 			set_user = true
 			socket.send(JSON.stringify({ "type": 'register', "username":load_game("user_name", "") }).to_utf8_buffer())
-		if !get_tree().has_group("scene_message"):
-			while socket.get_available_packet_count():
-				var d = get_json(socket.get_packet())
-				if load_game("support", false):
-					if d.has("type") and d.type == "delete":
-						change_user(d.conversationId, {"last_message_time":d.last_time_messages})
-					if d.has("message") and d.has("id"):
-						save_user_messages(d.id, {"add":[d.message], "receiverId":d.receiverId, "delete":[]})
-						if not change_user(d.id, {"last_message_time":d.message.timestamp}, 1):
-							var r = HTTPRequest.new()
-							add_child(r)
-							r.request(protocol+subdomin+"/users/users_message", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"users":load_list_user()}))
-							r.request_completed.connect(func(result, respons, header, body):
-								var new_data = get_json(body)
-								save_list_user(new_data)
-								r.queue_free())
-				if !load_game("support", false):
-					if d.has("type") and d.type == "delete":
-						for z in range(3):
-							var delete = []
-							for n in messages[z]:
-								if n.id == d.message:
-									delete.append(n)
-							if delete.size() > 0:
-								messages[z].erase(delete[0])
-					elif d.has("message"):
-						messages[int(d.id.right(1))].append(d.message)
-				if d.has("type") and d.type == "onlineUsers":
-					online_supporter = d.count
-				if d.has("message") and not d.has("type") and load_game("show_notif", true):
-					seen += 1
-					if !load_game("support", false):
-						Notification.add_notif("پیام شما پاسخ داده شد", Notification.SUCCESS, load("res://sound/mixkit-confirmation-tone-2867.wav"))
-					else:
-						if d.message.sender in d.receiverId:
-							Notification.add_notif("یک مربی پیامی داده است", Notification.SUCCESS, load("res://sound/mixkit-confirmation-tone-2867.wav"))
-						else:
-							
-							Notification.add_notif("کاربری پیامی ارسال کرد", Notification.SUCCESS, load("res://sound/mixkit-confirmation-tone-2867.wav"))
-						
+			for c in waiting_message:
+				for m in waiting_message[c]:
+					send_message(m.messages.text, m.id, m.response)
+					
+		get_message()
 func load_user():
 	var d = null
-	
-		
 	if FileAccess.file_exists("user://session.dat"):
 		if load_game("accounts", []).size() == 0:
 			DirAccess.remove_absolute("user://session.dat")
@@ -243,15 +282,25 @@ func load_user():
 		d = file.get_var()
 		if d is Dictionary:
 			token = d.access
-			
 			id = d.id
 			return true
 		if d is Array and d.size() - 1 >= current_user:
 			token = d[current_user].access
 			id = d[current_user].id
 			return true
-			
 	return false
+func delete_user(user_name:String):
+	if FileAccess.file_exists("user://session.dat"):
+		var file = FileAccess.open("user://session.dat", FileAccess.READ)
+		var d = file.get_var()
+		for u in d:
+			if u.id == user_name:
+				d.erase(u)
+		file.close()
+		FileAccess.open("user://session.dat", FileAccess.WRITE).store_var(d)
+		var accounts = load_game("accounts", [])
+		accounts.erase(user_name)
+		save("accounts", accounts)
 func random_level(pa, _data={}):
 	var q = "part=%s"%pa.uri_encode()
 	var u =protocol+subdomin+"/levels/random?"+q
@@ -259,10 +308,15 @@ func random_level(pa, _data={}):
 	if d and d.has("data"):
 		_data = d.data
 	return _data
-
+func cancel_request():
+	for r in get_tree().get_nodes_in_group("request"):
+		r.cancel_request()
+		r.queue_free()
 func request(url, method=HTTPClient.METHOD_GET,_data={}, result_mode=0):
 	var http = HTTPRequest.new()
+	http.add_to_group("request")
 	add_child(http)
+
 	var header = [
 		"Content-Type: application/json",
 		"Authorization: Bearer %s"%token
@@ -272,13 +326,8 @@ func request(url, method=HTTPClient.METHOD_GET,_data={}, result_mode=0):
 	else:
 		http.request(protocol+subdomin+url if not url.begins_with("http") else url, header, method, JSON.stringify(_data))
 	var d = await http.request_completed
-	http.timeout = 10
-	while d[3].size() == 0:
-		if _data.keys().size() > 0:
-			http.request(protocol+subdomin+url, header, method)
-		else:
-			http.request(protocol+subdomin+url, header, method, JSON.stringify(_data))
-		d = await http.request_completed
+	if get_json(d[3]):
+		request_completed.emit(get_json(d[3]), url)
 	http.queue_free()
 	if result_mode == 0:
 		return get_json(d[3])
@@ -321,25 +370,41 @@ func save_server(data):
 		d = await http.request_completed
 	http.queue_free()
 	return get_json(d[3])
-func save(_name, num, server=true):
+func save(_name, num, server=true, _section=""):
 	var confige = ConfigFile.new()
 	confige.load(save_path)
-	confige.set_value("user", _name, num)
+	var accounts = confige.get_value("global", "accounts", [])
+	var user = _section if _section != "" else accounts[confige.get_value("global", "current_user", 0)] if accounts.size() > confige.get_value("global", "current_user", 0) else ""
+	if _name in globals:
+		confige.set_value("global", _name, num)
+	else:
+		if user != "":
+			confige.set_value(user, _name, num)
 	confige.save(save_path)
 	if server and _name != "image":
 		save_server({_name:num})
-func multy_save(_data:Dictionary):
+func multy_save(_data:Dictionary, _section=""):
 	var confige = ConfigFile.new()
 	confige.load(save_path)
+	var accounts = confige.get_value("global", "accounts", [])
+	var user = _section if _section != "" else accounts[confige.get_value("global", "current_user", 0)] if accounts.size() > confige.get_value("global", "current_user", 0) else ""
 	for key in _data.keys():
-		confige.set_value("user", key, _data[key])
+		if key in globals:
+			confige.set_value("global", key, _data[key])
+		else:
+			if user != "":
+				confige.set_value(user, key, _data[key])
 	confige.save(save_path)
 	save_server(_data)
-func load_game(_name, defaulte=null):
+func load_game(_name, defaulte=null, _section=""):
 	var confige = ConfigFile.new()
 	confige.load(save_path)
-	if confige.has_section_key("user", _name):
-		return confige.get_value("user", _name, defaulte)
+	
+	var accounts = confige.get_value("global", "accounts", [])
+	var user = accounts[confige.get_value("global", "current_user", 0)] if accounts.size() > confige.get_value("global", "current_user", 0) else ""
+	var section = "global" if _name in globals else user if _section == "" else _section
+	if confige.has_section_key(section, _name):
+		return confige.get_value(section, _name, defaulte)
 	else:
 		save(_name, defaulte)
 		return defaulte
@@ -375,9 +440,7 @@ func load_from_server():
 					save(key, data2[key], false)
 		messages = []
 		if not load_game("support", false):
-			for x in range(3):
-				var m = await Updatedate.request("/users/support_message?part="+str(x))
-				messages.append(m.messages if m.has("messages") else [])
+			pass
 		else:
 			list_users = load_list_user([])
 			var r = HTTPRequest.new()
@@ -388,8 +451,11 @@ func load_from_server():
 				save_list_user(new_data)
 				r.queue_free())
 	else:
-		
-		return false
+		if data == null:
+			return true
+		else:
+			if data.has("error"):
+				return false
 	return data
 func get_files():
 	var images = await request("/ListFiles?path=icons")
@@ -412,7 +478,7 @@ func add_wait(node:Control):
 	wait.target = node
 	node.add_child(wait)
 	return wait
-func get_icon_group(icon, group, node):
+func get_icon_group(icon, group, node:TextureRect):
 	if !DirAccess.dir_exists_absolute("user://group_icon"):
 		DirAccess.make_dir_absolute("user://group_icon")
 	if icon != "":
@@ -459,6 +525,13 @@ func get_icon_group(icon, group, node):
 			img.save_webp("user://group_icon/"+group_name_file)
 			node.texture = ImageTexture.create_from_image(img)
 		w.queue_free()
+		node.mouse_filter = Control.MOUSE_FILTER_STOP
+		node.gui_input.connect(func(event:InputEvent):
+			if event is InputEventScreenTouch  and event.is_pressed():
+				if texture.scale.x > 0.2:
+					hide_picture()
+				else:
+					show_picture(node.texture))
 func get_icon_user(icon:String, user_name, node):
 	if !DirAccess.dir_exists_absolute("user://users_icon"):
 		DirAccess.make_dir_absolute("user://users_icon")
@@ -512,19 +585,27 @@ func get_icon_user(icon:String, user_name, node):
 			var img = Image.new()
 			img.load_webp_from_buffer(i[3])
 			img.save_webp("user://users_icon/"+user_name_file)
-			if node is TextureRect:
+			if node and node is TextureRect:
 				node.texture = ImageTexture.create_from_image(img)
-			if node is TextureButton:
+			if node and node is TextureButton:
 				node.texture_normal = ImageTexture.create_from_image(img)
 		w.queue_free()
 	else:
 		if has_user_img and FileAccess.file_exists("user://users_icon/"+has_user_img):
 			var img = Image.new()
 			img.load("user://users_icon/"+has_user_img)
-			if node is TextureRect:
+			if node and node is TextureRect:
 				node.texture = ImageTexture.create_from_image(img)
-			if node is TextureButton:
+			if node and node is TextureButton:
 				node.texture_normal = ImageTexture.create_from_image(img)
+	if node and node is TextureRect:
+		node.mouse_filter = Control.MOUSE_FILTER_STOP
+		node.gui_input.connect(func(event:InputEvent):
+			if event is InputEventScreenTouch and event.is_pressed():
+				if texture.scale.x > 0.2:
+					hide_picture()
+				else:
+					show_picture(node.texture))
 func get_gallery_image(icon, node):
 	
 	if !DirAccess.dir_exists_absolute("user://"+gallary_part):
@@ -610,40 +691,116 @@ func get_message_sound(audio, node):
 			node.set_audio(stream)
 		w.queue_free()
 func show_picture(tex):
+	set_anchors_preset(Control.PRESET_FULL_RECT)
 	if tex != null:
+		bg.show()
 		texture.texture = tex
+		var tween2 = get_tree().create_tween()
+		tween2.tween_property(bg, "material:shader_parameter/lod", 2.5, 0.2)
+		tween2.play()
+		var tween3 = get_tree().create_tween()
+		tween3.tween_property(bg, "material:shader_parameter/mix_percentage", 0.5, 0.2)
+		tween3.play()
+		await tween2.finished
 		var tween = get_tree().create_tween()
-		tween.tween_property(texture, "scale", Vector2.ONE, 0.5)
+		tween.tween_property(texture, "scale", Vector2.ONE, 0.2)
 		tween.play()
+		
 func hide_picture():
+	var tween4 = get_tree().create_tween()
+	tween4.tween_property(texture, "position", (size / 2) - (texture.size / 2), 0.2)
+	tween4.play()
+	await tween4.finished
 	var tween = get_tree().create_tween()
-	tween.tween_property(texture, "scale", Vector2.ZERO, 0.5)
+	tween.tween_property(texture, "scale", Vector2.ZERO, 0.2)
 	tween.play()
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.is_pressed():
-			if texture.scale == Vector2.ONE:
-				hide_picture()
-func save_user_messages(_id, messages):
+	await tween.finished
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(bg, "material:shader_parameter/lod", 0, 0.2)
+	tween2.play()
+	var tween3 = get_tree().create_tween()
+	tween3.tween_property(bg, "material:shader_parameter/mix_percentage", 0.0, 0.2)
+	tween3.play()
+	await tween2.finished
+	bg.hide()
+
+## پیام های شما را بروزرسانی می‌کند. در ابتدا آیدی مکالمه را دریافت می‌کند و سپس دیکشنری پیام ها را می‌گیرد، که خود آن شامل دو مولفه‌ی [code] add [/code] و [code] delete [/code] هست که هر دو لیستی از پیام هایی هستند که می‌خواهید اضافه یا حذف شوند.
+##[codeblock] save_user_messages(conversationId, {"add":[data.message], "delete":[]})
+func save_user_messages(_id:String, messages:Dictionary):
 	var config = ConfigFile.new()
-	if FileAccess.file_exists("user://messages.cfg"):
-		config.load("user://messages.cfg")
-	var last_message = config.get_value(_id, "messages", {"messages":[], "receiverId":[]})
-	for m in messages.add:
-		last_message["messages"].append(m)
-	for m in messages.delete:
-		for message in last_message["messages"]:
-			if message.id == m:
-				last_message["messages"].erase(message)
-	last_message.receiverId = messages.receiverId
-	config.set_value(_id, "messages", last_message)
-	config.save("user://messages.cfg")
-func load_messages(_id, default={"messages":[], "receiverId":[]}):
+	if FileAccess.file_exists("user://messages_"+load_game("user_name", "")+".cfg"):
+		config.load("user://messages_"+load_game("user_name", "")+".cfg")
+	if _id != "":
+		var last_message:Array = config.get_value(_id, "messages", [])
+		if messages.has("part"):
+			config.set_value(_id, "part", messages.part)
+		if messages.has("icon"):
+			config.set_value(_id, "icon", messages.icon)
+		if messages.has("name"):
+			config.set_value(_id, "name", messages.name)
+		if messages.has("custom_name"):
+			config.set_value(_id, "custom_name", messages.custom_name)
+		if messages.has("username") and _id != "":
+			config.set_value(_id, "username", messages.username)
+		if messages.has("seen"):
+			print(messages.seen)
+			if last_message.map(func (x): return x["id"]).has(messages.seen.id):
+				var x = last_message.find_custom(func (x): return x["id"] == messages.seen.id)
+				if x != -1:
+					last_message[x].seen = messages.seen.seen
+		for m in messages.add:
+			if last_message.map(func (x): return x["id"]).has(m.id):
+				var x = last_message.find_custom(func (x): return x["id"] == m.id)
+				last_message[x] = m
+			else:
+				last_message.append(m)
+		
+		for id in messages.delete:
+			for _message in last_message:
+				if _message.id == id:
+					last_message.erase(_message)
+		config.set_value(_id, "messages", last_message)
+	if messages.has("state"):
+		for c in config.get_sections():
+			if config.get_value(c, "username", "") == messages.username:
+				config.set_value(c, "state", messages.state)
+				config.set_value(c, "last_seen", messages.last_seen)
+	config.save("user://messages_"+load_game("user_name", "")+".cfg")
+
+func load_messages(_id, default=[]):
 	var config = ConfigFile.new()
-	if not FileAccess.file_exists("user://messages.cfg"):
-		config.save("user://messages.cfg")
-	config.load("user://messages.cfg")
+	if not FileAccess.file_exists("user://messages_"+load_game("user_name", "")+".cfg"):
+		config.save("user://messages_"+load_game("user_name", "")+".cfg")
+	config.load("user://messages_"+load_game("user_name", "")+".cfg")
 	return config.get_value(_id, "messages", default)
+func list_messages():
+	var config = ConfigFile.new()
+	if not FileAccess.file_exists("user://messages_"+load_game("user_name", "")+".cfg"):
+		config.save("user://messages_"+load_game("user_name", "")+".cfg")
+	config.load("user://messages_"+load_game("user_name", "")+".cfg")
+	var data = {}
+	for c in config.get_sections():
+		var user = ""
+		var new_messages = config.get_value(c, "messages", []).filter(func (x): return (not x.has("seen") or x["seen"] == null) and x["sender"] != load_game("user_name", ""))
+		var last_message
+		if new_messages.size() == 0:
+			last_message = config.get_value(c, "messages", []).reduce(func(a, b): return a if a["createdAt"] > b["createdAt"] else b)
+		else:
+			last_message = new_messages.reduce(func(a, b): return a if a["createdAt"] > b["createdAt"] else b)
+		data[c] = {message=last_message, new=len(new_messages), username=config.get_value(c, "username", ""), icon=config.get_value(c, "icon", ""), "name"=config.get_value(c, "name", ""), custom_name=config.get_value(c, "custom_name", ""), part=config.get_value(c, "part", ""), "last_seen"=config.get_value(c, "last_seen", {}), state=config.get_value(c, "state", "")}
+	return data
+func get_conversation(id):
+	var config = ConfigFile.new()
+	if not FileAccess.file_exists("user://messages_"+load_game("user_name", "")+".cfg"):
+		config.save("user://messages_"+load_game("user_name", "")+".cfg")
+	config.load("user://messages_"+load_game("user_name", "")+".cfg")
+	var new_messages = config.get_value(id, "messages", []).filter(func (x): return (not x.has("seen") or x["seen"] == null) and x["sender"] != load_game("user_name", ""))
+	var last_message 
+	if new_messages.size() == 0:
+		last_message = config.get_value(id, "messages", []).reduce(func(a, b): return a if a["createdAt"] > b["createdAt"] else b)
+	else:
+		last_message = new_messages.reduce(func(a, b): return a if a["createdAt"] > b["createdAt"] else b)
+	return {message=last_message, new=len(new_messages), username=config.get_value(id, "username", ""), icon=config.get_value(id, "icon", ""), "name"=config.get_value(id, "name", ""), custom_name=config.get_value(id, "custom_name", ""), part=config.get_value(id, "part", ""), "last_seen"=config.get_value(id, "last_seen", {}), state=config.get_value(id, "state", "")}
 func save_list_user(list):
 	var config = ConfigFile.new()
 	if FileAccess.file_exists("user://list_user.cfg"):
@@ -724,3 +881,51 @@ func load_scene(new_scene) -> Object:
 				s.get_node(node).set(p.keys()[0], ResourceLoader.load(p.values()[0]))
 				print( ResourceLoader.load(p.values()[0]))
 	return s
+
+func send_message(text:String, _id, responsed:String=""):
+	
+	var data = {type="message", conversationId=conversation["id"].left(20), senderId=load_game("user_name", ""), content={text=text}, part=conversation["part"], response=responsed, id=_id}
+	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		socket.send_text(JSON.stringify(data))
+
+func send_edit_message(_id:String, text:String):
+	var data = {type="edited", conversationId=conversation["id"].left(20), senderId=load_game("user_name", ""), content={text=text}, id=_id}
+	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		socket.send_text(JSON.stringify(data))
+func message_seen(_id:String):
+	var data = {type="seen", conversationId=conversation["id"].left(20), senderId=load_game("user_name", ""), content={text=""}, id=_id}
+	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		socket.send_text(JSON.stringify(data))
+func delete(id:String):
+	var data = {type="delete", conversationId=conversation["id"].left(20), senderId=load_game("user_name", ""), content={text=""}, id=id, part=conversation["part"]}
+	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		socket.send_text(JSON.stringify(data))
+func get_message():
+	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		while socket.get_available_packet_count():
+			var data = get_json(socket.get_packet())
+			if data and data.has("type"):
+				match data.type:
+					"message":
+						save_user_messages(data.message.conversationId + data.message.part, {"add":[data.message], "delete":[]})
+						save("last_seen", data.message.createdAt, false)
+						recive_message.emit(data.message, data.id)
+						for m in waiting_message[data.message.conversationId + data.message.part]:
+							if m.id == data.id:
+								waiting_message[data.message.conversationId + data.message.part].erase(m)
+					"delete":
+						save_user_messages(data.conversationId + data.part, {"add":[], "delete":[data.message]})
+						save("last_seen", data.time, false)
+						delete_message.emit(data.conversationId + data.part, data.message)
+					"edited":
+						save_user_messages(data.message.conversationId + data.message.part, {"add":[data.message], "delete":[]})
+						save("last_seen", data.message.updatedAt, false)
+						edit_message.emit(data.message)
+					"seen":
+						save_user_messages(data.message.conversationId + data.message.part, {"add":[], "delete":[], "seen":data.message})
+						save("last_seen", data.message.seen, false)
+						seen_message.emit(data.message)
+					"new":
+						save_user_messages(data.conversationId + data.part, {"add":[], "delete":[], "username":data.user.username, "icon":data.user.icon, "name":data.user.name, "custom_name":data.user.custom_name, "part":data.part})
+					"status":
+						save_user_messages("", {"add":[], "delete":[], "last_seen":{"time":data.time, "timestamp":data.timestamp}, "state":data.state, "username":data.username})
