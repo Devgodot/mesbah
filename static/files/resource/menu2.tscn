@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djn03diqbkjm5" path="res://script/menu_2.gd" id="1_uw8nb"]
 [ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="2_jnk1e"]
-[ext_resource type="Texture2D" uid="uid://dr4k6g16brcs2" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.png" id="3_r72wd"]
+[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="3_uw8nb"]
 [ext_resource type="Texture2D" uid="uid://c3uw8ja4lbsef" path="res://sprite/wp-1544032956945.jpg" id="4_xk5te"]
 [ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="5_1svbw"]
 [ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="6_6v68i"]
@@ -80,7 +80,7 @@ offset_top = 778.0
 offset_bottom = 778.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_r72wd")
+texture = ExtResource("3_uw8nb")
 expand_mode = 1
 stretch_mode = 1
 
