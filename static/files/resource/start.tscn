@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=3]
+[gd_scene load_steps=171 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_1oawt"]
 [ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="2_nqan5"]
@@ -28,8 +28,6 @@
 [ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="26_pjyy5"]
 [ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="27_wgong"]
 [ext_resource type="Texture2D" uid="uid://buedlsyh0hxfi" path="res://sprite/free-icons-settings-icon-green-11553435316jtokrg8mit.png" id="28_xx6tv"]
-[ext_resource type="Texture2D" uid="uid://txty07sw0wdc" path="res://sprite/170259461.jpg" id="29_bopg4"]
-[ext_resource type="Texture2D" uid="uid://cvhc8t7r6lv5n" path="res://sprite/169804434.jpg" id="30_by6do"]
 [ext_resource type="Texture2D" uid="uid://3nvhf05dl7hx" path="res://sprite/آیکون 1.png" id="31_lxtsy"]
 [ext_resource type="Texture2D" uid="uid://dr7jbhvngkexc" path="res://sprite/آیکون 2.png" id="32_s3blq"]
 [ext_resource type="Texture2D" uid="uid://bu00jw7n80iu" path="res://sprite/آیکون4.png" id="33_kv5ss"]
@@ -1550,16 +1548,6 @@ thickness = 50
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8itgj"]
 
-[sub_resource type="Gradient" id="Gradient_8jfef"]
-offsets = PackedFloat32Array(0, 0.666667, 0.693333)
-colors = PackedColorArray(1, 1, 1, 1, 0.746667, 0.746667, 0.746667, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qfvu4"]
-gradient = SubResource("Gradient_8jfef")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gfuy"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 50
@@ -2233,52 +2221,6 @@ icon = ExtResource("28_xx6tv")
 flat = true
 icon_alignment = 1
 expand_icon = true
-
-[node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
-
-[node name="TextureRect" type="TextureRect" parent="SubViewport"]
-clip_children = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_qfvu4")
-
-[node name="TextureRect2" type="TextureRect" parent="SubViewport/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("29_bopg4")
-expand_mode = 1
-stretch_mode = 6
-
-[node name="SubViewport2" type="SubViewport" parent="."]
-transparent_bg = true
-
-[node name="TextureRect" type="TextureRect" parent="SubViewport2"]
-clip_children = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_qfvu4")
-
-[node name="TextureRect2" type="TextureRect" parent="SubViewport2/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("30_by6do")
-expand_mode = 1
-stretch_mode = 6
 
 [node name="SubViewport3" type="SubViewport" parent="."]
 transparent_bg = true

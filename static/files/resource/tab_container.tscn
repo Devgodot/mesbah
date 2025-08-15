@@ -1,11 +1,7 @@
-[gd_scene load_steps=20 format=3]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://scripts/tab_container.gd" id="1_sqie6"]
 [ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://scripts/animation_tab.gd" id="2_yfo4g"]
-[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="3_qqk8p"]
-[ext_resource type="Texture2D" uid="uid://cs1ej2y0fhem" path="res://sprite/Background.jpg" id="4_ggdbp"]
-[ext_resource type="Texture2D" uid="uid://cg3jo2qcdo44r" path="res://sprite/ورود به طرح رمضان 1403.jpg" id="5_biy2x"]
-[ext_resource type="Texture2D" uid="uid://qc5tj4m0okuh" path="res://sprite/Layer 6.jpg" id="6_yqtd4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pka3"]
 
@@ -50,16 +46,6 @@ texture = SubResource("GradientTexture2D_ifmwp")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n02rj"]
 
-[sub_resource type="Gradient" id="Gradient_q8bww"]
-offsets = PackedFloat32Array(0.5, 0.586957, 0.666667)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_unq51"]
-gradient = SubResource("Gradient_q8bww")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-metadata/_snap_enabled = true
-
 [node name="TabContainer" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -80,78 +66,3 @@ tab_normal = SubResource("StyleBoxEmpty_1cghj")
 tab_hover = SubResource("StyleBoxTexture_h8xoj")
 tab_pressed = SubResource("StyleBoxEmpty_qlbds")
 tab_focus = SubResource("StyleBoxEmpty_n02rj")
-element_1 = null
-element_2 = null
-element_3 = null
-element_4 = null
-
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 1000.0
-offset_bottom = 1850.0
-
-[node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_qqk8p")
-expand_mode = 3
-
-[node name="Control2" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 1000.0
-offset_bottom = 1850.0
-
-[node name="TextureRect" type="TextureRect" parent="Control2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_ggdbp")
-expand_mode = 3
-
-[node name="Control3" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 1000.0
-offset_bottom = 1850.0
-
-[node name="TextureRect" type="TextureRect" parent="Control3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_biy2x")
-expand_mode = 3
-
-[node name="Control4" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_right = 1000.0
-offset_bottom = 1850.0
-
-[node name="TextureRect" type="TextureRect" parent="Control4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_yqtd4")
-expand_mode = 3
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Control4"]
-layout_mode = 0
-offset_right = 179.0
-offset_bottom = 179.0
-value = 50.0
-fill_mode = 4
-texture_progress = SubResource("GradientTexture2D_unq51")
