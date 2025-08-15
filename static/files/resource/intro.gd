@@ -10,7 +10,7 @@ func _ready() -> void:
 		var data = await Updatedate.load_from_server()
 		Transation.check_trans()
 		Updatedate.save("current_version", version, false)
-		if data:
+		if data is Dictionary:
 			var required_info = ["father_name", "first_name", "last_name", "birthday", "gender", "tag"]
 			var not_data= false
 			for r in required_info:

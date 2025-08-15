@@ -70,26 +70,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(500, 1000)
-amount = 100
-texture = SubResource("GradientTexture2D_rnbfk")
-speed_scale = 3.66
-local_coords = true
-emission_shape = 3
-emission_rect_extents = Vector2(400, 400)
-particle_flag_align_y = true
-direction = Vector2(0, 0)
-spread = 0.0
-gravity = Vector2(0, 0)
-linear_accel_min = 100.0
-linear_accel_max = 100.0
-radial_accel_min = -276.05
-radial_accel_max = -276.05
-scale_amount_max = 3.0
-scale_amount_curve = SubResource("Curve_7jy67")
-color_initial_ramp = SubResource("Gradient_4eodt")
-
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -108,6 +88,27 @@ value = 34.0
 fill_mode = 3
 texture_under = ExtResource("3_1jj20")
 texture_progress = ExtResource("4_rtqw6")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TextureProgressBar"]
+show_behind_parent = true
+position = Vector2(128, 192)
+amount = 100
+texture = SubResource("GradientTexture2D_rnbfk")
+speed_scale = 3.66
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(400, 400)
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+radial_accel_min = -276.05
+radial_accel_max = -276.05
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_7jy67")
+color_initial_ramp = SubResource("Gradient_4eodt")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 visible = false
