@@ -88,6 +88,7 @@ def get_message():
             if "delete" not in Conversations[key]:
                 Conversations[key]["delete"] = []
             Conversations[key]["delete"].append(msg.id)
+        Conversations[key]["add"] = sorted(Conversations[key]["add"], key=lambda x: x["createdAt"])
     return jsonify({"conversations":Conversations, "time":datetime.now(tz=TehranTimezone()).timestamp()}), 200
 
 @message_bp.get('/state_user')
