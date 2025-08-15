@@ -15,12 +15,12 @@ func _ready() -> void:
 		
 		var p:Polygon2D =$Polygon2D.duplicate()
 		p.show()
-		p.look_at($CPUParticles2D.position)
-		p.position.x = randi_range($CPUParticles2D.position.x - 400, $CPUParticles2D.position.x + 400)
-		p.position.y = randi_range($CPUParticles2D.position.y - 400, $CPUParticles2D.position.y + 400)
+		p.look_at($TextureProgressBar/CPUParticles2D.global_position)
+		p.position.x = randi_range($TextureProgressBar/CPUParticles2D.global_position.x - 400, $TextureProgressBar/CPUParticles2D.global_position.x + 400)
+		p.position.y = randi_range($TextureProgressBar/CPUParticles2D.global_position.y - 400, $TextureProgressBar/CPUParticles2D.global_position.y + 400)
 		add_child(p)
 		var tween = get_tree().create_tween()
-		tween.tween_property(p, "position", $CPUParticles2D.position, 0.5)
+		tween.tween_property(p, "position", $TextureProgressBar/CPUParticles2D.global_position, 0.5)
 		tween.play()
 		await tween.finished
 		var tween2 = get_tree().create_tween()
@@ -39,7 +39,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$CPUParticles2D.position = size / 2
+	
 	if add_dots:
 		add_dots = false
 		dots += "." 
