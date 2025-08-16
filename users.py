@@ -272,7 +272,7 @@ def lenght():
 def icon():
     user = User.get_user_by_username(username=request.args.get("username", ""))
     if user is not None:
-        return jsonify({"icon":user.data.get("icon", ""), "username":current_user.get_username()})
+        return jsonify({"icon":user.data.get("icon", ""), "username":request.args.get("username", "")})
     return jsonify({"message":"کاربر وجود ندارد"})
 
 @user_bp.post("/server_message")
