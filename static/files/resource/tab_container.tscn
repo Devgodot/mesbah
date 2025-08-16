@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3]
 
-[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://scripts/tab_container.gd" id="1_sqie6"]
-[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://scripts/animation_tab.gd" id="2_yfo4g"]
+[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://scripts/tab_container.gd" id="1_7x7ua"]
+[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://scripts/animation_tab.gd" id="2_dmcwn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pka3"]
 
@@ -21,7 +21,7 @@ fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
 [sub_resource type="Resource" id="Resource_5cd0l"]
-script = ExtResource("2_yfo4g")
+script = ExtResource("2_dmcwn")
 texture_progress = SubResource("GradientTexture2D_sf8j1")
 fill_mode = 2
 nine_patch_stretch = false
@@ -53,7 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_sqie6")
+script = ExtResource("1_7x7ua")
 current_tab = 0
 separation_style = SubResource("StyleBoxEmpty_0pka3")
 panel_style = SubResource("StyleBoxFlat_58doi")

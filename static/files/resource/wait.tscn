@@ -13,12 +13,12 @@ var speed = 300
 var radius = 25
 @onready var line = $Line2D
 
-func _draw_arc(pos, radius, start_angle, end_angle, count_point):
+func _draw_arc(pos, _radius, start_angle, end_angle, count_point):
 	var points = []
 	
 	var index = 0
 	while index < count_point:
-		var point = Vector2(radius, 0)
+		var point = Vector2(_radius, 0)
 		point = point.rotated(start_angle)
 		var angle = deg_to_rad(360 / count_point)
 		point = point.rotated(angle * index)

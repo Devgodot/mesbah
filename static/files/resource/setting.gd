@@ -23,6 +23,7 @@ var groupmate = []
 var camera
 var refrence_t
 var refrence_a
+var current_line
 @onready var new_user_name_box: LineEdit = $ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit
 @onready var birthday_box: HBoxContainer = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4
 @onready var change_group_mode: TabContainer = $ScrollContainer/VBoxContainer/TabContainer
@@ -32,10 +33,14 @@ var refrence_a
 @onready var hbox_of_custom_name: HBoxContainer = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9
 @onready var reference_rect_2: ReferenceRect = $ReferenceRect2
 @onready var rich_text_label_custom_name: RichTextLabel = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9/RichTextLabel
-@onready var first_name_box: LineEdit = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit
-@onready var last_name_box: LineEdit = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit
-@onready var father_name_box: LineEdit = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/LineEdit
+@onready var first_name_box = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit
+@onready var last_name_box = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit
+@onready var father_name_box = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/LineEdit
 @onready var v_box_container_3: VBoxContainer = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3
+func get_keyboard_offset():
+	var screen_size = DisplayServer.get_display_safe_area()
+	var _scale = size.y / get_tree().root.size.y
+	return (DisplayServer.screen_get_size().y - (screen_size.size.y + screen_size.position.y)) * _scale
 
 
 func change_label():
@@ -77,6 +82,7 @@ func _ready() -> void:
 				Updatedate.current_user = a.find(a.pick_random())
 				Transation.change(self, "setting.tscn")
 		if url.begins_with("/users/icon?username=") and data:
+			print(data)
 			Updatedate.save("icon", data.icon, false, data.username)
 			var x = a.find(data.username)
 			var btn = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton.get_child(x)
@@ -121,7 +127,7 @@ func _ready() -> void:
 							var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
 							box.add_to_group("users_box")
 							box.get_node("Label").text = "عضو " + num + " : "
-							box.get_node("name/texture/Label").text = group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name
+							box.get_node("name/texture/Label").set_deferred("text", group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
 							box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
 							box.show()
 							groupmate.append(box)
@@ -143,7 +149,7 @@ func _ready() -> void:
 							v_box_container_3.move_child(box, v_box_container_3.get_child_count() - 5)
 							
 							index += 1
-							box.get_node("name/texture/Label").text = user
+							box.get_node("name/texture/Label").set_deferred("text", user)
 				else:
 					if d.nums[0] != "":
 						if group.icon and group.icon != "":
@@ -164,7 +170,7 @@ func _ready() -> void:
 						b.add_to_group("users_box")
 						b.get_node("Label").text = "سر گروه :"
 						b.show()
-						b.get_node("name/texture/Label").text = group.users_info[0].custom_name if group.users_info[0].has("custom_name") else "[center]"+ group.users_info[0].name
+						b.get_node("name/texture/Label").set_deferred("text", group.users_info[0].custom_name if group.users_info[0].has("custom_name") else "[center]"+ group.users_info[0].name)
 						b.get_node("name").dir = get_direction(group.users_info[0].name)
 						$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4.add_child(b)
 						for x in range(group_user.size()):
@@ -173,7 +179,7 @@ func _ready() -> void:
 							var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2.duplicate()
 							box.add_to_group("users_box")
 							box.get_node("Label").text = "عضو " + num + " : "
-							box.get_node("name/texture/Label").text = group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name
+							box.get_node("name/texture/Label").set_deferred("text" , group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
 							box.show()
 							box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
 							groupmate.append(box)
@@ -240,11 +246,10 @@ func _ready() -> void:
 	father_name_box.text = father_name
 	
 	birthday = Updatedate.load_game("birthday", "1380/1/1").split("/")
-	for spin in get_tree().get_nodes_in_group("spin"):
-		spin.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
-	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.value = int(birthday[2])
-	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.value = int(birthday[1])
-	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.value = int(birthday[0])
+	
+	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.text = (birthday[2])
+	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.text = (birthday[1])
+	$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.text = (birthday[0])
 	
 	for x in range(a.size()):
 		var btn:TextureButton = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/TextureButton.duplicate()
@@ -322,7 +327,7 @@ func _ready() -> void:
 				var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
 				box.add_to_group("users_box")
 				box.get_node("Label").text = "عضو " + num + " : "
-				box.get_node("name/texture/Label").text = group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name
+				box.get_node("name/texture/Label").set_deferred("text" , group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
 				box.show()
 				box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
 				groupmate.append(box)
@@ -344,7 +349,7 @@ func _ready() -> void:
 				v_box_container_3.move_child(box, v_box_container_3.get_child_count() - 5)
 				
 				index += 1
-				box.get_node("name/texture/Label").text = user
+				box.get_node("name/texture/Label").set_deferred("text" , user)
 		else:
 			
 			if group.icon and group.icon != "":
@@ -366,7 +371,7 @@ func _ready() -> void:
 			b.get_node("Label").text = "سر گروه :"
 			b.show()
 			b.get_node("name").dir = get_direction(group.users_info[0].name)
-			b.get_node("name/texture/Label").text = group.users_info[0].custom_name if group.users_info[0].has("custom_name") else "[center]"+ group.users_info[0].name
+			b.get_node("name/texture/Label").set_deferred("text" , group.users_info[0].custom_name if group.users_info[0].has("custom_name") else "[center]"+ group.users_info[0].name)
 			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4.add_child(b)
 			for x in range(group_user.size()):
 				var user = group_user[x]
@@ -374,7 +379,7 @@ func _ready() -> void:
 				var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2.duplicate()
 				box.add_to_group("users_box")
 				box.get_node("Label").text = "عضو " + num + " : "
-				box.get_node("name/texture/Label").text = group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name
+				box.get_node("name/texture/Label").set_deferred("text",group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
 				box.show()
 				box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
 				groupmate.append(box)
@@ -401,7 +406,7 @@ func _process(delta: float) -> void:
 	if $ScrollContainer/VBoxContainer/Panel/Button/TextureRect.texture != null:
 		%OptionButton.get_child(Updatedate.current_user).get_node("Label2").hide()
 	if first_name_box.text != first_name or last_name_box.text != last_name or father_name_box.text != father_name \
-	or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.value != int(birthday[2]) or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.value != int(birthday[1]) or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.value != int(birthday[0]):
+	or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.text != (birthday[2]) or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.text != (birthday[1]) or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.text != (birthday[0]):
 		$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer6/Button.disabled = false
 	else:
 		$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer6/Button.disabled = true
@@ -413,8 +418,9 @@ func _process(delta: float) -> void:
 	else:
 		$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer/Label2.text = "گروه وجود ندارد"
 		$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer/Label2.label_settings.font_color = Color.DARK_GREEN
-	
-	
+	if $LineEdit.visible:
+		$LineEdit.position.x = (size.x / 2) - ($LineEdit.size.x / 2)
+		$LineEdit.position.y = size.y - (get_keyboard_offset() + $LineEdit.size.y * 2)
 	var s:PackedStringArray = %group_name.text.split(" ")
 	var s2:PackedStringArray = %group_name.text.split("‌‌")
 	var not_Space = false
@@ -569,7 +575,7 @@ func _on_send_event_pressed() -> void:
 		Updatedate.save("users_sended_message", hash_user, false)
 
 func _on_edit_pressed() -> void:
-	birthday = str(int($ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.value), "/", int($ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.value), "/", int($ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.value))
+	birthday = str(($ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.text), "/", ($ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.text), "/", ($ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.text))
 	first_name = first_name_box.text
 	last_name = last_name_box.text
 	father_name = father_name_box.text
@@ -577,9 +583,11 @@ func _on_edit_pressed() -> void:
 	Notification.add_notif("با موفقیت بروز شد")
 	birthday = birthday.split("/")
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST and not get_tree().has_group("scroll_button"):
 		if $ColorRect2.visible:
 			$ColorRect2.hide()
+		elif $LineEdit.visible:
+			_on_line_edit_focus_exited()
 		else:
 			Transation.change(self, "start.tscn", -1)
 func _on_change_icon_pressed() -> void:
@@ -760,3 +768,125 @@ func _on_group_name_text_changed(new_text: String) -> void:
 
 func _on_name_changed(new_text: String) -> void:
 	change_label()
+
+
+func _on_line_edit_focus_entered2() -> void:
+	$LineEdit.show()
+	$LineEdit.grab_focus()
+	current_line = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit
+
+
+func _on_line_edit_focus_entered3() -> void:
+	$LineEdit.show()
+	$LineEdit.grab_focus()
+	current_line =$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/LineEdit
+
+
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	if current_line:
+		current_line.text = new_text
+		$LineEdit.hide()
+		current_line = null
+
+
+func _on_line_edit_focus_exited() -> void:
+	print(1)
+	if current_line:
+		current_line.text = $LineEdit.text
+		$LineEdit.hide()
+		current_line = null
+		$ColorRect3/AnimationPlayer.play_backwards("floor")
+
+
+func _on_line_edit_gui_input(event: InputEvent) -> void:
+
+	if event is InputEventMouseButton:
+		if event.is_released():
+			if current_line == null:
+				$ColorRect3/AnimationPlayer.play("floor")
+				$LineEdit.show()
+				$LineEdit.grab_focus()
+				current_line = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit
+				$LineEdit.text = current_line.text
+
+func _on_line_edit_gui_input2(event: InputEvent) -> void:
+
+	if event is InputEventMouseButton:
+		if event.is_released():
+			if current_line == null:
+				$LineEdit.show()
+				$ColorRect3/AnimationPlayer.play("floor")
+				$LineEdit.grab_focus()
+				current_line = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit
+				$LineEdit.text = current_line.text
+
+func _on_line_edit_gui_input3(event: InputEvent) -> void:
+
+	if event is InputEventMouseButton:
+		if event.is_released():
+			if current_line == null:
+				$ColorRect3/AnimationPlayer.play("floor")
+				$LineEdit.show()
+				$LineEdit.grab_focus()
+				current_line = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/LineEdit
+				$LineEdit.text = current_line.text
+
+
+func _on_spin_box_pressed() -> void:
+	var s = Updatedate.load_scene("scroll_button.tscn")
+	var items = []
+	var d = 30
+	var m = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.text
+	var y = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.text
+	if int(m) < 7:
+		d = 31
+	if int(m) == 12:
+		d = 29 if int(y) % 4 != 3 else 30
+	for x in range(d):
+		if x < 10:
+			items.append(str("0", x+1))
+		else:
+			items.append(str(x+1))
+	for x in range(items.size()):
+		if $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.text == items[x]:
+			s.current = -x
+	s.select.connect(func(item):
+		$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.text = item)
+	s.items = items
+	add_child(s)
+
+
+func _on_spin_box_2_pressed() -> void:
+	var s = Updatedate.load_scene("scroll_button.tscn")
+	var items = []
+	for x in range(12):
+		if x < 9:
+			items.append(str("0", x+1))
+		else:
+			items.append(str(x+1))
+	for x in range(items.size()):
+		if $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.text == items[x]:
+			s.current = -x
+	s.select.connect(func(item):
+		$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.text = item)
+	s.items = items
+	add_child(s)
+
+
+
+func _on_spin_box_3_pressed() -> void:
+	var s = Updatedate.load_scene("scroll_button.tscn")
+	var items = []
+	for x in range(1300, 1450):
+		if x < 10:
+			items.append(str("0", x))
+		else:
+			items.append(str(x))
+	for x in range(items.size()):
+		if $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.text == items[x]:
+			s.current = -x
+	s.select.connect(func(item):
+		$ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.text = item)
+	s.items = items
+	add_child(s)
