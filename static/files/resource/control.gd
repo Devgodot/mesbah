@@ -18,6 +18,10 @@ var max_line = 5
 var times = []
 var edited_box:PanelContainer
 var not_seen
+var plugin
+var base_height = 0
+var offset = 0
+var screen_size
 func get_direction(text:String):
 	if text[0] < "ی" and text[0] > "آ":
 		return -1
@@ -111,7 +115,6 @@ func _ready() -> void:
 							if node.get_meta("time", "") == t:
 								node.queue_free()
 					)
-					
 	if c.has("state"):
 		if c.state == "online":
 			$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Label.text = "وضعیت: آنلاین"
@@ -125,7 +128,6 @@ func _ready() -> void:
 		$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name.dir = get_direction(c.name)
 	if c.has("id"):
 		messages = Updatedate.load_messages(Updatedate.conversation.id)
-		
 		for m in messages:
 			if m.time.split(" ")[0] not in times.map(func(x):return x[2]):
 				times.append([m.id, m.time, m.time.split(" ")[0]])
@@ -297,15 +299,16 @@ func check_has_node(node):
 			
 func get_keyboard_offset():
 	var screen_size = DisplayServer.get_display_safe_area()
-	return DisplayServer.screen_get_size().y - (screen_size.size.y + screen_size.position.y)
+	var _scale = size.y / get_tree().root.size.y
+	return (DisplayServer.screen_get_size().y - (screen_size.size.y + screen_size.position.y)) * _scale
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	offset = get_keyboard_offset()
 	if edited_box:
 		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text = text_edit.text
 	if fram <= 6:
 		fram += 1
-	
 	for box in responses:
 		if box.global_position.y < ($VBoxContainer/ScrollContainer.size.y / 2) + $VBoxContainer/ScrollContainer.global_position.y:
 			responses.erase(box)
@@ -313,9 +316,9 @@ func _process(delta: float) -> void:
 		$VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.text = box_ref.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text
 		$VBoxContainer/Panel/VBoxContainer/MarginContainer.show()
 	$ColorRect2.size.x = size.x
-	var offset = get_keyboard_offset()
+	
 	if offset > 100:
-		vbox.size.y = DisplayServer.get_display_safe_area().size.y - DisplayServer.get_display_safe_area().position.y - 10 - vbox.position.y
+		vbox.size.y = size.y - 95 - vbox.position.y - offset
 	else:
 		vbox.size.y = size.y - 10 - vbox.position.y
 	var index = 0

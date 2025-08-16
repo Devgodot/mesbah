@@ -37,6 +37,7 @@ var microphone :AudioStreamPlayer2D
 var speaker :AudioStreamPlayer2D
 var messages = []
 var list_users = []
+var failed_request = []
 @onready var change_scene = {"main":"start", "control":"main","menu1":"main", "setting":"main", "messages":"main", "menu2":"menu1", "editname":"setting", "gallary":p_scene, "positions":p_scene}
 func get_header() -> Array:
 	return [
@@ -54,11 +55,11 @@ func update_resource():
 		add_child(http)
 
 		var hash_list:Dictionary = load_game("hash_list", {})
-		if hash_list == {}:
-			if FileAccess.file_exists("res://scripts/hash_list.gd"):
-				for child in get_tree().get_root().get_children():
-					if child.name == "HashList":
-						hash_list = child.list
+		if hash_list.size() == 0:
+			for child in get_tree().get_root().get_children():
+				if child.name == "HashList":
+					hash_list = child.list
+			
 		http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
 		var d = await http.request_completed
 		http.timeout = 10
@@ -79,7 +80,7 @@ func update_resource():
 			
 			for file in data.add:
 				var f = await request("/static/files/resource/"+file[0], HTTPClient.METHOD_GET, {}, 1)
-				
+	
 				download_progress.emit(index)
 				var new_file = FileAccess.open("user://resource/"+file[0], FileAccess.WRITE)
 				new_file.store_buffer(f)
@@ -176,10 +177,10 @@ func _ready() -> void:
 	if OS.get_name() != "Windows":
 		protocol = "https://"
 		subdomin = "messbah403.ir"
-	get_tree().get_root().window_input.connect(func(event):
-		if event is InputEventScreenTouch:
-			if get_global_mouse_position().x < 0 or get_global_mouse_position().y < 0:
-				DisplayServer.virtual_keyboard_hide())
+	#get_tree().get_root().window_input.connect(func(event):
+		#if event is InputEventScreenTouch:
+			#if get_global_mouse_position().x < 0 or get_global_mouse_position().y < 0:
+				#DisplayServer.virtual_keyboard_hide())
 	
 	if load_game("user_name") != "":
 		socket.connect_to_url("ws://shirinasalgame.ir")
@@ -235,10 +236,13 @@ func _ready() -> void:
 
 func zoom(texture:TextureRect):
 	texture.gui_input.connect(func(event:InputEvent):
+		texture.scale = clamp(texture.scale, Vector2.ONE, Vector2.ONE * 10)
+		if event is InputEventMagnifyGesture:
+			texture.scale *= event.factor
+			texture.scale = clamp(texture.scale, Vector2.ONE, Vector2.ONE * 10)
 		if event is InputEventMouseButton:
 			if event.ctrl_pressed and event.is_pressed():
 				if event.button_index == 5:
-					print(event.factor)
 					if texture.scale.x > 1.0:
 						texture.scale -= Vector2.ONE * event.factor / 2
 				if event.button_index == 4:
@@ -249,6 +253,7 @@ func zoom(texture:TextureRect):
 			texture.position = clamp(texture.position, Vector2.ZERO, size)
 		)
 func _process(delta: float) -> void:
+	
 	if not get_tree().root.get_children().has(texture):
 		get_tree().root.add_child(bg)
 		get_tree().root.add_child(texture)
@@ -258,9 +263,11 @@ func _process(delta: float) -> void:
 	if socket.get_ready_state() == 3 and load_game("user_name") != "":
 		socket.connect_to_url("ws://shirinasalgame.ir")
 		set_user = false
-		print(0)
+		
 	if socket.get_ready_state() == 1:
 		if not set_user:
+			for r in failed_request:
+				request(r)
 			request("/messages/get?time=%d"%load_game("last_seen", 0))
 			set_user = true
 			socket.send(JSON.stringify({ "type": 'register', "username":load_game("user_name", "") }).to_utf8_buffer())
@@ -326,10 +333,14 @@ func request(url, method=HTTPClient.METHOD_GET,_data={}, result_mode=0):
 	else:
 		http.request(protocol+subdomin+url if not url.begins_with("http") else url, header, method, JSON.stringify(_data))
 	var d = await http.request_completed
-	if get_json(d[3]):
-		request_completed.emit(get_json(d[3]), url)
+	
+	if d[3].size() == 0:
+		if not failed_request.has(url):
+			failed_request.append(url)
 	http.queue_free()
 	if result_mode == 0:
+		if get_json(d[3]):
+			request_completed.emit(get_json(d[3]), url)
 		return get_json(d[3])
 	else:
 		return d[3]
@@ -589,7 +600,8 @@ func get_icon_user(icon:String, user_name, node):
 				node.texture = ImageTexture.create_from_image(img)
 			if node and node is TextureButton:
 				node.texture_normal = ImageTexture.create_from_image(img)
-		w.queue_free()
+		if w:
+			w.queue_free()
 	else:
 		if has_user_img and FileAccess.file_exists("user://users_icon/"+has_user_img):
 			var img = Image.new()
@@ -613,7 +625,6 @@ func get_gallery_image(icon, node):
 	if icon != "":
 		var w = add_wait(node)
 		icon = protocol + icon if not icon.begins_with("http") else icon
-		var files = DirAccess.get_files_at("user://"+gallary_part)
 		var file_name = icon.uri_decode().get_file()
 		if FileAccess.file_exists("user://"+gallary_part+"/"+file_name):
 			var img = Image.new()
@@ -640,7 +651,6 @@ func get_message_image(icon, node):
 	if icon != "":
 		var w = add_wait(node)
 		icon = protocol + icon if not icon.begins_with("http") else icon
-		var files = DirAccess.get_files_at("user://messages")
 		var file_name = icon.uri_decode().get_file()
 		if FileAccess.file_exists("user://messages/"+file_name):
 			var img = Image.new()
@@ -669,11 +679,9 @@ func get_message_sound(audio, node):
 		var files = DirAccess.get_files_at("user://messages")
 		var file_name = audio.uri_decode().get_file()
 		if FileAccess.file_exists("user://messages/"+file_name):
-			var file = FileAccess.open("user://messages/"+file_name, FileAccess.READ)
 			var stream = AudioStreamMP3.new()
-			stream.data = file.get_file_as_bytes("user://messages/"+file_name)
+			stream.data = FileAccess.get_file_as_bytes("user://messages/"+file_name)
 			node.set_audio(stream)
-			file.close()
 		else:
 			var r = HTTPRequest.new()
 			add_child(r)
@@ -726,45 +734,45 @@ func hide_picture():
 
 ## پیام های شما را بروزرسانی می‌کند. در ابتدا آیدی مکالمه را دریافت می‌کند و سپس دیکشنری پیام ها را می‌گیرد، که خود آن شامل دو مولفه‌ی [code] add [/code] و [code] delete [/code] هست که هر دو لیستی از پیام هایی هستند که می‌خواهید اضافه یا حذف شوند.
 ##[codeblock] save_user_messages(conversationId, {"add":[data.message], "delete":[]})
-func save_user_messages(_id:String, messages:Dictionary):
+func save_user_messages(_id:String, _messages:Dictionary):
 	var config = ConfigFile.new()
 	if FileAccess.file_exists("user://messages_"+load_game("user_name", "")+".cfg"):
 		config.load("user://messages_"+load_game("user_name", "")+".cfg")
 	if _id != "":
 		var last_message:Array = config.get_value(_id, "messages", [])
-		if messages.has("part"):
-			config.set_value(_id, "part", messages.part)
-		if messages.has("icon"):
-			config.set_value(_id, "icon", messages.icon)
-		if messages.has("name"):
-			config.set_value(_id, "name", messages.name)
-		if messages.has("custom_name"):
-			config.set_value(_id, "custom_name", messages.custom_name)
-		if messages.has("username") and _id != "":
-			config.set_value(_id, "username", messages.username)
-		if messages.has("seen"):
-			print(messages.seen)
-			if last_message.map(func (x): return x["id"]).has(messages.seen.id):
-				var x = last_message.find_custom(func (x): return x["id"] == messages.seen.id)
+		if _messages.has("part"):
+			config.set_value(_id, "part", _messages.part)
+		if _messages.has("icon"):
+			config.set_value(_id, "icon", _messages.icon)
+		if _messages.has("name"):
+			config.set_value(_id, "name", _messages.name)
+		if _messages.has("custom_name"):
+			config.set_value(_id, "custom_name", _messages.custom_name)
+		if _messages.has("username") and _id != "":
+			config.set_value(_id, "username", _messages.username)
+		if _messages.has("seen"):
+		
+			if last_message.map(func (n): return n["id"]).has(_messages.seen.id):
+				var x = last_message.find_custom(func (n): return n["id"] == _messages.seen.id)
 				if x != -1:
-					last_message[x].seen = messages.seen.seen
-		for m in messages.add:
-			if last_message.map(func (x): return x["id"]).has(m.id):
-				var x = last_message.find_custom(func (x): return x["id"] == m.id)
+					last_message[x].seen = _messages.seen.seen
+		for m in _messages.add:
+			if last_message.map(func (n): return n["id"]).has(m.id):
+				var x = last_message.find_custom(func (n): return n["id"] == m.id)
 				last_message[x] = m
 			else:
 				last_message.append(m)
 		
-		for id in messages.delete:
+		for id in _messages.delete:
 			for _message in last_message:
 				if _message.id == id:
 					last_message.erase(_message)
 		config.set_value(_id, "messages", last_message)
-	if messages.has("state"):
+	if _messages.has("state"):
 		for c in config.get_sections():
-			if config.get_value(c, "username", "") == messages.username:
-				config.set_value(c, "state", messages.state)
-				config.set_value(c, "last_seen", messages.last_seen)
+			if config.get_value(c, "username", "") == _messages.username:
+				config.set_value(c, "state", _messages.state)
+				config.set_value(c, "last_seen", _messages.last_seen)
 	config.save("user://messages_"+load_game("user_name", "")+".cfg")
 
 func load_messages(_id, default=[]):
@@ -772,7 +780,9 @@ func load_messages(_id, default=[]):
 	if not FileAccess.file_exists("user://messages_"+load_game("user_name", "")+".cfg"):
 		config.save("user://messages_"+load_game("user_name", "")+".cfg")
 	config.load("user://messages_"+load_game("user_name", "")+".cfg")
-	return config.get_value(_id, "messages", default)
+	var m = config.get_value(_id, "messages", default)
+	m.sort_custom(func(a, b): return a.createdAt < b.createdAt)
+	return m
 func list_messages():
 	var config = ConfigFile.new()
 	if not FileAccess.file_exists("user://messages_"+load_game("user_name", "")+".cfg"):
@@ -789,17 +799,17 @@ func list_messages():
 			last_message = new_messages.reduce(func(a, b): return a if a["createdAt"] > b["createdAt"] else b)
 		data[c] = {message=last_message, new=len(new_messages), username=config.get_value(c, "username", ""), icon=config.get_value(c, "icon", ""), "name"=config.get_value(c, "name", ""), custom_name=config.get_value(c, "custom_name", ""), part=config.get_value(c, "part", ""), "last_seen"=config.get_value(c, "last_seen", {}), state=config.get_value(c, "state", "")}
 	return data
-func get_conversation(id):
+func get_conversation(_id):
 	var config = ConfigFile.new()
 	if not FileAccess.file_exists("user://messages_"+load_game("user_name", "")+".cfg"):
 		config.save("user://messages_"+load_game("user_name", "")+".cfg")
 	config.load("user://messages_"+load_game("user_name", "")+".cfg")
-	var new_messages = config.get_value(id, "messages", []).filter(func (x): return (not x.has("seen") or x["seen"] == null) and x["sender"] != load_game("user_name", ""))
+	var new_messages = config.get_value(_id, "messages", []).filter(func (x): return (not x.has("seen") or x["seen"] == null) and x["sender"] != load_game("user_name", ""))
 	var last_message 
 	if new_messages.size() == 0:
-		last_message = config.get_value(id, "messages", []).reduce(func(a, b): return a if a["createdAt"] > b["createdAt"] else b)
+		last_message = config.get_value(_id, "messages", []).back()
 	else:
-		last_message = new_messages.reduce(func(a, b): return a if a["createdAt"] > b["createdAt"] else b)
+		last_message = new_messages.back()
 	return {message=last_message, new=len(new_messages), username=config.get_value(id, "username", ""), icon=config.get_value(id, "icon", ""), "name"=config.get_value(id, "name", ""), custom_name=config.get_value(id, "custom_name", ""), part=config.get_value(id, "part", ""), "last_seen"=config.get_value(id, "last_seen", {}), state=config.get_value(id, "state", "")}
 func save_list_user(list):
 	var config = ConfigFile.new()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=154 format=3]
+[gd_scene load_steps=160 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_7rmaj"]
 [ext_resource type="FontFile" uid="uid://il7mx0bi5scp" path="res://fonts/Sahel-SemiBold.ttf" id="2_n1wy8"]
@@ -548,9 +548,11 @@ func _on_error(e):
 
 
 func _on_label_2_gui_input(event: InputEvent, x) -> void:
+	print(event)
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
 			if plugin:
+				print(0)
 				mode = x
 				plugin.getGalleryImage()
 "
@@ -1161,6 +1163,19 @@ shadow_offset = Vector2(-1, 5)
 LineEdit/styles/focus = SubResource("StyleBoxFlat_6oife")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_kmb1d")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdp5f"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3o1ji"]
+bg_color = Color(0.878431, 0.482353, 0, 1)
+border_width_left = 25
+border_width_top = 10
+border_color = Color(0.310879, 0.351461, 0.173008, 1)
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [sub_resource type="ImageTexture" id="ImageTexture_trfdu"]
 
 [sub_resource type="GDScript" id="GDScript_j7jst"]
@@ -1399,6 +1414,96 @@ corner_radius_bottom_left = 20
 [sub_resource type="LabelSettings" id="LabelSettings_gdp5f"]
 font = ExtResource("2_n1wy8")
 font_size = 29
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_adqxb"]
+shader = ExtResource("17_3i50a")
+shader_parameter/lod = 0.0
+shader_parameter/mix_percentage = 0.0
+
+[sub_resource type="Animation" id="Animation_masab"]
+resource_name = "floor"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 2.471]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/mix_percentage")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+
+[sub_resource type="Animation" id="Animation_yrx87"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/mix_percentage")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnidh"]
+_data = {
+&"RESET": SubResource("Animation_yrx87"),
+&"floor": SubResource("Animation_masab")
+}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -1897,6 +2002,7 @@ offset_right = -150.0
 offset_bottom = 112.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 0
 text = "📷"
 label_settings = SubResource("LabelSettings_yrx87")
 
@@ -2851,7 +2957,7 @@ autoplay = "transation"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton6/SubViewport"]
 position = Vector2(500, 1000)
 emitting = false
-amount = 20000
+amount = 1000
 one_shot = true
 emission_shape = 3
 emission_rect_extents = Vector2(500, 1000)
@@ -2902,7 +3008,7 @@ autoplay = "transation"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton7/SubViewport"]
 position = Vector2(500, 1000)
 emitting = false
-amount = 20000
+amount = 1000
 texture = SubResource("GradientTexture2D_it1jf")
 one_shot = true
 emission_shape = 3
@@ -2955,7 +3061,7 @@ autoplay = "transation"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton8/SubViewport"]
 position = Vector2(-100, 1000)
 emitting = false
-amount = 20000
+amount = 1000
 texture = SubResource("GradientTexture2D_okocl")
 one_shot = true
 emission_shape = 3
@@ -3009,7 +3115,7 @@ autoplay = "transation"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton9/SubViewport"]
 position = Vector2(500, 1000)
 emitting = false
-amount = 5000
+amount = 1000
 texture = SubResource("GradientTexture2D_0hc3h")
 one_shot = true
 emission_shape = 3
@@ -3069,7 +3175,7 @@ autoplay = "transation"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer10/GridContainer/TextureButton10/SubViewport"]
 position = Vector2(500, 1000)
 emitting = false
-amount = 2000
+amount = 1000
 texture = SubResource("GradientTexture2D_6frx2")
 one_shot = true
 emission_shape = 3
@@ -3105,12 +3211,14 @@ layout_mode = 2
 theme_override_constants/separation = 85
 alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="LineEdit" type="Label" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(500, 130)
 layout_mode = 2
 size_flags_horizontal = 4
-alignment = 1
-select_all_on_focus = true
+mouse_filter = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kytot")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureRect3" type="TextureRect" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit"]
 layout_mode = 0
@@ -3141,11 +3249,13 @@ layout_mode = 2
 theme_override_constants/separation = 110
 alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="LineEdit" type="Label" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2"]
 custom_minimum_size = Vector2(500, 130)
 layout_mode = 2
-alignment = 1
-select_all_on_focus = true
+mouse_filter = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kytot")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureRect3" type="TextureRect" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit"]
 layout_mode = 0
@@ -3176,11 +3286,13 @@ layout_mode = 2
 theme_override_constants/separation = 170
 alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3"]
+[node name="LineEdit" type="Label" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3"]
 custom_minimum_size = Vector2(500, 130)
 layout_mode = 2
-alignment = 1
-select_all_on_focus = true
+mouse_filter = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_kytot")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TextureRect3" type="TextureRect" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/LineEdit"]
 layout_mode = 0
@@ -3211,46 +3323,35 @@ layout_mode = 2
 theme = SubResource("Theme_adqxb")
 alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
+[node name="SpinBox" type="Button" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
 custom_minimum_size = Vector2(150, 120)
 layout_mode = 2
 theme = SubResource("Theme_b7fa4")
-theme_override_icons/up_disabled = SubResource("ImageTexture_trfdu")
-theme_override_icons/down = SubResource("ImageTexture_trfdu")
-theme_override_icons/down_hover = SubResource("ImageTexture_trfdu")
-theme_override_icons/down_pressed = SubResource("ImageTexture_trfdu")
-theme_override_icons/down_disabled = SubResource("ImageTexture_trfdu")
-theme_override_icons/up_pressed = SubResource("ImageTexture_trfdu")
-theme_override_icons/up_hover = SubResource("ImageTexture_trfdu")
-theme_override_icons/up = SubResource("ImageTexture_trfdu")
-theme_override_icons/updown = SubResource("ImageTexture_trfdu")
-min_value = 1.0
-max_value = 31.0
-value = 1.0
-alignment = 1
-select_all_on_focus = true
+theme_override_font_sizes/font_size = 56
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gdp5f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3o1ji")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3o1ji")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3o1ji")
 
-[node name="SpinBox2" type="SpinBox" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
+[node name="SpinBox2" type="Button" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
 custom_minimum_size = Vector2(150, 120)
 layout_mode = 2
 theme = SubResource("Theme_b7fa4")
-theme_override_icons/updown = SubResource("ImageTexture_trfdu")
-min_value = 1.0
-max_value = 12.0
-value = 1.0
-alignment = 1
-select_all_on_focus = true
+theme_override_font_sizes/font_size = 56
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gdp5f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3o1ji")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3o1ji")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3o1ji")
 
-[node name="SpinBox3" type="SpinBox" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
+[node name="SpinBox3" type="Button" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4"]
 custom_minimum_size = Vector2(150, 120)
 layout_mode = 2
 theme = SubResource("Theme_b7fa4")
-theme_override_icons/updown = SubResource("ImageTexture_trfdu")
-min_value = 1300.0
-max_value = 1403.0
-value = 1380.0
-alignment = 1
-select_all_on_focus = true
+theme_override_font_sizes/font_size = 56
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gdp5f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3o1ji")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3o1ji")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3o1ji")
 
 [node name="Label6" type="Label" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
@@ -3472,6 +3573,60 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "ثبت"
 
+[node name="ColorRect3" type="ColorRect" parent="."]
+visible = false
+z_index = 2
+material = SubResource("ShaderMaterial_adqxb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect3"]
+libraries = {
+&"": SubResource("AnimationLibrary_jnidh")
+}
+
+[node name="LineEdit" type="LineEdit" parent="."]
+visible = false
+z_index = 2
+custom_minimum_size = Vector2(500, 130)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 130.0
+grow_horizontal = 2
+alignment = 1
+select_all_on_focus = true
+
+[node name="TextureRect3" type="TextureRect" parent="LineEdit"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_right = 109.0
+offset_bottom = 127.0
+grow_horizontal = 0
+texture = SubResource("GradientTexture2D_s2h46")
+
+[node name="TextureRect" type="TextureRect" parent="LineEdit/TextureRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_a41m6")
+expand_mode = 1
+stretch_mode = 5
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer/Button2" to="." method="join_pressed"]
@@ -3489,8 +3644,12 @@ text = "ثبت"
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer5/Button" to="." method="_on_back_pressed"]
 [connection signal="gui_input" from="ScrollContainer/VBoxContainer/Panel/Control/Label2" to="ScrollContainer/VBoxContainer/Panel/Button" method="_on_label_2_gui_input" binds= [1]]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer9/Button" to="." method="_on_edit_name_pressed"]
-[connection signal="text_changed" from="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit" to="." method="_on_name_changed"]
-[connection signal="text_changed" from="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit" to="." method="_on_name_changed"]
+[connection signal="gui_input" from="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit" to="." method="_on_line_edit_gui_input"]
+[connection signal="gui_input" from="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit" to="." method="_on_line_edit_gui_input2"]
+[connection signal="gui_input" from="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/LineEdit" to="." method="_on_line_edit_gui_input3"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox" to="." method="_on_spin_box_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2" to="." method="_on_spin_box_2_pressed"]
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3" to="." method="_on_spin_box_3_pressed"]
 [connection signal="value_changed" from="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer5/SpinBox" to="." method="_on_spin_box_value_changed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer6/Button" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]
@@ -3498,3 +3657,6 @@ text = "ثبت"
 [connection signal="pressed" from="Node2D/Button3" to="." method="_on_edit_phone_pressed"]
 [connection signal="pressed" from="Node2D/Button2" to="." method="_on_user_name_button_pressed"]
 [connection signal="pressed" from="ColorRect2/Panel/MarginContainer/VBoxContainer/Button" to="." method="_on_save_button_pressed"]
+[connection signal="focus_exited" from="LineEdit" to="." method="_on_line_edit_focus_exited"]
+[connection signal="text_changed" from="LineEdit" to="." method="_on_name_changed"]
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]

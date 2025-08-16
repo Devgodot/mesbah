@@ -58,4 +58,6 @@ func _input(event: InputEvent) -> void:
 			change_pos = 0
 		if event.double_click:
 			queue_free()
-		
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		queue_free()

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5ornlt8iysmk" path="res://script/gallary.gd" id="1_5bpkc"]
 [ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="2_g28nu"]
-[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="3_5bpkc"]
+[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="3_1005o"]
 [ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="4_2nllj"]
 [ext_resource type="Texture2D" uid="uid://c1whpvax8m51c" path="res://sprite/مصباح.jpg" id="5_fekmm"]
 [ext_resource type="Texture2D" uid="uid://bponhwur3lott" path="res://sprite/pngtree-islamic-mosque-gate-frame-vector-ornament-png-image_14130251.png" id="6_bxftw"]
@@ -55,7 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_5bpkc")
+texture = ExtResource("3_1005o")
 expand_mode = 1
 stretch_mode = 1
 
@@ -97,14 +97,14 @@ theme_override_constants/h_separation = 125
 theme_override_constants/v_separation = -10
 columns = 2
 
-[node name="Button" type="Button" parent="MarginContainer/ScrollContainer/GridContainer"]
+[node name="instance" type="Button" parent="MarginContainer/ScrollContainer/GridContainer"]
 visible = false
 custom_minimum_size = Vector2(300, 600)
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ywlqx")
 flat = true
 
-[node name="Pngtree-islamic-mosque-gate-frame-vector-ornament-png-image14130251" type="Polygon2D" parent="MarginContainer/ScrollContainer/GridContainer/Button"]
+[node name="Pngtree-islamic-mosque-gate-frame-vector-ornament-png-image14130251" type="Polygon2D" parent="MarginContainer/ScrollContainer/GridContainer/instance"]
 clip_children = 2
 material = SubResource("CanvasItemMaterial_gfddo")
 position = Vector2(145.4, 272.112)
@@ -113,7 +113,7 @@ polygon = PackedVector2Array(-3, -168.141, -5, -164.753, -16, -155.435, -27, -14
 uv = PackedVector2Array(176, 3.6, 176, 6, 154, 24.1, 154, 24.7, 124.5, 39, 122.4, 39, 104.4, 52, 102.1, 52, 88.1, 69, 86.6, 69, 78, 91.6, 78, 96.2, 64, 98.3, 64, 349, 296, 349, 296, 99.2, 292.8, 96, 281.7, 96, 280, 87.6, 280, 83.5, 275, 74.5, 275, 72.2, 259, 54.2, 259, 52.8, 206.5, 24, 204.7, 24, 186, 7.1, 186, 5.3)
 polygons = [PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27)]
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/GridContainer/Button/Pngtree-islamic-mosque-gate-frame-vector-ornament-png-image14130251"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/ScrollContainer/GridContainer/instance/Pngtree-islamic-mosque-gate-frame-vector-ornament-png-image14130251"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -128,7 +128,7 @@ texture = ExtResource("5_fekmm")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Pngtree-islamic-mosque-gate-frame-vector-ornament-png-image14130252" type="Polygon2D" parent="MarginContainer/ScrollContainer/GridContainer/Button"]
+[node name="Pngtree-islamic-mosque-gate-frame-vector-ornament-png-image14130252" type="Polygon2D" parent="MarginContainer/ScrollContainer/GridContainer/instance"]
 clip_children = 2
 position = Vector2(146.5, 272.691)
 scale = Vector2(1.39224, 1.39224)

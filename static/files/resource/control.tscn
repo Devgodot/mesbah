@@ -280,7 +280,6 @@ func _notification(what):
 func sort_children_custom():
 	var y := 0.0
 	var container_width := size.x
-
 	for child in get_children():
 		if not child is Control or \"instance\" in child.name:
 			continue
@@ -2666,7 +2665,6 @@ wrap_mode = 1
 scroll_smooth = true
 caret_blink = true
 script = -3579537070038712320
-metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 visible = false

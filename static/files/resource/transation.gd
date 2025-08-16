@@ -3,6 +3,7 @@ var active = false
 var trans = 0
 func change(scene, new_scene:String, dir=1):
 	if not active:
+		Updatedate.failed_request = []
 		active = true
 		var s = load_scene(new_scene)
 		match trans:
