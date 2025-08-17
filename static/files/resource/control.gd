@@ -137,10 +137,9 @@ func _ready() -> void:
 				times.append([m.id, m.time, m.time.split(" ")[0]])
 	var l = get_last_message()
 	var index = 0
-	for m in messages:
-		if index <= l[0]:
-			add_message(m)
-		index += 1
+	if messages.size() > 0:
+		for x in range(l[2], l[2] + l[0]):
+			add_message(messages[x])
 	await get_tree().create_timer(0.1).timeout
 	if l[1]:
 		$VBoxContainer/ScrollContainer.get_item_pos(l[1].id)
@@ -172,17 +171,20 @@ func get_last_message():
 			return [x, not_seen]
 		else:
 			return [x - (20 - delta), not_seen] if x - (20 - delta) > 0 else [0, not_seen]
-	return [messages.size() - 20 if messages.size() - 20 > 0 else messages.size(), messages.back()]
+	return [20 if messages.size() - 20 > 0 else messages.size(), messages.back(), 0 if messages.size() < 20 else messages.size() - 20]
 func add_message(m, pos=-1):
 	var obj:Node
 	if m.sender == senderId:
 		obj=$VBoxContainer/ScrollContainer/VBoxContainer/instance
 	else:
 		obj = $VBoxContainer/ScrollContainer/VBoxContainer/instance3
+	var box :PanelContainer= obj.duplicate()
+	var _label
 	if not_seen and m == not_seen:
-		var _label = $VBoxContainer/ScrollContainer/VBoxContainer/instance2.duplicate()
+		_label = $VBoxContainer/ScrollContainer/VBoxContainer/instance2.duplicate()
 		_label.show()
 		_label.text = "پیام‌های خوانده نشده"
+		_label.ref = box
 		$VBoxContainer/ScrollContainer/VBoxContainer.add_child(_label)
 		if pos != -1:
 			$VBoxContainer/ScrollContainer/VBoxContainer.move_child(_label, pos)
@@ -191,6 +193,11 @@ func add_message(m, pos=-1):
 		var label = $VBoxContainer/ScrollContainer/VBoxContainer/instance2.duplicate()
 		var t = times.filter(func(x): return x[0] == m.id)[0][1]
 		label.add_to_group("times")
+		prints(m, box)
+		if _label:
+			label.ref = _label
+		else:
+			label.ref = box
 		label.set_meta("time", times.filter(func(x): return x[0] == m.id)[0][2])
 		var _t = t.split(" ")[0]
 		var dic_time = {year=_t.split("/")[0], mounth=_t.split("/")[1], day=_t.split("/")[2]}
@@ -206,7 +213,7 @@ func add_message(m, pos=-1):
 		if pos != -1:
 			$VBoxContainer/ScrollContainer/VBoxContainer.move_child(label, pos)
 			pos += 1
-	var box :PanelContainer= obj.duplicate()
+	
 	box.add_theme_stylebox_override("panel", box.get_theme_stylebox("panel").duplicate())
 	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label3").add_theme_stylebox_override("normal", box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label3").get_theme_stylebox("normal").duplicate())
 	box.show()

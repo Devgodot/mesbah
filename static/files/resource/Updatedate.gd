@@ -786,7 +786,6 @@ func load_messages(_id, default=[]):
 		config.save("user://messages_"+load_game("user_name", "")+".cfg")
 	config.load("user://messages_"+load_game("user_name", "")+".cfg")
 	var m = config.get_value(_id, "messages", default)
-	m.sort_custom(func(a, b): return a.createdAt < b.createdAt)
 	return m
 func list_messages():
 	var config = ConfigFile.new()
@@ -799,9 +798,9 @@ func list_messages():
 		var new_messages = config.get_value(c, "messages", []).filter(func (x): return (not x.has("seen") or x["seen"] == null) and x["sender"] != load_game("user_name", ""))
 		var last_message
 		if new_messages.size() == 0:
-			last_message = config.get_value(c, "messages", []).reduce(func(a, b): return a if a["createdAt"] > b["createdAt"] else b)
+			last_message = config.get_value(c, "messages", [])[-1]
 		else:
-			last_message = new_messages.reduce(func(a, b): return a if a["createdAt"] > b["createdAt"] else b)
+			last_message = new_messages[-1]
 		data[c] = {message=last_message, new=len(new_messages), username=config.get_value(c, "username", ""), icon=config.get_value(c, "icon", ""), "name"=config.get_value(c, "name", ""), custom_name=config.get_value(c, "custom_name", ""), part=config.get_value(c, "part", ""), "last_seen"=config.get_value(c, "last_seen", {}), state=config.get_value(c, "state", "")}
 	return data
 func get_conversation(_id):
