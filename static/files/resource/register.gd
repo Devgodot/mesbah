@@ -86,7 +86,7 @@ func _on_button_pressed() -> void:
 	r.request(Updatedate.protocol+Updatedate.subdomin+"/auth/register", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": current_phone, "code":code, "id":%id.text}))
 	r.request_completed.connect(_on_code_sended.bind(w))
 func _on_code_sended(r, re, h, b, w):
-	if b:
+	if b.size() > 0:
 		var data = Updatedate.get_json(b)
 		if data:
 			if data is Array and data[0].has("error"):
@@ -167,35 +167,37 @@ func _on_button4_pressed() -> void:
 	var r = HTTPRequest.new()
 	add_child(r)
 	r.request(Updatedate.protocol+Updatedate.subdomin+"/auth/check_user", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"id": %id.text}))
-	var d = await r.request_completed
-	var data = Updatedate.get_json(d[3])
-	while d[3].size() == 0:
-		Notification.add_notif("اتصال اینترنت برقرار نیست", Notification.ERROR) 
-		r.request(Updatedate.protocol+Updatedate.subdomin+"/auth/check_user", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"id": %id.text}))
-		d = await r.request_completed
-		data = Updatedate.get_json(d[3])
-	r.queue_free()
-	if data is Dictionary and data.has("phone"):
-		$MarginContainer2/VBoxContainer/HBoxContainer/Label/Label.text = ""
-		$MarginContainer2/VBoxContainer/Button/Button.hide()
-		$MarginContainer2/VBoxContainer/Button/Button2.show()
-		$MarginContainer2/VBoxContainer/HBoxContainer/Label.text = str("لطفاً کد ارسالی به شماره تلفن", data.phone,"را وارد کنید.")
-		if !enter_phones.has(data.phone):
-			var r2 = HTTPRequest.new()
-			add_child(r2)
-			r2.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": data.phone, "game":"مصباح"}))
-			var i = await r2.request_completed
-			r2.queue_free()
-			if i[3].size() != 0:
-				enter_phones.append(data.phone)
-				delete_phone(data.phone)
-				current_phone = data.phone
-		$AnimationPlayer.play("change3")
-	else:
-		$MarginContainer2/VBoxContainer/Button/Button2.hide()
-		$MarginContainer2/VBoxContainer/Button/Button.show()
-		$AnimationPlayer.play("change2")
-	w.queue_free()
+	r.request_completed.connect(func(r, re, h, b):
+		r.queue_free()
+		w.queue_free()
+		if b.size() > 0:
+			var data = Updatedate.get_json(b)
+			if data is Dictionary and data.has("phone"):
+				$MarginContainer2/VBoxContainer/HBoxContainer/Label/Label.text = ""
+				$MarginContainer2/VBoxContainer/Button/Button.hide()
+				$MarginContainer2/VBoxContainer/Button/Button2.show()
+				$MarginContainer2/VBoxContainer/HBoxContainer/Label.text = str("لطفاً کد ارسالی به شماره تلفن", data.phone,"را وارد کنید.")
+				if !enter_phones.has(data.phone):
+					var r2 = HTTPRequest.new()
+					add_child(r2)
+					r2.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": data.phone, "game":"مصباح"}))
+					var i = await r2.request_completed
+					r2.queue_free()
+					if i[3].size() != 0:
+						enter_phones.append(data.phone)
+						delete_phone(data.phone)
+						current_phone = data.phone
+						$AnimationPlayer.play("change3")
+					else:
+						Notification.add_notif("اتصال اینترنت برقرار نیست", Notification.ERROR)
+			else:
+				$MarginContainer2/VBoxContainer/Button/Button2.hide()
+				$MarginContainer2/VBoxContainer/Button/Button.show()
+				$AnimationPlayer.play("change2")
+		else:
+			Notification.add_notif("اتصال اینترنت برقرار نیست", Notification.ERROR) )
+
+	
 func delete_phone(phone):
 	var timer = get_tree().create_timer(120)
 	timers[phone] = timer

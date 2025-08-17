@@ -11,6 +11,7 @@ signal edit_message(message:Dictionary)
 signal update_list
 var globals = ["accounts", "current_version", "hash_list", "source_dic", "hash_list2", "current_user", "last_user", "planes", "num_users", "num_groups"]
 var plan = ""
+var internet = true
 var subplan = ""
 var group_plan = false
 var save_path = "user://data.cfg"
@@ -50,7 +51,7 @@ func change(_name):
 	if change_scene[_name]:
 		get_tree().change_scene_to_file("res://scenes/"+change_scene[_name]+".tscn")
 func update_resource():
-	if subdomin != "127.0.0.1:5000":
+	if subdomin != "127.0.0.1:5000" and internet:
 		var http = HTTPRequest.new()
 		add_child(http)
 
@@ -263,8 +264,9 @@ func _process(delta: float) -> void:
 	if socket.get_ready_state() == 3 and load_game("user_name") != "":
 		socket.connect_to_url("ws://shirinasalgame.ir")
 		set_user = false
-		
+		internet = false
 	if socket.get_ready_state() == 1:
+		internet = true
 		if not set_user:
 			for r in failed_request:
 				request(r)
