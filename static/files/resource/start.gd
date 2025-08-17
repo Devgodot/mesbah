@@ -135,11 +135,18 @@ func _ready() -> void:
 				)
 	Updatedate.update_list.connect(func (data):
 		conversations = data
+		print(conversations)
 		max_c = conversations.size()
 		ids = conversations.keys()
 		ids.sort_custom(func(a, b): return conversations[a].message.createdAt > conversations[b].message.createdAt)
-		create_by_pos($CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(1)._index)
-		$CustomTabContainer/MarginContainer3/ScrollContainer.begin_id = ids[0]
+		if $CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child_count() > 1:
+			create_by_pos($CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(1)._index)
+		else:
+			if ids.size() > 0:
+				create_by_pos(0)
+		if ids.size() > 0:
+			
+			$CustomTabContainer/MarginContainer3/ScrollContainer.begin_id = ids[0]
 		
 		)
 	Updatedate.recive_message.connect(get_new_message)
@@ -155,7 +162,8 @@ func _ready() -> void:
 		$CustomTabContainer.add_tabs(null, $CustomTabContainer.get_child(4), 4 if Updatedate.load_game("management") else 3)
 	Updatedate.request("/auth/unseen_message")
 	Updatedate.request("/planes/all")
-	$CustomTabContainer/MarginContainer3/ScrollContainer.begin_id = ids[0]
+	if ids.size() > 0:
+		$CustomTabContainer/MarginContainer3/ScrollContainer.begin_id = ids[0]
 	for plan in Updatedate.load_game("planes", {}):
 		add_ranking(plan)
 	
@@ -253,8 +261,8 @@ func create_by_pos(x):
 	var num = 12 if conversations.size() > 12 else conversations.size()
 	if conversations.size() - x > 0:
 		if conversations.size() - x < 12:
-			num = $CustomTabContainer/MarginContainer3/ScrollContainer.size.y / 210
-			x = conversations.size() - num - 1
+			num = int($CustomTabContainer/MarginContainer3/ScrollContainer.size.y / 210) + 1 if conversations.size() > 12 else conversations.size() + 1
+			x = conversations.size() - num - 1 
 			last_c = x
 		for n in num:
 			add_conversation(ids[x+n], conversations[ids[x+n]])
