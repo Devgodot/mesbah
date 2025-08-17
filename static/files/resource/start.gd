@@ -135,8 +135,8 @@ func _ready() -> void:
 				)
 	Updatedate.update_list.connect(func (data):
 		conversations = data
-		print(conversations)
 		max_c = conversations.size()
+		print(max_c)
 		ids = conversations.keys()
 		ids.sort_custom(func(a, b): return conversations[a].message.createdAt > conversations[b].message.createdAt)
 		if $CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child_count() > 1:
