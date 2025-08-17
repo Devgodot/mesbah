@@ -65,9 +65,9 @@ func _ready() -> void:
 					var y = get_tree().get_nodes_in_group("message").find_custom(func (x): return x.get_meta("id", "") == message["id"])
 					var box = get_tree().get_nodes_in_group("message")[y]
 					box.seen = message.seen
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Line2D").default_color = Color("32ff06")
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Line2D2").default_color = Color("32ff06")
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Line2D2").show()
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").default_color = Color("32ff06")
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").default_color = Color("32ff06")
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").show()
 				)
 		Updatedate.edit_message.connect(func (message:Dictionary):
 			if message:
@@ -125,6 +125,10 @@ func _ready() -> void:
 		Updatedate.get_icon_user(c.icon, c.username, $ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect)
 	$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name/texture/Label.text = c.custom_name if c.has("custom_name") and c.custom_name != "" else c.name if c.has("name") else ""
 	if c.has("name"):
+		if not c.has("icon"):
+			get_text_name(c.name, $ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect/Label)
+		if c.has("icon") and c.icon == "" and $ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect.texture == null:
+			get_text_name(c.name, $ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect/Label)
 		$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name.dir = get_direction(c.name)
 	if c.has("id"):
 		messages = Updatedate.load_messages(Updatedate.conversation.id)
@@ -207,21 +211,22 @@ func add_message(m, pos=-1):
 		if not m.has("seen") or (m.has("seen") and m.seen == null):
 			if Updatedate.conversation.last_seen != {}:
 				if Updatedate.conversation.last_seen.timestamp > m.createdAt or Updatedate.conversation.state == "online":
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Line2D").default_color = Color.GRAY
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Line2D2").default_color = Color.GRAY
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").default_color = Color.GRAY
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").default_color = Color.GRAY
 				else:
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Line2D").default_color = Color.GRAY
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Line2D2").hide()
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").default_color = Color.GRAY
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").hide()
 			else:
-				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Line2D").default_color = Color.GRAY
-				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Line2D2").hide()
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").default_color = Color.GRAY
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").hide()
 	else:
-		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Line2D").hide()
-		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Line2D2").hide()
-		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Node2D/Node2D").show()
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").hide()
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").hide()
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Node2D").show()
 	var time = m.time if m.has("time") else ""
 	var weekday = (time.split("$")) if time != "" else [""]
-	
+	if m.has("sender_name"):
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Label").text = m.sender_name
 	box.edit.connect(func (pos):
 		if action_box != box:
 			if action_box:
@@ -301,7 +306,17 @@ func get_keyboard_offset():
 	var screen_size = DisplayServer.get_display_safe_area()
 	var _scale = size.y / get_tree().root.size.y
 	return (DisplayServer.screen_get_size().y - (screen_size.size.y + screen_size.position.y)) * _scale
-
+func get_user_text(f, l, node:Label):
+	node.text += f[0] if f != "" else ""
+	node.text += " "+ l[0] if l != "" else ""
+func get_text_name(text, node:Label):
+	var split = text.split(" ")
+	var words = []
+	for g in split:
+		if g != "":
+			words.append(g)
+	node.text = words[0][0] if words.size() > 0 else ""
+	node.text += " " + words.back()[0] if words.size() > 1 else ""
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	offset = get_keyboard_offset()

@@ -14,6 +14,18 @@ var last_scroll = 0
 var last_c = 0
 var max_scroll = 0
 var first_supporter = ""
+
+func get_user_text(f, l, node:Label):
+	node.text += f[0] if f != "" else ""
+	node.text += " "+ l[0] if l != "" else ""
+func get_text_name(text, node:Label):
+	var split = text.split(" ")
+	var words = []
+	for g in split:
+		if g != "":
+			words.append(g)
+	node.text = words[0][0] if words.size() > 0 else ""
+	node.text += " " + words.back()[0] if words.size() > 1 else ""
 func get_new_message(message):
 	var id = message.conversationId + message.part
 	if ids.has(id):
@@ -318,6 +330,10 @@ func add_conversation(_id, data, node=$CustomTabContainer/MarginContainer3/Scrol
 		btn.add_to_group(_id)
 		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer/name").set_deferred("text", data.custom_name if data.has("custom_name") and data.custom_name != "" else "[center]"+data.name)
 		if data.name != "":
+			if not data.has("icon"):
+				get_text_name(data.name, btn.get_node("Panel/HBoxContainer/TextureRect/Label"))
+			if data.has("icon") and data.icon == "" and btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect").texture == null:
+				get_text_name(data.name, btn.get_node("Panel/HBoxContainer/TextureRect/Label"))
 			btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer/name").dir = get_direction(data.name)
 		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer/name").show()
 		btn.size.x = size.x
