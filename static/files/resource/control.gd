@@ -193,7 +193,6 @@ func add_message(m, pos=-1):
 		var label = $VBoxContainer/ScrollContainer/VBoxContainer/instance2.duplicate()
 		var t = times.filter(func(x): return x[0] == m.id)[0][1]
 		label.add_to_group("times")
-		prints(m, box)
 		if _label:
 			label.ref = _label
 		else:
@@ -379,6 +378,7 @@ func _on_button_pressed() -> void:
 		add_message(m)
 		Updatedate.send_message(text_edit.text, id, box_ref.get_meta("id", "") if box_ref else "")
 		text_edit.text = ""
+		$VBoxContainer/ScrollContainer.get_item_pos(id)
 		_on_null_ref_pressed()
 func _on_back_button_pressed() -> void:
 	Transation.change(self, "start.tscn", -1)
