@@ -4,9 +4,9 @@ var current_time = 0
 var end_time = 100
 var date = ""
 var calendar
+var active = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$SystemBarColorChanger.set_navigation_bar_color(Color("1f7a2f"))
 	if Engine.has_singleton("GodotGetFile"):
 		calendar = Engine.get_singleton("GodotGetFile")
 		calendar.permission_granted.connect(func():
@@ -14,70 +14,103 @@ func _ready() -> void:
 			for e in event:
 				if e.has("title"):
 					if e.title == "یادآور حرکت قطار":
-						$Button2.disabled = true
-						$Button2.text = "ثبت شده در تقویم")
+						$TextureRect4/Button2.disabled = true
+						$TextureRect4/Button2.text = "ثبت شده در تقویم")
 		calendar.calendar_event_activity_closed.connect(func():
 			var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")) - 100000000, int(date) + 100000000)
 			for e in event:
 				if e.has("title"):
 					if e.title == "یادآور حرکت قطار":
-						$Button2.disabled = true
-						$Button2.text = "ثبت شده در تقویم")
-	var w = Updatedate.add_wait(self)
+						$TextureRect4/Button2.disabled = true
+						$TextureRect4/Button2.text = "ثبت شده در تقویم")
 	Updatedate.load_user()
-	$Label.text = "نام: "+ Updatedate.load_game("first_name", "") + " " +Updatedate.load_game("last_name", "")
-	$Label2.text = "نام پدر: "+ Updatedate.load_game("father_name", "")
-	Updatedate.get_icon_user(Updatedate.load_game("icon", ""), Updatedate.load_game("user_name", ""), $NinePatchRect/TextureRect2)
-	var data = await  Updatedate.request("/ticket/get_user_ticket")
-	if data.has("ticket"):
-		current_time = int(data.ticket.current_time) - int(int(Updatedate.load_game("start_ticket", "0")))
-		end_time = int(data.ticket.unixtime)- int(int(Updatedate.load_game("start_ticket", "0")))
-		date = data.ticket.unixtime
-		create_qur_code()
-		if calendar:
-			
-			var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")) - 100000000, int(date) + 100000000)
-			
-			for e in event:
-				if e.has("title"):
-					if e.title == "یادآور حرکت قطار":
-						$Button2.disabled = true
-						$Button2.text = "ثبت شده در تقویم"
-		$Label4.text = data.ticket.time
-		$Label4.show()
-		$Timer.start()
-		$TextureRect2.show()
-		$TextureProgressBar.show()
-		$Button.hide()
-		$Button2.show()
-	w.queue_free()
-	$Node2D/CPUParticles2D2.emitting = true
-	$AnimationPlayer.play("train")
+	var first_name = Updatedate.load_game("first_name", "")
+	var last_name = Updatedate.load_game("last_name", "")
+	$TextureRect4/Label.text = "نام: "+ first_name + " " + last_name
+	$TextureRect4/Label2.text = "نام پدر: "+ Updatedate.load_game("father_name", "")
+	Updatedate.get_icon_user(Updatedate.load_game("icon", ""), Updatedate.load_game("user_name", ""), $TextureRect4/NinePatchRect/TextureRect2)
+	if Updatedate.load_game("icon", "") == "" and $TextureRect4/NinePatchRect/TextureRect2.texture is GradientTexture2D:
+		$TextureRect4/NinePatchRect/Label.text = first_name[0] if first_name != "" else ""
+		if last_name != "":
+			$TextureRect4/NinePatchRect/Label.text += " " + last_name[0]
+	var data = Updatedate.load_game("ticket_user", {})
+	Updatedate.request("/ticket/get_user_ticket")
+	Updatedate.request_completed.connect(func(data, url):
+		if url == "/ticket/get_user_ticket":
+			if data:
+				Updatedate.save("ticket_user", data, false)
+			if data and data.has("ticket"):
+				check_ticket(data)
+			elif data and not data.has("ticket"):
+				$Label4.hide()
+				$Timer.stop()
+				$TextureRect2.hide()
+				$TextureProgressBar.hide()
+				$TextureRect4/Button.show()
+				$TextureRect4/Button2.hide())
+	
+	if data and data.has("ticket"):
+		data.ticket.current_time = int(Time.get_unix_time_from_system()) * 1000
+		check_ticket(data)
+	else:
+		$Label4.hide()
+		$Timer.stop()
+		$TextureRect2.hide()
+		$TextureProgressBar.hide()
+		$TextureRect4/Button.show()
+		$TextureRect4/Button2.hide()
+	create_qur_code()
+	$TextureRect/Path2D/PathFollow2D/Node2D/CPUParticles2D2.emitting = true
 	$CPUParticles2D.emitting = true
+	var pos = size.x / 2
+	$TextureRect4.position.x = pos - ($TextureRect4.size.x / 2)
+	$TextureProgressBar.position.x = pos - ($TextureProgressBar.size.x / 2)
+	$Label4.position.x = pos - ($Label4.size.x / 2)
+	$Panel.position.x = pos - ($Panel.size.x / 2)
+	$TextureRect2.position.y = $TextureProgressBar.position.y - 10
+	await get_tree().create_timer(0.1).timeout
 	show()
+func check_ticket(data):
+	current_time = int(data.ticket.current_time) - int(int(Updatedate.load_game("start_ticket", "0")))
+	end_time = int(data.ticket.unixtime)- int(int(Updatedate.load_game("start_ticket", "0")))
+	date = data.ticket.unixtime
+	if calendar:
+		var event = calendar.getCalendarEvents(int(Updatedate.load_game("start_ticket", "0")) - 100000000, int(date) + 100000000)
+		for e in event:
+			if e.has("title"):
+				if e.title == "یادآور حرکت قطار":
+					$TextureRect4/Button2.disabled = true
+					$TextureRect4/Button2.text = "ثبت شده در تقویم"
+	$Label4.text = data.ticket.time
+	$Label4.show()
+	$Timer.start()
+	$TextureRect2.show()
+	$TextureProgressBar.show()
+	$TextureRect4/Button.hide()
+	$TextureRect4/Button2.show()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$TextureRect2.position.x = $TextureProgressBar.position.x + ($TextureProgressBar.value * $TextureProgressBar.size.x / 100) - $TextureRect2.size.x / 2 
 	if current_time > end_time:
 		$Timer.stop()
-	
+	$TextureRect/Path2D/PathFollow2D.progress -= 200 * delta
 	$TextureProgressBar.value = current_time * 100 / end_time
 	if randi_range(0, 100) == 1:
-		$Node2D/AnimatedSprite2D.frame = not $Node2D/AnimatedSprite2D.frame
+		$TextureRect/Path2D/PathFollow2D/Node2D/AnimatedSprite2D.frame = not $TextureRect/Path2D/PathFollow2D/Node2D/AnimatedSprite2D.frame
 func _on_timer_timeout() -> void:
 	current_time += 1
 
 func add_ticket():
-	var w = Updatedate.add_wait($Button)
+	var w = Updatedate.add_wait($TextureRect4/Button)
 	for ticket in $Panel/MarginContainer/ScrollContainer/GridContainer.get_children():
 		if ticket.name != "Button":
 			ticket.queue_free()
 	var d = await Updatedate.request("/ticket/get_ticket")
-	if d.has("error"):
+	if d and d.has("error"):
 		Notification.add_notif(d.error, Notification.ERROR)
 		w.queue_free()
 		return
-	if d.has("data"):
+	if d and d.has("data"):
 		var month = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"]
 		var index = 0
 		for ticket in d.data:
@@ -109,18 +142,19 @@ func add_ticket():
 					if message.has("message"):
 						Notification.add_notif(message.message)
 						$Panel.hide()
+						active = false
 						current_time = 0
 						Updatedate.save("start_ticket",str(message.current_time))
 						create_qur_code()
 						end_time = int(message.unixtime)- int(message.current_time)
 						date = message.unixtime
-						$Label4.text = message.time
-						$Label4.show()
+						$TextureRect4/Label4.text = message.time
+						$TextureRect4/Label4.show()
 						$Timer.start()
 						$TextureRect2.show()
 						$TextureProgressBar.show()
-						$Button.hide()
-						$Button2.show()
+						$TextureRect4/Button.hide()
+						$TextureRect4Button2.show()
 				w2.queue_free())
 			index += 1
 			$Panel/MarginContainer/ScrollContainer/GridContainer.add_child(btn)
@@ -129,14 +163,29 @@ func add_ticket():
 func _on_button_pressed() -> void:
 	if Updatedate.load_game("accept_account", false):
 		await add_ticket()
-		if $AnimationPlayer3.current_animation_position == 0.0:
-			$AnimationPlayer3.play("panel")
+		if $Panel.position.y > size.y:
+			active = true
+			var tween = get_tree().create_tween()
+			tween.tween_property($Panel, "position:y", (size.y / 2) - ($Panel.size.y / 2), 0.5)
+			tween.set_trans(Tween.TRANS_BOUNCE)
+			tween.play()
+		else:
+			var tween = get_tree().create_tween()
+			tween.tween_property($Panel, "position:y", size.y + 10, 0.5)
+			tween.set_trans(Tween.TRANS_BOUNCE)
+			tween.play()
+			active = false
+		
 	else:
 		Notification.add_notif("حساب شما تأیید نشده! به مسجد جامع مراجعه کنید.", Notification.ERROR)
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
-		if $AnimationPlayer3.current_animation_position != 0.0:
-			$AnimationPlayer3.play_backwards("panel")
+		if $Panel.position.y < size.y:
+			var tween = get_tree().create_tween()
+			tween.tween_property($Panel, "position:y", size.y + 10, 0.5)
+			tween.set_trans(Tween.TRANS_BOUNCE)
+			tween.play()
+			active = false
 
 
 func _on_button2_pressed() -> void:
@@ -150,31 +199,56 @@ func _on_back_button_pressed() -> void:
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		Transation.change(self, "start.tscn", -1)
-
-
+	if what == NOTIFICATION_RESIZED:
+		$TextureRect.position.x = size.x / 2
+		var pos = size.x / 2
+		$ColorRect2.size.y = size.y - 1000
+		$ColorRect2.position.y = 1000
+		$TextureRect4.position.x = pos - ($TextureRect4.size.x / 2)
+		$TextureProgressBar.position.x = pos - ($TextureProgressBar.size.x / 2)
+		$Label4.position.x = pos - ($Label4.size.x / 2)
+		$Panel.position.x = pos - ($Panel.size.x / 2)
+		$TextureRect2.position.y = $TextureProgressBar.position.y - 10
+		if active:
+			$Panel.position.y = (size.y / 2) - ($Panel.position.y / 2)
+		else:
+			$Panel.position.y = size.y + 10
+		var num_point = 20
+		var curve = Curve2D.new()
+		curve.add_point(Vector2(0, 150))
+		curve.add_point(Vector2(size.x / 2, 250), Vector2(-150, 0), Vector2(150, 0))
+		curve.add_point(Vector2(size.x, 150))
+		var length = curve.get_baked_length()
+		var points = []
+		for i in num_point:
+			var t = (float(i) / (num_point - 1)) * length
+			points.append(curve.sample_baked(t))
+		$Line2D.points = points
+		$Line2D2.points = points
+		$Line2D3.points = points
 func _on_savebutton_pressed() -> void:
 	
 	OS.shell_open("https://qr-code.ir/api/qr-code?s=5&e=M&t=P&d="+Updatedate.protocol+Updatedate.subdomin+"/ticket/check?user="+Updatedate.load_game("user_name"))
 func create_qur_code():
-	$TextureRect3.show()
+	$TextureRect4/TextureRect3.show()
 	if FileAccess.file_exists("user://resource/"+Updatedate.load_game("user_name")+".png"):
 		var image = Image.new()
 		image.load("user://resource/"+Updatedate.load_game("user_name")+".png")
-		$TextureRect3.texture = ImageTexture.create_from_image(image)
+		$TextureRect4/TextureRect3.texture = ImageTexture.create_from_image(image)
 	else:
-		var w = Updatedate.add_wait($TextureRect3)
+		var w = Updatedate.add_wait($TextureRect4/TextureRect3)
 		var http = HTTPRequest.new()
 		add_child(http)
 		http.request("https://qr-code.ir/api/qr-code?s=5&e=M&t=P&d="+Updatedate.protocol+Updatedate.subdomin+"/ticket/check?user="+Updatedate.load_game("user_name"))
-		var d = await http.request_completed
-		while d[3].size() == 0:
-			http.request("https://qr-code.ir/api/qr-code?s=5&e=M&t=P&d="+Updatedate.protocol+Updatedate.subdomin+"/ticket/check?user="+Updatedate.load_game("user_name"))
-			d = await http.request_completed
-		var image = Image.new()
-		image.load_png_from_buffer(d[3])
-		image.save_png("user://resource/"+Updatedate.load_game("user_name")+".png")
-		$TextureRect3.texture = ImageTexture.create_from_image(image)
-		w.queue_free()
+		http.request_completed.connect(func(result, response, header, data):
+			w.queue_free()
+			http.queue_free()
+			if data.size() > 0:
+				var image = Image.new()
+				image.load_png_from_buffer(date)
+				image.save_png("user://resource/"+Updatedate.load_game("user_name")+".png")
+				$TextureRect4/TextureRect3.texture = ImageTexture.create_from_image(image)
+			)
 
 
 func _on_file_dialog_file_selected(path: String) -> void:

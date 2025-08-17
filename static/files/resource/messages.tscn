@@ -220,7 +220,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
+[node name="instance" type="PanelContainer" parent="ScrollContainer/VBoxContainer"]
 visible = false
 layout_direction = 3
 layout_mode = 2
@@ -228,10 +228,10 @@ mouse_filter = 2
 theme = SubResource("Theme_fflgh")
 theme_override_styles/panel = SubResource("StyleBoxFlat_etbkv")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/instance"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 20
@@ -239,33 +239,33 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
 theme_override_font_sizes/font_size = 26
 text = "کاربر"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
 visible = false
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 6
 
-[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qt4vh")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
@@ -279,26 +279,26 @@ context_menu_enabled = true
 custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
 selection_enabled = true
 
-[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qt4vh")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 85
 alignment = 1
 
-[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(120, 70)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 text = "تایید"
 
-[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button2" type="Button" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(120, 70)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -309,17 +309,17 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_hudqd")
 theme_override_styles/normal = SubResource("StyleBoxFlat_hudqd")
 text = "رد"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_qt4vh")
 
-[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
 theme_override_font_sizes/font_size = 26
@@ -335,5 +335,5 @@ icon = ExtResource("13_vhrii")
 flat = true
 expand_icon = true
 
-[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/PanelContainer/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="meta_clicked" from="ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="pressed" from="Button" to="." method="_on_back_button_pressed"]

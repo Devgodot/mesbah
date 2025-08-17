@@ -10,6 +10,18 @@ func get_direction(text:String):
 		return -1
 	else :
 		return 1 
+
+func get_user_text(f, l, node:Label):
+	node.text += f[0] if f != "" else ""
+	node.text += " "+ l[0] if l != "" else ""
+func get_text_name(text, node:Label):
+	var split = text.split(" ")
+	var words = []
+	for g in split:
+		if g != "":
+			words.append(g)
+	node.text = words[0][0] if words.size() > 0 else ""
+	node.text += " " + words.back()[0] if words.size() > 1 else ""
 # Called when the node enters the scene tree for the first time.
 func _sort(data):
 	for box in get_tree().get_nodes_in_group("boxes"):
@@ -30,9 +42,7 @@ func _sort(data):
 		box.get_node("Label3").text = str(int(score))
 		Updatedate.get_icon_user(icon, custom_hash.hashing(custom_hash.GET_HASH, user.name), box.get_node("Label2").get_child(1).get_child(0))
 		var label = box.get_node("Label2").get_child(1).get_child(0).get_node("Label")
-		label.text = user.first_name[0] if user.first_name != "" else ""
-		if user.last_name != "":
-			label.text += " " + user.last_name[0]
+		get_user_text(user.first_name,  user.last_name, label)
 		if user.icon != "" or box.get_node("Label2").get_child(1).get_child(0).texture != null:
 			label.hide()
 		for x in range(max_diamonds - 1):
@@ -49,9 +59,7 @@ func _sort(data):
 	var label = $HBoxContainer2/Label2/TextureRect/TextureRect/Label
 	var first_name = Updatedate.load_game("first_name", "")
 	var last_name = Updatedate.load_game("last_name", "")
-	label.text = first_name[0] if first_name != "" else ""
-	if last_name != "":
-		label.text += " " + last_name[0]
+	get_user_text(first_name, last_name, label)
 	if Updatedate.load_game("icon", '') != "" or $HBoxContainer2/Label2/TextureRect/TextureRect.texture != null:
 		label.hide()
 	for x in range(data.your_info.diamond_sum):
@@ -160,14 +168,7 @@ func group_sort(data):
 		box.get_node("Label3").text = str(int(score))
 		Updatedate.get_icon_group(icon, _name, box.get_node("Label2").get_child(1).get_child(0))
 		var label = box.get_node("Label2").get_child(1).get_child(0).get_node("Label")
-		var split = _name.split(" ")
-		var words = []
-		for g in split:
-			if g != "":
-				words.append(g)
-		label.text = words[0][0]
-		if words.size() > 1:
-			label.text += " " + words.back()[0]
+		get_text_name(_name, label)
 		if group.icon != "" or box.get_node("Label2").get_child(1).get_child(0).texture != null:
 			label.hide()
 		for x in range(max_diamonds - 1):
@@ -183,14 +184,7 @@ func group_sort(data):
 		$HBoxContainer2/Label2.text = data.your_info.name
 		Updatedate.get_icon_group(data.your_info.icon, data.your_info.name, $HBoxContainer2/Label2/TextureRect/TextureRect)
 		var label = $HBoxContainer2/Label2/TextureRect/TextureRect/Label
-		var split = data.your_info.name.split(" ")
-		var words = []
-		for g in split:
-			if g != "":
-				words.append(g)
-		label.text = words[0][0]
-		if words.size() > 1:
-			label.text += " " + words.back()[0]
+		get_text_name(data.your_info.name, label)
 		if data.your_info.icon != "" or $HBoxContainer2/Label2/TextureRect/TextureRect.texture != null:
 			label.hide()
 		for x in range(data.your_info.diamond_sum):
