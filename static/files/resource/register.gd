@@ -167,7 +167,7 @@ func _on_button4_pressed() -> void:
 	var r = HTTPRequest.new()
 	add_child(r)
 	r.request(Updatedate.protocol+Updatedate.subdomin+"/auth/check_user", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"id": %id.text}))
-	r.request_completed.connect(func(r, re, h, b):
+	r.request_completed.connect(func(result, re, h, b):
 		r.queue_free()
 		w.queue_free()
 		if b.size() > 0:
