@@ -378,7 +378,7 @@ func _on_button_pressed() -> void:
 		add_message(m)
 		Updatedate.send_message(text_edit.text, id, box_ref.get_meta("id", "") if box_ref else "")
 		text_edit.text = ""
-		$VBoxContainer/ScrollContainer.get_item_pos(id)
+		$VBoxContainer/ScrollContainer.scroll($VBoxContainer/ScrollContainer.max_scroll)
 		_on_null_ref_pressed()
 func _on_back_button_pressed() -> void:
 	Transation.change(self, "start.tscn", -1)
