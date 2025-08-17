@@ -796,7 +796,7 @@ func _on_line_edit_focus_exited() -> void:
 func _on_line_edit_gui_input(event: InputEvent) -> void:
 
 	if event is InputEventMouseButton:
-		if event.is_released():
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
 			if current_line == null:
 				$ColorRect3/AnimationPlayer.play("floor")
 				$LineEdit.show()
@@ -807,7 +807,7 @@ func _on_line_edit_gui_input(event: InputEvent) -> void:
 func _on_line_edit_gui_input2(event: InputEvent) -> void:
 
 	if event is InputEventMouseButton:
-		if event.is_released():
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
 			if current_line == null:
 				$LineEdit.show()
 				$ColorRect3/AnimationPlayer.play("floor")
@@ -818,7 +818,7 @@ func _on_line_edit_gui_input2(event: InputEvent) -> void:
 func _on_line_edit_gui_input3(event: InputEvent) -> void:
 
 	if event is InputEventMouseButton:
-		if event.is_released():
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_released():
 			if current_line == null:
 				$ColorRect3/AnimationPlayer.play("floor")
 				$LineEdit.show()

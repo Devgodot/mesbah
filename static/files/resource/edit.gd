@@ -199,10 +199,17 @@ func _on_update_group_pressed() -> void:
 		Notification.add_notif(d.error, Notification.ERROR)
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		Transation.change(self, "start.tscn", -1)
+		if $Panel2.visible:
+			$Panel2.hide()
+			$TextureRect2.hide()
+		else:
+			Transation.change(self, "start.tscn", -1)
 
 func _on_back_button_pressed() -> void:
-	if $TabContainer.current_tab != 0:
+	if $Panel2.visible:
+		$Panel2.hide()
+		$TextureRect2.hide()
+	elif $TabContainer.current_tab != 0:
 		$TabContainer.current_tab = 0
 	else:
 		Transation.change(self, "start.tscn", -1)

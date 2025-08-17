@@ -184,6 +184,9 @@ func add_message(m, pos=-1):
 		_label.show()
 		_label.text = "پیام‌های خوانده نشده"
 		$VBoxContainer/ScrollContainer/VBoxContainer.add_child(_label)
+		if pos != -1:
+			$VBoxContainer/ScrollContainer/VBoxContainer.move_child(_label, pos)
+			pos += 1
 	if m.id in times.map(func(x):return x[0]):
 		var label = $VBoxContainer/ScrollContainer/VBoxContainer/instance2.duplicate()
 		var t = times.filter(func(x): return x[0] == m.id)[0][1]

@@ -87,8 +87,9 @@ expand_margin_left = 13.0
 expand_margin_top = 30.0
 expand_margin_bottom = 20.0
 
-[sub_resource type="SystemFont" id="SystemFont_nrddy"]
-font_names = PackedStringArray("B Nazanin")
+[sub_resource type="FontVariation" id="FontVariation_yox5y"]
+base_font = ExtResource("29_ibwys")
+variation_embolden = 0.5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gwbx"]
 bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
@@ -171,7 +172,7 @@ PopupMenu/constants/close_v_offset = 78
 PopupMenu/constants/h_separation = 40
 PopupMenu/font_sizes/font_separator_size = 122
 PopupMenu/font_sizes/font_size = 40
-PopupMenu/fonts/font = SubResource("SystemFont_nrddy")
+PopupMenu/fonts/font = SubResource("FontVariation_yox5y")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 RichTextLabel/font_sizes/bold_font_size = 50
@@ -1937,8 +1938,9 @@ custom_minimum_size = Vector2(120, 80)
 layout_mode = 2
 min_value = 1403.0
 max_value = 1500.0
-value = 1403.0
+value = 1404.0
 alignment = 1
+select_all_on_focus = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/1/TabContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer"]
 layout_direction = 3
@@ -4127,6 +4129,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 0
 theme = SubResource("Theme_dgef1")
+theme_override_font_sizes/font_size = 40
 theme_override_styles/tab_focus = SubResource("StyleBoxEmpty_yox5y")
 theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_gaixw")
 theme_override_styles/panel = SubResource("StyleBoxFlat_nuysv")
