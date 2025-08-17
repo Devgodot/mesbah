@@ -68,6 +68,7 @@ func _ready() -> void:
 	$Label4.position.x = pos - ($Label4.size.x / 2)
 	$Panel.position.x = pos - ($Panel.size.x / 2)
 	$TextureRect2.position.y = $TextureProgressBar.position.y - 10
+	$ColorRect2.size.y = size.y
 	await get_tree().create_timer(0.1).timeout
 	show()
 func check_ticket(data):
@@ -245,7 +246,7 @@ func create_qur_code():
 			http.queue_free()
 			if data.size() > 0:
 				var image = Image.new()
-				image.load_png_from_buffer(date)
+				image.load_png_from_buffer(data)
 				image.save_png("user://resource/"+Updatedate.load_game("user_name")+".png")
 				$TextureRect4/TextureRect3.texture = ImageTexture.create_from_image(image)
 			)

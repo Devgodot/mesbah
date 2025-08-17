@@ -193,7 +193,7 @@ viewport_path = NodePath("SubViewport4")
 resource_local_to_scene = true
 script = ExtResource("8_ed63f")
 texture_progress = SubResource("ViewportTexture_1bd0r")
-fill_mode = 0
+fill_mode = 6
 nine_patch_stretch = false
 texture_progress_offset = Vector2(35, 115)
 tint_progress = Color(0, 0.403922, 0.67451, 1)
@@ -1228,11 +1228,12 @@ func set_input_child(process):
 				subchild.set_process_input(process)
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenDrag:
-		if event.relative.y > 0 and can_drag[0]:
+		if event.relative.y > 4 and can_drag[0]:
 			scroll = (Vector2(0, event.relative.y))
-		if event.relative.y < 0 and can_drag[1]:
+			drag = true
+		if event.relative.y < -4 and can_drag[1]:
 			scroll = (Vector2(0, event.relative.y))
-		drag = true
+			drag = true
 	if event is InputEventMouseButton:
 		if event.is_pressed() and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			if can_drag[1]:

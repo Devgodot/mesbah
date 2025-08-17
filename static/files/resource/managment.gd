@@ -16,7 +16,8 @@ var plan_name = ""
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
-	
+	$Panel2.set_tab_title(0, "ذخیره شده")
+	$Panel2.set_tab_title(1, "جستجو")
 	$"TabContainer/1/TabContainer".set_tab_title(0, "تغییر برنامه")
 	$"TabContainer/1/TabContainer".set_tab_title(1, "تعریف برنامه")
 	$"TabContainer/1/TabContainer".set_tab_title(2, "رتبه بندی")
@@ -750,7 +751,28 @@ func _on_window_go_back_requested() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		Transation.change(self, "start.tscn", -1)
+		if get_tree().has_group("scroll_button"):
+			get_tree().call_group("scroll_button", "queue_free")
+		elif $Panel2.visible:
+			$Panel2.hide()
+			if not $Panel.visible:
+				$TextureRect2.hide()
+			if subplan:
+				subplan.set_meta("selected_users", selected_users)
+				if subplan is PanelContainer:
+					var label = subplan.get_node("MarginContainer/VBoxContainer/Label2")
+					label.text = "[right][b][color=41ff00]مربیان:[/color][/b]"
+					var index = 0
+					for user in selected_users:
+						label.text += " " + user.name
+						if index < selected_users.size() - 1:
+							label.text += " و"
+						index += 1
+		elif $Panel.visible:
+			$Panel.hide()
+			$TextureRect2.hide()
+		else:
+			Transation.change(self, "start.tscn", -1)
 
 
 func _on_button_pressed(mode) -> void:

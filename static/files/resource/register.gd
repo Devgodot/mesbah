@@ -181,23 +181,22 @@ func _on_button4_pressed() -> void:
 					var r2 = HTTPRequest.new()
 					add_child(r2)
 					r2.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": data.phone, "game":"مصباح"}))
-					var i = await r2.request_completed
-					r2.queue_free()
-					if i[3].size() != 0:
-						enter_phones.append(data.phone)
-						delete_phone(data.phone)
-						current_phone = data.phone
-						$AnimationPlayer.play("change3")
-					else:
-						Notification.add_notif("اتصال اینترنت برقرار نیست", Notification.ERROR)
+					r2.request_completed.connect(func(a, b, c, _d):
+						if _d.size() == 0:
+							r2.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": data.phone, "game":"مصباح"}))
+						else:
+							r2.queue_free()
+						)
+					enter_phones.append(data.phone)
+					delete_phone(data.phone)
+					current_phone = data.phone
+					$AnimationPlayer.play("change3")
 			else:
 				$MarginContainer2/VBoxContainer/Button/Button2.hide()
 				$MarginContainer2/VBoxContainer/Button/Button.show()
 				$AnimationPlayer.play("change2")
 		else:
-			Notification.add_notif("اتصال اینترنت برقرار نیست", Notification.ERROR) )
-
-	
+			Notification.add_notif("اتصال اینترنت برقرار نیست", Notification.ERROR))
 func delete_phone(phone):
 	var timer = get_tree().create_timer(120)
 	timers[phone] = timer

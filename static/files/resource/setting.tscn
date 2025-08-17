@@ -219,8 +219,8 @@ func _ready() -> void:
 		plugin.permission_not_granted_by_user.connect(_on_permission_not_granted_by_user)
 	if plugin:
 		var options = {
-		\"image_height\" : 400,
-		\"image_width\" : 400,
+		\"image_height\" : 500,
+		\"image_width\" : 500,
 		\"keep_aspect\" : false,
 		\"image_format\" : \"jpg\"
 		}
@@ -239,29 +239,38 @@ func _ready() -> void:
 					mode = null
 					var w = Updatedate.add_wait(self)
 					var icon_group = \"\"
-					if $TextureRect.texture != null:
-						var r = HTTPRequest.new()
-						get_tree().get_root().add_child(r)
-						var img :Image= $TextureRect.texture.get_image()
-						var z = str(randi_range(0, 1000000))
-						if !DirAccess.dir_exists_absolute(\"user://group_icon\"):
-							DirAccess.make_dir_absolute(\"user://group_icon\")
-						img.save_webp(\"user://group_icon/\"+group_name+ z +\".webp\")
-						r.request(Updatedate.protocol+Updatedate.subdomin+\"/upload\", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({\"name\":group_name+z+\".webp\", \"data\":img.save_webp_to_buffer()}))
-						var e = await r.request_completed
-						var err = Updatedate.get_json(e[3])
-						if err and err.has(\"error\"):
-							Notification.add_notif(err.error, Notification.ERROR)
+					var img = Image.new()
+					img.load_jpg_from_buffer(Buffer)
+					var r = HTTPRequest.new()
+					get_tree().get_root().add_child(r)
+					var z = str(randi_range(0, 1000000))
+					if !DirAccess.dir_exists_absolute(\"user://group_icon\"):
+						DirAccess.make_dir_absolute(\"user://group_icon\")
+					img.save_webp(\"user://group_icon/\"+group_name+ z +\".webp\")
+					r.request(Updatedate.protocol+Updatedate.subdomin+\"/upload\", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({\"name\":group_name+z+\".webp\", \"data\":img.save_webp_to_buffer()}))
+					var e = await r.request_completed
+					if e[3].size() == 0:
+						w.queue_free()
 						r.queue_free()
-						icon_group = Updatedate.protocol+Updatedate.subdomin+\"/static/files/users/\"+Updatedate.load_game(\"phone\", \"\")+\"/\"+(group_name + z).uri_encode()+\".webp\"
-						var r2 = HTTPRequest.new()
-						get_tree().get_root().add_child(r2)
-						r2.request(Updatedate.protocol+Updatedate.subdomin+\"/groups/icon\", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({\"name\":group_name, \"icon\":icon_group}))
-						await r2.request_completed
-						r2.queue_free()
+						Notification.add_notif(\"اتصال اینترنت برقرار نیست!\", Notification.ERROR)
+						return
+					var err = Updatedate.get_json(e[3])
+					if (err and err.has(\"error\")):
+						Notification.add_notif(err.error, Notification.ERROR)
+						w.queue_free()
+						r.queue_free()
+						return
+					r.queue_free()
+					icon_group = Updatedate.protocol+Updatedate.subdomin+\"/static/files/users/\"+Updatedate.load_game(\"phone\", \"\")+\"/\"+(group_name + z).uri_encode()+\".webp\"
+					var r2 = HTTPRequest.new()
+					get_tree().get_root().add_child(r2)
+					r2.request(Updatedate.protocol+Updatedate.subdomin+\"/groups/icon\", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({\"name\":group_name, \"icon\":icon_group}))
+					var i = await r2.request_completed
+					if i[3].size() > 0:
 						Notification.add_notif(\"با موفقیت بروزرسانی شد\")
-					w.queue_free()
-					
+						w.queue_free()
+						r2.queue_free()
+						$TextureRect.texture = ImageTexture.create_from_image(img)
 				)
 
 func _on_permission_not_granted_by_user(permission):
@@ -508,22 +517,20 @@ func _ready() -> void:
 		plugin.permission_not_granted_by_user.connect(_on_permission_not_granted_by_user)
 	if plugin:
 		var options = {
-		\"image_height\" : 400,
-		\"image_width\" : 400,
+		\"image_height\" : 500,
+		\"image_width\" : 500,
 		\"keep_aspect\" : true,
 		\"image_format\" : \"jpg\"
 		}
 		plugin.setOptions(options)
 		plugin.image_request_completed.connect(func (dic):
 			for Buffer in dic.values():
-				
-				if mode:
+				if mode == 1:
 					mode = null
 					var w = Updatedate.add_wait(self)
 					var img = Image.new()
 					img.load_jpg_from_buffer(Buffer)
 					$TextureRect.texture = ImageTexture.create_from_image(img)
-					
 					var r = HTTPRequest.new()
 					add_child(r)
 					var z = str(randi_range(0, 100000))
@@ -548,11 +555,9 @@ func _on_error(e):
 
 
 func _on_label_2_gui_input(event: InputEvent, x) -> void:
-	print(event)
-	if event is InputEventScreenTouch:
-		if event.is_pressed():
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 			if plugin:
-				print(0)
 				mode = x
 				plugin.getGalleryImage()
 "
