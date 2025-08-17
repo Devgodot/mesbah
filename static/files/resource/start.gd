@@ -26,18 +26,27 @@ func get_text_name(text, node:Label):
 			words.append(g)
 	node.text = words[0][0] if words.size() > 0 else ""
 	node.text += " " + words.back()[0] if words.size() > 1 else ""
-func get_new_message(message):
+func get_new_message(message, _id):
 	var id = message.conversationId + message.part
+	
 	if ids.has(id):
 		var c = conversations[id]
-		if get_tree().has_group(id):
-			var btn = get_tree().get_nodes_in_group(id)[0]
-			btn.queue_free()
 		c["message"] = message
-		c.new += 1
+		if message.sender != Updatedate.load_game("user_name", ""):
+			c.new += 1
 		ids.erase(id)
 		ids.push_front(id)
-		
+		if get_tree().has_group(id):
+			var btn = get_tree().get_nodes_in_group(id)[0]
+			if btn._index != 0:
+				if btn.next_node:
+					btn.next_node._index = btn._index
+					btn.next_node.pre_node = btn.pre_node
+				if btn.pre_node:
+					btn.pre_node.next_node = btn.next_node
+				btn.queue_free()
+			else:
+				change_conversation(btn, c)
 	else:
 		conversations[id] = Updatedate.get_conversation(message.conversationId + message.part)
 		ids.push_front(id)
@@ -89,9 +98,10 @@ func _ready() -> void:
 	Updatedate.load_user()
 	conversations = Updatedate.list_messages()
 	ids = conversations.keys()
+	ids.sort_custom(func(a, b): return conversations[a].message.createdAt > conversations[b].message.createdAt)
 	max_c = conversations.size()
 	var index2 = 0
-	for c in conversations:
+	for c in ids:
 		if index2 < 15:
 			add_conversation(c, conversations[c], $CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer)
 			index2 += 1
@@ -127,6 +137,7 @@ func _ready() -> void:
 		conversations = data
 		max_c = conversations.size()
 		ids = conversations.keys()
+		ids.sort_custom(func(a, b): return conversations[a].message.createdAt > conversations[b].message.createdAt)
 		create_by_pos($CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(1)._index)
 		$CustomTabContainer/MarginContainer3/ScrollContainer.begin_id = ids[0]
 		
@@ -232,7 +243,6 @@ func _on_button_5_pressed() -> void:
 	Transation.change(self, "messages.tscn")
 
 func create_by_pos(x):
-	prints(conversations.size(), x)
 	if x >= conversations.size():
 		x = conversations.size() - 1
 	last_c = x
@@ -288,13 +298,11 @@ func add_ranking(_name):
 
 func add_conversation(_id, data, node=$CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer, pos=-1):
 	if data :
-		
-			
 		var btn:Button = $CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance.duplicate()
 		btn.show()
 		btn.name = "button"
-		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label").text = data.message.messages.text if data.has("message") and data.message and data.message.has("messages") and data.message.messages else ""
-		
+		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label").text = data.message.sender_name + ":\n" if data and data.has("message") and data.message and data.message.has("sender_name") and data.message.sender_name else ""
+		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label").text += data.message.messages.text if data.has("message") and data.message and data.message.has("messages") and data.message.messages else ""
 		if data.has("icon") and data.has("username"):
 			Updatedate.get_icon_user(data.icon, data.username, btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect"))
 		if data.has("new"):
@@ -363,6 +371,37 @@ func add_conversation(_id, data, node=$CustomTabContainer/MarginContainer3/Scrol
 			node.add_child(label, true)
 			if pos != -1:
 				node.move_child(label, pos)
+func change_conversation(btn, data):
+	if data.has("icon") and data.has("username"):
+		Updatedate.get_icon_user(data.icon, data.username, btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect"))
+	if data.has("new"):
+		if data.new > 0:
+			btn.get_node("Panel/HBoxContainer/VBoxContainer2/Label2").text = str(int(data.new)) if data.new < 100 else "+99"
+		else:
+			btn.get_node("Panel/HBoxContainer/VBoxContainer2/Label2").hide()
+	else:
+		btn.get_node("Panel/HBoxContainer/VBoxContainer2/Label2").hide()
+	if data.has("message"):
+		var m = data.message
+		if not m.has("seen") or (m.has("seen") and m.seen == null):
+			if data.last_seen != {}:
+				if data.last_seen.timestamp > m.createdAt or data.state == "online":
+					btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D").default_color = Color.GRAY
+					btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D2").default_color = Color.GRAY
+				else:
+					btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D").default_color = Color.GRAY
+					btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D2").hide()
+			else:
+				btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D").default_color = Color.GRAY
+				btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D2").hide()
+		
+		btn.get_node("Panel/HBoxContainer/VBoxContainer2/Label").text = data.message.time.split(" ")[2]
+	else:
+		btn.get_node("Panel/HBoxContainer/VBoxContainer2/Label").hide()
+	if data.has("part"):
+		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer/RichTextLabel").text = "[light color=yellow freq=20 num=3 len=100][right] درباره‌ی طرح " + data.part
+	else:
+		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer/RichTextLabel").text = ''
 func get_direction(text:String):
 	if text[0] < "ی" and text[0] > "آ":
 		return -1
@@ -387,7 +426,6 @@ func check_has_node(node):
 		var below_node = []
 		
 		var n = node._index
-		
 		for x in 1:
 			
 			if conversations.size() > n + 1 + x:

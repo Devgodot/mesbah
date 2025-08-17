@@ -174,7 +174,6 @@ func get_cost(_id):
 		return 0
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	
 	if OS.get_name() != "Windows":
 		protocol = "https://"
 		subdomin = "messbah403.ir"
@@ -188,12 +187,13 @@ func _ready() -> void:
 	current_user = load_game("current_user", 0)
 	last_user = load_game("last_user", 0)
 	texture.z_index = 5
+	texture.add_to_group("image_show")
+	bg.add_to_group("image_show")
 	texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
 	texture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	texture.size = Vector2(400, 400)
 	texture.pivot_offset = Vector2(200, 200)
 	texture.set_anchors_and_offsets_preset(Control.PRESET_CENTER,Control.PRESET_MODE_KEEP_SIZE)
-	
 	texture.scale = Vector2.ZERO
 	texture.mouse_filter = Control.MOUSE_FILTER_STOP
 	bg.size = size
@@ -232,8 +232,10 @@ func _ready() -> void:
 					)
 	zoom(texture)
 	get_tree().root.size_changed.connect(func():
-		bg.size = size
-		bg.pivot_offset = bg.size/2)
+		if bg:
+			bg.hide()
+			bg.size = size
+			bg.pivot_offset = bg.size/2)
 
 func zoom(texture:TextureRect):
 	texture.gui_input.connect(func(event:InputEvent):
@@ -258,7 +260,8 @@ func _process(delta: float) -> void:
 	if not get_tree().root.get_children().has(texture):
 		get_tree().root.add_child(bg)
 		get_tree().root.add_child(texture)
-		
+		bg.hide()
+		texture.hide()
 		
 	socket.poll()
 	if socket.get_ready_state() == 3 and load_game("user_name") != "":
@@ -922,9 +925,10 @@ func get_message():
 						save_user_messages(data.message.conversationId + data.message.part, {"add":[data.message], "delete":[]})
 						save("last_seen", data.message.createdAt, false)
 						recive_message.emit(data.message, data.id)
-						for m in waiting_message[data.message.conversationId + data.message.part]:
-							if m.id == data.id:
-								waiting_message[data.message.conversationId + data.message.part].erase(m)
+						if waiting_message.has(data.message.conversationId + data.message.part):
+							for m in waiting_message[data.message.conversationId + data.message.part]:
+								if m.id == data.id:
+									waiting_message[data.message.conversationId + data.message.part].erase(m)
 					"delete":
 						save_user_messages(data.conversationId + data.part, {"add":[], "delete":[data.message]})
 						save("last_seen", data.time, false)
