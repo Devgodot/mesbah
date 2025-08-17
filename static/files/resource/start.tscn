@@ -1286,15 +1286,19 @@ var label
 func _ready() -> void:
 	if get_parent().get_parent().get_parent() is Control:
 		parent = get_parent().get_parent().get_parent()
+	Updatedate.recive_message.connect(func(message, id):
+		if _index == 0:
+			_index = 1
+			position.y += 210)
 func _process(delta: float) -> void:
 	if parent and name != \"instance\":
 		size.x = parent.size.x
-		
 		if pre_node:
 			if label:
 				position.y = pre_node.position.y + 420
 			else :
 				position.y = pre_node.position.y + 210
+				
 			_index = pre_node._index + 1 if pre_node._index != null else null
 		else:
 			if next_node and _index == null and next_node._index != null:
@@ -1971,6 +1975,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="instance" type="Button" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 3

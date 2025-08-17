@@ -21,9 +21,12 @@ func _ready() -> void:
 				Transation.change(self, "register.tscn")
 			else:
 				if FileAccess.file_exists("user://resource/Updatedate.gd"):
+					get_tree().call_group("image_show", "queue_free")
 					Updatedate.set_script(ResourceLoader.load("user://resource/Updatedate.gd"))
+					
 				await Updatedate.update_resource()
 				if FileAccess.file_exists("user://resource/Updatedate.gd"):
+					get_tree().call_group("image_show", "queue_free")
 					Updatedate.set_script(ResourceLoader.load("user://resource/Updatedate.gd"))
 				Transation.change(self, "start.tscn")
 				
