@@ -13,12 +13,10 @@ message_bp = Blueprint("messages", __name__)
 @message_bp.get("/get")
 @jwt_required()
 def get_message():
-    time = request.args.get("time", default=0, type=int)
     managements = UserInterface.query.first().data.get("management", [])
     username = current_user.get_username()
     managements = UserInterface.query.first().data.get("management", [])
-    print(datetime.fromtimestamp(time))
-    
+    time = float(request.args.get("time"))
     messages = Messages.query.filter(
         or_(
             Messages.conversationId.like(f"{username}%"),
@@ -26,10 +24,10 @@ def get_message():
             username in managements
         ),
         or_(
-            Messages.createdAt > datetime.fromtimestamp(time),
-            Messages.updatedAt > datetime.fromtimestamp(time),
-            Messages.seen > datetime.fromtimestamp(time),
-            Messages.deleted > datetime.fromtimestamp(time)
+            Messages.createdAt > time,
+            Messages.updatedAt > time,
+            Messages.seen > time,
+            Messages.deleted > time
         )
     ).all()
     if not messages:
@@ -46,17 +44,26 @@ def get_message():
             Conversation.part == conversationId[20:length]
             ).first()
         if conversation is not None:
+            last_seen = conversation.last_seen2 if conversation.user1 == current_user.id else conversation.last_seen1
+            last_seen["timestamp"] = str(last_seen.get("timestamp", 0))
+            last_msg = Messages.query.filter(
+                Messages.conversationId == conversation.conversationId,
+                Messages.part == conversation.part,
+                Messages.deleted.is_(None)
+            ).order_by(Messages.createdAt.desc()).first()
+            
             Conversations[conversationId] = {
                 "part": conversation.part,
                 "username": conversation.user2 if conversation.user1 == current_user.id else conversation.user1,
-                "last_seen": conversation.last_seen2 if conversation.user1 == current_user.id else conversation.last_seen1,
+                "last_seen": last_seen,
                 "state": conversation.state2 if conversation.user1 == current_user.id else conversation.state1,
                 "blocked": conversation.blocked,
                 "icon": User.get_user_by_username(conversation.user2 if conversation.user1 == current_user.id else conversation.user1).data.get("icon", "") if User.get_user_by_username(conversation.user2 if conversation.user1 == current_user.id else conversation.user1) is not None else "",
                 "name": User.get_user_by_username(conversation.user2 if conversation.user1 == current_user.id else conversation.user1).data.get("first_name", "") + " " + User.get_user_by_username(conversation.user2 if conversation.user1 == current_user.id else conversation.user1).data.get("last_name", "") if User.get_user_by_username(conversation.user2 if conversation.user1 == current_user.id else conversation.user1) is not None else "کاربر حذف شده",
                 "custom_name": User.get_user_by_username(conversation.user2 if conversation.user1 == current_user.id else conversation.user1).data.get("custom_name", "") if User.get_user_by_username(conversation.user2 if conversation.user1 == current_user.id else conversation.user1) is not None else "",
                 "add": [], 
-                "delete": []
+                "delete": [],
+                "last_massage": last_msg.id if last_msg is not None else ""
             }
     add_message = []
     deleted_message = []
@@ -76,10 +83,10 @@ def get_message():
                 "time": msg.time,
                 "sender_name": sender,
                 "sender": msg.sender,
-                "seen": msg.seen.timestamp() if msg.seen is not None else None,
+                "seen": str(msg.seen) if msg.seen is not None else None,
                 "response": msg.response,
-                "updatedAt": msg.updatedAt.timestamp() if msg.updatedAt is not None else 0,
-                "createdAt": msg.createdAt.timestamp() if msg.createdAt is not None else 0
+                "updatedAt": str(msg.updatedAt) if msg.updatedAt is not None else "0",
+                "createdAt": str(msg.createdAt) if msg.createdAt is not None else "0"
             })
         else:
             # اطمینان از وجود کلید و لیست "delete"
@@ -87,9 +94,9 @@ def get_message():
                 Conversations[key] = {"delete": []}
             if "delete" not in Conversations[key]:
                 Conversations[key]["delete"] = []
-            Conversations[key]["delete"].append(msg.id)
-        Conversations[key]["add"] = sorted(Conversations[key]["add"], key=lambda x: x["createdAt"])
-    return jsonify({"conversations":Conversations, "time":datetime.now(tz=TehranTimezone()).timestamp()}), 200
+            prev_msg = Conversations[key].get("last_massage", "")
+            Conversations[key]["delete"].append([msg.id, prev_msg])
+    return jsonify({"conversations":Conversations, "time":datetime.now(tz=TehranTimezone()).timestamp() * 1000}), 200
 
 @message_bp.get('/state_user')
 @jwt_required()

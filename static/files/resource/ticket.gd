@@ -203,7 +203,7 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_RESIZED:
 		$TextureRect.position.x = size.x / 2
 		var pos = size.x / 2
-		$ColorRect2.size.y = size.y - 1000
+		$ColorRect2.size.y = size.y
 		$ColorRect2.position.y = 1000
 		$TextureRect4.position.x = pos - ($TextureRect4.size.x / 2)
 		$TextureProgressBar.position.x = pos - ($TextureProgressBar.size.x / 2)

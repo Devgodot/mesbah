@@ -73,7 +73,7 @@ func seen_message(message):
 			var m = message
 			if not m.has("seen") or (m.has("seen") and m.seen == null):
 				if data.last_seen != {}:
-					if data.last_seen.timestamp > m.createdAt or data.state == "online":
+					if float(data.last_seen.timestamp) > float(m.createdAt) or data.state == "online":
 						btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D").default_color = Color.GRAY
 						btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D2").default_color = Color.GRAY
 					else:
@@ -98,7 +98,10 @@ func _ready() -> void:
 	Updatedate.load_user()
 	conversations = Updatedate.list_messages()
 	ids = conversations.keys()
-	ids.sort_custom(func(a, b): return conversations[a].message.createdAt > conversations[b].message.createdAt)
+	var not_message = ids.filter(func (m): return not conversations[m].has("message"))
+	ids = ids.filter(func (m): return conversations[m].has("message"))
+	ids.sort_custom(func(a, b): return float(conversations[a].message.createdAt) > float(conversations[b].message.createdAt))
+	ids.append_array(not_message)
 	max_c = conversations.size()
 	var index2 = 0
 	for c in ids:
@@ -125,27 +128,32 @@ func _ready() -> void:
 					$Button5/Label.show()
 					$Button5/Label.text = str(int(data.num))
 			if url == "/messages/supporters":
-				
 				for s in data.supporters:
 					conversations[s.username + Updatedate.load_game("user_name", "") + s.part] = s
+					
 					if first_supporter == "":
 						first_supporter = s.username + Updatedate.load_game("user_name", "") + s.part
 					ids.append(s.username + Updatedate.load_game("user_name", "") + s.part)
-				
+					if conversations.size() == 1:
+						add_conversation(ids[0], s)
+				$CustomTabContainer/MarginContainer3/ScrollContainer.begin_id = ids[0]
+				$CustomTabContainer/MarginContainer3/ScrollContainer.last_id = ids.back() if ids.size() * 210 > $CustomTabContainer/MarginContainer3/ScrollContainer.size.y else ""
+					
 				)
 	Updatedate.update_list.connect(func (data):
 		conversations = data
 		max_c = conversations.size()
-		print(max_c)
 		ids = conversations.keys()
-		ids.sort_custom(func(a, b): return conversations[a].message.createdAt > conversations[b].message.createdAt)
+		not_message = ids.filter(func (m): return not conversations[m].has("message"))
+		ids = ids.filter(func (m): return conversations[m].has("message"))
+		ids.sort_custom(func(a, b): return float(conversations[a].message.createdAt) > float(conversations[b].message.createdAt))
+		ids.append_array(not_message)
 		if $CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child_count() > 1:
 			create_by_pos($CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(1)._index)
 		else:
 			if ids.size() > 0:
 				create_by_pos(0)
 		if ids.size() > 0:
-			
 			$CustomTabContainer/MarginContainer3/ScrollContainer.begin_id = ids[0]
 		
 		)
@@ -261,9 +269,10 @@ func create_by_pos(x):
 	var num = 12 if conversations.size() > 12 else conversations.size()
 	if conversations.size() - x > 0:
 		if conversations.size() - x < 12:
-			num = int($CustomTabContainer/MarginContainer3/ScrollContainer.size.y / 210) + 1 if conversations.size() > 12 else conversations.size() + 1
-			x = conversations.size() - num - 1 
+			num = int($CustomTabContainer/MarginContainer3/ScrollContainer.size.y / 210) + 1 if conversations.size() > 12 else conversations.size()
+			x = conversations.size() - num - 1 if conversations.size() > 12 else 0
 			last_c = x
+		print(num)
 		for n in num:
 			add_conversation(ids[x+n], conversations[ids[x+n]])
 func _on_custom_tab_container_tab_selected(tab: int) -> void:
@@ -324,7 +333,7 @@ func add_conversation(_id, data, node=$CustomTabContainer/MarginContainer3/Scrol
 			var m = data.message
 			if not m.has("seen") or (m.has("seen") and m.seen == null):
 				if data.last_seen != {}:
-					if data.last_seen.timestamp > m.createdAt or data.state == "online":
+					if float(data.last_seen.timestamp) > float(m.createdAt) or data.state == "online":
 						btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D").default_color = Color.GRAY
 						btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D2").default_color = Color.GRAY
 					else:
@@ -405,6 +414,7 @@ func change_conversation(btn, data):
 		
 		btn.get_node("Panel/HBoxContainer/VBoxContainer2/Label").text = data.message.time.split(" ")[2]
 	else:
+		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D").hide()
 		btn.get_node("Panel/HBoxContainer/VBoxContainer2/Label").hide()
 	if data.has("part"):
 		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer/RichTextLabel").text = "[light color=yellow freq=20 num=3 len=100][right] درباره‌ی طرح " + data.part

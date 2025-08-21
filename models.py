@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import jsonify
 from confige import db
-from sqlalchemy import String, Column, Integer, Text, JSON, URL, DateTime, ForeignKey, Boolean, UUID
+from sqlalchemy import String, Column, Integer, Text, JSON, URL, DateTime, ForeignKey, Boolean, UUID, Float
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField, PasswordField
 from wtforms.validators import InputRequired, EqualTo, Length
@@ -19,10 +19,10 @@ class Messages(db.Model):
     sender = db.Column(String(256), nullable=False)
     messages = db.Column(db.JSON, nullable=False)
     edited = Column(Boolean(), default=False, nullable=False)
-    createdAt = db.Column(db.DateTime, default=datetime.now(TehranTimezone()))
-    updatedAt = db.Column(db.DateTime, default=datetime.now(TehranTimezone()))
-    seen = Column(DateTime(), nullable=True)
-    deleted = Column(DateTime(), nullable=True)
+    createdAt = db.Column(db.Float)
+    updatedAt = db.Column(db.Float)
+    seen = Column(Float(), nullable=True)
+    deleted = Column(Float(), nullable=True)
     response = Column(String(256), nullable=True)
     time = Column(String(256), nullable=True)
     part= Column(String(256), nullable=False, default="")

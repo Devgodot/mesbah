@@ -19,8 +19,8 @@ var token = ""
 var year = "1404"
 var id = ""
 var waiting_message = {}
-var protocol = "https://"
-var subdomin = "messbah403.ir"
+var protocol = "http://"
+var subdomin = "127.0.0.1:5000"
 var conversation = {}
 var part = 0
 var gallary_part = ""
@@ -181,7 +181,12 @@ func _ready() -> void:
 		#if event is InputEventScreenTouch:
 			#if get_global_mouse_position().x < 0 or get_global_mouse_position().y < 0:
 				#DisplayServer.virtual_keyboard_hide())
-	
+	recive_message.connect(func(message, id):
+		for c in waiting_message:
+			if waiting_message[c].size() > 0:
+				var m = waiting_message[c][0]
+				send_message(m.messages.text, m.id, m.response)
+				break)
 	if load_game("user_name") != "":
 		socket.connect_to_url("ws://shirinasalgame.ir")
 	current_user = load_game("current_user", 0)
@@ -207,12 +212,12 @@ func _ready() -> void:
 	bg.material = m
 	bg.mouse_filter = Control.MOUSE_FILTER_STOP
 	load_user()
-	request("/messages/get?time=%d"%load_game("last_seen", 0))
+	request("/messages/get?time=%s"%load_game("last_seen", "0"))
 	request_completed.connect(func(data, url):
-		if url == "/messages/get?time=%d"%load_game("last_seen", 0) and data and data.has("conversations"):
-			save("last_seen", data.time)
+		if url.begins_with("/messages/get?time") and data and data.has("conversations"):
 			for conversationId in data.conversations:
 				save_user_messages(conversationId, data.conversations[conversationId])
+			save("last_seen", str(data.time))
 			update_list.emit(list_messages()))
 			
 	bg.gui_input.connect(func(event:InputEvent):
@@ -269,18 +274,21 @@ func _process(delta: float) -> void:
 		set_user = false
 		internet = false
 	if socket.get_ready_state() == 1:
-		internet = true
 		if not set_user:
+			socket.send(JSON.stringify({ "type": 'register', "username":load_game("user_name", "") }).to_utf8_buffer())
+			set_user = true
+		if not internet:
+			internet = true
 			for r in failed_request:
 				request(r)
-			request("/messages/get?time=%d"%load_game("last_seen", 0))
-			set_user = true
-			socket.send(JSON.stringify({ "type": 'register', "username":load_game("user_name", "") }).to_utf8_buffer())
+			request("/messages/get?time=%s"%load_game("last_seen", "0"))
 			for c in waiting_message:
-				for m in waiting_message[c]:
+				if waiting_message[c].size() > 0:
+					var m = waiting_message[c][0]
 					send_message(m.messages.text, m.id, m.response)
-					
+					break
 		get_message()
+
 func load_user():
 	var d = null
 	if FileAccess.file_exists("user://session.dat"):
@@ -510,7 +518,8 @@ func get_icon_group(icon, group, node:TextureRect):
 			if FileAccess.file_exists("user://group_icon/"+group_name_file):
 				var img = Image.new()
 				img.load("user://group_icon/"+group_name_file)
-				node.texture = ImageTexture.create_from_image(img)
+				if node:
+					node.texture = ImageTexture.create_from_image(img)
 			else:
 				DirAccess.remove_absolute("user://group_icon/"+has_group_img)
 				var r = HTTPRequest.new()
@@ -525,7 +534,8 @@ func get_icon_group(icon, group, node:TextureRect):
 				var img = Image.new()
 				img.load_webp_from_buffer(i[3])
 				img.save_webp("user://group_icon/"+group_name_file)
-				node.texture = ImageTexture.create_from_image(img)
+				if node:
+					node.texture = ImageTexture.create_from_image(img)
 		else:
 			var r = HTTPRequest.new()
 			add_child(r)
@@ -539,15 +549,17 @@ func get_icon_group(icon, group, node:TextureRect):
 			var img = Image.new()
 			img.load_webp_from_buffer(i[3])
 			img.save_webp("user://group_icon/"+group_name_file)
-			node.texture = ImageTexture.create_from_image(img)
+			if node:
+				node.texture = ImageTexture.create_from_image(img)
 		w.queue_free()
-		node.mouse_filter = Control.MOUSE_FILTER_STOP
-		node.gui_input.connect(func(event:InputEvent):
-			if event is InputEventScreenTouch  and event.is_pressed():
-				if texture.scale.x > 0.2:
-					hide_picture()
-				else:
-					show_picture(node.texture))
+		if node:
+			node.mouse_filter = Control.MOUSE_FILTER_STOP
+			node.gui_input.connect(func(event:InputEvent):
+				if event is InputEventScreenTouch  and event.is_pressed():
+					if texture.scale.x > 0.2:
+						hide_picture()
+					else:
+						show_picture(node.texture))
 func get_icon_user(icon:String, user_name, node):
 	if !DirAccess.dir_exists_absolute("user://users_icon"):
 		DirAccess.make_dir_absolute("user://users_icon")
@@ -584,9 +596,9 @@ func get_icon_user(icon:String, user_name, node):
 				var img = Image.new()
 				img.load_webp_from_buffer(i[3])
 				img.save_webp("user://users_icon/"+user_name_file)
-				if node is TextureRect:
+				if node and node is TextureRect:
 					node.texture = ImageTexture.create_from_image(img)
-				if node is TextureButton:
+				if node and node is TextureButton:
 					node.texture_normal = ImageTexture.create_from_image(img)
 		else:
 			var r = HTTPRequest.new()
@@ -744,7 +756,7 @@ func save_user_messages(_id:String, _messages:Dictionary):
 	if FileAccess.file_exists("user://messages_"+load_game("user_name", "")+".cfg"):
 		config.load("user://messages_"+load_game("user_name", "")+".cfg")
 	if _id != "":
-		var last_message:Array = config.get_value(_id, "messages", [])
+		var last_message:Dictionary = config.get_value(_id, "messages", {})
 		if _messages.has("part"):
 			config.set_value(_id, "part", _messages.part)
 		if _messages.has("icon"):
@@ -756,22 +768,18 @@ func save_user_messages(_id:String, _messages:Dictionary):
 		if _messages.has("username") and _id != "":
 			config.set_value(_id, "username", _messages.username)
 		if _messages.has("seen"):
-		
-			if last_message.map(func (n): return n["id"]).has(_messages.seen.id):
-				var x = last_message.find_custom(func (n): return n["id"] == _messages.seen.id)
-				if x != -1:
-					last_message[x].seen = _messages.seen.seen
+			last_message[_messages.seen.id].seen = _messages.seen.seen
 		for m in _messages.add:
-			if last_message.map(func (n): return n["id"]).has(m.id):
-				var x = last_message.find_custom(func (n): return n["id"] == m.id)
-				last_message[x] = m
+			last_message[m.id] = m
+			if config.get_value(_id, "last_message", "") == "":
+				config.set_value(_id, "last_message", m.id)
 			else:
-				last_message.append(m)
-		
+				if float(last_message[config.get_value(_id, "last_message", "")].createdAt) < float(m.createdAt):
+					config.set_value(_id, "last_message", m.id)
 		for id in _messages.delete:
-			for _message in last_message:
-				if _message.id == id:
-					last_message.erase(_message)
+			last_message.erase(id[0])
+			if config.get_value(_id, "last_message", "") == id[0]:
+				config.set_value(_id, "last_message", id[1])
 		config.set_value(_id, "messages", last_message)
 	if _messages.has("state"):
 		for c in config.get_sections():
@@ -780,7 +788,7 @@ func save_user_messages(_id:String, _messages:Dictionary):
 				config.set_value(c, "last_seen", _messages.last_seen)
 	config.save("user://messages_"+load_game("user_name", "")+".cfg")
 
-func load_messages(_id, default=[]):
+func load_messages(_id, default={}):
 	var config = ConfigFile.new()
 	if not FileAccess.file_exists("user://messages_"+load_game("user_name", "")+".cfg"):
 		config.save("user://messages_"+load_game("user_name", "")+".cfg")
@@ -795,13 +803,11 @@ func list_messages():
 	var data = {}
 	for c in config.get_sections():
 		var user = ""
-		var new_messages = config.get_value(c, "messages", []).filter(func (x): return (not x.has("seen") or x["seen"] == null) and x["sender"] != load_game("user_name", ""))
-		var last_message
-		if new_messages.size() == 0:
-			last_message = config.get_value(c, "messages", [])[-1]
-		else:
-			last_message = new_messages[-1]
-		data[c] = {message=last_message, new=len(new_messages), username=config.get_value(c, "username", ""), icon=config.get_value(c, "icon", ""), "name"=config.get_value(c, "name", ""), custom_name=config.get_value(c, "custom_name", ""), part=config.get_value(c, "part", ""), "last_seen"=config.get_value(c, "last_seen", {}), state=config.get_value(c, "state", "")}
+		var m = config.get_value(c, "messages", {})
+		var new_messages = m.values().filter(func (x): return (not x.has("seen") or x["seen"] == null) and x["sender"] != load_game("user_name", ""))
+		data[c] = {new=len(new_messages), username=config.get_value(c, "username", ""), icon=config.get_value(c, "icon", ""), "name"=config.get_value(c, "name", ""), custom_name=config.get_value(c, "custom_name", ""), part=config.get_value(c, "part", ""), "last_seen"=config.get_value(c, "last_seen", {}), state=config.get_value(c, "state", "")}
+		if m.has(config.get_value(c, "last_message", "")):
+			data[c]["message"] = m[config.get_value(c, "last_message", "")]
 	return data
 func get_conversation(_id):
 	var config = ConfigFile.new()
@@ -897,7 +903,7 @@ func load_scene(new_scene) -> Object:
 	return s
 
 func send_message(text:String, _id, responsed:String=""):
-	
+	print(text)
 	var data = {type="message", conversationId=conversation["id"].left(20), senderId=load_game("user_name", ""), content={text=text}, part=conversation["part"], response=responsed, id=_id}
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		socket.send_text(JSON.stringify(data))
@@ -910,8 +916,8 @@ func message_seen(_id:String):
 	var data = {type="seen", conversationId=conversation["id"].left(20), senderId=load_game("user_name", ""), content={text=""}, id=_id}
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		socket.send_text(JSON.stringify(data))
-func delete(id:String):
-	var data = {type="delete", conversationId=conversation["id"].left(20), senderId=load_game("user_name", ""), content={text=""}, id=id, part=conversation["part"]}
+func delete(id:String, pre_id:String):
+	var data = {type="delete", conversationId=conversation["id"].left(20), senderId=load_game("user_name", ""), content={text=""}, id=id, part=conversation["part"], pre_id=pre_id}
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		socket.send_text(JSON.stringify(data))
 func get_message():
@@ -921,26 +927,35 @@ func get_message():
 			if data and data.has("type"):
 				match data.type:
 					"message":
+						data.message.createdAt = str(float(data.message.createdAt))
+						data.message.updatedAt = str(float(data.message.updatedAt))
 						save_user_messages(data.message.conversationId + data.message.part, {"add":[data.message], "delete":[]})
-						save("last_seen", data.message.createdAt, false)
-						recive_message.emit(data.message, data.id)
+						save("last_seen", str(data.message.createdAt), false)
+						
 						if waiting_message.has(data.message.conversationId + data.message.part):
 							for m in waiting_message[data.message.conversationId + data.message.part]:
 								if m.id == data.id:
 									waiting_message[data.message.conversationId + data.message.part].erase(m)
+						recive_message.emit(data.message, data.id)
 					"delete":
-						save_user_messages(data.conversationId + data.part, {"add":[], "delete":[data.message]})
-						save("last_seen", data.time, false)
-						delete_message.emit(data.conversationId + data.part, data.message)
+						save_user_messages(data.conversationId + data.part, {"add":[], "delete":[[data.message, data.pre_message]]})
+						save("last_seen", str(data.time), false)
+						delete_message.emit(data.conversationId + data.part, data.message, data.pre_message)
 					"edited":
+						data.message.createdAt = str(float(data.message.createdAt))
+						data.message.updatedAt = str(float(data.message.updatedAt))
 						save_user_messages(data.message.conversationId + data.message.part, {"add":[data.message], "delete":[]})
-						save("last_seen", data.message.updatedAt, false)
+						save("last_seen", str(data.message.updatedAt), false)
 						edit_message.emit(data.message)
 					"seen":
+						data.message.createdAt = str(float(data.message.createdAt))
+						data.message.updatedAt = str(float(data.message.updatedAt))
+						data.message.seen = str(float(data.message.seen))
 						save_user_messages(data.message.conversationId + data.message.part, {"add":[], "delete":[], "seen":data.message})
-						save("last_seen", data.message.seen, false)
+						save("last_seen", str(data.message.seen), false)
 						seen_message.emit(data.message)
 					"new":
 						save_user_messages(data.conversationId + data.part, {"add":[], "delete":[], "username":data.user.username, "icon":data.user.icon, "name":data.user.name, "custom_name":data.user.custom_name, "part":data.part})
 					"status":
+						data.timestamp = str(float(data.timestamp))
 						save_user_messages("", {"add":[], "delete":[], "last_seen":{"time":data.time, "timestamp":data.timestamp}, "state":data.state, "username":data.username})

@@ -413,10 +413,10 @@ expand_margin_bottom = 50.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1pfr"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_6hmx6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ya0au"]
 viewport_path = NodePath("SubViewport5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ya0au"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
 viewport_path = NodePath("SubViewport6")
 
 [sub_resource type="Resource" id="Resource_ya0au"]
@@ -458,7 +458,7 @@ corner_radius_bottom_right = 100
 corner_radius_bottom_left = 100
 anti_aliasing_size = 6.627
 
-[sub_resource type="Resource" id="Resource_2gfuy"]
+[sub_resource type="Resource" id="Resource_yoxka"]
 resource_local_to_scene = true
 script = ExtResource("19_wx5k3")
 arrow_icon = ExtResource("18_h770b")
@@ -466,8 +466,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_6hmx6")
-icon_unselected = SubResource("ViewportTexture_ya0au")
+icon_selected = SubResource("ViewportTexture_ya0au")
+icon_unselected = SubResource("ViewportTexture_0gyww")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -553,13 +553,13 @@ font_size = 37
 outline_size = 5
 outline_color = Color(0.0641096, 0.354893, 0.0897511, 1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xekfo"]
 viewport_path = NodePath("SubViewport5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xam4k"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ypgks"]
 viewport_path = NodePath("SubViewport6")
 
-[sub_resource type="Resource" id="Resource_yoxka"]
+[sub_resource type="Resource" id="Resource_ycbhe"]
 resource_local_to_scene = true
 script = ExtResource("19_wx5k3")
 arrow_icon = ExtResource("18_h770b")
@@ -567,8 +567,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_0gyww")
-icon_unselected = SubResource("ViewportTexture_xam4k")
+icon_selected = SubResource("ViewportTexture_xekfo")
+icon_unselected = SubResource("ViewportTexture_ypgks")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -667,13 +667,13 @@ outline_size = 10.0
 font_size = 50.0
 metadata/_custom_type_script = "uid://w6f05d55d5o8"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xekfo"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_5xbah"]
 viewport_path = NodePath("SubViewport7")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ypgks"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_pxum8"]
 viewport_path = NodePath("SubViewport8")
 
-[sub_resource type="Resource" id="Resource_ycbhe"]
+[sub_resource type="Resource" id="Resource_mrvu1"]
 resource_local_to_scene = true
 script = ExtResource("19_wx5k3")
 arrow_icon = ExtResource("18_h770b")
@@ -681,8 +681,8 @@ max_arrow_width = 80
 offset_arrow = Vector2(0, 30)
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_xekfo")
-icon_unselected = SubResource("ViewportTexture_ypgks")
+icon_selected = SubResource("ViewportTexture_5xbah")
+icon_unselected = SubResource("ViewportTexture_pxum8")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -1166,7 +1166,7 @@ var scroll = Vector2.ZERO
 var offset = 0
 var begin_id = \"\"
 var last_id = \"\"
-var can_drag = [true, true]
+var can_drag = [false, true]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	scroll = lerp(scroll, Vector2.ZERO, 0.5)
@@ -1176,7 +1176,9 @@ func _process(delta: float) -> void:
 			var btn = get_tree().get_first_node_in_group(last_id)
 			if btn.global_position.y < global_position.y + size.y - btn.size.y:
 				can_drag[1] = false
-				$VBoxContainer.get_child(1).position.y += (global_position.y + size.y - btn.size.y) - btn.global_position.y
+				if can_drag[0]:
+					print(0)
+					$VBoxContainer.get_child(1).position.y += (global_position.y + size.y - btn.size.y) - btn.global_position.y
 			else:
 				can_drag[1] = true
 		else:
@@ -1241,26 +1243,6 @@ func _gui_input(event: InputEvent) -> void:
 		if event.is_pressed() and event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			if can_drag[0]:
 				scroll = (Vector2(0, 100 * event.factor))
-
-
-
-func manage_scroll(box):
-	for child in box.get_children():
-		if child.name != \"instance\":
-			var space = separation
-			var top_pos = global_position.y - child.size.y - space
-			var bottom_pos = global_position.y + size.y + child.size.y + space
-			var left_pos = global_position.x - child.size.x - space
-			var right_pos = global_position.x + size.x + space
-			var child_pos = child.global_position
-			
-			if child_pos.y < top_pos or child_pos.y > bottom_pos or child_pos.x < left_pos or child_pos.x > right_pos:
-				if child.visible:
-					child.hide()
-			else:
-				if not child.visible:
-					child.show()
-				
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bd0r"]
@@ -1832,7 +1814,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_x1pfr")
 visible = false
 layout_mode = 2
 scroll_path = NodePath("../..")
-base_button = SubResource("Resource_2gfuy")
+base_button = SubResource("Resource_yoxka")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
@@ -1943,7 +1925,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Control" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_2bsga")]
 layout_mode = 2
 scroll_path = NodePath("../..")
-base_button = SubResource("Resource_yoxka")
+base_button = SubResource("Resource_ycbhe")
 subpanel_style = SubResource("StyleBoxEmpty_5xbah")
 panel_style = SubResource("StyleBoxEmpty_pxum8")
 height = 250.0
@@ -1952,7 +1934,7 @@ options = Array[ExtResource("20_qmjwg")]([SubResource("Resource_q1j5q"), SubReso
 [node name="Control2" parent="CustomTabContainer/MarginContainer/Panel/ScrollContainer/VBoxContainer" instance=ExtResource("17_2bsga")]
 layout_mode = 2
 scroll_path = NodePath("../..")
-base_button = SubResource("Resource_ycbhe")
+base_button = SubResource("Resource_mrvu1")
 subpanel_style = SubResource("StyleBoxEmpty_6hmx6")
 panel_style = SubResource("StyleBoxEmpty_cc30s")
 height = 250.0
@@ -2128,13 +2110,14 @@ custom_effects = [SubResource("RichTextEffect_cc30s")]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "سلام"
+text = "سلام:
+"
 label_settings = SubResource("LabelSettings_pxum8")
-autowrap_mode = 3
+autowrap_mode = 1
 text_overrun_behavior = 4
 
 [node name="Node2D" type="Node2D" parent="CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer/instance/Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label"]
