@@ -2,26 +2,32 @@ extends Control
 
 var supporters = []
 var part = 0
-var messages = []
+var messages = {}
 @onready var vbox = $VBoxContainer
 @onready var text_edit: TextEdit = $VBoxContainer/Panel/VBoxContainer/HBoxContainer/TextEdit
 var scroll = [0, 0, 0]
 var change = false
 var seen_message = [[], [], []]
 var check = false
+var last_index = 0
 var senderId = "0"
 var action_box
 var fram = 0
 var responses = []
 var box_ref
 var max_line = 5
-var times = []
+var times = {}
 var edited_box:PanelContainer
 var not_seen
 var plugin
 var base_height = 0
 var offset = 0
 var screen_size
+var unseen_len = 0
+var ids = []
+var last_id = ""
+var r_id = ""
+var last_height = 0
 func get_direction(text:String):
 	if text[0] < "ی" and text[0] > "آ":
 		return -1
@@ -39,12 +45,12 @@ func uuid(len:int, step:int=4):
 	return id
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if DisplayServer.tts_is_speaking():
-		DisplayServer.tts_stop()
 	# گرفتن لیست صداها
 	#var voices = DisplayServer.tts_get_voices()
 	#print("Available voices:", voices)
 	#
+	
+
 	# گفتن متن
 	#DisplayServer.tts_speak("salam man mohammad hosein hastam", "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_ZIRA_11.0", 100, 1.0, 1.5)
 	
@@ -61,59 +67,98 @@ func _ready() -> void:
 		Updatedate.seen_message.connect(func(message:Dictionary):
 			if message:
 				if message.conversationId + message.part == c.id:
-					messages[messages.find_custom(func(x):return x["id"] == message["id"])] = message
-					var y = get_tree().get_nodes_in_group("message").find_custom(func (x): return x.get_meta("id", "") == message["id"])
-					var box = get_tree().get_nodes_in_group("message")[y]
-					box.seen = message.seen
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").default_color = Color("32ff06")
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").default_color = Color("32ff06")
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").show()
+					messages[message["id"]] = message
+					if get_tree().has_group(message.id):
+						var box = get_tree().get_nodes_in_group(message.id)[0]
+						box.seen = message.seen
+						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").default_color = Color("32ff06")
+						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").default_color = Color("32ff06")
+						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").show()
 				)
 		Updatedate.edit_message.connect(func (message:Dictionary):
 			if message:
 				if message.conversationId + message.part == c.id:
-					messages[messages.find_custom(func(x):return x["id"] == message["id"])] = message
-					var y = get_tree().get_nodes_in_group("message").find_custom(func (x): return x.get_meta("id", "") == message["id"])
-					get_tree().get_nodes_in_group("message")[y].get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  message.messages.text
+					messages[message["id"]] = message
+					get_tree().get_nodes_in_group(message.id)[0].get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  message.messages.text
 				) 
 		Updatedate.recive_message.connect(func(message, id):
 			if message.conversationId + message.part == c.id:
-				messages.append(message)
-				if message.time.split(" ")[0] not in times.map(func(x):return x[2]):
-					times.append([message.id, message.time, message.time.split(" ")[0]])
-				var pos = -1
-				for m in get_tree().get_nodes_in_group("message"):
-					if m.get_meta("id", '') == id:
-						pos = m.get_index()
-						m.queue_free()
-				add_message(message, pos)
+				messages[message.id] = message
+				var p = ids.size() - 1
+				for x in ids.size():
+					var y = ids.size() - x - 1
+					if id == ids[y]:
+						p = y
+						break
+				ids.insert(p, message.id)
+				messages.erase(id)
+				ids.erase(id)
+				if message.time.split(" ")[0] not in times.values():
+					times[message.id] = message.time.split(" ")[0]
+				$VBoxContainer/ScrollContainer.begin_id = ids[0]
+				$VBoxContainer/ScrollContainer.last_id = ids.back()
+				for m in get_tree().get_nodes_in_group(id):
+					if m.pre_node:
+						m.pre_node.next_node = null if m.next_node == null else m.next_node
+					if m.next_node:
+						m.next_node.pre_node = null if m.pre_node == null else m.pre_node
+						m.next_node.index = m.index
+					add_message(message, m.get_index())
+					m.queue_free()
+				last_id = ids.back()
+				if message.sender == senderId:
+					await focus_on_message(message.id)
 				)
-		Updatedate.delete_message.connect(func (id, message):
+		Updatedate.delete_message.connect(func (id, message, pre_message):
 			if id == c.id:
-				
-				var m = get_tree().get_nodes_in_group("message").filter(func (x):return x.get_meta("id") == message)
+				print(message)
+				var m = get_tree().get_nodes_in_group(message)
 				if m.size() > 0:
+					print(2)
 					var box = m[0]
 					box.self_modulate.a = 0.0
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label").modulate.a = 0.0
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2").modulate.a = 0.0
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label3").modulate.a = 0.0
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").modulate.a = 0.0
+					for child in box.get_node("HBoxContainer/MarginContainer/VBoxContainer").get_children():
+						if child is not CPUParticles2D:
+							child.modulate.a = 0.0
 					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/CPUParticles2D").emitting = true
 					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/CPUParticles2D").emission_rect_extents = box.size / 2
 					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/CPUParticles2D").position = box.size / 2
 					if box_ref == box:
 						_on_null_ref_pressed()
 					await box.get_node("HBoxContainer/MarginContainer/VBoxContainer/CPUParticles2D").finished
+					var index = box.index
+					if box.pre_node:
+						box.pre_node.next_node = null if box.next_node == null else box.next_node
+					if box.next_node:
+						box.next_node.pre_node = null if box.pre_node == null else box.pre_node
+					
 					box.queue_free()
-					var t = messages[(messages.find_custom(func(x): return x.id == message))].time.split(" ")[0]
-					messages.remove_at(messages.find_custom(func(x): return x.id == message))
-					var t2 = messages.filter(func(x): return x.time.split(" ")[0] == t)
-					if t2.size() == 0:
-						times.remove_at(times.find_custom(func(x):return x[2] == t))
-						for node in get_tree().get_nodes_in_group("times"):
-							if node.get_meta("time", "") == t:
-								node.queue_free()
+					var t = messages[message].time.split(" ")[0]
+					messages.erase(message)
+					ids.erase(message)
+					
+					
+					if index >= ids.size():
+						index -= 1
+					if ids.size() > 0:
+						$VBoxContainer/ScrollContainer.last_id = ids.back()
+						$VBoxContainer/ScrollContainer.begin_id = ids[0]
+						
+						last_id = ids.back()
+						var t2 = messages[ids[index]].time.split(" ")[0]
+						if times.has(message):
+							times.erase(message)
+							for node in get_tree().get_nodes_in_group("times"):
+								if node.get_meta("time", "") == t:
+									node.queue_free()
+							if t2 not in times.values():
+								times[ids[index]] = t2
+							if get_tree().has_group(ids[index]) and times.has(ids[index]):
+								get_tree().get_first_node_in_group(ids[index]).queue_free()
+					else:
+						$VBoxContainer/ScrollContainer.last_id = ""
+						$VBoxContainer/ScrollContainer.begin_id = ""
+						last_id = ""
 					)
 	if c.has("state"):
 		if c.state == "online":
@@ -132,46 +177,67 @@ func _ready() -> void:
 		$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name.dir = get_direction(c.name)
 	if c.has("id"):
 		messages = Updatedate.load_messages(Updatedate.conversation.id)
-		for m in messages:
-			if m.time.split(" ")[0] not in times.map(func(x):return x[2]):
-				times.append([m.id, m.time, m.time.split(" ")[0]])
-	var l = get_last_message()
-	var index = 0
-	if messages.size() > 0:
-		for x in range(l[2], l[2] + l[0]):
-			add_message(messages[x])
-	await get_tree().create_timer(0.1).timeout
-	if l[1]:
-		$VBoxContainer/ScrollContainer.get_item_pos(l[1].id)
+		ids = messages.keys()
+		ids.sort_custom(func (a, b): return float(messages[a].createdAt) < float(messages[b].createdAt))
+		
+		$VBoxContainer/ScrollContainer.begin_id = ids[0] if ids.size() > 0 else ""
+		$VBoxContainer/ScrollContainer.last_id = ids[-1] if ids.size() > 0 else ""
+		last_id = ids[-1] if ids.size() > 0 else ""
+		for k in ids:
+			var m = messages[k]
+			if m.time.split(" ")[0] not in times.values():
+				times[m.id] = m.time.split(" ")[0]
 	if Updatedate.conversation.has("id"):
 		if Updatedate.waiting_message.has(Updatedate.conversation.id):
 			for m in Updatedate.waiting_message[Updatedate.conversation.id]:
-				add_message(m)
+				messages[m.id] = m
+				ids.append(m.id)
+				$VBoxContainer/ScrollContainer.last_id = ids[-1] if ids.size() > 0 else ""
+	var l = get_last_message()
+	var index = 0
+	last_index = l[2]
+	await create_by_pos(last_index)
+	await get_tree().create_timer(0.1).timeout
+	
 	show()
 	
 	check = true
 	$VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.gui_input.connect(func(event:InputEvent):
 		if event is InputEventScreenTouch:
 			if event.is_released() and box_ref:
-				var ref_box = await $VBoxContainer/ScrollContainer.get_item_pos(box_ref.get_meta("id", ""))
-				if ref_box:
-					$ColorRect2.size.y = ref_box.size.y
-					$ColorRect2.global_position.y = ref_box.global_position.y
-					$AnimationPlayer2.play("fade"))
+				await focus_on_message(box_ref)
+				r_id = box_ref
+				$AnimationPlayer2.play("fade")
+				)
 	$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name.show()
 func get_last_message():
-	for m in messages:
+	for m in messages.values():
 		if m.sender != senderId and (not m.has("seen") or m.seen == null):
 			not_seen = m
 			break
 	if not_seen:
-		var x = messages.find(not_seen)
+		var x = ids.find(not_seen.id)
 		var delta = messages.size() - x
 		if delta > 20:
 			return [x, not_seen]
 		else:
 			return [x - (20 - delta), not_seen] if x - (20 - delta) > 0 else [0, not_seen]
-	return [20 if messages.size() - 20 > 0 else messages.size(), messages.back(), 0 if messages.size() < 20 else messages.size() - 20]
+	return [20 if messages.size() - 20 > 0 else messages.size(), messages[ids.back()] if ids.size() > 0 else {}, messages.size()]
+	
+
+
+func create_by_pos(x):
+	if x >= messages.size():
+		x = messages.size() - 1
+	last_index = x
+	for child in $VBoxContainer/ScrollContainer/VBoxContainer.get_children():
+		if "instance" not in child.name:
+			child.queue_free()
+	await get_tree().create_timer(0.1).timeout
+	if messages.size() - x > 0 and x >= 0:
+		var box = await add_message(messages[ids[x]])
+		box.checked = true
+		return box
 func add_message(m, pos=-1):
 	var obj:Node
 	if m.sender == senderId:
@@ -179,27 +245,49 @@ func add_message(m, pos=-1):
 	else:
 		obj = $VBoxContainer/ScrollContainer/VBoxContainer/instance3
 	var box :PanelContainer= obj.duplicate()
-	var _label
-	if not_seen and m == not_seen:
-		_label = $VBoxContainer/ScrollContainer/VBoxContainer/instance2.duplicate()
-		_label.show()
-		_label.text = "پیام‌های خوانده نشده"
-		_label.ref = box
-		$VBoxContainer/ScrollContainer/VBoxContainer.add_child(_label)
-		if pos != -1:
-			$VBoxContainer/ScrollContainer/VBoxContainer.move_child(_label, pos)
-			pos += 1
-	if m.id in times.map(func(x):return x[0]):
+	if m.has("id"):
+		box.add_to_group(m.id)
+	box.resized.connect(func():
+		if edited_box == box:
+			if last_height != 0 and last_height > $VBoxContainer/ScrollContainer.size.y - 83:
+				var delta = box.size.y - last_height
+				$VBoxContainer/ScrollContainer/VBoxContainer.position.y -= delta
+			last_height = box.size.y
+			)
+	#var _label
+	#if not_seen and m == not_seen:
+		#_label = $VBoxContainer/ScrollContainer/VBoxContainer/instance2.duplicate()
+		#_label.show()
+		#_label.text = "پیام‌های خوانده نشده"
+		#_label.ref = box
+		#$VBoxContainer/ScrollContainer/VBoxContainer.add_child(_label)
+		#if pos != -1:
+			#$VBoxContainer/ScrollContainer/VBoxContainer.move_child(_label, pos)
+			#pos += 1
+		#if $VBoxContainer/ScrollContainer/VBoxContainer.get_child_count() == 4:
+			#_label.index = last_index
+			#_label.global_position.y = $VBoxContainer/ScrollContainer.global_position.y
+		#if _label.get_index() > 3:
+			#_label.pre_node =  $VBoxContainer/ScrollContainer/VBoxContainer.get_child(_label.get_index() - 1)
+			#_label.pre_node.next_node = _label
+		#if _label.get_index() - 3 < $VBoxContainer/ScrollContainer/VBoxContainer.get_child_count() - 4:
+			#_label.next_node = $VBoxContainer/ScrollContainer/VBoxContainer.get_child(_label.get_index() + 1)
+			#_label.next_node.pre_node = box
+		#if _label.pre_node == null and _label.next_node:
+			#_label.global_position.y = _label.next_node.global_position.y - _label.size.y - 10
+			#_label.index = _label.next_node.index - 1 if _label.next_node.index != null else null
+			#
+	var extra_size = 0
+	if times.has(m.id):
 		var label = $VBoxContainer/ScrollContainer/VBoxContainer/instance2.duplicate()
-		var t = times.filter(func(x): return x[0] == m.id)[0][1]
+		var t = times[m.id]
 		label.add_to_group("times")
-		if _label:
-			label.ref = _label
-		else:
-			label.ref = box
-		label.set_meta("time", times.filter(func(x): return x[0] == m.id)[0][2])
-		var _t = t.split(" ")[0]
-		var dic_time = {year=_t.split("/")[0], mounth=_t.split("/")[1], day=_t.split("/")[2]}
+		label.set_meta("time", t)
+		label.show()
+		box.label = label
+		label.modulate.a = 0
+		extra_size += 73
+		var dic_time = {year=t.split("/")[0], mounth=t.split("/")[1], day=t.split("/")[2]}
 		var day = ""
 		var mounthes = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"]
 		if t.split("$").size() == 2:
@@ -208,18 +296,16 @@ func add_message(m, pos=-1):
 			label.text = str(day, " ", dic_time.day, " ", mounthes[int(dic_time.mounth) -1])
 		else:
 			label.text = str(dic_time.day, " ", mounthes[int(dic_time.mounth) -1], " ", dic_time.year)
-		$VBoxContainer/ScrollContainer/VBoxContainer.add_child(label)
-		if pos != -1:
-			$VBoxContainer/ScrollContainer/VBoxContainer.move_child(label, pos)
-			pos += 1
-	
+		$VBoxContainer/ScrollContainer/Control.add_child(label)
+		
 	box.add_theme_stylebox_override("panel", box.get_theme_stylebox("panel").duplicate())
 	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label3").add_theme_stylebox_override("normal", box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label3").get_theme_stylebox("normal").duplicate())
 	box.show()
+	box.modulate.a = 0
 	if m.has("createdAt"):
 		if not m.has("seen") or (m.has("seen") and m.seen == null):
 			if Updatedate.conversation.last_seen != {}:
-				if Updatedate.conversation.last_seen.timestamp > m.createdAt or Updatedate.conversation.state == "online":
+				if float(Updatedate.conversation.last_seen.timestamp) > float(m.createdAt) or Updatedate.conversation.state == "online":
 					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").default_color = Color.GRAY
 					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").default_color = Color.GRAY
 				else:
@@ -258,25 +344,22 @@ func add_message(m, pos=-1):
 	box.set_meta("id", m.id)
 	box.response.connect(func():
 		if edited_box == null:
-			box_ref = box
+			box_ref = m.id
+			
 		)
 	if m.response and m.response != "":
-		var ref =  messages.filter(func(x):return x.id == m.response)
-		if ref.size() == 1:
-			var index = messages.find(ref[0])
-			var index2 = messages.find(m)
-			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label3").text = ref[0].messages.text
+		var ref =  messages[m.response]
+		if ref:
+			var index = box.index
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label3").text = ref.messages.text
 			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label3").gui_input.connect(func(event:InputEvent):
 				if event is InputEventScreenTouch:
 					if event.is_released():
-						if !responses.has(box):  
-							responses.append(box)
-						
-						var ref_box = await $VBoxContainer/ScrollContainer.get_item_pos(m.response)
-						$ColorRect2.size.y = ref_box.size.y
-						$ColorRect2.global_position.y = ref_box.global_position.y
-						$AnimationPlayer2.play("fade"))
-						
+						await focus_on_message(m.response)
+						r_id = m.response
+						$AnimationPlayer2.play("fade")
+						if !responses.has(m.id) and m.id != last_id:  
+							responses.append(m.id))
 		else:
 			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label3").hide()
 	else:
@@ -293,23 +376,32 @@ func add_message(m, pos=-1):
 	var vbox : VBoxContainer = box.get_node("HBoxContainer/MarginContainer/VBoxContainer")
 	if pos != -1:
 		$VBoxContainer/ScrollContainer/VBoxContainer.move_child(box, pos)
+	if $VBoxContainer/ScrollContainer/VBoxContainer.get_child_count() == 4:
+		box.index = last_index
+		box.global_position.y = $VBoxContainer/ScrollContainer.global_position.y + extra_size
+	if box.get_index() > 3:
+		box.pre_node =  $VBoxContainer/ScrollContainer/VBoxContainer.get_child(box.get_index() - 1)
+		box.pre_node.next_node = box
+		box.global_position.y = box.pre_node.global_position.y + box.pre_node.size.y + 10 + extra_size
+	if box.get_index() - 3 < $VBoxContainer/ScrollContainer/VBoxContainer.get_child_count() - 4:
+		box.next_node = $VBoxContainer/ScrollContainer/VBoxContainer.get_child(box.get_index() + 1)
+	if box.pre_node == null and box.next_node:
+		box.index = box.next_node.index - 1 if box.next_node.index != null else null
 	return box
 func check_has_node(node):
 	if check:
-		var index = node.get_index()
-		var above_node
-		var below_node 
-		var n = messages.find_custom(func(x): return node.get_meta("id", "") == x["id"])
-		if messages.size() > n + 1:
-			below_node = messages[n + 1]
-		if n > 0:
-			above_node = messages[n - 1]
-		
-		var nodes = get_tree().get_nodes_in_group("message").filter(func(x):return (above_node and x.get_meta("id", "") == above_node["id"]) or (below_node and x.get_meta("id", "") == below_node["id"])).map(func(x):return x.get_meta("id", ""))
-		if above_node and not nodes.has(above_node["id"]):
-			add_message(above_node, index)
-		if below_node and not nodes.has(below_node["id"]):
-			add_message(below_node, index+1)
+		var n = node.index
+		if n != null:
+			var above_node
+			var below_node
+			if messages.size() > n + 1:
+				below_node = messages[ids[n + 1]]
+			if n > 0:
+				above_node = messages[ids[n - 1]]
+			if above_node and not get_tree().has_group(above_node["id"]):
+				add_message(above_node,  node.get_index())
+			if below_node and not get_tree().has_group(below_node["id"]):
+				add_message(below_node,  node.get_index()+1)
 			
 func get_keyboard_offset():
 	var screen_size = DisplayServer.get_display_safe_area()
@@ -330,17 +422,25 @@ func get_text_name(text, node:Label):
 func _process(delta: float) -> void:
 	offset = get_keyboard_offset()
 	if edited_box:
-		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text = text_edit.text
+		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").set_deferred("text", text_edit.text)
 	if fram <= 6:
 		fram += 1
-	for box in responses:
-		if box.global_position.y < ($VBoxContainer/ScrollContainer.size.y / 2) + $VBoxContainer/ScrollContainer.global_position.y:
-			responses.erase(box)
+	for id in responses:
+		if get_tree().has_group(id):
+			responses.erase(id)
+	if r_id != "":
+		if get_tree().has_group(r_id):
+			var box = get_tree().get_first_node_in_group(r_id)
+			if box:
+				$ColorRect2.size.y = box.size.y
+				$ColorRect2.global_position.y = box.global_position.y
+	else:
+		$ColorRect2.hide()
+		
 	if box_ref:
-		$VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.text = box_ref.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text
+		$VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.text = messages[box_ref].messages.text if messages.has(box_ref) else ""
 		$VBoxContainer/Panel/VBoxContainer/MarginContainer.show()
 	$ColorRect2.size.x = size.x
-	
 	if offset > 100:
 		vbox.size.y = size.y - 95 - vbox.position.y - offset
 	else:
@@ -373,14 +473,55 @@ func _on_button_pressed() -> void:
 		if not Updatedate.waiting_message.has(Updatedate.conversation.id):
 			Updatedate.waiting_message[Updatedate.conversation.id] = []
 		var id = uuid(20, 5)
-		var m = {"messages":{"text":text_edit.text}, "id":id, "part":Updatedate.conversation.part, "sender":Updatedate.load_game("user_name", ""), "sender_name":"شما", "response":box_ref.get_meta("id", "") if box_ref else ""}
+		var m = {"messages":{"text":text_edit.text}, "id":id, "part":Updatedate.conversation.part, "sender":Updatedate.load_game("user_name", ""), "sender_name":"شما", "response":box_ref if box_ref else ""}
 		Updatedate.waiting_message[Updatedate.conversation.id].append(m)
-		add_message(m)
-		Updatedate.send_message(text_edit.text, id, box_ref.get_meta("id", "") if box_ref else "")
+		messages[id] = m
+		ids.append(id)
+		$VBoxContainer/ScrollContainer.begin_id = ids[0]
+		$VBoxContainer/ScrollContainer.last_id = id
+		if get_tree().has_group(last_id):
+			add_message(m)
+			await  focus_on_message(id)
+		else:
+			await focus_on_message(id)
+		last_id = id
+		
+		Updatedate.send_message(text_edit.text, id, box_ref if box_ref else "")
 		text_edit.text = ""
-		await get_tree().create_timer(0.1).timeout
-		$VBoxContainer/ScrollContainer.scroll($VBoxContainer/ScrollContainer.max_scroll)
 		_on_null_ref_pressed()
+func focus_on_message(_id:String):
+	if $VBoxContainer/Control/Button.visible:
+		$AnimationPlayer.play_backwards("pop_button")
+	if messages.has(_id) and edited_box == null and true in $VBoxContainer/ScrollContainer.can_drag:
+		if get_tree().has_group(_id):
+			var box = get_tree().get_first_node_in_group(_id)
+			var bottom_pos = $VBoxContainer/ScrollContainer.global_position.y + $VBoxContainer/ScrollContainer.size.y - box.size.y
+			var top_pos = $VBoxContainer/ScrollContainer.global_position.y
+			if box.label:
+				bottom_pos -= 73
+				top_pos += 73
+			if box.global_position.y > bottom_pos:
+				var delta = box.global_position.y - bottom_pos
+				var tween = get_tree().create_tween()
+				tween.tween_property($VBoxContainer/ScrollContainer/VBoxContainer, "position:y", $VBoxContainer/ScrollContainer/VBoxContainer.position.y - delta, 0.2)
+				tween.play()
+				await tween.finished
+			if box.global_position.y < top_pos:
+				var delta = top_pos - box.global_position.y
+				var tween = get_tree().create_tween()
+				tween.tween_property($VBoxContainer/ScrollContainer/VBoxContainer, "position:y", $VBoxContainer/ScrollContainer/VBoxContainer.position.y + delta, 0.2)
+				tween.play()
+				await tween.finished
+			return box
+		else:
+			var i = -1
+			for x in ids.size():
+				if ids[ids.size() - x - 1] == _id:
+					i = ids.size() - x - 1
+					break
+			if i != -1:
+				return await create_by_pos(i)
+	return null
 func _on_back_button_pressed() -> void:
 	Transation.change(self, "start.tscn", -1)
 func _notification(what: int) -> void:
@@ -399,25 +540,29 @@ func _on_timer_timeout() -> void:
 	if $VBoxContainer/Control/Button.visible:
 		$AnimationPlayer.play_backwards("pop_button")
 
-func _on_scroll_container_start_scroll() -> void:
+func _on_scroll_container_start_scroll(dir) -> void:
 	if $ColorRect2.visible:
 		$ColorRect2.hide()
-	if not $VBoxContainer/Control/Button.visible:
-		$AnimationPlayer.play("pop_button")
+	if not get_tree().has_group(last_id) and dir == -1:
+		if not $VBoxContainer/Control/Button.visible:
+			$AnimationPlayer.play("pop_button")
+		else:
+			$Timer.start()
 	else:
-		$Timer.start()
+		if $VBoxContainer/Control/Button.visible:
+			$AnimationPlayer.play_backwards("pop_button")
 
 
 func _on_scroll_pressed() -> void:
-	$AnimationPlayer.play_backwards("pop_button")
+	if $VBoxContainer/Control/Button.visible:
+		$AnimationPlayer.play_backwards("pop_button")
 	if responses.size() > 0:
-		var ref_box = await $VBoxContainer/ScrollContainer.get_item_pos(responses[0].get_meta("id", ""), -1)
-		$ColorRect2.size.y = ref_box.size.y
-		$ColorRect2.global_position.y = ref_box.global_position.y
+		await focus_on_message(responses[0])
+		r_id = responses[0]
 		$AnimationPlayer2.play("fade")
-		responses.erase(ref_box)
+		responses.remove_at(0)
 	else:
-		$VBoxContainer/ScrollContainer.get_item_pos(messages.back().id, -10)
+		focus_on_message(last_id)
 	
 
 
@@ -429,6 +574,10 @@ func _on_null_ref_pressed() -> void:
 		text_edit.text = ""
 		edited_box.z_index = 0
 		edited_box = null
+		$AnimationPlayer2.play("fade2")
+		$VBoxContainer/ScrollContainer.last_id = ids.back()
+		$VBoxContainer/ScrollContainer.begin_id = ids[0]
+		last_id = ids.back()
 		$AnimationPlayer2.play_backwards("fade2")
 	$VBoxContainer/Panel/VBoxContainer/MarginContainer.hide()
 	$VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.text = ""
@@ -446,6 +595,7 @@ func _on_text_edit_text_changed() -> void:
 		tween.play()
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
+		r_id = ""
 		if event.is_pressed() and event.button_index != MOUSE_BUTTON_RIGHT:
 			if action_box:
 				off_action()
@@ -454,11 +604,9 @@ func _gui_input(event: InputEvent) -> void:
 func _on_delete_pressed() -> void:
 	DisplayServer.dialog_show("حذف پیام", "آیا از حذف این پیام، اطمینان دارید؟ این پیام برای هر دو نفر پاک خواهد شد.", ["بله", "خیر"], func(btn):
 		if btn == 0:
-			if action_box:
-				Updatedate.delete(action_box.get_meta('id', ""))
+			if action_box and action_box.index:
+				Updatedate.delete(ids[(action_box.index)], ids[action_box.index - 1] if action_box.index > 0 else "")
 				off_action())
-
-	
 func off_action():
 	action_box.get_node("AnimationPlayer").play("RESET")
 	action_box = null
@@ -470,7 +618,11 @@ func off_action():
 func _on_edit_pressed() -> void:
 	_on_null_ref_pressed()
 	edited_box = action_box
+	last_height = edited_box.size.y
 	$AnimationPlayer2.play("fade2")
+	$VBoxContainer/ScrollContainer.last_id = edited_box.get_meta("id", "")
+	$VBoxContainer/ScrollContainer.begin_id = edited_box.get_meta("id", "")
+	last_id = edited_box.get_meta("id", "")
 	edited_box.z_index = 1
 	text_edit.text = edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text
 	$VBoxContainer/Panel/VBoxContainer/MarginContainer.show()
