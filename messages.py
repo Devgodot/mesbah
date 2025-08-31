@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from sqlalchemy import or_
+from sqlalchemy import or_, cast, Float
 from confige import db, app
 from flask_jwt_extended import current_user, jwt_required
 from models import User, UserInterface, Group, ServerMessage, Planes, Supporter, Messages, Conversation
@@ -24,10 +24,10 @@ def get_message():
             username in managements
         ),
         or_(
-            float(Messages.createdAt) > time,
-            float(Messages.updatedAt) > time,
-            float(Messages.seen) > time,
-            float(Messages.deleted) > time
+            cast(Messages.createdAt, Float) > time,
+            cast(Messages.updatedAt, Float) > time,
+            cast(Messages.seen, Float) > time,
+            cast(Messages.deleted, Float) > time
         )
     ).all()
     if not messages:
@@ -126,7 +126,7 @@ def get_state_user():
         else:
             user_data = User.get_user_by_username(username).data
             _conversation = Conversation.query.filter(or_(Conversation.user1 == username, Conversation.user2 == username), Conversation.last_seen1 is not None if username == Conversation.user1 else Conversation.last_seen2 is not None).first()
-            return jsonify({"user": {"icon": user_data.get("icon", ""), "name":user_data.get("first_name", "") + " " + user_data.get("last_name", ""), "custom_name": user_data.get("custom_name", ""), "username":username}, "last_seen": _conversation.last_seen1 if _conversation.user1 == username else _conversation.last_seen2, "state":_conversation.state1 if _conversation.user1 == username else _conversation.state2, "blocked":_conversation.blocked}), 200
+            return jsonify({"user": {"icon": user_data.get("icon", ""), "name":user_data.get("first_name", "") + " " + user_data.get("last_name", ""), "custom_name": user_data.get("custom_name", ""), "username":username}, "last_seen": _conversation.last_seen1 if _conversation is not None and _conversation.user1 == username else _conversation.last_seen2 if _conversation is not None else {}, "state":_conversation.state1 if _conversation is not None and _conversation.user1 == username else _conversation.state2 if _conversation is not None else "unknown", "blocked":_conversation.blocked if _conversation is not None else False}), 200
     return jsonify({"error": "نام کاربری مشخص نشده است."}), 400
 
 @message_bp.get("/supporters")
