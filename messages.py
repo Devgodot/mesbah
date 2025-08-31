@@ -24,10 +24,10 @@ def get_message():
             username in managements
         ),
         or_(
-            Messages.createdAt > time,
-            Messages.updatedAt > time,
-            Messages.seen > time,
-            Messages.deleted > time
+            float(Messages.createdAt) > time,
+            float(Messages.updatedAt) > time,
+            float(Messages.seen) > time,
+            float(Messages.deleted) > time
         )
     ).all()
     if not messages:
