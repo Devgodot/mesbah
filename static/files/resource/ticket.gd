@@ -32,7 +32,7 @@ func _ready() -> void:
 	if Updatedate.load_game("icon", "") == "" and $TextureRect4/NinePatchRect/TextureRect2.texture is GradientTexture2D:
 		$TextureRect4/NinePatchRect/Label.text = first_name[0] if first_name != "" else ""
 		if last_name != "":
-			$TextureRect4/NinePatchRect/Label.text += " " + last_name[0]
+			$TextureRect4/NinePatchRect/Label.text += "‌" + last_name[0]
 	var data = Updatedate.load_game("ticket_user", {})
 	Updatedate.request("/ticket/get_user_ticket")
 	Updatedate.request_completed.connect(func(data, url):
@@ -69,6 +69,7 @@ func _ready() -> void:
 	$Panel.position.x = pos - ($Panel.size.x / 2)
 	$TextureRect2.position.y = $TextureProgressBar.position.y - 10
 	$ColorRect2.size.y = size.y
+	$ColorRect2.position.y = 1000
 	await get_tree().create_timer(0.1).timeout
 	show()
 func check_ticket(data):
@@ -167,12 +168,12 @@ func _on_button_pressed() -> void:
 		if $Panel.position.y > size.y:
 			active = true
 			var tween = get_tree().create_tween()
-			tween.tween_property($Panel, "position:y", (size.y / 2) - ($Panel.size.y / 2), 0.5)
+			tween.tween_property($Panel, "position:y", (size.y / 2) - ($Panel.size.y), 0.5)
 			tween.set_trans(Tween.TRANS_BOUNCE)
 			tween.play()
 		else:
 			var tween = get_tree().create_tween()
-			tween.tween_property($Panel, "position:y", size.y + 10, 0.5)
+			tween.tween_property($Panel, "position:y", size.y + 50, 0.5)
 			tween.set_trans(Tween.TRANS_BOUNCE)
 			tween.play()
 			active = false
@@ -183,7 +184,7 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		if $Panel.position.y < size.y:
 			var tween = get_tree().create_tween()
-			tween.tween_property($Panel, "position:y", size.y + 10, 0.5)
+			tween.tween_property($Panel, "position:y", size.y + 50, 0.5)
 			tween.set_trans(Tween.TRANS_BOUNCE)
 			tween.play()
 			active = false
@@ -254,3 +255,7 @@ func create_qur_code():
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	pass
+
+
+func _on_texture_rect_2_gui_input(event: InputEvent) -> void:
+	print(0)

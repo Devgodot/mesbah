@@ -8,18 +8,13 @@ func change(scene, new_scene:String, dir=1):
 		var s = load_scene(new_scene)
 		match trans:
 			0:
-				s.hide()
-				var w = Updatedate.add_wait(scene)
-				await get_tree().create_timer(0.1).timeout
 				get_tree().get_root().add_child(s)
-				await s.visibility_changed
 				scene.queue_free()
-				
 			1:
 				get_tree().get_root().add_child(s)
-				s.position.x = -1000 * dir
+				s.position.x = -size.x * dir
 				var tween = get_tree().create_tween()
-				tween.tween_property(scene, "position:x", 1000 * dir, 0.5)
+				tween.tween_property(scene, "position:x", size.x * dir, 0.5)
 				tween.set_ease(Tween.EASE_IN_OUT)
 				tween.play()
 				var tween2 = get_tree().create_tween()
@@ -75,29 +70,38 @@ func change(scene, new_scene:String, dir=1):
 				tween2.play()
 			5:
 				$CPUParticles2D.emitting = true
+				$CPUParticles2D.emission_rect_extents = size / 2
+				$CPUParticles2D.position = size / 2
 				await get_tree().create_timer(0.5).timeout
 				scene.queue_free()
 				get_tree().get_root().add_child(s)
 			6:
 				$CPUParticles2D2.emitting = true
+				$CPUParticles2D2.emission_rect_extents = size / 2
+				$CPUParticles2D2.position = size / 2
 				await get_tree().create_timer(0.5).timeout
 				scene.queue_free()
 				get_tree().get_root().add_child(s)
 			7:
-				$CPUParticles2D3.position = Vector2(-100 if dir == 1 else 1100, 1000)
-				$CPUParticles2D3.gravity.x = 1000 * dir
+				$CPUParticles2D3.position = Vector2(-100 if dir == 1 else size.x + 100, size.y / 2)
+				$CPUParticles2D3.gravity.x = size.x * dir
 				$CPUParticles2D3.direction.x = dir
 				$CPUParticles2D3.emitting = true
+				$CPUParticles2D3.emission_rect_extents = size / 2
 				await get_tree().create_timer(0.75).timeout
 				scene.queue_free()
 				get_tree().get_root().add_child(s)
 			8:
 				$CPUParticles2D4.emitting = true
+				$CPUParticles2D4.emission_rect_extents = size / 2
+				$CPUParticles2D4.position = size / 2
 				await get_tree().create_timer(0.5).timeout
 				scene.queue_free()
 				get_tree().get_root().add_child(s)
 			9:
 				$CPUParticles2D5.emitting = true
+				$CPUParticles2D5.emission_rect_extents = size / 2
+				$CPUParticles2D5.position = size / 2
 				await get_tree().create_timer(0.5).timeout
 				scene.queue_free()
 				get_tree().get_root().add_child(s)

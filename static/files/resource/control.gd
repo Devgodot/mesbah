@@ -25,9 +25,12 @@ var offset = 0
 var screen_size
 var unseen_len = 0
 var ids = []
+var unseen_ids = [1]
 var last_id = ""
 var r_id = ""
 var last_height = 0
+var has_keyboard = false
+var action_box_offset = Vector2.ZERO
 func get_direction(text:String):
 	if text[0] < "ی" and text[0] > "آ":
 		return -1
@@ -50,7 +53,7 @@ func _ready() -> void:
 	#print("Available voices:", voices)
 	#
 	
-
+	
 	# گفتن متن
 	#DisplayServer.tts_speak("salam man mohammad hosein hastam", "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_ZIRA_11.0", 100, 1.0, 1.5)
 	
@@ -64,39 +67,70 @@ func _ready() -> void:
 	var c = Updatedate.conversation
 	senderId = Updatedate.load_game("user_name", "")
 	if c.has("id"):
+		Updatedate.change_status.connect(func(data):
+			if data.username in c.id and data.username != senderId:
+				if data.state == "online":
+					$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Label.text = "وضعیت: آنلاین"
+				else:
+					if data.has("last_seen") and data.last_seen.has("time"):
+						$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Label.text = "آخرین بازدید: " + data.last_seen.time)
 		Updatedate.seen_message.connect(func(message:Dictionary):
 			if message:
 				if message.conversationId + message.part == c.id:
 					messages[message["id"]] = message
+					unseen_ids.erase(message.id)
 					if get_tree().has_group(message.id):
 						var box = get_tree().get_nodes_in_group(message.id)[0]
 						box.seen = message.seen
-						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").default_color = Color("32ff06")
-						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").default_color = Color("32ff06")
-						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").show()
+						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color("32ff06")
+						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").default_color = Color("32ff06")
+						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").show()
 				)
 		Updatedate.edit_message.connect(func (message:Dictionary):
 			if message:
 				if message.conversationId + message.part == c.id:
 					messages[message["id"]] = message
-					get_tree().get_nodes_in_group(message.id)[0].get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  message.messages.text
+					var box = get_tree().get_nodes_in_group(message.id)[0]
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").show()
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").show()
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D").hide()
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  message.messages.text
+					if message.has("createdAt"):
+						if not message.has("seen") or (message.has("seen") and message.seen == null):
+							if Updatedate.conversation.last_seen != {}:
+								if float(Updatedate.conversation.last_seen.timestamp) > float(message.createdAt) or Updatedate.conversation.state == "online":
+									box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+									box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").default_color = Color.GRAY
+								else:
+									box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+									box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
+							else:
+								box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+								box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
 				) 
 		Updatedate.recive_message.connect(func(message, id):
 			if message.conversationId + message.part == c.id:
 				messages[message.id] = message
 				var p = ids.size() - 1
-				for x in ids.size():
-					var y = ids.size() - x - 1
-					if id == ids[y]:
-						p = y
-						break
-				ids.insert(p, message.id)
-				messages.erase(id)
-				ids.erase(id)
+				var own = false
+				if messages.has(id):
+					for x in ids.size():
+						var y = ids.size() - x - 1
+						if id == ids[y]:
+							p = y
+							break
+					ids.insert(p, message.id)
+					messages.erase(id)
+					ids.erase(id)
+					own = true
+				else:
+					ids.append(message.id)
 				if message.time.split(" ")[0] not in times.values():
 					times[message.id] = message.time.split(" ")[0]
 				$VBoxContainer/ScrollContainer.begin_id = ids[0]
-				$VBoxContainer/ScrollContainer.last_id = ids.back()
+				if ids.size() > 1:
+					$VBoxContainer/ScrollContainer.last_id = ids.back()
+				
 				for m in get_tree().get_nodes_in_group(id):
 					if m.pre_node:
 						m.pre_node.next_node = null if m.next_node == null else m.next_node
@@ -105,16 +139,28 @@ func _ready() -> void:
 						m.next_node.index = m.index
 					add_message(message, m.get_index())
 					m.queue_free()
+					await get_tree().create_timer(0.1).timeout
 				last_id = ids.back()
-				if message.sender == senderId:
+				if message.sender != senderId:
+					unseen_ids.append(message.id)
+					_on_scroll_container_start_scroll(-1)
+				if own:
 					await focus_on_message(message.id)
+				else:
+					if ids.size() < 2:
+						add_message(message)
+					else:
+						if get_tree().has_group(ids[-2]):
+							add_message(message)
+							await get_tree().create_timer(0.1).timeout
+							await focus_on_message(message.id)
+				if messages.size() == 1:
+					get_tree().get_first_node_in_group(last_id).checked = true
 				)
 		Updatedate.delete_message.connect(func (id, message, pre_message):
 			if id == c.id:
-				print(message)
 				var m = get_tree().get_nodes_in_group(message)
 				if m.size() > 0:
-					print(2)
 					var box = m[0]
 					box.self_modulate.a = 0.0
 					for child in box.get_node("HBoxContainer/MarginContainer/VBoxContainer").get_children():
@@ -131,7 +177,7 @@ func _ready() -> void:
 						box.pre_node.next_node = null if box.next_node == null else box.next_node
 					if box.next_node:
 						box.next_node.pre_node = null if box.pre_node == null else box.pre_node
-					
+					unseen_ids.erase(message)
 					box.queue_free()
 					var t = messages[message].time.split(" ")[0]
 					messages.erase(message)
@@ -168,7 +214,7 @@ func _ready() -> void:
 				$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Label.text = "آخرین بازدید: " + c.last_seen.time
 	if c.has("icon"):
 		Updatedate.get_icon_user(c.icon, c.username, $ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect)
-	$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name/texture/Label.text = c.custom_name if c.has("custom_name") and c.custom_name != "" else c.name if c.has("name") else ""
+	$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name.set_deferred("text", c.custom_name if c.has("custom_name") and c.custom_name != "" else c.name if c.has("name") else "")
 	if c.has("name"):
 		if not c.has("icon"):
 			get_text_name(c.name, $ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect/Label)
@@ -179,7 +225,7 @@ func _ready() -> void:
 		messages = Updatedate.load_messages(Updatedate.conversation.id)
 		ids = messages.keys()
 		ids.sort_custom(func (a, b): return float(messages[a].createdAt) < float(messages[b].createdAt))
-		
+		unseen_ids = ids.filter(func(x): return (not messages[x].has("seen") or (messages[x].has("seen") and messages[x].seen == null) and messages[x].sender != senderId))
 		$VBoxContainer/ScrollContainer.begin_id = ids[0] if ids.size() > 0 else ""
 		$VBoxContainer/ScrollContainer.last_id = ids[-1] if ids.size() > 0 else ""
 		last_id = ids[-1] if ids.size() > 0 else ""
@@ -197,10 +243,6 @@ func _ready() -> void:
 	var index = 0
 	last_index = l[2]
 	await create_by_pos(last_index)
-	await get_tree().create_timer(0.1).timeout
-	
-	show()
-	
 	check = true
 	$VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.gui_input.connect(func(event:InputEvent):
 		if event is InputEventScreenTouch:
@@ -211,17 +253,20 @@ func _ready() -> void:
 				)
 	$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name.show()
 func get_last_message():
-	for m in messages.values():
-		if m.sender != senderId and (not m.has("seen") or m.seen == null):
-			not_seen = m
+	var n = 0
+	for x in ids.size():
+		var m = ids[x]
+		if messages[m].sender != senderId and (not messages[m].has("seen") or messages[m].seen == null):
+			not_seen = messages[m]
+			n = x
 			break
 	if not_seen:
 		var x = ids.find(not_seen.id)
 		var delta = messages.size() - x
 		if delta > 20:
-			return [x, not_seen]
+			return [x, not_seen, n]
 		else:
-			return [x - (20 - delta), not_seen] if x - (20 - delta) > 0 else [0, not_seen]
+			return [x - (20 - delta), not_seen, n] if x - (20 - delta) > 0 else [0, not_seen, n]
 	return [20 if messages.size() - 20 > 0 else messages.size(), messages[ids.back()] if ids.size() > 0 else {}, messages.size()]
 	
 
@@ -233,6 +278,7 @@ func create_by_pos(x):
 	for child in $VBoxContainer/ScrollContainer/VBoxContainer.get_children():
 		if "instance" not in child.name:
 			child.queue_free()
+	get_tree().call_group("times", "queue_free")
 	await get_tree().create_timer(0.1).timeout
 	if messages.size() - x > 0 and x >= 0:
 		var box = await add_message(messages[ids[x]])
@@ -306,18 +352,18 @@ func add_message(m, pos=-1):
 		if not m.has("seen") or (m.has("seen") and m.seen == null):
 			if Updatedate.conversation.last_seen != {}:
 				if float(Updatedate.conversation.last_seen.timestamp) > float(m.createdAt) or Updatedate.conversation.state == "online":
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").default_color = Color.GRAY
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").default_color = Color.GRAY
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").default_color = Color.GRAY
 				else:
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").default_color = Color.GRAY
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").hide()
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
 			else:
-				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").default_color = Color.GRAY
-				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").hide()
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
 	else:
-		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D").hide()
-		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Line2D2").hide()
-		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Node2D").show()
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").hide()
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D").show()
 	var time = m.time if m.has("time") else ""
 	var weekday = (time.split("$")) if time != "" else [""]
 	if m.has("sender_name"):
@@ -329,6 +375,7 @@ func add_message(m, pos=-1):
 			box.get_node("AnimationPlayer").play("action")
 			action_box = box
 			var x = box.global_position.x
+			$VBoxContainer/ScrollContainer.scroll = Vector2.ZERO
 			if m.sender != senderId:
 				x += box.size.x
 				$Node2D/AnimationPlayer2.play("flip_r")
@@ -345,7 +392,8 @@ func add_message(m, pos=-1):
 	box.response.connect(func():
 		if edited_box == null:
 			box_ref = m.id
-			
+			if has_keyboard == false:
+				text_edit.grab_focus()
 		)
 	if m.response and m.response != "":
 		var ref =  messages[m.response]
@@ -372,6 +420,13 @@ func add_message(m, pos=-1):
 			check_has_node(box))
 	$VBoxContainer/ScrollContainer/VBoxContainer.add_child(box)
 	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  m.messages.text
+	if Updatedate.waiting_editing.has(Updatedate.conversation.id):
+		var new_m = Updatedate.waiting_editing[Updatedate.conversation.id].filter(func(x):return x[0] == m.id)
+		if new_m.size() > 0:
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").hide()
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D").show()
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text = new_m[0][1]
 	var size_y = - vbox.get_theme_constant("separation")
 	var vbox : VBoxContainer = box.get_node("HBoxContainer/MarginContainer/VBoxContainer")
 	if pos != -1:
@@ -420,6 +475,8 @@ func get_text_name(text, node:Label):
 	node.text += " " + words.back()[0] if words.size() > 1 else ""
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$VBoxContainer/Control/Button/Label.visible = unseen_ids.size() > 0
+	$VBoxContainer/Control/Button/Label.text = str(unseen_ids.size())
 	offset = get_keyboard_offset()
 	if edited_box:
 		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").set_deferred("text", text_edit.text)
@@ -442,8 +499,10 @@ func _process(delta: float) -> void:
 		$VBoxContainer/Panel/VBoxContainer/MarginContainer.show()
 	$ColorRect2.size.x = size.x
 	if offset > 100:
+		has_keyboard = true
 		vbox.size.y = size.y - 95 - vbox.position.y - offset
 	else:
+		has_keyboard = false
 		vbox.size.y = size.y - 10 - vbox.position.y
 	var index = 0
 	for x in text_edit.get_line_count():
@@ -467,7 +526,27 @@ func _process(delta: float) -> void:
 			not_Space2 = true
 func _on_button_pressed() -> void:
 	if edited_box:
-		Updatedate.send_edit_message(edited_box.get_meta("id", ""),text_edit.text)
+		
+		if not Updatedate.waiting_editing.has(Updatedate.conversation.id):
+			Updatedate.waiting_editing[Updatedate.conversation.id] = []
+		if Updatedate.waiting_message.has(Updatedate.conversation.id):
+			var d = Updatedate.waiting_message[Updatedate.conversation.id].filter(func(x):return x.id == edited_box.get_meta("id", ""))
+			if d.size() > 0:
+				Updatedate.waiting_message[Updatedate.conversation.id].erase(d[0])
+				d[0].messages.text = text_edit.text
+				Updatedate.waiting_message[Updatedate.conversation.id].append(d[0])
+				edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  text_edit.text
+				_on_null_ref_pressed()
+				return
+		var d =  Updatedate.waiting_editing[Updatedate.conversation.id].filter(func(x):return x[0] == edited_box.get_meta("id", ""))
+		if d.size() > 0:
+			Updatedate.waiting_editing[Updatedate.conversation.id].erase(d[0])
+		Updatedate.waiting_editing[Updatedate.conversation.id].append([edited_box.get_meta("id", ""), text_edit.text])
+		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").hide()
+		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
+		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D").show()
+		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  text_edit.text
+		Updatedate.send_edit_message(edited_box.get_meta("id", ""), text_edit.text)
 		_on_null_ref_pressed()
 	else:
 		if not Updatedate.waiting_message.has(Updatedate.conversation.id):
@@ -481,6 +560,7 @@ func _on_button_pressed() -> void:
 		$VBoxContainer/ScrollContainer.last_id = id
 		if get_tree().has_group(last_id):
 			add_message(m)
+			await get_tree().create_timer(0.1).timeout
 			await  focus_on_message(id)
 		else:
 			await focus_on_message(id)
@@ -502,6 +582,7 @@ func focus_on_message(_id:String):
 				top_pos += 73
 			if box.global_position.y > bottom_pos:
 				var delta = box.global_position.y - bottom_pos
+				print(delta)
 				var tween = get_tree().create_tween()
 				tween.tween_property($VBoxContainer/ScrollContainer/VBoxContainer, "position:y", $VBoxContainer/ScrollContainer/VBoxContainer.position.y - delta, 0.2)
 				tween.play()
@@ -562,15 +643,15 @@ func _on_scroll_pressed() -> void:
 		$AnimationPlayer2.play("fade")
 		responses.remove_at(0)
 	else:
+		for id in unseen_ids:
+			Updatedate.message_seen(id)
 		focus_on_message(last_id)
-	
 
 
 func _on_null_ref_pressed() -> void:
 	if box_ref:
 		box_ref = null
 	if edited_box:
-		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text = $VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.text
 		text_edit.text = ""
 		edited_box.z_index = 0
 		edited_box = null
@@ -602,6 +683,51 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func _on_delete_pressed() -> void:
+	if Updatedate.waiting_message.has(Updatedate.conversation.id):
+		var d = Updatedate.waiting_message[Updatedate.conversation.id].filter(func(x):return x.id == ids[(action_box.index)])
+		if d.size() > 0:
+			DisplayServer.dialog_show("لغو ارسال", "این پیام بعد از اتصال به اینترنت دیگر ارسال نخواهد شد، آیا اطمینان دارید؟", ["بله", "خیر"], 
+			func(btn):
+				if btn == 0:
+					if action_box and action_box.index:
+						messages.erase(d[0].id)
+						ids.erase(d[0].id)
+						get_tree().call_group(d[0].id, "queue_free")
+						if ids.size() > 0:
+							$VBoxContainer/ScrollContainer.begin_id = ids[0]
+							$VBoxContainer/ScrollContainer.last_id = ids.back()
+							last_id = ids.back()
+						Updatedate.waiting_message[Updatedate.conversation.id].erase(d[0])
+						off_action())
+			return
+	if Updatedate.waiting_editing.has(Updatedate.conversation.id):
+		var d = Updatedate.waiting_editing[Updatedate.conversation.id].filter(func(x):return x[0] == ids[(action_box.index)])
+		if d.size() > 0:
+			DisplayServer.dialog_show("لغو ارسال", "این پیام بعد از اتصال به اینترنت دیگر ارسال نخواهد شد، آیا اطمینان دارید؟", ["بله", "خیر"], 
+			func(btn):
+				if btn == 0:
+					if action_box and action_box.index:
+						var box = action_box
+						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").show()
+						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").show()
+						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D").hide()
+						var message = messages[d[0][0]]
+						box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  message.messages.text
+						if message.has("createdAt"):
+							if not message.has("seen") or (message.has("seen") and message.seen == null):
+								if Updatedate.conversation.last_seen != {}:
+									if float(Updatedate.conversation.last_seen.timestamp) > float(message.createdAt) or Updatedate.conversation.state == "online":
+										box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+										box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").default_color = Color.GRAY
+									else:
+										box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+										box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
+								else:
+									box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+									box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
+						Updatedate.waiting_editing[Updatedate.conversation.id].erase(d[0])
+						off_action())
+			return
 	DisplayServer.dialog_show("حذف پیام", "آیا از حذف این پیام، اطمینان دارید؟ این پیام برای هر دو نفر پاک خواهد شد.", ["بله", "خیر"], func(btn):
 		if btn == 0:
 			if action_box and action_box.index:

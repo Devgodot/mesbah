@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from sqlalchemy import or_, cast, Float
+from sqlalchemy import or_, cast, Float, Integer
 from confige import db, app
 from flask_jwt_extended import current_user, jwt_required
 from models import User, UserInterface, Group, ServerMessage, Planes, Supporter, Messages, Conversation
@@ -17,6 +17,7 @@ def get_message():
     username = current_user.get_username()
     managements = UserInterface.query.first().data.get("management", [])
     time = float(request.args.get("time"))
+    print(time)
     messages = Messages.query.filter(
         or_(
             Messages.conversationId.like(f"{username}%"),
@@ -24,10 +25,10 @@ def get_message():
             username in managements
         ),
         or_(
-            cast(Messages.createdAt, Float) > time,
-            cast(Messages.updatedAt, Float) > time,
-            cast(Messages.seen, Float) > time,
-            cast(Messages.deleted, Float) > time
+            Messages.createdAt > time,
+            Messages.updatedAt > time,
+            Messages.seen > time,
+            Messages.deleted > time
         )
     ).all()
     if not messages:
@@ -51,7 +52,6 @@ def get_message():
                 Messages.part == conversation.part,
                 Messages.deleted.is_(None)
             ).order_by(Messages.createdAt.desc()).first()
-            
             Conversations[conversationId] = {
                 "part": conversation.part,
                 "username": conversation.user2 if conversation.user1 == current_user.id else conversation.user1,

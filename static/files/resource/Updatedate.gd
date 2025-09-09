@@ -7,6 +7,7 @@ signal request_completed
 signal recive_message
 signal delete_message
 signal seen_message
+signal change_status
 signal edit_message(message:Dictionary)
 signal update_list
 var globals = ["accounts", "current_version", "hash_list", "source_dic", "hash_list2", "current_user", "last_user", "planes", "num_users", "num_groups"]
@@ -19,8 +20,12 @@ var token = ""
 var year = "1404"
 var id = ""
 var waiting_message = {}
-var protocol = "http://"
-var subdomin = "127.0.0.1:5000"
+var waiting_editing = {}
+var data_net = [{"protocol":"http://", "domin":"127.0.0.1:5000", "socket":"ws://127.0.0.1:3000"}, {"protocol":"https://", "domin":"messbah403.ir", "socket":"ws://shirinasalgame.ir"}]
+var mode_net = 0
+var protocol = data_net[mode_net].protocol
+var subdomin = data_net[mode_net].domin
+var checked_status = []
 var conversation = {}
 var part = 0
 var gallary_part = ""
@@ -188,7 +193,7 @@ func _ready() -> void:
 				send_message(m.messages.text, m.id, m.response)
 				break)
 	if load_game("user_name") != "":
-		socket.connect_to_url("ws://shirinasalgame.ir")
+		socket.connect_to_url(data_net[mode_net].socket)
 	current_user = load_game("current_user", 0)
 	last_user = load_game("last_user", 0)
 	texture.z_index = 5
@@ -214,6 +219,10 @@ func _ready() -> void:
 	load_user()
 	request("/messages/get?time=%s"%load_game("last_seen", "0"))
 	request_completed.connect(func(data, url):
+		if data:
+			if url.begins_with("/messages/state_user?user="):
+				checked_status.append(data.user.username)
+				save_user_messages("", {"username":data.user.username, "custom_name":data.user.custom_name, "name":data.user.name, "state":data.state, "last_seen":data.last_seen, "icon":data.user.icon, "blocked":data.blocked})
 		if url.begins_with("/messages/get?time") and data and data.has("conversations"):
 			for conversationId in data.conversations:
 				save_user_messages(conversationId, data.conversations[conversationId])
@@ -245,6 +254,16 @@ func _ready() -> void:
 func zoom(texture:TextureRect):
 	texture.gui_input.connect(func(event:InputEvent):
 		texture.scale = clamp(texture.scale, Vector2.ONE, Vector2.ONE * 10)
+		var delta = size - (texture.scale * texture.size)
+		var s = ((texture.size * texture.scale) - texture.size) / 2.0
+		if delta.x > 0:
+			texture.position.x = clamp(texture.position.x, s.x, delta.x + s.x)
+		else:
+			texture.position.x = clamp(texture.position.x, delta.x + s.x, s.x)
+		if delta.y > 0:
+			texture.position.y = clamp(texture.position.y, s.y, delta.y + s.y)
+		else:
+			texture.position.y = clamp(texture.position.y, delta.y + s.y, s.y)
 		if event is InputEventMagnifyGesture:
 			texture.scale *= event.factor
 			texture.scale = clamp(texture.scale, Vector2.ONE, Vector2.ONE * 10)
@@ -258,7 +277,7 @@ func zoom(texture:TextureRect):
 						texture.scale += Vector2.ONE * event.factor / 2
 		if event is InputEventScreenDrag:
 			texture.position += event.relative * texture.scale
-			texture.position = clamp(texture.position, Vector2.ZERO, size)
+			
 		)
 func _process(delta: float) -> void:
 	
@@ -266,11 +285,10 @@ func _process(delta: float) -> void:
 		get_tree().root.add_child(bg)
 		get_tree().root.add_child(texture)
 		bg.hide()
-		texture.hide()
 		
 	socket.poll()
 	if socket.get_ready_state() == 3 and load_game("user_name") != "":
-		socket.connect_to_url("ws://shirinasalgame.ir")
+		socket.connect_to_url(data_net[mode_net].socket)
 		set_user = false
 		internet = false
 	if socket.get_ready_state() == 1:
@@ -287,6 +305,9 @@ func _process(delta: float) -> void:
 					var m = waiting_message[c][0]
 					send_message(m.messages.text, m.id, m.response)
 					break
+			for c in waiting_editing:
+				for x in waiting_editing[c]:
+					send_edit_message(x[0], x[1])
 		get_message()
 
 func load_user():
@@ -628,9 +649,11 @@ func get_icon_user(icon:String, user_name, node):
 			if node and node is TextureButton:
 				node.texture_normal = ImageTexture.create_from_image(img)
 	if node and node is TextureRect:
+		
 		node.mouse_filter = Control.MOUSE_FILTER_STOP
 		node.gui_input.connect(func(event:InputEvent):
 			if event is InputEventScreenTouch and event.is_pressed():
+				
 				if texture.scale.x > 0.2:
 					hide_picture()
 				else:
@@ -769,6 +792,8 @@ func save_user_messages(_id:String, _messages:Dictionary):
 			config.set_value(_id, "username", _messages.username)
 		if _messages.has("seen"):
 			last_message[_messages.seen.id].seen = _messages.seen.seen
+		if _messages.has("blocked"):
+			config.set_value(_id, "blocked", _messages.blocked)
 		for m in _messages.add:
 			last_message[m.id] = m
 			if config.get_value(_id, "last_message", "") == "":
@@ -781,10 +806,20 @@ func save_user_messages(_id:String, _messages:Dictionary):
 			if config.get_value(_id, "last_message", "") == id[0]:
 				config.set_value(_id, "last_message", id[1])
 		config.set_value(_id, "messages", last_message)
-	if _messages.has("state"):
-		for c in config.get_sections():
-			if config.get_value(c, "username", "") == _messages.username:
+	else:
+		var list = Array(config.get_sections()).filter(func(s): return _messages.username in s and _messages.username != Updatedate.load_game("user_name", ""))
+		for c in list:
+			if _messages.has("blocked"):
+				config.set_value(c, "blocked", _messages.blocked)
+			if _messages.has("name"):
+				config.set_value(c, "name", _messages.name)
+			if  _messages.has("custom_name"):
+				config.set_value(c, "custom_name", _messages.custom_name)
+			if _messages.has("icon"):
+				config.set_value(c, "icon", _messages.icon)
+			if _messages.has("state"):
 				config.set_value(c, "state", _messages.state)
+				_messages.last_seen["timestamp"] = str(_messages.last_seen["timestamp"])
 				config.set_value(c, "last_seen", _messages.last_seen)
 	config.save("user://messages_"+load_game("user_name", "")+".cfg")
 
@@ -947,6 +982,10 @@ func get_message():
 						save_user_messages(data.message.conversationId + data.message.part, {"add":[data.message], "delete":[]})
 						save("last_seen", str(data.message.updatedAt), false)
 						edit_message.emit(data.message)
+						if waiting_editing.has(data.message.conversationId + data.message.part):
+							for m in waiting_editing[data.message.conversationId + data.message.part]:
+								if m[0] == data.message.id:
+									waiting_editing[data.message.conversationId + data.message.part].erase(m)
 					"seen":
 						data.message.createdAt = str(float(data.message.createdAt))
 						data.message.updatedAt = str(float(data.message.updatedAt))
@@ -959,3 +998,4 @@ func get_message():
 					"status":
 						data.timestamp = str(float(data.timestamp))
 						save_user_messages("", {"add":[], "delete":[], "last_seen":{"time":data.time, "timestamp":data.timestamp}, "state":data.state, "username":data.username})
+						change_status.emit({"last_seen":{"time":data.time, "timestamp":data.timestamp}, "state":data.state, "username":data.username})
