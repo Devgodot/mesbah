@@ -374,6 +374,11 @@ script/source = "extends TextureRect
 var last_size = size
 var dir = 0
 var label_size
+var text = \"\":
+	set(x):
+		text = x
+		await get_tree().physics_frame
+		$texture/Label.text = x
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	texture = $texture.get_texture()
@@ -384,7 +389,6 @@ func _process(delta: float) -> void:
 		$texture.size = size
 		if $texture/Label.size.x > size.x:
 			$texture.size.x = size.x * 1.5
-			
 			var m = ShaderMaterial.new()
 			m.shader = material.shader
 			m.set_shader_parameter(\"dir\", dir)
@@ -2072,7 +2076,6 @@ theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = SubResource("FontVariation_s4228")
 theme_override_font_sizes/normal_font_size = 65
 bbcode_enabled = true
-text = "5100276150"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -2265,7 +2268,6 @@ metadata/_edit_use_anchors_ = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(799, 65)
-render_target_update_mode = 4
 
 [node name="Label" type="RichTextLabel" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2/name/texture"]
 texture_repeat = 2
@@ -2694,6 +2696,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer8/OptionButton/add"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_masab")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2"]
 visible = false

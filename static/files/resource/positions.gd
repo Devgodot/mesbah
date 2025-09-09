@@ -13,7 +13,7 @@ func get_direction(text:String):
 
 func get_user_text(f, l, node:Label):
 	node.text += f[0] if f != "" else ""
-	node.text += " "+ l[0] if l != "" else ""
+	node.text += "‌"+ l[0] if l != "" else ""
 func get_text_name(text, node:Label):
 	var split = text.split(" ")
 	var words = []
@@ -21,7 +21,7 @@ func get_text_name(text, node:Label):
 		if g != "":
 			words.append(g)
 	node.text = words[0][0] if words.size() > 0 else ""
-	node.text += " " + words.back()[0] if words.size() > 1 else ""
+	node.text += "‌" + words.back()[0] if words.size() > 1 else ""
 # Called when the node enters the scene tree for the first time.
 func _sort(data):
 	for box in get_tree().get_nodes_in_group("boxes"):

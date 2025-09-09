@@ -940,6 +940,7 @@ offset_left = -408.0
 offset_top = -486.0
 offset_right = 409.0
 offset_bottom = 487.0
+mouse_filter = 2
 texture = ExtResource("14_t38pn")
 
 [node name="Label" type="Label" parent="TextureRect4"]
@@ -988,13 +989,13 @@ texture = SubResource("GradientTexture2D_wp4qn")
 metadata/_edit_group_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="TextureRect4/NinePatchRect"]
-show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 texture = SubResource("GradientTexture2D_28p7m")
 expand_mode = 1
 stretch_mode = 6
@@ -1024,6 +1025,7 @@ vertical_alignment = 1
 autowrap_mode = 1
 
 [node name="Button" type="Button" parent="TextureRect4"]
+visible = false
 clip_children = 2
 layout_mode = 0
 offset_left = 49.0
@@ -1164,7 +1166,6 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_4ntr8")
 
 [node name="Label4" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -1572,6 +1573,7 @@ access = 2
 filters = PackedStringArray("*.png")
 use_native_dialog = true
 
+[connection signal="gui_input" from="TextureRect4/NinePatchRect/TextureRect2" to="." method="_on_texture_rect_2_gui_input"]
 [connection signal="pressed" from="TextureRect4/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="TextureRect4/TextureRect3/Button" to="." method="_on_savebutton_pressed"]
 [connection signal="pressed" from="TextureRect4/Button2" to="." method="_on_button2_pressed"]

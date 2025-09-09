@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=3]
+[gd_scene load_steps=150 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_80fm6"]
 [ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_6bnws"]
@@ -266,7 +266,7 @@ script/source = "extends Control
 signal scroll_start
 var max_scroll = 1
 var separation = 30
-var drag = false
+var drag = true
 var scroll = Vector2.ZERO
 var offset = 0
 var begin_id = \"\"
@@ -274,6 +274,8 @@ var last_id = \"\"
 var can_drag = [true, true]
 var last_height = 0
 var start = false
+var move = false
+var dir = 1
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_RESIZED:
 		var box = $VBoxContainer.get_child(-1)
@@ -286,72 +288,66 @@ func _ready() -> void:
 	last_height = size.y
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	scroll = lerp(scroll, Vector2.ZERO, 0.5)
-	if scroll.y > 0 and can_drag[0] == false:
-		scroll.y = 0
-	if scroll.y < 0 and can_drag[1] == false:
-		scroll.y = 0
+	
 	can_drag[0] = (not get_tree().has_group(begin_id)) or (get_tree().has_group(begin_id) and get_tree().get_first_node_in_group(begin_id).global_position.y - 63 < global_position.y)
 	if last_id != \"\":
 		if get_tree().has_group(last_id):
 			var btn = get_tree().get_first_node_in_group(last_id)
-			if btn.global_position.y <= global_position.y + size.y - btn.size.y:
+			if int(btn.global_position.y) <= int(global_position.y) + size.y - btn.size.y:
 				can_drag[1] = false
-				var _delta = (global_position.y + size.y) - (btn.global_position.y + btn.size.y)
-				if btn.global_position.y != global_position.y + size.y - btn.size.y and can_drag[0]:
-					var tween2 = get_tree().create_tween()
-					tween2.tween_property($VBoxContainer, \"position:y\", $VBoxContainer.position.y + _delta, 0.1)
-					tween2.play()
 			else:
 				can_drag[1] = true
 		else:
 			can_drag[1] = true
 	else: 
 		can_drag[1] = false
+	if scroll.y < 0:
+		dir = -1
+	else :
+		dir = 1
+	if int(scroll.y) != 0:
+		#if abs(scroll.y) > 2000:
+			#scroll.y = 2000 * dir
+		scroll.y -= dir * 400 * delta
+		$VBoxContainer.position += scroll * delta
 	if get_tree().has_group(begin_id):
 		var btn = get_tree().get_first_node_in_group(begin_id)
-		if btn.global_position.y > global_position.y + 73 and btn.checked:
-			var _delta = (global_position.y + 73) - (btn.global_position.y)
-			if btn.global_position.y != global_position.y + 73 and get_tree().get_processed_tweens().size() == 0:
-				var tween2 = get_tree().create_tween()
-				tween2.tween_property($VBoxContainer, \"position:y\", $VBoxContainer.position.y + _delta, 0.1)
-				tween2.play()
-	
-	if scroll != Vector2.ZERO:
-		$VBoxContainer.position += scroll
-		#$VBoxContainer.position.y = clamp($VBoxContainer.position.y, -first_btn.size.y -11, last_btn.size.y + 11)
-		#if $VBoxContainer.get_child_count() > 3:
-			#if $VBoxContainer.position.y < -first_btn.size.y - 10:
-				#var s = first_btn.size.y
-				#first_btn.next_node.pre_node = null
-				#first_btn.queue_free()
-			#
-				#$VBoxContainer.get_child(3).position.y -= s + 10
-				#$VBoxContainer.position.y = 0
-			#if $VBoxContainer.position.y >= last_btn.size.y + 10:
-				#print(4)
-				#$VBoxContainer.get_child(3).position.y += last_btn.size.y + 10
-				#$VBoxContainer.position.y = 0
+		if btn.checked:
+			if $VBoxContainer.position.y > -btn.position.y + 73:
+				$VBoxContainer.position.y = -btn.position.y + 73
+			if $VBoxContainer.position.y == -btn.position.y + 73:
+				scroll.y = 0
+	if get_tree().has_group(last_id) and can_drag[0]:
+		var btn = get_tree().get_first_node_in_group(last_id)
+		if btn.checked:
+			var _delta = (size.y) - (btn.size.y)
+			if $VBoxContainer.position.y < _delta - btn.position.y:
+				$VBoxContainer.position.y =  _delta-btn.position.y
+			if $VBoxContainer.position.y == _delta-btn.position.y:
+				scroll.y = 0
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventScreenDrag:
-		if event.relative.y > 4 and can_drag[0]:
-			scroll = (Vector2(0, event.relative.y))
-			scroll_start.emit(1)
-			drag = true
-		if event.relative.y < -4 and can_drag[1]:
-			scroll = (Vector2(0, event.relative.y))
-			scroll_start.emit(-1)
-			drag = true
-	if event is InputEventMouseButton:
-		if event.is_pressed() and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			if can_drag[1]:
-				scroll = (Vector2(0, -100 * event.factor))
-				scroll_start.emit(-1)
-		if event.is_pressed() and event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			if can_drag[0]:
-				scroll = (Vector2(0, 100 * event.factor))
+	if move == false:
+		if event is InputEventScreenDrag:
+			if event.relative.y > 1 and can_drag[0]:
+				scroll = (Vector2(0, event.velocity.y))
 				scroll_start.emit(1)
+				dir = 1
+			if event.relative.y < -1 and can_drag[1]:
+				scroll = (Vector2(0, event.velocity.y))
+				scroll_start.emit(-1)
+				dir = -1
+		if event is InputEventMouseButton:
+			if event.is_pressed() and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+				if can_drag[1]:
+					dir = -1
+					scroll = (Vector2(0, -4000 * event.factor))
+					scroll_start.emit(-1)
+			if event.is_pressed() and event.button_index == MOUSE_BUTTON_WHEEL_UP:
+				if can_drag[0]:
+					dir = 1
+					scroll = (Vector2(0, 4000 * event.factor))
+					scroll_start.emit(1)
 "
 
 [sub_resource type="Theme" id="Theme_2y1hm"]
@@ -387,6 +383,7 @@ var next_node
 var pre_size = 0
 var next_size = 0
 var label
+var beep = false
 var index 
 var checked = false:
 	set(x):
@@ -400,7 +397,7 @@ func _ready() -> void:
 	if get_parent().get_parent() is Control:
 		parent = get_parent().get_parent()
 func _input(event: InputEvent) -> void:
-	if visible and parent:
+	if visible and parent and Updatedate.bg.visible == false:
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed():
 				if event.position.y < parent.global_position.y + parent.size.y:
@@ -415,30 +412,33 @@ func _input(event: InputEvent) -> void:
 					if dir == 1:
 						if (angle < 2 and angle > -2) and abs(event.relative.x) > 5:
 							move = true
+							parent.move = true
 							start_pos = event.position.x
 							
 					if dir == -1:
 						if (angle > 178 and angle < 182) and abs(event.relative.x) > 5:
 							move = true
+							parent.move = true
 							start_pos = event.position.x
 		if event is InputEventMouseButton:
 			if event.is_released():
 				if move:
 					if dir == 1:
-						if global_position.x > (parent.size.x - size.x) + (size.x / 2.0) - 10:
+						if global_position.x > (parent.size.x - size.x) + (size.x / 2.0) - 30:
 							response.emit()
 						var tween = get_tree().create_tween()
 						tween.tween_property(self, \"position:x\", (get_parent().size.x - size.x), 0.2)
 						tween.play()
 						await tween.finished
 					if dir == -1:
-						if global_position.x < (-size.x / 2.0) + 10:
+						if global_position.x < (-size.x / 2.0) + 30:
 							response.emit()
 						var tween = get_tree().create_tween()
 						tween.tween_property(self, \"position:x\", 0, 0.2)
 						tween.play()
 						await tween.finished
 				move = false
+				parent.move = false
 
 func _process(delta: float) -> void:
 	size = get_combined_minimum_size()
@@ -446,11 +446,26 @@ func _process(delta: float) -> void:
 		if dir == 1:
 			if get_parent().get_parent() is Control:
 				position.x = (get_parent().size.x - size.x) + (get_global_mouse_position().x - start_pos)
+				if global_position.x > (parent.size.x - size.x) + (size.x / 2.0) - 30:
+					if beep == false:
+					
+						beep = true
+						DisplayServer.beep()
+				else:
+					beep = false
 				position.x = clamp(position.x, get_parent().size.x - size.x, (get_parent().size.x - size.x) + (size.x / 2))
 		if dir == -1:
 			position.x = (get_global_mouse_position().x - start_pos)
+			if global_position.x < (-size.x / 2.0) + 30:
+				if beep == false:
+					beep = true
+
+					DisplayServer.beep()
+			else:
+				beep = false
 			position.x = clamp(position.x, - (size.x / 2), 0)
 	else:
+		beep = false
 		if dir == 1:
 			position.x = get_parent().size.x - size.x
 		else:
@@ -458,10 +473,12 @@ func _process(delta: float) -> void:
 	if get_parent().get_parent() is Control:
 		if has_on_viewport(get_parent().get_parent()):
 			pre_node = get_parent().get_child(get_index() - 1) if get_index() > 3 else null
-			if checked:
+			if checked and !has_on_screen:
 				screen_entered.emit(seen)
+				has_on_screen = true
 		else:
 			out_off_range()
+			has_on_screen = false
 	if next_node:
 		next_size = next_node.size.y
 	
@@ -507,74 +524,6 @@ func out_off_range():
 			if pre_node:
 				pre_node.next_node = null
 "
-
-[sub_resource type="Curve" id="Curve_6pn8l"]
-_data = [Vector2(0, 0.629685), 0.0, 0.0, 0, 0, Vector2(0.271739, 0.658921), 0.0, 0.0, 0, 0, Vector2(0.554348, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="Gradient" id="Gradient_0jf8d"]
-colors = PackedColorArray(1, 1, 1, 1, 0.340339, 0.340339, 0.340339, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tfhda"]
-gradient = SubResource("Gradient_0jf8d")
-fill_from = Vector2(0, 1)
-metadata/_snap_enabled = true
-
-[sub_resource type="GDScript" id="GDScript_tfhda"]
-script/source = "extends Node2D
-
-var target:Control
-# Called when the node enters the scene tree for the first ti
-var end = 0
-var start = 0
-var offset = 0
-var move_mode = 0
-var speed = 300
-@onready var line = $Line2D
-
-func _draw_arc(pos, radius, start_angle, end_angle, count_point):
-	var points = []
-	
-	var index = 0
-	while index < count_point:
-		var point = Vector2(radius, 0)
-		point = point.rotated(start_angle)
-		var angle = deg_to_rad(360 / count_point)
-		point = point.rotated(angle * index)
-		
-		if (angle * index) + start_angle > end_angle:
-			break
-		points.append(point)
-		index += 1
-	line.position = pos
-	line.points = points
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	_draw_arc(Vector2.ZERO, 20, start+offset, end+offset, 40.0)
-	if move_mode == 0:
-		end += deg_to_rad(speed*delta)
-	else:
-		start += deg_to_rad(speed*delta)
-	if end > 2 * PI and move_mode == 0:
-		move_mode = 1
-		start = 0
-	if start > 2 * PI and move_mode == 1:
-		move_mode = 0
-		end = 0
-		start = 0
-	offset += deg_to_rad(speed*delta)
-	if offset > 2*PI:
-		offset = 0
-	
-"
-
-[sub_resource type="Curve" id="Curve_lin6m"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.985507, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_lin6m"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_53iq2"]
 
@@ -660,6 +609,74 @@ font_size = 35
 font_color = Color(0.690276, 1, 0.436242, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_6pn8l"]
+_data = [Vector2(0, 0.629685), 0.0, 0.0, 0, 0, Vector2(0.271739, 0.658921), 0.0, 0.0, 0, 0, Vector2(0.554348, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_0jf8d"]
+colors = PackedColorArray(1, 1, 1, 1, 0.340339, 0.340339, 0.340339, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tfhda"]
+gradient = SubResource("Gradient_0jf8d")
+fill_from = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_tfhda"]
+script/source = "extends Node2D
+
+var target:Control
+# Called when the node enters the scene tree for the first ti
+var end = 0
+var start = 0
+var offset = 0
+var move_mode = 0
+var speed = 300
+@onready var line = $Line2D
+
+func _draw_arc(pos, radius, start_angle, end_angle, count_point):
+	var points = []
+	
+	var index = 0
+	while index < count_point:
+		var point = Vector2(radius, 0)
+		point = point.rotated(start_angle)
+		var angle = deg_to_rad(360 / count_point)
+		point = point.rotated(angle * index)
+		
+		if (angle * index) + start_angle > end_angle:
+			break
+		points.append(point)
+		index += 1
+	line.position = pos
+	line.points = points
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	
+	_draw_arc(Vector2.ZERO, 20, start+offset, end+offset, 40.0)
+	if move_mode == 0:
+		end += deg_to_rad(speed*delta)
+	else:
+		start += deg_to_rad(speed*delta)
+	if end > 2 * PI and move_mode == 0:
+		move_mode = 1
+		start = 0
+	if start > 2 * PI and move_mode == 1:
+		move_mode = 0
+		end = 0
+		start = 0
+	offset += deg_to_rad(speed*delta)
+	if offset > 2*PI:
+		offset = 0
+	
+"
+
+[sub_resource type="Curve" id="Curve_lin6m"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.985507, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_lin6m"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_skm5r"]
 offsets = PackedFloat32Array(0, 0.536232)
@@ -874,6 +891,21 @@ shadow_color = Color(0, 0, 0, 0.270588)
 shadow_size = 5
 shadow_offset = Vector2(0, 10)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jf8d"]
+bg_color = Color(0, 0.717647, 0.25098, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+shadow_color = Color(0.796078, 0.784314, 0, 1)
+shadow_size = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_tfhda"]
+font_size = 50
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tac8f"]
 bg_color = Color(0.945098, 0.741176, 0, 1)
 border_width_top = 10
@@ -975,6 +1007,11 @@ script/source = "extends TextureRect
 var last_size = size
 var dir = 0
 var label_size
+var text:String:
+	set(x):
+		text = x
+		await get_tree().physics_frame
+		$texture/Label.text = text
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	texture = $texture.get_texture()
@@ -2312,7 +2349,6 @@ visible = false
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 8
-focus_mode = 2
 mouse_filter = 2
 theme = SubResource("Theme_2y1hm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_dwblo")
@@ -2345,40 +2381,6 @@ text = "شما"
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 10
-
-[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control"]
-
-[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D"]
-position = Vector2(1, -3)
-points = PackedVector2Array(13, 26, 20, 33, 40, 5)
-width_curve = SubResource("Curve_6pn8l")
-default_color = Color(0.196078, 1, 0.0235294, 1)
-texture = SubResource("GradientTexture2D_tfhda")
-texture_mode = 1
-begin_cap_mode = 2
-
-[node name="Line2D2" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D"]
-position = Vector2(11, -2)
-points = PackedVector2Array(13, 26, 20, 33, 40, 5)
-width_curve = SubResource("Curve_6pn8l")
-default_color = Color(0.196078, 1, 0.0235294, 1)
-texture = SubResource("GradientTexture2D_tfhda")
-texture_mode = 1
-begin_cap_mode = 2
-
-[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D"]
-process_mode = 3
-visible = false
-position = Vector2(31, 24)
-script = SubResource("GDScript_tfhda")
-
-[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Node2D"]
-texture_repeat = 2
-width_curve = SubResource("Curve_lin6m")
-gradient = SubResource("Gradient_lin6m")
-texture_mode = 1
-begin_cap_mode = 2
-end_cap_mode = 2
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -2444,9 +2446,43 @@ custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
 theme_override_font_sizes/font_size = 26
-text = "1403-05-02 12:05:15"
+text = "12:05:15"
 label_settings = SubResource("LabelSettings_6pn8l")
-horizontal_alignment = 2
+
+[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2"]
+position = Vector2(-11, 25)
+
+[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D"]
+position = Vector2(1, -3)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_6pn8l")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_tfhda")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D"]
+position = Vector2(11, -2)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_6pn8l")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_tfhda")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D"]
+process_mode = 3
+visible = false
+position = Vector2(31, 24)
+script = SubResource("GDScript_tfhda")
+
+[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D"]
+texture_repeat = 2
+width_curve = SubResource("Curve_lin6m")
+gradient = SubResource("Gradient_lin6m")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 position = Vector2(400, 100)
@@ -2484,7 +2520,6 @@ offset_left = -310.0
 offset_bottom = 254.0
 grow_horizontal = 0
 size_flags_horizontal = 0
-focus_mode = 2
 mouse_filter = 2
 theme = SubResource("Theme_2y1hm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_nfn3y")
@@ -2517,41 +2552,6 @@ theme_override_font_sizes/font_size = 26
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 10
-
-[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control"]
-position = Vector2(-15, -8)
-
-[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D"]
-position = Vector2(1, -3)
-points = PackedVector2Array(13, 26, 20, 33, 40, 5)
-width_curve = SubResource("Curve_6pn8l")
-default_color = Color(0.196078, 1, 0.0235294, 1)
-texture = SubResource("GradientTexture2D_tfhda")
-texture_mode = 1
-begin_cap_mode = 2
-
-[node name="Line2D2" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D"]
-position = Vector2(11, -2)
-points = PackedVector2Array(13, 26, 20, 33, 40, 5)
-width_curve = SubResource("Curve_6pn8l")
-default_color = Color(0.196078, 1, 0.0235294, 1)
-texture = SubResource("GradientTexture2D_tfhda")
-texture_mode = 1
-begin_cap_mode = 2
-
-[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D"]
-process_mode = 3
-visible = false
-position = Vector2(31, 24)
-script = SubResource("GDScript_tfhda")
-
-[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Control/Node2D/Node2D"]
-texture_repeat = 2
-width_curve = SubResource("Curve_lin6m")
-gradient = SubResource("Gradient_lin6m")
-texture_mode = 1
-begin_cap_mode = 2
-end_cap_mode = 2
 
 [node name="Label3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -2609,6 +2609,42 @@ theme_override_font_sizes/font_size = 26
 text = "1403-05-02 12:05:15"
 label_settings = SubResource("LabelSettings_6pn8l")
 horizontal_alignment = 2
+
+[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/Label2"]
+visible = false
+position = Vector2(-15, -171)
+
+[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D"]
+position = Vector2(1, -3)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_6pn8l")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_tfhda")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D"]
+position = Vector2(11, -2)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_6pn8l")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_tfhda")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D"]
+process_mode = 3
+visible = false
+position = Vector2(31, 24)
+script = SubResource("GDScript_tfhda")
+
+[node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D"]
+texture_repeat = 2
+width_curve = SubResource("Curve_lin6m")
+gradient = SubResource("Gradient_lin6m")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
 position = Vector2(400, 100)
@@ -2669,6 +2705,7 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(80, 80)
+focus_mode = 0
 theme = SubResource("Theme_vb5ih")
 theme_override_fonts/font = SubResource("FontVariation_usxgj")
 theme_override_font_sizes/font_size = 100
@@ -2677,6 +2714,22 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_mmsp5")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_mmsp5")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mmsp5")
 text = " ⬇️"
+
+[node name="Label" type="Label" parent="VBoxContainer/Control/Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.028
+anchor_right = 0.028
+offset_left = -23.48
+offset_top = -25.0
+offset_right = 23.52
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0jf8d")
+label_settings = SubResource("LabelSettings_tfhda")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="PanelContainer" parent="VBoxContainer"]
 z_index = 1
@@ -2722,6 +2775,7 @@ drag_and_drop_selection_enabled = false
 [node name="Button" type="Button" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 50
 text = "✖️"
 flat = true
@@ -2754,6 +2808,7 @@ grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(50, 40)
 size_flags_vertical = 0
+focus_mode = 0
 theme_override_fonts/font = ExtResource("2_6bnws")
 theme_override_font_sizes/font_size = 48
 text = "📨"
@@ -2826,7 +2881,6 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 9.47
 
 [node name="name" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
-visible = false
 texture_repeat = 2
 material = SubResource("ShaderMaterial_vb5ih")
 custom_minimum_size = Vector2(400, 0)
@@ -2843,7 +2897,7 @@ metadata/_edit_use_anchors_ = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(400, 108)
-render_target_update_mode = 4
+render_target_update_mode = 3
 
 [node name="Label" type="RichTextLabel" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name/texture"]
 texture_repeat = 2
@@ -2873,7 +2927,7 @@ custom_effects = [SubResource("RichTextEffect_mgrfc"), SubResource("RichTextEffe
 [node name="Label" type="Label" parent="ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "وضعیت: آنلاین"
+text = "وضعیت: نامشخص"
 label_settings = SubResource("LabelSettings_2pn8f")
 
 [node name="TextureRect2" type="TextureRect" parent="ColorRect/MarginContainer/HBoxContainer"]

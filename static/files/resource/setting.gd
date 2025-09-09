@@ -24,6 +24,7 @@ var camera
 var refrence_t
 var refrence_a
 var current_line
+var exit = false
 @onready var new_user_name_box: LineEdit = $ColorRect2/Panel/MarginContainer/VBoxContainer/LineEdit
 @onready var birthday_box: HBoxContainer = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4
 @onready var change_group_mode: TabContainer = $ScrollContainer/VBoxContainer/TabContainer
@@ -42,16 +43,18 @@ func get_keyboard_offset():
 	var _scale = size.y / get_tree().root.size.y
 	return (DisplayServer.screen_get_size().y - (screen_size.size.y + screen_size.position.y)) * _scale
 func get_user_text(f, l, node:Label):
+	node.text = ""
 	node.text += f[0] if f != "" else ""
-	node.text += " "+ l[0] if l != "" else ""
+	node.text += "‌"+ l[0] if l != "" else ""
 func get_text_name(text, node:Label):
 	var split = text.split(" ")
 	var words = []
+	node.text = ""
 	for g in split:
 		if g != "":
 			words.append(g)
 	node.text = words[0][0] if words.size() > 0 else ""
-	node.text += " " + words.back()[0] if words.size() > 1 else ""
+	node.text += "‌" + words.back()[0] if words.size() > 1 else ""
 func change_label():
 	var f = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer/LineEdit.text
 	var l = $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/LineEdit.text
@@ -130,7 +133,7 @@ func _ready() -> void:
 							var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
 							box.add_to_group("users_box")
 							box.get_node("Label").text = "عضو " + num + " : "
-							box.get_node("name/texture/Label").set_deferred("text", group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
+							box.get_node("name").set_deferred("text", group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
 							box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
 							box.show()
 							groupmate.append(box)
@@ -152,7 +155,7 @@ func _ready() -> void:
 							v_box_container_3.move_child(box, v_box_container_3.get_child_count() - 5)
 							
 							index += 1
-							box.get_node("name/texture/Label").set_deferred("text", user)
+							box.get_node("name").set_deferred("text", user)
 				else:
 					if d.nums[0] != "":
 						if group.icon and group.icon != "":
@@ -170,7 +173,7 @@ func _ready() -> void:
 						b.add_to_group("users_box")
 						b.get_node("Label").text = "سر گروه :"
 						b.show()
-						b.get_node("name/texture/Label").set_deferred("text", group.users_info[0].custom_name if group.users_info[0].has("custom_name") else "[center]"+ group.users_info[0].name)
+						b.get_node("name").set_deferred("text", group.users_info[0].custom_name if group.users_info[0].has("custom_name") else "[center]"+ group.users_info[0].name)
 						b.get_node("name").dir = get_direction(group.users_info[0].name)
 						$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4.add_child(b)
 						for x in range(group_user.size()):
@@ -179,7 +182,7 @@ func _ready() -> void:
 							var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2.duplicate()
 							box.add_to_group("users_box")
 							box.get_node("Label").text = "عضو " + num + " : "
-							box.get_node("name/texture/Label").set_deferred("text" , group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
+							box.get_node("name").set_deferred("text" , group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
 							box.show()
 							box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
 							groupmate.append(box)
@@ -261,6 +264,8 @@ func _ready() -> void:
 					Updatedate.cancel_request()
 					Updatedate.save("last_user", x, false)
 					Updatedate.current_user = x
+					exit = true
+					Updatedate.request("/messages/get?time=%s"%Updatedate.load_game("last_seen", "0"))
 					Transation.change(self, "setting.tscn")
 				if event.is_pressed() and event.button_index == 2:
 					select_user = x
@@ -325,7 +330,7 @@ func _ready() -> void:
 				var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer2.duplicate()
 				box.add_to_group("users_box")
 				box.get_node("Label").text = "عضو " + num + " : "
-				box.get_node("name/texture/Label").set_deferred("text" , group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
+				box.get_node("name").set_deferred("text" , group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
 				box.show()
 				box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
 				groupmate.append(box)
@@ -347,7 +352,7 @@ func _ready() -> void:
 				v_box_container_3.move_child(box, v_box_container_3.get_child_count() - 5)
 				
 				index += 1
-				box.get_node("name/texture/Label").set_deferred("text" , user)
+				box.get_node("name").set_deferred("text" , user)
 		else:
 			
 			if group.icon and group.icon != "":
@@ -367,7 +372,7 @@ func _ready() -> void:
 			b.get_node("Label").text = "سر گروه :"
 			b.show()
 			b.get_node("name").dir = get_direction(group.users_info[0].name)
-			b.get_node("name/texture/Label").set_deferred("text" , group.users_info[0].custom_name if group.users_info[0].has("custom_name") else "[center]"+ group.users_info[0].name)
+			b.get_node("name").set_deferred("text" , group.users_info[0].custom_name if group.users_info[0].has("custom_name") else "[center]"+ group.users_info[0].name)
 			$ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4.add_child(b)
 			for x in range(group_user.size()):
 				var user = group_user[x]
@@ -375,7 +380,7 @@ func _ready() -> void:
 				var box = $ScrollContainer/VBoxContainer/TabContainer/VBoxContainer4/HBoxContainer2.duplicate()
 				box.add_to_group("users_box")
 				box.get_node("Label").text = "عضو " + num + " : "
-				box.get_node("name/texture/Label").set_deferred("text",group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
+				box.get_node("name").set_deferred("text",group.users_info[x + 1].custom_name if group.users_info[x + 1].has("custom_name") else "[center]"+ group.users_info[x + 1].name)
 				box.show()
 				box.get_node("name").dir = get_direction(group.users_info[x + 1].name)
 				groupmate.append(box)
@@ -398,8 +403,9 @@ func _ready() -> void:
 	change_label()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	%OptionButton.get_child(Updatedate.current_user).texture_normal = $ScrollContainer/VBoxContainer/Panel/Button/TextureRect.texture
-	if $ScrollContainer/VBoxContainer/Panel/Button/TextureRect.texture != null:
+	if exit == false:
+		%OptionButton.get_child(Updatedate.current_user).texture_normal = $ScrollContainer/VBoxContainer/Panel/Button/TextureRect.texture
+	if $ScrollContainer/VBoxContainer/Panel/Button/TextureRect.texture != null :
 		%OptionButton.get_child(Updatedate.current_user).get_node("Label2").hide()
 	if first_name_box.text != first_name or last_name_box.text != last_name or father_name_box.text != father_name \
 	or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox.text != (birthday[2]) or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox2.text != (birthday[1]) or $ScrollContainer/VBoxContainer/ScrollContainer/VBoxContainer/VBoxContainer2/HBoxContainer4/SpinBox3.text != (birthday[0]):
@@ -575,6 +581,7 @@ func _on_edit_pressed() -> void:
 	first_name = first_name_box.text
 	last_name = last_name_box.text
 	father_name = father_name_box.text
+	
 	Updatedate.multy_save({"first_name":first_name, "last_name":last_name, "father_name":father_name, "birthday":birthday})
 	Notification.add_notif("با موفقیت بروز شد")
 	birthday = birthday.split("/")
