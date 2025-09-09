@@ -10,7 +10,7 @@ signal seen_message
 signal change_status
 signal edit_message(message:Dictionary)
 signal update_list
-var globals = ["accounts", "current_version", "hash_list", "source_dic", "hash_list2", "current_user", "last_user", "planes", "num_users", "num_groups"]
+var globals = ["accounts", "current_version", "hash_list", "source_dic", "hash_list2", "current_user", "last_user", "planes", "num_users", "num_groups", "last_update"]
 var plan = ""
 var internet = true
 var subplan = ""
@@ -59,22 +59,16 @@ func update_resource():
 	if subdomin != "127.0.0.1:5000" and internet:
 		var http = HTTPRequest.new()
 		add_child(http)
-
-		var hash_list:Dictionary = load_game("hash_list", {})
-		if hash_list.size() == 0:
-			for child in get_tree().get_root().get_children():
-				if child.name == "HashList":
-					hash_list = child.list
-			
-		http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
+		
+		http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":load_game("last_update", 0), "file":"hash_list.json"}))
 		var d = await http.request_completed
 		http.timeout = 10
 		while d[3].size() == 0:
-			http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":hash_list, "file":"hash_list.json"}))
+			http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":load_game("last_update", 0), "file":"hash_list.json"}))
 			d = await http.request_completed
 		http.queue_free()
 		var data = get_json(d[3])
-		if data:
+		if data and not data.has("error"):
 			if not DirAccess.dir_exists_absolute("user://resource"):
 				DirAccess.make_dir_absolute("user://resource")
 			if data.add.size() > 0:
@@ -82,7 +76,7 @@ func update_resource():
 			var index = 1
 			start_download.emit(data.add.size(), "بروزرسانی فایل‌ها")
 			var source_dic = load_game("source_dic", {})
-			var hash_list2:Dictionary = load_game("hash_list2", {})
+			var hash_list:Dictionary = load_game("hash_list", {})
 			
 			for file in data.add:
 				var f = await request("/static/files/resource/"+file[0], HTTPClient.METHOD_GET, {}, 1)
@@ -119,8 +113,8 @@ func update_resource():
 							var f2 = FileAccess.open("user://resource/"+p.values()[0].get_file(), FileAccess.WRITE)
 							f2.store_buffer(i)
 							f2.close()
-							hash_list2[p.values()[0].get_file()] = h.result if h else ""
-							save("hash_list2", hash_list2, false)
+							hash_list[p.values()[0].get_file()] = h.result if h else ""
+							save("hash_list", hash_list, false)
 							if file[0] not in source_dic.keys():
 								source_dic[file[0]] = {}
 								source_dic[file[0]][node] = [{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}]
@@ -129,13 +123,10 @@ func update_resource():
 									source_dic[file[0]][node] = [{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}]
 								else:
 									source_dic[file[0]][node].append([{p.keys()[0]:"user://resource/"+p.values()[0].get_file()}])
-				hash_list[file[0]] = file[1]
-				save("hash_list", hash_list, false)
 				index += 1
 			for file in data.delete:
 				DirAccess.remove_absolute("user://resource/"+file[0])
-				hash_list.erase(file[0])
-				save("hash_list", hash_list, false)
+			save("last_update", str(data.time), false)
 			await get_tree().create_timer(0.5).timeout
 			end_download.emit()
 			await update_source()

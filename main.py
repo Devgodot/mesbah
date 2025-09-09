@@ -1,3 +1,4 @@
+import datetime
 from flask import request, jsonify, render_template, redirect, make_response, send_file, current_app
 from confige import app, db, jwt
 from auth import auth_bp
@@ -123,7 +124,8 @@ def view():
     return redirect("https://live.messbah403.ir/WebRTCApp/play.html?id=stream1")
 @app.route('/check_resource', methods=['POST'])
 def get_resource_index():
-    data:dict= request.get_json().get("data", {})
+    time:float= float(request.get_json().get("time"))
+    
     add = []
     delete = []
     file = request.get_json().get("file", "")
@@ -132,13 +134,11 @@ def get_resource_index():
         with open(file, "r") as hash_list:
             _list :dict= json.load(hash_list)
             if file == "hash_list.json":
-                for x in _list.keys():
-                    if x not in data.keys() or _list[x] != data[x]:
-                        add.append([x, _list[x]])
-                for x in data.keys():
-                    if x not in _list.keys():
-                        delete.append([x, data[x]])
+                for n, t in _list.items():
+                    if float(t) > time :
+                        add.append([n, t])
             else:
+                data = request.get_json("data", {})
                 for x in _list.keys():
                     if x in data.keys():
                         if _list.get(x) != data.get(x):
@@ -146,7 +146,7 @@ def get_resource_index():
                 for x in data.keys():
                     if x not in _list.keys():
                         delete.append([x, data[x]])
-        return jsonify({"add":add, "delete":delete})
+        return jsonify({"add":add, "delete":delete, "time":datetime.now(tz=TehranTimezone).timestamp() * 1000}), 200
     else:
         return jsonify({"error":"فایلی برای بررسی وجود ندارد"}), 400
 @app.route("/get_hash", methods=["GET"])
