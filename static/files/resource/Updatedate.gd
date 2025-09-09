@@ -22,7 +22,7 @@ var id = ""
 var waiting_message = {}
 var waiting_editing = {}
 var data_net = [{"protocol":"http://", "domin":"127.0.0.1:5000", "socket":"ws://127.0.0.1:3000"}, {"protocol":"https://", "domin":"messbah403.ir", "socket":"ws://shirinasalgame.ir"}]
-var mode_net = 0
+var mode_net = 1
 var protocol = data_net[mode_net].protocol
 var subdomin = data_net[mode_net].domin
 var checked_status = []
@@ -59,7 +59,7 @@ func update_resource():
 	if subdomin != "127.0.0.1:5000" and internet:
 		var http = HTTPRequest.new()
 		add_child(http)
-		var last_update = "1757420051974"
+		var last_update = "1757420183661"
 		http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":load_game("last_update", last_update), "file":"hash_list.json"}))
 		var d = await http.request_completed
 		http.timeout = 10
@@ -171,8 +171,9 @@ func get_cost(_id):
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	if OS.get_name() != "Windows":
-		protocol = "https://"
-		subdomin = "messbah403.ir"
+		mode_net = 1
+		protocol = data_net[mode_net].protocol
+		subdomin = data_net[mode_net].domin
 	#get_tree().get_root().window_input.connect(func(event):
 		#if event is InputEventScreenTouch:
 			#if get_global_mouse_position().x < 0 or get_global_mouse_position().y < 0:
