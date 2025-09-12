@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from sqlalchemy import or_, cast, Float, Integer
 from confige import db, app
 from flask_jwt_extended import current_user, jwt_required
-from models import User, UserInterface, Group, ServerMessage, Planes, Supporter, Messages, Conversation
+from models import User, UserInterface, Group, ServerMessage, Planes, Supporter, Messages, Conversation, RemovedConversation
 from datetime import datetime, timedelta
 from sqlalchemy.orm.attributes import flag_modified
 import jdatetime
@@ -10,6 +10,33 @@ from khayyam import TehranTimezone
 
 message_bp = Blueprint("messages", __name__)
 
+@message_bp.get("/remove")
+@jwt_required()
+def remove_conversation():
+    conversationId = request.args.get("conversationId")
+    part = request.args.get("part")
+    if conversationId is None or part is None:
+        return jsonify({"error": "پارامترهای لازم ارسال نشده است."}), 400
+    conversation = Conversation.query.filter(
+        Conversation.conversationId == conversationId,
+        Conversation.part == part
+    ).first()
+    if conversation is None:
+        return jsonify({"error": "گفتگویی با این مشخصات یافت نشد."}), 404
+    for msg in Messages.query.filter(
+        Messages.conversationId == conversationId,
+        Messages.part == part
+    ).all():
+        db.session.delete(msg)
+    removed_conversation = RemovedConversation(
+        user_id=current_user.id,
+        conversationId=conversationId,
+        part=part,
+        time=datetime.now(tz=TehranTimezone()).timestamp() * 1000
+    )
+    db.session.add(removed_conversation)
+    db.session.commit()
+    return jsonify({"message": "گفتگو با موفقیت حذف شد."}), 200
 @message_bp.get("/get")
 @jwt_required()
 def get_message():
@@ -96,6 +123,12 @@ def get_message():
                 Conversations[key]["delete"] = []
             prev_msg = Conversations[key].get("last_massage", "")
             Conversations[key]["delete"].append([msg.id, prev_msg])
+    remove_conversations = RemovedConversation.query.filter(RemovedConversation.timestamp > time).all()
+    for conversationId in remove_conversations:
+        key = conversationId.conversationId + conversationId.part
+        if key not in Conversations:
+            Conversations[key] = {}
+        Conversations[key]["remove"] = True
     return jsonify({"conversations":Conversations, "time":datetime.now(tz=TehranTimezone()).timestamp() * 1000}), 200
 
 @message_bp.get('/state_user')

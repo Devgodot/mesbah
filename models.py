@@ -12,6 +12,18 @@ from datetime import datetime, timedelta
 from utils import hashing, HashingMode
 import uuid
 
+class RemovedConversation(db.Model):
+    __tablename__ = 'removed_conversations'
+    id = Column(Integer, primary_key=True)
+    conversationId = Column(String(256), nullable=False)
+    part = Column(String(256), default="")
+    user_id = Column(String(10), ForeignKey('users.id'))
+    timestamp = Column(BigInteger, default=datetime.now(TehranTimezone()).timestamp() * 1000)
+
+    user = relationship("User", foreign_keys=[user_id])
+
+    def __repr__(self):
+        return f"<RemovedConversation(conversationId='{self.conversationId}', user_id='{self.user_id}')>"
 class Messages(db.Model):
     __tablename__ = "Messages"  # اصلاح نام جدول
     id = db.Column(String(256), default=lambda: str(uuid.uuid4()), primary_key=True)
