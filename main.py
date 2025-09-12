@@ -9,7 +9,7 @@ from ticket import ticket_bp
 from planes import plan_bp
 from score import score_bp
 from messages import message_bp
-from models import User, UserInterface, FlaskForm, Group
+from models import User, UserInterface, FlaskForm, Group, Score
 from werkzeug.utils import secure_filename
 import os
 from math import ceil
@@ -100,7 +100,17 @@ def _filter(fil, files):
         return f
    
 
-
+def score_add_to_table():
+    users = Group.query.all()
+    for user in users:
+        for x, key in enumerate(user.score):
+            
+            score = user.score.get(key, 0)
+            part = ["سلامت معنوی", "سلامت جسمانی", "سلامت فکری"][int(x)]
+            new_score = Score(plan="رمضان 1403-1404", subplan=part, gender=user.gender, tag=user.tag, year=1404, name=user.name, score=score, group=True)
+            db.session.add(new_score)
+            db.session.commit()
+            print(f"Added score for {user.name} in {part}: {score}")
 jwt.init_app(app)
 # register bluepints
 app.register_blueprint(auth_bp, url_prefix="/auth")
@@ -322,8 +332,9 @@ def home():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-      
+   
     app.run(debug=True)
+    
 
 
 
