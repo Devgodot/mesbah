@@ -14,7 +14,7 @@ message_bp = Blueprint("messages", __name__)
 @jwt_required()
 def remove_conversation():
     conversationId = request.args.get("conversationId")
-    part = request.args.get("part")
+    part = request.args.get("part", "")
     if conversationId is None or part is None:
         return jsonify({"error": "پارامترهای لازم ارسال نشده است."}), 400
     conversation = Conversation.query.filter(
@@ -32,8 +32,9 @@ def remove_conversation():
         user_id=current_user.id,
         conversationId=conversationId,
         part=part,
-        time=datetime.now(tz=TehranTimezone()).timestamp() * 1000
+        timestamp=datetime.now(tz=TehranTimezone()).timestamp() * 1000
     )
+    db.session.delete(conversation)
     db.session.add(removed_conversation)
     db.session.commit()
     return jsonify({"message": "گفتگو با موفقیت حذف شد."}), 200
@@ -102,6 +103,8 @@ def get_message():
             sender = user.data.get("first_name", "") + " " + user.data.get("last_name", "") if msg.sender != current_user.get_username() else "شما"
         key = msg.conversationId + msg.part
         if msg.deleted is None:
+            if "add" not in Conversations[key]:
+                Conversations[key]["add"] = []
             Conversations[key]["add"].append({
                 "id": msg.id,
                 "part": msg.part,
