@@ -10,6 +10,7 @@ var change = false
 var seen_message = [[], [], []]
 var check = false
 var last_index = 0
+var last_index2 = 0
 var senderId = "0"
 var action_box
 var fram = 0
@@ -31,6 +32,7 @@ var r_id = ""
 var last_height = 0
 var has_keyboard = false
 var action_box_offset = Vector2.ZERO
+
 func get_direction(text:String):
 	if text[0] < "ی" and text[0] > "آ":
 		return -1
@@ -69,10 +71,21 @@ func _ready() -> void:
 	if c.has("id"):
 		Updatedate.change_status.connect(func(data):
 			if data.username in c.id and data.username != senderId:
+				c.state = data.state
+				
 				if data.state == "online":
 					$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Label.text = "وضعیت: آنلاین"
+					for box in $VBoxContainer/ScrollContainer/VBoxContainer.get_children():
+						if box.name != "instance":
+							if box.get_meta("id", "") != "":
+								var m = messages[box.get_meta("id", "")]
+								if not m.has("seen") or (m.has("seen") and m.seen == null):
+									box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").show()
+									box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+									box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").default_color = Color.GRAY
 				else:
 					if data.has("last_seen") and data.last_seen.has("time"):
+						c.last_seen = data.last_seen
 						$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Label.text = "آخرین بازدید: " + data.last_seen.time)
 		Updatedate.seen_message.connect(func(message:Dictionary):
 			if message:
@@ -293,6 +306,7 @@ func add_message(m, pos=-1):
 	var box :PanelContainer= obj.duplicate()
 	if m.has("id"):
 		box.add_to_group(m.id)
+		box.set_meta("id", m.id)
 	box.resized.connect(func():
 		if edited_box == box:
 			if last_height != 0 and last_height > $VBoxContainer/ScrollContainer.size.y - 83:
@@ -433,6 +447,7 @@ func add_message(m, pos=-1):
 		$VBoxContainer/ScrollContainer/VBoxContainer.move_child(box, pos)
 	if $VBoxContainer/ScrollContainer/VBoxContainer.get_child_count() == 4:
 		box.index = last_index
+		last_index2 = last_index
 		box.global_position.y = $VBoxContainer/ScrollContainer.global_position.y + extra_size
 	if box.get_index() > 3:
 		box.pre_node =  $VBoxContainer/ScrollContainer/VBoxContainer.get_child(box.get_index() - 1)
@@ -442,6 +457,7 @@ func add_message(m, pos=-1):
 		box.next_node = $VBoxContainer/ScrollContainer/VBoxContainer.get_child(box.get_index() + 1)
 	if box.pre_node == null and box.next_node:
 		box.index = box.next_node.index - 1 if box.next_node.index != null else null
+		
 	return box
 func check_has_node(node):
 	if check:
@@ -454,8 +470,10 @@ func check_has_node(node):
 			if n > 0:
 				above_node = messages[ids[n - 1]]
 			if above_node and not get_tree().has_group(above_node["id"]):
+				last_index2 = n - 1
 				add_message(above_node,  node.get_index())
 			if below_node and not get_tree().has_group(below_node["id"]):
+				last_index2 = n + 1
 				add_message(below_node,  node.get_index()+1)
 			
 func get_keyboard_offset():
@@ -524,6 +542,12 @@ func _process(delta: float) -> void:
 		g = g.replace(" ", "")
 		if g != "" and g != "‌" and g != "‌ ":
 			not_Space2 = true
+	if $VBoxContainer/ScrollContainer/VBoxContainer.get_child_count() == 3 and check:
+		if ids.size() > last_index2:
+			last_index = last_index2
+			var box = add_message(messages[ids[last_index2]])
+			await get_tree().physics_frame
+			box.checked = true
 func _on_button_pressed() -> void:
 	if edited_box:
 		
@@ -582,15 +606,14 @@ func focus_on_message(_id:String):
 				top_pos += 73
 			if box.global_position.y > bottom_pos:
 				var delta = box.global_position.y - bottom_pos
-				print(delta)
 				var tween = get_tree().create_tween()
-				tween.tween_property($VBoxContainer/ScrollContainer/VBoxContainer, "position:y", $VBoxContainer/ScrollContainer/VBoxContainer.position.y - delta, 0.2)
+				tween.tween_property($VBoxContainer/ScrollContainer, "scroll_offset", $VBoxContainer/ScrollContainer.scroll_offset - delta, 0.2)
 				tween.play()
 				await tween.finished
 			if box.global_position.y < top_pos:
 				var delta = top_pos - box.global_position.y
 				var tween = get_tree().create_tween()
-				tween.tween_property($VBoxContainer/ScrollContainer/VBoxContainer, "position:y", $VBoxContainer/ScrollContainer/VBoxContainer.position.y + delta, 0.2)
+				tween.tween_property($VBoxContainer/ScrollContainer, "scroll_offset", $VBoxContainer/ScrollContainer.scroll_offset + delta, 0.2)
 				tween.play()
 				await tween.finished
 			return box

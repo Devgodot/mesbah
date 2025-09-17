@@ -2,13 +2,16 @@ extends Control
 var active = false
 var trans = 0
 func change(scene, new_scene:String, dir=1):
+	if Updatedate.bg.visible:
+		Updatedate.hide_picture()
+		return
 	if not active:
 		Updatedate.failed_request = []
 		active = true
 		var s = load_scene(new_scene)
 		match trans:
 			0:
-				get_tree().get_root().add_child(s)
+				get_tree().get_root().add_child.call_deferred(s)
 				scene.queue_free()
 			1:
 				get_tree().get_root().add_child(s)
@@ -139,4 +142,4 @@ func load_scene(new_scene) -> Object:
 			for p in source_dic[new_scene][node]:
 				s.get_node(node).set(p.keys()[0], ResourceLoader.load(p.values()[0]))
 			
-	return  s
+	return s

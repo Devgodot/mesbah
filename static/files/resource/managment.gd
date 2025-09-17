@@ -640,7 +640,7 @@ func add_message():
 		if child.name != "instance":
 			child.queue_free()
 	
-	if m.has("data"):
+	if m and m.has("data"):
 		var data = m.data
 		for message in data:
 			var box = $"TabContainer/3/VBoxContainer/ScrollContainer/VBoxContainer/instance".duplicate()
@@ -883,11 +883,11 @@ func add_ticket():
 			child.queue_free()
 	
 	var d = await Updatedate.request("/ticket/get_ticket?all=true")
-	if d.has("error"):
+	if d and d.has("error"):
 		Notification.add_notif(d.error, Notification.ERROR)
 		w.queue_free()
 		return
-	if d.has("data"):
+	if d and d.has("data"):
 		var data = d.data
 		for ticket in data:
 			var box = $"TabContainer/5/VBoxContainer/ScrollContainer/VBoxContainer/instance".duplicate()
@@ -1256,7 +1256,7 @@ func add_saved_users():
 func get_plan_by_year(year):
 	var d = await Updatedate.request("/planes/get?year=%s"%int(year))
 	var option:OptionButton = $"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/HBoxContainer2/OptionButton"
-	if d.has("planes"):
+	if d and d.has("planes"):
 		if d.planes.size() == 0:
 			$"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/HBoxContainer2/Label2".show()
 			option.hide()

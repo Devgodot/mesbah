@@ -581,9 +581,9 @@ func _on_edit_pressed() -> void:
 	first_name = first_name_box.text
 	last_name = last_name_box.text
 	father_name = father_name_box.text
-	
 	Updatedate.multy_save({"first_name":first_name, "last_name":last_name, "father_name":father_name, "birthday":birthday})
 	Notification.add_notif("با موفقیت بروز شد")
+	Updatedate.socket.close()
 	birthday = birthday.split("/")
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST and not get_tree().has_group("scroll_button"):

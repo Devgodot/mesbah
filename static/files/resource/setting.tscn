@@ -83,6 +83,7 @@ shadow_offset = Vector2(0, 10)
 [sub_resource type="SystemFont" id="SystemFont_346i2"]
 font_names = PackedStringArray("B Nazanin")
 font_weight = 575
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
 texture = ExtResource("5_3chvs")
@@ -92,6 +93,7 @@ expand_margin_bottom = 20.0
 
 [sub_resource type="SystemFont" id="SystemFont_nrddy"]
 font_names = PackedStringArray("B Nazanin")
+subpixel_positioning = 0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gwbx"]
 bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
@@ -231,6 +233,7 @@ func _ready() -> void:
 					$Label.hide()
 					var img = Image.new()
 					img.load_jpg_from_buffer(Buffer)
+					img.resize(500, 500)
 					$TextureRect.texture = ImageTexture.create_from_image(img)
 					if mode != 2:
 						mode = null
@@ -241,6 +244,7 @@ func _ready() -> void:
 					var icon_group = \"\"
 					var img = Image.new()
 					img.load_jpg_from_buffer(Buffer)
+					img.resize(500, 500)
 					var r = HTTPRequest.new()
 					get_tree().get_root().add_child(r)
 					var z = str(randi_range(0, 1000000))
@@ -530,10 +534,14 @@ func _ready() -> void:
 		plugin.image_request_completed.connect(func (dic):
 			for Buffer in dic.values():
 				if mode == 1:
+					
 					mode = null
 					var w = Updatedate.add_wait(self)
 					var img = Image.new()
 					img.load_jpg_from_buffer(Buffer)
+				
+					img.resize(500, 500)
+					
 					$TextureRect.texture = ImageTexture.create_from_image(img)
 					var r = HTTPRequest.new()
 					add_child(r)
@@ -548,6 +556,7 @@ func _ready() -> void:
 					w.queue_free()
 					$Label.hide()
 					Notification.add_notif(\"با موفقیت بروزرسانی شد\")
+					Updatedate.socket.close()
 				)
 
 func _on_permission_not_granted_by_user(permission):
@@ -555,6 +564,7 @@ func _on_permission_not_granted_by_user(permission):
 
 func _on_error(e):
 	mode = null
+	print(e)
 	Notification.add_notif(e, Notification.ERROR)
 
 
@@ -2534,15 +2544,17 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = 57.0
-offset_right = -43.0
-offset_bottom = 112.0
+offset_left = -129.0
+offset_top = 27.0
+offset_right = -5.0
+offset_bottom = 131.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 0
 text = "📷"
 label_settings = SubResource("LabelSettings_yrx87")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/Panel/Control"]
 layout_mode = 0
