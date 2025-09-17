@@ -154,12 +154,12 @@ func _on_add_editor_pressed() -> void:
 	r.queue_free()
 	w.queue_free()
 	var d2 = Updatedate.get_json(body[3])
-	if d2.has("error"):
+	if d2 and d2.has("error"):
 		Notification.add_notif(d2.error, Notification.ERROR)
 		return
-	if d2.has("data"):
+	if d2 and d2.has("data"):
 		add_editor(type, part, gender, tag, d2.data)
-	if d2.has("message"):
+	if d2 and d2.has("message"):
 		Notification.add_notif(d2.message, Notification.SUCCESS)
 	
 
@@ -188,8 +188,8 @@ func add_editor(type, part, gender=0, tag=0, _data=[]):
 		if type == 2:
 			d = await Updatedate.request("/control/get_management")
 	
-	var data = d.data if d.has("data") else _data
-	if d.has("error"):
+	var data = d.data if d and d.has("data") else _data
+	if d and d.has("error"):
 		Notification.add_notif(d.error, Notification.ERROR)
 		return
 	
