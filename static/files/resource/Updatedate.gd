@@ -59,7 +59,7 @@ func update_resource():
 	if subdomin != "127.0.0.1:5000" and internet:
 		var http = HTTPRequest.new()
 		add_child(http)
-		var last_update = "1757420335624"
+		var last_update = "1758131982304"
 		http.request(protocol+subdomin+"/check_resource", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"time":load_game("last_update", last_update), "file":"hash_list.json"}))
 		var d = await http.request_completed
 		http.timeout = 10
