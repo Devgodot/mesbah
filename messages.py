@@ -61,11 +61,11 @@ def get_message():
     ).all()
     if not messages:
         return jsonify({"error": "پیامی یافت نشد."}), 404
-    Conversations = {}
+    Conversations:dict = {}
     for msg in messages:
-        if msg.conversationId+msg.part not in Conversations:
+        if msg.conversationId+msg.part not in Conversations and msg.part != "":
             Conversations[msg.conversationId+msg.part] = {}
-    
+    pop_c = []
     for conversationId in Conversations.keys():
         length = len(conversationId)
         conversation = Conversation.query.filter(
@@ -93,6 +93,10 @@ def get_message():
                 "delete": [],
                 "last_massage": last_msg.id if last_msg is not None else ""
             }
+        else:
+            pop_c.append(conversationId)
+    for id in pop_c:
+        Conversations.pop(id)
     add_message = []
     deleted_message = []
     for msg in messages:
@@ -102,33 +106,34 @@ def get_message():
         else:
             sender = user.data.get("first_name", "") + " " + user.data.get("last_name", "") if msg.sender != current_user.get_username() else "شما"
         key = msg.conversationId + msg.part
-        if msg.deleted is None:
-            if "add" not in Conversations[key]:
-                Conversations[key]["add"] = []
-            Conversations[key]["add"].append({
-                "id": msg.id,
-                "part": msg.part,
-                "conversationId": msg.conversationId,
-                "messages": msg.messages,
-                "time": msg.time,
-                "sender_name": sender,
-                "sender": msg.sender,
-                "seen": str(msg.seen) if msg.seen is not None else None,
-                "response": msg.response,
-                "updatedAt": str(msg.updatedAt) if msg.updatedAt is not None else "0",
-                "createdAt": str(msg.createdAt) if msg.createdAt is not None else "0"
-            })
-        else:
-            # اطمینان از وجود کلید و لیست "delete"
-            if key not in Conversations:
-                Conversations[key] = {"delete": []}
-            if "delete" not in Conversations[key]:
-                Conversations[key]["delete"] = []
-            prev_msg = Conversations[key].get("last_massage", "")
-            Conversations[key]["delete"].append([msg.id, prev_msg])
+        if key in Conversations:
+            if msg.deleted is None:
+                if "add" not in Conversations[key]:
+                    Conversations[key]["add"] = []
+                Conversations[key]["add"].append({
+                    "id": msg.id,
+                    "part": msg.part,
+                    "conversationId": msg.conversationId,
+                    "messages": msg.messages,
+                    "time": msg.time,
+                    "sender_name": sender,
+                    "sender": msg.sender,
+                    "seen": str(msg.seen) if msg.seen is not None else None,
+                    "response": msg.response,
+                    "updatedAt": str(msg.updatedAt) if msg.updatedAt is not None else "0",
+                    "createdAt": str(msg.createdAt) if msg.createdAt is not None else "0"
+                })
+            else:
+                # اطمینان از وجود کلید و لیست "delete"
+                if key not in Conversations:
+                    Conversations[key] = {"delete": []}
+                if "delete" not in Conversations[key]:
+                    Conversations[key]["delete"] = []
+                prev_msg = Conversations[key].get("last_massage", "")
+                Conversations[key]["delete"].append([msg.id, prev_msg])
     remove_conversations = RemovedConversation.query.filter(RemovedConversation.timestamp > time).all()
-    for conversationId in remove_conversations:
-        key = conversationId.conversationId + conversationId.part
+    for conversation in remove_conversations:
+        key = conversation.conversationId + conversation.part
         if key not in Conversations:
             Conversations[key] = {}
         Conversations[key]["remove"] = True
@@ -160,9 +165,11 @@ def get_state_user():
                     last_seen.append({"user": {"icon": user_data.get("icon", ""), "name":user_data.get("first_name", "") + " " + user_data.get("last_name", ""), "custom_name": user_data.get("custom_name", ""), "username":user}, "last_seen": _conversation.last_seen1 if _conversation.user1 == user else _conversation.last_seen2, "state": _conversation.state1 if _conversation.user1 == user else _conversation.state2, "blocked":_conversation.blocked})
             return jsonify({"users": last_seen}), 200
         else:
-            user_data = User.get_user_by_username(username).data
-            _conversation = Conversation.query.filter(or_(Conversation.user1 == username, Conversation.user2 == username), Conversation.last_seen1 is not None if username == Conversation.user1 else Conversation.last_seen2 is not None).first()
-            return jsonify({"user": {"icon": user_data.get("icon", ""), "name":user_data.get("first_name", "") + " " + user_data.get("last_name", ""), "custom_name": user_data.get("custom_name", ""), "username":username}, "last_seen": _conversation.last_seen1 if _conversation is not None and _conversation.user1 == username else _conversation.last_seen2 if _conversation is not None else {}, "state":_conversation.state1 if _conversation is not None and _conversation.user1 == username else _conversation.state2 if _conversation is not None else "unknown", "blocked":_conversation.blocked if _conversation is not None else False}), 200
+            if User.get_user_by_username(username) is not None:
+                user_data = User.get_user_by_username(username).data
+                _conversation = Conversation.query.filter(or_(Conversation.user1 == username, Conversation.user2 == username), Conversation.last_seen1 is not None if username == Conversation.user1 else Conversation.last_seen2 is not None).first()
+                return jsonify({"user": {"icon": user_data.get("icon", ""), "name":user_data.get("first_name", "") + " " + user_data.get("last_name", ""), "custom_name": user_data.get("custom_name", ""), "username":username}, "last_seen": _conversation.last_seen1 if _conversation is not None and _conversation.user1 == username else _conversation.last_seen2 if _conversation is not None else {}, "state":_conversation.state1 if _conversation is not None and _conversation.user1 == username else _conversation.state2 if _conversation is not None else "unknown", "blocked":_conversation.blocked if _conversation is not None else False}), 200
+            return  jsonify({"error": "کاربر وجود ندارد."}), 400
     return jsonify({"error": "نام کاربری مشخص نشده است."}), 400
 
 @message_bp.get("/supporters")

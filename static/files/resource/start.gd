@@ -37,20 +37,28 @@ func get_new_message(message, _id):
 			c.new += 1
 		ids.erase(id)
 		ids.push_front(id)
+		print(id)
 		if get_tree().has_group(id):
 			var btn = get_tree().get_nodes_in_group(id)[0]
+			print(btn)
 			if btn._index != 0:
+				print(btn._index)
 				if btn.next_node:
 					btn.next_node._index = btn._index
 					btn.next_node.pre_node = btn.pre_node
 				if btn.pre_node:
 					btn.pre_node.next_node = btn.next_node
 				btn.queue_free()
+				if $CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(1) is Button:
+					$CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(1).has_on_screen = false
 			else:
+				print(c)
 				change_conversation(btn, c)
 	else:
 		conversations[id] = Updatedate.get_conversation(message.conversationId + message.part)
 		ids.push_front(id)
+		if $CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(1) is Button:
+			$CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(1).has_on_screen = false
 	$CustomTabContainer/MarginContainer3/ScrollContainer.begin_id = ids[0]
 	if int($CustomTabContainer/MarginContainer3/ScrollContainer.size.y / 210) < conversations.size():
 		$CustomTabContainer/MarginContainer3/ScrollContainer.last_id = ids.back()
@@ -95,6 +103,7 @@ func uuid(len:int, step:int=4):
 	return id
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Updatedate.request("/messages/remove?conversationId=%s&part=%s"%["51002761505100377003".uri_encode(), "".uri_encode()])
 	Updatedate.current_user = Updatedate.load_game("current_user", 0)
 	Updatedate.load_user()
 	conversations = Updatedate.list_messages()
@@ -113,16 +122,30 @@ func _ready() -> void:
 			break
 	created_c = index2
 	Updatedate.change_status.connect(func(data):
+		print(data)
 		var list = ids.filter(func(s): return data.username in s and data.username != Updatedate.load_game("user_name", ""))
 		for c in list:
 			conversations[c]["state"] = data.state
 			conversations[c]["last_seen"] = data.last_seen
+			conversations[c]["icon"] = data.icon
+			conversations[c]["custom_name"] = data.custom_name
+			conversations[c]["name"] = data.name
+			
 			if get_tree().has_group(c):
 				var btn = get_tree().get_first_node_in_group(c)
 				if data.state == "online":
 					btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect2").show()
 				else:
 					btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect2").hide()
+				btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer/name").set_deferred("text", data.custom_name if data.has("custom_name") and data.custom_name != "" else data.name)
+				if data.has("icon") and data.has("username"):
+					Updatedate.get_icon_user(data.icon, data.username, btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect"))
+				if data.name != "":
+					if not data.has("icon"):
+						get_text_name(data.name, btn.get_node("Panel/HBoxContainer/TextureRect/Label"))
+					if data.has("icon") and data.icon == "" and btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect").texture == null:
+						get_text_name(data.name, btn.get_node("Panel/HBoxContainer/TextureRect/Label"))
+					btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer/name").dir = get_direction(data.name)
 				var m = conversations[c].message if conversations[c].has("message") else null
 				if m != null:
 					if not m.has("seen") or (m.has("seen") and m.seen == null):
@@ -140,7 +163,7 @@ func _ready() -> void:
 				
 	Updatedate.request_completed.connect(func(data, url:String):
 		if data:
-			if url.begins_with("/messages/state_user?user="):
+			if url.begins_with("/messages/state_user?user=") and not data.has("error"):
 				status_users.erase(data.user.username)
 				var list = ids.filter(func(s): return data.user.username in s)
 				for c in list:
@@ -199,7 +222,11 @@ func _ready() -> void:
 					ids.append(s.username + Updatedate.load_game("user_name", "") + s.part)
 					if conversations.size() == 1:
 						add_conversation(ids[0], s)
-				$CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(-1).has_on_screen = false
+				if $CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(-1) is Button:
+					$CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(-1).has_on_screen = false
+				else:
+					if $CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(-2) is Button:
+						$CustomTabContainer/MarginContainer3/ScrollContainer/VBoxContainer.get_child(-2).has_on_screen = false
 				if ids.size() > 0:
 					$CustomTabContainer/MarginContainer3/ScrollContainer.begin_id = ids[0]
 					$CustomTabContainer/MarginContainer3/ScrollContainer.last_id = ids.back() if ids.size() * 210 > $CustomTabContainer/MarginContainer3/ScrollContainer.size.y else ""
@@ -346,21 +373,21 @@ func create_by_pos(x):
 		for n in num:
 			add_conversation(ids[x+n], conversations[ids[x+n]])
 func _on_custom_tab_container_tab_selected(tab: int) -> void:
-	if tab == 0 or tab == 1 or tab == 2:
-		Updatedate.save("tab", tab, false)
-	else :
-		Updatedate.save("tab", 1, false)
 	match tab:
-			#else:
-				#$CustomTabContainer.current_tab = 1
-				#$CustomTabContainer.set_style()
-				#Notification.add_notif("پشتیبانان به این بخش دسترسی ندارند.", Notification.ERROR)
+		0:
+			Updatedate.save("tab", 0, false)
+		1:
+			Updatedate.save("tab", 1, false)
+		2:
+			Updatedate.save("tab", 2, false)
 		3:
+			Updatedate.save("tab", 1, false)
 			if Updatedate.load_game("management", false):
 				Transation.change(self, "managment.tscn")
 			else:
 				Transation.change(self, "main2.tscn")
 		4:
+			Updatedate.save("tab", 1, false)
 			Transation.change(self, "main2.tscn")
 
 
@@ -391,6 +418,11 @@ func add_conversation(_id, data, node=$CustomTabContainer/MarginContainer3/Scrol
 		get_tree().call_group(_id, "queue_free")
 		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label").text = "[b][color=0dca94][outline_color=001313][outline_size=3]"+data.message.sender_name+ ":\n"+"[/outline_size][/outline_color][/color][/b]"  if data and data.has("message") and data.message and data.message.has("sender_name") and data.message.sender_name else ""
 		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label").text += data.message.messages.text if data.has("message") and data.message and data.message.has("messages") and data.message.messages else ""
+		if data.has("state"):
+			if data.state == "online":
+				btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect2").show()
+			else:
+				btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect2").hide()
 		if data.has("username"):
 			if not status_users.has(data["username"]) and not Updatedate.checked_status.has(data["username"]):
 				status_users.append(data["username"])
@@ -421,7 +453,8 @@ func add_conversation(_id, data, node=$CustomTabContainer/MarginContainer3/Scrol
 				else:
 					btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D").default_color = Color.GRAY
 					btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D2").hide()
-			
+			if m.sender != Updatedate.load_game("user_name", ""):
+				btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D").hide()
 			btn.get_node("Panel/HBoxContainer/VBoxContainer2/Label").text = data.message.time.split(" ")[2]
 		else:
 			btn.get_node("Panel/HBoxContainer/VBoxContainer2/Label").hide()
@@ -433,6 +466,7 @@ func add_conversation(_id, data, node=$CustomTabContainer/MarginContainer3/Scrol
 		btn.gui_input.connect(btn_pressed.bind(_id, data))
 		node.add_child(btn, true)
 		btn.add_to_group(_id)
+		btn.set_meta("id", _id)
 		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer/name").set_deferred("text", data.custom_name if data.has("custom_name") and data.custom_name != "" else data.name)
 		if data.name != "":
 			if not data.has("icon"):
@@ -467,9 +501,18 @@ func add_conversation(_id, data, node=$CustomTabContainer/MarginContainer3/Scrol
 			node.add_child(label, true)
 			if pos != -1:
 				node.move_child(label, pos)
+			label.get_node("AnimationPlayer").play("scale")
 func change_conversation(btn, data):
 	if data.has("icon") and data.has("username"):
 		Updatedate.get_icon_user(data.icon, data.username, btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect"))
+	btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label").text = "[b][color=0dca94][outline_color=001313][outline_size=3]"+data.message.sender_name+ ":\n"+"[/outline_size][/outline_color][/color][/b]"  if data and data.has("message") and data.message and data.message.has("sender_name") and data.message.sender_name else ""
+	btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label").text += data.message.messages.text if data.has("message") and data.message and data.message.has("messages") and data.message.messages else ""
+	
+	if data.has("state"):
+		if data.state == "online":
+			btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect2").show()
+		else:
+			btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect2").hide()
 	if data.has("new"):
 		if data.new > 0:
 			btn.get_node("Panel/HBoxContainer/VBoxContainer2/Label2").text = str(int(data.new)) if data.new < 100 else "+99"
@@ -490,7 +533,8 @@ func change_conversation(btn, data):
 			else:
 				btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D").default_color = Color.GRAY
 				btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D2").hide()
-		
+		if m.sender != Updatedate.load_game("user_name", ""):
+			btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D").hide()
 		btn.get_node("Panel/HBoxContainer/VBoxContainer2/Label").text = data.message.time.split(" ")[2]
 	else:
 		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D").hide()

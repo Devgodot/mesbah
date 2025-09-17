@@ -24,13 +24,14 @@ func get_text_name(text, node:Label):
 	node.text += "‌" + words.back()[0] if words.size() > 1 else ""
 # Called when the node enters the scene tree for the first time.
 func _sort(data):
+	print(data)
 	for box in get_tree().get_nodes_in_group("boxes"):
 		box.queue_free()
 	var users = data.users
 	for user in users:
 		$Panel/Label5.hide()
 		var _name = "[center]"+user.first_name + " " + user.last_name
-		_name = user.custom_name if user.has("custom_name") else _name
+		_name = user.custom_name if user.has("custom_name") and user.custom_name != "" else _name
 		var diamonds = user.diamond_sum
 		var score = user.score_sum
 		var pos = user.position if user.has("position") else 0

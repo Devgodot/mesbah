@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [sub_resource type="GDScript" id="GDScript_3llve"]
 script/source = "extends Node2D
@@ -64,12 +64,18 @@ func _process(delta: float) -> void:
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8x0y4"]
 
-[sub_resource type="Curve" id="Curve_lin6m"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.985507, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
 [sub_resource type="Gradient" id="Gradient_lin6m"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_rgr7s"]
+offsets = PackedFloat32Array(0, 0.746377)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m1txw"]
+gradient = SubResource("Gradient_rgr7s")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
 
 [node name="Node2D" type="Node2D"]
 process_mode = 3
@@ -97,8 +103,8 @@ color = Color(0.290196, 0.290196, 0.290196, 0.184314)
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2
 width = 40.0
-width_curve = SubResource("Curve_lin6m")
 gradient = SubResource("Gradient_lin6m")
+texture = SubResource("GradientTexture2D_m1txw")
 texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2

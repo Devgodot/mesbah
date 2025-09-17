@@ -276,6 +276,11 @@ var last_height = 0
 var start = false
 var move = false
 var dir = 1
+var scroll_offset = 0
+var velocity = 0.0
+var dragging = false
+var last_mouse_pos = Vector2.ZERO
+
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_RESIZED:
 		var box = $VBoxContainer.get_child(-1)
@@ -283,9 +288,11 @@ func _notification(what: int) -> void:
 			box =  $\"../..\".edited_box
 		if last_height != 0 and box.global_position.y + box.size.y >= size.y:
 			$VBoxContainer.position.y -= last_height - size.y
+			scroll_offset -= last_height - size.y
 		last_height = size.y
 func _ready() -> void:
 	last_height = size.y
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
@@ -301,20 +308,34 @@ func _process(delta: float) -> void:
 			can_drag[1] = true
 	else: 
 		can_drag[1] = false
-	if scroll.y < 0:
-		dir = -1
-	else :
-		dir = 1
-	if int(scroll.y) != 0:
-		#if abs(scroll.y) > 2000:
-			#scroll.y = 2000 * dir
-		scroll.y -= dir * 400 * delta
-		$VBoxContainer.position += scroll * delta
+	if not dragging:
+		if abs(velocity) > 4:
+			scroll_offset += velocity * delta
+			velocity *= pow(0.92, 60*delta)
+		else:
+			velocity = 0.0
+	_apply_scroll()
+	#if scroll.y < 0:
+		#dir = -1
+	#else :
+		#dir = 1
+	#if int(scroll.y) != 0:
+		##if abs(scroll.y) > 2000:
+			##scroll.y = 2000 * dir
+		#scroll.y *= 0.95
+		#if abs(scroll.y) < 5:
+			#scroll.y = 0
+		#$VBoxContainer.position += scroll * delta
+func _apply_scroll():
+	
 	if get_tree().has_group(begin_id):
 		var btn = get_tree().get_first_node_in_group(begin_id)
 		if btn.checked:
 			if $VBoxContainer.position.y > -btn.position.y + 73:
 				$VBoxContainer.position.y = -btn.position.y + 73
+				scroll_offset =  -btn.position.y + 73
+				velocity = 0.0
+				
 			if $VBoxContainer.position.y == -btn.position.y + 73:
 				scroll.y = 0
 	if get_tree().has_group(last_id) and can_drag[0]:
@@ -323,21 +344,35 @@ func _process(delta: float) -> void:
 			var _delta = (size.y) - (btn.size.y)
 			if $VBoxContainer.position.y < _delta - btn.position.y:
 				$VBoxContainer.position.y =  _delta-btn.position.y
+				scroll_offset = _delta-btn.position.y
+				velocity = 0.0
+				
 			if $VBoxContainer.position.y == _delta-btn.position.y:
 				scroll.y = 0
-
+	
+	$VBoxContainer.position.y = scroll_offset
 func _gui_input(event: InputEvent) -> void:
 	if move == false:
-		if event is InputEventScreenDrag:
-			if event.relative.y > 1 and can_drag[0]:
-				scroll = (Vector2(0, event.velocity.y))
-				scroll_start.emit(1)
-				dir = 1
-			if event.relative.y < -1 and can_drag[1]:
-				scroll = (Vector2(0, event.velocity.y))
-				scroll_start.emit(-1)
-				dir = -1
+		#if event is InputEventScreenDrag:
+			#if event.relative.y > 1 and can_drag[0]:
+				#prints(event.relative, event.velocity)
+				#scroll += (Vector2(0, event.relative.y*5))
+				#scroll_start.emit(1)
+				#dir = 1
+			#if event.relative.y < -1 and can_drag[1]:
+				#
+				#scroll = (Vector2(0, event.velocity.y))
+				#
+				#scroll_start.emit(-1)
+				#dir = -1
 		if event is InputEventMouseButton:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				if event.pressed:
+					dragging = true
+					velocity = 0.0
+					last_mouse_pos = event.position
+				else:
+					dragging = false
 			if event.is_pressed() and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				if can_drag[1]:
 					dir = -1
@@ -348,6 +383,15 @@ func _gui_input(event: InputEvent) -> void:
 					dir = 1
 					scroll = (Vector2(0, 4000 * event.factor))
 					scroll_start.emit(1)
+		elif event is InputEventMouseMotion and dragging:
+			var delta = event.position - last_mouse_pos
+			if (delta.y > 1 and can_drag[0] == false) or (delta.y < 1 and can_drag[1] == false):
+				return
+				
+			if abs(delta.y) > 1:
+				scroll_offset += delta.y
+				velocity = lerp(velocity ,delta.y / get_process_delta_time(), 0.4)
+			last_mouse_pos = event.position
 "
 
 [sub_resource type="Theme" id="Theme_2y1hm"]
@@ -907,8 +951,9 @@ shadow_size = 3
 font_size = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tac8f"]
-bg_color = Color(0.945098, 0.741176, 0, 1)
+bg_color = Color(0.519477, 0.421569, 0, 1)
 border_width_top = 10
+border_color = Color(0.834589, 0.835847, 1.15514e-06, 1)
 border_blend = true
 expand_margin_bottom = 20.0
 
@@ -2331,7 +2376,6 @@ metadata/_edit_use_anchors_ = true
 [node name="ScrollContainer" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-focus_mode = 2
 mouse_filter = 1
 script = SubResource("GDScript_vb5ih")
 metadata/_edit_use_anchors_ = true
