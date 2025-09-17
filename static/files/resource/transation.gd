@@ -4,6 +4,7 @@ var trans = 0
 func change(scene, new_scene:String, dir=1):
 	if Updatedate.bg.visible:
 		Updatedate.hide_picture()
+		print(0)
 		return
 	if not active:
 		Updatedate.failed_request = []
