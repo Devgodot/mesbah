@@ -1,4 +1,4 @@
-[gd_scene load_steps=225 format=3]
+[gd_scene load_steps=222 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_s5p1w"]
 [ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="2_ut861"]
@@ -230,19 +230,6 @@ TextEdit/font_sizes/font_size = 45
 TextEdit/fonts/font = SubResource("FontVariation_adnmk")
 TextEdit/styles/focus = SubResource("StyleBoxFlat_sx0m5")
 TextEdit/styles/normal = SubResource("StyleBoxFlat_xwkh1")
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0gvrr"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-
-[sub_resource type="Sky" id="Sky_scs5k"]
-sky_material = SubResource("ProceduralSkyMaterial_0gvrr")
-
-[sub_resource type="Environment" id="Environment_ceog8"]
-background_mode = 2
-sky = SubResource("Sky_scs5k")
-tonemap_mode = 2
-glow_enabled = true
 
 [sub_resource type="Shader" id="Shader_0gvrr"]
 code = "shader_type canvas_item;
@@ -1578,9 +1565,6 @@ grow_vertical = 2
 focus_mode = 2
 theme = SubResource("Theme_rgiyq")
 script = ExtResource("7_bnrfn")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ceog8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_repeat = 3
