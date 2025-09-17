@@ -156,7 +156,7 @@ def get_resource_index():
                 for x in data.keys():
                     if x not in _list.keys():
                         delete.append([x, data[x]])
-        return jsonify({"add":add, "delete":delete, "time":datetime.now(tz=TehranTimezone).timestamp() * 1000}), 200
+        return jsonify({"add":add, "delete":delete, "time":datetime.datetime.now(tz=TehranTimezone).timestamp() * 1000}), 200
     else:
         return jsonify({"error":"فایلی برای بررسی وجود ندارد"}), 400
 @app.route("/get_hash", methods=["GET"])
