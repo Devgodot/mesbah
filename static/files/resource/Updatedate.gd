@@ -244,6 +244,7 @@ func _ready() -> void:
 			bg.pivot_offset = bg.size/2)
 
 func zoom(texture:TextureRect):
+	texture.pivot_offset = Vector2(200, 200)
 	texture.gui_input.connect(func(event:InputEvent):
 		texture.scale = clamp(texture.scale, Vector2.ONE, Vector2.ONE * 10)
 		var delta = size - (texture.scale * texture.size)
@@ -272,7 +273,7 @@ func zoom(texture:TextureRect):
 			
 		)
 func _process(delta: float) -> void:
-	
+	bg.size = size
 	if not get_tree().root.get_children().has(texture):
 		get_tree().root.add_child(bg)
 		get_tree().root.add_child(texture)
