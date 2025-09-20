@@ -273,10 +273,11 @@ func zoom(texture:TextureRect):
 			
 		)
 func _process(delta: float) -> void:
-	bg.size = size
+	
 	if not get_tree().root.get_children().has(texture):
 		get_tree().root.add_child(bg)
 		get_tree().root.add_child(texture)
+		print(10)
 		setup_icon()
 	if bg.material == null:
 		var m = ShaderMaterial.new()
