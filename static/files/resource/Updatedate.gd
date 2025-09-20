@@ -192,8 +192,6 @@ func _ready() -> void:
 	bg = ColorRect.new()
 	setup_icon()
 func setup_icon():
-	texture = TextureRect.new()
-	bg = ColorRect.new()
 	texture.z_index = 5
 	texture.add_to_group("image_show")
 	bg.add_to_group("image_show")
