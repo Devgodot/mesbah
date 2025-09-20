@@ -278,6 +278,7 @@ func _process(delta: float) -> void:
 		get_tree().root.add_child(bg)
 		get_tree().root.add_child(texture)
 		bg.hide()
+		zoom(texture)
 	if bg.material == null:
 		var m = ShaderMaterial.new()
 		m.shader = load("res://shaders/floor.gdshader")
