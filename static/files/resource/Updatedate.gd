@@ -277,7 +277,12 @@ func _process(delta: float) -> void:
 		get_tree().root.add_child(bg)
 		get_tree().root.add_child(texture)
 		bg.hide()
-		
+	if bg.material == null:
+		var m = ShaderMaterial.new()
+		m.shader = load("res://shaders/floor.gdshader")
+		m.set_shader_parameter("lod", 0)
+		m.set_shader_parameter("mix_percentage", 0.0)
+		bg.material = m
 	socket.poll()
 	if socket.get_ready_state() == 3 and load_game("user_name") != "":
 		socket.connect_to_url(data_net[mode_net].socket)
