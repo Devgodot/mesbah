@@ -188,6 +188,8 @@ func _ready() -> void:
 		socket.connect_to_url(data_net[mode_net].socket)
 	current_user = load_game("current_user", 0)
 	last_user = load_game("last_user", 0)
+	setup_icon()
+func setup_icon():
 	texture.z_index = 5
 	texture.add_to_group("image_show")
 	bg.add_to_group("image_show")
@@ -242,9 +244,7 @@ func _ready() -> void:
 			bg.hide()
 			bg.size = size
 			bg.pivot_offset = bg.size/2)
-
 func zoom(texture:TextureRect):
-	texture.pivot_offset = Vector2(200, 200)
 	texture.gui_input.connect(func(event:InputEvent):
 		texture.scale = clamp(texture.scale, Vector2.ONE, Vector2.ONE * 10)
 		var delta = size - (texture.scale * texture.size)
@@ -277,8 +277,7 @@ func _process(delta: float) -> void:
 	if not get_tree().root.get_children().has(texture):
 		get_tree().root.add_child(bg)
 		get_tree().root.add_child(texture)
-		bg.hide()
-		zoom(texture)
+		setup_icon()
 	if bg.material == null:
 		var m = ShaderMaterial.new()
 		m.shader = load("res://shaders/floor.gdshader")
