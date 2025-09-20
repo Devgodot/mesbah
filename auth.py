@@ -33,7 +33,7 @@ def post_request(url, payload={}):
     response = requests.post(url, json=payload, headers=headers)
     return response.json()
 
-def send_sms(phone, game, code):
+def send_sms(phone, game):
     url = 'https://console.melipayamak.com/api/send/otp/4e52dc71f69c416dad6f2c7d22628b3d'
    
     params = {
@@ -47,12 +47,11 @@ def send_sms(phone, game, code):
 @auth_bp.post("/verify")
 def verify_user():
     data = request.get_json()
-    code = str(randint(0, 9)) + str(randint(0, 9)) + str(randint(0, 9)) + str(randint(0, 9))
     game = data.get("game", "")
     phone: str = data.get("phone")
     if not phone.startswith("09") or len(phone) != 11:
         return jsonify({"error": "فرمت شماره نامعتبر است"}), 400
-    response = send_sms(phone, game, code)
+    response = send_sms(phone, game)
     verify = VerificationCode.query.filter_by(phone=phone).all()
     
     for v in verify:
