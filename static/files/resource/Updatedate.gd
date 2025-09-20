@@ -188,8 +188,7 @@ func _ready() -> void:
 		socket.connect_to_url(data_net[mode_net].socket)
 	current_user = load_game("current_user", 0)
 	last_user = load_game("last_user", 0)
-	texture = TextureRect.new()
-	bg = ColorRect.new()
+	
 	setup_icon()
 func setup_icon():
 	texture.z_index = 5
@@ -275,7 +274,9 @@ func zoom(texture:TextureRect):
 			
 		)
 func _process(delta: float) -> void:
-	
+	if texture == null:
+		texture = TextureRect.new()
+		bg = ColorRect.new()
 	if not get_tree().root.get_children().has(texture):
 		get_tree().root.add_child(bg)
 		get_tree().root.add_child(texture)
