@@ -22,11 +22,13 @@ func _ready() -> void:
 			else:
 				if FileAccess.file_exists("user://resource/Updatedate.gd"):
 					get_tree().call_group("image_show", "queue_free")
+					Updatedate.texture = null
 					Updatedate.set_script(ResourceLoader.load("user://resource/Updatedate.gd"))
 					
 				await Updatedate.update_resource()
 				if FileAccess.file_exists("user://resource/Updatedate.gd"):
 					get_tree().call_group("image_show", "queue_free")
+					Updatedate.texture = null
 					Updatedate.set_script(ResourceLoader.load("user://resource/Updatedate.gd"))
 					await Updatedate.get_tree().create_timer(0.1).timeout
 				Transation.change(self, "start.tscn")
