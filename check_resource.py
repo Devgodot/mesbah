@@ -3,7 +3,7 @@ import json
 import re
 import sys
 
-# مسیر پروژه
+# مسیر پروژه و فایل JSON
 PROJECT_DIR = "/home/pachim/messbah403.ir"
 RESOURCE_MAP_FILE = os.path.join(PROJECT_DIR, "resource_usages.json")
 
@@ -12,8 +12,8 @@ if len(sys.argv) < 2:
     print("Usage: python update_resource_map.py <changed_scene.tscn>")
     sys.exit(1)
 
-changed_scene_file = sys.argv[1]
-scene_name = os.path.basename(changed_scene_file)
+scene_file = sys.argv[1]
+scene_name = os.path.basename(scene_file)
 
 # بارگذاری JSON موجود
 if os.path.exists(RESOURCE_MAP_FILE):
@@ -22,33 +22,31 @@ if os.path.exists(RESOURCE_MAP_FILE):
 else:
     resource_map = {}
 
-# --- مرحله 1: ساخت mapping ext_resource ---
+# --- مرحله 1: ext_resource mapping ---
 ext_resources = {}  # id -> res://path
 ext_res_pattern = re.compile(r'\[ext_resource.*?id="([^"]+)".*?path="([^"]+)"')
+with open(scene_file, "r", encoding="utf-8") as f:
+    for line in f:
+        match = ext_res_pattern.match(line)
+        if match:
+            res_id, res_path = match.groups()
+            ext_resources[res_id] = res_path
 
-# --- مرحله 2: پیدا کردن propertyهای نود ---
-prop_pattern = re.compile(r'(\w+)\s*=\s*ExtResource\("([^"]+)"\)')
-
+# --- مرحله 2: پردازش نودها و propertyها ---
 current_node = None
 scene_usages = {}
 current_resources = set()
+prop_pattern = re.compile(r'(\w+)\s*=\s*ExtResource\("([^"]+)"\)')
 
-with open(changed_scene_file, "r", encoding="utf-8") as f:
+with open(scene_file, "r", encoding="utf-8") as f:
     for line in f:
-        # ext_resource
-        ext_match = ext_res_pattern.match(line)
-        if ext_match:
-            res_id, res_path = ext_match.groups()
-            ext_resources[res_id] = res_path
-            continue
-
-        # node
-        node_match = re.match(r'\[node name="([^"]+)" type="([^"]+)"', line)
+        # پیدا کردن نود
+        node_match = re.match(r'\[node name="([^"]+)"', line)
         if node_match:
             current_node = node_match.group(1)
             continue
 
-        # property با ExtResource
+        # پیدا کردن property = ExtResource("id")
         for prop_name, res_id in prop_pattern.findall(line):
             if res_id not in ext_resources:
                 continue
