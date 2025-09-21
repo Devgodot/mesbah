@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_500ob"]
 [ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="6_3wryf"]
 [ext_resource type="Script" uid="uid://bhrjao205or8u" path="res://script/managment.gd" id="7_bnrfn"]
-[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="8_s5p1w"]
+[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="8_s5p1w"]
 [ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://scripts/tab_container.gd" id="9_3xg5v"]
 [ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://scripts/animation_tab.gd" id="10_lnsl6"]
 [ext_resource type="Texture2D" uid="uid://bjetyx7brb8jl" path="res://sprite/ranking-icon-2048x2046-5ln1igbz2.png" id="11_y2lt3"]
