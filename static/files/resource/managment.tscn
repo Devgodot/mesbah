@@ -1625,7 +1625,7 @@ theme_override_styles/tab_selected = SubResource("StyleBoxFlat_dgef1")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_nfu3h")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_pa2oh")
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 drag_to_rearrange_enabled = true
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/1/TabContainer"]
@@ -1822,7 +1822,6 @@ layout_mode = 2
 text = "ذخیره تغییرات"
 
 [node name="MarginContainer2" type="MarginContainer" parent="TabContainer/1/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
@@ -1966,6 +1965,7 @@ layout_mode = 2
 text = "دوباره"
 
 [node name="MarginContainer3" type="MarginContainer" parent="TabContainer/1/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 20
