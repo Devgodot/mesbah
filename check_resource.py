@@ -22,43 +22,58 @@ if os.path.exists(RESOURCE_MAP_FILE):
 else:
     resource_map = {}
 
-# regex برای پیدا کردن ریسورس‌ها و property
-RESOURCE_PATTERN = re.compile(r'(\w+)\s*=\s*ExtResource\("([^"]+)"\)')
+# --- مرحله 1: ساخت mapping ext_resource ---
+ext_resources = {}  # id -> res://path
+ext_res_pattern = re.compile(r'\[ext_resource.*?id="([^"]+)".*?path="([^"]+)"')
 
-# خواندن ریسورس‌های موجود در صحنه
-current_resources = set()
+# --- مرحله 2: پیدا کردن propertyهای نود ---
+prop_pattern = re.compile(r'(\w+)\s*=\s*ExtResource\("([^"]+)"\)')
+
+current_node = None
 scene_usages = {}
+current_resources = set()
 
 with open(changed_scene_file, "r", encoding="utf-8") as f:
-    current_node = None
     for line in f:
-        # پیدا کردن نود
-        node_match = re.match(r'\[node name="([^"]+)" type="([^"]+)"\]', line)
+        # ext_resource
+        ext_match = ext_res_pattern.match(line)
+        if ext_match:
+            res_id, res_path = ext_match.groups()
+            ext_resources[res_id] = res_path
+            continue
+
+        # node
+        node_match = re.match(r'\[node name="([^"]+)" type="([^"]+)"', line)
         if node_match:
             current_node = node_match.group(1)
-        # پیدا کردن property و ریسورس
-        for prop_name, res_name in RESOURCE_PATTERN.findall(line):
-            current_resources.add(res_name)
-            usage = {"scene": scene_name, "node": current_node, "property": prop_name}
-            scene_usages.setdefault(res_name, []).append(usage)
+            continue
 
-# آپدیت resource_map
-for res_name in current_resources:
-    full_path = os.path.join(PROJECT_DIR, res_name.replace("res://", "static/files/resource/"))
+        # property با ExtResource
+        for prop_name, res_id in prop_pattern.findall(line):
+            if res_id not in ext_resources:
+                continue
+            res_path = ext_resources[res_id]
+            current_resources.add(res_path)
+            usage = {"scene": scene_name, "node": current_node, "property": prop_name}
+            scene_usages.setdefault(res_path, []).append(usage)
+
+# --- مرحله 3: آپدیت resource_map ---
+for res_path in current_resources:
+    full_path = os.path.join(PROJECT_DIR, res_path.replace("res://", "static/files/resource/"))
     mtime = int(os.path.getmtime(full_path) * 1000) if os.path.exists(full_path) else None
 
-    if res_name not in resource_map:
-        resource_map[res_name] = {"mtime": mtime, "usages": scene_usages[res_name]}
+    if res_path not in resource_map:
+        resource_map[res_path] = {"mtime": mtime, "usages": scene_usages[res_path]}
     else:
-        resource_map[res_name]["mtime"] = mtime
+        resource_map[res_path]["mtime"] = mtime
         # حذف usageهای قبلی مربوط به این صحنه
-        resource_map[res_name]["usages"] = [u for u in resource_map[res_name]["usages"] if u["scene"] != scene_name]
+        resource_map[res_path]["usages"] = [u for u in resource_map[res_path]["usages"] if u["scene"] != scene_name]
         # اضافه کردن usage‌های جدید
-        resource_map[res_name]["usages"].extend(scene_usages[res_name])
+        resource_map[res_path]["usages"].extend(scene_usages[res_path])
 
 # حذف ریسورس‌هایی که قبلاً در این صحنه بودند اما الان حذف شده
-for res_name, info in resource_map.items():
-    if res_name not in current_resources:
+for res_path, info in resource_map.items():
+    if res_path not in current_resources:
         info["usages"] = [u for u in info["usages"] if u["scene"] != scene_name]
 
 # ذخیره JSON نهایی
