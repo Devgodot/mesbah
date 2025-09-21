@@ -1,25 +1,29 @@
-[gd_scene load_steps=150 format=3]
+[gd_scene load_steps=155 format=3]
 
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_80fm6"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_6bnws"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_eccyl"]
-[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_byuqn"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_7sn4o"]
-[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="6_xuh5p"]
-[ext_resource type="Script" uid="uid://bksxi3frccjpv" path="res://script/control.gd" id="7_0i0fv"]
-[ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="8_3otl1"]
-[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="9_avvg3"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="10_xmqxi"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="11_5k480"]
-[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="12_nl6dj"]
-[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="13_131kw"]
-[ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="14_06d1e"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="15_cj1gv"]
-[ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="16_brft0"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_7sn4o"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_xuh5p"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_0i0fv"]
+[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_3otl1"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_avvg3"]
+[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="6_xmqxi"]
+[ext_resource type="Script" uid="uid://bksxi3frccjpv" path="res://script/control.gd" id="7_5k480"]
+[ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="8_nl6dj"]
+[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="9_131kw"]
+[ext_resource type="Texture2D" uid="uid://5ru3ab6p6dvc" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_04_49 PM2.png" id="10_06d1e"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="11_cj1gv"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="12_brft0"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="13_1mtgi"]
+[ext_resource type="Texture2D" uid="uid://mvbajcxbja87" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_04_49 PM3.png" id="14_aqg2y"]
+[ext_resource type="Texture2D" uid="uid://cn8qrclg0a76t" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_04_49 PM.png" id="15_b7y2v"]
+[ext_resource type="Texture2D" uid="uid://clepet1x1srh0" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_52_45 PM.png" id="16_kflwy"]
+[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="17_tidj8"]
+[ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="18_wtdv7"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="19_rg367"]
+[ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="20_wyugk"]
 
 [sub_resource type="FontVariation" id="FontVariation_m5l8b"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("1_80fm6")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("1_7sn4o")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
 bg_color = Color(0.147672, 0.147672, 0.147672, 1)
@@ -48,31 +52,31 @@ shadow_size = 2
 shadow_offset = Vector2(-1, 3)
 
 [sub_resource type="FontVariation" id="FontVariation_dalxy"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("3_eccyl")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("3_0i0fv")
 
 [sub_resource type="FontVariation" id="FontVariation_dy4oq"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("3_eccyl")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("3_0i0fv")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
-texture = ExtResource("4_byuqn")
+texture = ExtResource("4_3otl1")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
-texture = ExtResource("5_7sn4o")
+texture = ExtResource("5_avvg3")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="FontVariation" id="FontVariation_7soyd"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("3_eccyl")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("3_0i0fv")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
-texture = ExtResource("5_7sn4o")
+texture = ExtResource("5_avvg3")
 expand_margin_left = 13.0
 expand_margin_top = 30.0
 expand_margin_bottom = 20.0
@@ -86,12 +90,12 @@ border_width_bottom = 5
 border_color = Color(0.819608, 0.780392, 0.411765, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_adnmk"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("3_eccyl")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("3_0i0fv")
 
 [sub_resource type="FontVariation" id="FontVariation_l65wg"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("6_xuh5p")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("6_xmqxi")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dx5q"]
 
@@ -162,7 +166,7 @@ fill_to = Vector2(0.5, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6pn8l"]
-shader = ExtResource("8_3otl1")
+shader = ExtResource("8_nl6dj")
 shader_parameter/tex = SubResource("GradientTexture2D_usxgj")
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_0jf8d"]
@@ -342,7 +346,7 @@ func _apply_scroll():
 		var btn = get_tree().get_first_node_in_group(last_id)
 		if btn.checked:
 			var _delta = (size.y) - (btn.size.y)
-			if $VBoxContainer.position.y < _delta - btn.position.y:
+			if int($VBoxContainer.position.y) < int(_delta - btn.position.y):
 				$VBoxContainer.position.y =  _delta-btn.position.y
 				scroll_offset = _delta-btn.position.y
 				velocity = 0.0
@@ -385,9 +389,12 @@ func _gui_input(event: InputEvent) -> void:
 					scroll_start.emit(1)
 		elif event is InputEventMouseMotion and dragging:
 			var delta = event.position - last_mouse_pos
-			if (delta.y > 1 and can_drag[0] == false) or (delta.y < 1 and can_drag[1] == false):
-				return
-				
+			if delta.y > 0 :
+				if can_drag[0] == false:
+					return
+			else:
+				if can_drag[1] == false:
+					return
 			if abs(delta.y) > 1:
 				scroll_offset += delta.y
 				velocity = lerp(velocity ,delta.y / get_process_delta_time(), 0.4)
@@ -396,20 +403,18 @@ func _gui_input(event: InputEvent) -> void:
 
 [sub_resource type="Theme" id="Theme_2y1hm"]
 Label/font_sizes/font_size = 20
-Label/fonts/font = ExtResource("6_xuh5p")
+Label/fonts/font = ExtResource("6_xmqxi")
 RichTextLabel/font_sizes/normal_font_size = 30
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwblo"]
-bg_color = Color(0.0193923, 0.0569649, 0.596532, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 0.735639, 0.543734, 1)
-border_blend = true
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_left = 40
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_usxgj"]
+texture = ExtResource("10_06d1e")
+texture_margin_left = 80.0
+texture_margin_top = 58.8329
+texture_margin_right = 80.0
+texture_margin_bottom = 57.5782
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(0, 0, 349, 200)
 
 [sub_resource type="GDScript" id="GDScript_apcft"]
 script/source = "extends PanelContainer
@@ -579,8 +584,8 @@ corner_radius_top_left = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="FontVariation" id="FontVariation_6pn8l"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("6_xuh5p")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("6_xmqxi")
 variation_embolden = 0.74
 
 [sub_resource type="LabelSettings" id="LabelSettings_0jf8d"]
@@ -588,24 +593,24 @@ font = SubResource("FontVariation_6pn8l")
 font_size = 20
 
 [sub_resource type="FontVariation" id="FontVariation_tfhda"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("6_xuh5p")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("6_xmqxi")
 variation_embolden = 0.69
 
 [sub_resource type="FontVariation" id="FontVariation_vb5ih"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("6_xuh5p")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("6_xmqxi")
 variation_embolden = 0.7
 variation_transform = Transform2D(1, 0.4, 0, 1, 0, 0)
 
 [sub_resource type="FontVariation" id="FontVariation_0jf8d"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("6_xuh5p")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("6_xmqxi")
 variation_transform = Transform2D(1, 0.4, 0, 1, 0, 0)
 
 [sub_resource type="FontVariation" id="FontVariation_2pn8f"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("6_xuh5p")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("6_xmqxi")
 
 [sub_resource type="Theme" id="Theme_apcft"]
 RichTextLabel/font_sizes/bold_font_size = 42
@@ -618,10 +623,10 @@ RichTextLabel/fonts/italics_font = SubResource("FontVariation_0jf8d")
 RichTextLabel/fonts/normal_font = SubResource("FontVariation_2pn8f")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_yb7qp"]
-script = ExtResource("10_xmqxi")
+script = ExtResource("11_cj1gv")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gbj5b"]
-script = ExtResource("11_5k480")
+script = ExtResource("12_brft0")
 
 [sub_resource type="GDScript" id="GDScript_6pn8l"]
 script/source = "@tool
@@ -640,15 +645,15 @@ func _set(property: StringName, value: Variant) -> bool:
 [sub_resource type="RichTextEffect" id="RichTextEffect_vb5ih"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_6pn8l"]
-script = ExtResource("10_xmqxi")
+script = ExtResource("11_cj1gv")
 metadata/_custom_type_script = "uid://dcls0pguhob1u"
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_0jf8d"]
-script = ExtResource("11_5k480")
+script = ExtResource("12_brft0")
 metadata/_custom_type_script = "uid://bt1xta4d0rii"
 
 [sub_resource type="LabelSettings" id="LabelSettings_6pn8l"]
-font = ExtResource("12_nl6dj")
+font = ExtResource("13_1mtgi")
 font_size = 35
 font_color = Color(0.690276, 1, 0.436242, 1)
 outline_size = 3
@@ -747,26 +752,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/path = NodePath("HBoxContainer/MarginContainer/VBoxContainer/Label3:theme_override_styles/normal:bg_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.0193923, 0.0569649, 0.596532, 1)]
+"values": [Color(0.00603573, 0.0190997, 0.343463, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer/MarginContainer/VBoxContainer/Label3:theme_override_styles/normal:bg_color")
+tracks/1/path = NodePath(".:theme_override_styles/panel:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.00603573, 0.0190997, 0.343463, 1)]
+"update": 1,
+"values": [ExtResource("10_06d1e")]
 }
 
 [sub_resource type="Animation" id="Animation_6uaey"]
@@ -775,26 +780,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/path = NodePath("HBoxContainer/MarginContainer/VBoxContainer/Label3:theme_override_styles/normal:bg_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.49),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.0144777, 0.446191, 0.128137, 1), Color(0.0179451, 0.500374, 0.14778, 1)]
+"values": [Color(0.0751361, 0.249375, 0.0109285, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer/MarginContainer/VBoxContainer/Label3:theme_override_styles/normal:bg_color")
+tracks/1/path = NodePath(".:theme_override_styles/panel:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.0751361, 0.249375, 0.0109285, 1)]
+"update": 1,
+"values": [ExtResource("14_aqg2y")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ehb43"]
@@ -803,20 +808,18 @@ _data = {
 &"action": SubResource("Animation_6uaey")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfn3y"]
-bg_color = Color(0.541176, 0.12549, 0.184314, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(1, 0.735639, 0.543734, 1)
-border_blend = true
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mmsp5"]
+texture = ExtResource("15_b7y2v")
+texture_margin_left = 80.0
+texture_margin_top = 58.8329
+texture_margin_right = 80.0
+texture_margin_bottom = 57.5782
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(0, 0, 349, 200)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pn8f"]
-bg_color = Color(0.323455, 0.058508, 0.0963749, 1)
+bg_color = Color(0.465192, 0.160423, 0.518211, 1)
 border_width_right = 10
 border_color = Color(0.0392157, 0.247059, 1, 1)
 corner_radius_top_left = 15
@@ -832,14 +835,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/path = NodePath(".:theme_override_styles/panel:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.541176, 0.12549, 0.184314, 1)]
+"update": 1,
+"values": [ExtResource("15_b7y2v")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -851,7 +854,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.323455, 0.058508, 0.0963749, 1)]
+"values": [Color(0.465192, 0.160423, 0.518211, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ednal"]
@@ -860,26 +863,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:theme_override_styles/panel:bg_color")
+tracks/0/path = NodePath("HBoxContainer/MarginContainer/VBoxContainer/Label3:theme_override_styles/normal:bg_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.49),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.0144777, 0.446191, 0.128137, 1), Color(0.0179451, 0.500374, 0.14778, 1)]
+"values": [Color(0.0751361, 0.249375, 0.0109285, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HBoxContainer/MarginContainer/VBoxContainer/Label3:theme_override_styles/normal:bg_color")
+tracks/1/path = NodePath(".:theme_override_styles/panel:texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.0751361, 0.249375, 0.0109285, 1)]
+"update": 1,
+"values": [ExtResource("14_aqg2y")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lr483"]
@@ -899,7 +902,7 @@ gradient = SubResource("Gradient_6pn8l")
 texture = SubResource("GradientTexture2D_2pn8f")
 
 [sub_resource type="LabelSettings" id="LabelSettings_usxgj"]
-font = ExtResource("12_nl6dj")
+font = ExtResource("13_1mtgi")
 font_size = 40
 font_color = Color(0.694118, 0, 0.235294, 1)
 outline_size = 7
@@ -913,7 +916,7 @@ Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/colors/icon_focus_color = Color(0, 0.221339, 0.265226, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_usxgj"]
-base_font = ExtResource("2_6bnws")
+base_font = ExtResource("2_xuh5p")
 spacing_space = -110
 baseline_offset = 0.125
 
@@ -950,35 +953,38 @@ shadow_size = 3
 [sub_resource type="LabelSettings" id="LabelSettings_tfhda"]
 font_size = 50
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tac8f"]
-bg_color = Color(0.519477, 0.421569, 0, 1)
-border_width_top = 10
-border_color = Color(0.834589, 0.835847, 1.15514e-06, 1)
-border_blend = true
-expand_margin_bottom = 20.0
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_an0t8"]
+texture = ExtResource("16_kflwy")
+texture_margin_left = 118.8
+texture_margin_top = 55.8266
+texture_margin_right = 116.0
+texture_margin_bottom = 66.9969
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(0, 0.37381, 418.299, 199.626)
 
 [sub_resource type="FontVariation" id="FontVariation_mmsp5"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("6_xuh5p")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("6_xmqxi")
 
 [sub_resource type="FontVariation" id="FontVariation_an0t8"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("6_xuh5p")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("6_xmqxi")
 variation_transform = Transform2D(1, 0.6, 0, 1, 0, 0)
 
 [sub_resource type="FontVariation" id="FontVariation_db4rb"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("6_xuh5p")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("6_xmqxi")
 variation_embolden = 0.7
 variation_transform = Transform2D(1, 0.6, 0, 1, 0, 0)
 
 [sub_resource type="FontVariation" id="FontVariation_6uaey"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("6_xuh5p")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("6_xmqxi")
 variation_embolden = 0.7
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pn8l"]
-bg_color = Color(0.569772, 0.49852, 0.0809918, 1)
+bg_color = Color(1.29953e-06, 0.820032, 0.212838, 1)
 border_width_right = 10
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 20
@@ -987,12 +993,15 @@ corner_radius_bottom_left = 20
 [sub_resource type="RichTextEffect" id="RichTextEffect_sej5b"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ehb43"]
-script = ExtResource("10_xmqxi")
+script = ExtResource("11_cj1gv")
 metadata/_custom_type_script = "uid://dcls0pguhob1u"
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ednal"]
-script = ExtResource("11_5k480")
+script = ExtResource("12_brft0")
 metadata/_custom_type_script = "uid://bt1xta4d0rii"
+
+[sub_resource type="FontVariation" id="FontVariation_ehb43"]
+base_font = ExtResource("2_xuh5p")
 
 [sub_resource type="SystemFont" id="SystemFont_6pn8l"]
 font_names = PackedStringArray("Segoe UI Emoji")
@@ -1001,8 +1010,8 @@ font_names = PackedStringArray("Segoe UI Emoji")
 font_names = PackedStringArray("SamsungColorEmoji")
 
 [sub_resource type="FontVariation" id="FontVariation_sej5b"]
-fallbacks = Array[Font]([SubResource("SystemFont_6pn8l"), SubResource("SystemFont_0jf8d"), ExtResource("2_6bnws")])
-base_font = ExtResource("12_nl6dj")
+fallbacks = Array[Font]([SubResource("SystemFont_6pn8l"), SubResource("SystemFont_0jf8d"), ExtResource("2_xuh5p")])
+base_font = ExtResource("13_1mtgi")
 variation_embolden = -0.4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_apcft"]
@@ -1016,7 +1025,7 @@ border_blend = true
 corner_detail = 20
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apcft"]
-shader = ExtResource("13_131kw")
+shader = ExtResource("17_tidj8")
 shader_parameter/lod = 0.0
 shader_parameter/mix_percentage = 0.0
 
@@ -1081,18 +1090,18 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="FontVariation" id="FontVariation_apcft"]
-fallbacks = Array[Font]([ExtResource("2_6bnws")])
-base_font = ExtResource("3_eccyl")
+fallbacks = Array[Font]([ExtResource("2_xuh5p")])
+base_font = ExtResource("3_0i0fv")
 spacing_top = 30
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_mgrfc"]
-script = ExtResource("10_xmqxi")
+script = ExtResource("11_cj1gv")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ur635"]
-script = ExtResource("11_5k480")
+script = ExtResource("12_brft0")
 
 [sub_resource type="LabelSettings" id="LabelSettings_2pn8f"]
-font = ExtResource("12_nl6dj")
+font = ExtResource("13_1mtgi")
 font_size = 40
 
 [sub_resource type="Gradient" id="Gradient_how18"]
@@ -1126,7 +1135,7 @@ fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_apcft"]
-font = ExtResource("16_brft0")
+font = ExtResource("20_wyugk")
 font_size = 50
 outline_size = 11
 outline_color = Color(0.321971, 0.232393, 0.00322712, 1)
@@ -1346,7 +1355,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 
 [sub_resource type="LabelSettings" id="LabelSettings_mmsp5"]
-font = ExtResource("16_brft0")
+font = ExtResource("20_wyugk")
 font_size = 70
 font_color = Color(0.584314, 0.156863, 0.294118, 1)
 outline_size = 10
@@ -2337,7 +2346,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_pnsd0")
-script = ExtResource("7_0i0fv")
+script = ExtResource("7_5k480")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_6pn8l")
@@ -2347,7 +2356,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_avvg3")
+texture = ExtResource("9_131kw")
 expand_mode = 1
 stretch_mode = 1
 
@@ -2391,11 +2400,13 @@ mouse_filter = 2
 [node name="instance" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 visible = false
 layout_direction = 3
-layout_mode = 2
+layout_mode = 0
+offset_right = 420.0
+offset_bottom = 394.411
 size_flags_horizontal = 8
 mouse_filter = 2
 theme = SubResource("Theme_2y1hm")
-theme_override_styles/panel = SubResource("StyleBoxFlat_dwblo")
+theme_override_styles/panel = SubResource("StyleBoxTexture_usxgj")
 script = SubResource("GDScript_apcft")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance"]
@@ -2404,10 +2415,6 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -2566,7 +2573,7 @@ grow_horizontal = 0
 size_flags_horizontal = 0
 mouse_filter = 2
 theme = SubResource("Theme_2y1hm")
-theme_override_styles/panel = SubResource("StyleBoxFlat_nfn3y")
+theme_override_styles/panel = SubResource("StyleBoxTexture_mmsp5")
 script = SubResource("GDScript_apcft")
 dir = -1
 
@@ -2576,10 +2583,6 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -2717,7 +2720,7 @@ libraries = {
 
 [node name="instance2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 visible = false
-layout_mode = 2
+layout_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_tfhda")
 text = "چهارشنبه 23 مهر"
 label_settings = SubResource("LabelSettings_usxgj")
@@ -2779,7 +2782,7 @@ vertical_alignment = 1
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_tac8f")
+theme_override_styles/panel = SubResource("StyleBoxTexture_an0t8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel"]
 layout_mode = 2
@@ -2787,9 +2790,6 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Panel/VBoxContainer"]
 visible = false
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -2836,25 +2836,24 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="Button" type="Button" parent="VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control"]
-custom_minimum_size = Vector2(100, 80)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -40.0
-offset_right = 50.0
-offset_bottom = 40.0
+offset_left = -71.0
+offset_top = -58.5
+offset_right = 69.0
+offset_bottom = 55.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(50, 40)
+pivot_offset = Vector2(70, 57)
 size_flags_vertical = 0
 focus_mode = 0
-theme_override_fonts/font = ExtResource("2_6bnws")
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = SubResource("FontVariation_ehb43")
+theme_override_font_sizes/font_size = 70
 text = "📨"
 flat = true
 
@@ -2862,8 +2861,9 @@ flat = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/caret_color = Color(0, 0.65098, 0.741176, 1)
-theme_override_constants/outline_size = 7
+theme_override_colors/font_placeholder_color = Color(0.893451, 0.653961, 0, 0.933333)
+theme_override_colors/caret_color = Color(0.962946, 0.349946, 0, 1)
+theme_override_constants/outline_size = 5
 theme_override_constants/caret_width = 5
 theme_override_fonts/font = SubResource("FontVariation_sej5b")
 theme_override_font_sizes/font_size = 45
@@ -2873,7 +2873,6 @@ context_menu_enabled = false
 wrap_mode = 1
 scroll_smooth = true
 caret_blink = true
-script = -3579537070038712320
 
 [node name="ColorRect3" type="ColorRect" parent="."]
 visible = false
@@ -2893,7 +2892,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 144.0
 grow_horizontal = 2
-texture = ExtResource("14_06d1e")
+texture = ExtResource("18_wtdv7")
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 1
@@ -2915,7 +2914,7 @@ custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wi0ee")
-icon = ExtResource("15_cj1gv")
+icon = ExtResource("19_rg367")
 flat = true
 expand_icon = true
 
@@ -3059,7 +3058,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_6bnws")
+theme_override_fonts/font = ExtResource("2_xuh5p")
 theme_override_font_sizes/font_size = 70
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0jf8d")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_apcft")
@@ -3095,7 +3094,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_6bnws")
+theme_override_fonts/font = ExtResource("2_xuh5p")
 theme_override_font_sizes/font_size = 70
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0jf8d")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_an0t8")
@@ -3133,7 +3132,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_6bnws")
+theme_override_fonts/font = ExtResource("2_xuh5p")
 theme_override_font_sizes/font_size = 70
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0jf8d")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_6uaey")
@@ -3171,6 +3170,7 @@ libraries = {
 [connection signal="meta_clicked" from="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="meta_clicked" from="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
 [connection signal="pressed" from="VBoxContainer/Control/Button" to="." method="_on_scroll_pressed"]
+[connection signal="gui_input" from="VBoxContainer/Panel" to="." method="_on_panel_gui_input"]
 [connection signal="pressed" from="VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Button" to="." method="_on_null_ref_pressed"]
 [connection signal="pressed" from="VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button" to="." method="_on_button_pressed"]
 [connection signal="text_changed" from="VBoxContainer/Panel/VBoxContainer/HBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
