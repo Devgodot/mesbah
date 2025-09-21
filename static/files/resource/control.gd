@@ -11,6 +11,7 @@ var seen_message = [[], [], []]
 var check = false
 var last_index = 0
 var last_index2 = 0
+var last_vbox_size = 0
 var senderId = "0"
 var action_box
 var fram = 0
@@ -32,7 +33,7 @@ var r_id = ""
 var last_height = 0
 var has_keyboard = false
 var action_box_offset = Vector2.ZERO
-
+var mobile_box
 func get_direction(text:String):
 	if text[0] < "ی" and text[0] > "آ":
 		return -1
@@ -63,7 +64,53 @@ func _ready() -> void:
 		#print(text))
 	#DisplayServer.dialog_show("test", "", ["1", "2", "3"], func(btn):
 		#print(btn))
-	
+	var btn = $VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button
+	if Engine.has_singleton("GodotGetFile"):
+		mobile_box = Engine.get_singleton("GodotGetFile")
+		mobile_box.text_changed.connect(func (text):
+			var s:PackedStringArray = text.split(" ")
+			var s2:PackedStringArray = text.split("‌‌")
+			var s3:PackedStringArray = text.split("‌\n")
+			var not_Space = false
+			var not_Space2 = false
+			var not_line = false
+			for g in s:
+				g = g.replace("‌", "")
+				g = g.replace(" ", "")
+				g = g.replace("\n", "")
+				if g != "" and g != "‌" and g != "‌ "and g!="\n":
+					not_Space = true
+					break
+			for g in s2:
+				g = g.replace(" ", "")
+				g = g.replace("‌", "")
+				g = g.replace("\n", "")
+				if g != "" and g != "‌" and g != "‌ "and g!="\n":
+					not_Space2 = true
+					break
+			for g in s3:
+				g = g.replace(" ", "")
+				g = g.replace("\n", "")
+				g = g.replace("‌", "")
+				if g != "" and g != "‌" and g != "‌ " and g!="\n":
+					not_line = true
+					break
+			
+			if not_line and not_Space and not_Space2:
+				
+				if btn.scale < Vector2.ONE:
+					var tween = get_tree().create_tween()
+					tween.tween_property(btn, "scale", Vector2.ONE, 0.3)
+					tween.play()
+			else:
+				if btn.scale > Vector2.ZERO:
+					var tween = get_tree().create_tween()
+					tween.tween_property(btn, "scale", Vector2.ZERO, 0.3)
+					tween.play()
+				)
+			
+		mobile_box.showTextBox(text_edit.global_position.x, text_edit.global_position.y, text_edit.size.x, text_edit.size.y, max_line)
+		text_edit.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	focus_mode = FOCUS_ALL
 	Updatedate.load_user()
 	var c = Updatedate.conversation
@@ -407,7 +454,10 @@ func add_message(m, pos=-1):
 		if edited_box == null:
 			box_ref = m.id
 			if has_keyboard == false:
-				text_edit.grab_focus()
+				if mobile_box:
+					mobile_box.getFocus()
+				else:
+					text_edit.grab_focus()
 		)
 	if m.response and m.response != "":
 		var ref =  messages[m.response]
@@ -496,8 +546,9 @@ func _process(delta: float) -> void:
 	$VBoxContainer/Control/Button/Label.visible = unseen_ids.size() > 0
 	$VBoxContainer/Control/Button/Label.text = str(unseen_ids.size())
 	offset = get_keyboard_offset()
+	var _delta = Vector2(DisplayServer.window_get_size())/get_viewport().get_visible_rect().size
 	if edited_box:
-		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").set_deferred("text", text_edit.text)
+		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").set_deferred("text", text_edit.text if mobile_box == null else mobile_box.getText())
 	if fram <= 6:
 		fram += 1
 	for id in responses:
@@ -511,37 +562,43 @@ func _process(delta: float) -> void:
 				$ColorRect2.global_position.y = box.global_position.y
 	else:
 		$ColorRect2.hide()
-		
+	
 	if box_ref:
 		$VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.text = messages[box_ref].messages.text if messages.has(box_ref) else ""
 		$VBoxContainer/Panel/VBoxContainer/MarginContainer.show()
 	$ColorRect2.size.x = size.x
 	if offset > 100:
+		
 		has_keyboard = true
-		vbox.size.y = size.y - 95 - vbox.position.y - offset
+		
+		last_vbox_size = size.y - 95 - vbox.position.y - offset
+		vbox.size.y = last_vbox_size
 	else:
-		has_keyboard = false
-		vbox.size.y = size.y - 10 - vbox.position.y
+		if has_keyboard:
+			has_keyboard = false
+			if mobile_box:
+				mobile_box.exitFocus()
+		if last_vbox_size != size.y - 10 - vbox.position.y:
+			last_vbox_size = size.y - 10 - vbox.position.y
+			var tween = get_tree().create_tween()
+			tween.tween_property(vbox, "size:y", size.y - 10 - vbox.position.y, 0.3)
+			tween.play()
+
+		
+	if mobile_box:
+		mobile_box.updatePosition(text_edit.global_position.x * _delta.x, (text_edit.global_position.y + 100) * _delta.y, text_edit.size.x * _delta.x, text_edit.size.y*_delta.y)
 	var index = 0
 	for x in text_edit.get_line_count():
 		for y in text_edit.get_line_wrap_count(x) + 1:
 			index += 1
-	if index <= max_line:
-		text_edit.custom_minimum_size.y = index * text_edit.get_line_height() + 10
-	if index > max_line:
-		text_edit.custom_minimum_size.y = max_line * text_edit.get_line_height() + 10
-	var s:PackedStringArray = text_edit.text.split(" ")
-	var s2:PackedStringArray = text_edit.text.split("‌‌")
-	var not_Space = false
-	var not_Space2 = false
-	for g in s:
-		g = g.replace("‌", "")
-		if g != "" and g != "‌" and g != "‌ ":
-			not_Space = true
-	for g in s2:
-		g = g.replace(" ", "")
-		if g != "" and g != "‌" and g != "‌ ":
-			not_Space2 = true
+	if mobile_box:
+		text_edit.custom_minimum_size.y = mobile_box.getHeight()/_delta.y
+	else:
+		if index <= max_line:
+			text_edit.custom_minimum_size.y = index * text_edit.get_line_height() + 10
+		if index > max_line:
+			text_edit.custom_minimum_size.y = max_line * text_edit.get_line_height() + 10
+	
 	if $VBoxContainer/ScrollContainer/VBoxContainer.get_child_count() == 3 and check:
 		if ids.size() > last_index2:
 			last_index = last_index2
@@ -557,7 +614,7 @@ func _on_button_pressed() -> void:
 			var d = Updatedate.waiting_message[Updatedate.conversation.id].filter(func(x):return x.id == edited_box.get_meta("id", ""))
 			if d.size() > 0:
 				Updatedate.waiting_message[Updatedate.conversation.id].erase(d[0])
-				d[0].messages.text = text_edit.text
+				d[0].messages.text = text_edit.text if mobile_box == null else mobile_box.getText()
 				Updatedate.waiting_message[Updatedate.conversation.id].append(d[0])
 				edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  text_edit.text
 				_on_null_ref_pressed()
@@ -570,13 +627,13 @@ func _on_button_pressed() -> void:
 		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
 		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D").show()
 		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  text_edit.text
-		Updatedate.send_edit_message(edited_box.get_meta("id", ""), text_edit.text)
+		Updatedate.send_edit_message(edited_box.get_meta("id", ""), text_edit.text if mobile_box == null else mobile_box.getText())
 		_on_null_ref_pressed()
 	else:
 		if not Updatedate.waiting_message.has(Updatedate.conversation.id):
 			Updatedate.waiting_message[Updatedate.conversation.id] = []
 		var id = uuid(20, 5)
-		var m = {"messages":{"text":text_edit.text}, "id":id, "part":Updatedate.conversation.part, "sender":Updatedate.load_game("user_name", ""), "sender_name":"شما", "response":box_ref if box_ref else ""}
+		var m = {"messages":{"text":text_edit.text if mobile_box == null else mobile_box.getText()}, "id":id, "part":Updatedate.conversation.part, "sender":Updatedate.load_game("user_name", ""), "sender_name":"شما", "response":box_ref if box_ref else ""}
 		Updatedate.waiting_message[Updatedate.conversation.id].append(m)
 		messages[id] = m
 		ids.append(id)
@@ -590,8 +647,10 @@ func _on_button_pressed() -> void:
 			await focus_on_message(id)
 		last_id = id
 		
-		Updatedate.send_message(text_edit.text, id, box_ref if box_ref else "")
+		Updatedate.send_message(text_edit.text if mobile_box == null else mobile_box.getText(), id, box_ref if box_ref else "")
 		text_edit.text = ""
+		if mobile_box:
+			mobile_box.setText("")
 		_on_null_ref_pressed()
 func focus_on_message(_id:String):
 	if $VBoxContainer/Control/Button.visible:
@@ -627,9 +686,15 @@ func focus_on_message(_id:String):
 				return await create_by_pos(i)
 	return null
 func _on_back_button_pressed() -> void:
+	if mobile_box:
+		mobile_box.hideTextBox()
+		DisplayServer.virtual_keyboard_hide()
 	Transation.change(self, "start.tscn", -1)
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		if mobile_box:
+			mobile_box.hideTextBox()
+		
 		Transation.change(self, "start.tscn", -1)
 	
 
@@ -676,6 +741,9 @@ func _on_null_ref_pressed() -> void:
 		box_ref = null
 	if edited_box:
 		text_edit.text = ""
+		if mobile_box:
+			mobile_box.setText("")
+		_on_text_edit_text_changed()
 		edited_box.z_index = 0
 		edited_box = null
 		$AnimationPlayer2.play("fade2")
@@ -688,15 +756,45 @@ func _on_null_ref_pressed() -> void:
 
 
 func _on_text_edit_text_changed() -> void:
+	var text = text_edit.text
+	var s:PackedStringArray = text.split(" ")
+	var s2:PackedStringArray = text.split("‌‌")
+	var s3:PackedStringArray = text.split("‌\n")
+	var not_Space = false
+	var not_Space2 = false
+	var not_line = false
+	for g in s:
+		g = g.replace("‌", "")
+		g = g.replace(" ", "")
+		g = g.replace("\n", "")
+		if g != "" and g != "‌" and g != "‌ "and g!="\n":
+			not_Space = true
+			break
+	for g in s2:
+		g = g.replace(" ", "")
+		g = g.replace("‌", "")
+		g = g.replace("\n", "")
+		if g != "" and g != "‌" and g != "‌ "and g!="\n":
+			not_Space2 = true
+			break
+	for g in s3:
+		g = g.replace(" ", "")
+		g = g.replace("\n", "")
+		g = g.replace("‌", "")
+		if g != "" and g != "‌" and g != "‌ " and g!="\n":
+			not_line = true
+			break
 	var btn = $VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button
-	if text_edit.text != "" and btn.scale < Vector2.ONE:
-		var tween = get_tree().create_tween()
-		tween.tween_property(btn, "scale", Vector2.ONE, 0.3)
-		tween.play()
-	if text_edit.text == "":
-		var tween = get_tree().create_tween()
-		tween.tween_property(btn, "scale", Vector2.ZERO, 0.3)
-		tween.play()
+	if not_line and not_Space and not_Space2:
+		if btn.scale < Vector2.ONE:
+			var tween = get_tree().create_tween()
+			tween.tween_property(btn, "scale", Vector2.ONE, 0.3)
+			tween.play()
+	else:
+		if btn.scale > Vector2.ZERO:
+			var tween = get_tree().create_tween()
+			tween.tween_property(btn, "scale", Vector2.ZERO, 0.3)
+			tween.play()
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		r_id = ""
@@ -773,9 +871,12 @@ func _on_edit_pressed() -> void:
 	$VBoxContainer/ScrollContainer.begin_id = edited_box.get_meta("id", "")
 	last_id = edited_box.get_meta("id", "")
 	edited_box.z_index = 1
-	text_edit.text = edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text
+	if mobile_box:
+		mobile_box.setText(edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text)
+	else:
+		text_edit.text = edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text
 	$VBoxContainer/Panel/VBoxContainer/MarginContainer.show()
-	$VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.text = text_edit.text
+	$VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.text = text_edit.text if mobile_box == null else mobile_box.getText()
 	off_action()
 
 
@@ -784,3 +885,11 @@ func _on_copy_pressed() -> void:
 		DisplayServer.clipboard_set(action_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text)
 		Notification.add_notif("متن کپی شد.")
 		off_action()
+
+
+func _on_panel_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+			if mobile_box:
+				if has_keyboard == false:
+					mobile_box.getFocus()
