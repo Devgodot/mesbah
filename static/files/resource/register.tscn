@@ -1,30 +1,16 @@
-[gd_scene load_steps=45 format=3]
+[gd_scene load_steps=43 format=3]
 
-[ext_resource type="Script" uid="uid://duenrlby8j7jc" path="res://script/register.gd" id="1_3hnaa"]
-[ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="2_rv2xj"]
-[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="3_m7ue7"]
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="4_amvcj"]
-[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="5_4likf"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="6_4np7x"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="7_nglna"]
-[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="8_5joeo"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="9_vtvgi"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_3hnaa"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="2_rv2xj"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_m7ue7"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="4_amvcj"]
+[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="5_4likf"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="6_4np7x"]
+[ext_resource type="Script" uid="uid://duenrlby8j7jc" path="res://script/register.gd" id="7_nglna"]
+[ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="8_5joeo"]
+[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="9_vtvgi"]
 [ext_resource type="StyleBox" uid="uid://dsmmmmf2fqyb5" path="res://styles/normal.tres" id="10_3q7qa"]
 [ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="11_2qr75"]
-
-[sub_resource type="Gradient" id="Gradient_tvbe1"]
-offsets = PackedFloat32Array(0, 0.528571)
-colors = PackedColorArray(0, 1, 1, 1, 0.74902, 0.533333, 0.0745098, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_uayrd"]
-gradient = SubResource("Gradient_tvbe1")
-fill_from = Vector2(0.5, 0)
-fill_to = Vector2(0.5, 1)
-metadata/_snap_enabled = true
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6beb"]
-shader = ExtResource("2_rv2xj")
-shader_parameter/tex = SubResource("GradientTexture2D_uayrd")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
 bg_color = Color(0.147672, 0.147672, 0.147672, 1)
@@ -53,26 +39,29 @@ shadow_size = 2
 shadow_offset = Vector2(-1, 3)
 
 [sub_resource type="FontVariation" id="FontVariation_airvk"]
-fallbacks = Array[Font]([ExtResource("7_nglna")])
-base_font = ExtResource("6_4np7x")
+fallbacks = Array[Font]([ExtResource("4_amvcj")])
+base_font = ExtResource("3_m7ue7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
-texture = ExtResource("8_5joeo")
+texture = ExtResource("5_4likf")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
-texture = ExtResource("9_vtvgi")
+texture = ExtResource("6_4np7x")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
-texture = ExtResource("9_vtvgi")
-expand_margin_left = 13.0
-expand_margin_top = 30.0
-expand_margin_bottom = 20.0
+texture = ExtResource("6_4np7x")
+texture_margin_left = 34.0
+texture_margin_top = 74.2067
+texture_margin_right = 79.0
+texture_margin_bottom = 41.2693
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gwbx"]
 bg_color = Color(0.505882, 0.372549, 0.00784314, 1)
@@ -84,25 +73,26 @@ border_color = Color(0.819608, 0.780392, 0.411765, 1)
 
 [sub_resource type="Theme" id="Theme_akeh0"]
 Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
-Button/font_sizes/font_size = 32
-Button/fonts/font = ExtResource("4_amvcj")
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_3hnaa")
 Button/styles/disabled = SubResource("StyleBoxFlat_ngvdg")
 Button/styles/focus = SubResource("StyleBoxEmpty_2wr4g")
 Button/styles/hover = SubResource("StyleBoxFlat_d2vmw")
 Button/styles/normal = SubResource("StyleBoxFlat_d2vmw")
 Button/styles/pressed = SubResource("StyleBoxFlat_d2vmw")
-Label/colors/font_color = Color(0.47451, 0.333333, 0.0784314, 1)
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/constants/outline_size = 7
 Label/font_sizes/font_size = 60
-Label/fonts/font = ExtResource("5_4likf")
+Label/fonts/font = ExtResource("2_rv2xj")
 LineEdit/constants/outline_size = 10
-LineEdit/font_sizes/font_size = 30
+LineEdit/font_sizes/font_size = 50
 LineEdit/fonts/font = SubResource("FontVariation_airvk")
 LineEdit/styles/focus = SubResource("StyleBoxTexture_3omms")
 LineEdit/styles/normal = SubResource("StyleBoxTexture_c6n5k")
 OptionButton/constants/arrow_margin = 21
 OptionButton/constants/h_separation = 58
-OptionButton/font_sizes/font_size = 30
-OptionButton/fonts/font = ExtResource("6_4np7x")
+OptionButton/font_sizes/font_size = 58
+OptionButton/fonts/font = ExtResource("3_m7ue7")
 OptionButton/styles/hover_mirrored = SubResource("StyleBoxTexture_qxwpl")
 OptionButton/styles/normal_mirrored = SubResource("StyleBoxTexture_qxwpl")
 OptionButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_qxwpl")
@@ -111,8 +101,22 @@ PopupMenu/constants/close_v_offset = 78
 PopupMenu/constants/h_separation = 40
 PopupMenu/font_sizes/font_separator_size = 122
 PopupMenu/font_sizes/font_size = 40
-PopupMenu/fonts/font = ExtResource("6_4np7x")
+PopupMenu/fonts/font = ExtResource("3_m7ue7")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
+
+[sub_resource type="Gradient" id="Gradient_tvbe1"]
+offsets = PackedFloat32Array(0, 0.528571)
+colors = PackedColorArray(0, 1, 1, 1, 0.74902, 0.533333, 0.0745098, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uayrd"]
+gradient = SubResource("Gradient_tvbe1")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i6beb"]
+shader = ExtResource("8_5joeo")
+shader_parameter/tex = SubResource("GradientTexture2D_uayrd")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6oife"]
 bg_color = Color(0.898039, 0.372549, 0.00784314, 1)
@@ -167,53 +171,14 @@ SpinBox/icons/updown = SubResource("ImageTexture_mxuud")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcdk5"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mdp2b"]
-texture = ExtResource("8_5joeo")
-expand_margin_left = 30.0
-expand_margin_top = 30.0
-expand_margin_right = 80.0
-expand_margin_bottom = 20.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cyws4"]
-texture = ExtResource("9_vtvgi")
-expand_margin_left = 30.0
-expand_margin_top = 30.0
-expand_margin_right = 80.0
-expand_margin_bottom = 20.0
-
-[sub_resource type="Theme" id="Theme_hhgu6"]
-Button/colors/font_disabled_color = Color(0.87451, 0.87451, 0.87451, 1)
-Button/font_sizes/font_size = 57
-Button/fonts/font = ExtResource("4_amvcj")
-Button/styles/disabled = SubResource("StyleBoxFlat_ngvdg")
-Button/styles/focus = SubResource("StyleBoxEmpty_2wr4g")
-Button/styles/hover = SubResource("StyleBoxFlat_d2vmw")
-Button/styles/normal = SubResource("StyleBoxFlat_d2vmw")
-Button/styles/pressed = SubResource("StyleBoxFlat_d2vmw")
-Label/colors/font_color = Color(0.47451, 0.333333, 0.0784314, 1)
-Label/font_sizes/font_size = 53
-Label/fonts/font = ExtResource("6_4np7x")
-LineEdit/font_sizes/font_size = 80
-LineEdit/fonts/font = ExtResource("6_4np7x")
-LineEdit/styles/focus = SubResource("StyleBoxTexture_mdp2b")
-LineEdit/styles/normal = SubResource("StyleBoxTexture_cyws4")
-OptionButton/constants/arrow_margin = 21
-OptionButton/constants/h_separation = 58
-OptionButton/font_sizes/font_size = 30
-OptionButton/fonts/font = ExtResource("6_4np7x")
-OptionButton/styles/hover_mirrored = SubResource("StyleBoxTexture_qxwpl")
-OptionButton/styles/normal_mirrored = SubResource("StyleBoxTexture_qxwpl")
-OptionButton/styles/pressed_mirrored = SubResource("StyleBoxTexture_qxwpl")
-PopupMenu/constants/close_h_offset = 37
-PopupMenu/constants/close_v_offset = 78
-PopupMenu/constants/h_separation = 40
-PopupMenu/font_sizes/font_separator_size = 122
-PopupMenu/font_sizes/font_size = 40
-PopupMenu/fonts/font = ExtResource("6_4np7x")
-PopupMenu/styles/panel = SubResource("StyleBoxFlat_4gwbx")
-
 [sub_resource type="LabelSettings" id="LabelSettings_826hh"]
 font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_ugs73"]
+font = ExtResource("2_rv2xj")
+font_size = 66
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7xj1c"]
 
@@ -811,7 +776,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
-script = ExtResource("1_3hnaa")
+theme = SubResource("Theme_akeh0")
+script = ExtResource("7_nglna")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_i6beb")
@@ -821,7 +787,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_m7ue7")
+texture = ExtResource("9_vtvgi")
 expand_mode = 1
 stretch_mode = 1
 
@@ -835,7 +801,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("Theme_akeh0")
 theme_override_constants/margin_left = 65
 theme_override_constants/margin_top = 380
 theme_override_constants/margin_right = 50
@@ -962,7 +927,6 @@ text = "گروه :                          "
 custom_minimum_size = Vector2(450, 110)
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 36
 alignment = 1
 selected = 0
 item_count = 7
@@ -995,7 +959,6 @@ text = "جنسیت :                    "
 custom_minimum_size = Vector2(450, 110)
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 36
 alignment = 1
 selected = 0
 item_count = 2
@@ -1025,7 +988,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("Theme_hhgu6")
 theme_override_constants/margin_left = 90
 theme_override_constants/margin_top = 380
 theme_override_constants/margin_right = 60
@@ -1163,7 +1125,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("Theme_hhgu6")
 theme_override_constants/margin_left = 90
 theme_override_constants/margin_top = 420
 theme_override_constants/margin_right = 0
@@ -1231,7 +1192,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("Theme_hhgu6")
 theme_override_constants/margin_left = 90
 theme_override_constants/margin_top = 400
 theme_override_constants/margin_right = 90
@@ -1255,6 +1215,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
 text = "کد ملی خود را وارد نمایید"
+label_settings = SubResource("LabelSettings_ugs73")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer4/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)

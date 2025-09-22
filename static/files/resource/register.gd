@@ -7,7 +7,12 @@ var edit_code = false
 var enter_phones = []
 var timers = {}
 var current_phone
+var plugin
 func _ready() -> void:
+	if Engine.has_singleton("GodotGetFile"):
+		plugin = Engine.get_singleton("GodotGetFile")
+		plugin.receive_message.connect(func (message):
+			print(message))
 	$MarginContainer/VBoxContainer/HBoxContainer3/SpinBox.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 	$MarginContainer/VBoxContainer/HBoxContainer3/SpinBox2.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 	$MarginContainer/VBoxContainer/HBoxContainer3/SpinBox3.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
@@ -135,6 +140,8 @@ func _on_code_sended(r, re, h, b, w):
 	w.queue_free()
 
 func _on_button2_pressed() -> void:
+	if plugin:
+		plugin.startSmsListener()
 	$AnimationPlayer.play("change1")
 	$MarginContainer2/VBoxContainer/HBoxContainer/Label.text = str("لطفاً کد ارسالی به شماره تلفن", %phone.text,"را وارد کنید.")
 	if !enter_phones.has(%phone.text):
