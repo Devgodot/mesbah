@@ -41,7 +41,7 @@ def send_sms(phone, code):
     'password':'0O3LH',
     'username':'09999876739',
     'text': code,
-    'bodyId':371210
+    'bodyId':371498
     
     }
     response = post_request(url=url, payload=params)
