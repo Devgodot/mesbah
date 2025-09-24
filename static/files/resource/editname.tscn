@@ -1,13 +1,13 @@
 [gd_scene load_steps=43 format=3]
 
-[ext_resource type="Script" uid="uid://c1nq81fc3qtun" path="res://script/editname.gd" id="1_qap8r"]
-[ext_resource type="Texture2D" uid="uid://dfyevu1v1eqss" path="res://sprite/Layer 8.jpg" id="2_5i7f1"]
-[ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="3_1cin3"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="4_ekgq7"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="5_nodys"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="6_6i5by"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="7_58yai"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="8_oe8rh"]
+[ext_resource type="Script" path="res://script/editname.gd" id="1_qap8r"]
+[ext_resource type="Texture2D" path="res://sprite/Layer 8.jpg" id="2_5i7f1"]
+[ext_resource type="FontFile" path="res://fonts/B Traffic Bold_0.ttf" id="3_1cin3"]
+[ext_resource type="FontFile" path="res://fonts/BNaznnBd.ttf" id="4_ekgq7"]
+[ext_resource type="FontFile" path="res://fonts/NotoColorEmoji-Regular.ttf" id="5_nodys"]
+[ext_resource type="Script" path="res://scripts/light.gd" id="6_6i5by"]
+[ext_resource type="Script" path="res://scripts/scaler.gd" id="7_58yai"]
+[ext_resource type="Texture2D" path="res://sprite/3D-1536.png" id="8_oe8rh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_71or4"]
 
