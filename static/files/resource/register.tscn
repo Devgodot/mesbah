@@ -42,17 +42,25 @@ shadow_offset = Vector2(-1, 3)
 fallbacks = Array[Font]([ExtResource("4_amvcj")])
 base_font = ExtResource("3_m7ue7")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ugs73"]
 texture = ExtResource("5_4likf")
-expand_margin_top = 30.0
-expand_margin_right = 80.0
-expand_margin_bottom = 20.0
+texture_margin_left = 32.2102
+texture_margin_top = 75.694
+texture_margin_right = 80.5256
+texture_margin_bottom = 41.8733
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 374, 117)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
 texture = ExtResource("6_4np7x")
-expand_margin_top = 30.0
-expand_margin_right = 80.0
-expand_margin_bottom = 20.0
+texture_margin_left = 32.2102
+texture_margin_top = 75.694
+texture_margin_right = 80.5256
+texture_margin_bottom = 41.8733
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 374, 117)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
 texture = ExtResource("6_4np7x")
@@ -85,9 +93,9 @@ Label/constants/outline_size = 7
 Label/font_sizes/font_size = 60
 Label/fonts/font = ExtResource("2_rv2xj")
 LineEdit/constants/outline_size = 10
-LineEdit/font_sizes/font_size = 50
+LineEdit/font_sizes/font_size = 75
 LineEdit/fonts/font = SubResource("FontVariation_airvk")
-LineEdit/styles/focus = SubResource("StyleBoxTexture_3omms")
+LineEdit/styles/focus = SubResource("StyleBoxTexture_ugs73")
 LineEdit/styles/normal = SubResource("StyleBoxTexture_c6n5k")
 OptionButton/constants/arrow_margin = 21
 OptionButton/constants/h_separation = 58

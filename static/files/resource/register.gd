@@ -13,6 +13,9 @@ func _ready() -> void:
 		plugin = Engine.get_singleton("GodotGetFile")
 		plugin.receive_message.connect(func (message):
 			print(message))
+		print(plugin.getAppHash())
+		plugin.startSmsUserConsent("+989999876739")
+		
 	$MarginContainer/VBoxContainer/HBoxContainer3/SpinBox.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 	$MarginContainer/VBoxContainer/HBoxContainer3/SpinBox2.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
 	$MarginContainer/VBoxContainer/HBoxContainer3/SpinBox3.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
@@ -142,7 +145,8 @@ func _on_code_sended(r, re, h, b, w):
 func _on_button2_pressed() -> void:
 	if plugin:
 		plugin.startSmsListener()
-	$AnimationPlayer.play("change1")
+		get_tree().create_timer(5).timeout.connect(func():plugin.simulateSmsReceived("Your code 123456\n5OH8PtwT7Gc"))
+	$AnimationPlayer.play("change3")
 	$MarginContainer2/VBoxContainer/HBoxContainer/Label.text = str("لطفاً کد ارسالی به شماره تلفن", %phone.text,"را وارد کنید.")
 	if !enter_phones.has(%phone.text):
 		$MarginContainer2/VBoxContainer/HBoxContainer/Label/Label.text = ""
@@ -198,10 +202,11 @@ func _on_button4_pressed() -> void:
 					delete_phone(data.phone)
 					current_phone = data.phone
 					$AnimationPlayer.play("change3")
+					
 			else:
 				$MarginContainer2/VBoxContainer/Button/Button2.hide()
 				$MarginContainer2/VBoxContainer/Button/Button.show()
-				$AnimationPlayer.play("change2")
+				$AnimationPlayer.play("change4")
 		else:
 			Notification.add_notif("اتصال اینترنت برقرار نیست", Notification.ERROR))
 func delete_phone(phone):
