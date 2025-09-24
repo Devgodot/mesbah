@@ -1,13 +1,13 @@
 [gd_scene load_steps=17 format=3]
 
-[ext_resource type="Script" uid="uid://5ornlt8iysmk" path="res://script/gallary.gd" id="1_5bpkc"]
-[ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="2_g28nu"]
-[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="3_1005o"]
-[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="4_2nllj"]
-[ext_resource type="Texture2D" uid="uid://c1whpvax8m51c" path="res://sprite/مصباح.jpg" id="5_fekmm"]
-[ext_resource type="Texture2D" uid="uid://bponhwur3lott" path="res://sprite/pngtree-islamic-mosque-gate-frame-vector-ornament-png-image_14130251.png" id="6_bxftw"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="7_n2jxc"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="8_sgsf2"]
+[ext_resource type="Script" path="res://script/gallary.gd" id="1_5bpkc"]
+[ext_resource type="Shader" path="res://shaders/mix_color.gdshader" id="2_g28nu"]
+[ext_resource type="Texture2D" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="3_1005o"]
+[ext_resource type="FontFile" path="res://fonts/Yekan Boom.ttf" id="4_2nllj"]
+[ext_resource type="Texture2D" path="res://sprite/مصباح.jpg" id="5_fekmm"]
+[ext_resource type="Texture2D" path="res://sprite/pngtree-islamic-mosque-gate-frame-vector-ornament-png-image_14130251.png" id="6_bxftw"]
+[ext_resource type="Texture2D" path="res://sprite/3D-1536.png" id="7_n2jxc"]
+[ext_resource type="Script" path="res://scripts/light.gd" id="8_sgsf2"]
 
 [sub_resource type="Gradient" id="Gradient_tac8f"]
 offsets = PackedFloat32Array(0, 0.528571)

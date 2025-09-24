@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3]
 
-[ext_resource type="Script" uid="uid://bsoyamf86eeht" path="res://scripts/tab_container.gd" id="1_7x7ua"]
-[ext_resource type="Script" uid="uid://dr0mo850pgc1h" path="res://scripts/animation_tab.gd" id="2_dmcwn"]
+[ext_resource type="Script" path="res://scripts/tab_container.gd" id="1_7x7ua"]
+[ext_resource type="Script" path="res://scripts/animation_tab.gd" id="2_dmcwn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0pka3"]
 

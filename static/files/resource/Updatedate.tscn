@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://6v86g5wmigba" path="res://script/Updatedate.gd" id="1_pfmlt"]
+[ext_resource type="Script" path="res://script/Updatedate.gd" id="1_pfmlt"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
