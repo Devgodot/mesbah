@@ -11,7 +11,7 @@ from score import score_bp
 from messages import message_bp
 from models import User, UserInterface, FlaskForm, Group, Score
 from werkzeug.utils import secure_filename
-import os
+import os, git
 from math import ceil
 from flask_jwt_extended import jwt_required, current_user
 import requests
@@ -132,6 +132,42 @@ def publish():
 @app.route("/view_live")
 def view():
     return redirect("https://live.messbah403.ir/WebRTCApp/play.html?id=stream1")
+
+
+
+@app.route('/git-pull', methods=['GET'])
+def git_pull():
+    try:
+        repo_path = '/home/pachim/messbah403.ir'  # مسیر پروژه روی سرور
+        repo = git.Repo(repo_path)
+        # ذخیره وضعیت فعلی قبل از pull
+        original_commit = repo.head.commit.hexsha
+        
+        # انجام pull
+        origin = repo.remotes.origin
+        origin.pull()
+        
+        # پیدا کردن فایل‌های تغییر کرده
+        new_commit = repo.head.commit.hexsha
+        changed_files = []
+        
+        # مقایسه commit قدیم و جدید
+        diff_index = repo.git.diff(original_commit, new_commit, name_only=True)
+        changed_files = diff_index.split('\n') if diff_index else []
+        
+        # فیلتر کردن فایل‌های خالی
+        changed_files = [f for f in changed_files if f]
+        
+        return jsonify({
+            'status': 'success',
+            'changed_files': changed_files,
+            'previous_commit': original_commit,
+            'current_commit': new_commit
+        }), 200
+        
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
 @app.route('/check_resource', methods=['POST'])
 def get_resource_index():
     time:float= float(request.get_json().get("time"))
