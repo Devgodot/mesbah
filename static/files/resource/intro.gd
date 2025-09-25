@@ -39,7 +39,7 @@ func update_resource():
 	if subdomin != "127.0.0.1:5000" and internet:
 		var http = HTTPRequest.new()
 		add_child(http)
-		var last_update = "1758573711911.0"
+		var last_update = "1758807922136"
 		if float(Updatedate.load_game("last_update", "0")) > float(last_update):
 			last_update = Updatedate.load_game("last_update", "0")
 		else:
@@ -69,7 +69,8 @@ func update_resource():
 				http2.download_file = "user://update/"+file
 				Updatedate.download_progress.emit(index, http2)
 				http2.request(protocol+subdomin+"/static/files/pack/"+file, ["Content-Type: application/json"])
-				await http2.queue_free()
+				await http2.request_completed
+				http2.queue_free()
 				ProjectSettings.load_resource_pack("user://update/"+file)
 				index += 1
 				http2.queue_free()
@@ -82,7 +83,8 @@ func update_resource():
 				Updatedate.download_progress.emit(index)
 				http2.download_file = "user://resource/"+file
 				http2.request(protocol+subdomin+"/static/files/resource/"+file, ["Content-Type: application/json"])
-				await http2.queue_free()
+				await http2.request_completed
+				http2.queue_free()
 				index += 1
 				http2.queue_free()
 			Updatedate.save("last_update", str(data.time), false)
