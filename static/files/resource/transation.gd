@@ -6,10 +6,12 @@ func change(scene, new_scene:String, dir=1):
 		Updatedate.hide_picture()
 		print(0)
 		return
+	print(new_scene)
 	if not active:
 		Updatedate.failed_request = []
 		active = true
 		var s = load_scene(new_scene)
+		print(s)
 		match trans:
 			0:
 				get_tree().get_root().add_child.call_deferred(s)
@@ -125,22 +127,20 @@ func load_scene(new_scene) -> Object:
 		if FileAccess.file_exists("user://resource/"+new_scene.get_basename()+".gd"):
 			script = load("user://resource/"+new_scene.get_basename()+".gd")
 		if FileAccess.file_exists("user://resource/"+new_scene):
+			print(6)
 			s = ResourceLoader.load("user://resource/"+new_scene).instantiate()
 			if script:
 				s.set_script(script)
 			
 		else:
+			print(new_scene)
 			s = ResourceLoader.load("res://scenes/"+new_scene).instantiate()
 			if script:
 				s.set_script(script)
 	else:
+		prints(8, new_scene)
 		DirAccess.make_dir_absolute("user://resource")
 		ResourceLoader.load_threaded_request("res://scenes/"+new_scene)
 		s = ResourceLoader.load("res://scenes/"+new_scene).instantiate()
-	var source_dic = Updatedate.load_game("source_dic", {})
-	if new_scene in source_dic.keys():
-		for node in source_dic[new_scene]:
-			for p in source_dic[new_scene][node]:
-				s.get_node(node).set(p.keys()[0], ResourceLoader.load(p.values()[0]))
-			
+	
 	return s

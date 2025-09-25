@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://script/menu_1.gd" id="1_vy84h"]
-[ext_resource type="Texture2D" path="res://sprite/Layer 6.jpg" id="2_a5d0o"]
-[ext_resource type="FontFile" path="res://fonts/Unique Bold_MRT.ttf" id="3_y0ifk"]
-[ext_resource type="Texture2D" path="res://sprite/Layer 6 copy 4.png" id="4_n15yr"]
-[ext_resource type="Texture2D" path="res://sprite/3D-1536.png" id="5_w5rr7"]
+[ext_resource type="Script" uid="uid://brq3syutclyg4" path="res://script/menu_1.gd" id="1_vy84h"]
+[ext_resource type="Texture2D" uid="uid://qc5tj4m0okuh" path="res://sprite/Layer 6.jpg" id="2_a5d0o"]
+[ext_resource type="FontFile" uid="uid://cqhc5jbv31l8r" path="res://fonts/Unique Bold_MRT.ttf" id="3_y0ifk"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="4_n15yr"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="5_w5rr7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0uhsw"]
 

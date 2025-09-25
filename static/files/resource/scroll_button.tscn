@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3]
 
-[ext_resource type="Script" path="res://script/scroll_button.gd" id="1_3pnot"]
-[ext_resource type="Shader" path="res://shaders/floor.gdshader" id="2_peo5c"]
+[ext_resource type="Script" uid="uid://ds5bydu5o1odx" path="res://script/scroll_button.gd" id="1_3pnot"]
+[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="2_peo5c"]
 
 [sub_resource type="Theme" id="Theme_dcrt4"]
 Label/font_sizes/font_size = 50

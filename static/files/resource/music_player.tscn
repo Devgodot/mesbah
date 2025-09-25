@@ -1,9 +1,9 @@
 [gd_scene load_steps=23 format=3]
 
-[ext_resource type="Script" path="res://script/music_player.gd" id="1_v2357"]
-[ext_resource type="Texture2D" path="res://sprite/12.png" id="2_t4yv4"]
-[ext_resource type="Texture2D" path="res://sprite/3686899.png" id="3_8sjc2"]
-[ext_resource type="FontFile" path="res://fonts/BNaznnBd.ttf" id="4_w7ej4"]
+[ext_resource type="Script" uid="uid://d30e5a64tt1bl" path="res://script/music_player.gd" id="1_v2357"]
+[ext_resource type="Texture2D" uid="uid://iodoo0npebl" path="res://sprite/12.png" id="2_t4yv4"]
+[ext_resource type="Texture2D" uid="uid://cge8x0f18cyji" path="res://sprite/3686899.png" id="3_8sjc2"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="4_w7ej4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnarj"]
 bg_color = Color(0.435449, 0.326125, 0, 1)
