@@ -49,7 +49,7 @@ func _ready() -> void:
 						DisplayServer.virtual_keyboard_hide()
 						DisplayServer.virtual_keyboard_show("exit", Rect2(0, 0, 0, 0), DisplayServer.KEYBOARD_TYPE_NUMBER)
 						edit_code = true
-						boxes[current_box].add_theme_stylebox_override("normal", load("res://styles/normal.tres"))
+						boxes[current_box].add_theme_stylebox_override("normal", $SpinBox2.get_theme_stylebox("normal"))
 						current_box = x
 			)
 	get_tree().create_timer(0.1).timeout.connect(func ():
@@ -64,7 +64,7 @@ func _process(delta: float) -> void:
 	else :
 		$MarginContainer2/VBoxContainer/HBoxContainer/Label/Label.text = "ارسال مجدد کد"
 	if edit_code:
-		boxes[current_box].add_theme_stylebox_override("normal", load("res://styles/focus.tres"))
+		boxes[current_box].add_theme_stylebox_override("normal", $SpinBox.get_theme_stylebox("normal"))
 	
 	var text :String = %phone.text
 	if text.length() == 11 and text.begins_with("09"):
@@ -85,7 +85,7 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed() -> void:
 	DisplayServer.virtual_keyboard_hide()
-	boxes[current_box].add_theme_stylebox_override("normal", load("res://styles/normal.tres"))
+	boxes[current_box].add_theme_stylebox_override("normal", $SpinBox2.get_theme_stylebox("normal"))
 	edit_code = false
 	var w = Updatedate.add_wait($MarginContainer2/VBoxContainer/Button)
 	var r = HTTPRequest.new()
@@ -233,7 +233,7 @@ func _input(event: InputEvent) -> void:
 				boxes[current_box].text = str(int(OS.get_keycode_string(event.key_label)))
 				if current_box <  3:
 					current_box += 1
-					boxes[current_box - 1].add_theme_stylebox_override("normal", load("res://styles/normal.tres"))
+					boxes[current_box - 1].add_theme_stylebox_override("normal", $SpinBox2.get_theme_stylebox("normal"))
 			else:
 				if boxes[current_box].text != "":
 					boxes[current_box].text = ""
@@ -241,7 +241,7 @@ func _input(event: InputEvent) -> void:
 					if current_box > 0:
 						current_box -= 1
 						boxes[current_box].text = ""
-						boxes[current_box + 1].add_theme_stylebox_override("normal", load("res://styles/normal.tres"))
+						boxes[current_box + 1].add_theme_stylebox_override("normal", $SpinBox2.get_theme_stylebox("normal"))
 		
 
 
@@ -249,20 +249,20 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			DisplayServer.virtual_keyboard_hide()
-			boxes[current_box].add_theme_stylebox_override("normal", load("res://styles/normal.tres"))
+			boxes[current_box].add_theme_stylebox_override("normal", $SpinBox2.get_theme_stylebox("normal"))
 			edit_code = false
 
 
 func _on_back_pressed() -> void:
 	DisplayServer.virtual_keyboard_hide()
-	boxes[current_box].add_theme_stylebox_override("normal", load("res://styles/normal.tres"))
+	boxes[current_box].add_theme_stylebox_override("normal", $SpinBox2.get_theme_stylebox("normal"))
 	edit_code = false
 	$AnimationPlayer.play_backwards("change2")
 
 
 func _on_edit_phone_pressed() -> void:
 	DisplayServer.virtual_keyboard_hide()
-	boxes[current_box].add_theme_stylebox_override("normal", load("res://styles/normal.tres"))
+	boxes[current_box].add_theme_stylebox_override("normal", $SpinBox2.get_theme_stylebox("normal"))
 	edit_code = false
 	$AnimationPlayer.play_backwards("change1")
 	for x in range(get_tree().get_nodes_in_group("code").size()):
@@ -272,7 +272,7 @@ func _on_edit_phone_pressed() -> void:
 
 func _on_edit_username_pressed() -> void:
 	DisplayServer.virtual_keyboard_hide()
-	boxes[current_box].add_theme_stylebox_override("normal", load("res://styles/normal.tres"))
+	boxes[current_box].add_theme_stylebox_override("normal", $SpinBox2.get_theme_stylebox("normal"))
 	edit_code = false
 	$AnimationPlayer.play_backwards("change3")
 	for x in range(get_tree().get_nodes_in_group("code").size()):
