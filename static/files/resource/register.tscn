@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3]
+[gd_scene load_steps=47 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_3hnaa"]
 [ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="2_rv2xj"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://duenrlby8j7jc" path="res://script/register.gd" id="7_nglna"]
 [ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="8_5joeo"]
 [ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="9_vtvgi"]
-[ext_resource type="StyleBox" path="D:/normal.tres" id="10_rv2xj"]
+[ext_resource type="Texture2D" uid="uid://ctvchndxb32sn" path="res://sprite/pngtree-red-square-vintage-text-box-with-gold-frame-png-image_12272729.png" id="10_rv2xj"]
 [ext_resource type="Script" uid="uid://beu1imtnkq5ri" path="res://addons/SystemBarColorChanger/SystemBarColorChanger.gd" id="11_2qr75"]
 [ext_resource type="Texture2D" uid="uid://be1umev6nlgdp" path="res://sprite/pngtree-red-square-vintage-text-box-with-gold-frame-png-image_122727292.png" id="12_m7ue7"]
 
@@ -179,6 +179,9 @@ SpinBox/icons/updown = SubResource("ImageTexture_mxuud")
 [sub_resource type="ImageTexture" id="ImageTexture_rv8lf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcdk5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uayrd"]
+texture = ExtResource("10_rv2xj")
 
 [sub_resource type="LabelSettings" id="LabelSettings_826hh"]
 font_size = 100
@@ -780,6 +783,9 @@ _data = {
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i6beb"]
 texture = ExtResource("12_m7ue7")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wnugy"]
+texture = ExtResource("10_rv2xj")
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -1057,7 +1063,7 @@ layout_mode = 2
 size_flags_horizontal = 5
 mouse_filter = 0
 theme = SubResource("Theme_b7fa4")
-theme_override_styles/normal = ExtResource("10_rv2xj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_uayrd")
 label_settings = SubResource("LabelSettings_826hh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1068,7 +1074,7 @@ layout_mode = 2
 size_flags_horizontal = 5
 mouse_filter = 0
 theme = SubResource("Theme_b7fa4")
-theme_override_styles/normal = ExtResource("10_rv2xj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_uayrd")
 label_settings = SubResource("LabelSettings_826hh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1079,7 +1085,7 @@ layout_mode = 2
 size_flags_horizontal = 5
 mouse_filter = 0
 theme = SubResource("Theme_b7fa4")
-theme_override_styles/normal = ExtResource("10_rv2xj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_uayrd")
 label_settings = SubResource("LabelSettings_826hh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1090,7 +1096,7 @@ layout_mode = 2
 size_flags_horizontal = 5
 mouse_filter = 0
 theme = SubResource("Theme_b7fa4")
-theme_override_styles/normal = ExtResource("10_rv2xj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_uayrd")
 label_settings = SubResource("LabelSettings_826hh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1305,7 +1311,7 @@ offset_bottom = 164.0
 size_flags_horizontal = 5
 mouse_filter = 0
 theme = SubResource("Theme_b7fa4")
-theme_override_styles/normal = ExtResource("10_rv2xj")
+theme_override_styles/normal = SubResource("StyleBoxTexture_wnugy")
 label_settings = SubResource("LabelSettings_826hh")
 horizontal_alignment = 1
 vertical_alignment = 1
