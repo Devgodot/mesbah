@@ -1,7 +1,146 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" uid="uid://dce8vy3ot0ahs" path="res://script/intro.gd" id="1_2yp6e"]
-[ext_resource type="Texture2D" uid="uid://cs1ej2y0fhem" path="res://sprite/Background.jpg" id="2_2yp6e"]
+[ext_resource type="Texture2D" uid="uid://dkj7i0ii6rtj" path="res://sprite/ChatGPT Image Aug 5, 2025, 12_00_41 PM.png" id="2_rmwb1"]
+[ext_resource type="Texture2D" uid="uid://cc2fedlo17wfd" path="res://sprite/mountine.png" id="3_3r4v7"]
+[ext_resource type="Texture2D" uid="uid://c5egelvxadvuq" path="res://sprite/flag_w.png" id="4_k8lhw"]
+[ext_resource type="Texture2D" uid="uid://bku67pxc2en3e" path="res://sprite/iran_flag.png" id="5_yvyvw"]
+[ext_resource type="Script" uid="uid://bl0i7bys2p2mu" path="res://GodotWigglyAppendage2D-be8bd9e0e69538c5f69e2de81c121363f041be90/addons/wiggly_appendage_2d/wiggly_appendage_2d.gd" id="6_d6qqo"]
+[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="7_eq420"]
+[ext_resource type="Texture2D" uid="uid://dmr7u4w0iiyvn" path="res://sprite/Sunshine-Transparent-Images.png" id="8_rb17a"]
+[ext_resource type="Texture2D" uid="uid://cqwxry1nj3nky" path="res://sprite/titre.png" id="9_avbhl"]
+
+[sub_resource type="Shader" id="Shader_adqxb"]
+code = "shader_type canvas_item;
+uniform sampler2D tex:repeat_enable;
+uniform float brigth :hint_range(0.0, 1.0, 0.01)= 0.8;
+uniform float scale : hint_range(0.01, 10.0, 0.01) = 1.0;
+void vertex() {
+
+}
+
+void fragment() {
+	vec2 uv = UV / scale;
+    uv = fract(uv); // wrap into 0-1 range
+    uv = 1.0 - abs(1.0 - 2.0 * uv); // mirror repeat
+	COLOR = texture(tex, uv);
+	COLOR.rgb *= vec3(brigth);
+
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_masab"]
+shader = SubResource("Shader_adqxb")
+shader_parameter/tex = ExtResource("2_rmwb1")
+shader_parameter/brigth = 0.77
+shader_parameter/scale = 2.13
+
+[sub_resource type="Curve" id="Curve_272cy"]
+_data = [Vector2(0, 0.404494), 0.0, 0.0, 0, 0, Vector2(0.488372, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_37iue"]
+resource_name = "rot"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WigglyAppendage2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.37, 0.69, 0.86),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0523599, 0.0, 0.0174533]
+}
+
+[sub_resource type="Animation" id="Animation_n6p8m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WigglyAppendage2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m3r7s"]
+_data = {
+&"RESET": SubResource("Animation_n6p8m"),
+&"rot": SubResource("Animation_37iue")
+}
+
+[sub_resource type="Animation" id="Animation_m3r7s"]
+resource_name = "light"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.64, 0.87),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [5.0, 8.0, 5.0, 6.0]
+}
+
+[sub_resource type="Animation" id="Animation_xwriy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:texture_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5myo"]
+_data = {
+&"RESET": SubResource("Animation_xwriy"),
+&"light": SubResource("Animation_m3r7s")
+}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,14 +150,115 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2yp6e")
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_masab")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_2yp6e")
+texture = ExtResource("2_rmwb1")
 expand_mode = 1
-stretch_mode = 6
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+clip_children = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.495
+anchor_top = 0.198
+anchor_right = 0.495
+anchor_bottom = 0.198
+offset_left = -422.0
+offset_top = -378.0
+offset_right = 422.0
+offset_bottom = 378.0
+texture = ExtResource("3_3r4v7")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TextureRect3"]
+position = Vector2(409, 145)
+emission_shape = 2
+emission_sphere_radius = 128.0
+gravity = Vector2(0, 0)
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_272cy")
+
+[node name="FlagW" type="Sprite2D" parent="TextureRect3"]
+position = Vector2(399, 197)
+rotation = 0.156275
+texture = ExtResource("4_k8lhw")
+
+[node name="WigglyAppendage2D" type="Line2D" parent="TextureRect3"]
+position = Vector2(384, 135)
+points = PackedVector2Array(0, 0, 5.84948, -0.0768096, 11.3989, -0.154321, 16.6482, -0.232534, 21.5975, -0.311449, 26.2467, -0.391066, 30.5959, -0.471384, 34.6449, -0.552404, 38.3939, -0.634126, 41.8429, -0.71655, 44.9917, -0.799675, 47.9905, -0.883667, 50.9893, -0.968689, 53.9881, -1.05474, 56.9868, -1.14183, 59.9855, -1.22994, 62.9842, -1.31909, 65.9828, -1.40927, 68.9814, -1.50048, 71.98, -1.59272, 74.9786, -1.68599, 77.977, -1.78215, 80.9753, -1.88307, 83.9733, -1.98874, 86.9712, -2.09918, 89.9689, -2.21436, 92.9664, -2.33431, 95.9638, -2.45901, 98.9609, -2.58846, 101.958, -2.72267, 104.955, -2.86164, 107.95, -3.01866, 110.942, -3.20703, 113.931, -3.42676, 116.916, -3.67783, 119.899, -3.96026, 122.878, -4.27404, 125.855, -4.61918, 128.828, -4.99566, 131.798, -5.4035, 134.765, -5.84269, 137.73, -6.2964, 140.696, -6.74779, 143.662, -7.19685, 146.629, -7.6436, 149.596, -8.08803, 152.563, -8.53014, 155.53, -8.96992, 158.498, -9.40739, 161.466, -9.84254, 164.435, -10.2754, 167.404, -10.7059, 170.373, -11.1341, 173.343, -11.5599, 176.313, -11.9835, 179.283, -12.4047)
+width = 150.0
+texture = ExtResource("5_yvyvw")
+texture_mode = 2
+script = ExtResource("6_d6qqo")
+segment_count = 6
+stiffness_decay = 1.0
+damping = 10.0
+max_angular_momentum = 5.0
+subdivision = 10
+metadata/_custom_type_script = "uid://bl0i7bys2p2mu"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect3"]
+libraries = {
+&"": SubResource("AnimationLibrary_m3r7s")
+}
+autoplay = "rot"
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.551
+anchor_right = 0.5
+anchor_bottom = 0.551
+offset_left = -472.0
+offset_top = -828.0
+offset_right = 465.0
+offset_bottom = 665.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_eq420")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PointLight2D" type="PointLight2D" parent="TextureRect2"]
+position = Vector2(470, 782)
+texture = ExtResource("8_rb17a")
+texture_scale = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect2"]
+libraries = {
+&"": SubResource("AnimationLibrary_u5myo")
+}
+autoplay = "light"
+speed_scale = 0.05
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.83
+anchor_right = 0.5
+anchor_bottom = 0.83
+offset_left = -337.0
+offset_top = -334.0
+offset_right = 369.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_avbhl")
+expand_mode = 1
+stretch_mode = 5
