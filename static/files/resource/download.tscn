@@ -1,11 +1,12 @@
-[gd_scene load_steps=17 format=3]
+[gd_scene load_steps=21 format=3]
 
-[ext_resource type="Script" path="res://script/download.gd" id="1_usj81"]
-[ext_resource type="Shader" path="res://shaders/floor.gdshader" id="2_3wrv3"]
-[ext_resource type="Texture2D" path="res://sprite/چراغ کپسولی قدیمی و چندوجهی.png" id="3_1jj20"]
-[ext_resource type="Texture2D" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="4_rtqw6"]
-[ext_resource type="FontFile" path="res://fonts/Yekan Boom.ttf" id="5_h0ouy"]
-[ext_resource type="Script" path="res://scripts/light.gd" id="6_v83e8"]
+[ext_resource type="Script" uid="uid://drwanaxpaq4cj" path="res://script/download.gd" id="1_usj81"]
+[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="2_3wrv3"]
+[ext_resource type="Texture2D" uid="uid://crpmkhb3nkjbd" path="res://sprite/چراغ کپسولی قدیمی و چندوجهی.png" id="3_1jj20"]
+[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="4_rtqw6"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="5_h0ouy"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="6_v83e8"]
+[ext_resource type="Texture2D" uid="uid://dgk0swkr5583i" path="res://sprite/pngtree-retro-geometric-border-png-image_6507901.png" id="7_3wrv3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d5050"]
 shader = ExtResource("2_3wrv3")
@@ -51,6 +52,38 @@ point_count = 4
 [sub_resource type="Gradient" id="Gradient_xxqtk"]
 offsets = PackedFloat32Array(0, 0.150877, 0.561404, 1)
 colors = PackedColorArray(0, 0, 0, 1, 1, 0.14902, 0.14902, 1, 1, 0.380392, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0jj61"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(7.735, 0.851, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 35
+corner_radius_bottom_left = 35
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxqtk"]
+texture = ExtResource("7_3wrv3")
+texture_margin_left = 36.1196
+texture_margin_top = 22.9736
+texture_margin_right = 36.4131
+texture_margin_bottom = 21.4789
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(26.5365, 95.9363, 228.068, 44.8596)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1nfub"]
+font = ExtResource("5_h0ouy")
+font_size = 66
+font_color = Color(0, 0, 0, 1)
+outline_size = 6
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -157,3 +190,33 @@ scale_amount_min = 0.1
 scale_amount_max = 0.2
 scale_amount_curve = SubResource("Curve_0jj61")
 color_ramp = SubResource("Gradient_xxqtk")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+texture_repeat = 2
+layout_mode = 0
+offset_left = 138.0
+offset_top = 1308.0
+offset_right = 867.0
+offset_bottom = 1368.39
+theme_override_styles/background = SubResource("StyleBoxFlat_0jj61")
+theme_override_styles/fill = SubResource("StyleBoxTexture_xxqtk")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="ProgressBar"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -364.5
+offset_top = -30.1965
+offset_right = 364.5
+offset_bottom = 30.1965
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_1nfub")
+horizontal_alignment = 1
+vertical_alignment = 1

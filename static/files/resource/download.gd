@@ -5,14 +5,16 @@ var max_files = 0.0
 var main_text = ""
 var dots = ""
 var add_dots = true
+var http:HTTPRequest
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Updatedate.start_download.connect(func(_size, _text):
 		max_files = _size
 		main_text =_text)
-	Updatedate.download_progress.connect(func(i):
+	Updatedate.download_progress.connect(func(i, _http=null):
+		if _http:
+			http = _http
 		file += 1
-		
 		var p:Polygon2D =$Polygon2D.duplicate()
 		p.show()
 		p.look_at($TextureProgressBar/CPUParticles2D.global_position)
@@ -39,7 +41,31 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+	if http:
+		if http.get_body_size() != -1:
+			$ProgressBar.show()
+			$ProgressBar.value = http.get_downloaded_bytes() / http.get_body_size() * 100
+			var num = http.get_downloaded_bytes()
+			var max = http.get_body_size()
+			var prefix1 = "ب"
+			var prefix2 = "ب"
+			if num > 1000000:
+				num = int(num / 10000)
+				num /= 100.0
+				prefix1 = "م.ب"
+			elif num > 1000:
+				num = int(num / 100)
+				num /= 100.0
+				prefix1 = "ک.ب"
+			if max > 1000000:
+				max = int(max / 10000)
+				max /= 100.0
+				prefix2 = "م.ب"
+			elif max > 1000:
+				max = int(max / 100)
+				max /= 100.0
+				prefix2 = "ک.ب"
+			$ProgressBar/Label.text = str(num , " ", prefix1, " / ", max, " ", prefix2)
 	if add_dots:
 		add_dots = false
 		dots += "." 

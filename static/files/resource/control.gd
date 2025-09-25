@@ -562,15 +562,12 @@ func _process(delta: float) -> void:
 				$ColorRect2.global_position.y = box.global_position.y
 	else:
 		$ColorRect2.hide()
-	
 	if box_ref:
 		$VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.text = messages[box_ref].messages.text if messages.has(box_ref) else ""
 		$VBoxContainer/Panel/VBoxContainer/MarginContainer.show()
 	$ColorRect2.size.x = size.x
 	if offset > 100:
-		
 		has_keyboard = true
-		
 		last_vbox_size = size.y - 95 - vbox.position.y - offset
 		vbox.size.y = last_vbox_size
 	else:

@@ -128,7 +128,7 @@ func _on_code_sended(r, re, h, b, w):
 					if not_data:
 						Transation.change(self, "register.tscn")
 					else:
-						await Updatedate.update_resource()
+						
 						await get_tree().create_timer(1).timeout
 						Transation.change(self, "start.tscn")
 						
