@@ -53,7 +53,7 @@ def verify_user():
     phone: str = data.get("phone")
     if not phone.startswith("09") or len(phone) != 11:
         return jsonify({"error": "فرمت شماره نامعتبر است"}), 400
-    code = f"{random.randint(0, 10)}{random.randint(0, 10)}{random.randint(0, 10)}{random.randint(0, 10)}"
+    code = f"{random.randint(0, 9)}{random.randint(0, 9)}{random.randint(0, 9)}{random.randint(0, 9)}"
     response = send_sms(phone=phone, code=code)
     verify = VerificationCode.query.filter_by(phone=phone).all()
     
