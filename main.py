@@ -174,25 +174,21 @@ def get_resource_index():
     
     add = []
     delete = []
+    pack = []
     file = request.get_json().get("file", "")
     if file != "":
         file = secure_filename(file)
         with open(file, "r") as hash_list:
             _list :dict= json.load(hash_list)
-            if file == "hash_list.json":
-                for n, t in _list.items():
-                    if float(t) > time :
-                        add.append([n, t])
-            else:
-                data = request.get_json("data", {})
-                for x in _list.keys():
-                    if x in data.keys():
-                        if _list.get(x) != data.get(x):
-                            add.append(_list[x])
-                for x in data.keys():
-                    if x not in _list.keys():
-                        delete.append([x, data[x]])
-        return jsonify({"add":add, "delete":delete, "time":datetime.datetime.now(tz=TehranTimezone()).timestamp() * 1000}), 200
+            for n, t in _list.items():
+                if float(t) > time :
+                    add.append(n)
+        with open("pack.json", "r") as pack_list:
+            _list :dict= json.load(pack_list)
+            for n, t in _list.items():
+                if float(t) > time :
+                    pack.append(n)
+        return jsonify({"add":add, "delete":delete, "pack":pack, "time":datetime.datetime.now(tz=TehranTimezone()).timestamp() * 1000}), 200
     else:
         return jsonify({"error":"فایلی برای بررسی وجود ندارد"}), 400
 @app.route("/get_hash", methods=["GET"])
