@@ -1,15 +1,15 @@
 [gd_scene load_steps=21 format=3]
 
-[ext_resource type="Script" uid="uid://drwanaxpaq4cj" path="res://script/download.gd" id="1_usj81"]
-[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="2_3wrv3"]
-[ext_resource type="Texture2D" uid="uid://crpmkhb3nkjbd" path="res://sprite/چراغ کپسولی قدیمی و چندوجهی.png" id="3_1jj20"]
-[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="4_rtqw6"]
-[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="5_h0ouy"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="6_v83e8"]
-[ext_resource type="Texture2D" uid="uid://dgk0swkr5583i" path="res://sprite/pngtree-retro-geometric-border-png-image_6507901.png" id="7_3wrv3"]
+[ext_resource type="Script" uid="uid://drwanaxpaq4cj" path="res://script/download.gd" id="1_3wrv3"]
+[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="2_1jj20"]
+[ext_resource type="Texture2D" uid="uid://crpmkhb3nkjbd" path="res://sprite/چراغ کپسولی قدیمی و چندوجهی.png" id="3_rtqw6"]
+[ext_resource type="Texture2D" uid="uid://btx3sovl6jne3" path="res://sprite/2چراغ کپسولی قدیمی و چندوجهی.png" id="4_h0ouy"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="5_v83e8"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="6_eol8w"]
+[ext_resource type="Texture2D" uid="uid://dgk0swkr5583i" path="res://sprite/pngtree-retro-geometric-border-png-image_6507901.png" id="7_bibf5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d5050"]
-shader = ExtResource("2_3wrv3")
+shader = ExtResource("2_1jj20")
 shader_parameter/lod = 0.623
 shader_parameter/mix_percentage = 0.651
 
@@ -32,7 +32,7 @@ point_count = 4
 colors = PackedColorArray(1, 1, 0, 1, 0, 1, 0, 1)
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_1nfub"]
-script = ExtResource("6_v83e8")
+script = ExtResource("6_eol8w")
 metadata/_custom_type_script = "uid://dcls0pguhob1u"
 
 [sub_resource type="Gradient" id="Gradient_d5050"]
@@ -70,7 +70,7 @@ expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xxqtk"]
-texture = ExtResource("7_3wrv3")
+texture = ExtResource("7_bibf5")
 texture_margin_left = 36.1196
 texture_margin_top = 22.9736
 texture_margin_right = 36.4131
@@ -80,7 +80,7 @@ axis_stretch_vertical = 2
 region_rect = Rect2(26.5365, 95.9363, 228.068, 44.8596)
 
 [sub_resource type="LabelSettings" id="LabelSettings_1nfub"]
-font = ExtResource("5_h0ouy")
+font = ExtResource("5_v83e8")
 font_size = 66
 font_color = Color(0, 0, 0, 1)
 outline_size = 6
@@ -92,7 +92,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_usj81")
+script = ExtResource("1_3wrv3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_d5050")
@@ -119,8 +119,8 @@ grow_vertical = 2
 step = 0.01
 value = 34.0
 fill_mode = 3
-texture_under = ExtResource("3_1jj20")
-texture_progress = ExtResource("4_rtqw6")
+texture_under = ExtResource("3_rtqw6")
+texture_progress = ExtResource("4_h0ouy")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="TextureProgressBar"]
 show_behind_parent = true
@@ -160,7 +160,7 @@ anchor_bottom = 0.263
 theme_override_colors/default_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
-theme_override_fonts/normal_font = ExtResource("5_h0ouy")
+theme_override_fonts/normal_font = ExtResource("5_v83e8")
 theme_override_font_sizes/normal_font_size = 60
 bbcode_enabled = true
 shortcut_keys_enabled = false
@@ -194,15 +194,21 @@ color_ramp = SubResource("Gradient_xxqtk")
 [node name="ProgressBar" type="ProgressBar" parent="."]
 visible = false
 texture_repeat = 2
-layout_mode = 0
-offset_left = 138.0
-offset_top = 1308.0
-offset_right = 867.0
-offset_bottom = 1368.39
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.502
+anchor_top = 0.669
+anchor_right = 0.502
+anchor_bottom = 0.669
+offset_left = -364.0
+offset_top = -30.0
+offset_right = 365.0
+offset_bottom = 30.39
 theme_override_styles/background = SubResource("StyleBoxFlat_0jj61")
 theme_override_styles/fill = SubResource("StyleBoxTexture_xxqtk")
 value = 100.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="ProgressBar"]
 layout_mode = 1

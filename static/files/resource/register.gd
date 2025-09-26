@@ -257,14 +257,14 @@ func _on_back_pressed() -> void:
 	DisplayServer.virtual_keyboard_hide()
 	boxes[current_box].add_theme_stylebox_override("normal", $SpinBox2.get_theme_stylebox("normal"))
 	edit_code = false
-	$AnimationPlayer.play_backwards("change2")
+	$AnimationPlayer.play_backwards("change4")
 
 
 func _on_edit_phone_pressed() -> void:
 	DisplayServer.virtual_keyboard_hide()
 	boxes[current_box].add_theme_stylebox_override("normal", $SpinBox2.get_theme_stylebox("normal"))
 	edit_code = false
-	$AnimationPlayer.play_backwards("change1")
+	$AnimationPlayer.play_backwards("change2")
 	for x in range(get_tree().get_nodes_in_group("code").size()):
 		var spin = get_tree().get_nodes_in_group("code")[x]
 		spin.text = ""
