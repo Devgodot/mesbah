@@ -200,6 +200,8 @@ func _on_button4_pressed() -> void:
 						)
 					enter_phones.append(data.phone)
 					delete_phone(data.phone)
+				if plugin:
+					plugin.startSmsListener()
 				current_phone = data.phone
 				$AnimationPlayer.play("change3")
 					
