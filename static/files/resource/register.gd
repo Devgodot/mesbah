@@ -200,8 +200,8 @@ func _on_button4_pressed() -> void:
 						)
 					enter_phones.append(data.phone)
 					delete_phone(data.phone)
-					current_phone = data.phone
-					$AnimationPlayer.play("change3")
+				current_phone = data.phone
+				$AnimationPlayer.play("change3")
 					
 			else:
 				$MarginContainer2/VBoxContainer/Button/Button2.hide()
