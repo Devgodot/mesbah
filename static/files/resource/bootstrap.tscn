@@ -7,7 +7,7 @@ func _ready() -> void:
 	if DirAccess.dir_exists_absolute(\"user://update\"):
 		for file in DirAccess.get_files_at(\"user://update\"):
 			ProjectSettings.load_resource_pack(\"user://update/\"+file)
-	
+			
 	Transation.change(self, \"intro.tscn\")
 "
 

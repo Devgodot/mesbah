@@ -41,10 +41,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$ProgressBar.hide()
 	if http:
 		if http.get_body_size() != -1:
 			$ProgressBar.show()
-			$ProgressBar.value = http.get_downloaded_bytes() / http.get_body_size() * 100
+			$ProgressBar.value = http.get_downloaded_bytes() * 100 / http.get_body_size()
 			var num = http.get_downloaded_bytes()
 			var max = http.get_body_size()
 			var prefix1 = "ب"

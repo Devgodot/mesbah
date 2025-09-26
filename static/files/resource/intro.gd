@@ -61,7 +61,7 @@ func update_resource():
 			if not DirAccess.dir_exists_absolute("user://resource"):
 				DirAccess.make_dir_absolute("user://resource")
 			if data.add.size() > 0 or data.pack.size() > 0:
-				get_tree().get_root().add_child(await Updatedate.load_scene("download.tscn"))
+				get_tree().get_root().add_child(preload("res://scenes/download.tscn").instantiate())
 			var index = 1
 			if data.pack.size() > 0:
 				Updatedate.start_download.emit(data.add.size(), "بروزرسانی ‌دارایی‌ها")
@@ -69,8 +69,8 @@ func update_resource():
 				var http2 = HTTPRequest.new()
 				add_child(http2)
 				http2.download_file = "user://update/"+file
+				http2.request(protocol+subdomin+"/static/files/update/"+file, ["Content-Type: application/json"])
 				Updatedate.download_progress.emit(index, http2)
-				http2.request(protocol+subdomin+"/static/files/pack/"+file, ["Content-Type: application/json"])
 				await http2.request_completed
 				http2.queue_free()
 				print(FileAccess.get_file_as_bytes("user://update/"+file).size())
