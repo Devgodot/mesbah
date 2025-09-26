@@ -8,12 +8,14 @@ var enter_phones = []
 var timers = {}
 var current_phone
 var plugin
+var app_hash = ""
 func _ready() -> void:
 	if Engine.has_singleton("GodotGetFile"):
 		plugin = Engine.get_singleton("GodotGetFile")
 		plugin.receive_message.connect(func (message):
 			print(message))
-		print(plugin.getAppHash())
+		app_hash = plugin.getAppHash()
+		print(app_hash)
 		plugin.startSmsUserConsent("+989999876739")
 		
 	$MarginContainer/VBoxContainer/HBoxContainer3/SpinBox.get_line_edit().virtual_keyboard_type = LineEdit.KEYBOARD_TYPE_NUMBER
@@ -152,7 +154,7 @@ func _on_button2_pressed() -> void:
 		$MarginContainer2/VBoxContainer/HBoxContainer/Label/Label.text = ""
 		var r = HTTPRequest.new()
 		add_child(r)
-		r.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": %phone.text, "game":"مصباح"}))
+		r.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": %phone.text, "hash":app_hash}))
 		var i = await r.request_completed
 		r.queue_free()
 		if i[3].size() != 0:
@@ -191,10 +193,10 @@ func _on_button4_pressed() -> void:
 				if !enter_phones.has(data.phone):
 					var r2 = HTTPRequest.new()
 					add_child(r2)
-					r2.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": data.phone, "game":"مصباح"}))
+					r2.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": data.phone, "hash":app_hash}))
 					r2.request_completed.connect(func(a, b, c, _d):
 						if _d.size() == 0:
-							r2.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": data.phone, "game":"مصباح"}))
+							r2.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": data.phone, "hash":app_hash}))
 						else:
 							r2.queue_free()
 						)
@@ -288,11 +290,11 @@ func _on_label_gui_input(event: InputEvent) -> void:
 		var r = HTTPRequest.new()
 		add_child(r)
 		r.timeout = 10
-		r.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": current_phone, "game":"مصباح"}))
+		r.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": current_phone, "hash":app_hash}))
 		var i = await r.request_completed
 		while i[3].size() == 0:
 			Notification.add_notif("اتصال اینترنت برقرار نیست", Notification.ERROR) 
-			r.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": current_phone, "game":"مصباح"}))
+			r.request(Updatedate.protocol+Updatedate.subdomin+"/auth/verify", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": current_phone, "hash":app_hash}))
 			i = await r.request_completed
 		enter_phones.append(current_phone)
 		delete_phone(current_phone)
