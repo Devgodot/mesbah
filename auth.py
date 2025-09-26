@@ -34,14 +34,15 @@ def post_request(url, payload={}):
     return response.json()
 
 def send_sms(phone, code):
-    url = "https://rest.payamak-panel.com/api/SendSMS/BaseServiceNumber"
+    url = "https://rest.payamak-panel.com/api/SendSMS/SendSMS"
     params = {
 
     'to': phone,
     'password':'0O3LH',
     'username':'09999876739',
+    "from":"50002710076739",
     'text': code,
-    'bodyId':371498
+    # 'bodyId':371498
     
     }
     response = post_request(url=url, payload=params)
@@ -54,11 +55,14 @@ def verify_user():
     if not phone.startswith("09") or len(phone) != 11:
         return jsonify({"error": "فرمت شماره نامعتبر است"}), 400
     code = f"{random.randint(0, 9)}{random.randint(0, 9)}{random.randint(0, 9)}{random.randint(0, 9)}"
-    response = send_sms(phone=phone, code=code)
+    hash_app = data.get("hash", "np2WmUaqHkT")
+    text = f"<#> کد تایید شما: {code}\n{hash_app}"
+    response = send_sms(phone=phone, code=text)
     verify = VerificationCode.query.filter_by(phone=phone).all()
     
     for v in verify:
         db.session.delete(v)
+    
     db.session.commit()
     verification_code = VerificationCode(phone=phone, code=code)
     db.session.add(verification_code)
