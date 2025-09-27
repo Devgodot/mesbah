@@ -581,7 +581,6 @@ func get_icon_user(icon:String, user_name, node):
 		node.mouse_filter = Control.MOUSE_FILTER_STOP
 		node.gui_input.connect(func(event:InputEvent):
 			if event is InputEventScreenTouch and event.is_pressed():
-				
 				if texture.scale.x > 0.2:
 					hide_picture()
 				else:
