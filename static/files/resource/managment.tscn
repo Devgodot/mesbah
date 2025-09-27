@@ -1607,6 +1607,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_dig23")
 expand_mode = 1
 stretch_mode = 1
@@ -1619,6 +1620,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
+mouse_filter = 1
 script = ExtResource("9_3xg5v")
 current_tab = 0
 separation_style = SubResource("StyleBoxEmpty_xpey2")
@@ -1657,7 +1659,7 @@ theme_override_styles/tab_selected = SubResource("StyleBoxFlat_dgef1")
 theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_nfu3h")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_pa2oh")
 tab_alignment = 1
-current_tab = 2
+current_tab = 1
 drag_to_rearrange_enabled = true
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/1/TabContainer"]
@@ -1854,7 +1856,6 @@ layout_mode = 2
 text = "ذخیره تغییرات"
 
 [node name="MarginContainer2" type="MarginContainer" parent="TabContainer/1/TabContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
@@ -1998,6 +1999,7 @@ layout_mode = 2
 text = "دوباره"
 
 [node name="MarginContainer3" type="MarginContainer" parent="TabContainer/1/TabContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 20
@@ -2407,6 +2409,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_kor44")
 expand_mode = 1
 
@@ -2417,6 +2420,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_nuysv")
 expand_mode = 1
 
@@ -2547,6 +2551,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_kor44")
 expand_mode = 1
 
@@ -2557,6 +2562,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_nuysv")
 expand_mode = 1
 

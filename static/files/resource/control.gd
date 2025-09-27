@@ -400,9 +400,9 @@ func add_message(m, pos=-1):
 		if t.split("$").size() == 2:
 			day = ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه', 'شنبه'][int(t.split("$")[1])]
 		if dic_time.year == Updatedate.year:
-			label.text = str(day, " ", dic_time.day, " ", mounthes[int(dic_time.mounth) -1])
+			label._text = str(day, " ", dic_time.day, " ", mounthes[int(dic_time.mounth) -1])
 		else:
-			label.text = str(dic_time.day, " ", mounthes[int(dic_time.mounth) -1], " ", dic_time.year)
+			label._text = str(dic_time.day, " ", mounthes[int(dic_time.mounth) -1], " ", dic_time.year)
 		$VBoxContainer/ScrollContainer/Control.add_child(label)
 		
 	box.add_theme_stylebox_override("panel", box.get_theme_stylebox("panel").duplicate())

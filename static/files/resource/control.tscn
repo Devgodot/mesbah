@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://mvbajcxbja87" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_04_49 PM3.png" id="14_aqg2y"]
 [ext_resource type="Texture2D" uid="uid://cn8qrclg0a76t" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_04_49 PM.png" id="15_b7y2v"]
 [ext_resource type="Texture2D" uid="uid://clepet1x1srh0" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_52_45 PM.png" id="16_kflwy"]
+[ext_resource type="Texture2D" uid="uid://dgk0swkr5583i" path="res://sprite/pngtree-retro-geometric-border-png-image_6507901.png" id="16_xuh5p"]
 [ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="17_tidj8"]
 [ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="18_wtdv7"]
 [ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="19_rg367"]
@@ -548,7 +549,8 @@ func _process(delta: float) -> void:
 		if index == null:
 			index = next_node.index - 1 if next_node.index is int else null
 	if label:
-		label.size.x = parent.size.x
+		if label.is_ready:
+			label.size.x = parent.size.x
 		label.global_position.y = global_position.y - 10 - label.size.y
 func has_on_viewport(parent:Control) -> bool:
 	var extera_size = 0
@@ -891,21 +893,39 @@ _data = {
 &"action": SubResource("Animation_ednal")
 }
 
-[sub_resource type="Gradient" id="Gradient_6pn8l"]
-offsets = PackedFloat32Array(0.142857, 0.533333, 0.880952)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2pn8f"]
-gradient = SubResource("Gradient_6pn8l")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tfhda"]
-texture = SubResource("GradientTexture2D_2pn8f")
+texture = ExtResource("16_xuh5p")
+texture_margin_left = 26.8598
+texture_margin_right = 26.0698
+axis_stretch_horizontal = 1
+region_rect = Rect2(268.01, 43.1063, 189.148, 43.2581)
 
 [sub_resource type="LabelSettings" id="LabelSettings_usxgj"]
 font = ExtResource("13_1mtgi")
 font_size = 40
-font_color = Color(0.694118, 0, 0.235294, 1)
+font_color = Color(0.292027, 0.417124, 0.10037, 1)
 outline_size = 7
+
+[sub_resource type="GDScript" id="GDScript_an0t8"]
+script/source = "extends Label
+
+var is_ready = false
+var _text = \"\"
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	position.x = (get_parent().size.x / 2) - (size.x / 2)
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, \"position:x\", 0, 0.4)
+	tween.play()
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(self, \"size:x\", get_parent().size.x, 0.4)
+	tween2.play()
+	await tween.finished
+	var tween3 = get_tree().create_tween()
+	tween3.tween_property(self, \"text\", _text, 0.2)
+	tween3.play()
+	is_ready = true
+"
 
 [sub_resource type="Theme" id="Theme_vb5ih"]
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -2721,11 +2741,14 @@ libraries = {
 [node name="instance2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer"]
 visible = false
 layout_mode = 0
+offset_left = 474.0
+offset_right = 528.0
+offset_bottom = 63.0
 theme_override_styles/normal = SubResource("StyleBoxTexture_tfhda")
-text = "چهارشنبه 23 مهر"
 label_settings = SubResource("LabelSettings_usxgj")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = SubResource("GDScript_an0t8")
 
 [node name="Control" type="Control" parent="VBoxContainer/ScrollContainer"]
 layout_mode = 1
