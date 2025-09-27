@@ -82,7 +82,7 @@ func _ready() -> void:
 					for user in data.result:
 						var box = $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/ScrollContainer/VBoxContainer/instance".duplicate()
 						box.show()
-						Updatedate.get_icon_group(user.icon, user.name,box.get_node("MarginContainer/BoxContainer/TextureRect/ColorRect/TextureRect"))
+						Updatedate.get_icon_user(user.icon, user.name,box.get_node("MarginContainer/BoxContainer/TextureRect/ColorRect/TextureRect"))
 						if user.icon == "":
 							get_user_text(user.first_name,user.last_name, box.get_node("MarginContainer/BoxContainer/TextureRect/ColorRect/Label"))
 						box.get_node("MarginContainer/BoxContainer/VBoxContainer/Label").text =  str("رتبه : ", int(user.position))

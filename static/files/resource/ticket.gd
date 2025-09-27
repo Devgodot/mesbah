@@ -255,7 +255,3 @@ func create_qur_code():
 
 func _on_file_dialog_file_selected(path: String) -> void:
 	pass
-
-
-func _on_texture_rect_2_gui_input(event: InputEvent) -> void:
-	print(0)
