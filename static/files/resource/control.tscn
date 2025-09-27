@@ -441,6 +441,11 @@ var checked = false:
 			if label:
 				label.modulate.a = 1
 			modulate.a = 1
+			pivot_offset.x = size.x / 2
+			var tween = get_tree().create_tween()
+			
+			tween.tween_property(self, \"scale\", Vector2.ONE, 0.4)
+			tween.play()
 			checked = x
 		
 func _ready() -> void:
@@ -2423,6 +2428,7 @@ layout_direction = 3
 layout_mode = 0
 offset_right = 420.0
 offset_bottom = 394.411
+scale = Vector2(1e-05, 1e-05)
 size_flags_horizontal = 8
 mouse_filter = 2
 theme = SubResource("Theme_2y1hm")
@@ -2590,6 +2596,7 @@ anchor_right = 1.0
 offset_left = -310.0
 offset_bottom = 254.0
 grow_horizontal = 0
+scale = Vector2(1e-05, 1e-05)
 size_flags_horizontal = 0
 mouse_filter = 2
 theme = SubResource("Theme_2y1hm")
