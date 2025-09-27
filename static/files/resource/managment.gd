@@ -43,6 +43,7 @@ func _ready() -> void:
 	add_message()
 	saved_users = Updatedate.load_game("saved_users", [])
 	add_saved_users()
+	Updatedate.request("/planes/all")
 	Updatedate.request_completed.connect(func(data, url:String):
 		if url.begins_with("/control/sort"):
 			if data and data.has("group"):
