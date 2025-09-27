@@ -732,12 +732,12 @@ def sort_users():
                     if user is None:
                         continue
                     result.append({
-                        "name": user.username,
+                        "name": user.id,
                         "first_name": user.data.get("first_name", ""),
                         "last_name": user.data.get("last_name", ""),
                         "father_name": user.data.get("father_name", ""),
                         "phone": user.phone,
-                        "icon": utils.hashing(text=user.data.get("icon", ""), mode=utils.HashingMode.ENCODE),
+                        "icon": user.data.get("icon", ""),
                         "custom_name": user.data.get("custom_name", ""),
                         "score_sum": stats["score_sum"],
                         "diamond_sum": stats["diamond_sum"]
