@@ -702,7 +702,13 @@ def sort_length():
                     length += 1
             return jsonify({"len":length})
         else:
-            return jsonify({"len":len(Score.query.filter_by(plan=plan, subplan=subplan, tag=tag, gender=gender, group=group).all())})
+            length = 0
+            planes = []
+            for s in Score.query.filter_by(plan=plan,subplan=subplan, tag=tag, gender=gender, group=group).all():
+                if [s.plan, s.name, s.subplan] not in planes:
+                    planes.append([s.plan, s.name, s.subplan])
+                    length += 1
+            return jsonify({"len":length})
     return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
 @control_bp.get("/sort")
 @jwt_required()
