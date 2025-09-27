@@ -81,8 +81,10 @@ class User(db.Model):
     @classmethod
     def get_user_by_username(cls, username):
         # جستجو با username هش شده
-        return cls.query.filter_by(id=username).first()
-
+        if len(username) == 10:
+            return cls.query.filter_by(id=username).first()
+        else:
+            return cls.query.filter_by(username=username).first()
     def set_username(self, username):
         self.username = hashing(HashingMode.ENCODE, username)
 

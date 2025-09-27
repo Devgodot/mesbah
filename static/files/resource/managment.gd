@@ -13,6 +13,19 @@ var saved_users = []
 var subplanes = []
 var subplanes2 = []
 var plan_name = ""
+var pos_plan = []
+var num_users = 1
+func get_user_text(f, l, node:Label):
+	node.text += f[0] if f != "" else ""
+	node.text += "‌"+ l[0] if l != "" else ""
+func get_text_name(text, node:Label):
+	var split = text.split(" ")
+	var words = []
+	for g in split:
+		if g != "":
+			words.append(g)
+	node.text = words[0][0] if words.size() > 0 else ""
+	node.text += "‌" + words.back()[0] if words.size() > 1 else ""
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
@@ -30,7 +43,73 @@ func _ready() -> void:
 	add_message()
 	saved_users = Updatedate.load_game("saved_users", [])
 	add_saved_users()
-	
+	Updatedate.request_completed.connect(func(data, url:String):
+		if url.begins_with("/control/sort"):
+			if data and data.has("group"):
+				for child in $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/ScrollContainer/VBoxContainer".get_children():
+					if "instance" not in child.name:
+						child.queue_free()
+				if data.group:
+					for group in data.result:
+						var box = $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/ScrollContainer/VBoxContainer/instance2".duplicate()
+						box.show()
+						box.get_node("MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer/RichTextLabel").text = group.name
+						box.get_node("MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer3/Label").text = str("امتیاز : ", int(group.score_sum))
+						box.get_node("MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/BoxContainer3/Label2").text = str("الماس : ", int(group.diamond_sum))
+						box.get_node("MarginContainer/VBoxContainer/BoxContainer/VBoxContainer/Label").text = str("رتبه : ", int(group.position))
+						Updatedate.get_icon_group(group.icon, group.name,box.get_node("MarginContainer/VBoxContainer/BoxContainer/TextureRect/ColorRect/TextureRect"))
+						if group.icon == "":
+							get_text_name(group.name, box.get_node("MarginContainer/VBoxContainer/BoxContainer/TextureRect/ColorRect/Label"))
+						var index = 0
+						for user in group.users:
+							var obj = box.get_node("MarginContainer/VBoxContainer/GridContainer/instance").duplicate()
+							obj.show()
+							obj.get_node("Label").text = ["سرگروه", "عضو اول", "عضو دوم", "عضو سوم", "عضو چهارم"][index]
+							Updatedate.get_icon_user(user.icon, user.name,obj.get_node("HBoxContainer/TextureRect/ColorRect/TextureRect"))
+							if user.icon == "":
+								get_user_text(user.first_name, user.last_name, obj.get_node("HBoxContainer/TextureRect/ColorRect/Label"))
+							if user.has("custom_name") and user.custom_name != "":
+								obj.get_node("BoxContainer/RichTextLabel").text = user.custom_name
+							else:
+								obj.get_node("BoxContainer/RichTextLabel").text = user.first_name + " " + user.last_name
+							obj.get_node("BoxContainer4/RichTextLabel").text = user.father_name
+							obj.get_node("BoxContainer2/RichTextLabel").text = user.phone
+							obj.get_node("BoxContainer3/RichTextLabel").text = user.name
+							box.get_node("MarginContainer/VBoxContainer/GridContainer").add_child(obj)
+							index += 1
+						$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/ScrollContainer/VBoxContainer".add_child(box)
+				else:
+					for user in data.result:
+						var box = $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/ScrollContainer/VBoxContainer/instance".duplicate()
+						box.show()
+						Updatedate.get_icon_group(user.icon, user.name,box.get_node("MarginContainer/BoxContainer/TextureRect/ColorRect/TextureRect"))
+						if user.icon == "":
+							get_user_text(user.first_name,user.last_name, box.get_node("MarginContainer/BoxContainer/TextureRect/ColorRect/Label"))
+						box.get_node("MarginContainer/BoxContainer/VBoxContainer/Label").text =  str("رتبه : ", int(user.position))
+						box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer3/Label").text = str("امتیاز : ", int(user.score_sum))
+						box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer3/Label2").text = str("الماس : ", int(user.diamond_sum))
+						box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer/RichTextLabel").text = user.custom_name if user.custom_name != "" else user.first_name + " " + user.last_name
+						box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer4/RichTextLabel").text = user.father_name
+						box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer2/Label").text = "کدملی : "+user.name
+						box.get_node("MarginContainer/BoxContainer/VBoxContainer/BoxContainer2/Label2").text = "شماره تلفن : " + user.phone
+						$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/ScrollContainer/VBoxContainer".add_child(box)
+		if url.begins_with("/control/length"):
+			if data and data.has("len"):
+				num_users = data.len
+		if url == "/planes/all":
+			if data and not data.has("msg"):
+				pos_plan = data
+				var option:OptionButton = $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton"
+				var x = option.selected
+				option.clear()
+				for plan in pos_plan:
+					option.add_item(plan)
+				if x == -1:
+					x = 0
+					_on_rank_plan_selected(0)
+					get_length()
+				option.select(x)
+				)
 	for spin in get_tree().get_nodes_in_group("spin"):
 		if spin is SpinBox:
 			spin.get_line_edit().virtual_keyboard_type = LineEdit.VirtualKeyboardType.KEYBOARD_TYPE_NUMBER
@@ -79,8 +158,29 @@ func _ready() -> void:
 	add_ticket()
 	if Updatedate.load_game("user_name","") == "5100276150":
 		%type.add_item("مدیرها")
+	$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton2".item_selected.connect(func(index):
+		get_length())
+	$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton".item_selected.connect(func(index):
+		get_length())
+	$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/OptionButton".item_selected.connect(func(index):
+		get_length())
+	$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/OptionButton2".item_selected.connect(func(index):
+		get_length())
 	await get_tree().create_timer(0.1).timeout
 	show()
+func get_length():
+	var key_plan = $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton".get_item_text($"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton".selected)
+	var sp = ""
+	var index = $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton2".selected
+	if pos_plan.has(key_plan) and index != -1:
+		var g = index % 2
+		print(index)
+		if index / 2 < pos_plan[key_plan].size():
+			sp = pos_plan[key_plan][index/2].uri_encode()
+		if sp == "":
+			Updatedate.request("/control/length?plan=%s&tag=%d&gender=%d&group=%d"%[key_plan.uri_encode(), $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/OptionButton".selected, $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/OptionButton2".selected, g])
+		else:
+			Updatedate.request("/control/length?plan=%s&subplan=%s&tag=%d&gender=%d&group=%d"%[key_plan.uri_encode(), sp, $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/OptionButton".selected, $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/OptionButton2".selected, g])
 func _on_button_4_pressed() -> void:
 	$"TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Label3".hide()
 	$"TabContainer/3/VBoxContainer/BoxContainer/BoxContainer4/Button3".hide()
@@ -335,6 +435,8 @@ func _on_search_pressed() -> void:
 		w.queue_free()
 		w3.queue_free()
 func _process(delta: float) -> void:
+	$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/SpinBox".max_value = num_users if num_users <= 100 else 100
+	$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/SpinBox2".max_value = num_users - $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/SpinBox".value + 1
 	$Window.visible = $"TabContainer/3/VBoxContainer/BoxContainer/BoxContainer5/Button2".button_pressed
 	$ScrollContainer.visible = %search.has_focus() and search_type == 3
 	$"TabContainer/3/VBoxContainer/BoxContainer/BoxContainer5/message/TextEdit".text = %message.text
@@ -1375,3 +1477,38 @@ func _on_add_pressed() -> void:
 			add_saved_users())
 		$"TabContainer/1/TabContainer/MarginContainer/VBoxContainer/MarginContainer/BoxContainer/ScrollContainer/VBoxContainer".add_child(instance, false, Node.INTERNAL_MODE_FRONT)
 		
+
+
+func _on_ranking_tab_selected(tab: int) -> void:
+	if tab == 2:
+		Updatedate.request("/planes/all")
+
+
+func _on_rank_plan_selected(index: int) -> void:
+	var key = $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton".get_item_text(index)
+	var x = $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton2".selected
+	if x == -1:
+		x = 0
+	$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton2".clear()
+	if pos_plan.has(key):
+		for s in pos_plan[key]:
+			$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton2".add_item(s+"-فردی")
+			$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton2".add_item(s+"-گروهی")
+		$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton2".add_item("مجموع فردی")
+		$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton2".add_item("مجموع گروهی")
+	$"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton2".select(x)
+
+
+func _on_rankin_search_button_pressed() -> void:
+	var key_plan = $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton".get_item_text($"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton".selected)
+	var sp = ""
+	var index = $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/OptionButton2".selected
+	if pos_plan.has(key_plan) and index != -1:
+		var g = index % 2
+		print(index)
+		if index / 2 < pos_plan[key_plan].size():
+			sp = pos_plan[key_plan][index/2].uri_encode()
+		if sp == "":
+			Updatedate.request("/control/sort?plan=%s&tag=%d&gender=%d&group=%d&page=%d&max_members=%d"%[key_plan.uri_encode(), $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/OptionButton".selected, $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/OptionButton2".selected, g, $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/SpinBox2".value, $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/SpinBox".value])
+		else:
+			Updatedate.request("/control/sort?plan=%s&subplan=%s&tag=%d&gender=%d&group=%d&page=%d&max_members=%d"%[key_plan.uri_encode(), sp, $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/OptionButton".selected, $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer3/OptionButton2".selected, g, $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/SpinBox2".value, $"TabContainer/1/TabContainer/MarginContainer3/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer2/SpinBox".value])

@@ -5,8 +5,8 @@ from schemas import UserSchema, GroupSchema
 from flask_jwt_extended import current_user, jwt_required
 from random import randint
 import random, os, shutil
-from models import User, UserInterface, Group, ServerMessage, Ticket
-import json
+from models import User, UserInterface, Group, ServerMessage, Ticket, Score
+import json, utils
 from datetime import datetime, timedelta
 from sqlalchemy.orm.attributes import flag_modified
 import jdatetime
@@ -684,124 +684,186 @@ def get_messages():
         jalali_date = JalaliDatetime(message.timestamp)
         data.append({"id":message.id, "text":message.message, "time":str(jalali_date), "receiver":message.receiver})
     return jsonify({"data":data}), 200
-
-@control_bp.get("/sort_users")
+@control_bp.get("/length")
+@jwt_required()
+def sort_length():
+    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
+        plan = request.args.get("plan", "")
+        subplan = request.args.get("subplan")
+        gender = request.args.get("gender", 0, type=int)
+        tag = request.args.get("tag", 0, type=int)
+        group = bool(request.args.get("group", 0, type=int))
+        if subplan is None:
+            length = 0
+            planes = []
+            for s in Score.query.filter_by(plan=plan, tag=tag, gender=gender, group=group).all():
+                if [s.plan, s.name] not in planes:
+                    planes.append([s.plan, s.name])
+                    length += 1
+            return jsonify({"len":length})
+        else:
+            return jsonify({"len":len(Score.query.filter_by(plan=plan, subplan=subplan, tag=tag, gender=gender, group=group).all())})
+    return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
+@control_bp.get("/sort")
 @jwt_required()
 def sort_users():
     if current_user.get_username() in UserInterface.query.first().data.get("management", []):
-        filter_data = []
-        if request.args.get("filter"):
-            filter_data = request.args.get("filter").split("AND")
-        sort = request.args.get("sort", "").split("AND")
-        page = request.args.get("page", default=1, type=int)
-        per_page = request.args.get("per_page")
-        users = User.query.all()
-        if per_page is None or int(per_page) == 0:
-            per_page = len(users)
+        plan = request.args.get("plan", "")
+        subplan = request.args.get("subplan")
+        MAX_MEMBERS = request.args.get("max_members", 10, type=int)
+        page = request.args.get("page", 0, type=int)
+        gender = request.args.get("gender", 0, type=int)
+        tag = request.args.get("tag", 0, type=int)
+        group = bool(request.args.get("group", 0, type=int))
+        if subplan is None:
+            scores = Score.query.filter_by(plan=plan, gender=gender, tag=tag, group=group).all()
+            # دیکشنری برای جمع امتیاز و الماس هر کاربر
+            user_stats = {}
+            for s in scores:
+                if s.name not in user_stats:
+                    user_stats[s.name] = {"score_sum": 0, "diamond_sum": 0}
+                user_stats[s.name]["score_sum"] += s.score
+                user_stats[s.name]["diamond_sum"] += s.diamond
+            # ساخت لیست برای مرتب‌سازی
+            result = []
+            for name, stats in user_stats.items():
+                if group == False:
+                    user = User.get_user_by_username(name)
+                    if user is None:
+                        continue
+                    result.append({
+                        "name": user.username,
+                        "first_name": user.data.get("first_name", ""),
+                        "last_name": user.data.get("last_name", ""),
+                        "father_name": user.data.get("father_name", ""),
+                        "phone": user.phone,
+                        "icon": utils.hashing(text=user.data.get("icon", ""), mode=utils.HashingMode.ENCODE),
+                        "custom_name": user.data.get("custom_name", ""),
+                        "score_sum": stats["score_sum"],
+                        "diamond_sum": stats["diamond_sum"]
+                    })
+                else:
+                    group_user = Group.get_group_by_name(name=name)
+                    if group_user is None:
+                        continue
+                    users = []
+                    for u in group_user.users.get("users", []):
+                        user = User.get_user_by_username(username=u)
+                        if user is None:
+                            continue
+                        users.append({
+                            "name": user.id,
+                            "first_name": user.data.get("first_name", ""),
+                            "last_name": user.data.get("last_name", ""),
+                            "father_name": user.data.get("father_name", ""),
+                            "phone": user.phone,
+                            "icon": user.data.get("icon", ""),
+                            "custom_name": user.data.get("custom_name", "")
+                        })
+                    result.append({
+                        "name": group_user.name,
+                        "icon": group_user.icon,
+                        "score_sum": stats["score_sum"],
+                        "diamond_sum": stats["diamond_sum"],
+                        "users":users
+                    })
+
+            # مرتب‌سازی: اول بر اساس الماس، بعد امتیاز
+            sorted_result = sorted(result, key=lambda x: (x["diamond_sum"], x["score_sum"]), reverse=True)
+            
+            # محاسبه جایگاه با در نظر گرفتن رتبه مشترک
+            last_score = None
+            last_diamond = None
+            position = 0
+            real_position = 0
+            for item in sorted_result:
+                real_position += 1
+                if last_score == item["score_sum"] and last_diamond == item["diamond_sum"]:
+                    item["position"] = position
+                else:
+                    position = real_position
+                    item["position"] = position
+                    last_score = item["score_sum"]
+                    last_diamond = item["diamond_sum"]
+            
+            sorted_result = get_members(sorted_result=sorted_result, page=page, max_members=MAX_MEMBERS)
+            return jsonify({"result": sorted_result, "group":bool(group)}), 200
+
         else:
-            per_page = int(float(per_page))
-        u = []
-        for user in users:
-            if sort and sort != [''] and  all(user.data.get(k) is not None for k in sort):
-                u.append(user)
-            elif not sort or sort == ['']:
-                return jsonify({"error": "لطفا فیلتری برای مرتب سازی انتخاب کنید"}), 400
-        
-        if sort and sort != []:
-            u.sort(key=lambda user: tuple(user.data.get(k) for k in sort), reverse=True)
-        u2 = []
-        for x, user in enumerate(u):
-            if x >= (page - 1) * per_page and x < page * per_page:
-                u2.append(user)
-        if filter_data:
-            for user in u2:
-                d = {}
-                for key in filter_data:
-                    k = key
-                    if user.data.get(k) is not None:
-                        d[key] = user.data.get(k)
-                user.data = d
-        previous_score = None
-        current_position = 0
-        for index, user in enumerate(u2):
-            current_score = tuple(user.data.get(k) for k in sort)
-            if current_score != previous_score:
-                current_position = index + 1
-            user.data['position'] = current_position
-            previous_score = current_score
-        result = UserSchema().dump(u2, many=True)
-        if len(u2) > 0:
-            return (
-                jsonify(
-                    {
-                        "users": result,
-                    }
-                ),
-                200,
-            )
-        else:
-            return jsonify({"error": "چنین رتبه بندی وجود ندارد"})
+            scores = Score.query.filter_by(plan=plan, subplan=subplan, gender=gender, tag=tag, group=group).all()
+            # دیکشنری برای جمع امتیاز و الماس هر کاربر فقط در همین زیرطرح
+            user_stats = {}
+            for s in scores:
+                if s.name not in user_stats:
+                    user_stats[s.name] = {"score_sum": 0, "diamond_sum": 0}
+                user_stats[s.name]["score_sum"] += s.score
+                user_stats[s.name]["diamond_sum"] += s.diamond
+            # ساخت لیست برای مرتب‌سازی
+            result = []
+            for name, stats in user_stats.items():
+                if group == False:
+                    user_obj = User.get_user_by_username(name)
+                    if user_obj is None:
+                        continue
+                    result.append({
+                        "name": user_obj.id,
+                        "first_name": user_obj.data.get("first_name", ""),
+                        "last_name": user_obj.data.get("last_name", ""),
+                        "father_name": user_obj.data.get("father_name", ""),
+                        "phone": user_obj.phone,
+                        "icon": user_obj.data.get("icon", ""),
+                        "custom_name": user_obj.data.get("custom_name", ""),
+                        "score_sum": stats["score_sum"],
+                        "diamond_sum": stats["diamond_sum"]
+                    })
+                else:
+                    group_user = Group.get_group_by_name(name=name)
+                    if group_user is None:
+                        continue
+                    users = []
+                    for u in group_user.users.get("users", []):
+                        user = User.get_user_by_username(username=u)
+                        if user is None:
+                            continue
+                        users.append({
+                            "name": user.id,
+                            "first_name": user.data.get("first_name", ""),
+                            "last_name": user.data.get("last_name", ""),
+                            "father_name": user.data.get("father_name", ""),
+                            "phone": user.phone,
+                            "icon": user.data.get("icon", ""),
+                            "custom_name": user.data.get("custom_name", "")
+                        })
+                    result.append({
+                        "name": group_user.name,
+                        "icon": group_user.icon,
+                        "score_sum": stats["score_sum"],
+                        "diamond_sum": stats["diamond_sum"],
+                        "users":users
+                    })
+            # مرتب‌سازی: اول بر اساس الماس، بعد امتیاز
+            sorted_result = sorted(result, key=lambda x: (x["diamond_sum"], x["score_sum"]), reverse=True)
+
+            # محاسبه جایگاه با در نظر گرفتن رتبه مشترک
+            last_score = None
+            last_diamond = None
+            position = 0
+            real_position = 0
+            for item in sorted_result:
+                real_position += 1
+                if last_score == item["score_sum"] and last_diamond == item["diamond_sum"]:
+                    item["position"] = position
+                else:
+                    position = real_position
+                    item["position"] = position
+                    last_score = item["score_sum"]
+                    last_diamond = item["diamond_sum"]
+            sorted_result = get_members(sorted_result=sorted_result, page=page, max_members=MAX_MEMBERS)
+
+            return jsonify({"result": sorted_result, "group":bool(group)}), 200
     else:
         return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
-@control_bp.get("/sort_group")
-@jwt_required()
-def sort_group():
-    if current_user.get_username() in UserInterface.query.first().data.get("management", []):
-        filter_data = []
-        if request.args.get("filter"):
-            filter_data = request.args.get("filter").split("AND")
-        page = request.args.get("page", default=1, type=int)
-        per_page = request.args.get("per_page")
-        groups = Group.query.filter_by(gender=request.args.get("gender", 0, int), tag=request.args.get("tag", 0, int)).all()
-       
-        if per_page is None or int(per_page) == 0:
-            per_page = len(groups)
-        else:
-            per_page = int(float(per_page))
-        
-        groups.sort(key=lambda group: (sum(group.diamonds.values()), sum(group.score.values())), reverse=True)
-        u2 = []
-        for x, group in enumerate(groups):
-            if x >= (page - 1) * per_page and x < page * per_page:
-                u2.append(group)
-        print(u2)
-        previous_score = None
-        current_position = 0
-        for index, group in enumerate(u2):
-            current_score = (sum(group.diamonds.values()), sum(group.score.values()))
-            if current_score != previous_score:
-                current_position = index + 1
-            group.position = current_position
-            group.score = sum(group.score.values())
-            group.diamonds = sum(group.diamonds.values())
-            if filter_data:
-                for username in group.users.get("users", []):
-                    user = User.get_user_by_username(username=username)
-                    d = {}
-                    for key in filter_data:
-                        k = key
-                        if user.data.get(k) is not None:
-                            d[key] = user.data.get(k)
-                    user.data = d
-                    user.data["username"] = username
-                    user.data["phone"] = user.phone
-                    group.users["users"][group.users.get("users", []).index(username)] = user.data
-            previous_score = current_score
-        result = GroupSchema().dump(u2, many=True)
-        if len(u2) > 0:
-            return (
-                jsonify(
-                    {
-                        "groups": result,
-                    }
-                ),
-                200,
-            )
-        else:
-            return jsonify({"error": "چنین رتبه بندی وجود ندارد"})
-    else:
-        return jsonify({"error": "شما اجازه دسترسی به این بخش را ندارید"}), 403
-    
+
 def jalali_to_gregorian(jy, jm, jd, hour=0, minute=0):
     gdate = jdatetime.datetime(jy, jm, jd, hour, minute).togregorian()
     return gdate
@@ -811,3 +873,7 @@ def gregorian_to_jalali(dt):
     jdate = jdatetime.datetime.fromgregorian(datetime=dt)
     return jdate
 
+def get_members(sorted_result, page, max_members):
+    start = max(0, page-1)  # اگه page منفی بود از 0 شروع می‌کنه
+    end = min(start + max_members, len(sorted_result))  # جلوتر از طول لیست نره
+    return sorted_result[start:end]
