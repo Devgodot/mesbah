@@ -34,14 +34,14 @@ def post_request(url, payload={}):
     return response.json()
 
 def send_sms(phone, code):
-    url = "https://rest.payamak-panel.com/api/SendSMS/SendSMS"
+    url = "https://console.melipayamak.com/api/send/otp/4e52dc71f69c416dad6f2c7d22628b3d"
     params = {
 
     'to': phone,
-    'password':'0O3LH',
-    'username':'09999876739',
-    "from":"50002710076739",
-    'text': code,
+    # 'password':'0O3LH',
+    # 'username':'09999876739',
+    # "from":"50002710076739",
+    # 'text': code,
     # 'bodyId':371498
     
     }
@@ -54,12 +54,12 @@ def verify_user():
     phone: str = data.get("phone")
     if not phone.startswith("09") or len(phone) != 11:
         return jsonify({"error": "فرمت شماره نامعتبر است"}), 400
-    code = f"{random.randint(0, 9)}{random.randint(0, 9)}{random.randint(0, 9)}{random.randint(0, 9)}"
+    # code = f"{random.randint(0, 9)}{random.randint(0, 9)}{random.randint(0, 9)}{random.randint(0, 9)}"
     hash_app = data.get("hash", "np2WmUaqHkT")
-    text = f"<#> کد تایید شما: {code}\n{hash_app}"
-    response = send_sms(phone=phone, code=text)
+    # text = f"<#> کد تایید شما: {code}\n{hash_app}"
+    response = send_sms(phone=phone, code="")
     verify = VerificationCode.query.filter_by(phone=phone).all()
-    
+    code = response.get("code")
     for v in verify:
         db.session.delete(v)
     
@@ -67,7 +67,7 @@ def verify_user():
     verification_code = VerificationCode(phone=phone, code=code)
     db.session.add(verification_code)
     db.session.commit()
-    return jsonify({"message": "در انتظار تائید", "response":response})
+    return jsonify({"message": "در انتظار تائید"})
 
 
 @auth_bp.post("/check_user")
