@@ -122,7 +122,6 @@ func _ready() -> void:
 			break
 	created_c = index2
 	Updatedate.change_status.connect(func(data):
-		print(data)
 		var list = ids.filter(func(s): return data.username in s and data.username != Updatedate.load_game("user_name", ""))
 		for c in list:
 			conversations[c]["state"] = data.state
@@ -549,7 +548,7 @@ func get_direction(text:String):
 	else :
 		return 1
 
-func btn_pressed(event:InputEvent, id, data):
+func btn_pressed(event:InputEvent, _id, data):
 
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
@@ -558,7 +557,7 @@ func btn_pressed(event:InputEvent, id, data):
 			if $CustomTabContainer/MarginContainer3/ScrollContainer.drag:
 				$CustomTabContainer/MarginContainer3/ScrollContainer.drag = false
 			else:
-				Updatedate.conversation = {"id": id, "part":data.part, "name":data.name if data.has("name") else "", "icon":data.icon if data.has("icon") else "", "custom_name":data.custom_name if data.has("custom_name") else "", "username":data.username if data.has("username") else "", "state":data.state if data.has("state") else "unknow", "last_seen":data.last_seen if data.has("last_seen") else {}}
+				Updatedate.conversation = {"id": _id, "part":data.part, "name":data.name if data.has("name") else "", "icon":data.icon if data.has("icon") else "", "custom_name":data.custom_name if data.has("custom_name") else "", "username":data.username if data.has("username") else "", "state":data.state if data.has("state") else "unknow", "last_seen":data.last_seen if data.has("last_seen") else {}}
 				Transation.change(self, "control.tscn", 1)
 func check_has_node(node):
 	if check and node._index != null:

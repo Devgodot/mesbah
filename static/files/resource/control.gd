@@ -119,7 +119,17 @@ func _ready() -> void:
 		Updatedate.change_status.connect(func(data):
 			if data.username in c.id and data.username != senderId:
 				c.state = data.state
-				
+				if data.icon != c.icon:
+					Updatedate.get_icon_user(c.icon, c.username, $ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect)
+					c.icon = data.icon
+				$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name.set_deferred("text", c.custom_name if c.has("custom_name") and c.custom_name != "" else c.name if c.has("name") else "")
+				if not data.has("icon"):
+					get_text_name(data.name, $ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect/Label)
+				if data.has("icon") and data.icon == "" and $ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect.texture == null:
+					get_text_name(data.name, $ColorRect/MarginContainer/HBoxContainer/TextureRect2/TextureRect/Label)
+				$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/name.dir = get_direction(data.name)
+				c.name = data.name
+				c.custom_name = data.custom_name
 				if data.state == "online":
 					$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Label.text = "وضعیت: آنلاین"
 					for box in $VBoxContainer/ScrollContainer/VBoxContainer.get_children():
@@ -138,6 +148,7 @@ func _ready() -> void:
 			if message:
 				if message.conversationId + message.part == c.id:
 					messages[message["id"]] = message
+					
 					unseen_ids.erase(message.id)
 					if get_tree().has_group(message.id):
 						var box = get_tree().get_nodes_in_group(message.id)[0]
@@ -192,13 +203,7 @@ func _ready() -> void:
 					$VBoxContainer/ScrollContainer.last_id = ids.back()
 				
 				for m in get_tree().get_nodes_in_group(id):
-					if m.pre_node:
-						m.pre_node.next_node = null if m.next_node == null else m.next_node
-					if m.next_node:
-						m.next_node.pre_node = null if m.pre_node == null else m.pre_node
-						m.next_node.index = m.index
-					add_message(message, m.get_index())
-					m.queue_free()
+					change_message(message, m)
 					await get_tree().create_timer(0.1).timeout
 				last_id = ids.back()
 				if message.sender != senderId:
@@ -344,6 +349,62 @@ func create_by_pos(x):
 		var box = await add_message(messages[ids[x]])
 		box.checked = true
 		return box
+func change_message(m, box:Control):
+	if m.has("id"):
+		box.remove_from_group(box.get_meta("id"))
+		box.add_to_group(m.id)
+		box.set_meta("id", m.id)
+	var extra_size = 0
+	if times.has(m.id):
+		var label = $VBoxContainer/ScrollContainer/VBoxContainer/instance2.duplicate()
+		var t = times[m.id]
+		label.add_to_group("times")
+		label.set_meta("time", t)
+		label.show()
+		box.label = label
+		label.modulate.a = 0
+		extra_size += 73
+		var dic_time = {year=t.split("/")[0], mounth=t.split("/")[1], day=t.split("/")[2]}
+		var day = ""
+		var mounthes = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"]
+		if t.split("$").size() == 2:
+			day = ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه', 'شنبه'][int(t.split("$")[1])]
+		if dic_time.year == Updatedate.year:
+			label._text = str(day, " ", dic_time.day, " ", mounthes[int(dic_time.mounth) -1])
+		else:
+			label._text = str(dic_time.day, " ", mounthes[int(dic_time.mounth) -1], " ", dic_time.year)
+		$VBoxContainer/ScrollContainer/Control.add_child(label)
+	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").show()
+	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").show()
+	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D").hide()
+	if m.has("createdAt"):
+		if not m.has("seen") or (m.has("seen") and m.seen == null):
+			if Updatedate.conversation.last_seen != {}:
+				if float(Updatedate.conversation.last_seen.timestamp) > float(m.createdAt) or Updatedate.conversation.state == "online":
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").default_color = Color.GRAY
+				else:
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
+			else:
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
+	else:
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").hide()
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D").show()
+	var time = m.time if m.has("time") else ""
+	var weekday = (time.split("$")) if time != "" else [""]
+	if m.has("sender_name"):
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Label").text = m.sender_name
+	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2").text = weekday[0]
+	if Updatedate.waiting_editing.has(Updatedate.conversation.id):
+		var new_m = Updatedate.waiting_editing[Updatedate.conversation.id].filter(func(x):return x[0] == m.id)
+		if new_m.size() > 0:
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").hide()
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").hide()
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D").show()
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text = new_m[0][1]
 func add_message(m, pos=-1):
 	var obj:Node
 	if m.sender == senderId:
@@ -428,6 +489,7 @@ func add_message(m, pos=-1):
 	var time = m.time if m.has("time") else ""
 	var weekday = (time.split("$")) if time != "" else [""]
 	if m.has("sender_name"):
+		
 		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Label").text = m.sender_name
 	box.edit.connect(func (pos):
 		if action_box != box:
@@ -450,9 +512,11 @@ func add_message(m, pos=-1):
 	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2").text = weekday[0]
 	box.add_to_group("message")
 	box.set_meta("id", m.id)
+	if m.has("seen") and m.seen != null:
+		box.seen = m.seen
 	box.response.connect(func():
 		if edited_box == null:
-			box_ref = m.id
+			box_ref = box.get_meta("id", m.id)
 			if has_keyboard == false:
 				if mobile_box:
 					mobile_box.getFocus()
@@ -469,8 +533,9 @@ func add_message(m, pos=-1):
 					if event.is_released():
 						await focus_on_message(m.response)
 						r_id = m.response
+						
 						$AnimationPlayer2.play("fade")
-						if !responses.has(m.id) and m.id != last_id:  
+						if !responses.has(box.get_meta("id", "")) and box.get_meta("id", "") != last_id:  
 							responses.append(m.id))
 		else:
 			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label3").hide()
@@ -480,7 +545,7 @@ func add_message(m, pos=-1):
 		box.screen_entered.connect(func(seen):
 			if seen == null:
 				if senderId != m.sender and senderId in Updatedate.conversation.id:
-					Updatedate.message_seen(m.id)
+					Updatedate.message_seen(box.get_meta("id", m.id))
 			check_has_node(box))
 	$VBoxContainer/ScrollContainer/VBoxContainer.add_child(box)
 	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  m.messages.text
@@ -890,3 +955,8 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 			if mobile_box:
 				if has_keyboard == false:
 					mobile_box.getFocus()
+
+
+func _on_scroll_container_scroll_ended() -> void:
+	if $VBoxContainer/Control/Button.visible:
+		$AnimationPlayer.play_backwards("pop_button")

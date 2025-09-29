@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from sqlalchemy import or_, cast, Float, Integer
+from sqlalchemy import or_, cast, Float, Integer, and_
 from confige import db, app
 from flask_jwt_extended import current_user, jwt_required
 from models import User, UserInterface, Group, ServerMessage, Planes, Supporter, Messages, Conversation, RemovedConversation
@@ -180,10 +180,16 @@ def get_supporters():
     for s in supporters:
         
         conversation = Conversation.query.filter(
-            or_ (Conversation.user1 == current_user.id,
-                Conversation.user2 == current_user.id),
-            or_ (Conversation.user1 == s.username,
-                Conversation.user2 == s.username),
+            or_ (
+                and_ (
+                    Conversation.user1 == current_user.id,
+                    Conversation.user2 == s.username
+                    ),
+                and_ (
+                    Conversation.user1 == s.username,
+                    Conversation.user2 == current_user.id
+                    )
+                ),
             Conversation.part == s.part
             ).first()
         if conversation is None and s.username != current_user.id:
