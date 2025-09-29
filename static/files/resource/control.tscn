@@ -544,7 +544,16 @@ func _process(delta: float) -> void:
 		else:
 			if next_node and next_node.index != null:
 				index = next_node.index - 1
-				print(index)
+			else:
+				if has_on_screen == false:
+					global_position.y = $\"../..\".global_position.y + 73
+				else:
+					index = $\"../../../..\".last_index
+	if index != 0 and pre_node == null and next_node == null:
+		var ext = 0
+		if label:
+			ext = 73
+		global_position.y = $\"../..\".global_position.y + ext
 	if pre_node:
 		if label:
 			global_position.y = pre_node.global_position.y + pre_node.size.y + 10 + label.size.y
