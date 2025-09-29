@@ -19,6 +19,7 @@ var save_path = "user://data.cfg"
 var token = ""
 var year = "1404"
 var id = ""
+var offset = Vector2.ZERO
 var waiting_message = {}
 var waiting_editing = {}
 var data_net = [{"protocol":"http://", "domin":"127.0.0.1:5000", "socket":"ws://127.0.0.1:3000"}, {"protocol":"https://", "domin":"messbah403.ir", "socket":"ws://shirinasalgame.ir"}]
@@ -174,18 +175,21 @@ func setup_icon():
 			bg.pivot_offset = bg.size/2)
 func zoom(texture:TextureRect):
 	var motion = false
+	
 	texture.gui_input.connect(func(event:InputEvent):
+		var s = ((texture.size * texture.scale) - texture.size) / 2.0
 		if event is InputEventMouseButton:
 			if event.is_pressed():
 				drag = true
+				offset = get_global_mouse_position() - texture.global_position
 			else:
 				drag = false
 		if event is InputEventMouseMotion:
 			if drag:
-				texture.position = get_global_mouse_position() - ((texture.size / 2))
+				texture.position = get_global_mouse_position() - (offset) + s
 		texture.scale = clamp(texture.scale, Vector2.ONE, Vector2.ONE * 10)
 		var delta = size - (texture.scale * texture.size)
-		var s = ((texture.size * texture.scale) - texture.size) / 2.0
+		
 		if delta.x > 0:
 			texture.position.x = clamp(texture.position.x, s.x, delta.x + s.x)
 		else:
