@@ -35,6 +35,7 @@ var online_supporter = [0, 0, 0]
 var texture = TextureRect.new()
 var bg = ColorRect.new()
 var p_scene
+var drag = false
 var socket = WebSocketPeer.new()
 var set_user = false
 var plugin
@@ -172,7 +173,16 @@ func setup_icon():
 			bg.size = size
 			bg.pivot_offset = bg.size/2)
 func zoom(texture:TextureRect):
+	var motion = false
 	texture.gui_input.connect(func(event:InputEvent):
+		if event is InputEventMouseButton:
+			if event.is_pressed():
+				drag = true
+			else:
+				drag = false
+		if event is InputEventMouseMotion:
+			if drag:
+				texture.position = get_global_mouse_position() - ((texture.size / 2))
 		texture.scale = clamp(texture.scale, Vector2.ONE, Vector2.ONE * 10)
 		var delta = size - (texture.scale * texture.size)
 		var s = ((texture.size * texture.scale) - texture.size) / 2.0
@@ -188,6 +198,21 @@ func zoom(texture:TextureRect):
 			texture.scale *= event.factor
 			texture.scale = clamp(texture.scale, Vector2.ONE, Vector2.ONE * 10)
 		if event is InputEventMouseButton:
+			if event.is_pressed() and event.double_click and motion == false:
+				if texture.scale.x >= 5.0:
+					motion = true
+					var tween = get_tree().create_tween()
+					tween.tween_property(texture, "scale", Vector2.ONE, 0.4)
+					tween.play()
+					await tween.finished
+					motion = false
+				else:
+					motion = true
+					var tween = get_tree().create_tween()
+					tween.tween_property(texture, "scale", Vector2.ONE * 5, 0.4)
+					tween.play()
+					await tween.finished
+					motion = false
 			if event.ctrl_pressed and event.is_pressed():
 				if event.button_index == 5:
 					if texture.scale.x > 1.0:
@@ -195,10 +220,8 @@ func zoom(texture:TextureRect):
 				if event.button_index == 4:
 					if texture.scale.x < 10.0:
 						texture.scale += Vector2.ONE * event.factor / 2
-		if event is InputEventScreenDrag:
-			texture.position += event.relative * texture.scale
-			
-		)
+		
+				)
 func _process(delta: float) -> void:
 	if texture == null:
 		texture = TextureRect.new()

@@ -316,9 +316,11 @@ func _process(delta: float) -> void:
 		can_drag[1] = false
 	if not dragging:
 		if abs(velocity) > 4:
+			drag = true
 			scroll_offset += velocity * delta
 			velocity *= pow(0.92, 60*delta)
 		else:
+			drag = false
 			velocity = 0.0
 	_apply_scroll()
 	#if scroll.y < 0:
@@ -755,8 +757,8 @@ point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_cxcyr"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.0410959, 0.547945, 0.965753)
-colors = PackedColorArray(0, 1, 0, 1, 0.027451, 0.372549, 0.443137, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.0410959, 0.422222, 0.761111)
+colors = PackedColorArray(0, 1, 0, 1, 0.0313726, 0.196078, 0.392157, 1, 1, 1, 1, 1, 0.929412, 0.701961, 0.254902, 1)
 
 [sub_resource type="Animation" id="Animation_sej5b"]
 length = 0.001
@@ -838,8 +840,8 @@ corner_radius_bottom_left = 15
 
 [sub_resource type="Gradient" id="Gradient_mdgmj"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.0410959, 0.260274)
-colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1, 0.541176, 0.12549, 0.184314, 1)
+offsets = PackedFloat32Array(0, 0.0944444, 0.327778, 0.577778)
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1, 0.807843, 0.635294, 0.211765, 1, 0.384314, 0.0313726, 0.352941, 1)
 
 [sub_resource type="Animation" id="Animation_kaou4"]
 length = 0.001
@@ -2491,7 +2493,6 @@ focus_mode = 2
 theme = SubResource("Theme_apcft")
 bbcode_enabled = true
 fit_content = true
-context_menu_enabled = true
 horizontal_alignment = 2
 custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
 selection_enabled = true
@@ -2651,7 +2652,6 @@ focus_mode = 2
 theme = SubResource("Theme_apcft")
 bbcode_enabled = true
 fit_content = true
-context_menu_enabled = true
 custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
 selection_enabled = true
 script = SubResource("GDScript_6pn8l")
