@@ -554,6 +554,7 @@ func _process(delta: float) -> void:
 		if label:
 			ext = 73
 		global_position.y = $\"../..\".global_position.y + ext
+		screen_entered.emit()
 	if pre_node:
 		if label:
 			global_position.y = pre_node.global_position.y + pre_node.size.y + 10 + label.size.y
