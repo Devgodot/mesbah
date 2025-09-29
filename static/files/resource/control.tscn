@@ -320,7 +320,6 @@ func _process(delta: float) -> void:
 			scroll_offset += velocity * delta
 			velocity *= pow(0.92, 60*delta)
 		else:
-			drag = false
 			velocity = 0.0
 	_apply_scroll()
 	#if scroll.y < 0:

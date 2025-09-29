@@ -581,7 +581,7 @@ func add_message(m, pos=-1, i=-1):
 	
 	return box
 func ref_press(event:InputEvent, _id, response):
-	if event is InputEventScreenTouch:
+	if event is InputEventScreenDrag:
 		if event.is_pressed():
 			$VBoxContainer/ScrollContainer.drag = false
 		if event.is_released():
