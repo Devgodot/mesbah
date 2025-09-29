@@ -852,7 +852,6 @@ func load_scene(new_scene) -> Object:
 			while progress[0] != 1:
 				ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene, progress)
 			s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
-			
 			if script:
 				s.set_script(script)
 	else:
@@ -862,13 +861,6 @@ func load_scene(new_scene) -> Object:
 		while progress[0] != 1:
 			ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene, progress)
 		s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
-	var source_dic = load_game("source_dic", {})
-
-	if new_scene in source_dic.keys():
-		for node in source_dic[new_scene]:
-			for p in source_dic[new_scene][node]:
-				s.get_node(node).set(p.keys()[0], ResourceLoader.load(p.values()[0]))
-				print( ResourceLoader.load(p.values()[0]))
 	return s
 
 func send_message(text:String, _id, responsed:String=""):
@@ -901,7 +893,6 @@ func get_message():
 						data.message.updatedAt = str(float(data.message.updatedAt))
 						save_user_messages(data.message.conversationId + data.message.part, {"add":[data.message], "delete":[]})
 						save("last_seen", str(data.message.createdAt), false)
-						
 						if waiting_message.has(data.message.conversationId + data.message.part):
 							for m in waiting_message[data.message.conversationId + data.message.part]:
 								if m.id == data.id:
