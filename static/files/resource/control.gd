@@ -364,7 +364,6 @@ func change_message(m, box:Control):
 		label.set_meta("time", t)
 		label.show()
 		box.label = label
-		label.modulate.a = 0
 		extra_size += 73
 		var dic_time = {year=t.split("/")[0], mounth=t.split("/")[1], day=t.split("/")[2]}
 		var day = ""
@@ -583,12 +582,17 @@ func add_message(m, pos=-1, i=-1):
 	return box
 func ref_press(event:InputEvent, _id, response):
 	if event is InputEventScreenTouch:
+		if event.is_pressed():
+			$VBoxContainer/ScrollContainer.drag = false
 		if event.is_released():
-			await focus_on_message(response)
-			r_id = response
-			$AnimationPlayer2.play("fade")
-			if !responses.has(_id) and _id != last_id:  
-				responses.append(_id)
+			if $VBoxContainer/ScrollContainer.drag:
+				$VBoxContainer/ScrollContainer.drag = false
+			else:
+				await focus_on_message(response)
+				r_id = response
+				$AnimationPlayer2.play("fade")
+				if !responses.has(_id) and _id != last_id:  
+					responses.append(_id)
 func check_has_node(node):
 	if check:
 		var n = node.index
