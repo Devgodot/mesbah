@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from sqlalchemy import or_, cast, Float, Integer, and_
+from sqlalchemy import or_, cast, Float, Integer, and_, func
 from confige import db, app
 from flask_jwt_extended import current_user, jwt_required
 from models import User, UserInterface, Group, ServerMessage, Planes, Supporter, Messages, Conversation, RemovedConversation
@@ -46,19 +46,29 @@ def get_message():
     managements = UserInterface.query.first().data.get("management", [])
     time = float(request.args.get("time"))
     print(time)
-    messages = Messages.query.filter(
-        or_(
-            Messages.conversationId.like(f"{username}%"),
-            Messages.conversationId.like(f"%{username}"),
-            username in managements
-        ),
-        or_(
-            Messages.createdAt > time,
-            Messages.updatedAt > time,
-            Messages.seen > time,
-            Messages.deleted > time
-        )
-    ).all()
+    if username in managements:
+        messages = Messages.query.filter(
+            or_(
+                Messages.createdAt > time,
+                Messages.updatedAt > time,
+                Messages.seen > time,
+                Messages.deleted > time
+            )
+        ).all()
+    else:
+         messages = Messages.query.filter(
+            or_(
+                func.substr(Messages.conversationId, 1, 10) == username,   # ده تای اول
+                func.substr(Messages.conversationId, 11, 10) == username,
+                username in managements
+            ),
+            or_(
+                Messages.createdAt > time,
+                Messages.updatedAt > time,
+                Messages.seen > time,
+                Messages.deleted > time
+            )
+        ).all()
     if not messages:
         return jsonify({"error": "پیامی یافت نشد."}), 404
     Conversations:dict = {}
