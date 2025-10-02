@@ -14,6 +14,7 @@ var last_index2 = 0
 var last_vbox_size = 0
 var senderId = "0"
 var action_box
+var last_text = ""
 var fram = 0
 var max_message = 0
 var responses = []
@@ -851,6 +852,7 @@ func _on_null_ref_pressed() -> void:
 		if mobile_box:
 			mobile_box.setText("")
 		_on_text_edit_text_changed()
+		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").set_deferred("text", last_text)
 		edited_box.z_index = 0
 		edited_box = null
 		$AnimationPlayer2.play("fade2")
@@ -979,6 +981,7 @@ func _on_edit_pressed() -> void:
 	last_id = edited_box.get_meta("id", "")
 	edited_box.z_index = 1
 	var text :String= edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text
+	last_text = text
 	text = text.replace("[right]", "")
 	text = text.replace("[/right]", "\n")
 	text = text.replace("[left]", "")
