@@ -15,6 +15,7 @@ var last_vbox_size = 0
 var senderId = "0"
 var action_box
 var fram = 0
+var max_message = 0
 var responses = []
 var box_ref
 var max_line = 5
@@ -193,9 +194,11 @@ func _ready() -> void:
 					ids.insert(p, message.id)
 					messages.erase(id)
 					ids.erase(id)
+					
 					own = true
 				else:
 					ids.append(message.id)
+				max_message = ids.size()
 				if message.time.split(" ")[0] not in times.values():
 					times[message.id] = message.time.split(" ")[0]
 				$VBoxContainer/ScrollContainer.begin_id = ids[0]
@@ -247,7 +250,7 @@ func _ready() -> void:
 					var t = messages[message].time.split(" ")[0]
 					messages.erase(message)
 					ids.erase(message)
-					
+					max_message = ids.size()
 					
 					if index >= ids.size():
 						index -= 1
@@ -295,6 +298,7 @@ func _ready() -> void:
 		$VBoxContainer/ScrollContainer.begin_id = ids[0] if ids.size() > 0 else ""
 		$VBoxContainer/ScrollContainer.last_id = ids[-1] if ids.size() > 0 else ""
 		last_id = ids[-1] if ids.size() > 0 else ""
+		max_message = ids.size()
 		for k in ids:
 			var m = messages[k]
 			if m.time.split(" ")[0] not in times.values():
@@ -304,6 +308,7 @@ func _ready() -> void:
 			for m in Updatedate.waiting_message[Updatedate.conversation.id]:
 				messages[m.id] = m
 				ids.append(m.id)
+				max_message = ids.size()
 				$VBoxContainer/ScrollContainer.last_id = ids[-1] if ids.size() > 0 else ""
 	var l = get_last_message()
 	var index = 0
@@ -364,6 +369,7 @@ func change_message(m, box:Control):
 		label.set_meta("time", t)
 		label.show()
 		box.label = label
+		label.box = box
 		extra_size += 73
 		var dic_time = {year=t.split("/")[0], mounth=t.split("/")[1], day=t.split("/")[2]}
 		var day = ""
@@ -465,6 +471,7 @@ func add_message(m, pos=-1, i=-1):
 		label.set_meta("time", t)
 		label.show()
 		box.label = label
+		label.box = box
 		label.modulate.a = 0
 		extra_size += 73
 		var dic_time = {year=t.split("/")[0], mounth=t.split("/")[1], day=t.split("/")[2]}
@@ -689,7 +696,6 @@ func _process(delta: float) -> void:
 			box.checked = true
 func _on_button_pressed() -> void:
 	if edited_box:
-		
 		if not Updatedate.waiting_editing.has(Updatedate.conversation.id):
 			Updatedate.waiting_editing[Updatedate.conversation.id] = []
 		if Updatedate.waiting_message.has(Updatedate.conversation.id):
