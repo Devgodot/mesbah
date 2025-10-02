@@ -574,18 +574,19 @@ func _process(delta: float) -> void:
 		if label.is_ready:
 			label.size.x = parent.size.x
 		label.global_position.y = global_position.y - 10 - label.size.y
-	if next_node == null :
-		if has_on_viewport(get_parent().get_parent()) and index and index < get_parent().get_parent().get_parent().get_parent().max_message - 1:
-			screen_entered.emit(seen)
-	if pre_node == null :
-		if has_on_viewport(get_parent().get_parent()) and index and index > 0 and get_parent().get_parent().get_parent().get_parent().max_message > 1:
-			screen_entered.emit(seen)
+	if visible:
+		if next_node == null :
+			if has_on_viewport(get_parent().get_parent()) and index and index < get_parent().get_parent().get_parent().get_parent().max_message - 1:
+				screen_entered.emit(seen)
+		if pre_node == null :
+			if has_on_viewport(get_parent().get_parent()) and index and index > 0 and get_parent().get_parent().get_parent().get_parent().max_message > 1:
+				screen_entered.emit(seen)
 			
 func has_on_viewport(parent:Control) -> bool:
 	var extera_size = 0
 	if label:
 		extera_size += label.size.y
-	if global_position.y - extera_size >= parent.global_position.y and global_position.y <= parent.global_position.y + parent.size.y - size.y:
+	if global_position.y - extera_size  >= parent.global_position.y - 200 and global_position.y <= parent.global_position.y + parent.size.y - size.y + 200:
 		return true
 	return false
 func out_off_range():
@@ -593,13 +594,13 @@ func out_off_range():
 		var ext = 0
 		if label:
 			ext = 73
-		if global_position.y < parent.global_position.y - (size.y + 20 + ext) :
+		if global_position.y < parent.global_position.y - (size.y + 200 + ext) :
 			queue_free()
 			if label:
 				label.queue_free()
 			if next_node:
 				next_node.pre_node = null
-		if global_position.y > parent.global_position.y + parent.size.y + ext:
+		if global_position.y > parent.global_position.y + parent.size.y + ext + 200:
 			queue_free()
 			if label:
 				label.queue_free()
