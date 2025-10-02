@@ -45,7 +45,7 @@ def get_message():
     username = current_user.get_username()
     managements = UserInterface.query.first().data.get("management", [])
     time = float(request.args.get("time"))
-    print(time)
+    
     if username in managements:
         messages = Messages.query.filter(
             or_(
@@ -59,8 +59,7 @@ def get_message():
          messages = Messages.query.filter(
             or_(
                 func.substr(Messages.conversationId, 1, 10) == username,   # ده تای اول
-                func.substr(Messages.conversationId, 11, 10) == username,
-                username in managements
+                func.substr(Messages.conversationId, 11, 10) == username
             ),
             or_(
                 Messages.createdAt > time,
@@ -75,6 +74,7 @@ def get_message():
     for msg in messages:
         if msg.conversationId+msg.part not in Conversations and msg.part != "":
             Conversations[msg.conversationId+msg.part] = {}
+   
     pop_c = []
     for conversationId in Conversations.keys():
         length = len(conversationId)
