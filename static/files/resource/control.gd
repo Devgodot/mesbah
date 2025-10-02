@@ -36,10 +36,13 @@ var has_keyboard = false
 var action_box_offset = Vector2.ZERO
 var mobile_box
 func get_direction(text:String):
-	if text[0] < "ی" and text[0] > "آ":
-		return -1
-	else :
-		return 1
+	if text != "":
+		if text[0] < "ی" and text[0] > "آ":
+			return -1
+		else :
+			return 1
+	else:
+		return 0
 func uuid(len:int, step:int=4):
 	var w = ["z", "x", "w", "v", "u", "t", "s", "r", "q", "p", "o", "n", "m", "l", "k", "j", "i", "h", "g", "f", "e", "d", "c", "b", "a", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 	var id = ""
@@ -560,7 +563,14 @@ func add_message(m, pos=-1, i=-1):
 					Updatedate.message_seen(box.get_meta("id", m.id))
 			check_has_node(box))
 	$VBoxContainer/ScrollContainer/VBoxContainer.add_child(box)
-	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  m.messages.text
+	var texts = m.messages.text.split("\n")
+	var text = ""
+	for t in texts:
+		if get_direction(t) == -1:
+			text += "[right]" + t + "[/right]"
+		else:
+			text += "[left]" + t + "[/left]"
+	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  text
 	if Updatedate.waiting_editing.has(Updatedate.conversation.id):
 		var new_m = Updatedate.waiting_editing[Updatedate.conversation.id].filter(func(x):return x[0] == m.id)
 		if new_m.size() > 0:
@@ -640,7 +650,14 @@ func _process(delta: float) -> void:
 	offset = get_keyboard_offset()
 	var _delta = Vector2(DisplayServer.window_get_size())/get_viewport().get_visible_rect().size
 	if edited_box:
-		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").set_deferred("text", text_edit.text if mobile_box == null else mobile_box.getText())
+		var texts = text_edit.text.split("\n") if mobile_box == null else mobile_box.getText().split("\n")
+		var text = ""
+		for t in texts:
+			if get_direction(t) == -1:
+				text += "[right]" + t + "[/right]"
+			else:
+				text += "[left]" + t + "[/left]"
+		edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").set_deferred("text", text)
 	if fram <= 6:
 		fram += 1
 	for id in responses:
@@ -961,10 +978,15 @@ func _on_edit_pressed() -> void:
 	$VBoxContainer/ScrollContainer.begin_id = edited_box.get_meta("id", "")
 	last_id = edited_box.get_meta("id", "")
 	edited_box.z_index = 1
+	var text :String= edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text
+	text = text.replace("[right]", "")
+	text = text.replace("[/right]", "\n")
+	text = text.replace("[left]", "")
+	text = text.replace("[/left]", "\n")
 	if mobile_box:
-		mobile_box.setText(edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text)
+		mobile_box.setText(text)
 	else:
-		text_edit.text = edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text
+		text_edit.text = text
 	$VBoxContainer/Panel/VBoxContainer/MarginContainer.show()
 	$VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Label.text = text_edit.text if mobile_box == null else mobile_box.getText()
 	off_action()

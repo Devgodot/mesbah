@@ -671,7 +671,7 @@ func _set(property: StringName, value: Variant) -> bool:
 	if property == \"text\":
 		text = value
 		get_child(0).text = value
-		custom_minimum_size.x = clamp($RichTextLabel.get_content_width(), 10, max_line_size)
+		custom_minimum_size.x = clamp($RichTextLabel.get_content_width(), 260, max_line_size)
 		return true
 	return false
 "
@@ -2512,7 +2512,7 @@ text_overrun_behavior = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 clip_contents = false
-custom_minimum_size = Vector2(10, 40)
+custom_minimum_size = Vector2(260, 40)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 2
@@ -2557,7 +2557,7 @@ text = "12:05:15"
 label_settings = SubResource("LabelSettings_6pn8l")
 
 [node name="Node2D" type="Node2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2"]
-position = Vector2(-11, 25)
+position = Vector2(-27, 25)
 
 [node name="Line2D" type="Line2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D"]
 position = Vector2(1, -3)
@@ -2671,7 +2671,7 @@ text_overrun_behavior = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
 clip_contents = false
-custom_minimum_size = Vector2(10, 0)
+custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 2
