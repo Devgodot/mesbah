@@ -1,4 +1,4 @@
-[gd_scene load_steps=184 format=3]
+[gd_scene load_steps=182 format=3]
 
 [ext_resource type="Script" uid="uid://ch38r51wwiybh" path="res://script/start.gd" id="1_pup0w"]
 [ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="2_1oawt"]
@@ -1269,16 +1269,6 @@ shader_parameter/color = SubResource("GradientTexture2D_0gyww")
 shader_parameter/speed = 0.035
 shader_parameter/wight = 0.73
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bd0r"]
-bg_color = Color(0.522407, 0.426031, 0.199983, 1)
-shadow_size = 15
-shadow_offset = Vector2(0, 4)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gyww"]
-bg_color = Color(0.70546, 0.584045, 0.302655, 1)
-shadow_size = 15
-shadow_offset = Vector2(0, 4)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycbhe"]
 texture = ExtResource("24_1oawt")
 axis_stretch_horizontal = 1
@@ -2043,8 +2033,8 @@ offset_right = 996.0
 offset_bottom = 200.0
 size_flags_horizontal = 3
 mouse_filter = 1
-theme_override_styles/hover = SubResource("StyleBoxFlat_1bd0r")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0gyww")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ycbhe")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ycbhe")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ycbhe")
 script = SubResource("GDScript_w0io0")
 metadata/_edit_group_ = true
