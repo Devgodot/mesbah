@@ -581,14 +581,16 @@ func has_on_viewport(parent:Control) -> bool:
 	return false
 func out_off_range():
 	if visible and checked:
-		
-		if global_position.y < parent.global_position.y - (size.y + 20) :
+		var ext = 0
+		if label:
+			ext = 73
+		if global_position.y < parent.global_position.y - (size.y + 20 + ext) :
 			queue_free()
 			if label:
 				label.queue_free()
 			if next_node:
 				next_node.pre_node = null
-		if global_position.y > parent.global_position.y + parent.size.y + (size.y + 20):
+		if global_position.y > parent.global_position.y + parent.size.y + ext:
 			queue_free()
 			if label:
 				label.queue_free()
