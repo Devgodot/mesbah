@@ -265,6 +265,7 @@ func _ready() -> void:
 					Updatedate.save("last_user", x, false)
 					Updatedate.current_user = x
 					exit = true
+					Updatedate.load_user()
 					Updatedate.request("/messages/get?time=%s"%Updatedate.load_game("last_seen", "0"))
 					Transation.change(self, "setting.tscn")
 				if event.is_pressed() and event.button_index == 2:
