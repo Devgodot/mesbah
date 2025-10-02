@@ -574,7 +574,7 @@ func add_message(m, pos=-1, i=-1):
 		$VBoxContainer/ScrollContainer/VBoxContainer.move_child(box, pos)
 	if $VBoxContainer/ScrollContainer/VBoxContainer.get_child_count() == 4:
 		last_index2 = last_index
-		box.global_position.y = $VBoxContainer/ScrollContainer.global_position.y + extra_size
+		box.global_position.y = $VBoxContainer/ScrollContainer.global_position.y + extra_size + 20
 		box.index = last_index
 		
 	if i != -1:
