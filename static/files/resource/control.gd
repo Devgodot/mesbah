@@ -600,17 +600,19 @@ func add_message(m, pos=-1, i=-1):
 	return box
 func ref_press(event:InputEvent, _id, response):
 	if event is InputEventMouseButton:
-		if event.is_pressed():
-			$VBoxContainer/ScrollContainer.drag = false
-		if event.is_released():
-			if $VBoxContainer/ScrollContainer.drag:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed():
 				$VBoxContainer/ScrollContainer.drag = false
-			else:
-				await focus_on_message(response)
-				r_id = response
-				$AnimationPlayer2.play("fade")
-				if !responses.has(_id) and _id != last_id:  
-					responses.append(_id)
+			if event.is_released():
+				print( $VBoxContainer/ScrollContainer.dragging)
+				if $VBoxContainer/ScrollContainer.drag:
+					$VBoxContainer/ScrollContainer.drag = false
+				else:
+					await focus_on_message(response)
+					r_id = response
+					$AnimationPlayer2.play("fade")
+					if !responses.has(_id) and _id != last_id:  
+						responses.append(_id)
 func check_has_node(node):
 	if check:
 		var n = node.index

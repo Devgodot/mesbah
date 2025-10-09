@@ -314,8 +314,7 @@ func _process(delta: float) -> void:
 			can_drag[1] = true
 	else: 
 		can_drag[1] = false
-	if dragging:
-		drag = true
+	
 	if not dragging:
 		if abs(velocity) > 4:
 			
@@ -377,6 +376,7 @@ func _input(event: InputEvent) -> void:
 			if event.button_index == MOUSE_BUTTON_LEFT and Rect2(global_position, size).has_point(event.position):
 				if event.pressed:
 					dragging = true
+					drag = true
 					velocity = 0.0
 					last_mouse_pos = event.position
 				else:
@@ -402,6 +402,7 @@ func _input(event: InputEvent) -> void:
 			if abs(delta.y) > 1:
 				scroll_start.emit(1 if delta.y > 0 else -1)
 				scroll_offset += delta.y
+				drag = true
 				velocity = lerp(velocity ,delta.y / get_process_delta_time(), 0.4)
 			last_mouse_pos = event.position
 "
