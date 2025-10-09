@@ -107,6 +107,7 @@ func _ready() -> void:
 	Updatedate.current_user = Updatedate.load_game("current_user", 0)
 	Updatedate.load_user()
 	conversations = Updatedate.list_messages()
+	
 	ids = conversations.keys()
 	var not_message = ids.filter(func (m): return not conversations[m].has("message"))
 	ids = ids.filter(func (m): return conversations[m].has("message"))

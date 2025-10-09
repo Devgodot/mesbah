@@ -1,0 +1,567 @@
+[gd_scene load_steps=43 format=3]
+
+[ext_resource type="Texture2D" uid="uid://jt1fxuvgvkc0" path="res://sprite/textile-beige-pattern-png-favpng-UDZWSuCuMPaExCpuF1yZC2He6.jpg" id="1_svmyo"]
+[ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="2_q3b67"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_74nvg"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="4_vfej3"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="5_ox0ko"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="6_43qol"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="7_hfh43"]
+
+[sub_resource type="Shader" id="Shader_xam4k"]
+code = "shader_type canvas_item;
+uniform sampler2D color:repeat_enable;
+uniform float speed = 0.5;
+uniform float wight;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR.rgb = mix(texture(TEXTURE, UV + vec2(TIME*speed, 0.0)).rgb, texture(color, UV).rgb, wight);
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="Gradient" id="Gradient_ngcwe"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.578312, 0.189098, 0, 1, 0.878431, 0.780392, 0, 1, 0.578312, 0.189098, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0gyww"]
+gradient = SubResource("Gradient_ngcwe")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ytmg"]
+shader = SubResource("Shader_xam4k")
+shader_parameter/color = SubResource("GradientTexture2D_0gyww")
+shader_parameter/speed = 0.035
+shader_parameter/wight = 0.73
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1g6oc"]
+texture = ExtResource("1_svmyo")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 0, 820, 453)
+
+[sub_resource type="GDScript" id="GDScript_ox7tp"]
+script/source = "extends Button
+
+
+@export var index: int = -1
+
+func populate(index: int, data, _id) -> void:
+	self.index = index
+	var btn = self
+	btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label\").text = \"[b][color=0dca94][outline_color=001313][outline_size=3]\"+data.message.sender_name+ \":\\n\"+\"[/outline_size][/outline_color][/color][/b]\"  if data and data.has(\"message\") and data.message and data.message.has(\"sender_name\") and data.message.sender_name else \"\"
+	btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label\").text += data.message.messages.text if data.has(\"message\") and data.message and data.message.has(\"messages\") and data.message.messages else \"\"
+	if data.has(\"state\"):
+		if data.state == \"online\":
+			btn.get_node(\"Panel/HBoxContainer/TextureRect/TextureRect2\").show()
+		else:
+			btn.get_node(\"Panel/HBoxContainer/TextureRect/TextureRect2\").hide()
+	
+	if data.has(\"icon\") and data.has(\"username\"):
+		Updatedate.get_icon_user(data.icon, data.username, btn.get_node(\"Panel/HBoxContainer/TextureRect/TextureRect\"))
+	if data.has(\"new\"):
+		if data.new > 0:
+			btn.get_node(\"Panel/HBoxContainer/VBoxContainer2/Label2\").text = str(int(data.new)) if data.new < 100 else \"+99\"
+		else:
+			btn.get_node(\"Panel/HBoxContainer/VBoxContainer2/Label2\").hide()
+	else:
+		btn.get_node(\"Panel/HBoxContainer/VBoxContainer2/Label2\").hide()
+	if data.has(\"message\"):
+		var m = data.message
+		if not m.has(\"seen\") or (m.has(\"seen\") and m.seen == null):
+			if data.last_seen != {}:
+				if data.state == \"online\":
+					btn.get_node(\"Panel/HBoxContainer/TextureRect/TextureRect2\").show()
+				else:
+					btn.get_node(\"Panel/HBoxContainer/TextureRect/TextureRect2\").hide()
+				if float(data.last_seen.timestamp) > float(m.createdAt) or data.state == \"online\":
+					btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D\").default_color = Color.GRAY
+					btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D2\").default_color = Color.GRAY
+				else:
+					btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D\").default_color = Color.GRAY
+					btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D2\").hide()
+			else:
+				btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D\").default_color = Color.GRAY
+				btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D/Line2D2\").hide()
+		if m.sender != Updatedate.load_game(\"user_name\", \"\"):
+			btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D\").hide()
+		btn.get_node(\"Panel/HBoxContainer/VBoxContainer2/Label\").text = data.message.time.split(\" \")[2]
+	else:
+		btn.get_node(\"Panel/HBoxContainer/VBoxContainer2/Label\").hide()
+		btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label\").hide()
+	if data.has(\"part\"):
+		btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer/RichTextLabel\").text = \"[light color=yellow freq=20 num=3 len=100][right] درباره‌ی طرح \" + data.part
+	else:
+		btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer/RichTextLabel\").text = ''
+	
+	btn.add_to_group(_id)
+	btn.set_meta(\"id\", _id)
+	btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer/name\").set_deferred(\"text\", data.custom_name if data.has(\"custom_name\") and data.custom_name != \"\" else data.name)
+	if data.name != \"\":
+		if not data.has(\"icon\"):
+			get_text_name(data.name, btn.get_node(\"Panel/HBoxContainer/TextureRect/Label\"))
+		if data.has(\"icon\") and data.icon == \"\" and btn.get_node(\"Panel/HBoxContainer/TextureRect/TextureRect\").texture == null:
+			get_text_name(data.name, btn.get_node(\"Panel/HBoxContainer/TextureRect/Label\"))
+		btn.get_node(\"Panel/HBoxContainer/VBoxContainer/HBoxContainer/name\").dir = get_direction(data.name)
+	btn.size.x = size.x
+func _on_pressed() -> void:
+	# اگر آیتم دکمه دارد یا سیگنال نیاز است
+	emit_signal(\"item_pressed\", index)
+func get_text_name(text, node:Label):
+	var split = text.split(\" \")
+	var words = []
+	for g in split:
+		if g != \"\":
+			words.append(g)
+	node.text = words[0][0] if words.size() > 0 else \"\"
+	node.text += \"‌\" + words.back()[0] if words.size() > 1 else \"\"
+func get_direction(text:String):
+	if text[0] < \"ی\" and text[0] > \"آ\":
+		return -1
+	else :
+		return 1
+"
+
+[sub_resource type="Shader" id="Shader_1bd0r"]
+code = "shader_type canvas_item;
+uniform sampler2D tex:repeat_enable;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR.rgb = texture(tex, UV + vec2(TIME * 0.5, 0)).rgb * texture(TEXTURE, UV).a;
+
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="Gradient" id="Gradient_8b0vj"]
+offsets = PackedFloat32Array(0, 0.514286, 1)
+colors = PackedColorArray(1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dmnnq"]
+gradient = SubResource("Gradient_8b0vj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iq5q0"]
+shader = SubResource("Shader_1bd0r")
+shader_parameter/tex = SubResource("GradientTexture2D_dmnnq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkinn"]
+draw_center = false
+border_width_top = 10
+border_width_bottom = 10
+border_blend = true
+
+[sub_resource type="Gradient" id="Gradient_cc30s"]
+offsets = PackedFloat32Array(0, 0.640496, 0.702479)
+colors = PackedColorArray(0, 0, 0, 1, 0.669421, 0.669421, 0.669421, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a0ks6"]
+gradient = SubResource("Gradient_cc30s")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_0gyww"]
+offsets = PackedFloat32Array(0, 0.64876)
+colors = PackedColorArray(0.105882, 1, 0, 1, 3.60981e-06, 0.541321, 0.0867349, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dxgow"]
+gradient = SubResource("Gradient_0gyww")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Gradient" id="Gradient_xam4k"]
+offsets = PackedFloat32Array(0.582645, 0.636364)
+colors = PackedColorArray(0.588235, 1, 1, 0, 0, 0.411765, 0.67451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rf8yr"]
+gradient = SubResource("Gradient_xam4k")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_qekll"]
+font = ExtResource("2_q3b67")
+font_size = 70
+outline_size = 11
+outline_color = Color(0.321971, 0.232393, 0.00322712, 1)
+shadow_size = 14
+shadow_color = Color(0, 0, 0, 0.85098)
+
+[sub_resource type="Gradient" id="Gradient_dmnnq"]
+offsets = PackedFloat32Array(0, 0.58, 0.68)
+colors = PackedColorArray(0, 1, 0, 1, 0.27451, 0.862745, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3tic0"]
+gradient = SubResource("Gradient_dmnnq")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="Shader" id="Shader_cc30s"]
+code = "shader_type canvas_item;
+uniform int dir:hint_range(-1, 1, 1)=0;
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	COLOR = texture(TEXTURE, vec2(UV.x + float(TIME * float(dir) * 0.2), UV.y));
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66u1k"]
+shader = SubResource("Shader_cc30s")
+shader_parameter/dir = 0
+
+[sub_resource type="GDScript" id="GDScript_xbgpe"]
+script/source = "extends TextureRect
+
+var last_size = size
+var dir = 0
+var label_size
+var text:String:
+	set(x):
+		text = x
+		await get_tree().physics_frame
+		$texture/Label.text = text
+		
+		
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	texture = $texture.get_texture()
+	label_size = $texture/Label.size
+func _process(delta: float) -> void:
+	if last_size != size:
+		last_size = size
+		$texture.size = size
+		
+		if $texture/Label.size.x > size.x:
+			$texture.size.x = size.x * 1.5
+			
+			var m = ShaderMaterial.new()
+			m.shader = material.shader
+			m.set_shader_parameter(\"dir\", dir)
+			material = m
+		else:
+			var m = ShaderMaterial.new()
+			m.shader = material.shader
+			m.set_shader_parameter(\"dir\", 0)
+			material = m
+"
+
+[sub_resource type="FontVariation" id="FontVariation_m13t4"]
+fallbacks = Array[Font]([ExtResource("4_vfej3")])
+base_font = ExtResource("3_74nvg")
+spacing_top = 30
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_mgrfc"]
+script = ExtResource("5_ox0ko")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ur635"]
+script = ExtResource("6_43qol")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_cc30s"]
+script = ExtResource("5_ox0ko")
+metadata/_custom_type_script = "uid://dcls0pguhob1u"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_ya0au"]
+script = ExtResource("6_43qol")
+metadata/_custom_type_script = "uid://bt1xta4d0rii"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_dmnnq"]
+script = ExtResource("5_ox0ko")
+metadata/_custom_type_script = "uid://dcls0pguhob1u"
+
+[sub_resource type="Curve" id="Curve_r65ku"]
+_data = [Vector2(0, 0.629685), 0.0, 0.0, 0, 0, Vector2(0.271739, 0.658921), 0.0, 0.0, 0, 0, Vector2(0.554348, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_0jf8d"]
+colors = PackedColorArray(1, 1, 1, 1, 0.340339, 0.340339, 0.340339, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ggkae"]
+gradient = SubResource("Gradient_0jf8d")
+fill_from = Vector2(0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_6rcit"]
+font = ExtResource("7_hfh43")
+font_size = 40
+font_color = Color(0.290196, 0.168627, 1, 1)
+outline_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ierpy"]
+bg_color = Color(3.27289e-06, 0.724809, 0.221273, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_bn33c"]
+font = ExtResource("7_hfh43")
+font_size = 44
+
+[node name="instance" type="Button"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_1ytmg")
+custom_minimum_size = Vector2(0, 200)
+offset_right = 996.0
+offset_bottom = 200.0
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_styles/hover = SubResource("StyleBoxTexture_1g6oc")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1g6oc")
+theme_override_styles/normal = SubResource("StyleBoxTexture_1g6oc")
+script = SubResource("GDScript_ox7tp")
+metadata/_edit_group_ = true
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_iq5q0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rkinn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 11.0
+offset_right = -18.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_a0ks6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="NinePatchRect" type="TextureRect" parent="Panel/HBoxContainer/TextureRect/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_dxgow")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NinePatchRect2" type="TextureRect" parent="Panel/HBoxContainer/TextureRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_rf8yr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_qekll")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Panel/HBoxContainer/TextureRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.647
+anchor_top = 0.742619
+anchor_right = 0.647
+anchor_bottom = 0.742619
+offset_left = -16.05
+offset_top = -16.068
+offset_right = 15.95
+offset_bottom = 15.932
+grow_horizontal = 0
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_3tic0")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="name" type="TextureRect" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_66u1k")
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+script = SubResource("GDScript_xbgpe")
+metadata/_edit_use_anchors_ = true
+
+[node name="texture" type="SubViewport" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/name"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(400, 108)
+render_target_update_mode = 3
+
+[node name="Label" type="RichTextLabel" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer/name/texture"]
+texture_repeat = 2
+clip_contents = false
+custom_minimum_size = Vector2(0, 108)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -54.0
+offset_right = 187.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/normal_font = SubResource("FontVariation_m13t4")
+theme_override_font_sizes/normal_font_size = 45
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+custom_effects = [SubResource("RichTextEffect_mgrfc"), SubResource("RichTextEffect_ur635")]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("7_hfh43")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[light color=yellow freq=20 num=3 len=100][right] مربی طرح رمضان 1403-1404 بخش سلامت معنوی"
+custom_effects = [SubResource("RichTextEffect_cc30s")]
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="RichTextLabel" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_hfh43")
+theme_override_fonts/mono_font = ExtResource("7_hfh43")
+theme_override_fonts/italics_font = ExtResource("7_hfh43")
+theme_override_fonts/bold_italics_font = ExtResource("7_hfh43")
+theme_override_fonts/bold_font = ExtResource("7_hfh43")
+theme_override_font_sizes/bold_italics_font_size = 28
+theme_override_font_sizes/italics_font_size = 23
+theme_override_font_sizes/mono_font_size = 20
+theme_override_font_sizes/normal_font_size = 25
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[b]شما[/b]
+"
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 2
+custom_effects = [SubResource("RichTextEffect_ya0au"), SubResource("RichTextEffect_dmnnq")]
+
+[node name="Node2D" type="Node2D" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label"]
+position = Vector2(20, 0)
+
+[node name="Line2D" type="Line2D" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D"]
+texture_repeat = 1
+position = Vector2(1, -3)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_r65ku")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_ggkae")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label/Node2D"]
+texture_repeat = 1
+position = Vector2(11, -2)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_r65ku")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_ggkae")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "1403/05/25"
+label_settings = SubResource("LabelSettings_6rcit")
+
+[node name="Label2" type="Label" parent="Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_ierpy")
+text = "+99"
+label_settings = SubResource("LabelSettings_bn33c")
+horizontal_alignment = 1
+vertical_alignment = 1

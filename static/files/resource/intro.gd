@@ -40,7 +40,7 @@ func update_resource():
 	if subdomin != "127.0.0.1:5000" and internet:
 		var http = HTTPRequest.new()
 		add_child(http)
-		var last_update = "1759392005130"
+		var last_update = "1759993739191"
 		if float(Updatedate.load_game("last_update", "0")) > float(last_update):
 			last_update = Updatedate.load_game("last_update", "0")
 		else:

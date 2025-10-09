@@ -314,9 +314,11 @@ func _process(delta: float) -> void:
 			can_drag[1] = true
 	else: 
 		can_drag[1] = false
+	if dragging:
+		drag = true
 	if not dragging:
 		if abs(velocity) > 4:
-			drag = true
+			
 			scroll_offset += velocity * delta
 			velocity *= pow(0.92, 60*delta)
 		else:
@@ -357,7 +359,7 @@ func _apply_scroll():
 				scroll.y = 0
 	
 	$VBoxContainer.position.y = scroll_offset
-func _gui_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if move == false:
 		#if event is InputEventScreenDrag:
 			#if event.relative.y > 1 and can_drag[0]:
@@ -372,7 +374,7 @@ func _gui_input(event: InputEvent) -> void:
 				#scroll_start.emit(-1)
 				#dir = -1
 		if event is InputEventMouseButton:
-			if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.button_index == MOUSE_BUTTON_LEFT and Rect2(global_position, size).has_point(event.position):
 				if event.pressed:
 					dragging = true
 					velocity = 0.0
