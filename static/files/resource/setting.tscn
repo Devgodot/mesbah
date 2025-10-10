@@ -280,6 +280,7 @@ func _ready() -> void:
 
 func _on_permission_not_granted_by_user(permission):
 	file_dialog.popup()
+	Updatedate.cant_open_gallery = true
 func _on_add_icon_group_pressed(x) -> void:
 	if plugin:
 		mode = x
@@ -293,7 +294,7 @@ func _on_label_2_gui_input(event: InputEvent, x) -> void:
 	if event is InputEventScreenTouch:
 		mode = x
 		if event.is_pressed():
-			if plugin:
+			if plugin and Updatedate.cant_open_gallery == false:
 				plugin.getGalleryImage()
 			else:
 				file_dialog.popup()
