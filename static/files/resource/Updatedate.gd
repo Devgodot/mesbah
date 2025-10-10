@@ -46,6 +46,7 @@ var speaker :AudioStreamPlayer2D
 var messages = []
 var list_users = []
 var failed_request = []
+var cant_open_gallery = false
 @onready var change_scene = {"main":"start", "control":"main","menu1":"main", "setting":"main", "messages":"main", "menu2":"menu1", "editname":"setting", "gallary":p_scene, "positions":p_scene}
 func get_header() -> Array:
 	return [
