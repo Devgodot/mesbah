@@ -1,0 +1,5 @@
+env
+*.apk
+*.db
+*.log
+*.json
