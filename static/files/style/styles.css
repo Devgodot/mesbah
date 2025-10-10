@@ -11,6 +11,7 @@ body {
     background-color: rgba(25, 179, 250, 0.8); /* افزودن پس‌زمینه نیمه شفاف به متن */
     padding: 20px;
     border-radius: 10px;
+    
 }
 
 @keyframes textGlow {
