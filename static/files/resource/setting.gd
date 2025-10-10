@@ -70,6 +70,8 @@ func get_direction(text:String):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_process(false)
+	if not OS.request_permission("android.permission.READ_EXTERNAL_STORAGE"):
+		OS.request_permission("android.permission.READ_EXTERNAL_STORAGE")
 	Updatedate.load_user()
 	var a = Updatedate.load_game("accounts", [])
 	if Engine.has_singleton("GodotGetImage"):
