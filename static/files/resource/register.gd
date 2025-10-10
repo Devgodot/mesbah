@@ -89,6 +89,7 @@ func _on_button_pressed() -> void:
 	DisplayServer.virtual_keyboard_hide()
 	boxes[current_box].add_theme_stylebox_override("normal", $SpinBox2.get_theme_stylebox("normal"))
 	edit_code = false
+	$MarginContainer2/VBoxContainer/Button.disabled = true
 	var w = Updatedate.add_wait($MarginContainer2/VBoxContainer/Button)
 	var r = HTTPRequest.new()
 	add_child(r)
@@ -97,6 +98,7 @@ func _on_button_pressed() -> void:
 	r.request_completed.connect(_on_code_sended.bind(w))
 func _on_code_sended(r, re, h, b, w):
 	if b.size() > 0:
+		$MarginContainer2/VBoxContainer/Button.disabled = false
 		var data = Updatedate.get_json(b)
 		if data:
 			if data is Array and data[0].has("error"):
@@ -143,11 +145,9 @@ func _on_code_sended(r, re, h, b, w):
 		r2.request(Updatedate.protocol+Updatedate.subdomin+"/auth/register", ["Content-Type: application/json"], HTTPClient.METHOD_POST, JSON.stringify({"phone": %phone.text, "code":code2, "id":%id.text}))
 		r2.request_completed.connect(_on_code_sended.bind(w))
 	w.queue_free()
-
+	
 func _on_button2_pressed() -> void:
-	if plugin:
-		plugin.startSmsListener()
-		get_tree().create_timer(5).timeout.connect(func():plugin.simulateSmsReceived("Your code 123456\n5OH8PtwT7Gc"))
+	
 	$AnimationPlayer.play("change3")
 	$MarginContainer2/VBoxContainer/HBoxContainer/Label.text = str("لطفاً کد ارسالی به شماره تلفن", %phone.text,"را وارد کنید.")
 	if !enter_phones.has(%phone.text):
@@ -176,6 +176,7 @@ func _on_button3_pressed() -> void:
 
 
 func _on_button4_pressed() -> void:
+	$MarginContainer4/VBoxContainer/Button.disabled = true
 	var w = Updatedate.add_wait($MarginContainer4/VBoxContainer/Button)
 	var r = HTTPRequest.new()
 	add_child(r)
@@ -183,6 +184,7 @@ func _on_button4_pressed() -> void:
 	r.request_completed.connect(func(result, re, h, b):
 		r.queue_free()
 		w.queue_free()
+		$MarginContainer4/VBoxContainer/Button.disabled = false
 		if b.size() > 0:
 			var data = Updatedate.get_json(b)
 			if data is Dictionary and data.has("phone"):

@@ -74,9 +74,7 @@ func _ready() -> void:
 	
 	Updatedate.load_user()
 	var a = Updatedate.load_game("accounts", [])
-	if Engine.has_singleton("GodotGetImage"):
-		camera = Engine.get_singleton("GodotGetImage")
-		camera.setOptions({"use_front_camera":true})
+	
 	if Updatedate.load_game("accept_account", false):
 		birthday_box.hide()
 	var wait = Updatedate.add_wait(change_group_mode)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3]
+[gd_scene load_steps=58 format=3]
 
 [ext_resource type="Script" uid="uid://ng5a76jd5id6" path="res://script/positions.gd" id="1_h6vow"]
 [ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="2_uicei"]
@@ -254,6 +254,19 @@ colors = PackedColorArray(0.68317, 0.609914, 0.286867, 1, 0.388235, 0.215686, 0.
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hbuwu"]
 gradient = SubResource("Gradient_02ppr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bcnmc"]
+light_mode = 2
+
+[sub_resource type="Gradient" id="Gradient_283g4"]
+offsets = PackedFloat32Array(0.690217, 0.76087)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_db10n"]
+gradient = SubResource("Gradient_283g4")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
@@ -548,10 +561,8 @@ text = "الماس"
 label_settings = SubResource("LabelSettings_r5dor")
 horizontal_alignment = 1
 
-[node name="VSeparator" type="VSeparator" parent="HBoxContainer2"]
-layout_mode = 2
-
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_children = 2
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -654,7 +665,6 @@ vertical_alignment = 1
 custom_effects = [SubResource("RichTextEffect_mgrfc"), SubResource("RichTextEffect_ur635")]
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2"]
-clip_children = 2
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -668,6 +678,8 @@ mouse_filter = 2
 texture = SubResource("GradientTexture2D_hbuwu")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2/TextureRect"]
+visibility_layer = 2
+material = SubResource("CanvasItemMaterial_bcnmc")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -689,6 +701,12 @@ label_settings = SubResource("LabelSettings_bcnmc")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="ScrollContainer/VBoxContainer/HBoxContainer/Label2/TextureRect"]
+position = Vector2(40, 40)
+energy = 0.0
+texture = SubResource("GradientTexture2D_db10n")
+texture_scale = 1.05
 
 [node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(130, 120)

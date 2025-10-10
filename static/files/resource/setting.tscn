@@ -213,6 +213,7 @@ var plugin
 var plugin_name = \"GodotGetImage\"
 var mode
 var group_name = \"\"
+@export var file_dialog : FileDialog
 func _ready() -> void:
 	if Engine.has_singleton(plugin_name):
 		plugin = Engine.get_singleton(plugin_name)
@@ -278,8 +279,7 @@ func _ready() -> void:
 				)
 
 func _on_permission_not_granted_by_user(permission):
-	
-	plugin.resendPermission()
+	file_dialog.popup()
 func _on_add_icon_group_pressed(x) -> void:
 	if plugin:
 		mode = x
@@ -291,10 +291,60 @@ func _on_error(e):
 
 func _on_label_2_gui_input(event: InputEvent, x) -> void:
 	if event is InputEventScreenTouch:
+		mode = x
 		if event.is_pressed():
 			if plugin:
-				mode = x
 				plugin.getGalleryImage()
+			else:
+				file_dialog.popup()
+
+func _on_file_dialog_file_selected(path: String) -> void:
+	if mode == 1:
+		$Label.hide()
+		var img = Image.new()
+		img.load(path)
+		img.resize(500, 500)
+		$TextureRect.texture = ImageTexture.create_from_image(img)
+		if mode != 2:
+			mode = null
+	if mode == 2:
+		$Label.hide()
+		mode = null
+		var w = Updatedate.add_wait(self)
+		var icon_group = \"\"
+		var img = Image.new()
+		img.load(path)
+		img.resize(500, 500)
+		var r = HTTPRequest.new()
+		get_tree().get_root().add_child(r)
+		var z = str(randi_range(0, 1000000))
+		if !DirAccess.dir_exists_absolute(\"user://group_icon\"):
+			DirAccess.make_dir_absolute(\"user://group_icon\")
+		img.save_webp(\"user://group_icon/\"+group_name+ z +\".webp\")
+		r.request(Updatedate.protocol+Updatedate.subdomin+\"/upload\", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({\"name\":group_name+z+\".webp\", \"data\":img.save_webp_to_buffer()}))
+		var e = await r.request_completed
+		if e[3].size() == 0:
+			w.queue_free()
+			r.queue_free()
+			Notification.add_notif(\"اتصال اینترنت برقرار نیست!\", Notification.ERROR)
+			return
+		var err = Updatedate.get_json(e[3])
+		if (err and err.has(\"error\")):
+			Notification.add_notif(err.error, Notification.ERROR)
+			w.queue_free()
+			r.queue_free()
+			return
+		r.queue_free()
+		icon_group = Updatedate.protocol+Updatedate.subdomin+\"/static/files/users/\"+Updatedate.load_game(\"phone\", \"\")+\"/\"+(group_name + z).uri_encode()+\".webp\"
+		var r2 = HTTPRequest.new()
+		get_tree().get_root().add_child(r2)
+		r2.request(Updatedate.protocol+Updatedate.subdomin+\"/groups/icon\", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({\"name\":group_name, \"icon\":icon_group}))
+		var i = await r2.request_completed
+		if i[3].size() > 0:
+			Notification.add_notif(\"با موفقیت بروزرسانی شد\")
+			w.queue_free()
+			r2.queue_free()
+			$TextureRect.texture = ImageTexture.create_from_image(img)
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_masab"]
@@ -514,6 +564,7 @@ script/source = "extends Button
 var plugin 
 var plugin_name = \"GodotGetImage\"
 var mode
+@export var file_dialog :FileDialog
 func _ready() -> void:
 	
 	if Engine.has_singleton(plugin_name):
@@ -560,8 +611,8 @@ func _ready() -> void:
 				)
 
 func _on_permission_not_granted_by_user(permission):
+	file_dialog.popup()
 	plugin.resendPermission()
-
 func _on_error(e):
 	mode = null
 	print(e)
@@ -571,9 +622,36 @@ func _on_error(e):
 func _on_label_2_gui_input(event: InputEvent, x) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+			mode = x
 			if plugin:
-				mode = x
 				plugin.getGalleryImage()
+			else:
+				file_dialog.popup()
+
+
+func _on_file_dialog_file_selected(path: String) -> void:
+	if mode == 1:
+		mode = null
+		var w = Updatedate.add_wait(self)
+		var img = Image.new()
+		img.load(path)
+		img.resize(500, 500)
+		
+		$TextureRect.texture = ImageTexture.create_from_image(img)
+		var r = HTTPRequest.new()
+		add_child(r)
+		var z = str(randi_range(0, 100000))
+		r.request(Updatedate.protocol+Updatedate.subdomin+\"/upload\", Updatedate.get_header(), HTTPClient.METHOD_POST, JSON.stringify({\"name\":Updatedate.load_game(\"user_name\", \"\") + z + \".webp\", \"data\":img.save_webp_to_buffer()}))
+		var e = await r.request_completed
+		var err = Updatedate.get_json(e[3])
+		if err and err.has(\"error\"):
+			Notification.add_notif(err.error, Notification.ERROR)
+		Updatedate.save(\"icon\", Updatedate.protocol+Updatedate.subdomin+\"/static/files/users/\"+Updatedate.load_game(\"phone\", \"\")+\"/\"+ Updatedate.load_game(\"user_name\", \"\") + z + \".webp\")
+		img.save_webp(\"user://users_icon/\"+Updatedate.load_game(\"user_name\", \"\")+ z +\".webp\")
+		w.queue_free()
+		$Label.hide()
+		Notification.add_notif(\"با موفقیت بروزرسانی شد\")
+		Updatedate.socket.close()
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_jnidh"]
@@ -1619,7 +1697,7 @@ layout_direction = 3
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer7"]
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer7" node_paths=PackedStringArray("file_dialog")]
 clip_children = 2
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
@@ -1634,6 +1712,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fextp")
 icon_alignment = 1
 expand_icon = true
 script = SubResource("GDScript_ee786")
+file_dialog = NodePath("../../../../../../FileDialog")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer2/HBoxContainer7/Button"]
 layout_mode = 1
@@ -1963,7 +2042,7 @@ layout_direction = 3
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7"]
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7" node_paths=PackedStringArray("file_dialog")]
 clip_children = 2
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
@@ -1978,6 +2057,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fextp")
 icon_alignment = 1
 expand_icon = true
 script = SubResource("GDScript_ee786")
+file_dialog = NodePath("../../../../../../FileDialog")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button"]
 layout_mode = 1
@@ -2492,7 +2572,7 @@ layout_direction = 3
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gdp5f")
 
-[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/Panel"]
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer/Panel" node_paths=PackedStringArray("file_dialog")]
 clip_children = 2
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
@@ -2507,6 +2587,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_adqxb")
 icon_alignment = 1
 expand_icon = true
 script = SubResource("GDScript_wcdcv")
+file_dialog = NodePath("../../../../FileDialog")
 
 [node name="TextureRect" type="TextureRect" parent="ScrollContainer/VBoxContainer/Panel/Button"]
 layout_mode = 1
@@ -3657,6 +3738,8 @@ texture = ExtResource("10_a41m6")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="FileDialog" type="FileDialog" parent="."]
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer/Button2" to="." method="join_pressed"]
@@ -3690,3 +3773,5 @@ stretch_mode = 5
 [connection signal="focus_exited" from="LineEdit" to="." method="_on_line_edit_focus_exited"]
 [connection signal="text_changed" from="LineEdit" to="." method="_on_name_changed"]
 [connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="file_selected" from="FileDialog" to="ScrollContainer/VBoxContainer/TabContainer/VBoxContainer3/HBoxContainer7/Button" method="_on_file_dialog_file_selected"]
+[connection signal="file_selected" from="FileDialog" to="ScrollContainer/VBoxContainer/Panel/Button" method="_on_file_dialog_file_selected"]
