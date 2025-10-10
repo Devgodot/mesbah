@@ -8,7 +8,7 @@ body {
 .text {
     text-align: center;
     margin: 20px;
-    background-color: rgba(255, 179, 0, 0.8); /* افزودن پس‌زمینه نیمه شفاف به متن */
+    background-color: rgba(25, 179, 250, 0.8); /* افزودن پس‌زمینه نیمه شفاف به متن */
     padding: 20px;
     border-radius: 10px;
 }

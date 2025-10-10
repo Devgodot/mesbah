@@ -1,0 +1,126 @@
+/* Lantern center and radial menu styles */
+:root{
+    /* responsive lantern/menu sizes: clamp(min, preferred, max) */
+        /* keep lantern large by setting a higher minimum; user requested no shrinking */
+        --lantern-size: clamp(300px, 28vw, 460px);
+        --menu-radius: clamp(180px, 35vw, 400px);
+    --accent:#ffd166;
+}
+
+body{direction:rtl}
+.lantern-container{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9999}
+.lantern{width:var(--lantern-size);height:var(--lantern-size);border-radius:50%;position:relative;cursor:pointer;pointer-events:auto}
+.lantern-core{position:absolute;inset:8%;background:transparent;border-radius:0;box-shadow:none;transform-origin:center;transition:transform .25s ease;z-index:2}
+
+.lantern-core img{width:100%;height:100%;object-fit:contain;border-radius:0%;display:block;position:relative;z-index:3}
+.lantern-glow{position:absolute;inset:-6%;border-radius:50%;background:transparent;pointer-events:none;z-index:1}
+
+/* rays only: conic-gradient stripes that fade out with a radial mask so they appear to emanate from the glass */
+.lantern-glow::after{content:"";position:absolute;left:50%;top:50%;width:200%;height:200%;transform:translate(-50%,-50%) rotate(0deg);border-radius:50%;background:conic-gradient(from 0deg, rgba(255, 230, 180, 0.485) 0deg 12deg, rgba(255,230,180,0.0) 12deg 36deg, rgba(255,230,180,0.12) 36deg 56deg, rgba(255,230,180,0.0) 56deg 360deg);mix-blend-mode:screen;filter:blur(6px);opacity:0.95;animation:glow-rotate 12s linear infinite;mask-image:radial-gradient(circle at center, rgba(0,0,0,1) 26%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0) 70%)}
+.lantern-glow::after{content:"";position:absolute;left:50%;top:50%;width:240%;height:240%;transform:translate(-50%,-50%) rotate(0deg);border-radius:50%;background:repeating-conic-gradient(from 0deg, rgba(255,230,180,0.18) 0deg 6deg, rgba(255,230,180,0) 6deg 12deg);mix-blend-mode:screen;filter:blur(6px);opacity:0.95;animation:glow-rotate 12s linear infinite;mask-image:radial-gradient(circle at center, rgba(0,0,0,0) 18%, rgba(0,0,0,1) 24%, rgba(0,0,0,1) 72%, rgba(0,0,0,0) 88%)}
+
+.lantern-menu{list-style:none;padding:0;margin:0;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:0;height:0;z-index:10050}
+.lantern-container:not(.open) .lantern-menu{pointer-events:none}
+.lantern-menu li{position:absolute;left:0;top:0;transform:translate(-50%,-50%) scale(0.001);transition:transform .35s cubic-bezier(.2,.9,.2,1),opacity .25s;opacity:0}
+.lantern-menu li a{display:inline-block;padding:0;border-radius:12px;background:#fff;color:#111;text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,0.08);white-space:nowrap;font-family:inherit}
+
+.menu-item{display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px 18px;min-width:140px}
+.menu-item svg{width:18px;height:18px}
+.item-top{display:flex;align-items:center;gap:8px;padding:2px 6px}
+.item-top .desc{font-size:12px;color:#444;margin-right:4px}
+.menu-item .size{font-size:11px;color:#444;text-align:center;display:block;margin-top:6px}
+
+/* preferred (highlighted) option */
+.menu-item.preferred{background:linear-gradient(180deg,#e6ffef,#f2fff8);border:1px solid #22c55e;border-radius:12px;box-shadow:0 10px 30px rgba(34,197,94,0.08)}
+.menu-item.preferred .item-top .desc{color:#154d2e;font-weight:700}
+.menu-item.preferred svg{filter:drop-shadow(0 2px 6px rgba(34,197,94,0.12))}
+
+/* when open, position items in a circle using CSS variables */
+.lantern-container.open .lantern-core{transform:scale(1.06)}
+.lantern-container.open .lantern-menu li{opacity:1;pointer-events:auto;z-index:10000}
+.lantern-menu li a{transition:transform .12s ease, box-shadow .12s ease}
+.lantern-menu li a:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 12px 26px rgba(0,0,0,0.16)}
+.lantern-container.open .lantern-menu li{
+    /* keep the element's own -50%/-50% centering while applying the pixel offset */
+    transform: translate(calc(var(--x) * 1px), calc(var(--y) * 1px)) translate(-50%, -50%) scale(1);
+}
+
+/* compute positions per index */
+.lantern-menu li:nth-child(1){--angle: -90deg}
+.lantern-menu li:nth-child(2){--angle: -20deg}
+.lantern-menu li:nth-child(3){--angle: 40deg}
+.lantern-menu li:nth-child(4){--angle: 110deg}
+
+/* polyfill for computing x/y using transform rotate; instead, set via JS for consistent results */
+
+/* small responsive tweaks removed — keep lantern size fixed per user request */
+
+/* Night background and falling rotating stars */
+.page-bg{position:fixed;inset:0;background:linear-gradient(180deg, #000000 0%, #044f8e 60%, #f3f9ff 100%);overflow:hidden}
+.page-bg > .text{position:relative;z-index:1;padding-top:40px}
+
+/* container for stars so they layer between background and content */
+.stars-layer{position:absolute;inset:0;pointer-events:none;z-index:1}
+.stars-layer .falling-star{z-index:1;position:absolute}
+
+.falling-star {
+    position: absolute;
+    top: -40px;
+    border-radius: 50%;
+    background: transparent;
+    
+    pointer-events: none;
+    opacity: 0.98;
+    transform-origin: center center;
+    width: 50px;
+    height: 50px;
+    background-image: url('/static/files/app/star.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@keyframes star-fall{
+ 0%{transform:translateY(0) rotate(0deg);opacity:1}
+ 70%{opacity:1}
+ 100%{transform:translateY(calc(110vh + 200px)) rotate(720deg);opacity:0}
+}
+
+@keyframes star-rotate{
+ 0%{transform:rotate(0deg), translateY(0px)}
+ 100%{transform:rotate(360deg), translateY(110vh)}
+}
+
+/* reduce star activity on small screens */
+@media (max-width:600px){
+    .falling-star{display:block}
+}
+
+/* Flame effect (CSS-only) */
+.lantern-flame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:calc(var(--lantern-size) * 0.12);height:calc(var(--lantern-size) * 0.18);pointer-events:none;z-index:20000;display:flex;align-items:center;justify-content:center}
+.lantern-flame span{position:relative;left:0;bottom:auto;transform:none;display:block;border-radius:50% 50% 40% 40%/60% 60% 40% 40%;}
+.lantern-flame .outer{width:100%;height:100%;background:radial-gradient(closest-side, rgba(255,170,64,0.18), rgba(255,170,64,0.04));filter:blur(6px);animation:flame-flicker-outer 2.2s infinite ease-in-out}
+.lantern-flame .inner{width:60%;height:60%;bottom:10%;background:linear-gradient(180deg,#ffd166,#ff6b00);box-shadow:0 6px 18px rgba(255,107,0,0.18);mix-blend-mode:screen;animation:flame-flicker-inner 0.9s infinite ease-in-out}
+
+@keyframes flame-flicker-inner{
+ 0%{transform:translateX(-50%) scaleY(1) translateY(0);opacity:1}
+ 30%{transform:translateX(-50%) scaleY(0.9) translateY(-2%);opacity:0.95}
+ 60%{transform:translateX(-50%) scaleY(1.08) translateY(-4%);opacity:1}
+ 100%{transform:translateX(-50%) scaleY(1) translateY(0);opacity:1}
+}
+
+@keyframes flame-flicker-outer{
+ 0%{transform:translateX(-50%) scale(1);opacity:0.9}
+ 50%{transform:translateX(-50%) scale(1.06);opacity:0.7}
+ 100%{transform:translateX(-50%) scale(1);opacity:0.9}
+}
+
+@keyframes glow-rotate{
+ 0%{transform:translate(-50%,-50%) rotate(0deg)}
+ 100%{transform:translate(-50%,-50%) rotate(360deg)}
+}
+
+/* Optionally reduce flame size on small screens */
+@media (max-width:600px){
+    .lantern-flame{top:16%;width:calc(var(--lantern-size) * 0.14);height:calc(var(--lantern-size) * 0.16)}
+}

@@ -357,7 +357,40 @@ def remove_gallery():
 
 @app.route("/")
 def home():
-    response = make_response(render_template("home.html"), 200)
+    # compute APK sizes for download menu
+    base = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static", "files", "app")
+    apk_files = {
+        'arm64': 'messbah_arm64-v8a.apk',
+        'arm32': 'messbah_armeabi-v7a.apk',
+        'x86_64': 'messbah_x86 64.apk',
+        'x86': 'messbah_x86.apk',
+        'universal': 'messbah.apk'
+    }
+    def fmt_size(n):
+        if n is None:
+            return 'ناموجود'
+        n = float(n)
+        for unit in ['B','KB','MB','GB','TB']:
+            if n < 1024.0 or unit == 'TB':
+                if unit == 'B':
+                    return f"{int(n)} {unit}"
+                # n has already been scaled to the current unit
+                return f"{n:.2f} {unit}"
+            n /= 1024.0
+
+    apk_sizes = {}
+    for k, fname in apk_files.items():
+        path = os.path.join(base, fname)
+        try:
+            if os.path.exists(path) and os.path.isfile(path):
+                size = os.path.getsize(path)
+            else:
+                size = None
+        except Exception:
+            size = None
+        apk_sizes[k] = fmt_size(size)
+
+    response = make_response(render_template("home.html", apk_sizes=apk_sizes), 200)
     return response
 
 

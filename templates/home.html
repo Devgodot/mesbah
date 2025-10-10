@@ -7,22 +7,80 @@
     <meta name="keywords" content="مصباح, دانلود برنامه مصباح, messbah, برنامه مذهبی, اپلیکیشن مذهبی">
     <title>مصباح</title>
     <link rel="stylesheet" href="/static/files/style/styles.css">
+    <link rel="stylesheet" href="/static/files/style/lantern.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 </head>
 <body>
-    <div class="text">
+    <div class="page-bg">
+        <div class="text">
         <h1>به برنامه مصباح خوش آمدید</h1>
-        <div class="column">
-            <div class="box">
-                <h2>لینک دانلود برنامه به صورت مستقیم</h2>
-                <form action="/static/files/app/messbah.apk" method="get">
-                    <button type="submit">Download</button>
-                </form>
-            </div>
-        </div>
+        <p>برای دانلود برنامه، روی فانوس در پایین صفحه کلیک کنید.</p>
     </div>
+    <!-- Lantern download center -->
+    <div class="lantern-container" aria-hidden="false">
+        <div class="lantern" id="lantern">
+            <div class="lantern-core">
+                <!-- put your lantern image at /static/files/images/lantern.png -->
+                <img id="lantern-img" src="/static/files/app/lantern.png" alt="فانوس">
+                <!-- CSS-only flame effect -->
+                
+            </div>
+            <div class="lantern-glow"></div>
+        </div>
+        <ul class="lantern-menu" id="lanternMenu">
+            <li style="--i:0">
+                <a href="/static/files/app/messbah_arm64-v8a.apk" data-arch="arm64" class="menu-item">
+                    <div class="item-top">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M7 2h7a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" stroke="#333" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <div class="desc">دستگاه‌های 64 بیتی (جدید)</div>
+                    </div>
+                    <small class="size">({{ apk_sizes.get('arm64', 'ناموجود') }})</small>
+                </a>
+            </li>
+            <li style="--i:1">
+                <a href="/static/files/app/messbah_armeabi-v7a.apk" data-arch="arm32" class="menu-item">
+                    <div class="item-top">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2" stroke="#333" stroke-width="1.2"/></svg>
+                        <div class="desc">دستگاه‌های قدیمی‌تر 32 بیتی</div>
+                    </div>
+                    <small class="size">({{ apk_sizes.get('arm32', 'ناموجود') }})</small>
+                </a>
+            </li>
+            <li style="--i:2">
+                <a href="/static/files/app/messbah_x86%2064.apk" data-arch="x86_64" class="menu-item">
+                    <div class="item-top">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="#333" stroke-width="1.2" stroke-linecap="round"/></svg>
+                        <div class="desc">شبیه‌سازها و برخی دستگاه‌های دسکتاپ</div>
+                    </div>
+                    <small class="size">({{ apk_sizes.get('x86_64', 'ناموجود') }})</small>
+                </a>
+            </li>
+            <li style="--i:3">
+                <a href="/static/files/app/messbah_x86.apk" data-arch="x86" class="menu-item">
+                    <div class="item-top">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#333" stroke-width="1.2"/></svg>
+                        <div class="desc">نسخهٔ x86 برای شبیه‌سازها</div>
+                    </div>
+                    <small class="size">({{ apk_sizes.get('x86', 'ناموجود') }})</small>
+                </a>
+            </li>
+            <li style="--i:4">
+                <a href="/static/files/app/messbah.apk" data-arch="universal" class="menu-item">
+                    <div class="item-top">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 3.9L20 22l-8-5-8 5 1.5-9.1L0 9h7L12 2z" stroke="#333" stroke-width="0.8" fill="rgba(0,0,0,0.06)"/></svg>
+                        <div class="desc">نسخهٔ همه‌منظوره</div>
+                    </div>
+                    <small class="size">({{ apk_sizes.get('universal', 'ناموجود') }})</small>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    </div>
+    <script src="/static/files/js/lantern.js"></script>
+    <script src="/static/files/js/stars.js"></script>
 </body>
 </html>
