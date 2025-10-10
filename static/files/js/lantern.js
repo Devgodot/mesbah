@@ -4,6 +4,8 @@
     const lantern = container.querySelector('#lantern');
     const menu = container.querySelector('#lanternMenu');
     const items = Array.from(menu.querySelectorAll('li'));
+    // find page text element to anchor under
+    const anchorTarget = document.querySelector('.page-bg > .text');
     function openMenu(){
         // read radius dynamically so CSS changes take effect without reloading JS
         const radius = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--menu-radius')) || 340;
@@ -55,6 +57,33 @@
             closeMenu();
         }
     });
+
+    // Positioning: keep the lantern below the .text element regardless of viewport size
+    function positionUnderTarget(){
+        if(!anchorTarget) return;
+        // get bounding rect of the text block
+        const rect = anchorTarget.getBoundingClientRect();
+        const rect2 = lantern.getBoundingClientRect();
+        // compute center-x of the text block relative to document
+        const scrollX = window.scrollX || window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+        const centerX = rect.left + rect.width/2 + scrollX - rect2.width/2;
+        // place lantern a bit below the text block (8px gap)
+        const gap = 8;
+        const top = rect.bottom + gap + scrollY;
+        // set container position (container is absolute)
+        container.style.left = centerX + 'px';
+        container.style.top = top + 'px';
+        // mark anchored so CSS transform: translate(-50%,-50%) is removed
+        container.classList.add('anchored');
+    }
+
+    // run on load, resize, and scroll to keep lantern in place
+    window.addEventListener('load', positionUnderTarget);
+    window.addEventListener('resize', positionUnderTarget);
+    window.addEventListener('scroll', positionUnderTarget, {passive:true});
+    // also position initially if DOM already loaded
+    if(document.readyState === 'complete' || document.readyState === 'interactive') positionUnderTarget();
 
     // optional: detect user arch and highlight likely option
     try{

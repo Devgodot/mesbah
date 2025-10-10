@@ -5,10 +5,21 @@
         --lantern-size: clamp(300px, 28vw, 460px);
         --menu-radius: clamp(180px, 35vw, 400px);
     --accent:#ffd166;
+    /* pattern controls (replace --pattern-url with your tile image path) */
+    --pattern-url: url('/static/files/app/pattern.jpg');
+    --pattern-size: 120px;
+    --pattern-opacity: 0.12;
+    --uv1-speed: 120s;
+    --uv2-speed: 200s;
+    --uv1-angle: 8deg;
+    --uv2-angle: -6deg;
 }
 
 body{direction:rtl}
-.lantern-container{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9999}
+.lantern-container{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9999}
+/* when JS anchors the lantern under a target element, this class removes the centering transform
+    and allows top/left to be set directly */
+.lantern-container.anchored{transform:none}
 .lantern{width:var(--lantern-size);height:var(--lantern-size);border-radius:50%;position:relative;cursor:pointer;pointer-events:auto}
 .lantern-core{position:absolute;inset:8%;background:transparent;border-radius:0;box-shadow:none;transform-origin:center;transition:transform .25s ease;z-index:2}
 
@@ -58,6 +69,26 @@ body{direction:rtl}
 /* Night background and falling rotating stars */
 .page-bg{position:fixed;inset:0;background:linear-gradient(180deg, #000000 0%, #044f8e 60%, #f3f9ff 100%);overflow:hidden}
 .page-bg > .text{position:relative;z-index:1;padding-top:40px}
+
+/* two tiled UV pattern layers that slowly drift and blend with gradient */
+.page-bg::before,
+.page-bg::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 400; /* above gradient, behind stars and content */
+    background-image: var(--pattern-url);
+    background-repeat: repeat;
+    background-size: var(--pattern-size);
+    opacity: var(--pattern-opacity);
+    mix-blend-mode: overlay;
+}
+.page-bg::before{ transform: rotate(var(--uv1-angle)); animation: uv-move-1 var(--uv1-speed) linear infinite; }
+.page-bg::after{ transform: rotate(var(--uv2-angle)); animation: uv-move-2 var(--uv2-speed) linear infinite; }
+
+@keyframes uv-move-1{ from{background-position:0 0} to{background-position:100% 100%} }
+@keyframes uv-move-2{ from{background-position:0 0} to{background-position:-100% 100%} }
 
 /* container for stars so they layer between background and content */
 .stars-layer{position:absolute;inset:0;pointer-events:none;z-index:1}
