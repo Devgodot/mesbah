@@ -1,6 +1,8 @@
 extends Control
+signal scene_loaded(scene:Node)
 var active = false
 var trans = 0
+
 func change(scene, new_scene:String, dir=1):
 	if Updatedate.bg.visible:
 		Updatedate.hide_picture()
@@ -10,11 +12,11 @@ func change(scene, new_scene:String, dir=1):
 	if not active:
 		Updatedate.failed_request = []
 		active = true
-		var s = load_scene(new_scene)
+		load_scene_threaded(new_scene)
+		var s = await scene_loaded
 		
 		match trans:
 			0:
-				
 				get_tree().get_root().add_child.call_deferred(s)
 				scene.queue_free()
 			1:
@@ -134,7 +136,6 @@ func load_scene(new_scene) -> Object:
 				s.set_script(script)
 			
 		else:
-			
 			ResourceLoader.load_threaded_request("res://scenes/"+new_scene)
 			while ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 				pass
@@ -151,3 +152,36 @@ func load_scene(new_scene) -> Object:
 		s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
 	
 	return s
+var loader_path := ""
+var loader_scene:PackedScene
+var loader_script:Script
+var loaded_node:Node
+
+func load_scene_threaded(path:String):
+	
+	loader_script = null
+	loaded_node = null
+	# بررسی اسکریپت
+	if FileAccess.file_exists("user://resource/" + path.get_basename() + ".gd"):
+		loader_script = load("user://resource/" + path.get_basename() + ".gd")
+	# درخواست لود Threaded
+	if FileAccess.file_exists("user://resource/" + path):
+		ResourceLoader.load_threaded_request("user://resource/" + path)
+		loader_path = "user://resource/" + path
+	else:
+		ResourceLoader.load_threaded_request("res://scenes/" + path)
+		loader_path = "res://scenes/" + path
+	set_process(true)
+func _process(delta):
+	if loader_path == "":
+		return
+	var status = ResourceLoader.load_threaded_get_status(loader_path)
+	if status == ResourceLoader.THREAD_LOAD_LOADED:
+		loader_scene = ResourceLoader.load_threaded_get(loader_path)
+		loaded_node = loader_scene.instantiate()
+		if loader_script:
+			loaded_node.set_script(loader_script)
+		scene_loaded.emit(loaded_node)
+		# ریست کردن
+		loader_path = ""
+		set_process(false)

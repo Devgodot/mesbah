@@ -1242,6 +1242,7 @@ func _gui_input(event: InputEvent) -> void:
 code = "shader_type canvas_item;
 uniform vec2 speed = vec2(0.02, 0.0);
 uniform sampler2D tex:repeat_enable;
+uniform float mix_wigth:hint_range(0.0, 1.0, 0.01) = 0.7;
 vec2 mirrored_uv(vec2 uv) {
     vec2 f = mod(floor(uv), 2.0);     // حتی یا فرد بودن تایل
     vec2 frac_part = fract(uv);       // بخش اعشاری
@@ -1253,7 +1254,7 @@ void vertex() {
 }
 
 void fragment() {
-	COLOR = mix(texture(TEXTURE, (UV) + TIME * speed), texture(tex, mirrored_uv(UV)+ TIME * speed), 0.7);
+	COLOR = mix(texture(TEXTURE, (UV) + TIME * speed), texture(tex, mirrored_uv(UV)+ TIME * speed), mix_wigth);
 	
 }
 
@@ -1265,7 +1266,7 @@ void fragment() {
 
 [sub_resource type="Gradient" id="Gradient_yoxka"]
 offsets = PackedFloat32Array(0, 0.493421, 1)
-colors = PackedColorArray(0.768627, 0.462745, 0.0901961, 1, 0.819608, 0.243137, 0, 1, 0.768627, 0.462745, 0.0901961, 1)
+colors = PackedColorArray(1, 0.313726, 0.113725, 1, 0.892329, 0.787134, 0.014815, 1, 1, 0.313726, 0.113725, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ypgks"]
 gradient = SubResource("Gradient_yoxka")
@@ -1274,6 +1275,7 @@ gradient = SubResource("Gradient_yoxka")
 shader = SubResource("Shader_xam4k")
 shader_parameter/speed = Vector2(0.05, 0)
 shader_parameter/tex = SubResource("GradientTexture2D_ypgks")
+shader_parameter/mix_wigth = 0.83
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycbhe"]
 texture = ExtResource("24_1oawt")
@@ -1373,7 +1375,9 @@ shader_parameter/tex = SubResource("GradientTexture2D_dmnnq")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yoxka"]
 draw_center = false
+border_width_left = 10
 border_width_top = 10
+border_width_right = 10
 border_width_bottom = 10
 border_blend = true
 

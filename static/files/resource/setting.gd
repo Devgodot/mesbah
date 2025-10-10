@@ -71,8 +71,7 @@ func get_direction(text:String):
 func _ready() -> void:
 	set_process(false)
 	
-	OS.request_permission("android.permission.READ_EXTERNAL_STORAGE")
-	OS.request_permission("android.permission.READ_MEDIA_IMAGES")
+	
 	Updatedate.load_user()
 	var a = Updatedate.load_game("accounts", [])
 	if Engine.has_singleton("GodotGetImage"):
