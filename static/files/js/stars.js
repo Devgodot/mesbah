@@ -2,8 +2,15 @@
 (function(){
   // Reduce default density on mobile for performance
   const isSmallScreen = window.matchMedia && window.matchMedia('(max-width:600px)').matches;
-  const maxStars = isSmallScreen ? 60 : 300;
-  const spawnInterval = isSmallScreen ? 180 : 50; // ms
+  // If small screen, disable stars entirely to avoid jank on low-end devices
+  if(isSmallScreen){
+    // ensure any existing .stars-layer is hidden
+    const existing = document.querySelector('.stars-layer');
+    if(existing) existing.style.display = 'none';
+    return;
+  }
+  const maxStars = 300;
+  const spawnInterval = 50; // ms
   // place stars into a dedicated layer if available
   let container = document.querySelector('.stars-layer');
   if(!container){

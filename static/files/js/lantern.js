@@ -14,35 +14,80 @@
         const startAngle = -90; // start at top
         // distribute evenly around 360 degrees
         const step = 360 / Math.max(1, count);
-        items.forEach((li, i)=>{
+        // First pass: compute raw positions for all items so we can adjust them collectively
+        const computed = [];
+        const cssRadius = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--menu-radius')) || 200;
+        const baseRadius = Math.min(cssRadius, Math.max(150, window.innerWidth * 0.6));
+        const lanternRect = lantern.getBoundingClientRect();
+        const padding = 1; // px
+        for(let i=0;i<items.length;i++){
             const angle = (startAngle + i * step) * (Math.PI/180);
-            // compute radius based on CSS var but clamp for small screens
-            const cssRadius = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--menu-radius')) || 200;
-            const radius = Math.min(cssRadius, Math.max(120, window.innerWidth * 0.4));
-            let x = Math.cos(angle) * radius;
-            let y = Math.sin(angle) * radius * -1; // invert y to match screen coords
-            // clamp positions so menu items stay within viewport padding
-            const padding = 12; // px
-            const lanternRect = lantern.getBoundingClientRect();
+            let x = Math.cos(angle) * baseRadius;
+            let y = Math.sin(angle) * baseRadius * -1; // invert y to match screen coords
+            // precompute absolute screen positions for overflow checks
             const itemX = lanternRect.left + lanternRect.width/2 + x;
             const itemY = lanternRect.top + lanternRect.height/2 + y;
             // if item would overflow, pull it back toward center
             const overflowX = Math.max(0, padding - itemX) + Math.max(0, itemX - (window.innerWidth - padding));
             const overflowY = Math.max(0, padding - itemY) + Math.max(0, itemY - (window.innerHeight - padding));
             if(overflowX || overflowY){
-                // scale down the vector to fit
                 const dist = Math.hypot(x,y) || 1;
                 const reduce = Math.max(0, 1 - Math.min(1, (overflowX + overflowY) / dist));
                 x = x * reduce;
                 y = y * reduce;
             }
+            computed.push({x,y,itemX,itemY});
+        }
+
+        // Determine bottom-most position index (largest screen Y)
+        const posIndicesByY = computed.map((c, idx) => idx).sort((a,b) => computed[a].itemY - computed[b].itemY);
+        const bottomPosIndex = posIndicesByY[posIndicesByY.length - 1];
+
+        // Build a lookup of li elements by their data-arch attribute
+        const archToLi = {};
+        items.forEach(li => {
+            const a = li.querySelector('a');
+            if(a && a.dataset && a.dataset.arch) archToLi[a.dataset.arch] = li;
+        });
+
+        // Prepare assignment: give top two positions to arm64 and arm32 (if present), and bottom position to x86_64
+        const assigned = new Map();
+        const usedPos = new Set();
+        if(archToLi['arm64'] && posIndicesByY.length > 0){ assigned.set(archToLi['arm64'], posIndicesByY[0]); usedPos.add(posIndicesByY[0]); }
+        if(archToLi['arm32'] && posIndicesByY.length > 1){ assigned.set(archToLi['arm32'], posIndicesByY[1]); usedPos.add(posIndicesByY[1]); }
+        if(archToLi['x86_64'] && typeof bottomPosIndex === 'number'){ assigned.set(archToLi['x86_64'], bottomPosIndex); usedPos.add(bottomPosIndex); }
+
+        // Fill remaining items into remaining positions preserving original order
+        for(let i=0;i<items.length;i++){
+            const li = items[i];
+            if(assigned.has(li)) continue;
+            // find next free position from posIndicesByY
+            let slot = posIndicesByY.find(idx => !usedPos.has(idx));
+            if(slot === undefined) slot = i;
+            assigned.set(li, slot);
+            usedPos.add(slot);
+        }
+
+        // Apply adjustments and set CSS variables for each assigned pair
+        const centerIndex = (count - 1) / 2;
+        const lateralThreshold = baseRadius * 0.4;
+        assigned.forEach((posIdx, li) => {
+            let {x,y} = computed[posIdx];
+            // If this is bottom-most position, bring it upward
+            if(posIdx === bottomPosIndex){ y = y * 0.5; }
+            // For left/right items, bring them closer to center
+            if(Math.abs(x) > lateralThreshold) x = x * 0.85;
             li.style.setProperty('--x', x.toFixed(2));
             li.style.setProperty('--y', y.toFixed(2));
-            // symmetric staggered animation delay (center-out)
-            const centerIndex = (count - 1) / 2;
-            const delay = Math.abs(i - centerIndex) * 0.04;
+            // symmetric staggered animation delay (approx center-out by original index)
+            const delay = Math.abs(items.indexOf(li) - centerIndex) * 0.04;
             li.style.transitionDelay = (delay) + 's';
         });
+
+        // Explicit override: set the third <li> (index 2) Y coordinate to 150px
+        if(items[2]){
+            items[2].style.setProperty('--y', '150');
+        }
         container.classList.add('open');
         lantern.setAttribute('aria-pressed','true');
     }
@@ -51,6 +96,8 @@
         items.forEach((li,i)=>{ li.style.transitionDelay = ((items.length - i) * 0.02) + 's'; });
         container.classList.remove('open');
         lantern.setAttribute('aria-pressed','false');
+        // clear inline positions so re-opening recomputes them and to avoid stuck offsets
+        items.forEach(li=>{ li.style.removeProperty('--x'); li.style.removeProperty('--y'); li.style.removeProperty('transition-delay'); });
     }
 
     function toggle(){
@@ -59,6 +106,15 @@
 
     lantern.addEventListener('click', function(e){
         toggle();
+    });
+
+    // Prevent default focus ring on pointerdown (improves touch visuals)
+    lantern.addEventListener('pointerdown', function(e){
+        if(e.pointerType === 'touch' || e.pointerType === 'pen'){
+            // avoid touch-generated outlines but keep element focus for keyboard
+            e.preventDefault();
+            lantern.focus({preventScroll:true});
+        }
     });
 
     // close when clicking outside
@@ -94,6 +150,22 @@
         container.style.top = top + 'px';
         // mark anchored so CSS transform: translate(-50%,-50%) is removed
         container.classList.add('anchored');
+        // clamp container inside viewport (in case text is near edges)
+        requestAnimationFrame(()=>{
+            const rect = container.getBoundingClientRect();
+            const pad = 8;
+            let dx = 0, dy = 0;
+            if(rect.left < pad) dx = pad - rect.left;
+            if(rect.right > window.innerWidth - pad) dx = (window.innerWidth - pad) - rect.right;
+            if(rect.top < pad) dy = pad - rect.top;
+            if(rect.bottom > window.innerHeight - pad) dy = (window.innerHeight - pad) - rect.bottom;
+            if(dx || dy){
+                const curLeft = parseFloat(container.style.left || 0);
+                const curTop = parseFloat(container.style.top || 0);
+                container.style.left = (curLeft + dx) + 'px';
+                container.style.top = (curTop + dy) + 'px';
+            }
+        });
     }
 
     // run on load, resize, and scroll to keep lantern in place

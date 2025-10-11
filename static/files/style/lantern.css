@@ -37,9 +37,16 @@ body{direction:rtl}
 
 .menu-item{display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px 18px;min-width:140px}
 .menu-item svg{width:18px;height:18px}
+
+/* Remove icons in lantern menu as requested */
+.lantern-menu .menu-item .item-top svg{display:none !important;width:0;height:0;margin:0;padding:0}
+
+/* Adjust spacing when icons removed so labels align nicely */
+.lantern-menu .menu-item{padding:10px 14px;min-width:120px}
+.lantern-menu .item-top{gap:2px;padding:2px 2px}
 .item-top{display:flex;align-items:center;gap:8px;padding:2px 6px}
 .item-top .desc{font-size:12px;color:#444;margin-right:4px}
-.menu-item .size{font-size:11px;color:#444;text-align:center;display:block;margin-top:6px}
+.menu-item .size{font-size:10px;color:#444;text-align:center;display:block;margin-top:6px}
 
 /* preferred (highlighted) option */
 .menu-item.preferred{background:linear-gradient(180deg,#e6ffef,#f2fff8);border:1px solid #22c55e;border-radius:12px;box-shadow:0 10px 30px rgba(34,197,94,0.08)}
@@ -178,3 +185,13 @@ html, body, .lantern, .lantern * {
 
 /* Keep focus accessible via keyboard but avoid ugly default focus rectangles on touch */
 .lantern:focus{ outline: none; }
+
+/* Ensure links inside lantern menu don't show default tap highlight in any browser */
+.lantern-menu a, .lantern-menu a *{
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    outline: none !important;
+}
+
+/* In some WebViews, the default focus ring still appears; hide it but keep accessibility by using box-shadow for keyboard focus */
+.lantern-menu a:focus{ box-shadow: 0 0 0 3px rgba(34,197,94,0.12); }
