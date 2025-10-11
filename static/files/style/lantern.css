@@ -155,3 +155,26 @@ body{direction:rtl}
 @media (max-width:600px){
     .lantern-flame{top:16%;width:calc(var(--lantern-size) * 0.14);height:calc(var(--lantern-size) * 0.16)}
 }
+
+/* Mobile / touch improvements ------------------------------------------------- */
+/* Remove the blue tap highlight on Android/Chrome and improve touch handling */
+html, body, .lantern, .lantern * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    touch-action: manipulation; /* prefer browser-handled scrolling/zooming */
+}
+
+/* Ensure falling stars use transform-only GPU-friendly properties */
+.falling-star{
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Prefer a smaller, less dense star effect on small devices to reduce jank */
+@media (max-width: 600px){
+    :root{ --menu-radius: clamp(120px, 34vw, 240px); }
+}
+
+/* Keep focus accessible via keyboard but avoid ugly default focus rectangles on touch */
+.lantern:focus{ outline: none; }
