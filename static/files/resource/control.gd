@@ -254,47 +254,61 @@ func _ready() -> void:
 					add_child(sub_container)
 					box2.position = Vector2.ONE * offset
 					var tween = create_tween()
-					tween.tween_property(mat, "shader_parameter/progress", 1.0, 0.7)
+					tween.tween_property(mat, "shader_parameter/explosion_value", 2.0, 0.7)
 					tween.set_trans(Tween.TRANS_SINE)
 					tween.set_ease(Tween.EASE_OUT)
 					tween.play()
 					if box_ref == box:
 						_on_null_ref_pressed()
-					await tween.finished
+					
 					var index = box.index
 					if box.pre_node:
 						box.pre_node.next_node = null if box.next_node == null else box.next_node
 					if box.next_node:
 						box.next_node.pre_node = null if box.pre_node == null else box.pre_node
 					unseen_ids.erase(message)
-					box.queue_free()
-					sub_container.queue_free()
 					var t = messages[message].time.split(" ")[0]
 					messages.erase(message)
 					ids.erase(message)
 					max_message = ids.size()
-					
+					tween.finished.connect(func ():
+						box.queue_free()
+						sub_container.queue_free()
+						if ids.size() > 0:
+							$VBoxContainer/ScrollContainer.last_id = ids.back()
+							$VBoxContainer/ScrollContainer.begin_id = ids[0]
+							last_id = ids.back()
+						else:
+							$VBoxContainer/ScrollContainer.last_id = ""
+							$VBoxContainer/ScrollContainer.begin_id = ""
+							last_id = "")
 					if index >= ids.size():
 						index -= 1
 					if ids.size() > 0:
-						$VBoxContainer/ScrollContainer.last_id = ids.back()
-						$VBoxContainer/ScrollContainer.begin_id = ids[0]
-						
-						last_id = ids.back()
 						var t2 = messages[ids[index]].time.split(" ")[0]
 						if times.has(message):
 							times.erase(message)
 							for node in get_tree().get_nodes_in_group("times"):
 								if node.get_meta("time", "") == t:
-									node.queue_free()
+									var _tween = get_tree().create_tween()
+									_tween.tween_property(node, "position:x", size.x / 2, 0.4)
+									_tween.play()
+									var tween2 = get_tree().create_tween()
+									tween2.tween_property(node, "size:x", 0, 0.4)
+									tween2.play()
+									var tween3 = get_tree().create_tween()
+									tween3.tween_property(node, "text", "", 0.2)
+									tween3.play()
+									_tween.finished.connect(func():
+										node.queue_free()
+										)
+								
 							if t2 not in times.values():
 								times[ids[index]] = t2
 							if get_tree().has_group(ids[index]) and times.has(ids[index]):
 								get_tree().get_first_node_in_group(ids[index]).queue_free()
-					else:
-						$VBoxContainer/ScrollContainer.last_id = ""
-						$VBoxContainer/ScrollContainer.begin_id = ""
-						last_id = ""
+		
+					
 					)
 	if c.has("state"):
 		if c.state == "online":
@@ -316,7 +330,7 @@ func _ready() -> void:
 		ids = messages.keys()
 		ids.sort_custom(func (a, b): return float(messages[a].createdAt) < float(messages[b].createdAt))
 		unseen_ids = ids.filter(func(x): return (((not messages[x].has("seen")) or (messages[x].has("seen") and messages[x].seen == null)) and messages[x].sender != senderId))
-		print(unseen_ids)
+
 		$VBoxContainer/ScrollContainer.begin_id = ids[0] if ids.size() > 0 else ""
 		$VBoxContainer/ScrollContainer.last_id = ids[-1] if ids.size() > 0 else ""
 		last_id = ids[-1] if ids.size() > 0 else ""
@@ -375,17 +389,7 @@ func create_by_pos(x):
 	if messages.size() - x > 0 and x >= 0:
 		last_index = x
 		var box:Control = await add_message(messages[ids[x]], -1, x)
-		var sub = SubViewport.new()
-		sub.size = box.size
-		var box2 = box.duplicate()
-		box2.scale = Vector2.ONE
-		sub.add_child(box2)
-		add_child(sub)
-		var tex = ViewportTexture.new()
-		tex.viewport_path = sub.get_path()
-		sub.transparent_bg = true
 		
-		$"3d-1536".texture = tex
 		box.global_position.y = $VBoxContainer/ScrollContainer.global_position.y + box.get_meta("extra_size", 0)
 		box.checked = true
 		return box
@@ -591,15 +595,17 @@ func add_message(m, pos=-1, i=-1):
 			if seen == null:
 				if senderId != m.sender and senderId in Updatedate.conversation.id:
 					Updatedate.message_seen(box.get_meta("id", m.id))
+			
 			check_has_node(box))
 	$VBoxContainer/ScrollContainer/VBoxContainer.add_child(box)
 	var texts = m.messages.text.split("\n")
 	var text = ""
+	print(texts)
 	for t in texts:
 		if get_direction(t) == -1:
-			text += "[right]" + t + "[/right]"
+			text += "\n[right]" + t + "[/right]"
 		else:
-			text += "[left]" + t + "[/left]"
+			text += "\n[left]" + t + "[/left]"
 	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  text
 	if Updatedate.waiting_editing.has(Updatedate.conversation.id):
 		var new_m = Updatedate.waiting_editing[Updatedate.conversation.id].filter(func(x):return x[0] == m.id)
@@ -645,7 +651,6 @@ func ref_press(event:InputEvent, _id, response):
 func check_has_node(node):
 	if check:
 		var n = node.index
-		print(n)
 		if n != null:
 			var above_node
 			var below_node
@@ -1014,9 +1019,9 @@ func _on_edit_pressed() -> void:
 	var text :String= edited_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text
 	last_text = text
 	text = text.replace("[right]", "")
-	text = text.replace("[/right]", "\n")
+	text = text.replace("[/right]", "")
 	text = text.replace("[left]", "")
-	text = text.replace("[/left]", "\n")
+	text = text.replace("[/left]", "")
 	if mobile_box:
 		mobile_box.setText(text)
 	else:
@@ -1028,7 +1033,12 @@ func _on_edit_pressed() -> void:
 
 func _on_copy_pressed() -> void:
 	if action_box:
-		DisplayServer.clipboard_set(action_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text)
+		var text :String= action_box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text
+		text = text.replace("[right]", "")
+		text = text.replace("[/right]", "")
+		text = text.replace("[left]", "")
+		text = text.replace("[/left]", "")
+		DisplayServer.clipboard_set(text)
 		Notification.add_notif("متن کپی شد.")
 		off_action()
 

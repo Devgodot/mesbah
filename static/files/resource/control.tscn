@@ -342,7 +342,6 @@ func _apply_scroll():
 				$VBoxContainer.position.y = -btn.position.y + 73
 				scroll_offset =  -btn.position.y + 73
 				velocity = 0.0
-				
 			if $VBoxContainer.position.y == -btn.position.y + 73:
 				scroll.y = 0
 	if get_tree().has_group(last_id) and can_drag[0]:
@@ -358,6 +357,7 @@ func _apply_scroll():
 				scroll.y = 0
 	
 	$VBoxContainer.position.y = scroll_offset
+	
 func _input(event: InputEvent) -> void:
 	if move == false:
 		#if event is InputEventScreenDrag:
@@ -567,7 +567,7 @@ func _process(delta: float) -> void:
 		var ext = 0
 		if label:
 			ext = 73
-		global_position.y = $\"../..\".global_position.y + ext
+		global_position.y = $\"../..\".global_position.y + ext + 1
 		
 	if pre_node:
 		if label:
@@ -590,6 +590,7 @@ func _process(delta: float) -> void:
 		if next_node == null :
 			if has_on_viewport(get_parent().get_parent()) and index and index < get_parent().get_parent().get_parent().get_parent().max_message - 1:
 				screen_entered.emit(seen)
+				
 		if pre_node == null :
 			if has_on_viewport(get_parent().get_parent()) and index and index > 0 and get_parent().get_parent().get_parent().get_parent().max_message > 1:
 				screen_entered.emit(seen)
@@ -598,9 +599,9 @@ func has_on_viewport(parent:Control) -> bool:
 	var extera_size = 0
 	if label:
 		extera_size += label.size.y
-	if global_position.y - extera_size  >= parent.global_position.y - 200 and global_position.y <= parent.global_position.y + parent.size.y - size.y + 200:
-		return true
-	return false
+	if global_position.y - extera_size  >= parent.global_position.y + parent.size.y + 200 and global_position.y <= parent.global_position.y  - size.y - 200 - extera_size:
+		return false
+	return true
 func out_off_range():
 	if visible and checked:
 		var ext = 0
@@ -2414,102 +2415,58 @@ _data = {
 }
 
 [sub_resource type="Shader" id="Shader_mmsp5"]
-code = "shader_type canvas_item;
+code = "
+shader_type canvas_item;
 
-uniform float cell_size : hint_range(1.0,64.0) = 8.0;   // اندازه هر ذره (پیکسل)
-uniform float progress : hint_range(0.0,1.0) = 0.0;    // 0 = دست نخورده، 1 = کامل متلاشی
-uniform float randomness = 1.0;                        // مقدار تصادفی‌سازی
-uniform vec2 global_force = vec2(0.0, -50.0);          // نیروی عمودی/افقی (پیکسل)
-uniform float speed = 1.0;                             // سرعت حرکت کلی
-uniform float fade_start : hint_range(0.0,1.0) = 0.7;  // از چه مرحله‌ای الفا شروع کند کم شود
-uniform float spin_amount = 2.0;                       // چرخش هر ذره
+uniform float explosion_value = 0.0;
+uniform float particle_size = 0.2;
+uniform float number_of_particles = 50.0;
 
-// ساده‌ترین هش توابع (برای تولید تصادفی بر اساس خانه)
-float hash21(vec2 p){
-	p = fract(p * vec2(123.34, 456.21));
-	p += dot(p, p + 78.233);
-	return fract(p.x * p.y);
+uniform float expansion_multiplier = 1.0;
+uniform float fall_multiplier = 1.0;
+
+uniform float falloff_point = 2.0;
+uniform float falloff_spread = 0.5;
+
+float random (vec2 uv) {
+	return fract(sin(dot(uv.xy,
+		vec2(12.9898,78.233))) * 43758.5453123);
 }
-vec2 hash22(vec2 p){
-	return vec2(hash21(p), hash21(p + 12.9898));
+
+float is_particle(in vec2 expanded_uv, in float expand_value) {
+	float random_displacement = 0.0;
+	expanded_uv.y += -random(round(expanded_uv * number_of_particles)) * expand_value * 0.2;
+	expanded_uv.x += random(round(expanded_uv * (number_of_particles + 1.0))) * expand_value * 0.1;
+	float is_circle = length((round(expanded_uv * number_of_particles)) - (expanded_uv * number_of_particles));
+	return is_circle;
 }
 
 void fragment() {
-	// UV و اندازه‌ی یک پیکسل در UV-space
-	vec2 uv = UV;
-	vec2 px = TEXTURE_PIXEL_SIZE; // یک پیکسل در فضای UV
+	float expand_value = max(0.001, explosion_value * expansion_multiplier);
+	float clamped_explosion_value = max(0.1, explosion_value);
+	vec2 centered_uv = UV - vec2(0.5);
+	vec2 expanded_uv = (centered_uv / (expand_value));
 
-	// اندازه هر خانه به صورت UV
-	vec2 cell_uv_size = cell_size * px;
+	expanded_uv.y -= (clamped_explosion_value * -cos(centered_uv.x) * fall_multiplier);
+	expanded_uv.y -= clamped_explosion_value * fall_multiplier;
+	vec4 pixel_color = texture(TEXTURE, expanded_uv + 0.5);
+	float multiplier = 50.0;
 
-	// شناسه خانه (integer)
-	vec2 cell = floor(uv / cell_uv_size);
-
-	// مرکز خانه در UV
-	vec2 cell_center = (cell + vec2(0.5)) * cell_uv_size;
-
-	// بردار محلی از مرکز خانه (مقادیر در فضای UV)
-	vec2 local = uv - cell_center;
-
-	// تولید مقادیر تصادفی یکتای هر خانه
-	vec2 rnd = hash22(cell * randomness);
-	float r1 = rnd.x;
-	float r2 = rnd.y;
-
-	// جهت و اندازه حرکت در پیکسل (مقدار نهایی بر حسب پیکسل)
-	// جهت تصادفی حول مرکز و ترکیب با نیروی کلی
-	vec2 dir = normalize(rnd - vec2(0.5));
-	// فشار تصادفی بیشتر/کمتر برای هر خانه
-	float mag = (0.5 + r1) * (cell_size * 5.0) * pow(progress, 1.2) * speed;
-	vec2 disp_px = dir * mag + global_force * progress;
-
-	// اضافه‌ی چرخش: زاویه چرخش بر اساس rnd و progress
-	float angle = (r2 - 0.5) * spin_amount * progress;
-	float s = sin(angle);
-	float c = cos(angle);
-	// چرخاندن local حول مرکز (برای جلوه‌ی چرخش)
-	vec2 local_rot = vec2(
-		local.x * c - local.y * s,
-		local.x * s + local.y * c
-	);
-
-	// موقعیت نمونه برداری: مرکز خانه + local_rot + جابه‌جایی به صورت UV
-	vec2 displaced_uv = cell_center + local_rot + disp_px * px;
-
-	// نمونه‌برداری از بافت با UV جابه‌جا شده
-	vec4 col = texture(TEXTURE, displaced_uv);
-
-	// شکل ذره: مربع با گوشه‌های نرم
-	// اندازه‌ی نصف خانه در UV
-	float half_uv = 0.5 * cell_uv_size.x; // چون مربع فرض شده، از x استفاده می‌کنیم
-	float edge_soft = max(px.x, px.y) * 2.0; // میزان نرم شدن لبه‌ها
-	float m = max(abs(local_rot.x), abs(local_rot.y));
-	// نرم کردن لبه‌ها
-	float mask = 1.0 - smoothstep(half_uv - edge_soft, half_uv + edge_soft, m);
-
-	// ناپدید شدن تدریجی بعد از fade_start
-	float alpha_fade = 2.0;
-	if (progress > fade_start) {
-		alpha_fade = 1.0 - smoothstep(fade_start, 1.0, progress);
-	}
-
-	// نازک شدن هر ذره وقتی جلوه کامل می‌شود
-	float final_alpha = col.a * mask * alpha_fade;
-
-	// رنگ نهایی
-	COLOR = vec4(col.rgb, final_alpha);
+	float new_particle_size = min(particle_size,
+	(falloff_point - clamped_explosion_value) - (random(round(expanded_uv * number_of_particles)) * expand_value * falloff_spread));
+	COLOR = (is_particle(expanded_uv, clamped_explosion_value) > new_particle_size ? vec4(0.0) : pixel_color);
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_an0t8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mmsp5"]
 shader = SubResource("Shader_mmsp5")
-shader_parameter/cell_size = 2.0
-shader_parameter/progress = 0.0
-shader_parameter/randomness = 1.0
-shader_parameter/global_force = Vector2(0, -50)
-shader_parameter/speed = 20.0
-shader_parameter/fade_start = 0.7
-shader_parameter/spin_amount = 2.0
+shader_parameter/explosion_value = 0.7
+shader_parameter/particle_size = 1.0
+shader_parameter/number_of_particles = 500.0
+shader_parameter/expansion_multiplier = 1.225
+shader_parameter/fall_multiplier = 0.5
+shader_parameter/falloff_point = 2.0
+shader_parameter/falloff_spread = 1.31
 
 [node name="Control" type="Control" groups=["scene_message"]]
 layout_mode = 3
@@ -3343,13 +3300,13 @@ libraries = {
 
 [node name="3d-1536" type="Sprite2D" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_an0t8")
+material = SubResource("ShaderMaterial_mmsp5")
 position = Vector2(485, 970)
 texture = ExtResource("20_breng")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_an0t8")
+material = SubResource("ShaderMaterial_mmsp5")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
