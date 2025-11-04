@@ -544,7 +544,7 @@ func add_message(m, pos=-1, i=-1):
 		
 		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Label").text = m.sender_name
 	box.edit.connect(func (pos):
-		if action_box != box:
+		if action_box != box and edited_box == null:
 			if action_box:
 				action_box.get_node("AnimationPlayer").play("RESET")
 			box.get_node("AnimationPlayer").play("action")

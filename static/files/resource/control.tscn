@@ -456,6 +456,14 @@ var checked = false:
 func _ready() -> void:
 	if get_parent().get_parent() is Control:
 		parent = get_parent().get_parent()
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		get_tree().get_first_node_in_group(\"scene_message\").r_id = \"\"
+		if event.is_pressed() and event.button_index != MOUSE_BUTTON_RIGHT:
+			if get_tree().get_first_node_in_group(\"scene_message\").action_box:
+				get_tree().get_first_node_in_group(\"scene_message\").off_action()
+
+
 func _input(event: InputEvent) -> void:
 	if visible and parent and Updatedate.bg.visible == false:
 		if event is InputEventMouseButton:
@@ -678,6 +686,12 @@ func _set(property: StringName, value: Variant) -> bool:
 		custom_minimum_size.x = clamp($RichTextLabel.get_content_width(), 260, max_line_size)
 		return true
 	return false
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		get_tree().get_first_node_in_group(\"scene_message\").r_id = \"\"
+		if event.is_pressed() and event.button_index != MOUSE_BUTTON_RIGHT:
+			if get_tree().get_first_node_in_group(\"scene_message\").action_box:
+				get_tree().get_first_node_in_group(\"scene_message\").off_action()
 "
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_vb5ih"]
