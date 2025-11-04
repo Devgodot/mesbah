@@ -23,7 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://df4ut7g6r8nwh" path="res://sprite/مصباح1.png" id="21_q54r6"]
 [ext_resource type="FontFile" uid="uid://d4c0suyxu2txx" path="res://fonts/B Traffic Bold_0.ttf" id="22_cu1t2"]
 [ext_resource type="Texture2D" uid="uid://d1hp2ojy3bvqc" path="res://sprite/Layer 8.png" id="23_lfobt"]
-[ext_resource type="Texture2D" uid="uid://dyniwwqicdara" path="res://sprite/1629031-الگوی-بدون-درز-به-سبک-عربی-معتبر-تصویر-وکتور.jpg" id="24_1oawt"]
+[ext_resource type="Texture2D" uid="uid://dyniwwqicdara" path="res://sprite/1629031-الگوی-بدون-درز-به-سبک-عربی-معتبر-تصویر-وکتور.jpg" id="24_0yrpj"]
 [ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="25_olbi6"]
 [ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="26_pjyy5"]
 [ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="27_wgong"]
@@ -414,10 +414,10 @@ expand_margin_bottom = 50.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x1pfr"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ya0au"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
 viewport_path = NodePath("SubViewport5")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0gyww"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_xam4k"]
 viewport_path = NodePath("SubViewport6")
 
 [sub_resource type="Resource" id="Resource_ya0au"]
@@ -456,8 +456,8 @@ offset_arrow = Vector2(0, 30)
 offset_icon = 1.0
 start_rotation = 0
 end_rotation = -90
-icon_selected = SubResource("ViewportTexture_ya0au")
-icon_unselected = SubResource("ViewportTexture_0gyww")
+icon_selected = SubResource("ViewportTexture_0gyww")
+icon_unselected = SubResource("ViewportTexture_xam4k")
 label_settings = SubResource("Resource_ya0au")
 expand_icon = true
 max_icon_width = 225
@@ -1246,16 +1246,16 @@ uniform float mix_wigth:hint_range(0.0, 1.0, 0.01) = 0.7;
 vec2 mirrored_uv(vec2 uv) {
     vec2 f = mod(floor(uv), 2.0);     // حتی یا فرد بودن تایل
     vec2 frac_part = fract(uv);       // بخش اعشاری
-    vec2 m = mix(frac_part, 1.0 - frac_part, f); 
+    vec2 m = mix(frac_part, 1.0 - frac_part, f);
     return clamp(m, 0.001, 0.999);    // جلوگیری از لبه دقیق
 }
 void vertex() {
-	
+
 }
 
 void fragment() {
 	COLOR = mix(texture(TEXTURE, (UV) + TIME * speed), texture(tex, mirrored_uv(UV)+ TIME * speed), mix_wigth);
-	
+
 }
 
 //void light() {
@@ -1278,7 +1278,7 @@ shader_parameter/tex = SubResource("GradientTexture2D_ypgks")
 shader_parameter/mix_wigth = 0.83
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ycbhe"]
-texture = ExtResource("24_1oawt")
+texture = ExtResource("24_0yrpj")
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
@@ -1836,7 +1836,7 @@ metadata/_edit_use_anchors_ = true
 [node name="MarginContainer2" type="MarginContainer" parent="CustomTabContainer"]
 visible = false
 layout_mode = 0
-offset_right = 1000.0
+offset_left = -1000.0
 offset_bottom = 1722.0
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 100

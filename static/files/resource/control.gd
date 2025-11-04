@@ -234,16 +234,33 @@ func _ready() -> void:
 				var m = get_tree().get_nodes_in_group(message)
 				if m.size() > 0:
 					var box = m[0]
-					box.self_modulate.a = 0.0
-					for child in box.get_node("HBoxContainer/MarginContainer/VBoxContainer").get_children():
-						if child is not CPUParticles2D:
-							child.modulate.a = 0.0
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/CPUParticles2D").emitting = true
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/CPUParticles2D").emission_rect_extents = box.size / 2
-					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/CPUParticles2D").position = box.size / 2
+					var sub = SubViewport.new()
+					var offset = 200
+					sub.size = box.size + (Vector2(offset, offset) * 2)
+					var box2 = box.duplicate()
+					box2.scale = Vector2.ONE 
+					box2.set_script(null)
+					
+					box2.position = Vector2.ONE * offset
+					sub.add_child(box2)
+					box2.position = Vector2.ONE * offset
+					sub.transparent_bg = true
+					var sub_container = SubViewportContainer.new()
+					sub_container.add_child(sub)
+					sub_container.global_position = box.global_position - Vector2(offset, offset)
+					box.modulate.a = 0.0
+					var mat =  $"3d-1536".material.duplicate()
+					sub_container.material = mat
+					add_child(sub_container)
+					box2.position = Vector2.ONE * offset
+					var tween = create_tween()
+					tween.tween_property(mat, "shader_parameter/progress", 1.0, 0.7)
+					tween.set_trans(Tween.TRANS_SINE)
+					tween.set_ease(Tween.EASE_OUT)
+					tween.play()
 					if box_ref == box:
 						_on_null_ref_pressed()
-					await box.get_node("HBoxContainer/MarginContainer/VBoxContainer/CPUParticles2D").finished
+					await tween.finished
 					var index = box.index
 					if box.pre_node:
 						box.pre_node.next_node = null if box.next_node == null else box.next_node
@@ -251,6 +268,7 @@ func _ready() -> void:
 						box.next_node.pre_node = null if box.pre_node == null else box.pre_node
 					unseen_ids.erase(message)
 					box.queue_free()
+					sub_container.queue_free()
 					var t = messages[message].time.split(" ")[0]
 					messages.erase(message)
 					ids.erase(message)
@@ -356,7 +374,18 @@ func create_by_pos(x):
 
 	if messages.size() - x > 0 and x >= 0:
 		last_index = x
-		var box = await add_message(messages[ids[x]], -1, x)
+		var box:Control = await add_message(messages[ids[x]], -1, x)
+		var sub = SubViewport.new()
+		sub.size = box.size
+		var box2 = box.duplicate()
+		box2.scale = Vector2.ONE
+		sub.add_child(box2)
+		add_child(sub)
+		var tex = ViewportTexture.new()
+		tex.viewport_path = sub.get_path()
+		sub.transparent_bg = true
+		
+		$"3d-1536".texture = tex
 		box.global_position.y = $VBoxContainer/ScrollContainer.global_position.y + box.get_meta("extra_size", 0)
 		box.checked = true
 		return box

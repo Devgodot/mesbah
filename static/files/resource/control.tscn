@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=3]
+[gd_scene load_steps=157 format=3]
 
 [ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_xuh5p"]
 [ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_0i0fv"]
@@ -498,7 +498,8 @@ func _input(event: InputEvent) -> void:
 						tween.play()
 						await tween.finished
 				move = false
-				parent.move = false
+				if parent.get(\"move\"):
+					parent.move = false
 
 func _process(delta: float) -> void:
 	size = get_combined_minimum_size()
@@ -2398,6 +2399,104 @@ _data = {
 &"flip_r": SubResource("Animation_mmsp5")
 }
 
+[sub_resource type="Shader" id="Shader_mmsp5"]
+code = "shader_type canvas_item;
+
+uniform float cell_size : hint_range(1.0,64.0) = 8.0;   // اندازه هر ذره (پیکسل)
+uniform float progress : hint_range(0.0,1.0) = 0.0;    // 0 = دست نخورده، 1 = کامل متلاشی
+uniform float randomness = 1.0;                        // مقدار تصادفی‌سازی
+uniform vec2 global_force = vec2(0.0, -50.0);          // نیروی عمودی/افقی (پیکسل)
+uniform float speed = 1.0;                             // سرعت حرکت کلی
+uniform float fade_start : hint_range(0.0,1.0) = 0.7;  // از چه مرحله‌ای الفا شروع کند کم شود
+uniform float spin_amount = 2.0;                       // چرخش هر ذره
+
+// ساده‌ترین هش توابع (برای تولید تصادفی بر اساس خانه)
+float hash21(vec2 p){
+	p = fract(p * vec2(123.34, 456.21));
+	p += dot(p, p + 78.233);
+	return fract(p.x * p.y);
+}
+vec2 hash22(vec2 p){
+	return vec2(hash21(p), hash21(p + 12.9898));
+}
+
+void fragment() {
+	// UV و اندازه‌ی یک پیکسل در UV-space
+	vec2 uv = UV;
+	vec2 px = TEXTURE_PIXEL_SIZE; // یک پیکسل در فضای UV
+
+	// اندازه هر خانه به صورت UV
+	vec2 cell_uv_size = cell_size * px;
+
+	// شناسه خانه (integer)
+	vec2 cell = floor(uv / cell_uv_size);
+
+	// مرکز خانه در UV
+	vec2 cell_center = (cell + vec2(0.5)) * cell_uv_size;
+
+	// بردار محلی از مرکز خانه (مقادیر در فضای UV)
+	vec2 local = uv - cell_center;
+
+	// تولید مقادیر تصادفی یکتای هر خانه
+	vec2 rnd = hash22(cell * randomness);
+	float r1 = rnd.x;
+	float r2 = rnd.y;
+
+	// جهت و اندازه حرکت در پیکسل (مقدار نهایی بر حسب پیکسل)
+	// جهت تصادفی حول مرکز و ترکیب با نیروی کلی
+	vec2 dir = normalize(rnd - vec2(0.5));
+	// فشار تصادفی بیشتر/کمتر برای هر خانه
+	float mag = (0.5 + r1) * (cell_size * 5.0) * pow(progress, 1.2) * speed;
+	vec2 disp_px = dir * mag + global_force * progress;
+
+	// اضافه‌ی چرخش: زاویه چرخش بر اساس rnd و progress
+	float angle = (r2 - 0.5) * spin_amount * progress;
+	float s = sin(angle);
+	float c = cos(angle);
+	// چرخاندن local حول مرکز (برای جلوه‌ی چرخش)
+	vec2 local_rot = vec2(
+		local.x * c - local.y * s,
+		local.x * s + local.y * c
+	);
+
+	// موقعیت نمونه برداری: مرکز خانه + local_rot + جابه‌جایی به صورت UV
+	vec2 displaced_uv = cell_center + local_rot + disp_px * px;
+
+	// نمونه‌برداری از بافت با UV جابه‌جا شده
+	vec4 col = texture(TEXTURE, displaced_uv);
+
+	// شکل ذره: مربع با گوشه‌های نرم
+	// اندازه‌ی نصف خانه در UV
+	float half_uv = 0.5 * cell_uv_size.x; // چون مربع فرض شده، از x استفاده می‌کنیم
+	float edge_soft = max(px.x, px.y) * 2.0; // میزان نرم شدن لبه‌ها
+	float m = max(abs(local_rot.x), abs(local_rot.y));
+	// نرم کردن لبه‌ها
+	float mask = 1.0 - smoothstep(half_uv - edge_soft, half_uv + edge_soft, m);
+
+	// ناپدید شدن تدریجی بعد از fade_start
+	float alpha_fade = 2.0;
+	if (progress > fade_start) {
+		alpha_fade = 1.0 - smoothstep(fade_start, 1.0, progress);
+	}
+
+	// نازک شدن هر ذره وقتی جلوه کامل می‌شود
+	float final_alpha = col.a * mask * alpha_fade;
+
+	// رنگ نهایی
+	COLOR = vec4(col.rgb, final_alpha);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_an0t8"]
+shader = SubResource("Shader_mmsp5")
+shader_parameter/cell_size = 2.0
+shader_parameter/progress = 0.0
+shader_parameter/randomness = 1.0
+shader_parameter/global_force = Vector2(0, -50)
+shader_parameter/speed = 20.0
+shader_parameter/fade_start = 0.7
+shader_parameter/spin_amount = 2.0
+
 [node name="Control" type="Control" groups=["scene_message"]]
 layout_mode = 3
 anchors_preset = 15
@@ -3228,6 +3327,192 @@ libraries = {
 &"": SubResource("AnimationLibrary_6uaey")
 }
 
+[node name="3d-1536" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_an0t8")
+position = Vector2(485, 970)
+texture = ExtResource("20_breng")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_an0t8")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(820, 794)
+render_target_update_mode = 0
+
+[node name="instance" type="PanelContainer" parent="SubViewportContainer/SubViewport"]
+layout_direction = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -197.206
+offset_right = 210.0
+offset_bottom = 197.206
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+mouse_filter = 2
+theme = SubResource("Theme_2y1hm")
+theme_override_styles/panel = SubResource("StyleBoxTexture_usxgj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/instance"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/instance/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.791999, 0.791999, 0.791999, 1)
+theme_override_font_sizes/font_size = 26
+text = "شما"
+
+[node name="Control" type="Control" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="HSeparator2" type="HSeparator" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
+
+[node name="Label3" type="Label" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+mouse_filter = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_vb5ih")
+text = "سلام چطوری؟
+نکن این کار ها را با ما برادر."
+label_settings = SubResource("LabelSettings_0jf8d")
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(260, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 2
+theme = SubResource("Theme_apcft")
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 2
+custom_effects = [SubResource("RichTextEffect_yb7qp"), SubResource("RichTextEffect_gbj5b")]
+selection_enabled = true
+script = SubResource("GDScript_6pn8l")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -22.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+shortcut_keys_enabled = false
+custom_effects = [SubResource("RichTextEffect_vb5ih"), SubResource("RichTextEffect_6pn8l"), SubResource("RichTextEffect_0jf8d")]
+
+[node name="HSeparator" type="HSeparator" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 40
+theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
+
+[node name="Label2" type="Label" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.524608, 0.961461, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "12:05:15"
+label_settings = SubResource("LabelSettings_6pn8l")
+
+[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2"]
+position = Vector2(-27, 25)
+
+[node name="Line2D" type="Line2D" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D"]
+position = Vector2(1, -3)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_6pn8l")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_tfhda")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D"]
+position = Vector2(11, -2)
+points = PackedVector2Array(13, 26, 20, 33, 40, 5)
+width_curve = SubResource("Curve_6pn8l")
+default_color = Color(0.196078, 1, 0.0235294, 1)
+texture = SubResource("GradientTexture2D_tfhda")
+texture_mode = 1
+begin_cap_mode = 2
+
+[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D"]
+process_mode = 3
+visible = false
+position = Vector2(31, 24)
+script = SubResource("GDScript_tfhda")
+
+[node name="Line2D" type="Line2D" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Node2D"]
+texture_repeat = 2
+width_curve = SubResource("Curve_lin6m")
+gradient = SubResource("Gradient_lin6m")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+position = Vector2(400, 100)
+emitting = false
+amount = 2000
+texture = SubResource("GradientTexture2D_7a6fd")
+lifetime = 0.5
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(400, 100)
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 208.83
+initial_velocity_max = 280.99
+scale_amount_min = 0.4
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_1stjb")
+color_initial_ramp = SubResource("Gradient_cxcyr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport/instance"]
+libraries = {
+&"": SubResource("AnimationLibrary_ehb43")
+}
+
 [connection signal="scroll_ended" from="VBoxContainer/ScrollContainer" to="." method="_on_scroll_container_scroll_ended"]
 [connection signal="scroll_start" from="VBoxContainer/ScrollContainer" to="." method="_on_scroll_container_start_scroll"]
 [connection signal="meta_clicked" from="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
@@ -3242,3 +3527,4 @@ libraries = {
 [connection signal="pressed" from="Node2D/delete" to="." method="_on_delete_pressed"]
 [connection signal="pressed" from="Node2D/edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="Node2D/copy" to="." method="_on_copy_pressed"]
+[connection signal="meta_clicked" from="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
