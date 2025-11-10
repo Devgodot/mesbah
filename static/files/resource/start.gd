@@ -417,7 +417,7 @@ func add_conversation(_id, data, node=$CustomTabContainer/MarginContainer3/Scrol
 		btn.name = "button"
 		get_tree().call_group(_id, "queue_free")
 		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label").text = "[b][color=0dca94][outline_color=001313][outline_size=3]"+data.message.sender_name+ ":\n"+"[/outline_size][/outline_color][/color][/b]"  if data and data.has("message") and data.message and data.message.has("sender_name") and data.message.sender_name else ""
-		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label").text += data.message.messages.text if data.has("message") and data.message and data.message.has("messages") and data.message.messages else ""
+		btn.get_node("Panel/HBoxContainer/VBoxContainer/HBoxContainer2/Label").text += data.message.messages.text if data.has("message") and data.message and data.message.has("messages") and data.message.messages and data.message.messages.has("text") else "تصویر" if data.message.messages.has("data") and data.message.messages.type == "image" else ""
 		if data.has("state"):
 			if data.state == "online":
 				btn.get_node("Panel/HBoxContainer/TextureRect/TextureRect2").show()

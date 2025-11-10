@@ -55,7 +55,36 @@ func uuid(len:int, step:int=4):
 		y += 1
 	return id
 # Called when the node enters the scene tree for the first time.
+var plugin2
+var plugin_name = "GodotGetImage"
+@export var file_dialog : FileDialog
+func _on_permission_not_granted_by_user(permission):
+	file_dialog.popup()
+	Updatedate.cant_open_gallery = true
+func _on_error(e):
+	Notification.add_notif(e, Notification.ERROR)
 func _ready() -> void:
+	
+	var btn = $VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button
+	if Engine.has_singleton(plugin_name):
+		plugin2 = Engine.get_singleton(plugin_name)
+	if plugin2:
+		plugin2.error.connect(_on_error)
+		plugin2.permission_not_granted_by_user.connect(_on_permission_not_granted_by_user)
+	if plugin2:
+		plugin2.image_request_completed.connect(func (dic):
+			for Buffer in dic.values():
+				$VBoxContainer/Panel/VBoxContainer/HBoxContainer/TextEdit.hide()
+				if btn.scale < Vector2.ONE:
+					var tween = get_tree().create_tween()
+					tween.tween_property($VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button, "scale", Vector2.ONE, 0.3)
+					tween.play()
+				var img = Image.new()
+				img.load_jpg_from_buffer(Buffer)
+				$VBoxContainer/Panel/VBoxContainer/MarginContainer2/HBoxContainer.show()
+				$VBoxContainer/Panel/VBoxContainer/MarginContainer2/HBoxContainer/TextureRect.texture = ImageTexture.create_from_image(img)
+				
+		)
 	# گرفتن لیست صداها
 	#var voices = DisplayServer.tts_get_voices()
 	#print("Available voices:", voices)
@@ -69,7 +98,7 @@ func _ready() -> void:
 		#print(text))
 	#DisplayServer.dialog_show("test", "", ["1", "2", "3"], func(btn):
 		#print(btn))
-	var btn = $VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button
+	
 	if Engine.has_singleton("GodotGetFile"):
 		mobile_box = Engine.get_singleton("GodotGetFile")
 		mobile_box.text_changed.connect(func (text):
@@ -136,6 +165,7 @@ func _ready() -> void:
 				c.name = data.name
 				c.custom_name = data.custom_name
 				if data.state == "online":
+					$VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button3.show()
 					$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Label.text = "وضعیت: آنلاین"
 					for box in $VBoxContainer/ScrollContainer/VBoxContainer.get_children():
 						if box.name != "instance":
@@ -146,6 +176,7 @@ func _ready() -> void:
 									box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D").default_color = Color.GRAY
 									box.get_node("HBoxContainer/MarginContainer/VBoxContainer/Label2/Node2D/Line2D2").default_color = Color.GRAY
 				else:
+					$VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button3.hide()
 					if data.has("last_seen") and data.last_seen.has("time"):
 						c.last_seen = data.last_seen
 						$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Label.text = "آخرین بازدید: " + data.last_seen.time)
@@ -312,8 +343,10 @@ func _ready() -> void:
 					)
 	if c.has("state"):
 		if c.state == "online":
+			$VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button3.show()
 			$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Label.text = "وضعیت: آنلاین"
 		else:
+			$VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button3.hide()
 			if c.last_seen.has("time"):
 				$ColorRect/MarginContainer/HBoxContainer/VBoxContainer/Label.text = "آخرین بازدید: " + c.last_seen.time
 	if c.has("icon"):
@@ -580,7 +613,7 @@ func add_message(m, pos=-1, i=-1):
 				else:
 					text_edit.grab_focus()
 		)
-	if m.response and m.response != "":
+	if m.has("response") and m.response and m.response != "":
 		var ref =  messages[m.response]
 		if ref:
 			var index = box.index
@@ -598,15 +631,72 @@ func add_message(m, pos=-1, i=-1):
 			
 			check_has_node(box))
 	$VBoxContainer/ScrollContainer/VBoxContainer.add_child(box)
-	var texts = m.messages.text.split("\n")
-	var text = ""
-	print(texts)
-	for t in texts:
-		if get_direction(t) == -1:
-			text += "\n[right]" + t + "[/right]"
+	if m.has("messages") and m.messages.has("text"):
+		var texts = m.messages.text.split("\n")
+		var text = ""
+		print(texts)
+		for t in texts:
+			if get_direction(t) == -1:
+				text += "\n[right]" + t + "[/right]"
+			else:
+				text += "\n[left]" + t + "[/left]"
+		box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  text
+	if m.has("messages") and m.messages.has("type"):
+		if m.messages.type == "audio":
+			if FileAccess.file_exists("user://share_files/"+m.messages.file):
+				var audio
+				if m.messages.file.get_extension() == "mp3":
+					audio = AudioStreamMP3.new()
+					audio.data = FileAccess.get_file_as_bytes("user://share_files/"+m.messages.file)
+				if m.messages.file.get_extension() == "wav":
+					audio = AudioStreamWAV.new()
+					audio.load_from_file("user://share_files/"+m.messages.file)
+				if m.messages.file.get_extension() == "ogg":
+					audio = AudioStreamOggVorbis.new()
+					audio.load_from_file("user://share_files/"+m.messages.file)
+				if audio:
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/PanelContainer").set_audio(audio)
+					box.get_node("HBoxContainer/MarginContainer/VBoxContainer/PanelContainer").show()
+			else:
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/PanelContainer").add_to_group(m.messages.file)
+				
+		elif m.messages.type == "image":
+			var image = Image.new()
+			if FileAccess.file_exists("user://share_files/"+m.messages.file):
+				image.load("user://share_files/"+m.messages.file)
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/TextureRect").texture = ImageTexture.create_from_image(image)
+			else:
+				Updatedate.get_icon(m.messages.icon, box.get_node("HBoxContainer/MarginContainer/VBoxContainer/TextureRect"))
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/TextureRect").add_to_group(m.messages.file)
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/TextureRect").show()
+			var node = box.get_node("HBoxContainer/MarginContainer/VBoxContainer/TextureRect")
+			node.mouse_filter = Control.MOUSE_FILTER_STOP
+			node.gui_input.connect(func(event:InputEvent):
+				if event is InputEventScreenTouch and event.is_pressed():
+					if Updatedate.texture.scale.x > 0.2:
+						Updatedate.hide_picture()
+					else:
+						Updatedate.show_picture(node.texture))
 		else:
-			text += "\n[left]" + t + "[/left]"
-	box.get_node("HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel").text =  text
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer/Label").text = m.messages.file
+			Updatedate.get_icon(m.messages.icon, box.get_node("HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer/Button"))
+			box.get_node("HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer/Button").pressed.connect(func():OS.shell_open("user://share_files/"+m.messages.file))
+			
+			if FileAccess.file_exists("user://share_files/"+m.messages.file):
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2").show()
+				var sufix = "ب"
+				var num = FileAccess.get_file_as_bytes("user://share_files/"+m.messages.file).size()
+				if num > 1000000:
+					num = int(num / 10000)
+					num /= 100.0
+					sufix = "م.ب"
+				elif num > 1000:
+					num = int(num / 100)
+					num /= 100.0
+					sufix = "ک.ب"
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2/Label").text = str(num, " ", sufix, "   ")
+			else:
+				box.get_node("HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2").add_to_group(m.messages.file)
 	if Updatedate.waiting_editing.has(Updatedate.conversation.id):
 		var new_m = Updatedate.waiting_editing[Updatedate.conversation.id].filter(func(x):return x[0] == m.id)
 		if new_m.size() > 0:
@@ -639,7 +729,6 @@ func ref_press(event:InputEvent, _id, response):
 			if event.is_pressed():
 				$VBoxContainer/ScrollContainer.drag = false
 			if event.is_released():
-				print( $VBoxContainer/ScrollContainer.dragging)
 				if $VBoxContainer/ScrollContainer.drag:
 					$VBoxContainer/ScrollContainer.drag = false
 				else:
@@ -685,6 +774,10 @@ func _process(delta: float) -> void:
 	$VBoxContainer/Control/Button/Label.visible = unseen_ids.size() > 0
 	$VBoxContainer/Control/Button/Label.text = str(unseen_ids.size())
 	offset = get_keyboard_offset()
+	if $VBoxContainer/Panel/VBoxContainer/MarginContainer2/ScrollContainer/HBoxContainer.get_child_count() == 1:
+		$VBoxContainer/Panel/VBoxContainer/MarginContainer2.hide()
+		$VBoxContainer/Panel/VBoxContainer/HBoxContainer/TextEdit.show()
+		
 	var _delta = Vector2(DisplayServer.window_get_size())/get_viewport().get_visible_rect().size
 	if edited_box:
 		var texts = text_edit.text.split("\n") if mobile_box == null else mobile_box.getText().split("\n")
@@ -748,7 +841,22 @@ func _process(delta: float) -> void:
 			var box = add_message(messages[ids[last_index2]])
 			await get_tree().physics_frame
 			box.checked = true
+	
 func _on_button_pressed() -> void:
+	if $VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button3.visible:
+		if $VBoxContainer/Panel/VBoxContainer/MarginContainer2.visible :
+			$VBoxContainer/Panel/VBoxContainer/HBoxContainer/TextEdit.show()
+			for path in files:
+				Updatedate.send_file({"type":"file", "file":path.get_file()}, path)
+			files = []
+			for child in $VBoxContainer/Panel/VBoxContainer/MarginContainer2/ScrollContainer/HBoxContainer.get_children():
+				if child.name != "instance":
+					child.queue_free()
+			$VBoxContainer/Panel/VBoxContainer/MarginContainer2.hide()
+			var tween = get_tree().create_tween()
+			tween.tween_property($VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button, "scale", Vector2.ZERO, 0.3)
+			tween.play()
+			return
 	if edited_box:
 		if not Updatedate.waiting_editing.has(Updatedate.conversation.id):
 			Updatedate.waiting_editing[Updatedate.conversation.id] = []
@@ -824,7 +932,7 @@ func focus_on_message(_id:String):
 				if ids[ids.size() - x - 1] == _id:
 					i = ids.size() - x - 1
 					break
-			prints("jb", i)
+			
 			if i != -1:
 				var box = await create_by_pos(i)
 				return box
@@ -934,6 +1042,7 @@ func _on_text_edit_text_changed() -> void:
 		if btn.scale < Vector2.ONE:
 			var tween = get_tree().create_tween()
 			tween.tween_property(btn, "scale", Vector2.ONE, 0.3)
+			
 			tween.play()
 	else:
 		if btn.scale > Vector2.ZERO:
@@ -1054,3 +1163,37 @@ func _on_panel_gui_input(event: InputEvent) -> void:
 func _on_scroll_container_scroll_ended() -> void:
 	if $VBoxContainer/Control/Button.visible:
 		$AnimationPlayer.play_backwards("pop_button")
+
+
+func _on_image_button_pressed() -> void:
+	if plugin2 and Updatedate.cant_open_gallery == false:
+		plugin2.getGalleryImage()
+	else:
+		file_dialog.popup()
+
+
+var files = []
+
+func _on_file_dialog_files_selected(path: Array[String]) -> void:
+	for p in path:
+		if p not in files:
+			files.append(p)
+			var img = Image.new()
+			img.load(p)
+			$VBoxContainer/Panel/VBoxContainer/HBoxContainer/TextEdit.hide()
+			$VBoxContainer/Panel/VBoxContainer/MarginContainer2.show()
+			var box = $VBoxContainer/Panel/VBoxContainer/MarginContainer2/ScrollContainer/HBoxContainer/instance.duplicate()
+			box.show()
+			box.get_node("Label").text = p.get_file()
+			box.get_node("Button").pressed.connect(func():
+				box.queue_free()
+				if $VBoxContainer/Panel/VBoxContainer/MarginContainer2/ScrollContainer/HBoxContainer.get_child_count() == 1:
+					var tween = get_tree().create_tween()
+					tween.tween_property($VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button, "scale", Vector2.ZERO, 0.3)
+					tween.play())
+			box.texture = Updatedate.guess_type_icon(p)
+			$VBoxContainer/Panel/VBoxContainer/MarginContainer2/ScrollContainer/HBoxContainer.add_child(box)
+	if $VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button.scale < Vector2.ONE:
+		var tween = get_tree().create_tween()
+		tween.tween_property($VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button, "scale", Vector2.ONE, 0.3)
+		tween.play()

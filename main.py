@@ -11,7 +11,7 @@ from score import score_bp
 from messages import message_bp
 from models import User, UserInterface, FlaskForm, Group, Score
 from werkzeug.utils import secure_filename
-import os, git
+import os, git, threading
 from math import ceil
 from flask_jwt_extended import jwt_required, current_user
 import requests
@@ -311,7 +311,30 @@ def upload_file():
         return jsonify({"error": "Failed to save image"}), 500
     
     return jsonify({"message": f"{(name)} uploaded!"}), 200
-
+@app.route('/share_file', methods=['POST'])
+def share_files():
+    file = request.get_json().get("file", "")
+    data = request.get_json().get("data")
+    try:
+        byte_data = bytes(json.loads(data))
+    except ValueError as e:
+        current_app.logger.error(f"Error converting list to bytes: {e}")
+        return jsonify({"error": "Error converting list to bytes"}), 400
+    path = os.path.join(os.path.abspath(os.path.dirname(__file__)), current_app.config["UPLOAD_FOLDER"], "users")
+    if not os.path.exists(path):
+        os.makedirs(path)
+    file_path = os.path.join(path, file)
+    with open(file_path, "wb") as f:
+        f.write(byte_data)
+    threading.Timer(5 * 60, delete_file, args=[file_path]).start()
+    return request.root_url + "/" + "static/files/users/"+file
+def delete_file(path):
+    try:
+        if os.path.exists(path):
+            os.remove(path)
+            print(f"Deleted file: {path}")
+    except Exception as e:
+        print("Error deleting file:", e)
 @app.route('/gallery/upload', methods=['POST'])
 def upload_gallery():
     name = request.get_json().get("name", "")

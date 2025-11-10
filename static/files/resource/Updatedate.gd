@@ -98,6 +98,7 @@ func get_cost(_id):
 	else:
 		return 0
 func _ready() -> void:
+	
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
 	if OS.get_name() != "Windows":
 		mode_net = 1
@@ -117,13 +118,13 @@ func _ready() -> void:
 		socket.connect_to_url(data_net[mode_net].socket)
 	current_user = load_game("current_user", 0)
 	last_user = load_game("last_user", 0)
-	
+	socket.set_no_delay(true)
 	setup_icon()
 func setup_icon():
 	texture.z_index = 5
 	texture.add_to_group("image_show")
 	bg.add_to_group("image_show")
-	texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_COVERED
+	texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	texture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	texture.size = Vector2(400, 400)
 	texture.pivot_offset = Vector2(200, 200)
@@ -174,6 +175,7 @@ func setup_icon():
 			bg.hide()
 			bg.size = size
 			bg.pivot_offset = bg.size/2)
+
 func zoom(texture:TextureRect):
 	var motion = false
 	
@@ -227,7 +229,22 @@ func zoom(texture:TextureRect):
 						texture.scale += Vector2.ONE * event.factor / 2
 		
 				)
+	
+var chuck_index = 0
 func _process(delta: float) -> void:
+	if upload_files.size() == 0:
+		first_upload = null
+	if upload_files.size() > 0:
+		if first_upload == null:
+			first_upload = upload_files[0]
+			var chuck_size = 10 * 1024
+			var buffer = PackedByteArray()
+			buffer.append_array(upload_files[0].data.slice(chuck_index * chuck_size, min((chuck_index+1) * chuck_size, upload_files[0].data.size())))
+			socket.send_text(JSON.stringify({"data":buffer, "type":"data", "index":chuck_index, "file":upload_files[0].file}))
+			if (chuck_index + 1) * chuck_size > upload_files[0].data.size():
+				chuck_index = -1
+				upload_files.remove_at(0)
+			chuck_index += 1
 	if texture == null:
 		texture = TextureRect.new()
 		bg = ColorRect.new()
@@ -249,8 +266,9 @@ func _process(delta: float) -> void:
 		internet = false
 	if socket.get_ready_state() == 1:
 		if not set_user:
-			socket.send(JSON.stringify({ "type": 'register', "username":load_game("user_name", "") }).to_utf8_buffer())
+			socket.send_text(JSON.stringify({ "type": 'register', "username":load_game("user_name", "") }))
 			set_user = true
+			
 		if not internet:
 			internet = true
 			for r in failed_request:
@@ -665,6 +683,44 @@ func get_message_image(icon, node):
 			img.save_webp("user://messages/"+file_name)
 			node.texture = ImageTexture.create_from_image(img)
 		w.queue_free()
+func get_icon(icon, node):
+	if !DirAccess.dir_exists_absolute("user://file_icon"):
+		DirAccess.make_dir_absolute("user://file_icon")
+	if icon != "":
+		var w = add_wait(node)
+		var file_name = icon.uri_decode().get_file()
+		if FileAccess.file_exists("user://file_icon/"+file_name):
+			var img = Image.new()
+			var file = FileAccess.open("user://file_icon/"+file_name, FileAccess.READ)
+				
+			img.load_svg_from_buffer(file.get_file_as_bytes("user://file_icon/"+file_name), 25)
+			node.texture = ImageTexture.create_from_image(img)
+		else:
+			var r = HTTPRequest.new()
+			add_child(r)
+			r.request(icon)
+			var i = await r.request_completed
+			while (i[3]).size() == 0:
+				r.request(icon)
+				i = await r.request_completed
+			r.queue_free()
+			var img = Image.new()
+			
+			if i[3].size() > 50 and img.load_svg_from_buffer(i[3], 25) == OK:
+				var file = FileAccess.open("user://file_icon/"+file_name, FileAccess.WRITE)
+				file.store_buffer(i[3])
+				file.close()
+			else:
+				img.load("res://sprite/file.png")
+			if node is TextureRect:
+				node.texture = ImageTexture.create_from_image(img)
+			if node is Button:
+				node.icon = ImageTexture.create_from_image(img)
+			if node is Sprite2D:
+				node.texture = ImageTexture.create_from_image(img)
+			if node is TextureButton:
+				node.texture_normal = ImageTexture.create_from_image(img)
+		w.queue_free()
 func get_message_sound(audio, node):
 	if !DirAccess.dir_exists_absolute("user://messages"):
 		DirAccess.make_dir_absolute("user://messages")
@@ -890,7 +946,27 @@ func load_scene(new_scene) -> Object:
 			ResourceLoader.load_threaded_get_status("res://scenes/"+new_scene, progress)
 		s = ResourceLoader.load_threaded_get("res://scenes/"+new_scene).instantiate()
 	return s
-
+var upload_files = []
+func send_file(d:Dictionary, path=""):
+	if conversation["part"] != "":
+		if FileAccess.file_exists(path):
+			var file = FileAccess.open(path, FileAccess.READ)
+			var buffer = file.get_file_as_bytes(path)
+			var data = {type="file", conversationId=conversation["id"].left(20), senderId=load_game("user_name", ""), content=d, part=conversation["part"], "size"=buffer.size()}
+			if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
+				socket.send_text(JSON.stringify(data))
+			if buffer.size() < 1000000:
+				upload_files.append({"data":buffer, "file":path.get_file()})
+			else:
+				var http = HTTPRequest.new()
+				add_child(http)
+				http.request(protocol+subdomin+"/share_file", get_header(), HTTPClient.METHOD_POST, JSON.stringify({"data":buffer, "file":path.get_file()}))
+				http.request_completed.connect(func(result, response_code, header, body):
+					print(body.get_string_from_utf8())
+					var url = body.get_string_from_utf8()
+					if url:
+						socket.send_text(JSON.stringify({type="download", "url"=url, "file"=path.get_file()}))
+					http.queue_free())
 func send_message(text:String, _id, responsed:String=""):
 	if conversation["part"] != "":
 		var data = {type="message", conversationId=conversation["id"].left(20), senderId=load_game("user_name", ""), content={text=text}, part=conversation["part"], response=responsed, id=_id}
@@ -910,12 +986,122 @@ func delete(id:String, pre_id:String):
 	var data = {type="delete", conversationId=conversation["id"].left(20), senderId=load_game("user_name", ""), content={text=""}, id=id, part=conversation["part"], pre_id=pre_id}
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		socket.send_text(JSON.stringify(data))
+var recive_files = PackedByteArray([])
+var files_meta = []
+var first_upload 
 func get_message():
 	if socket.get_ready_state() == WebSocketPeer.STATE_OPEN:
 		while socket.get_available_packet_count():
-			var data = get_json(socket.get_packet())
+			var pack = socket.get_packet()
+			var data
+			if socket.was_string_packet() :
+				data = get_json(pack)
+			else:
+				data = pack
+				if upload_files.size() > 0:
+					var chuck_size = 10 * 1024
+					var buffer = PackedByteArray()
+					buffer.append_array(upload_files[0].data.slice(chuck_index * chuck_size, min((chuck_index+1) * chuck_size, upload_files[0].data.size())))
+					socket.send_text(JSON.stringify({"data":buffer, "type":"data", "index":chuck_index, "file":upload_files[0].file}))
+					if (chuck_index + 1) * chuck_size > upload_files[0].data.size():
+						chuck_index = -1
+						upload_files.remove_at(0)
+					chuck_index += 1
+				recive_files.append_array(data)
+				if files_meta.size() > 0:
+					if recive_files.size() == files_meta[0].size:
+						if !DirAccess.dir_exists_absolute("user://share_files"):
+							DirAccess.make_dir_absolute("user://share_files")
+						var file = FileAccess.open("user://share_files/"+files_meta[0].file, FileAccess.WRITE)
+						var err = file.store_buffer(recive_files)
+						file.close()
+						if files_meta[0].file_type == "audio":
+							var audio
+							if files_meta[0].file.get_extension() == "mp3":
+								audio = AudioStreamMP3.new()
+								audio.data = FileAccess.get_file_as_bytes("user://share_files/"+files_meta[0].file)
+							if files_meta[0].file.get_extension() == "wav":
+								audio = AudioStreamWAV.new()
+								audio.load_from_file("user://share_files/"+files_meta[0].file)
+							if files_meta[0].file.get_extension() == "ogg":
+								audio = AudioStreamOggVorbis.new()
+								audio.load_from_file("user://share_files/"+files_meta[0].file)
+								
+							if audio:
+								for node in get_tree().get_nodes_in_group(files_meta[0].file):
+									node.set_audio(audio)
+									node.show()
+						elif files_meta[0].file_type == "image":
+							var img = Image.new()
+							img.load("user://share_files/"+files_meta[0].file)
+							if get_tree().has_group(files_meta[0].file):
+								for node in get_tree().get_nodes_in_group(files_meta[0].file):
+									node.texture = ImageTexture.create_from_image(img)
+						else:
+							var sufix = "ب"
+							var num = FileAccess.get_file_as_bytes("user://share_files/"+data.file).size()
+							if num > 1000000:
+								num = int(num / 10000)
+								num /= 100.0
+								sufix = "م.ب"
+							elif num > 1000:
+								num = int(num / 100)
+								num /= 100.0
+								sufix = "ک.ب"
+							
+							for node in get_tree().get_nodes_in_group(data.file):
+								node.show()
+								node.get_node("Label").text = str(num, " ", sufix, "   ")
+						files_meta.remove_at(0)
+						recive_files = []
+				continue
 			if data and data.has("type"):
 				match data.type:
+					"data":
+						if files_meta.find_custom(func(x):return x.file == data.file) == -1:
+							files_meta.append({"file":data.file, "size":data.size, "file_type":data.file_type})
+					"download":
+						
+						var d = await request(data.url, HTTPClient.METHOD_GET, {}, 1)
+						
+						if !DirAccess.dir_exists_absolute("user://share_files"):
+							DirAccess.make_dir_absolute("user://share_files")
+						var file = FileAccess.open("user://share_files/"+data.file, FileAccess.WRITE)
+						var err = file.store_buffer(d)
+						file.close()
+						if data.file_type == "image":
+							var img = Image.new()
+							img.load("user://share_files/"+data.file)
+							if get_tree().has_group(data.file):
+								for node in get_tree().get_nodes_in_group(data.file):
+									node.texture = ImageTexture.create_from_image(img)
+						elif data.file_type == "audio":
+							var audio
+							if data.file.get_extension() == "mp3":
+								audio = AudioStreamMP3.new()
+								audio.data = FileAccess.get_file_as_bytes("user://share_files/"+data.file)
+							if data.file.get_extension() == "wav":
+								audio = AudioStreamWAV.new()
+								audio.load_from_file("user://share_files/"+data.file)
+							if data.file.get_extension() == "ogg":
+								audio = AudioStreamOggVorbis.new()
+								audio.load_from_file("user://share_files/"+data.file)
+								
+							if audio:
+								for node in get_tree().get_nodes_in_group(data.file):
+									node.set_audio(audio)
+									node.show()
+						else:
+							for node in get_tree().get_nodes_in_group(data.file):
+								node.show()
+					"file":
+						
+						data.message.createdAt = str(float(data.message.createdAt))
+						data.message.updatedAt = str(float(data.message.updatedAt))
+						save_user_messages(data.message.conversationId + data.message.part, {"add":[data.message], "delete":[]})
+						save("last_seen", str(data.message.createdAt), false)
+						recive_message.emit(data.message, "")
+						
 					"message":
 						data.message.createdAt = str(float(data.message.createdAt))
 						data.message.updatedAt = str(float(data.message.updatedAt))
@@ -953,3 +1139,17 @@ func get_message():
 						data.timestamp = str(float(data.timestamp))
 						save_user_messages("", {"add":[], "delete":[], "last_seen":{"time":data.time, "timestamp":data.timestamp}, "state":data.state, "username":data.username, "icon":data.user.icon, "custom_name":data.user.custom_name if data.user.has("custom_name") else "", "name":data.user.name})
 						change_status.emit({"last_seen":{"time":data.time, "timestamp":data.timestamp}, "state":data.state, "username":data.username, "icon":data.user.icon, "custom_name":data.user.custom_name if data.user.has("custom_name") else "", "name":data.user.name})
+func guess_type_icon(path: String) -> Texture2D:
+	var ext = path.get_file().get_extension()
+	var images = ["png", "jpg", "jpeg", "gif", "bmp"]
+	var audio = ["mp3", "wav", "ogg"]
+	var text = ["txt", "json", "xml", "html"]
+	if ext in images:
+		var img = Image.new()
+		img.load(path)
+		return ImageTexture.create_from_image(img)
+	if ext in audio:
+		return preload("res://sprite/audio.svg")
+	if ext in text:
+		return preload("res://sprite/code.png")
+	return preload("res://sprite/file.png")

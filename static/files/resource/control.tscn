@@ -1,30 +1,33 @@
-[gd_scene load_steps=157 format=3]
+[gd_scene load_steps=166 format=3]
 
-[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_xuh5p"]
-[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_0i0fv"]
-[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_3otl1"]
-[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_avvg3"]
-[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_xmqxi"]
-[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="6_5k480"]
-[ext_resource type="Script" uid="uid://bksxi3frccjpv" path="res://script/control.gd" id="7_nl6dj"]
-[ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="8_131kw"]
-[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="9_06d1e"]
-[ext_resource type="Texture2D" uid="uid://5ru3ab6p6dvc" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_04_49 PM2.png" id="10_cj1gv"]
-[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="11_brft0"]
-[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="12_1mtgi"]
-[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="13_aqg2y"]
-[ext_resource type="Texture2D" uid="uid://mvbajcxbja87" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_04_49 PM3.png" id="14_b7y2v"]
-[ext_resource type="Texture2D" uid="uid://cn8qrclg0a76t" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_04_49 PM.png" id="15_kflwy"]
-[ext_resource type="Texture2D" uid="uid://dgk0swkr5583i" path="res://sprite/pngtree-retro-geometric-border-png-image_6507901.png" id="16_tidj8"]
-[ext_resource type="Texture2D" uid="uid://clepet1x1srh0" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_52_45 PM.png" id="17_wtdv7"]
-[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="18_rg367"]
-[ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="19_wyugk"]
-[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="20_breng"]
-[ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="21_riu2h"]
+[ext_resource type="FontFile" uid="uid://cy8mei0xpl5al" path="res://fonts/B Titr Bold_0.ttf" id="1_avvg3"]
+[ext_resource type="FontFile" uid="uid://doer5ut2owryw" path="res://fonts/NotoColorEmoji-Regular.ttf" id="2_xmqxi"]
+[ext_resource type="FontFile" uid="uid://dg77gjm2pqyvb" path="res://fonts/BNaznnBd.ttf" id="3_5k480"]
+[ext_resource type="Texture2D" uid="uid://cy5kuryrweaax" path="res://sprite/Layer 6.png" id="4_nl6dj"]
+[ext_resource type="Texture2D" uid="uid://k5y1fcnfpcqr" path="res://sprite/Layer 6 copy 4.png" id="5_131kw"]
+[ext_resource type="FontFile" uid="uid://ccfyele3jp1p0" path="res://fonts/BNazanin.ttf" id="6_06d1e"]
+[ext_resource type="Script" uid="uid://bksxi3frccjpv" path="res://script/control.gd" id="7_cj1gv"]
+[ext_resource type="Shader" uid="uid://1wvwfkrqngll" path="res://shaders/mix_color.gdshader" id="8_brft0"]
+[ext_resource type="Texture2D" uid="uid://d0m33tqv0sh1w" path="res://sprite/طرح گیاهی بر زمینه زرد خردلی.jpg" id="9_1mtgi"]
+[ext_resource type="Texture2D" uid="uid://5ru3ab6p6dvc" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_04_49 PM2.png" id="10_aqg2y"]
+[ext_resource type="PackedScene" uid="uid://ccq5uf2d3qap4" path="res://scenes/music_player.tscn" id="11_b7y2v"]
+[ext_resource type="Texture2D" uid="uid://doq6h2co6pp0g" path="res://sprite/file.png" id="12_kflwy"]
+[ext_resource type="FontFile" uid="uid://c3wxftwo70q6v" path="res://fonts/Yekan Boom.ttf" id="13_tidj8"]
+[ext_resource type="Script" uid="uid://dcls0pguhob1u" path="res://scripts/light.gd" id="14_wtdv7"]
+[ext_resource type="Script" uid="uid://bt1xta4d0rii" path="res://scripts/scaler.gd" id="15_rg367"]
+[ext_resource type="Texture2D" uid="uid://mvbajcxbja87" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_04_49 PM3.png" id="16_wyugk"]
+[ext_resource type="Texture2D" uid="uid://cn8qrclg0a76t" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_04_49 PM.png" id="17_breng"]
+[ext_resource type="Texture2D" uid="uid://dgk0swkr5583i" path="res://sprite/pngtree-retro-geometric-border-png-image_6507901.png" id="18_riu2h"]
+[ext_resource type="Texture2D" uid="uid://clepet1x1srh0" path="res://sprite/ChatGPT Image Sep 19, 2025, 04_52_45 PM.png" id="19_smvun"]
+[ext_resource type="Texture2D" uid="uid://cpxgqdxsjictj" path="res://sprite/1375106.png" id="20_hhhna"]
+[ext_resource type="Shader" uid="uid://bkn4sldhgfnt5" path="res://shaders/floor.gdshader" id="21_yv4v5"]
+[ext_resource type="Texture2D" uid="uid://g67qlypptg87" path="res://sprite/Rectangle 1.jpg" id="22_yo3xx"]
+[ext_resource type="Texture2D" uid="uid://6jb00exeg78s" path="res://sprite/3D-1536.png" id="23_7i523"]
+[ext_resource type="FontFile" uid="uid://bvn2jsialxgik" path="res://fonts/Fanavari Bold.ttf" id="24_jevh8"]
 
 [sub_resource type="FontVariation" id="FontVariation_m5l8b"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("1_xuh5p")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("1_avvg3")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngvdg"]
 bg_color = Color(0.147672, 0.147672, 0.147672, 1)
@@ -53,31 +56,31 @@ shadow_size = 2
 shadow_offset = Vector2(-1, 3)
 
 [sub_resource type="FontVariation" id="FontVariation_dalxy"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("3_3otl1")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("3_5k480")
 
 [sub_resource type="FontVariation" id="FontVariation_dy4oq"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("3_3otl1")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("3_5k480")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3omms"]
-texture = ExtResource("4_avvg3")
+texture = ExtResource("4_nl6dj")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6n5k"]
-texture = ExtResource("5_xmqxi")
+texture = ExtResource("5_131kw")
 expand_margin_top = 30.0
 expand_margin_right = 80.0
 expand_margin_bottom = 20.0
 
 [sub_resource type="FontVariation" id="FontVariation_7soyd"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("3_3otl1")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("3_5k480")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qxwpl"]
-texture = ExtResource("5_xmqxi")
+texture = ExtResource("5_131kw")
 expand_margin_left = 13.0
 expand_margin_top = 30.0
 expand_margin_bottom = 20.0
@@ -91,12 +94,12 @@ border_width_bottom = 5
 border_color = Color(0.819608, 0.780392, 0.411765, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_adnmk"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("3_3otl1")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("3_5k480")
 
 [sub_resource type="FontVariation" id="FontVariation_l65wg"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("6_5k480")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("6_06d1e")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2dx5q"]
 
@@ -167,7 +170,7 @@ fill_to = Vector2(0.5, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6pn8l"]
-shader = ExtResource("8_131kw")
+shader = ExtResource("8_brft0")
 shader_parameter/tex = SubResource("GradientTexture2D_usxgj")
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_0jf8d"]
@@ -409,11 +412,11 @@ func _input(event: InputEvent) -> void:
 
 [sub_resource type="Theme" id="Theme_2y1hm"]
 Label/font_sizes/font_size = 20
-Label/fonts/font = ExtResource("6_5k480")
+Label/fonts/font = ExtResource("6_06d1e")
 RichTextLabel/font_sizes/normal_font_size = 30
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_usxgj"]
-texture = ExtResource("10_cj1gv")
+texture = ExtResource("10_aqg2y")
 texture_margin_left = 80.0
 texture_margin_top = 58.8329
 texture_margin_right = 80.0
@@ -631,33 +634,68 @@ corner_radius_top_left = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="FontVariation" id="FontVariation_6pn8l"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("6_5k480")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("6_06d1e")
 variation_embolden = 0.74
 
 [sub_resource type="LabelSettings" id="LabelSettings_0jf8d"]
 font = SubResource("FontVariation_6pn8l")
 font_size = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehb43"]
+bg_color = Color(0.54902, 0.27451, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.927116, 0.794154, 0.174026, 1)
+border_blend = true
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_ednal"]
+font_size = 30
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sej5b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kaou4"]
+draw_center = false
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.680635, 0.736187, 1)
+border_blend = true
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_lr483"]
+font = ExtResource("13_tidj8")
+font_size = 25
+
 [sub_resource type="FontVariation" id="FontVariation_tfhda"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("6_5k480")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("6_06d1e")
 variation_embolden = 0.69
 
 [sub_resource type="FontVariation" id="FontVariation_vb5ih"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("6_5k480")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("6_06d1e")
 variation_embolden = 0.7
 variation_transform = Transform2D(1, 0.4, 0, 1, 0, 0)
 
 [sub_resource type="FontVariation" id="FontVariation_0jf8d"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("6_5k480")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("6_06d1e")
 variation_transform = Transform2D(1, 0.4, 0, 1, 0, 0)
 
 [sub_resource type="FontVariation" id="FontVariation_2pn8f"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("6_5k480")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("6_06d1e")
 
 [sub_resource type="Theme" id="Theme_apcft"]
 RichTextLabel/font_sizes/bold_font_size = 42
@@ -670,10 +708,10 @@ RichTextLabel/fonts/italics_font = SubResource("FontVariation_0jf8d")
 RichTextLabel/fonts/normal_font = SubResource("FontVariation_2pn8f")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_yb7qp"]
-script = ExtResource("11_brft0")
+script = ExtResource("14_wtdv7")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_gbj5b"]
-script = ExtResource("12_1mtgi")
+script = ExtResource("15_rg367")
 
 [sub_resource type="GDScript" id="GDScript_6pn8l"]
 script/source = "@tool
@@ -698,15 +736,15 @@ func _gui_input(event: InputEvent) -> void:
 [sub_resource type="RichTextEffect" id="RichTextEffect_vb5ih"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_6pn8l"]
-script = ExtResource("11_brft0")
+script = ExtResource("14_wtdv7")
 metadata/_custom_type_script = "uid://dcls0pguhob1u"
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_0jf8d"]
-script = ExtResource("12_1mtgi")
+script = ExtResource("15_rg367")
 metadata/_custom_type_script = "uid://bt1xta4d0rii"
 
 [sub_resource type="LabelSettings" id="LabelSettings_6pn8l"]
-font = ExtResource("13_aqg2y")
+font = ExtResource("13_tidj8")
 font_size = 35
 font_color = Color(0.690276, 1, 0.436242, 1)
 outline_size = 3
@@ -780,26 +818,6 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_lin6m"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
 
-[sub_resource type="Gradient" id="Gradient_skm5r"]
-offsets = PackedFloat32Array(0, 0.536232)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7a6fd"]
-gradient = SubResource("Gradient_skm5r")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.019802, 0)
-metadata/_snap_enabled = true
-
-[sub_resource type="Curve" id="Curve_1stjb"]
-_data = [Vector2(0, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.413793, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.208791), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Gradient" id="Gradient_cxcyr"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.0410959, 0.422222, 0.761111)
-colors = PackedColorArray(0, 1, 0, 1, 0.0313726, 0.196078, 0.392157, 1, 1, 1, 1, 1, 0.929412, 0.701961, 0.254902, 1)
-
 [sub_resource type="Animation" id="Animation_sej5b"]
 length = 0.001
 tracks/0/type = "value"
@@ -824,7 +842,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("10_cj1gv")]
+"values": [ExtResource("10_aqg2y")]
 }
 
 [sub_resource type="Animation" id="Animation_6uaey"]
@@ -852,7 +870,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("14_b7y2v")]
+"values": [ExtResource("16_wyugk")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ehb43"]
@@ -862,7 +880,7 @@ _data = {
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mmsp5"]
-texture = ExtResource("15_kflwy")
+texture = ExtResource("17_breng")
 texture_margin_left = 80.0
 texture_margin_top = 58.8329
 texture_margin_right = 80.0
@@ -878,10 +896,7 @@ border_color = Color(0.0392157, 0.247059, 1, 1)
 corner_radius_top_left = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="Gradient" id="Gradient_mdgmj"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.0944444, 0.327778, 0.577778)
-colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1, 0.807843, 0.635294, 0.211765, 1, 0.384314, 0.0313726, 0.352941, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6uaey"]
 
 [sub_resource type="Animation" id="Animation_kaou4"]
 length = 0.001
@@ -895,7 +910,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("15_kflwy")]
+"values": [ExtResource("17_breng")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -935,7 +950,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("14_b7y2v")]
+"values": [ExtResource("16_wyugk")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lr483"]
@@ -945,14 +960,14 @@ _data = {
 }
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tfhda"]
-texture = ExtResource("16_tidj8")
+texture = ExtResource("18_riu2h")
 texture_margin_left = 26.8598
 texture_margin_right = 26.0698
 axis_stretch_horizontal = 1
 region_rect = Rect2(268.01, 43.1063, 189.148, 43.2581)
 
 [sub_resource type="LabelSettings" id="LabelSettings_usxgj"]
-font = ExtResource("13_aqg2y")
+font = ExtResource("13_tidj8")
 font_size = 40
 font_color = Color(0.292027, 0.417124, 0.10037, 1)
 outline_size = 7
@@ -992,7 +1007,7 @@ Button/colors/font_pressed_color = Color(1, 1, 1, 1)
 Button/colors/icon_focus_color = Color(0, 0.221339, 0.265226, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_usxgj"]
-base_font = ExtResource("2_0i0fv")
+base_font = ExtResource("2_xmqxi")
 spacing_space = -110
 baseline_offset = 0.125
 
@@ -1030,7 +1045,7 @@ shadow_size = 3
 font_size = 50
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_an0t8"]
-texture = ExtResource("17_wtdv7")
+texture = ExtResource("19_smvun")
 texture_margin_left = 118.8
 texture_margin_top = 55.8266
 texture_margin_right = 116.0
@@ -1040,23 +1055,23 @@ axis_stretch_vertical = 2
 region_rect = Rect2(0, 0.37381, 418.299, 199.626)
 
 [sub_resource type="FontVariation" id="FontVariation_mmsp5"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("6_5k480")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("6_06d1e")
 
 [sub_resource type="FontVariation" id="FontVariation_an0t8"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("6_5k480")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("6_06d1e")
 variation_transform = Transform2D(1, 0.6, 0, 1, 0, 0)
 
 [sub_resource type="FontVariation" id="FontVariation_db4rb"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("6_5k480")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("6_06d1e")
 variation_embolden = 0.7
 variation_transform = Transform2D(1, 0.6, 0, 1, 0, 0)
 
 [sub_resource type="FontVariation" id="FontVariation_6uaey"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("6_5k480")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("6_06d1e")
 variation_embolden = 0.7
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pn8l"]
@@ -1069,15 +1084,20 @@ corner_radius_bottom_left = 20
 [sub_resource type="RichTextEffect" id="RichTextEffect_sej5b"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ehb43"]
-script = ExtResource("11_brft0")
+script = ExtResource("14_wtdv7")
 metadata/_custom_type_script = "uid://dcls0pguhob1u"
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ednal"]
-script = ExtResource("12_1mtgi")
+script = ExtResource("15_rg367")
 metadata/_custom_type_script = "uid://bt1xta4d0rii"
 
+[sub_resource type="LabelSettings" id="LabelSettings_an0t8"]
+font_size = 36
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="FontVariation" id="FontVariation_ehb43"]
-base_font = ExtResource("2_0i0fv")
+base_font = ExtResource("2_xmqxi")
 
 [sub_resource type="SystemFont" id="SystemFont_6pn8l"]
 font_names = PackedStringArray("Segoe UI Emoji")
@@ -1086,8 +1106,8 @@ font_names = PackedStringArray("Segoe UI Emoji")
 font_names = PackedStringArray("SamsungColorEmoji")
 
 [sub_resource type="FontVariation" id="FontVariation_sej5b"]
-fallbacks = Array[Font]([SubResource("SystemFont_6pn8l"), SubResource("SystemFont_0jf8d"), ExtResource("2_0i0fv")])
-base_font = ExtResource("13_aqg2y")
+fallbacks = Array[Font]([SubResource("SystemFont_6pn8l"), SubResource("SystemFont_0jf8d"), ExtResource("2_xmqxi")])
+base_font = ExtResource("13_tidj8")
 variation_embolden = -0.4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_apcft"]
@@ -1101,7 +1121,7 @@ border_blend = true
 corner_detail = 20
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_apcft"]
-shader = ExtResource("18_rg367")
+shader = ExtResource("21_yv4v5")
 shader_parameter/lod = 0.0
 shader_parameter/mix_percentage = 0.0
 
@@ -1166,18 +1186,18 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="FontVariation" id="FontVariation_apcft"]
-fallbacks = Array[Font]([ExtResource("2_0i0fv")])
-base_font = ExtResource("3_3otl1")
+fallbacks = Array[Font]([ExtResource("2_xmqxi")])
+base_font = ExtResource("3_5k480")
 spacing_top = 30
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_mgrfc"]
-script = ExtResource("11_brft0")
+script = ExtResource("14_wtdv7")
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_ur635"]
-script = ExtResource("12_1mtgi")
+script = ExtResource("15_rg367")
 
 [sub_resource type="LabelSettings" id="LabelSettings_2pn8f"]
-font = ExtResource("13_aqg2y")
+font = ExtResource("13_tidj8")
 font_size = 40
 
 [sub_resource type="Gradient" id="Gradient_how18"]
@@ -1211,7 +1231,7 @@ fill_from = Vector2(0.5, 0.5)
 metadata/_snap_enabled = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_apcft"]
-font = ExtResource("21_riu2h")
+font = ExtResource("24_jevh8")
 font_size = 50
 outline_size = 11
 outline_color = Color(0.321971, 0.232393, 0.00322712, 1)
@@ -1431,7 +1451,7 @@ corner_radius_top_right = 60
 corner_radius_bottom_right = 60
 
 [sub_resource type="LabelSettings" id="LabelSettings_mmsp5"]
-font = ExtResource("21_riu2h")
+font = ExtResource("24_jevh8")
 font_size = 70
 font_color = Color(0.584314, 0.156863, 0.294118, 1)
 outline_size = 10
@@ -2468,7 +2488,27 @@ shader_parameter/fall_multiplier = 0.5
 shader_parameter/falloff_point = 2.0
 shader_parameter/falloff_spread = 1.31
 
-[node name="Control" type="Control" groups=["scene_message"]]
+[sub_resource type="Gradient" id="Gradient_skm5r"]
+offsets = PackedFloat32Array(0, 0.536232)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7a6fd"]
+gradient = SubResource("Gradient_skm5r")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.019802, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_1stjb"]
+_data = [Vector2(0, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.413793, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.208791), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_cxcyr"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0410959, 0.422222, 0.761111)
+colors = PackedColorArray(0, 1, 0, 1, 0.0313726, 0.196078, 0.392157, 1, 1, 1, 1, 1, 0.929412, 0.701961, 0.254902, 1)
+
+[node name="Control" type="Control" node_paths=PackedStringArray("file_dialog") groups=["scene_message"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -2476,7 +2516,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_pnsd0")
-script = ExtResource("7_nl6dj")
+script = ExtResource("7_cj1gv")
+file_dialog = NodePath("FileDialog")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_6pn8l")
@@ -2486,7 +2527,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("9_06d1e")
+texture = ExtResource("9_1mtgi")
 expand_mode = 1
 stretch_mode = 1
 
@@ -2583,6 +2624,61 @@ autowrap_mode = 3
 clip_text = true
 text_overrun_behavior = 3
 
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
+
+[node name="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("11_b7y2v")]
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ehb43")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_ednal")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sej5b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kaou4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kaou4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kaou4")
+icon = ExtResource("12_kflwy")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+size_flags_vertical = 8
+label_settings = SubResource("LabelSettings_lr483")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
 clip_contents = false
 custom_minimum_size = Vector2(260, 40)
@@ -2664,26 +2760,6 @@ texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer"]
-position = Vector2(400, 100)
-emitting = false
-amount = 2000
-texture = SubResource("GradientTexture2D_7a6fd")
-lifetime = 0.5
-one_shot = true
-emission_shape = 3
-emission_rect_extents = Vector2(400, 100)
-particle_flag_align_y = true
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 208.83
-initial_velocity_max = 280.99
-scale_amount_min = 0.4
-scale_amount_max = 0.6
-scale_amount_curve = SubResource("Curve_1stjb")
-color_initial_ramp = SubResource("Gradient_cxcyr")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance"]
 libraries = {
 &"": SubResource("AnimationLibrary_ehb43")
@@ -2741,6 +2817,66 @@ label_settings = SubResource("LabelSettings_0jf8d")
 vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxEmpty_53iq2")
+
+[node name="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("11_b7y2v")]
+visible = false
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(400, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ehb43")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_ednal")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6uaey")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_kaou4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kaou4")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_kaou4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kaou4")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_kaou4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kaou4")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_kaou4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kaou4")
+icon = ExtResource("12_kflwy")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+size_flags_vertical = 8
+label_settings = SubResource("LabelSettings_lr483")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
 clip_contents = false
@@ -2820,26 +2956,6 @@ gradient = SubResource("Gradient_lin6m")
 texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3/HBoxContainer/MarginContainer/VBoxContainer"]
-position = Vector2(400, 100)
-emitting = false
-amount = 2000
-texture = SubResource("GradientTexture2D_7a6fd")
-lifetime = 0.5
-one_shot = true
-emission_shape = 3
-emission_rect_extents = Vector2(400, 100)
-particle_flag_align_y = true
-direction = Vector2(0, 0)
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 208.83
-initial_velocity_max = 280.99
-scale_amount_min = 0.4
-scale_amount_max = 0.6
-scale_amount_curve = SubResource("Curve_1stjb")
-color_initial_ramp = SubResource("Gradient_mdgmj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/ScrollContainer/VBoxContainer/instance3"]
 libraries = {
@@ -2955,6 +3071,56 @@ theme_override_font_sizes/font_size = 50
 text = "✖️"
 flat = true
 
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer2/ScrollContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="instance" type="TextureRect" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer2/ScrollContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(300, 300)
+layout_direction = 2
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer2/ScrollContainer/HBoxContainer/instance"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_bottom = 68.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "✖️"
+flat = true
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/VBoxContainer/MarginContainer2/ScrollContainer/HBoxContainer/instance"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_an0t8")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 85)
 layout_direction = 3
@@ -2968,25 +3134,48 @@ mouse_filter = 2
 
 [node name="Button" type="Button" parent="VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -71.0
-offset_top = -58.5
-offset_right = 69.0
-offset_bottom = 55.5
+anchors_preset = -1
+anchor_left = 1.178
+anchor_top = 0.014
+anchor_right = 1.178
+anchor_bottom = 0.014
+offset_left = -88.0
+offset_top = -0.0166602
+offset_right = -2.28882e-05
+offset_bottom = 73.9833
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
-pivot_offset = Vector2(70, 57)
+pivot_offset = Vector2(44, 37)
+size_flags_vertical = 0
+focus_mode = 0
+theme_override_fonts/font = SubResource("FontVariation_ehb43")
+theme_override_font_sizes/font_size = 55
+text = "📨"
+flat = true
+
+[node name="Button3" type="Button" parent="VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.308
+anchor_top = -0.174
+anchor_right = 0.308
+anchor_bottom = -0.174
+offset_left = -94.0
+offset_top = -0.0366592
+offset_right = -1.52588e-05
+offset_bottom = 93.9633
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(47, 47)
 size_flags_vertical = 0
 focus_mode = 0
 theme_override_fonts/font = SubResource("FontVariation_ehb43")
 theme_override_font_sizes/font_size = 70
-text = "📨"
+icon = ExtResource("20_hhhna")
 flat = true
+expand_icon = true
 
 [node name="TextEdit" type="TextEdit" parent="VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 80)
@@ -3023,7 +3212,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 144.0
 grow_horizontal = 2
-texture = ExtResource("19_wyugk")
+texture = ExtResource("22_yo3xx")
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 1
@@ -3045,7 +3234,7 @@ custom_minimum_size = Vector2(120, 120)
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wi0ee")
-icon = ExtResource("20_breng")
+icon = ExtResource("23_7i523")
 flat = true
 expand_icon = true
 
@@ -3190,7 +3379,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_0i0fv")
+theme_override_fonts/font = ExtResource("2_xmqxi")
 theme_override_font_sizes/font_size = 70
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0jf8d")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_apcft")
@@ -3226,7 +3415,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_0i0fv")
+theme_override_fonts/font = ExtResource("2_xmqxi")
 theme_override_font_sizes/font_size = 70
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0jf8d")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_an0t8")
@@ -3264,7 +3453,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_0i0fv")
+theme_override_fonts/font = ExtResource("2_xmqxi")
 theme_override_font_sizes/font_size = 70
 theme_override_styles/focus = SubResource("StyleBoxEmpty_0jf8d")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_6uaey")
@@ -3302,7 +3491,7 @@ libraries = {
 visible = false
 material = SubResource("ShaderMaterial_mmsp5")
 position = Vector2(485, 970)
-texture = ExtResource("20_breng")
+texture = ExtResource("23_7i523")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
@@ -3484,6 +3673,15 @@ libraries = {
 &"": SubResource("AnimationLibrary_ehb43")
 }
 
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open File(s)"
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+file_mode = 1
+access = 2
+show_hidden_files = true
+use_native_dialog = true
+
 [connection signal="scroll_ended" from="VBoxContainer/ScrollContainer" to="." method="_on_scroll_container_scroll_ended"]
 [connection signal="scroll_start" from="VBoxContainer/ScrollContainer" to="." method="_on_scroll_container_start_scroll"]
 [connection signal="meta_clicked" from="VBoxContainer/ScrollContainer/VBoxContainer/instance/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
@@ -3492,6 +3690,7 @@ libraries = {
 [connection signal="gui_input" from="VBoxContainer/Panel" to="." method="_on_panel_gui_input"]
 [connection signal="pressed" from="VBoxContainer/Panel/VBoxContainer/MarginContainer/HBoxContainer/Button" to="." method="_on_null_ref_pressed"]
 [connection signal="pressed" from="VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Panel/VBoxContainer/HBoxContainer/Control/Button3" to="." method="_on_image_button_pressed"]
 [connection signal="text_changed" from="VBoxContainer/Panel/VBoxContainer/HBoxContainer/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="ColorRect/MarginContainer/HBoxContainer/Button" to="." method="_on_back_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
@@ -3499,3 +3698,4 @@ libraries = {
 [connection signal="pressed" from="Node2D/edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="Node2D/copy" to="." method="_on_copy_pressed"]
 [connection signal="meta_clicked" from="SubViewportContainer/SubViewport/instance/HBoxContainer/MarginContainer/VBoxContainer/RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
+[connection signal="files_selected" from="FileDialog" to="." method="_on_file_dialog_files_selected"]
