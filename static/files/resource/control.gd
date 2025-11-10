@@ -1166,10 +1166,8 @@ func _on_scroll_container_scroll_ended() -> void:
 
 
 func _on_image_button_pressed() -> void:
-	if plugin2 and Updatedate.cant_open_gallery == false:
-		plugin2.getGalleryImage()
-	else:
-		file_dialog.popup()
+	
+	file_dialog.popup()
 
 
 var files = []
