@@ -1,0 +1,1 @@
+scp messbah_armeabi-v7a.apk ssh pachim@45.138.135.82:messbah403.ir/static/files/app

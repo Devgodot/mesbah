@@ -6,20 +6,23 @@ import os
 import datetime
 from khayyam import TehranTimezone
 jwt = JWTManager()
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)  # اجازه همه منبع‌ها
 
 app.config['SECRET_KEY'] = 'your_secret_key'  # Replace with a strong secret key
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # Disable tracking modifications for better performance
 app.config["UPLOAD_FOLDER"] = "static/files"
+app.config["ROOT_PATH"] = "."
 app.secret_key = 'abscd'
 
 if socket.gethostname() == "mhh83":
-    from sshtunnel import SSHTunnelForwarder
-    server = SSHTunnelForwarder(("45.138.135.82", 22), ssh_password="haghshenas67", ssh_username="pachim", remote_bind_address=("127.0.0.1", 3306))
-    server.start()
-    local_host = server.local_bind_port
-    app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://pachim:haghshenas67@127.0.0.1:{}/data'.format(local_host)
+    # from sshtunnel import SSHTunnelForwarder
+    # server = SSHTunnelForwarder(("45.138.135.82", 22), ssh_password="haghshenas67", ssh_username="pachim", remote_bind_address=("127.0.0.1", 3306))
+    # server.start()
+    # local_host = server.local_bind_port
+    app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:haghshenas67@127.0.0.1:3306/data'
 else:
     app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://pachim:haghshenas67@localhost:3306/data'
 db = SQLAlchemy(app)

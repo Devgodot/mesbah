@@ -1,5 +1,5 @@
 import datetime
-from flask import request, jsonify, render_template, redirect, make_response, send_file, current_app
+from flask import request, jsonify, render_template, redirect, make_response, send_file, current_app, send_from_directory
 from confige import app, db, jwt
 from auth import auth_bp
 from users import user_bp
@@ -381,7 +381,7 @@ def remove_gallery():
 @app.route("/")
 def home():
     # compute APK sizes for download menu
-    base = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static", "files", "app")
+    base = os.path.join(os.path.abspath(os.path.dirname(__file__)), "static", "files", "app", "messbah_apk")
     apk_files = {
         'arm64': 'messbah_arm64-v8a.apk',
         'arm32': 'messbah_armeabi-v7a.apk',
@@ -417,7 +417,9 @@ def home():
     response = make_response(render_template("home.html", apk_sizes=apk_sizes), 200)
     return response
 
-
+@app.route("/favicon.ico", methods=["GET"])
+def icon():
+    return send_from_directory(app.config["UPLOAD_FOLDER"], "favicon.ico")
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
