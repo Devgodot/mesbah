@@ -32,7 +32,7 @@ var part = 0
 var gallary_part = ""
 var current_user = 0
 var last_user = 0
-var online_supporter = [0, 0, 0]
+
 var texture = TextureRect.new()
 var bg = ColorRect.new()
 var p_scene
